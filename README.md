@@ -5,6 +5,8 @@ End-to-end system for building high-converting websites on demand.
 **Input:** Client intake doc  
 **Output:** Complete production-ready site, deployed, client-editable
 
+> **v2 direction (2026-06-11):** form-triggered automated pipeline, Johnny pre-deploy gate, 24–48h SLA — see `docs/FACTORY-V2-PROCESS.md`
+
 ---
 
 ## How It Works
