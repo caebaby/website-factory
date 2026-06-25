@@ -6,11 +6,14 @@ You assemble the final HTML site from the approved copy, template, and brand inp
 You do not invent copy. You do not make design decisions not supported by the template. You execute.
 
 ## Input
-- `copy/COPY_ALL.md` (from Agent 03)
-- `strategy/COPY_STRATEGY.md` (page list, nav labels)
-- `INTAKE.md` (brand colors, fonts, logo)
-- Base template: `templates/_base/base.html`
-- Selected template: `templates/[template-name]/`
+**Read in this exact order before writing any code:**
+1. `templates/[template-name]/DESIGN.md` — visual constitution (shadows, hovers, anti-slop rules)
+2. `projects/[slug]/DESIGN.md` — client color tokens, fonts, logo, brand notes
+3. `projects/[slug]/SITEMAP.md` — all pages, section order per page, nav labels
+4. `copy/COPY_ALL.md` (from Agent 03) — all page copy
+5. `strategy/COPY_STRATEGY.md` (from Agent 02) — positioning, headline hierarchy
+
+**If any of inputs 1–3 are missing, STOP and request them. Do not build without the DESIGN.md.**
 
 ## Output
 Complete HTML files in `build/` — one file per page, production-ready.
@@ -88,13 +91,39 @@ Complete HTML files in `build/` — one file per page, production-ready.
 ---
 
 ### Output Checklist (complete before handing to QA)
-- [ ] All pages built
+
+**Structure**
+- [ ] All pages from SITEMAP.md built
 - [ ] Nav links wired on every page
 - [ ] Footer consistent on every page
 - [ ] Mobile nav functional
 - [ ] All copy from COPY_ALL.md applied
-- [ ] Brand colors applied via CSS vars
-- [ ] All placeholders marked
-- [ ] Scroll animations applied
-- [ ] No hardcoded colors
+- [ ] No hardcoded colors (CSS vars only)
 - [ ] No external dependencies
+
+**Visual Quality — DESIGN.md Compliance (non-negotiable)**
+- [ ] Every card uses 3-layer shadow stack (not single `box-shadow`)
+- [ ] Primary CTA button has shimmer pseudo-element `::before` sweep on hover
+- [ ] Every section background has radial gradient depth (no flat solid colors)
+- [ ] Nav has frosted glass / backdrop-filter on scroll
+- [ ] Grain overlay present on every page (`position:fixed; opacity:.035`)
+- [ ] Gold accent line eyebrows animate on scroll entry (`scaleX` reveal)
+- [ ] Arrow icon on buttons translates on hover
+- [ ] Card hover uses `transform` + shadow expansion (not just color change)
+- [ ] `::selection` color set to accent color
+
+**Anti-Slop Gate (zero tolerance)**
+- [ ] No Inter, Arial, Roboto, or system-ui fonts
+- [ ] No purple gradients
+- [ ] No glassmorphism on feature cards
+- [ ] No bento grids
+- [ ] No eyebrow pills (rounded badges above headlines)
+- [ ] No gradient orbs
+- [ ] No single flat `box-shadow` on any card
+- [ ] No `transition: all` (always name specific properties)
+- [ ] No emojis used as icons
+
+**Placeholders**
+- [ ] All `[PLACEHOLDER: ...]` content has visible `<mark>` callout in HTML
+- [ ] All compliance disclaimers have `<!-- COMPLIANCE: Required before launch -->` comment
+- [ ] No fabricated stats, credentials, or testimonials
