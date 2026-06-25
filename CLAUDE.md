@@ -16,7 +16,7 @@ projects/[client-slug]/
   DESIGN.md          ← client color/font/logo overrides (fill from projects/_base/DESIGN.md)
   SITEMAP.md         ← all pages + section order (fill from SITEMAP template)
   research/          ← Agent 01 output
-  strategy/          ← Agent 02 output
+  strategy/          ← Agent 02 + 02.5 output
   copy/              ← Agent 03 output
   build/             ← Agent 04 output (final HTML files)
   qa/                ← Agent 05 output
@@ -26,9 +26,10 @@ projects/[client-slug]/
 ```
 templates/
   editorial-luxury/  ← Financial advisory, wealth management, law, professional services
-    DESIGN.md        ← Visual constitution: shadow system, hover library, anti-slop rules
+    DESIGN.md             ← Visual constitution: shadow system, hover library, anti-slop rules
+    DESIGN_DIRECTIONS.md  ← Variation system: 4 archetypes, layout patterns, signature moments
   clean-craft/       ← Trades, artisan, agriculture (not yet extracted)
-    DESIGN.md        ← [To be built]
+    DESIGN.md             ← [To be built]
 ```
 
 ### Step 3 — Run agents in order
@@ -37,17 +38,22 @@ templates/
 |-------|------|-------|---------|
 | 01 Research | `agents/01_research.md` | `INTAKE.md` | `research/ICP_BRIEF.md` |
 | 02 Strategy | `agents/02_strategy.md` | `INTAKE.md` + `research/` | `strategy/COPY_STRATEGY.md` |
+| 02.5 Design Direction | `agents/02.5_design_direction.md` | INTAKE + research + strategy + DESIGN.md + DESIGN_DIRECTIONS.md | `strategy/DESIGN_BRIEF.md` |
 | 03 Copy | `agents/03_copy.md` | `strategy/` + `research/` | `copy/COPY_ALL.md` |
-| 04 Build | `agents/04_build.md` | `templates/[t]/DESIGN.md` + `projects/[s]/DESIGN.md` + `SITEMAP.md` + `copy/` | `build/*.html` |
-| 05 QA | `agents/05_qa.md` | `build/` + `DESIGN.md` + `SITEMAP.md` + `copy/` + `INTAKE.md` | `qa/QA_REPORT.md` |
+| 04 Build | `agents/04_build.md` | `templates/[t]/DESIGN.md` + `templates/[t]/DESIGN_DIRECTIONS.md` + `strategy/DESIGN_BRIEF.md` + `projects/[s]/DESIGN.md` + `SITEMAP.md` + `copy/` | `build/*.html` |
+| 05 QA | `agents/05_qa.md` | `build/` + `DESIGN.md` + `DESIGN_DIRECTIONS.md` + `DESIGN_BRIEF.md` + `SITEMAP.md` + `copy/` + `INTAKE.md` | `qa/QA_REPORT.md` |
 
 **Parallelism:**
 - Agents 01 + 02 can run simultaneously if intake is complete
-- Agent 03 starts after both 01 + 02 finish
-- Agent 04 starts after 03
+- Agent 02.5 runs after 02 (needs strategy + research)
+- Agent 03 can run in parallel with 02.5 (both consume strategy, don't depend on each other)
+- Agent 04 starts after both 02.5 and 03 finish
 - Agent 05 runs after 04
 
-**Hard rule for Agent 04:** It must read `templates/[template]/DESIGN.md` before writing any CSS. If DESIGN.md is missing, stop and request it.
+**Hard rules for Agent 04:**
+1. It must read `templates/[template]/DESIGN.md` before writing any CSS. If DESIGN.md is missing, stop and request it.
+2. It must read `strategy/DESIGN_BRIEF.md` before choosing layouts. If missing, stop and run Agent 02.5 first.
+3. The archetype and layout patterns in DESIGN_BRIEF.md override the default layouts in BUILD_PROMPT.md. BUILD_PROMPT defines WHAT sections exist. DESIGN_BRIEF defines HOW they look.
 
 ### Step 4 — Johnny gate
 Johnny reviews `qa/QA_REPORT.md` against the checklist. Status must be READY TO SHIP. No exceptions.
@@ -76,8 +82,9 @@ All pages to be built + section order per page + nav labels. Each section has a 
 
 ## Design Standard
 
-All sites built on this factory are held to $25k agency quality. The standard is defined in `templates/[template]/DESIGN.md`. The short version:
+All sites built on this factory are held to $25k agency quality. The standard is defined in two layers:
 
+**Quality floor (never changes):** `templates/[template]/DESIGN.md`
 - 3-layer shadow stacks on all cards (never single box-shadow)
 - Shimmer pseudo-element on primary CTA buttons
 - Background radial gradient depth on every section (never flat color)
@@ -86,7 +93,14 @@ All sites built on this factory are held to $25k agency quality. The standard is
 - Zero banned fonts (Inter, Arial, Roboto, system-ui)
 - Zero AI tells: no bento grids, no gradient orbs, no glassmorphism, no eyebrow pills
 
-Agent 05 enforces this in the QA report before anything ships.
+**Variation layer (changes per client):** `templates/[template]/DESIGN_DIRECTIONS.md`
+- 4 archetypes: Institution, Editor, Modernist, Heritage
+- Layout pattern menus for each section
+- Signature moment selection (one per site)
+- Interaction style by archetype (duration, easing, hover lift, stagger)
+- Agent 02.5 selects the archetype and patterns → produces `strategy/DESIGN_BRIEF.md`
+
+Agent 05 enforces both layers in the QA report before anything ships.
 
 ---
 
