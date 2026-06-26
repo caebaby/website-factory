@@ -234,7 +234,148 @@ For bigger firms or richer sites. The homepage remains the conversion engine. Th
 
 ---
 
-## ENFORCEMENT RULES
+## CROSS-SECTIONAL REQUIREMENTS (Rules That Span All Sections)
+
+These rules don't live in any single section. They apply across the entire homepage. Agent 03 enforces them in copy. Agent 05 checks them in QA.
+
+### 1. CTA Rhythm — Progressive Commitment
+
+CTAs must appear throughout the page — but never the same CTA everywhere. The commitment level escalates as trust builds. Asking for a meeting before you've earned trust is a conversion killer.
+
+| Page Position | CTA Type | Commitment | What It Does |
+|---|---|---|---|
+| NAV (persistent) | Gold button | High — always available | "Book a Call →" stays visible for ready prospects |
+| HERO | Primary + Secondary | High + Low | "Book a Call" + "Take Fit Assessment" |
+| PROBLEM | *No CTA* | None | Let the pain land. Don't sell while they're hurting. |
+| TRUST | *No CTA* | None | Let credibility compound. Selling here feels desperate. |
+| WHO WE SERVE | Soft text link | Curiosity | "See how we work with you →" |
+| FIT ASSESSMENT | The section IS the CTA | Low (MQL capture) | Form submit — lowest friction conversion |
+| SOLUTION | Soft text link | Depth-seeking | "Learn More →" or "See All Services →" |
+| THE PATH | Medium CTA | First step only | "Schedule the First Call" (not "Book a Consultation") |
+| ABOUT | Soft text link | Personal | "Alex's Full Story →" |
+| FINAL CTA | Primary + Secondary | Full close | "Book a Call" + "Take Fit Assessment" |
+
+**Rules:**
+- Never ask for more commitment than the prospect's current trust level justifies
+- The PROBLEM and TRUST sections must be CTA-free zones — selling here kills conversion
+- Every CTA tells the prospect exactly what happens next (never vague "Contact Us")
+- The nav gold button is always present as a persistent option for prospects who are ready early
+- Soft CTAs (text links) use arrow icons, never buttons — they feel like exploration, not pressure
+- Maximum 2 button-style CTAs visible in any single viewport (excluding nav)
+
+### 2. Authority Distribution — Compound Credibility
+
+Authority can't live in one section. It must compound across the page so that every time the prospect considers skepticism, a new credential lands.
+
+| Section | Authority Signal Type |
+|---|---|
+| HERO proof strip | Quick markers — years, fiduciary, fee-only, location |
+| TRUST bar | Expanded credentials with custom SVG icons |
+| WHO WE SERVE | Implicit authority — specialization IS credibility |
+| ABOUT | Deep credibility — story, background, why this work |
+| STATS strip | Quantified proof — numbers, not claims |
+| FOOTER | Regulatory — FINRA/SEC registration, disclaimer |
+
+**Rule:** Every "screen" of content (roughly 900px scroll) must contain at least ONE authority signal. Not a CTA — an authority signal. Something that says "this person is legitimate."
+
+If any viewport has no authority signal, Agent 05 flags it as a WARNING.
+
+### 3. Copy Kill List — The Verbal AI Tells
+
+Just like visual AI tells (bento grids, glassmorphism), there are verbal AI tells. These words and phrases scream "AI wrote this." Agent 03 must avoid them. Agent 05 greps for them.
+
+**BANNED words/phrases (zero tolerance):**
+
+| Word/Phrase | Why It's Banned | What to Use Instead |
+|---|---|---|
+| "comprehensive" | #1 AI advisor copy tell. Every AI site says it. | Name the specific services. Show, don't claim. |
+| "tailored" / "customized" | AI default for "personalized." Empty. | Describe HOW it's specific to their situation. |
+| "holistic approach" | AI favorite. Means nothing. | "We coordinate your taxes, investments, and estate plan together." |
+| "unparalleled" | Impossible to verify. Sounds fake. | State the specific differentiator. |
+| "cutting-edge" | Tech-bro speak for financial advisory. | Name the actual method or tool. |
+| "leverage" (as a verb) | Corporate AI filler. | "use," "apply," "put to work" |
+| "partner with you on your journey" | AI relationship boilerplate. | Describe what actually happens in the relationship. |
+| "peace of mind" | Overused to the point of meaninglessness. | Name the specific anxiety that goes away. |
+| "navigate [complex thing]" | AI maritime/navigation metaphor default. | Just say what you do. |
+| "empower" | Patronizing AI default. | Describe the outcome they get. |
+| "dedicated to" / "committed to" | Empty corporate filler. | Show the proof. |
+| "passionate about" | AI LinkedIn-speak. | Tell the story that proves it. |
+| "decades of combined experience" | Wirehouse cliché. | State individual years and roles. |
+| "client-centric" | Tautology. Of course you serve clients. | Describe HOW clients experience the service. |
+| "results-driven" | Says nothing. What results? | Name the outcome. |
+
+**Pattern bans (structural copy tells):**
+- No sentence starting with "In today's [complex/fast-paced/ever-changing] world"
+- No paragraph ending with "so you can focus on what matters most"
+- No "Whether you're [A] or [B], we [do thing]" sentence structure
+- No three-adjective clusters ("experienced, dedicated, and knowledgeable")
+- No "We understand that..." openers (AI default empathy formula)
+
+### 4. Specificity Standard — The $25k Differentiator
+
+AI copy is vague. $25k copy is specific. Every claim must be anchored to something concrete.
+
+| AI Copy (Banned) | $25k Copy (Required) |
+|---|---|
+| "We help with tax strategy" | "We sit down with your CPA before year-end to coordinate RSU vesting, bonus timing, and tax-loss harvesting." |
+| "Experienced advisor" | "10 years at Merrill Lynch. Series 65. Houston-based." |
+| "We work with high-net-worth clients" | "We work with oil & gas executives managing RSUs and deferred comp, business owners planning an exit, and families coordinating multi-generational trusts." |
+| "Personalized financial plan" | "A written plan covering investments, taxes, estate, and insurance — reviewed quarterly, updated proactively." |
+| "Schedule a consultation" | "30 minutes. No pitch. We'll listen to your situation and tell you honestly if we're a fit." |
+
+**Rule:** Agent 05 checks every claim for specificity. If a sentence could describe ANY advisor, it fails. Flag as WARNING: "GENERIC CLAIM — could apply to any firm."
+
+### 5. Compliance Floor — Non-Negotiable
+
+Financial advisory sites have legal requirements. These are not quality preferences — they are regulatory obligations.
+
+- **Footer disclaimer:** FINRA/SEC "registered investment advisor" language. Required before launch. Marked `<!-- COMPLIANCE: Required before launch -->`
+- **Fiduciary standard:** Mentioned in hero proof strip AND trust bar
+- **Fee-only disclosure:** Stated in trust bar if applicable
+- **No fabricated stats:** Every number must be `[VERIFY]` or confirmed real
+- **No fabricated testimonials:** `[PLACEHOLDER: Real testimonial needed — FINRA compliant before launch]`
+- **No guaranteed returns:** Never imply or state investment guarantees
+- **Credentials:** Marked as `[VERIFY: CFP®/ChFC®?]` until confirmed
+- **Risk disclosure:** "Past performance is not a guarantee of future results" in footer
+- **RIA entity name:** Verify and include in disclaimer
+
+Agent 05 treats ANY compliance gap as a BLOCKER. No exceptions.
+
+---
+
+## ENFORCEMENT SUMMARY (For Agent 05)
+
+### Tier 1 — Core Sections (BLOCKERS)
+- Missing any of the 9 core sections → BLOCKER
+- Core sections in wrong order → BLOCKER
+- Tier 1 section dropped without documented reason in DESIGN_BRIEF.md → BLOCKER
+
+### Tier 2 — Cross-Sectional Requirements (MIXED)
+- CTA in the PROBLEM section → BLOCKER (breaks conversion psychology)
+- CTA in the TRUST section → BLOCKER
+- More than 2 button CTAs in one viewport (excluding nav) → WARNING
+- A viewport (900px scroll) with no authority signal → WARNING
+- Missing footer compliance disclaimer → BLOCKER
+- Missing fiduciary mention → WARNING
+- Fabricated stats or testimonials → BLOCKER
+- Missing `[VERIFY]` tag on an unverified claim → WARNING
+
+### Tier 3 — Copy Quality (WARNINGS)
+- Any banned word from the Copy Kill List → WARNING
+- Any banned copy pattern (generic openers/closers) → WARNING
+- A claim that could apply to any advisor → WARNING: "GENERIC CLAIM"
+- CTA language is vague ("Contact Us," "Get Started") → WARNING
+
+### Enforcement Mechanism
+Agent 05 runs the following checks against `build/index.html`:
+1. **Grep for banned words.** Flag every occurrence. Count = number of WARNINGs.
+2. **Count section occurrences.** Verify all 9 Tier 1 sections present.
+3. **Check section order.** Parse the HTML, verify all 9 Tier 1 sections present and in order.
+4. **Scan for authority signals.** Check credentials/stats/trust markers across sections.
+5. **Locate all CTAs.** Verify they match the CTA Rhythm map.
+6. **Grep for `[VERIFY]` and `[PLACEHOLDER]`.** Confirm all are flagged in QA report.
+
+---
 
 ### For Agent 02 (Strategy)
 - You MUST include all 9 Tier 1 core sections in your page architecture.
