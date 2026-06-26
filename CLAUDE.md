@@ -26,8 +26,9 @@ projects/[client-slug]/
 ```
 templates/
   editorial-luxury/  ← Financial advisory, wealth management, law, professional services
-    DESIGN.md             ← Visual constitution: shadow system, hover library, anti-slop rules
+    DESIGN.md             ← Quality floor: shadow system, hover library, anti-slop rules
     DESIGN_DIRECTIONS.md  ← Variation system: 4 archetypes, layout patterns, signature moments
+    SECTION_MANIFEST.md   ← Conversion architecture: mandatory sections, order, enforcement
   clean-craft/       ← Trades, artisan, agriculture (not yet extracted)
     DESIGN.md             ← [To be built]
 ```
@@ -37,11 +38,11 @@ templates/
 | Agent | File | Reads | Produces |
 |-------|------|-------|---------|
 | 01 Research | `agents/01_research.md` | `INTAKE.md` | `research/ICP_BRIEF.md` |
-| 02 Strategy | `agents/02_strategy.md` | `INTAKE.md` + `research/` | `strategy/COPY_STRATEGY.md` |
+| 02 Strategy | `agents/02_strategy.md` | `INTAKE.md` + `research/` + `SECTION_MANIFEST.md` | `strategy/COPY_STRATEGY.md` |
 | 02.5 Design Direction | `agents/02.5_design_direction.md` | INTAKE + research + strategy + DESIGN.md + DESIGN_DIRECTIONS.md | `strategy/DESIGN_BRIEF.md` |
-| 03 Copy | `agents/03_copy.md` | `strategy/` + `research/` | `copy/COPY_ALL.md` |
-| 04 Build | `agents/04_build.md` | `templates/[t]/DESIGN.md` + `templates/[t]/DESIGN_DIRECTIONS.md` + `strategy/DESIGN_BRIEF.md` + `projects/[s]/DESIGN.md` + `SITEMAP.md` + `copy/` | `build/*.html` |
-| 05 QA | `agents/05_qa.md` | `build/` + `DESIGN.md` + `DESIGN_DIRECTIONS.md` + `DESIGN_BRIEF.md` + `SITEMAP.md` + `copy/` + `INTAKE.md` | `qa/QA_REPORT.md` |
+| 03 Copy | `agents/03_copy.md` | `strategy/` + `research/` + `SECTION_MANIFEST.md` | `copy/COPY_ALL.md` |
+| 04 Build | `agents/04_build.md` | `templates/[t]/DESIGN.md` + `templates/[t]/DESIGN_DIRECTIONS.md` + `templates/[t]/SECTION_MANIFEST.md` + `strategy/DESIGN_BRIEF.md` + `projects/[s]/DESIGN.md` + `SITEMAP.md` + `copy/` | `build/*.html` |
+| 05 QA | `agents/05_qa.md` | `build/` + `DESIGN.md` + `DESIGN_DIRECTIONS.md` + `SECTION_MANIFEST.md` + `DESIGN_BRIEF.md` + `SITEMAP.md` + `copy/` + `INTAKE.md` | `qa/QA_REPORT.md` |
 
 **Parallelism:**
 - Agents 01 + 02 can run simultaneously if intake is complete
@@ -82,9 +83,15 @@ All pages to be built + section order per page + nav labels. Each section has a 
 
 ## Design Standard
 
-All sites built on this factory are held to $25k agency quality. The standard is defined in two layers:
+All sites built on this factory are held to $25k agency quality. The standard is defined in three pillars, each with a distinct job:
 
-**Quality floor (never changes):** `templates/[template]/DESIGN.md`
+**Pillar 1 — Conversion Architecture (never changes):** `templates/[template]/SECTION_MANIFEST.md`
+- 9 mandatory core sections in fixed order (the MQL→SQL pipeline)
+- 3 tiers: Core (mandatory) / Standard (default, droppable with reason) / Optional (added per client)
+- Every section has a named conversion job and emotional contract
+- Agent 05 blocks shipping if any Tier 1 section is missing or reordered
+
+**Pillar 2 — Quality Floor (never changes):** `templates/[template]/DESIGN.md`
 - 3-layer shadow stacks on all cards (never single box-shadow)
 - Shimmer pseudo-element on primary CTA buttons
 - Background radial gradient depth on every section (never flat color)
@@ -93,14 +100,20 @@ All sites built on this factory are held to $25k agency quality. The standard is
 - Zero banned fonts (Inter, Arial, Roboto, system-ui)
 - Zero AI tells: no bento grids, no gradient orbs, no glassmorphism, no eyebrow pills
 
-**Variation layer (changes per client):** `templates/[template]/DESIGN_DIRECTIONS.md`
+**Pillar 3 — Variation System (changes per client):** `templates/[template]/DESIGN_DIRECTIONS.md`
 - 4 archetypes: Institution, Editor, Modernist, Heritage
 - Layout pattern menus for each section
 - Signature moment selection (one per site)
 - Interaction style by archetype (duration, easing, hover lift, stagger)
 - Agent 02.5 selects the archetype and patterns → produces `strategy/DESIGN_BRIEF.md`
 
-Agent 05 enforces both layers in the QA report before anything ships.
+**How the three pillars interact:**
+- SECTION_MANIFEST says WHAT sections exist and in what order (structure)
+- DESIGN.md says WHAT QUALITY those sections must meet (craft)
+- DESIGN_DIRECTIONS says HOW those sections look (personality)
+- BUILD_PROMPT.md is now deprecated — the pipeline generates everything through clean layers
+
+Agent 05 enforces all three pillars in the QA report before anything ships.
 
 ---
 

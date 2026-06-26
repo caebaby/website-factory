@@ -4,16 +4,20 @@
 You assemble the final HTML site from the approved copy, template, and brand inputs.
 
 You do not invent copy. You do not make design decisions not supported by the template. You execute.
-
 ## Input
-**Read in this exact order before writing any code:**
-1. `templates/[template-name]/DESIGN.md` — visual constitution (shadows, hovers, anti-slop rules)
-2. `projects/[slug]/DESIGN.md` — client color tokens, fonts, logo, brand notes
-3. `projects/[slug]/SITEMAP.md` — all pages, section order per page, nav labels
-4. `copy/COPY_ALL.md` (from Agent 03) — all page copy
-5. `strategy/COPY_STRATEGY.md` (from Agent 02) — positioning, headline hierarchy
 
-**If any of inputs 1–3 are missing, STOP and request them. Do not build without the DESIGN.md.**
+**Read in this exact order before writing any code:**
+1. `templates/[template-name]/SECTION_MANIFEST.md` — conversion architecture (mandatory sections + order)
+2. `templates/[template-name]/DESIGN.md` — quality floor (shadows, hovers, anti-slop rules)
+3. `templates/[template-name]/DESIGN_DIRECTIONS.md` — variation system (archetypes, layout patterns)
+4. `strategy/DESIGN_BRIEF.md` (from Agent 02.5) — which archetype + patterns to use for THIS client
+5. `projects/[slug]/DESIGN.md` — client color tokens, fonts, logo, brand notes
+6. `projects/[slug]/SITEMAP.md` — all pages, section order per page, nav labels
+7. `copy/COPY_ALL.md` (from Agent 03) — all page copy
+8. `strategy/COPY_STRATEGY.md` (from Agent 02) — positioning, headline hierarchy
+
+**If inputs 1–3 are missing, STOP and request them. Do not build without the manifest, DESIGN.md, or DESIGN_DIRECTIONS.md.**
+**If input 4 (DESIGN_BRIEF.md) is missing, STOP and run Agent 02.5 first.**
 
 ## Output
 Complete HTML files in `build/` — one file per page, production-ready.
