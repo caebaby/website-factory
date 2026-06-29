@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://unpkg.com/splitting@1.1.0/dist/splitting.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@3.15.0/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.25/dist/lenis.min.js"></script>
 <script src="https://unpkg.com/splitting@1.1.0/dist/splitting.min.js"></script>
 <style>
 :root {
@@ -577,6 +577,7 @@ nav.scrolled {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 28px;
+  perspective: 900px;
 }
 .tilt-card {
   background: #fff;
@@ -589,7 +590,6 @@ nav.scrolled {
     0 2px 8px rgba(14,35,64,0.06),
     0 8px 24px rgba(14,35,64,0.05),
     0 1px 3px rgba(14,35,64,0.07);
-  transform-style: preserve-3d;
   cursor: default;
 }
 .tilt-card::before {
@@ -1301,12 +1301,14 @@ gsap.to('#diag-rule', {
 });
 
 // ── MAGNETIC BUTTONS ──────────────────────────────────────────────────────
+// quickTo caches the tween config — 60fps without per-event tween overhead
 document.querySelectorAll('.btn-magnetic').forEach(btn => {
+  const xTo = gsap.quickTo(btn, 'x', { duration: 0.4, ease: 'power4.out' });
+  const yTo = gsap.quickTo(btn, 'y', { duration: 0.4, ease: 'power4.out' });
   btn.addEventListener('mousemove', (e) => {
     const rect = btn.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    gsap.to(btn, { x: x * 0.28, y: y * 0.28, duration: 0.3, ease: 'power2.out' });
+    xTo((e.clientX - rect.left - rect.width / 2) * 0.28);
+    yTo((e.clientY - rect.top - rect.height / 2) * 0.28);
   });
   btn.addEventListener('mouseleave', () => {
     gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1, 0.35)' });
@@ -1410,24 +1412,21 @@ document.querySelectorAll('.count-up').forEach(el => {
 });
 
 // ── 3D CARD TILT ─────────────────────────────────────────────────────────
+// perspective is on .proof-grid (parent) — correct foreshortening, no fisheye
 document.querySelectorAll('.tilt-card').forEach(card => {
+  const xTo = gsap.quickTo(card, 'rotateX', { duration: 0.25, ease: 'power2.out' });
+  const yTo = gsap.quickTo(card, 'rotateY', { duration: 0.25, ease: 'power2.out' });
   card.addEventListener('mousemove', (e) => {
     const rect = card.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width - 0.5;
     const y = (e.clientY - rect.top) / rect.height - 0.5;
-    gsap.to(card, {
-      rotateX: -y * 10,
-      rotateY: x * 10,
-      transformPerspective: 900,
-      ease: 'power2.out',
-      duration: 0.25,
-      boxShadow: '0 20px 60px rgba(14,35,64,0.18), 0 8px 24px rgba(14,35,64,0.1), 0 2px 8px rgba(14,35,64,0.08)'
-    });
+    xTo(-y * 10);
+    yTo(x * 10);
+    gsap.to(card, { duration: 0.25, ease: 'power2.out', boxShadow: '0 20px 60px rgba(14,35,64,0.18), 0 8px 24px rgba(14,35,64,0.1), 0 2px 8px rgba(14,35,64,0.08)' });
   });
   card.addEventListener('mouseleave', () => {
     gsap.to(card, {
-      rotateX: 0,
-      rotateY: 0,
+      rotateX: 0, rotateY: 0,
       duration: 0.7,
       ease: 'elastic.out(1, 0.4)',
       boxShadow: '0 2px 8px rgba(14,35,64,0.06), 0 8px 24px rgba(14,35,64,0.05), 0 1px 3px rgba(14,35,64,0.07)'
