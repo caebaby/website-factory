@@ -125,6 +125,51 @@ Conversion job: Make the ICP feel understood before pitching. 3–5 specific pai
 
 ---
 
+## SECTION 2.5 — TRUST ESTABLISHMENT
+
+Conversion job: Buy permission to keep talking. Immediately after the pain lands, prove the firm is credible enough to be worth the visitor's attention — *before* any pitch or ask. This is the manifest's mandatory core section #4 (between The Problem and Who We Serve).
+
+**Non-negotiable:** No CTA in this section (QA blocks a CTA here). Authority signals only: credentials, fiduciary standard, scale, affiliations, named recognition. Quiet confidence, not a sales push.
+
+---
+
+### T1 — The Authority Strip
+**Layout:** Full-width band, visually distinct from the sections around it (tone flip — dark strip in a light site, elevated surface in a dark site). A single line of credibility: fiduciary line + 3–4 hairline-separated proof points (years, AUM or households served, credential marks: CFP®/CFA/CPA). Optional: a row of muted partner/custodian logos (Schwab, Fidelity) below, desaturated.
+
+**Works with:** Any tone | Density: balanced or dense | Motion: restrained or expressive
+
+**Requires:** Real, verifiable proof points. Mark any unconfirmed number `[VERIFY]` — never invent.
+
+**CRO note:** A tone-flipped strip reads as a structural "pause for credentials" — the visitor registers authority without being sold to. Highest trust-per-pixel of any pattern.
+
+**Avoid if:** The firm has no confirmable proof points yet (use T3 instead — let the standard carry it).
+
+---
+
+### T2 — The Credential Editorial
+**Layout:** Left column: a one-sentence statement of the firm's standard ("We are held to a fiduciary standard — legally bound to your interest, not a product shelf."). Right column: 3 stacked credibility rows, each a credential/affiliation with a one-line plain-English gloss (what CFP® actually means for them). Hairline separators. Slow staggered reveal.
+
+**Works with:** Tone: light or mixed | Density: editorial | Type: editorial-serif | Motion: restrained or expressive
+
+**Requires:** Copy that translates credentials into client benefit, not an alphabet soup of letters.
+
+**CRO note:** Explaining what a credential *means* outperforms displaying it — most HNW prospects don't know a CFP® from a CFA. Translation = perceived candor.
+
+**Avoid if:** Density is `dense` (this pattern needs room to breathe).
+
+---
+
+### T3 — The Quiet Mark
+**Layout:** Minimal centered band. One fiduciary sentence at 20–24px, a thin accent rule, and a single restrained row of credential marks or a regulatory line (e.g., "Registered Investment Adviser · CRD #[VERIFY]"). Heavy whitespace. Almost an interstitial.
+
+**Works with:** Tone: any | Density: editorial | Motion: restrained | Type: any
+
+**CRO note:** When the firm's positioning is "we don't need to impress you," restraint IS the credential (Hoare's Bank / Bridgewater move). The absence of a hard proof display signals confidence.
+
+**Avoid if:** ICP is younger / skeptical and actively wants to see proof (use T1).
+
+---
+
 ## SECTION 3 — ICP SELF-SORT
 
 Conversion job: Right-fit visitors identify themselves and continue. Wrong-fit visitors self-exit.

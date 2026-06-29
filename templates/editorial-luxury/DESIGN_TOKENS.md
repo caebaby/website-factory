@@ -42,8 +42,10 @@ Controls font selection and headline treatment.
 | Value | When to Use | Base Feel |
 |-------|-------------|-----------|
 | `editorial-serif` | Heritage, HNW, relationship-first, premium advisory | EB Garamond or Canela (display 80–120px, weight 400) + Nunito Sans (body 18px) |
-| `hybrid` | Modern advisors who want credibility + accessibility | EB Garamond (display 60–80px) + Inter (body 17px) |
-| `modernist-sans` | Tech-forward, quant-adjacent, precision-first positioning | DM Sans or IBM Plex Sans (display 72–96px, weight 300–400) + same family (body 17px) |
+| `hybrid` | Modern advisors who want credibility + accessibility | EB Garamond (display 60–80px) + General Sans (body 17px) |
+| `modernist-sans` | Tech-forward, quant-adjacent, precision-first positioning | Cabinet Grotesk (display 72–96px, weight 300–500) + Switzer (body 17px) |
+
+> **Font sourcing (all free, all premium, none on the banned list):** Fontshare serves Cabinet Grotesk, Switzer, General Sans, Satoshi, Zodiak (`<link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@300,400,500&f[]=switzer@400,500,600&display=swap" rel="stylesheet">`). EB Garamond + Nunito Sans are Google Fonts. **Never substitute Inter, DM Sans, Roboto, Arial, or system-ui** — they are banned in DESIGN.md and any build using them is blocked at QA.
 
 ### Dial 5 — Visual Language
 Controls what fills the non-text visual real estate.
@@ -59,6 +61,10 @@ Controls what fills the non-text visual real estate.
 ## CSS Token Definitions
 
 These are the exact custom properties Agent 04 uses. Agent 02.5 outputs the values in the Design Brief.
+
+> **RGB-triplet rule:** DESIGN.md's shadow stacks, nav blur, and accent glows reference `rgba(var(--accent-rgb), …)`, `rgba(var(--primary-rgb), …)`, and `rgba(var(--bg-base-rgb), …)`. For every hex token you set (`--accent`, `--text-primary`/`--primary`, `--bg-base`, `--accent`→`--secondary`), also define its `-rgb` triplet (e.g. `--accent: #B87333; --accent-rgb: 184,115,51;`). Without these, every shadow and blur silently breaks. In the dark/mixed token sets, map `--primary-rgb` to `--text-primary`'s RGB and `--bg-base-rgb` to the dark base.
+
+> **Precedence (when docs disagree):** DESIGN_TOKENS.md wins on tone, color, type, spacing, and motion *values* for a given build. DESIGN.md wins on the *universal quality floor* (shadow architecture, shimmer, grain, anti-slop, required interactions) — it is tone-agnostic, so read its light-cream examples as one tone, not the only tone. `projects/[slug]/DESIGN.md` (client overrides) wins over both. SECTION_MANIFEST.md is the single authority on which sections exist and their order.
 
 ### Color Tokens
 
@@ -126,15 +132,15 @@ One accent. Used in exactly 3 places: logo mark, primary CTA button, and one her
 
 /* ── TYPE: HYBRID ───────────────────────────────────────────────── */
 --font-display:  'EB Garamond', Georgia, serif;
---font-body:     'Inter', system-ui, sans-serif;
+--font-body:     'General Sans', 'Nunito Sans', sans-serif;
 --size-display:  clamp(52px, 5.5vw, 88px);
 --weight-display: 400;
 --leading-display: 1.0;
 --tracking-display: -0.025em;
 
 /* ── TYPE: MODERNIST-SANS ───────────────────────────────────────── */
---font-display:  'DM Sans', 'IBM Plex Sans', system-ui, sans-serif;
---font-body:     'DM Sans', system-ui, sans-serif;
+--font-display:  'Cabinet Grotesk', 'General Sans', sans-serif;
+--font-body:     'Switzer', 'General Sans', sans-serif;
 --size-display:  clamp(56px, 6vw, 96px);
 --weight-display: 300;        /* light weight at large scale reads premium */
 --leading-display: 0.92;
@@ -260,6 +266,7 @@ SECTION PATTERN SELECTIONS:
 (see SECTION_PATTERNS.md for pattern options)
 - Hero:             [pattern letter + name]
 - Pain Validation:  [pattern letter + name]
+- Trust:            [pattern letter + name]
 - ICP Self-Sort:    [pattern letter + name]
 - Fit Assessment:   [pattern letter + name]
 - Services:         [pattern letter + name]

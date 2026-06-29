@@ -3,15 +3,17 @@
 **Use for:** Financial advisory, wealth management, law, professional services  
 **Aesthetic:** Maritime editorial luxury — the precision of Stripe, the depth of The Atlantic, the authority of a private bank
 
-> This document is the visual constitution for every site built on this template. The build agent reads this before writing a single line of CSS. No design decision happens outside this spec.
+> This document is the **universal quality floor** for every site built on this template — the craft standard that never changes regardless of tone. The build agent reads this before writing a single line of CSS.
+>
+> **Tone, color, type, spacing, and motion VALUES come from `DESIGN_TOKENS.md`, not this file.** This template ships in three tones (light / mixed / dark) set by the Tone dial. The cream-navy-gold examples below illustrate the *light* tone — read them as the depth/shadow/anti-slop *principles*, applied with whatever palette the Design Brief specifies. A dark build uses the same 3-layer shadow architecture, shimmer, grain, and anti-slop discipline — just with the dark-surface token values from DESIGN_TOKENS (inner-top-glow shadows, lighter-dark elevation, muted body text).
 
 ---
 
 ## 1. Visual Theme
 
-**Core identity:** Light cream foundation + deep authority navy + single precious accent. Never dark-first. Never glassmorphism. Never purple gradients.
+**Core identity (light tone example):** Light cream foundation + deep authority navy + single precious accent. The *principle* — one neutral foundation + one authority color + a single restrained accent — holds for every tone. Dark builds invert the foundation (near-black, never pure #000) but keep the single-accent discipline. Never glassmorphism. Never purple gradients. Never more than one accent.
 
-**The feel:** A premium private wealth firm's printed annual report — brought to life with restraint, real depth, and editorial precision. Timeless, not trendy.
+**The feel:** A premium wealth firm's printed annual report — brought to life with restraint, real depth, and editorial precision. Timeless, not trendy. (Light tone evokes a private-bank letterhead; dark tone evokes a Bloomberg terminal made beautiful — same craft, different room.)
 
 **Three reference anchors (steal the principle, not the style):**
 - **Stripe** — precision in spacing, surgical shadow stacks, zero wasted pixels
@@ -19,10 +21,10 @@
 - **A private bank letterhead** — gold as a "precious metal" accent, not a decorative color
 
 **What this template is NOT:**
-- Not dark mode luxury (Rolls Royce black background)
 - Not SaaS minimal (pure white, Inter, purple CTA)
 - Not Bootstrap financial (blue, table layouts, form fields)
 - Not AI default (glassmorphism, bento grids, gradient orbs)
+- Not cheap-dark (pure #000, neon accents, glow-everywhere) — dark tone is allowed and premium when it follows the dark-surface token rules in DESIGN_TOKENS
 
 ---
 
@@ -96,6 +98,8 @@ font-family: '[Client Body Font]', 'Nunito Sans', 'Helvetica Neue', sans-serif;
 - Body: Nunito Sans (Google Fonts) — close to Proxima Nova
 
 **BANNED fonts:** Inter, Roboto, Arial, system-ui (default), Open Sans, Lato, Poppins, DM Sans
+
+**APPROVED fonts (set per build by the Type dial in DESIGN_TOKENS):** EB Garamond, Canela (display serif) · Nunito Sans, General Sans (humanist body) · Cabinet Grotesk (modernist display) · Switzer (modernist body) · Satoshi, Zodiak (alternates). All free via Google Fonts or Fontshare. The Type dial picks the pairing; this file only enforces that the banned list never appears.
 
 ### Type Scale
 ```css
@@ -526,13 +530,21 @@ box-shadow:
 
 ### For Agent 04 (Build)
 
-**Read this document before writing any CSS.** The design decisions are made here. Your job is to execute them precisely.
+**Read this document for the quality floor; read DESIGN_TOKENS + the brief for the values.** Your job is to execute both precisely.
 
 **Startup sequence:**
-1. Read this DESIGN.md completely
-2. Read `projects/[slug]/DESIGN.md` for client-specific overrides (colors, fonts, logo)
-3. Read `copy/COPY_ALL.md` for all page content
-4. Read `projects/[slug]/SITEMAP.md` for page list and structure
+1. Read this DESIGN.md completely (universal quality floor)
+2. Read `SECTION_MANIFEST.md` (which sections exist + order)
+3. Read `DESIGN_TOKENS.md` (tone/color/type/spacing/motion token definitions)
+4. Read `SECTION_PATTERNS.md` (the layout chosen per section)
+5. Read `MOTION_TIERS.md` (the animation tier to implement)
+6. Read `DESIGN_FUNDAMENTALS.md` (hierarchy/type/color/spacing/a11y physics)
+7. Read `PAGE_SYSTEM.md` (inner-page architecture, for non-homepage pages)
+8. Read `strategy/DESIGN_BRIEF.md` — the dial values + pattern picks + motion tier + signature moment for THIS client
+9. Read `projects/[slug]/DESIGN.md` for client-specific overrides (colors, fonts, logo)
+10. Read `copy/COPY_ALL.md` for all page content, `projects/[slug]/SITEMAP.md` for page list
+
+**Libraries (single-file builds, CDN allowed):** GSAP 3.13.0 + ScrollTrigger are the motion engine — load via CDN `<script>`. SplitText, DrawSVG, ScrollSmoother are now free. Lenis 1.3.25 for smooth scroll. These are the ONLY permitted external scripts; everything else is hand-written. (This supersedes any "vanilla JS only" language — IntersectionObserver is fine for simple reveals but the MOTION_TIERS animations require GSAP.) Implement exactly the tier named in the brief: Tier 1 always, Tier 2 if `expressive`, Tier 3 if `cinematic`. All motion must respect `prefers-reduced-motion`.
 
 **The non-negotiables:**
 - 3-layer shadow stacks on ALL cards. No exceptions.

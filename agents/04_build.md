@@ -8,16 +8,22 @@ You do not invent copy. You do not make design decisions not supported by the te
 
 **Read in this exact order before writing any code:**
 1. `templates/[template-name]/SECTION_MANIFEST.md` — conversion architecture (mandatory sections + order)
-2. `templates/[template-name]/DESIGN.md` — quality floor (shadows, hovers, anti-slop rules)
-3. `templates/[template-name]/DESIGN_DIRECTIONS.md` — variation system (archetypes, layout patterns)
-4. `strategy/DESIGN_BRIEF.md` (from Agent 02.5) — which archetype + patterns to use for THIS client
-5. `projects/[slug]/DESIGN.md` — client color tokens, fonts, logo, brand notes
-6. `projects/[slug]/SITEMAP.md` — all pages, section order per page, nav labels
-7. `copy/COPY_ALL.md` (from Agent 03) — all page copy
-8. `strategy/COPY_STRATEGY.md` (from Agent 02) — positioning, headline hierarchy
+2. `templates/[template-name]/DESIGN.md` — universal quality floor (shadows, hovers, grain, anti-slop)
+3. `templates/[template-name]/DESIGN_TOKENS.md` — the 5-dial token system (tone/density/motion/type/visual values)
+4. `templates/[template-name]/SECTION_PATTERNS.md` — the layout patterns to implement per section
+5. `templates/[template-name]/MOTION_TIERS.md` — the animation tier to implement (exact GSAP code)
+6. `templates/[template-name]/DESIGN_FUNDAMENTALS.md` — hierarchy/type/color/spacing/a11y physics
+7. `templates/[template-name]/PAGE_SYSTEM.md` — inner-page architecture (for non-homepage pages)
+8. `strategy/DESIGN_BRIEF.md` (from Agent 02.5) — the dial config + pattern picks + motion tier + signature moment for THIS client
+9. `projects/[slug]/DESIGN.md` — client color/font/logo overrides
+10. `projects/[slug]/SITEMAP.md` — all pages, section order per page, nav labels
+11. `copy/COPY_ALL.md` (from Agent 03) — all page copy
+12. `strategy/COPY_STRATEGY.md` (from Agent 02) — positioning, headline hierarchy
 
-**If inputs 1–3 are missing, STOP and request them. Do not build without the manifest, DESIGN.md, or DESIGN_DIRECTIONS.md.**
-**If input 4 (DESIGN_BRIEF.md) is missing, STOP and run Agent 02.5 first.**
+**If inputs 1–7 (template docs) are missing, STOP and request them.**
+**If input 8 (DESIGN_BRIEF.md) is missing, STOP and run Agent 02.5 first.**
+
+> The old `DESIGN_DIRECTIONS.md` (4-archetype system) is DEPRECATED — do not read it. The Design Brief now carries a 5-dial token config + per-section pattern picks instead of an archetype.
 
 ## Output
 Complete HTML files in `build/` — one file per page, production-ready.
@@ -29,26 +35,28 @@ Complete HTML files in `build/` — one file per page, production-ready.
 **Architecture**
 - Single HTML file per page
 - All CSS inline in `<style>` — no external stylesheets
-- No frameworks, no libraries
-- Vanilla JS only — `IntersectionObserver` for scroll animations
-- All files self-contained
+- Permitted external CDN scripts: GSAP 3.13.0 + ScrollTrigger (+ SplitText/DrawSVG/ScrollSmoother as needed) and Lenis 1.3.25. Fonts via Google Fonts / Fontshare `<link>`. Nothing else.
+- Motion: implement the exact tier from the brief per `MOTION_TIERS.md` (Tier 1 always; Tier 2 if `expressive`; Tier 3 if `cinematic`). Simple fade-up reveals may use IntersectionObserver; magnetic buttons, SplitText, 3D tilt, blur counters, SVG draw, scrub require GSAP.
+- All `prefers-reduced-motion` fallbacks present.
 
 **Brand Application**
-- Apply client's brand colors to CSS custom properties at top of each file
-- Never hardcode colors — always use `var(--color-name)`
-- Apply client's font stack (Google Fonts import)
+- Set the full token set from `DESIGN_TOKENS.md` at `:root`, using the values in the Design Brief for this client's dial config.
+- For EVERY hex token, also define its `--*-rgb` triplet (shadows/blur depend on it — see DESIGN_TOKENS RGB-triplet rule).
+- Never hardcode colors — always `var(--token)`.
+- Apply the Type-dial font pairing via Google Fonts / Fontshare `<link>`. Never use a banned font.
 
-**CSS Custom Properties (replace in every file)**
+**CSS Custom Properties (set from the brief's token config — example shape)**
 ```css
 :root {
-  --primary: [client primary color];
-  --primary-dark: [darker shade];
-  --primary-deeper: [darkest shade];
-  --accent: [accent color];
-  --accent-light: [light accent];
-  --gray: [mid gray];
-  --border: [border color];
-  --bg-off: [off-white background];
+  /* from DESIGN_TOKENS, values per the brief's Tone/Density/Type/Motion dials */
+  --bg-base: …;      --bg-base-rgb: …;
+  --bg-surface: …;   --bg-elevated: …;   --bg-inverse: …;
+  --text-primary: …; --primary-rgb: …;   --text-secondary: …; --text-muted: …;
+  --accent: …;       --accent-rgb: …;    --accent-muted: …;   --border: …;
+  --font-display: …; --font-body: …;     --size-display: …;   --weight-display: …;
+  --leading-display: …; --tracking-display: …;
+  --section-pad: …;  --col-gap: …;       --radius: …;
+  --motion-base: …;  --motion-ease: …;   --motion-stagger: …;
 }
 ```
 

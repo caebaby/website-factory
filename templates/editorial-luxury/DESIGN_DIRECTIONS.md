@@ -1,4 +1,10 @@
-# DESIGN_DIRECTIONS.md — Editorial Luxury Variation System
+> # ⚠️ DEPRECATED — DO NOT USE
+> This 4-archetype variation system has been **replaced by the 5-dial token system**.
+> Use instead: `DESIGN_TOKENS.md` (dials + CSS values) + `SECTION_PATTERNS.md` (per-section layouts) + `MOTION_TIERS.md` (animation). Agents 02.5, 04, and 05 no longer read this file. Kept only for historical reference; will be deleted once Direction 01 validates the new system.
+
+---
+
+# DESIGN_DIRECTIONS.md — Editorial Luxury Variation System (ARCHIVED)
 **Template:** `editorial-luxury`
 **Purpose:** Plugs into the existing DESIGN.md. Defines HOW each site interprets the fixed conversion architecture differently. The quality bar never changes. The visual interpretation does.
 
