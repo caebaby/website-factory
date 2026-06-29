@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Wealth Partners — Component Showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/splitting@1.1.0/dist/splitting.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@3.15.0/dist/lenis.min.js"></script>
+<script src="https://unpkg.com/splitting@1.1.0/dist/splitting.min.js"></script>
+<style>
+:root {
+  --primary: #0e2340;
+  --primary-light: #1c3a5e;
+  --primary-deep: #070f1d;
+  --primary-rgb: 14,35,64;
+  --accent: #c9a84c;
+  --accent-rgb: 201,168,76;
+  --bg-base: #FAFAF8;
+  --bg-mid: #F2EFE8;
+  --bg-card: #FFFFFF;
+  --text-primary: #0e2340;
+  --text-secondary: #4a5568;
+  --text-muted: #8a9ab0;
+  --font-display: 'EB Garamond', Georgia, serif;
+  --font-body: 'Nunito Sans', 'Helvetica Neue', sans-serif;
+  --t-display: clamp(52px, 7vw, 96px);
+  --t-h1: clamp(40px, 5.5vw, 72px);
+  --t-h2: clamp(30px, 4vw, 52px);
+  --t-h3: clamp(20px, 2.2vw, 26px);
+  --t-body: 17px;
+  --maxw: 1200px;
+  --radius: 4px;
+  --mx: 30%;
+  --my: 60%;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: auto; }
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--t-body);
+  color: var(--text-primary);
+  background: var(--bg-base);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* Grain overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.35;
+}
+
+/* Component labels */
+.comp-label {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(14,35,64,0.85);
+  border: 1px solid rgba(201,168,76,0.3);
+  padding: 5px 10px;
+  border-radius: 2px;
+  z-index: 10;
+  backdrop-filter: blur(8px);
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 0 40px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 0.4s, backdrop-filter 0.4s, border-color 0.4s;
+  border-bottom: 1px solid transparent;
+}
+nav.scrolled {
+  background: rgba(7,15,29,0.82);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border-color: rgba(201,168,76,0.15);
+}
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+.nav-logo span { color: var(--accent); }
+.nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--accent); }
+.nav-cta {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid rgba(201,168,76,0.5);
+  padding: 9px 22px;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: background 0.2s, color 0.2s;
+}
+.nav-cta:hover { background: var(--accent); color: var(--primary); }
+
+/* ─── SECTION 1: HERO — Animated Gradient Blob + Word Split ─── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at var(--mx) var(--my), rgba(201,168,76,.22) 0%, transparent 48%),
+    radial-gradient(ellipse at 78% 22%, rgba(28,58,94,.5) 0%, transparent 52%),
+    radial-gradient(ellipse at 20% 80%, rgba(7,15,29,.7) 0%, transparent 45%),
+    linear-gradient(155deg, #0e2340 0%, #1c3a5e 40%, #0e2340 70%, #070f1d 100%);
+  transition: background 0.05s linear;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 140px 60px 100px;
+  width: 100%;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 28px;
+  opacity: 0;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.hero-headline {
+  font-family: var(--font-display);
+  font-size: var(--t-display);
+  font-weight: 500;
+  line-height: 1.05;
+  color: #fff;
+  max-width: 780px;
+  margin-bottom: 28px;
+  letter-spacing: -0.02em;
+}
+.hero-headline em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.hero-sub {
+  font-size: 18px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.65);
+  max-width: 540px;
+  line-height: 1.7;
+  margin-bottom: 48px;
+  opacity: 0;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  opacity: 0;
+}
+
+.btn-primary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--primary);
+  background: var(--accent);
+  padding: 16px 36px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  text-decoration: none;
+  overflow: hidden;
+  will-change: transform;
+  box-shadow:
+    0 4px 14px rgba(201,168,76,0.35),
+    0 2px 6px rgba(201,168,76,0.2),
+    0 1px 2px rgba(0,0,0,0.1);
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  animation: shimmer 2.5s infinite;
+}
+@keyframes shimmer {
+  0% { left: -100%; }
+  60%, 100% { left: 100%; }
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+  will-change: transform;
+}
+.btn-ghost:hover { color: var(--accent); border-color: var(--accent); }
+.btn-ghost svg { transition: transform 0.2s; }
+.btn-ghost:hover svg { transform: translateX(4px); }
+
+/* Blueprint grid overlay */
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(201,168,76,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.06) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+/* Word split styles */
+.word { display: inline-block; overflow: hidden; }
+
+/* ─── PAIN TICKER ─── */
+.pain-ticker {
+  position: relative;
+  background: var(--primary-deep);
+  padding: 18px 0;
+  overflow: hidden;
+  border-top: 1px solid rgba(201,168,76,0.2);
+  border-bottom: 1px solid rgba(201,168,76,0.2);
+}
+.ticker-track {
+  display: flex;
+  gap: 0;
+  width: max-content;
+  animation: tickerScroll 40s linear infinite;
+}
+.ticker-track:hover { animation-play-state: paused; }
+@keyframes tickerScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  white-space: nowrap;
+  padding: 0 32px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.55);
+}
+.ticker-item::after {
+  content: '◆';
+  font-size: 6px;
+  color: var(--accent);
+}
+
+/* ─── SECTION 2: HORIZONTAL SCROLL PAIN ─── */
+.pain-section {
+  position: relative;
+  padding: 100px 0;
+  background: var(--bg-base);
+  overflow: hidden;
+}
+.pain-header {
+  max-width: var(--maxw);
+  margin: 0 auto 60px;
+  padding: 0 60px;
+}
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+.section-eyebrow::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--accent);
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: var(--t-h2);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--primary);
+  max-width: 640px;
+}
+
+.pain-scroll-container {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  padding: 0 60px 32px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  cursor: grab;
+}
+.pain-scroll-container::-webkit-scrollbar { display: none; }
+.pain-scroll-container:active { cursor: grabbing; }
+
+.pain-card {
+  flex: 0 0 360px;
+  scroll-snap-align: start;
+  background: #fff;
+  border: 1px solid rgba(14,35,64,0.08);
+  border-radius: var(--radius);
+  padding: 40px 36px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow:
+    0 2px 8px rgba(14,35,64,0.06),
+    0 6px 20px rgba(14,35,64,0.04),
+    0 1px 3px rgba(14,35,64,0.08);
+}
+.pain-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 4px 16px rgba(14,35,64,0.1),
+    0 12px 36px rgba(14,35,64,0.07),
+    0 2px 6px rgba(14,35,64,0.08);
+}
+.pain-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), rgba(201,168,76,0.3));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.pain-card:hover::before { transform: scaleX(1); }
+.pain-card-num {
+  font-family: var(--font-display);
+  font-size: 60px;
+  font-weight: 400;
+  color: rgba(14,35,64,0.06);
+  line-height: 1;
+  margin-bottom: 20px;
+}
+.pain-card-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--primary);
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+.pain-card-text {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+/* ─── SECTION 3: DARK PARTICLE FIELD ─── */
+.particle-section {
+  position: relative;
+  background: var(--primary-deep);
+  padding: 120px 60px;
+  overflow: hidden;
+}
+#particle-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.particle-inner {
+  position: relative;
+  z-index: 2;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.particle-content .section-eyebrow { color: var(--accent); }
+.particle-content .section-title { color: #fff; }
+.particle-content .section-body {
+  font-size: 16px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.75;
+  margin-top: 20px;
+}
+
+.icp-sort-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.icp-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius);
+  padding: 24px 22px;
+  cursor: pointer;
+  transition: background 0.25s, border-color 0.25s, transform 0.25s;
+}
+.icp-card:hover {
+  background: rgba(201,168,76,0.08);
+  border-color: rgba(201,168,76,0.35);
+  transform: translateY(-2px);
+}
+.icp-card.active {
+  background: rgba(201,168,76,0.12);
+  border-color: var(--accent);
+}
+.icp-card-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.icp-card-title {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.3;
+}
+
+/* ─── SECTION 4: STATS — Blur Counter ─── */
+.stats-section {
+  position: relative;
+  padding: 120px 60px;
+  background: var(--bg-mid);
+  overflow: hidden;
+}
+.stats-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 50%, rgba(201,168,76,0.06) 0%, transparent 65%);
+}
+.stats-inner {
+  position: relative;
+  max-width: var(--maxw);
+  margin: 0 auto;
+}
+.stats-header {
+  text-align: center;
+  margin-bottom: 72px;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+}
+.stat-item {
+  text-align: center;
+  padding: 48px 32px;
+  background: rgba(255,255,255,0.6);
+  border: 1px solid rgba(14,35,64,0.06);
+  position: relative;
+}
+.stat-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.4s ease;
+}
+.stat-item:hover::after { width: 60%; }
+.stat-number {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 5.5vw, 72px);
+  font-weight: 400;
+  color: var(--primary);
+  line-height: 1;
+  margin-bottom: 12px;
+  display: block;
+  transition: filter 0.1s;
+}
+.stat-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ─── SECTION 5: 3D TILT TESTIMONIAL CARDS ─── */
+.proof-section {
+  position: relative;
+  padding: 120px 60px;
+  background: var(--bg-base);
+}
+.proof-inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+}
+.proof-header { margin-bottom: 64px; }
+.proof-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.tilt-card {
+  background: #fff;
+  border: 1px solid rgba(14,35,64,0.07);
+  border-radius: var(--radius);
+  padding: 40px 36px;
+  position: relative;
+  will-change: transform;
+  box-shadow:
+    0 2px 8px rgba(14,35,64,0.06),
+    0 8px 24px rgba(14,35,64,0.05),
+    0 1px 3px rgba(14,35,64,0.07);
+  transform-style: preserve-3d;
+  cursor: default;
+}
+.tilt-card::before {
+  content: '"';
+  position: absolute;
+  top: 20px;
+  right: 28px;
+  font-family: var(--font-display);
+  font-size: 100px;
+  line-height: 1;
+  color: rgba(201,168,76,0.12);
+  pointer-events: none;
+}
+.tilt-card-quote {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--primary);
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+.tilt-card-divider {
+  width: 32px;
+  height: 1px;
+  background: var(--accent);
+  margin-bottom: 20px;
+}
+.tilt-card-name {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+.tilt-card-role {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* ─── SECTION 6: SVG DIAGRAM DRAW ─── */
+.diagram-section {
+  position: relative;
+  padding: 120px 60px;
+  background: var(--primary);
+  overflow: hidden;
+}
+.diagram-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 60% 50%, rgba(201,168,76,0.1) 0%, transparent 55%);
+}
+.diagram-inner {
+  position: relative;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.diagram-content .section-eyebrow { color: var(--accent); }
+.diagram-content .section-title { color: #fff; }
+.diagram-content .section-body {
+  margin-top: 20px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.75;
+}
+.diagram-wrap {
+  display: flex;
+  justify-content: center;
+}
+.diagram-svg {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  filter: drop-shadow(0 0 40px rgba(201,168,76,0.15));
+}
+.diag-line {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+}
+.diag-node-ring {
+  opacity: 0;
+}
+.diag-node-label {
+  opacity: 0;
+}
+
+/* ─── SECTION 7: PARALLAX EDITORIAL ─── */
+.parallax-section {
+  position: relative;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.parallax-bg {
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(ellipse at 30% 60%, rgba(201,168,76,0.15) 0%, transparent 50%),
+    linear-gradient(145deg, #f0ece3 0%, #e8e2d6 40%, #d4cfc6 100%);
+  will-change: transform;
+}
+.parallax-content {
+  position: relative;
+  z-index: 2;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 120px 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.drop-cap-text p:first-child::first-letter {
+  font-family: var(--font-display);
+  font-size: 80px;
+  font-weight: 500;
+  float: left;
+  line-height: 0.75;
+  padding-right: 12px;
+  padding-top: 8px;
+  color: var(--primary);
+}
+.drop-cap-text p {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--primary);
+  margin-bottom: 20px;
+}
+.pull-quote {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.25;
+  color: var(--primary);
+  border-left: 2px solid var(--accent);
+  padding-left: 28px;
+  position: relative;
+}
+.pull-quote::before {
+  content: '';
+  position: absolute;
+  left: -2px; top: 0;
+  height: 0;
+  width: 2px;
+  background: var(--accent);
+  animation: lineGrow 1s ease forwards;
+}
+@keyframes lineGrow {
+  to { height: 100%; }
+}
+
+/* ─── SECTION 8: VIDEO CROSSFADE DEMO ─── */
+.video-section {
+  position: relative;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.video-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(165deg, #050e1a 0%, #0a1f35 40%, #0d2540 60%, #050e1a 100%);
+  transition: opacity 1.2s ease;
+}
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(7,15,29,0.45);
+}
+.video-content {
+  position: relative;
+  z-index: 2;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 80px 60px;
+  text-align: center;
+}
+.scene-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 40px;
+}
+.scene-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  border: 1px solid rgba(255,255,255,0.4);
+  transition: background 0.4s, transform 0.4s;
+}
+.scene-dot.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: scale(1.4);
+}
+.video-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 12px;
+  display: block;
+}
+.video-title {
+  font-family: var(--font-display);
+  font-size: var(--t-h1);
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+}
+.scene-caption {
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+/* ─── SECTION 9: FINAL CTA ─── */
+.cta-section {
+  position: relative;
+  padding: 140px 60px;
+  text-align: center;
+  background: var(--primary-deep);
+  overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 40%, rgba(201,168,76,0.14) 0%, transparent 60%);
+}
+.cta-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 680px;
+  margin: 0 auto;
+}
+.cta-title {
+  font-family: var(--font-display);
+  font-size: var(--t-h1);
+  font-weight: 500;
+  font-style: italic;
+  color: #fff;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+}
+.cta-title em { font-style: normal; color: var(--accent); }
+.cta-sub {
+  font-size: 16px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.7;
+  margin-bottom: 48px;
+}
+.cta-actions {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: #040a14;
+  padding: 60px;
+  border-top: 1px solid rgba(201,168,76,0.15);
+}
+.footer-inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: rgba(255,255,255,0.5);
+}
+.footer-legal {
+  font-size: 11px;
+  color: rgba(255,255,255,0.2);
+  text-align: right;
+  line-height: 1.8;
+}
+
+/* Scroll reveal base state */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+}
+
+/* Gold rule draw */
+.gold-rule {
+  width: 48px;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  margin: 28px 0;
+  display: block;
+}
+
+/* Section spacing utility */
+.section-body {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  max-width: 520px;
+  margin-top: 20px;
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <div class="nav-logo">Meridian<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#">Services</a></li>
+    <li><a href="#">Who We Serve</a></li>
+    <li><a href="#">Our Process</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
+  <a href="#" class="nav-cta">Schedule a Call</a>
+</nav>
+
+<!-- ───────────────────────────────────────────────── -->
+<!-- SECTION 1: HERO — Mouse-Reactive Gradient + GSAP Word Split + Magnetic Button -->
+<!-- ───────────────────────────────────────────────── -->
+<section class="hero" id="hero">
+  <div class="comp-label">Component: Mouse-Reactive Gradient · GSAP Word Split · Magnetic Button · Shimmer CTA</div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow" id="hero-eyebrow">Fiduciary Wealth Management · Houston, TX</div>
+    <h1 class="hero-headline" data-splitting>
+      Finally, your money <em>working</em> as one.
+    </h1>
+    <p class="hero-sub">Most advisors manage investments. We coordinate your entire financial life — investments, tax strategy, estate, and protection — so every decision reinforces every other.</p>
+    <div class="hero-actions">
+      <a href="#" class="btn-primary btn-magnetic">
+        See If We're a Fit
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#" class="btn-ghost btn-magnetic">
+        Watch Our Approach
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────────────────────────────────────── -->
+<!-- PAIN TICKER -->
+<!-- ───────────────────────────────────────────────── -->
+<div class="pain-ticker" style="position:relative;">
+  <div class="comp-label" style="top:6px;right:16px;">Component: CSS Marquee Ticker</div>
+  <div class="ticker-track" id="ticker-track">
+    <span class="ticker-item">Your CPA doesn't know your estate plan</span>
+    <span class="ticker-item">Your advisor doesn't coordinate with your attorney</span>
+    <span class="ticker-item">You're paying taxes you shouldn't be paying</span>
+    <span class="ticker-item">No one is looking at the whole picture</span>
+    <span class="ticker-item">Your investments and your business aren't connected</span>
+    <span class="ticker-item">You have a financial team that doesn't work as a team</span>
+    <span class="ticker-item">Your CPA doesn't know your estate plan</span>
+    <span class="ticker-item">Your advisor doesn't coordinate with your attorney</span>
+    <span class="ticker-item">You're paying taxes you shouldn't be paying</span>
+    <span class="ticker-item">No one is looking at the whole picture</span>
+    <span class="ticker-item">Your investments and your business aren't connected</span>
+    <span class="ticker-item">You have a financial team that doesn't work as a team</span>
+  </div>
+</div>
+
+<!-- ───────────────────────────────────────────────── -->
+<!-- SECTION 2: HORIZONTAL DRAG-SCROLL PAIN CARDS -->
+<!-- ───────────────────────────────────────────────── -->
+<section class="pain-section" style="position:relative;">
+  <div class="comp-label" style="color:var(--accent);background:rgba(14,35,64,0.85);">Component: CSS Scroll Snap · Card Hover with Border Draw</div>
+  <div class="pain-header">
+    <div class="section-eyebrow reveal">The Coordination Gap</div>
+    <h2 class="section-title reveal">You hired experts. They just don't talk to each other.</h2>
+  </div>
+  <div class="pain-scroll-container" id="pain-drag">
+    <div class="pain-card">
+      <div class="pain-card-num">01</div>
+      <h3 class="pain-card-title">Fragmented advice that costs you</h3>
+      <p class="pain-card-text">Your CPA reduces your taxable income. Your advisor grows your portfolio. Neither knows what the other is doing — and the gaps between them cost you more than either saves you.</p>
+    </div>
+    <div class="pain-card">
+      <div class="pain-card-num">02</div>
+      <h3 class="pain-card-title">Your estate plan is a drawer document</h3>
+      <p class="pain-card-text">You signed the documents. You paid the attorney. But your beneficiaries, titling, and investment accounts still don't match — and no one has reviewed it since you signed.</p>
+    </div>
+    <div class="pain-card">
+      <div class="pain-card-num">03</div>
+      <h3 class="pain-card-title">Business and personal wealth in silos</h3>
+      <p class="pain-card-text">You built a business worth millions. But your personal financial plan treats that business like a line item. The transition plan, the liquidity event, the tax strategy — none of it is coordinated.</p>
+    </div>
+    <div class="pain-card">
+      <div class="pain-card-num">04</div>
+      <h3 class="pain-card-title">Complexity that grows faster than your team</h3>
+      <p class="pain-card-text">At $3M, you could manage it yourself. At $15M, you needed a team. At $30M, you need that team to actually coordinate — and someone whose job it is to make sure they do.</p>
+    </div>
+    <div class="pain-card">
+      <div class="pain-card-num">05</div>
+      <h3 class="pain-card-title">Nobody owns the whole picture</h3>
+      <p class="pain-card-text">You have an advisor, a CPA, an attorney, maybe an insurance agent. Nobody has visibility into everything. Nobody is asking how one decision affects all the others.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────────────────────────────────────── -->
+<!-- SECTION 3: CANVAS PARTICLE FIELD + ICP SELF-SORT -->
+<!-- ───────────────────────────────────────────────── -->
+<section class="particle-section" style="position:relative;">
+  <div class="comp-label">Component: Canvas Particle Field · ICP Self-Sort Cards</div>
+  <canvas id="particle-canvas"></canvas>
+  <div class="particle-inner">
+    <div class="particle-content">
+      <div class="section-eyebrow reveal">Is This You?</div>
+      <h2 class="section-title reveal">We work with people at a specific inflection point.</h2>
+      <p class="section-body reveal" style="color:rgba(255,255,255,0.55);">Not everyone needs what we do. The people who benefit most are navigating real complexity — and they know it.</p>
+    </div>
+    <div class="icp-sort-grid reveal">
+      <div class="icp-card" onclick="this.classList.toggle('active')">
+        <div class="icp-card-label">Business Owner</div>
+        <div class="icp-card-title">Running a company with $5M+ revenue</div>
+      </div>
+      <div class="icp-card" onclick="this.classList.toggle('active')">
+        <div class="icp-card-label">Executive</div>
+        <div class="icp-card-title">Equity comp, deferred pay, concentrated position</div>
+      </div>
+      <div class="icp-card" onclick="this.classList.toggle('active')">
+        <div class="icp-card-label">Liquidity Event</div>
+        <div class="icp-card-title">Sale, merger, or exit on the horizon</div>
+      </div>
+      <div class="icp-card" onclick="this.classList.toggle('active')">
+        <div class="icp-card-label">Inherited Wealth</div>
+        <div class="icp-card-title">Sudden complexity you didn't plan for</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────────────────────────────────────── -->
+<!-- SECTION 4: GSAP BLUR-TO-SHARP STAT COUNTERS -->
+<!-- ───────────────────────────────────────────────── -->
+<section class="stats-section" style="position:relative;">
+  <div class="comp-label" style="color:var(--accent);background:rgba(14,35,64,0.85);">Component: GSAP Blur-to-Sharp Stat Counter · ScrollTrigger</div>
+  <div class="stats-inner">
+    <div class="stats-header reveal">
+      <div class="section-eyebrow" style="justify-content:center;">By the Numbers</div>
+      <h2 class="section-title" style="text-align:center;margin:0 auto;">Track record that speaks plainly.</h2>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-number count-up" data-target="340" data-suffix="M+">0</span>
+        <span class="stat-label">Assets Under Management</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number count-up" data-target="94" data-suffix="%">0</span>
+        <span class="stat-label">Client Retention Rate</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number count-up" data-target="22" data-suffix=" yrs">0</span>
+        <span class="stat-label">Average Client Relationship</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number count-up" data-prefix="$" data-target="4.2" data-suffix="M">0</span>
+        <span class="stat-label">Avg. Client Net Worth</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────────────────────────────────────── -->
+<!-- SECTION 5: GSAP 3D TILT TESTIMONIAL CARDS -->
+<!-- ───────────────────────────────────────────────── -->
+<section class="proof-section" style="position:relative;">
+  <div class="comp-label" style="color:var(--accent);background:rgba(14,35,64,0.85);">Component: GSAP 3D Card Tilt · Elastic Return</div>
+  <div class="proof-inner">
+    <div class="proof-header reveal">
+      <div class="section-eyebrow">Client Results</div>
+      <h2 class="section-title">What coordination actually looks like.</h2>
+    </div>
+    <div class="proof-grid">
+      <div class="tilt-card">
+        <p class="tilt-card-quote">"For the first time, I had one person who could see my entire picture. The tax savings in year one covered their fees three times over."</p>
+        <div class="tilt-card-divider"></div>
+        <div class="tilt-card-name">Robert M.</div>
+        <div class="tilt-card-role">Oil & Gas Executive, Houston</div>
+      </div>
+      <div class="tilt-card">
+        <p class="tilt-card-quote">"We were three months from closing our business sale. Meridian found a structure our attorney hadn't considered that saved us $1.4M in taxes."</p>
+        <div class="tilt-card-divider"></div>
+        <div class="tilt-card-name">Sarah & James T.</div>
+        <div class="tilt-card-role">Business Owners, The Woodlands</div>
+      </div>
+      <div class="tilt-card">
+        <p class="tilt-card-quote">"My previous advisor was great at investments. But nobody was coordinating. Now everything talks to everything — and I actually sleep at night."</p>
+        <div class="tilt-card-divider"></div>
+        <div class="tilt-card-name">David K.</div>
+        <div class="tilt-card-role">CFO, Houston Energy Sector</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────────────────────────────────────── -->
+<!-- SECTION 6: SVG DIAGRAM THAT DRAWS ITSELF -->
+<!-- ───────────────────────────────────────────────── -->
+<section class="diagram-section" style="position:relative;">
+  <div class="comp-label">Component: SVG Stroke-Dashoffset Draw · GSAP ScrollTrigger Stagger</div>
+  <div class="diagram-inner">
+    <div class="diagram-content">
+      <div class="section-eyebrow reveal">The Meridian Model</div>
+      <h2 class="section-title reveal">Your entire financial life, coordinated.</h2>
+      <span class="gold-rule" id="diag-rule"></span>
+      <p class="section-body reveal" style="color:rgba(255,255,255,0.6);">Most advisory relationships are bilateral — advisor to client. We're the hub. Every professional on your team feeds into one coordinated strategy.</p>
+    </div>
+    <div class="diagram-wrap">
+      <svg class="diagram-svg" viewBox="0 0 440 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Connection lines -->
+        <line class="diag-line" x1="100" y1="100" x2="220" y2="280" stroke="rgba(201,168,76,0.5)" stroke-width="1.5"/>
+        <line class="diag-line" x1="340" y1="100" x2="220" y2="280" stroke="rgba(201,168,76,0.5)" stroke-width="1.5"/>
+        <line class="diag-line" x1="100" y1="100" x2="340" y2="100" stroke="rgba(201,168,76,0.5)" stroke-width="1.5"/>
+        <line class="diag-line" x1="220" y1="60" x2="220" y2="240" stroke="rgba(201,168,76,0.35)" stroke-width="1" stroke-dasharray="4 4"/>
+        <!-- Outer nodes -->
+        <circle class="diag-node-ring" cx="100" cy="100" r="52" fill="rgba(14,35,64,0.7)" stroke="rgba(201,168,76,0.4)" stroke-width="1.5"/>
+        <circle class="diag-node-ring" cx="340" cy="100" r="52" fill="rgba(14,35,64,0.7)" stroke="rgba(201,168,76,0.4)" stroke-width="1.5"/>
+        <circle class="diag-node-ring" cx="220" cy="60" r="44" fill="rgba(14,35,64,0.7)" stroke="rgba(201,168,76,0.3)" stroke-width="1"/>
+        <!-- Center Meridian node -->
+        <circle class="diag-node-ring" cx="220" cy="290" r="68" fill="rgba(14,35,64,0.9)" stroke="#c9a84c" stroke-width="2"/>
+        <circle cx="220" cy="290" r="60" fill="rgba(201,168,76,0.06)"/>
+        <!-- Node labels -->
+        <text class="diag-node-label" x="100" y="95" text-anchor="middle" font-family="Nunito Sans" font-size="11" fill="rgba(255,255,255,0.8)" font-weight="600">Your</text>
+        <text class="diag-node-label" x="100" y="111" text-anchor="middle" font-family="Nunito Sans" font-size="11" fill="rgba(255,255,255,0.8)" font-weight="600">CPA</text>
+        <text class="diag-node-label" x="340" y="95" text-anchor="middle" font-family="Nunito Sans" font-size="11" fill="rgba(255,255,255,0.8)" font-weight="600">Your</text>
+        <text class="diag-node-label" x="340" y="111" text-anchor="middle" font-family="Nunito Sans" font-size="11" fill="rgba(255,255,255,0.8)" font-weight="600">Attorney</text>
+        <text class="diag-node-label" x="220" y="55" text-anchor="middle" font-family="Nunito Sans" font-size="10" fill="rgba(255,255,255,0.6)">Insurance</text>
+        <text class="diag-node-label" x="220" y="68" text-anchor="middle" font-family="Nunito Sans" font-size="10" fill="rgba(255,255,255,0.6)">Specialist</text>
+        <text class="diag-node-label" x="220" y="282" text-anchor="middle" font-family="EB Garamond" font-size="18" fill="#c9a84c" font-weight="400">Meridian</text>
+        <text class="diag-node-label" x="220" y="302" text-anchor="middle" font-family="Nunito Sans" font-size="11" fill="rgba(255,255,255,0.6)" font-weight="500">Wealth Partners</text>
+        <text class="diag-node-label" x="220" y="320" text-anchor="middle" font-family="Nunito Sans" font-size="9" fill="rgba(201,168,76,0.6)" font-weight="600" letter-spacing="0.1em">THE HUB</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────────────────────────────────────── -->
+<!-- SECTION 7: GSAP PARALLAX + DROP CAP EDITORIAL -->
+<!-- ───────────────────────────────────────────────── -->
+<section class="parallax-section" style="position:relative;">
+  <div class="comp-label" style="color:var(--accent);background:rgba(14,35,64,0.85);">Component: GSAP ScrollTrigger Parallax · CSS Drop Cap · Gold Rule Draw</div>
+  <div class="parallax-bg" id="parallax-bg"></div>
+  <div class="parallax-content">
+    <div class="pull-quote reveal">
+      "The most important financial decision you can make isn't which investment to pick. It's who has your whole picture."
+    </div>
+    <div class="drop-cap-text reveal">
+      <p>We built Meridian around a simple observation: the financial professionals serving wealthy families almost never talk to each other. Your CPA files your return without knowing your investment strategy. Your attorney writes your trust without knowing your beneficiary designations on your 401(k).</p>
+      <p>We sit at the center. Our job is to make sure every decision your CPA, attorney, and specialists make is coordinated with every other decision. That coordination is where the real value lives.</p>
+      <a href="#" class="btn-primary btn-magnetic" style="margin-top:16px;display:inline-flex;">
+        Our Story
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────────────────────────────────────── -->
+<!-- SECTION 8: CSS VIDEO CROSSFADE SIMULATION -->
+<!-- ───────────────────────────────────────────────── -->
+<section class="video-section" style="position:relative;">
+  <div class="comp-label">Component: CSS Multi-Scene Video Crossfade · Scene Indicators</div>
+  <div class="video-bg" id="video-bg-1"></div>
+  <div class="video-bg" id="video-bg-2" style="opacity:0;"></div>
+  <div class="video-overlay"></div>
+  <div class="video-content">
+    <span class="video-eyebrow" id="scene-caption">Storm</span>
+    <h2 class="video-title reveal">From complexity<br>to <em style="font-style:italic;color:var(--accent);">clarity.</em></h2>
+    <p style="color:rgba(255,255,255,0.55);font-size:16px;margin-bottom:32px;">Replace these CSS scenes with real video footage — storm, calm water, skyline at dusk. Each crossfades on a 7-second interval.</p>
+    <a href="#" class="btn-primary btn-magnetic">Schedule a Conversation</a>
+    <div class="scene-indicators">
+      <div class="scene-dot active" data-scene="0"></div>
+      <div class="scene-dot" data-scene="1"></div>
+      <div class="scene-dot" data-scene="2"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────────────────────────────────────── -->
+<!-- SECTION 9: FINAL CTA — Magnetic Buttons -->
+<!-- ───────────────────────────────────────────────── -->
+<section class="cta-section" style="position:relative;">
+  <div class="comp-label">Component: Magnetic Button · GSAP Elastic Return · Dual-Path CTA</div>
+  <div class="cta-inner">
+    <div class="section-eyebrow reveal" style="justify-content:center;color:var(--accent);">Get Started</div>
+    <h2 class="cta-title reveal">Ready to see your whole picture?</h2>
+    <p class="cta-sub reveal">We start every relationship with a 45-minute coordination audit. No pitch. No pressure. Just clarity on where your biggest gaps are and whether we're the right fit to close them.</p>
+    <div class="cta-actions reveal">
+      <a href="#" class="btn-primary btn-magnetic" style="font-size:13px;">
+        Schedule Your Audit
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#" class="btn-ghost btn-magnetic" style="color:rgba(255,255,255,0.6);">
+        Download Our Process Guide
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Meridian Wealth Partners</div>
+    <div class="footer-legal">
+      Investment advisory services offered through Meridian Wealth Partners, LLC, a registered investment adviser.<br>
+      Past performance is not indicative of future results. All figures are illustrative.
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── INIT ──────────────────────────────────────────────────────────────────
+gsap.registerPlugin(ScrollTrigger);
+
+// Lenis smooth scroll
+const lenis = new Lenis();
+lenis.on('scroll', ScrollTrigger.update);
+gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+gsap.ticker.lagSmoothing(0);
+
+// Splitting.js
+Splitting();
+
+// ── FROSTED NAV ──────────────────────────────────────────────────────────
+const nav = document.getElementById('main-nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+
+// ── MOUSE-REACTIVE GRADIENT ───────────────────────────────────────────────
+let rafId;
+document.addEventListener('mousemove', (e) => {
+  cancelAnimationFrame(rafId);
+  rafId = requestAnimationFrame(() => {
+    const x = (e.clientX / window.innerWidth * 100).toFixed(2);
+    const y = (e.clientY / window.innerHeight * 100).toFixed(2);
+    document.documentElement.style.setProperty('--mx', x + '%');
+    document.documentElement.style.setProperty('--my', y + '%');
+  });
+});
+
+// ── HERO ENTRANCE ─────────────────────────────────────────────────────────
+const heroTL = gsap.timeline({ delay: 0.2 });
+heroTL
+  .to('#hero-eyebrow', { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' })
+  .from('[data-splitting] .word', {
+    opacity: 0,
+    y: 50,
+    rotateX: -20,
+    transformOrigin: '0% 50%',
+    duration: 0.75,
+    stagger: 0.045,
+    ease: 'power3.out'
+  }, '-=0.3')
+  .to('.hero-sub', { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, '-=0.3')
+  .to('.hero-actions', { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, '-=0.4');
+
+// ── SCROLL REVEAL ─────────────────────────────────────────────────────────
+gsap.utils.toArray('.reveal').forEach(el => {
+  gsap.to(el, {
+    opacity: 1,
+    y: 0,
+    duration: 0.8,
+    ease: 'power3.out',
+    scrollTrigger: {
+      trigger: el,
+      start: 'top 88%',
+      once: true
+    }
+  });
+});
+
+// Gold rule draw
+gsap.to('#diag-rule', {
+  scaleX: 1,
+  duration: 0.8,
+  ease: 'power2.inOut',
+  scrollTrigger: { trigger: '#diag-rule', start: 'top 85%', once: true }
+});
+
+// ── MAGNETIC BUTTONS ──────────────────────────────────────────────────────
+document.querySelectorAll('.btn-magnetic').forEach(btn => {
+  btn.addEventListener('mousemove', (e) => {
+    const rect = btn.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    gsap.to(btn, { x: x * 0.28, y: y * 0.28, duration: 0.3, ease: 'power2.out' });
+  });
+  btn.addEventListener('mouseleave', () => {
+    gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1, 0.35)' });
+  });
+});
+
+// ── DRAG-SCROLL PAIN CARDS ────────────────────────────────────────────────
+const drag = document.getElementById('pain-drag');
+let isDown = false, startX, scrollLeft;
+drag.addEventListener('mousedown', (e) => {
+  isDown = true;
+  drag.style.cursor = 'grabbing';
+  startX = e.pageX - drag.offsetLeft;
+  scrollLeft = drag.scrollLeft;
+});
+drag.addEventListener('mouseleave', () => { isDown = false; drag.style.cursor = 'grab'; });
+drag.addEventListener('mouseup', () => { isDown = false; drag.style.cursor = 'grab'; });
+drag.addEventListener('mousemove', (e) => {
+  if (!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - drag.offsetLeft;
+  const walk = (x - startX) * 1.5;
+  drag.scrollLeft = scrollLeft - walk;
+});
+
+// ── CANVAS PARTICLE FIELD ─────────────────────────────────────────────────
+const canvas = document.getElementById('particle-canvas');
+const ctx = canvas.getContext('2d');
+function resizeCanvas() {
+  canvas.width = canvas.offsetWidth;
+  canvas.height = canvas.offsetHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+const particles = Array.from({ length: 70 }, () => ({
+  x: Math.random() * canvas.width,
+  y: Math.random() * canvas.height,
+  vx: (Math.random() - 0.5) * 0.35,
+  vy: (Math.random() - 0.5) * 0.35,
+  r: Math.random() * 1.5 + 0.5
+}));
+
+function animateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach((p, i) => {
+    p.x += p.vx; p.y += p.vy;
+    if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(201,168,76,0.55)';
+    ctx.fill();
+    for (let j = i + 1; j < particles.length; j++) {
+      const p2 = particles[j];
+      const d = Math.hypot(p.x - p2.x, p.y - p2.y);
+      if (d < 110) {
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(p2.x, p2.y);
+        ctx.strokeStyle = `rgba(201,168,76,${0.12 * (1 - d / 110)})`;
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+      }
+    }
+  });
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+// ── BLUR-TO-SHARP STAT COUNTERS ───────────────────────────────────────────
+document.querySelectorAll('.count-up').forEach(el => {
+  const target = parseFloat(el.dataset.target);
+  const suffix = el.dataset.suffix || '';
+  const prefix = el.dataset.prefix || '';
+  const isDecimal = !Number.isInteger(target);
+  const obj = { val: 0 };
+
+  ScrollTrigger.create({
+    trigger: el,
+    start: 'top 82%',
+    once: true,
+    onEnter: () => {
+      gsap.to(obj, {
+        val: target,
+        duration: 2.2,
+        ease: 'power2.out',
+        onUpdate() {
+          const progress = obj.val / target;
+          el.style.filter = `blur(${(1 - progress) * 9}px)`;
+          const display = isDecimal ? obj.val.toFixed(1) : Math.round(obj.val);
+          el.textContent = prefix + display + suffix;
+        },
+        onComplete() {
+          el.style.filter = 'none';
+          el.textContent = prefix + target + suffix;
+        }
+      });
+    }
+  });
+});
+
+// ── 3D CARD TILT ─────────────────────────────────────────────────────────
+document.querySelectorAll('.tilt-card').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    gsap.to(card, {
+      rotateX: -y * 10,
+      rotateY: x * 10,
+      transformPerspective: 900,
+      ease: 'power2.out',
+      duration: 0.25,
+      boxShadow: '0 20px 60px rgba(14,35,64,0.18), 0 8px 24px rgba(14,35,64,0.1), 0 2px 8px rgba(14,35,64,0.08)'
+    });
+  });
+  card.addEventListener('mouseleave', () => {
+    gsap.to(card, {
+      rotateX: 0,
+      rotateY: 0,
+      duration: 0.7,
+      ease: 'elastic.out(1, 0.4)',
+      boxShadow: '0 2px 8px rgba(14,35,64,0.06), 0 8px 24px rgba(14,35,64,0.05), 0 1px 3px rgba(14,35,64,0.07)'
+    });
+  });
+});
+
+// ── SVG DIAGRAM DRAW ─────────────────────────────────────────────────────
+const lines = document.querySelectorAll('.diag-line');
+lines.forEach(line => {
+  const len = Math.hypot(
+    line.x2.baseVal.value - line.x1.baseVal.value,
+    line.y2.baseVal.value - line.y1.baseVal.value
+  );
+  line.style.strokeDasharray = len;
+  line.style.strokeDashoffset = len;
+});
+
+ScrollTrigger.create({
+  trigger: '.diagram-section',
+  start: 'top 70%',
+  once: true,
+  onEnter: () => {
+    gsap.to('.diag-line', {
+      strokeDashoffset: 0,
+      duration: 1.3,
+      ease: 'power2.inOut',
+      stagger: 0.25
+    });
+    gsap.to('.diag-node-ring', {
+      opacity: 1,
+      duration: 0.5,
+      stagger: 0.2,
+      delay: 0.8,
+      ease: 'power2.out'
+    });
+    gsap.to('.diag-node-label', {
+      opacity: 1,
+      duration: 0.4,
+      stagger: 0.08,
+      delay: 1.1,
+      ease: 'power2.out'
+    });
+  }
+});
+
+// ── GSAP PARALLAX ────────────────────────────────────────────────────────
+gsap.to('#parallax-bg', {
+  yPercent: 25,
+  ease: 'none',
+  scrollTrigger: {
+    trigger: '.parallax-section',
+    start: 'top bottom',
+    end: 'bottom top',
+    scrub: true
+  }
+});
+
+// ── VIDEO CROSSFADE SIMULATION ────────────────────────────────────────────
+const scenes = [
+  {
+    gradient: 'linear-gradient(165deg, #050e1a 0%, #0a1f35 40%, #0d2540 60%, #050e1a 100%)',
+    label: 'Scene 01 — Storm'
+  },
+  {
+    gradient: 'linear-gradient(165deg, #0e2340 0%, #1c3a5e 35%, #163050 65%, #0a1a2e 100%)',
+    label: 'Scene 02 — Calm'
+  },
+  {
+    gradient: 'linear-gradient(165deg, #0a1628 0%, #1a2d4a 30%, #2a3d55 50%, rgba(201,168,76,0.08) 60%, #0e2340 100%)',
+    label: 'Scene 03 — Golden Hour'
+  }
+];
+
+let activeBg = 0;
+const bg1 = document.getElementById('video-bg-1');
+const bg2 = document.getElementById('video-bg-2');
+const caption = document.getElementById('scene-caption');
+let useFirst = true;
+
+function cycleScene() {
+  activeBg = (activeBg + 1) % scenes.length;
+  const next = scenes[activeBg];
+  const incoming = useFirst ? bg1 : bg2;
+  const outgoing = useFirst ? bg2 : bg1;
+  incoming.style.background = next.gradient;
+  gsap.to(incoming, { opacity: 1, duration: 1.4, ease: 'power2.inOut' });
+  gsap.to(outgoing, { opacity: 0, duration: 1.4, ease: 'power2.inOut' });
+  caption.textContent = next.label;
+  document.querySelectorAll('.scene-dot').forEach((dot, i) => {
+    dot.classList.toggle('active', i === activeBg);
+  });
+  useFirst = !useFirst;
+}
+
+setInterval(cycleScene, 7000);
+
+// prefers-reduced-motion
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.querySelectorAll('.ticker-track').forEach(t => t.style.animation = 'none');
+  clearInterval();
+}
+</script>
+</body>
+</html>
