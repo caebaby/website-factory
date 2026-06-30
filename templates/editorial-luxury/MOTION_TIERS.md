@@ -492,6 +492,16 @@ updateGradient();
 
 ---
 
+### T3.1b — Animated Mesh-Gradient Hero (the richer default)
+
+The single mouse-radial above is the *floor* of an active hero. The premium move — extracted from Stripe's `minigl` hero and Zoom's "work connects" hero — is an **animated multi-stop mesh gradient**: 4–6 soft brand-tint blobs drifting on slow, desynchronized loops so the whole field *breathes*. The motion IS the brand, not decoration on top of it.
+
+**Do not re-derive it — assemble `COMPONENTS.md` Primitive 4** (it carries the frozen correctness facts: blobs are siblings *behind* the copy, `overflow:hidden` clips the bleed so there's no `viewport-overflow`, drift is transform-only, and brand-tint stops only — a purple→blue mesh is the LAYOUT_CRAFT PART 7 slop tell at full size). Degrades to a static composed mesh with no JS; `prefers-reduced-motion` → frozen frame. See LAYOUT_CRAFT PART 9.1.
+
+**Prefer T3.1b over T3.1** when the brand wants a living hero and has no video asset. Use the plain mouse-radial (T3.1) only for the lightest touch. Never stack both.
+
+---
+
 ### T3.2 — Canvas Particle Field
 
 Particle field that draws toward the cursor and disperses on mouse leave. Dark builds only — particles on light backgrounds always look cheap.
@@ -577,13 +587,16 @@ setInterval(nextScene, 7000);
 }
 ```
 
-**Requirements:**
-- Real video files in the `assets/video/` project folder
-- Each video loop: 10–20s, H.264, 1080p max for web
-- Overlay: semi-opaque dark layer (`rgba(0,0,0,0.45)`) for text legibility
-- Autoplay with `muted` + `playsinline` + `loop` attributes
+**For a video HERO, assemble `COMPONENTS.md` Primitive 5** (video hero with directional scrim) rather than re-deriving — it carries the poster-fallback, IntersectionObserver lazy-load, and reduced-motion contracts. The scene-crossfade code above is for a *background* video band, not the hero.
 
-**If no real video:** Use a high-quality static image with parallax scroll instead. Never simulate video with CSS gradients — it reads as cheap immediately.
+**Requirements:**
+- Real video files in the `assets/video/` project folder (never a CSS simulation)
+- Each video loop: 10–20s, H.264, 1080p max for web; `preload="none"` + lazy-load (no autoplay download until in view)
+- `poster` image always set — it loads first and is what shows if video is slow/blocked/absent (the hero is never blank)
+- **Legibility = a *directional* gradient scrim anchored to the text side** (`linear-gradient(105deg, rgba(8,8,8,.80) 0%, …, transparent 70%)`), **not** a uniform `rgba(0,0,0,.45)` rectangle over the whole frame (that flat box is the SECTION_PATTERNS 1D "no overlay rectangles" failure). The scrim must clear ≥ 4.5:1 body / ≥ 3:1 large contrast on the copy side while leaving the far side of the footage clean. See LAYOUT_CRAFT PART 9.2.
+- Autoplay with `muted` + `playsinline` + `loop`; `prefers-reduced-motion` → do not autoplay, show poster
+
+**If no real video:** ship the poster as a high-quality static hero (optionally with parallax). Never simulate video with CSS gradients — it reads as cheap immediately.
 
 ---
 

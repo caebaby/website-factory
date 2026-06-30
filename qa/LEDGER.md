@@ -68,6 +68,36 @@ Append-only. Each entry: what broke, why, how it was caught, and what permanent 
 - **Process change:** the ship gate is now **geometry-pass AND taste-pass**, both by fresh independent agents. Floor is model-agnostic (proven); the ceiling still needs the taste critic with teeth + richer "make it sing" docs + ideally a capable builder.
 - **Status:** ✅ rebuild re-cut and re-verified; process updated.
 
+### LED-007 — Mesh-gradient hero rendered too faint to read as color (taste defect, gate-invisible)
+- **Build:** qa/fixtures/signature-hero-proof.html (the ceiling proof, 2026-06-30). The new COMPONENTS Primitive 4 mesh hero shipped at `.mesh__blob{opacity:.55; filter:blur(74px)}` with `mix-blend-mode:multiply` on warm-white.
+- **Symptom:** the animated mesh — the boldest background on the page on paper — rendered as a pale haze, not a color event. "Brave-on-paper, executed safe."
+- **Caught by:** the independent Tier-B taste critic (impeccable). Invisible to the deterministic gate (it's not collapse/overflow/trap — it's *intensity*, a composition/commitment judgment).
+- **Fix:** opacity `.55 → .74`, blur `74px → 58px` so the gradient reads as brand color. Re-verified: geometry still 0/0/0; mesh now reads (computed opacity 0.74 confirmed).
+- **Permanent artifact:** Primitive 4's QA-invariant note + LAYOUT_CRAFT 9.1 already say "keep blob opacity modest so text clears contrast" — now balanced by the inverse lesson: **too modest = invisible.** The committed-color rule (8.3) applies to the mesh too — a mesh you can barely see is the timid-color failure at the hero. Encoded as a [TASTE] check for the critic; not a geometric invariant.
+- **Status:** ✅ closed.
+
+### LED-008 — Composition counterweight rendered as an opacity-.06 watermark (taste defect, gate-invisible)
+- **Build:** qa/fixtures/signature-hero-proof.html. The oversize `01` counterweight numeral (LAYOUT_CRAFT 8.4) shipped at `color:var(--text-primary); opacity:.06`.
+- **Symptom:** the numeral had the right *geometry* (real optical mass, off-edge bleed) but near-zero *ink* — the safe-by-default editorial watermark move. Present as mass, absent as presence.
+- **Caught by:** the Tier-B taste critic. Gate-invisible (geometry was correct; only the ink weight was timid).
+- **Fix:** `color:var(--accent); opacity:.06 → .13` — the counterweight now has presence and is on-brand. (Accent on a decorative aria-hidden element; still within the accent budget.)
+- **Lesson:** 8.4's "real optical mass" is necessary but not sufficient — a counterweight at watermark opacity satisfies the geometry and still reads timid. A counterweight must have **presence (ink/contrast), not just size.** Sharpened into LAYOUT_CRAFT 8.4 phrasing intent.
+- **Status:** ✅ closed.
+
+### LED-009 — Two ceiling proxies added to the gate (the critic teaching the cheap gate, ceiling edition)
+- **Context:** the ceiling work (PARTS 8–9) is mostly [TASTE], but two timidity signals ARE structural and were promoted into `qa/visual-checks.js` as informational P2s.
+- **`accent-fill-absent` (P2):** fires when the accent never owns a surface (only `color:` glyphs, no background fill on a meaningful area) — the LAYOUT_CRAFT 8.3 timidity proxy. Defers to the critic on whether Restrained was intended. Verified: does NOT fire on the proven-good Field rebuild (its vermillion final-CTA drench + hero accent radial satisfy it) or the ceiling proof.
+- **`section-rhythm-monotony` (P2):** fires only when ≥6 sections share one identical vertical padding (pure-uniformity floor of the 8.5 density-rhythm rule). Conservative by design; the real rhythm judgment stays with the critic.
+- **Replay-corpus check:** both new checks run clean (0 new false P0/P2) on the Field rebuild known-good fixture; corpus integrity preserved.
+- **Status:** ✅ admitted.
+
+### Episode — The ceiling proof + the Tier-B repair loop closing on TASTE defects (2026-06-30)
+- **Trigger:** the floor is model-agnostic and proven; this session raised the *ceiling* — richer "make it sing" docs (LAYOUT_CRAFT PARTS 8–9), two reference-extracted primitives (mesh hero, video-hero-with-scrim), wired into MOTION_TIERS + SECTION_PATTERNS + REFERENCES, plus a built proof that assembles them.
+- **The loop ran on taste, not geometry:** the proof passed the deterministic gate **0/0/0 on first build** (the new primitives didn't trip a single geometric invariant — mesh clipped, video poster fallback present, cycling word grid-stacked, drench satisfies accent-fill). A fresh independent Tier-B critic returned **PASS** but named two real *execution-timidity* defects (LED-007, LED-008) — exactly the "brave-on-paper, executed safe" class the gate can't see. Scoped repair → re-verify: geometry held 0/0/0, both defects gone.
+- **THE LESSON (compounds the Field episode):** the ceiling has its own repair loop, and the taste critic is the only thing that can drive it. A primitive can be geometrically flawless and still ship timid (a mesh too faint, a counterweight too ghostly). **Geometry-pass is necessary; the taste critic with teeth is what turns "clean" into "sings."** The critic earned its seat a second time — this time catching intensity/commitment, not collapse.
+- **Verification stack used:** `node qa/run-checks.js` (geometry, headless Chrome) + `npx impeccable detect` (a11y/slop deterministic) + an independent design-director subagent (Tier-B taste). Ship = geometry-pass AND taste-pass; achieved.
+- **Status:** ✅ proof shipped as a known-good replay-corpus fixture: `qa/fixtures/signature-hero-proof.html`.
+
 ---
 
 ## Open doc tensions to resolve (found during the Field build)
@@ -75,3 +105,6 @@ Append-only. Each entry: what broke, why, how it was caught, and what permanent 
 2. **`--bg-inverse-rgb` not in the RGB-triplet rule.** → Add `--bg-inverse` to the required-triplet list in DESIGN_TOKENS.
 3. **7C Anchor Testimonial has no headline in COPY_ALL** — ambiguous whether the pattern wants one. → Clarify in SECTION_PATTERNS.
 4. **`[VERIFY]` vs `[PLACEHOLDER]` visible-marker treatment conflict** (DESIGN.md §9). → Disambiguate: PLACEHOLDER = visible amber; VERIFY = HTML comment only.
+5. **Mandatory ICP eyebrow vs the hero-eyebrow-chip slop tell** (found 2026-06-30, ceiling proof). SECTION_PATTERNS makes a tracked-caps ICP eyebrow above the hero h1 non-negotiable for conversion; the impeccable detector flags exactly that shape as "the default AI SaaS hero." Both are right. → Resolve at the template level: keep the eyebrow as a *deliberate, named brand system* (the brand register exempts named systems), but (a) default it to **muted ink, not accent** (LED-003 resolution — applied in the proof, fixed both the chip-feel and the 4.3:1 contrast), and (b) consider integrating the kicker into the headline or a nav-breadcrumb on hero-dominant pages. Decision affects every build — flag for Chris.
+6. **`--text-muted` (#9A968C) fails WCAG AA on `--bg-base`** (2.8:1; needs 4.5:1). A token-level a11y floor issue present in *every* light Field build, not just the proof (the reference rebuild inherits it). → Darken `--text-muted` to ≥ 4.5:1 on bg-base, or restrict it to large/decorative text only. The proof bumped its affected captions to `--text-secondary` as a local fix; the token needs the real fix.
+7. **Single-family vs two-family pairing** (detector `single-font`). The proof uses Satoshi across weights 400–900 (a deliberate single-family voice, which the brand register explicitly permits — "a single well-chosen family with committed weight/size contrast is stronger than a timid display+body pair"). The detector flags any single family. → Not a defect; note that the deterministic `single-font` flag is advisory and a deliberate single-family choice clears it via the taste critic.

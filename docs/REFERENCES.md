@@ -55,13 +55,34 @@ All sites below are Chris-approved.
 
 ---
 
+## RULE #4 — The Reference-Extraction Protocol (how the ceiling rises)
+
+A reference is worthless until its technique is **named and codified**. "Make it look like Zoom" drifts; a tested primitive does not. Every time an admired site is added, run the protocol — this is how the factory's ceiling rises over time instead of depending on one model's taste:
+
+1. **Admire** → identify the specific site and the specific moment that makes it sing (the hero, a transition, a proof layout).
+2. **Name the exact technique** → not "cool gradient." *"Animated multi-stop mesh gradient — 4–6 soft brand-tint blobs drifting on desynchronized loops."* Precision is the whole point.
+3. **Codify in three places, together:**
+   - a **tested primitive** in `templates/editorial-luxury/COMPONENTS.md` (real code + a CONTRACT, degrades without JS, respects reduced-motion) — the thing Agent 04 *assembles*;
+   - a **rule** in `LAYOUT_CRAFT.md` (the machine-checkable / taste constraint that says when and how to use it);
+   - an **entry here** in REFERENCES.md (the provenance — which site, which tag, what to steal).
+4. **Verify through the loop** → prove the primitive passes `qa/run-checks.js` (0 P0) and a Tier-B taste pass before it's blessed.
+5. **Deploy** → Agent 04 now reaches for the blessed primitive by name; the technique is permanent and never re-derived.
+
+A reference with no primitive + rule + entry is just a bookmark. Don't add bookmarks.
+
+---
+
 ## Section-Mapped References
 
 ### Hero Section
 
 **[DESIGN + CONVERTS]**
 
-- **stripe.com** — WebGL noise-shader gradient hero. The gradient breathes on a loop using a custom `minigl` library (~10KB). This is the animated gradient benchmark. Steal: CSS custom property mesh gradient as the hero background, animated via GSAP timeline. The motion IS the brand, not decoration on top.
+- **stripe.com** — WebGL noise-shader gradient hero. The gradient breathes on a loop using a custom `minigl` library (~10KB). This is the animated gradient benchmark. Steal: CSS custom property mesh gradient as the hero background, animated via GSAP timeline. The motion IS the brand, not decoration on top. → **Extracted** as `COMPONENTS.md` Primitive 4 + `LAYOUT_CRAFT.md` PART 9.1 + MOTION_TIERS T3.1b (factory-fit: layered `radial-gradient` blobs drifting on GSAP loops, not WebGL — single-file, testable, degradable).
+
+- **zoom.com** ⭐ — "Find out what's possible when work connects." Two extractable hero techniques, both via the RULE #4 protocol:
+  - **(a) Animated multi-stop mesh gradient** — soft brand-tint blobs that drift/breathe behind the headline. Richer than a single mouse-radial; the motion carries the brand's "connection" idea (signature moment, not decoration). → `COMPONENTS.md` Primitive 4 + `LAYOUT_CRAFT.md` PART 9.1 + MOTION_TIERS T3.1b. *(Shares the primitive with Stripe — same technique, two references confirm it.)*
+  - **(b) Product-video hero with a directional scrim** — real product footage in motion (trust), with legibility from a gradient scrim anchored to the copy side, not a flat dark box. → `COMPONENTS.md` Primitive 5 + `LAYOUT_CRAFT.md` PART 9.2 + MOTION_TIERS T3.3. **Only when the client has a real asset** — never a CSS simulation.
 
 - **mercury.com** — Output visual as the hero right panel. Real product UI shown in motion, not a lifestyle image. For service firms: substitute the UI screenshot with a CSS-rendered coordination diagram or financial plan mockup. Steal: product/output visual as primary hero proof mechanism.
 

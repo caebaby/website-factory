@@ -152,7 +152,47 @@
           'Accent color on ' + hits.length + ' text elements (budget ' + cfg.accentMaxElements + '). "Accent everywhere dilutes it" — reserve for CTA, eyebrow, and key numerals.',
           { count: hits.length, sample: hits.slice(0, 6).map(sel) });
       }
+
+      /* ---- P2: accent-fill-absent — the timidity proxy (LAYOUT_CRAFT 8.3) ----
+         Accent scarcity governs accent-as-TEXT. This governs accent-as-SURFACE.
+         A bold brand that never lets its color own a zone (only colored glyphs on
+         warm-white) is timid. Fires only on TOTAL absence of accent-as-fill; a
+         deliberately Restrained heritage brand may intend this — the Tier-B critic
+         decides whether to drench. Informational, never a blocker. */
+      const needle = target.join(', ');
+      const vpArea = vw * vh;
+      const accentFill = all.some(el => {
+        const c = cs(el);
+        if (rgbEq(c.backgroundColor, target)) { const r = rect(el); return r.width * r.height >= vpArea * 0.06; }
+        if (c.backgroundImage && c.backgroundImage !== 'none' && c.backgroundImage.indexOf(needle) !== -1) {
+          const r = rect(el); return r.width * r.height >= vpArea * 0.06;
+        }
+        return false;
+      });
+      if (!accentFill) {
+        add('P2', 'accent-fill-absent', 'document',
+          'The accent never owns a surface — it appears only as text/glyphs, never as a background fill on a meaningful area. A bold brand reads timid this way (LAYOUT_CRAFT 8.3: pick Restrained/Committed/Drenched from positioning). Lowest-risk fix: drench the final-CTA zone. If Restrained is intentional, the taste critic clears it.',
+          { hint: 'committed brands want ≥1 accent-filled zone (a band, the final CTA, or a mesh hero)' });
+      }
     }
+
+    /* ---- P2: section-rhythm-monotony — density-rhythm proxy (LAYOUT_CRAFT 8.5) ----
+       Pages that sing breathe (alternating dense/sparse). Pure structural proxy:
+       fires ONLY when every <section> shares the identical vertical padding — true
+       uniformity, the floor of monotony. The real rhythm judgment (content density,
+       pattern variation) stays with the Tier-B critic; this is the cheap floor. */
+    (function rhythm() {
+      const sections = Array.from(document.querySelectorAll('section'));
+      if (sections.length < 6) return;
+      const pad = s => { const c = cs(s);
+        return (Math.round(parseFloat(c.paddingTop) / 8) * 8) + ':' + (Math.round(parseFloat(c.paddingBottom) / 8) * 8); };
+      const distinct = new Set(sections.map(pad));
+      if (distinct.size <= 1) {
+        add('P2', 'section-rhythm-monotony', 'section',
+          'All ' + sections.length + ' sections share one vertical padding (' + [...distinct][0] + ') — no inhale/exhale rhythm. Vary section density: at least one whitespace "exhale" and one dense "inhale" (LAYOUT_CRAFT 8.5).',
+          { sections: sections.length, padding: [...distinct][0] });
+      }
+    })();
 
     /* ---- P1: banned / AI-default fonts ---- */
     const fonts = new Set();

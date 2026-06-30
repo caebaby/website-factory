@@ -50,6 +50,8 @@ Conversion job: Hook the right visitor in ≤5 seconds. Communicate ICP, pain/ou
 
 **Requires:** A headline strong enough to own the full width. Background animation (mouse-reactive gradient, canvas, or slow-motion graphic). Weak headlines collapse under this composition.
 
+**Signature background (Motion: cinematic):** the premium move here is the **animated mesh-gradient** — `COMPONENTS.md` Primitive 4 / MOTION_TIERS T3.1b — a breathing field of brand-tint blobs behind the statement. Pair it with the Primitive 1 cycling word placed at a line end (oversized, accent-colored) and you have the page's signature moment (LAYOUT_CRAFT 8.6) in the hero. Keep blob opacity modest so the headline clears contrast. This is the bold default for a brand with no video asset; do not also run the plain T3.1 mouse-radial.
+
 **CRO note:** The headline must do all the work — there's no visual to compensate. Highest impact when the headline is provocative or specific. "You've built the wealth. Now it needs a strategy." beats "Comprehensive wealth management."
 
 **Avoid if:** The headline is generic or the copy hasn't been written yet (placeholder headlines destroy this pattern).
@@ -70,11 +72,11 @@ Conversion job: Hook the right visitor in ≤5 seconds. Communicate ICP, pain/ou
 ---
 
 ### 1D — The Immersive
-**Layout:** Full viewport height. Background is video loop, scroll-scrubbed canvas, or full-bleed photography with parallax. Text overlay: ICP eyebrow + headline at 72px+ + sub + CTA. Text contrast handled by semi-opaque overlay panel or strategic placement on dark area of image. NO gradient overlay rectangles.
+**Layout:** Full viewport height. Background is video loop, scroll-scrubbed canvas, or full-bleed photography with parallax. Text overlay: ICP eyebrow + headline at 72px+ + sub + CTA. Text contrast handled by a **directional gradient scrim anchored to the text side** (not a uniform overlay panel, not a flat rectangle over the whole frame) or strategic placement on a dark area of the image.
 
 **Works with:** Tone: dark or mixed | Density: balanced | Motion: cinematic | Visual: photography
 
-**Requires:** Strong video or photography assets — this pattern collapses without them. If using CSS video simulation, make it convincing (not placeholder gradients).
+**Requires:** Strong video or photography assets — this pattern collapses without them. **For a video hero, assemble `COMPONENTS.md` Primitive 5** (video hero with directional scrim — poster fallback, lazy-load, reduced-motion pause; see MOTION_TIERS T3.3 + LAYOUT_CRAFT 9.2). If there is no real asset, ship the poster/photograph as a still hero — **never** simulate video with placeholder CSS gradients.
 
 **CRO note:** Immersive creates emotional state before conveying information. Effective for aspirational ICPs (executives, business owners at inflection points). Requires ICP eyebrow to be prominent — emotion without specificity converts nobody.
 

@@ -12,6 +12,12 @@
       "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "8098", "--directory", "projects/field/build"],
       "port": 8098
+    },
+    {
+      "name": "fixtures",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8099", "--directory", "qa/fixtures"],
+      "port": 8099
     }
   ]
 }

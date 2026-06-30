@@ -1,24 +1,29 @@
 # Website Factory — Status
-Last updated: 2026-06-29 (overnight: self-improving QA system + Field repair)
+Last updated: 2026-06-30 (ceiling raised: "make it sing" docs + mesh/video hero primitives + Tier-B repair proven on taste)
 
 ---
 
-## ▶ NEXT SESSION — Raise the ceiling (start here, fresh context)
+## ▶ NEXT SESSION — Run the ceiling loop on a REAL client build (start here, fresh context)
 
-The floor is model-agnostic and proven (any model + docs → not-broken, on-brand, no slop). The **ceiling** (impressive, memorable, $25k) is the open work. Tier-B taste pass proved a build can pass every geometric check + be cleared by a fresh QA agent and still read timid. Ship gate is now geometry-pass AND taste-pass.
+The ceiling is now **encoded and proven on a fixture**. The remaining step is to run the full geometry+taste loop end-to-end on a real client (AWP), with the live `impeccable` Tier-B critic in the loop, and confirm a COLD build comes out bold — then promote the mesh/video primitives off "proof" into a shipped client hero.
 
-**1. Richen the "make it sing" encoding** (so the next COLD build comes out bold, not just clean):
-- LAYOUT_CRAFT / a new EXCELLENCE section: composition counterweight (no dead-half), color-commitment guidance (Restrained vs Committed vs Drenched — bold brands must commit; one tiny accent on warm-white = timid), the signature-moment quality bar, density rhythm.
-- Pull the right lessons from the `impeccable` brand register (committed color, single-oversize-word hero, "safe = invisible", the editorial-typographic reflex trap) into our LLM-agnostic docs so any model applies them.
+**1. Cold-build AWP through the pipeline** with the richened docs (PARTS 8–9 + Primitives 4/5). Then drive the loop:
+- `node qa/run-checks.js projects/awp/build/<file>.html '<accentHex>'` → must be 0 P0.
+- Independent Tier-B taste pass (`impeccable`, detect-only) → must clear bold-vs-timid against LAYOUT_CRAFT 8.1–8.6.
+- Repair any taste defects (the loop now demonstrably closes on taste, not just geometry — see LED-007/008), re-verify, log to `qa/LEDGER.md`.
 
-**2. Reference-extraction protocol** (how the ceiling rises over time):
-- Define the protocol: admired site → NAME the exact technique(s) → codify as a tested COMPONENTS primitive + a LAYOUT_CRAFT rule + a REFERENCES.md entry → build agent deploys it.
-- First targets to extract (Chris flagged):
-  - **Zoom hero** — (a) animated multi-stop **mesh gradient** (richer than our single T3.1 mouse radial; Stripe-style ~soft 4–6 stop drift, CSS or canvas), and (b) **product video hero with scrim** (only when client has the asset). Build both as COMPONENTS primitives (mesh-gradient bg + video-hero with poster fallback, reduced-motion pause, lazy-load), add to MOTION_TIERS T3 + SECTION_PATTERNS Hero, and a REFERENCES entry. Pull the real Zoom hero to extract precisely.
+**2. Resolve the template-level tensions surfaced this session** (qa/LEDGER.md open tensions 5–7), since they affect every build:
+- The mandatory ICP eyebrow vs the hero-eyebrow-chip slop tell (#5) — eyebrow → muted ink by default; decide the chip question. **Needs Chris.**
+- `--text-muted` fails AA on `--bg-base` (#6) — darken the token.
 
-**3. Then:** run the full geometry+taste loop on a REAL client build (AWP), with the live `impeccable` Tier-B critic in the loop.
+**3. Then:** promote a blessed mesh/video hero into the real AWP build once it passes both gates N times (the COMPONENTS blessing path).
 
-Everything needed is in the committed docs — this is the model-agnostic handoff working as designed.
+### ✅ DONE this session (2026-06-30) — the ceiling encoding + primitives
+- **"Make it sing" encoded** — `LAYOUT_CRAFT.md` PART 8 (the ceiling, LLM-agnostic, with a new **[TASTE]** confidence tier): 8.1 *safe=invisible*, 8.2 *editorial-reflex trap*, 8.3 *color commitment* (Restrained/Committed/Drenched + the timidity check), 8.4 *counterweight raised*, 8.5 *density rhythm*, 8.6 *signature-moment quality bar*. Floor vs ceiling framing throughout.
+- **Reference-extraction protocol defined** — `docs/REFERENCES.md` RULE #4 (admire → NAME the technique → codify as tested primitive + LAYOUT_CRAFT rule + REFERENCES entry → verify → deploy). Zoom hero extracted (mesh gradient + video-with-scrim), Stripe cross-confirmed.
+- **Two tested primitives built** — `COMPONENTS.md` Primitive 4 (animated CSS mesh-gradient hero, GSAP-drifted, degrades static) + Primitive 5 (video hero, poster fallback + directional scrim + IO lazy-load + reduced-motion pause). Wired into MOTION_TIERS (T3.1b + T3.3 reconciled) + SECTION_PATTERNS (Hero 1B/1D) + LAYOUT_CRAFT PART 9.
+- **Gate extended** — `qa/visual-checks.js` gained `accent-fill-absent` + `section-rhythm-monotony` (informational P2 ceiling proxies; verified clean on the known-good Field rebuild — corpus integrity intact).
+- **Proof built + verified through the full loop** — `qa/fixtures/signature-hero-proof.html`: 0 P0 geometry on first build; Tier-B critic PASS after fixing two real execution-timidity defects (LED-007 faint mesh, LED-008 ghost counterweight). This is the loop closing on **taste**, not geometry. Shipped as a replay-corpus known-good fixture (served via `fixtures` on :8099).
 
 ---
 

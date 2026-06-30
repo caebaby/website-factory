@@ -5,7 +5,7 @@ Synthesized from a 12-agent research pass across Bringhurst/Butterick, Material 
 
 > **Why this doc exists:** the factory reliably gets the *skin* right (tokens, fonts, color) and reliably failed *composition craft* — display type trapped in narrow columns, collapsed signature elements, accent overuse. Those failures are not aesthetic opinion; they are measurable. This doc makes them measurable.
 
-The numbers below have two confidence tiers: **[HARD]** = published/cross-confirmed, safe to enforce as pass/fail. **[TUNE]** = operationalized engineering threshold, enforce as a warning and tune.
+The rules below carry three confidence tiers. **[HARD]** = published/cross-confirmed, safe to enforce as pass/fail. **[TUNE]** = operationalized engineering threshold, enforce as a warning and tune. **[TASTE]** = a ceiling judgment the deterministic gate *cannot* see (PARTS 8–9) — the Tier-B taste critic's job, anchored by a measurable proxy. PARTS 1–7 are the **floor** (not broken / not slop / on-brand). PARTS 8–9 are the **ceiling** (bold / memorable / $25k). Ship requires passing both.
 
 ---
 
@@ -152,6 +152,82 @@ Cross-reference: the existing `avoid-ai-design` / `impeccable` skills and the im
 
 ---
 
+## PART 8 — MAKE IT SING (the ceiling: bold, not just clean)
+
+PARTS 1–7 are the **floor** — measurable invariants that stop a build from being broken, slop, or off-brand. A build can pass every one of them and still read *timid*: competent, tasteful, forgettable. That is exactly what happened on the Field rebuild (0/0/0 on the gate, cleared by a fresh QA agent, and still flat — see `qa/LEDGER.md` LED-006 + the Tier-B episode). This part encodes the **ceiling**: what makes a page memorable enough to be worth $25k.
+
+These rules are mostly **[TASTE]** — a third confidence tier above [HARD]/[TUNE]. The deterministic gate *cannot* see them; they are the Tier-B taste critic's job. But each is written with a **measurable proxy** so the judgment is anchored, not vibes. **Ship = floor-pass (geometry) AND ceiling-pass (taste).** "Passes the rules" must never equal "ship."
+
+### 8.1 — The core law: *safe = invisible* [TASTE]
+In a category where every competitor is tasteful (wealth, advisory, B2B, studios), **tasteful is the baseline, not the differentiator.** A restrained, well-spaced, one-accent page does not lose — it simply *isn't remembered*, which for a $25k brand site is the same as losing. The page must have a **point of view loud enough to survive the visitor's memory.**
+
+- **The 10-minute test:** name the ONE thing a visitor will still recall ten minutes after closing the tab — a single oversize word, a color-drenched close, a diagram that drew itself, a headline that named their exact pain. If you cannot name it, the page is *safe = invisible*. Fix it before ship.
+- A page that sings has a **spike**, not a flat plateau of tasteful. One dimension is committed *hard*; the rest support it.
+
+### 8.2 — The editorial-reflex trap (the #1 timidity failure) [TASTE]
+Handed a brand that "should be bold," the default reflex — for an AI especially — is the **editorial-typographic safe zone**: big serif/grotesk headline, generous whitespace, one thin accent line, hairline rules, restrained everything. It is *hard to make ugly*, which is exactly why models retreat to it — and it is *hard to make memorable*, which is why it reads timid. It executes the brief at 70% and stops.
+
+- The fix is **not** to abandon editorial restraint — it's to **commit one dimension past the comfort line** so the page has a spike: a full-bleed color zone, a single word at 140–180px, a signature moment with real technical ambition, a hero background that breathes.
+- **Tell:** if the page is "all tasteful, nothing brave," you are in the trap. The squint test for boldness: from across the room, does one move announce itself? If every section is the same quiet register, no.
+
+### 8.3 — Color commitment: Restrained / Committed / Drenched [TASTE → measurable proxy]
+Accent scarcity (PART 7, ≤ a few placements) governs accent **as text/glyph**. It says nothing about whether the brand color ever owns a **surface**. A bold brand that uses its accent *only* as small text highlights on warm-white has chosen the wrong commitment level — it is timid by default, not by intent.
+
+Pick the level from **positioning**, then build to it:
+
+| Level | What it means | Right for |
+|-------|---------------|-----------|
+| **Restrained** | Accent appears only as small marks/text on a near-neutral field. The *absence* of color is the statement. | Heritage / "we don't need to impress you" (Hoare's, Pictet). Restraint IS the credential. A deliberate choice — never a default. |
+| **Committed** (the default for a brand that wants to be remembered) | The accent owns at least one **whole zone** — a full-bleed accent section, an accent-drenched final CTA, a saturated structural band — not just glyphs. | Studios, challengers, modern advisory, most $25k brand sites. |
+| **Drenched** | Large surfaces *are* the brand color (a saturated hero and/or multiple full sections). | Bold consumer/creative/statement brands. |
+
+- **The timidity check [measurable proxy]:** a brand positioned as bold/modern/challenger that has **zero** elements using the accent as a *background fill* covering a meaningful area (only `color:` glyphs) is **timid — flag it.** Resolution: drench at least one zone (the final-CTA crescendo is the lowest-risk, highest-impact place — see the Field rebuild's vermillion close). The deterministic gate now surfaces this as `accent-fill-absent` (informational P2) — but only the critic decides whether Restrained was *intended*.
+- **Commitment is a crescendo, not a constant:** Committed/Drenched works best when color *builds* — quiet open, one mid-page accent zone, full drench at the close. A page that is loud everywhere is as monotonous as one that is quiet everywhere (see 8.5).
+
+### 8.4 — Composition counterweight, raised (no dead-half, no timid balance) [TASTE → ties to PART 5]
+PART 5 makes the *dead-half* a measurable fail. The ceiling rule is about the **quality of the counterweight**, which the gate can't judge:
+
+- A counterweight must carry **real optical weight — roughly ≥ 25–30% of the section's visual mass.** A tiny graphic dropped into the empty half to "balance" a big-type hero reads as an afterthought, not composition. The fix for a lopsided hero is a *bold* counterweight: an oversize numeral/word that bleeds off the opposite edge, a full-height image column, a signature diagram — not a small decorative dot.
+- **Reach for asymmetric tension, not centered safety.** Centered-everything (PART 7 tell) is the timid default. A 62/38 split with a heavy focal point and a bleeding counterweight sings; three stacked centered blocks do not.
+- **Bleed is a premium move.** Oversize type or imagery that runs *off* an edge signals confidence ("we don't need to contain it"). Contained-everything signals caution.
+
+### 8.5 — Density rhythm (breathe — inhale/exhale) [TASTE → measurable proxy]
+A page where every section has the same padding, the same content density, and the same composition is **monotonous** even if each section is individually fine. Pages that sing **breathe**: they alternate dense, scannable passages with sparse, one-idea exhales.
+
+- Build a deliberate rhythm: at least one **exhale** section (heavy whitespace, a single statement — the pattern's "pause for breath") and at least one **inhale** section (dense, multi-item, scannable). Never run three sections in a row at the same density.
+- This reinforces SECTION_PATTERNS selection rule 6 ("never the same basic layout rhythm twice in a row") and the PART 7 *monotonous-spacing* tell, at **page scale**.
+- **[measurable proxy]:** section vertical paddings should not be > ~70% identical across the page; consecutive sections should not share the same composition pattern. Surfaced as `section-rhythm-monotony` (informational P2).
+
+### 8.6 — The signature moment, as a quality bar [TASTE]
+Every $25k page has **exactly one** moment someone screenshots and sends to a colleague. It is not decoration — it **demonstrates the promise**.
+
+- **Content-specific, not generic:** a coordination diagram for a firm whose value *is* coordination; a mesh that breathes for a brand about *connection*; a word that cycles for a studio about *messaging*. The test: **swap the client's name out — if the signature moment still fits any random site, it's decoration, not a signature.** (A canvas particle field fails this test on almost every brand — see MOTION_TIERS T3.2's own restriction.)
+- **One, occasionally two — never more.** Placed at the fold or at the page's emotional climax (the final CTA). Overuse cheapens all of them (MOTION_TIERS caps Tier 3 at 2/page — this is the *taste* reason for that cap).
+- **Technical ambition is the point.** The signature moment should be the one place the build reaches past "competent CSS" — a real animated mesh, a drawn diagram, a scroll-scrubbed reveal. If the whole page could have been hand-coded in 20 minutes, there is no signature moment.
+
+---
+
+## PART 9 — SIGNATURE BACKGROUNDS (reference-extracted primitives)
+
+These rules were extracted from admired references via the protocol in `docs/REFERENCES.md` (admired site → name the exact technique → codify as a tested COMPONENTS primitive + this rule + a REFERENCES entry). They are how the ceiling rises over time. Each names a **tested primitive in `COMPONENTS.md`** — assemble it, do not re-derive it.
+
+### 9.1 — Animated mesh-gradient hero background [extracted: Stripe / Zoom] [HARD where noted]
+A single drifting `radial-gradient` "mouse glow" (MOTION_TIERS T3.1) is the *floor* of an active hero background. The richer, more premium technique is an **animated multi-stop mesh gradient**: 4–6 soft color blobs at different positions, slowly drifting on a loop, so the whole field *breathes*. The motion IS the brand (Stripe's WebGL `minigl` hero, Zoom's "work connects" hero), not decoration on top of it.
+
+- **Implementation (factory-fit):** layered CSS `radial-gradient` blobs animated by a GSAP timeline (or CSS keyframes) drifting their positions — **not** a WebGL shader (single-file, zero-dep, testable, degradable). 4–6 stops; Stripe-soft (low saturation steps, large blur radius). → **`COMPONENTS.md` Primitive 4.**
+- **Color discipline [HARD]:** mesh stops must be tints of the brand palette (accent + one or two analogous/neutral companions), never the rainbow default. A purple→blue mesh is the PART 7 slop tell at full size — auto-fail.
+- **Degradation contract [HARD]:** static gradient with no JS; `prefers-reduced-motion` → freeze to a composed static frame (never blank, never a flat color). The hero copy/CTA never sit *inside* the animated layer's stacking risk — text is a sibling above it.
+- **Legibility [HARD]:** body/headline text over the mesh must still clear contrast (≥ 4.5:1 body, ≥ 3:1 large). Keep stops low-opacity or confine the mesh to one side and place text on the calmer region.
+
+### 9.2 — Product/video hero with a directional scrim [extracted: Zoom / Mercury / Linear] [HARD where noted]
+When the client has a **real** product video or strong footage, a video hero outperforms any graphic — it shows the product/outcome in motion (trust), not a stock lifestyle image. The make-or-break craft detail is the **scrim**.
+
+- **Scrim, not a box [HARD]:** legibility comes from a **directional gradient scrim** anchored to the text side (e.g. `linear-gradient(105deg, rgba(0,0,0,.62) 0–38%, transparent 70%)`), *not* a uniform dark rectangle over the whole frame (SECTION_PATTERNS 1D: "NO gradient overlay rectangles"). The scrim must guarantee text contrast (≥ 4.5:1 body / ≥ 3:1 large over the *lightest* pixel it covers) while leaving the far side of the footage clean. → **`COMPONENTS.md` Primitive 5.**
+- **Never blank, never fake [HARD]:** a `poster` image always loads first and is what shows if video fails / is slow / is absent — so the hero is never empty. **Never simulate video with CSS gradients** (MOTION_TIERS T3.3) — if there's no real asset, ship the poster as a still hero and move on.
+- **Performance + motion [HARD]:** `muted playsinline loop`, `preload="none"`, lazy-load the source via IntersectionObserver (no autoplay download until in view); `prefers-reduced-motion` → do not autoplay, show the poster. This is the difference between a cinematic hero and a 12 MB autoplaying jank-fest.
+
+---
+
 ## How agents use this doc
-- **Agent 04 (build):** read before writing CSS. Size every measure with the PART 1 formula; apply PART 4 `text-wrap` baseline; satisfy the PART 5 counterweight rule for any capped column or big-type hero; avoid every PART 7 tell.
-- **Agent 05 (QA):** run `qa/visual-checks.js` (encodes PART 1, 5, 7 deterministically). Route the judgment items (rag quality, composition balance, brand feel) to the LLM critic.
+- **Agent 04 (build):** read before writing CSS. Size every measure with the PART 1 formula; apply PART 4 `text-wrap` baseline; satisfy the PART 5 counterweight rule for any capped column or big-type hero; avoid every PART 7 tell. **Then raise the ceiling with PARTS 8–9:** pick a color-commitment level from positioning and build to it (8.3), give the page one real signature moment (8.6), vary density (8.5), avoid the editorial-reflex plateau (8.2), and assemble the PART 9 background primitives from `COMPONENTS.md` instead of re-deriving them.
+- **Agent 05 (QA):** run `qa/visual-checks.js` (encodes PARTS 1, 5, 7 deterministically, plus the PART 8 proxies `accent-fill-absent` + `section-rhythm-monotony` as informational P2s). Route the **ceiling** items (PARTS 8–9 taste judgments — boldness, signature quality, color commitment intent, scrim legibility) to the **Tier-B taste critic** — the gate is the floor, the critic is the ceiling, and ship requires both.

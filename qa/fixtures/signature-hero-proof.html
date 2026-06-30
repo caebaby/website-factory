@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signature Hero Proof — Field Studio</title>
+  <meta name="description" content="Replay-corpus fixture: COMPONENTS Primitive 4 (mesh-gradient hero) + Primitive 5 (video hero with directional scrim), built to the LAYOUT_CRAFT PARTS 8-9 ceiling.">
+
+  <!-- ============================================================================
+       WHAT THIS IS — a known-good fixture proving the ceiling work (2026-06-30).
+       It assembles the two new primitives and applies the new "make it sing" rules:
+         · Primitive 4  — animated mesh-gradient hero            (LAYOUT_CRAFT 9.1, MOTION_TIERS T3.1b)
+         · Primitive 5  — video hero + directional scrim         (LAYOUT_CRAFT 9.2, MOTION_TIERS T3.3)
+         · 8.3 committed color — accent OWNS the final-CTA zone (drench), not just glyphs
+         · 8.4 counterweight   — oversize bleeding numeral balances the statement
+         · 8.6 signature moment— oversize accent cycling word, line-end (Primitive 1)
+       Ship gate: node qa/run-checks.js qa/fixtures/signature-hero-proof.html '#DC3C20'  → 0 P0,
+       then a Tier-B taste pass (impeccable, detect-only).
+       ============================================================================ -->
+
+  <style>
+    .skip-link{position:absolute;left:-9999px;top:0;z-index:9999;padding:8px 16px;background:var(--accent);color:#fff;font-weight:700;font-size:14px;text-decoration:none;}
+    .skip-link:focus{left:0;}
+  </style>
+
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&f[]=general-sans@400,500&display=swap" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.25/dist/lenis.min.js"></script>
+
+  <style>
+    /* ─── DESIGN TOKENS (Field — light / vermillion) ───────────────── */
+    :root{
+      --bg-base:#FAFAF8; --bg-base-rgb:250,250,248;
+      --bg-surface:#FFFFFF; --bg-elevated:#F2F1EC;
+      --bg-inverse:#0E0E0C; --bg-inverse-rgb:14,14,12;
+      --text-primary:#14140F; --primary-rgb:20,20,15;
+      --text-secondary:#555149;
+      --text-muted:#9A968C; --text-muted-rgb:154,150,140;
+      --border:rgba(20,20,15,.12);
+      --accent:#DC3C20; --accent-rgb:220,60,32;
+      --accent-2-rgb:230,120,40;        /* warm second brand tint for the mesh */
+      --accent-muted:#B53219; --accent-glow:rgba(220,60,32,.12);
+
+      --font-display:'Satoshi','General Sans',sans-serif;
+      --font-body:'Satoshi','General Sans',sans-serif;
+      --size-display:clamp(64px,9vw,184px);
+      --weight-display:500; --leading-display:.92; --tracking-display:-.04em;
+
+      --col-gap:48px; --radius:0px; --grid-max:1280px;
+      --shadow-card:0 1px 2px rgba(20,20,15,.04),0 6px 18px rgba(20,20,15,.06),0 18px 44px rgba(20,20,15,.06);
+      --motion-ease:cubic-bezier(.16,1,.3,1);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;font-size:16px;}
+    body{font-family:var(--font-body);background:var(--bg-base);color:var(--text-secondary);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+    ::selection{background:var(--accent);color:#fff;}
+    :focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+    h1,h2,h3,h4{text-wrap:balance;}
+    p,li,blockquote{text-wrap:pretty;}
+    a{color:inherit;text-decoration:none;}
+    .container{max-width:var(--grid-max);margin:0 auto;padding:0 80px;}
+    @media (max-width:1024px){.container{padding:0 48px;}}
+    @media (max-width:768px){.container{padding:0 24px;}}
+
+    /* grain */
+    .grain{position:fixed;inset:0;z-index:9998;pointer-events:none;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px 200px;}
+
+    /* buttons */
+    .btn-primary{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:#fff;font-weight:700;font-size:15px;letter-spacing:.01em;padding:17px 30px;border:none;cursor:pointer;}
+    .btn-primary::before{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.20) 50%,transparent 60%);transform:translateX(-100%);animation:shimmer 3s ease-in-out infinite;animation-delay:1.5s;}
+    @keyframes shimmer{0%{transform:translateX(-100%);}100%{transform:translateX(200%);}}
+    .btn-ghost{display:inline-flex;align-items:center;gap:8px;color:var(--text-primary);font-weight:600;font-size:15px;padding:17px 6px;border-bottom:2px solid var(--text-primary);}
+
+    /* ─── NAV ──────────────────────────────────────────────────────── */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:24px 0;transition:all .4s var(--motion-ease);}
+    nav.scrolled{padding:14px 0;background:rgba(var(--bg-base-rgb),.85);backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);border-bottom:1px solid var(--border);}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;}
+    .nav-logo{font-family:var(--font-display);font-weight:900;font-size:21px;letter-spacing:-.02em;color:var(--text-primary);}
+    .nav-cta{font-weight:700;font-size:14px;color:var(--text-primary);}
+
+    /* ─── HERO — Primitive 4 mesh gradient + 1B Statement ──────────── */
+    .hero{position:relative;overflow:hidden;isolation:isolate;min-height:clamp(640px,92svh,1000px);display:flex;flex-direction:column;justify-content:center;padding:clamp(120px,12vw,168px) 0 clamp(72px,8vw,104px);}
+    .mesh{position:absolute;inset:0;z-index:0;overflow:hidden;background:var(--bg-base);}
+    /* opacity/ blur tuned so the mesh READS as color, not fog (Tier-B fix) */
+    .mesh__blob{position:absolute;border-radius:50%;filter:blur(58px);opacity:.74;will-change:transform;mix-blend-mode:multiply;}
+    .mesh__blob--1{width:48vw;height:48vw;left:-6vw;top:-12vw;background:radial-gradient(circle,rgba(var(--accent-rgb),.42),transparent 66%);}
+    .mesh__blob--2{width:46vw;height:46vw;right:-12vw;top:2vw;background:radial-gradient(circle,rgba(var(--accent-2-rgb),.34),transparent 66%);}
+    .mesh__blob--3{width:54vw;height:54vw;left:10vw;bottom:-30vw;background:radial-gradient(circle,rgba(var(--accent-rgb),.20),transparent 66%);}
+    .mesh__blob--4{width:42vw;height:42vw;right:8vw;bottom:-18vw;background:radial-gradient(circle,rgba(var(--text-muted-rgb),.40),transparent 66%);}
+    @media (prefers-reduced-motion:reduce){.mesh__blob{animation:none!important;}}
+    .hero__content{position:relative;z-index:1;}
+    /* eyebrow = muted ink (LED-003 resolution + AA contrast); accent reserved for the cycling word, numeral, CTA */
+    .hero__eyebrow{font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:30px;display:inline-flex;align-items:center;gap:14px;}
+    .hero__eyebrow::after{content:"";width:56px;height:2px;background:var(--accent);}
+    .hero__headline{font-family:var(--font-display);font-size:var(--size-display);font-weight:var(--weight-display);line-height:.96;letter-spacing:var(--tracking-display);color:var(--text-primary);margin-bottom:clamp(30px,3.4vw,46px);max-width:18ch;}
+    .hl-frame{display:block;}
+    .hl-cycle{display:block;}            /* cycling clause on its OWN line — line-end, no gap (LED-006) */
+    /* signature moment (8.6): the cycling word is oversized + accent + heavy */
+    .cyc__slot{display:inline-grid;color:var(--accent);font-weight:900;vertical-align:baseline;}
+    .cyc__w{grid-area:1/1;white-space:nowrap;}
+    .cyc__w:not(.is-on){opacity:0;}
+    .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+    .hero__sub{font-size:clamp(17px,1.6vw,22px);line-height:1.55;color:var(--text-secondary);max-width:560px;margin-bottom:clamp(34px,4vw,50px);}
+    .hero__ctas{display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+    .hero__note{margin-top:60px;font-size:13px;color:var(--text-secondary);letter-spacing:.02em;}
+
+    /* ─── STATEMENT — counterweight composition (8.4) ──────────────── */
+    .statement{position:relative;padding:clamp(120px,15vw,220px) 0;border-top:1px solid var(--border);background:var(--bg-base);overflow:hidden;}
+    .statement__grid{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:var(--col-gap);align-items:center;}
+    .statement__lead{font-family:var(--font-display);font-size:clamp(30px,3.6vw,52px);font-weight:500;line-height:1.12;letter-spacing:-.025em;color:var(--text-primary);max-width:16em;}
+    .statement__body{font-size:clamp(16px,1.4vw,18px);line-height:1.65;color:var(--text-secondary);max-width:62ch;margin-top:26px;}
+    /* the bleeding oversize numeral = the counterweight (real optical mass, off-edge bleed) */
+    /* counterweight reads as ink, not a watermark: accent tint + real presence (Tier-B fix) */
+    .statement__mark{font-family:var(--font-display);font-weight:900;font-size:clamp(220px,34vw,460px);line-height:.8;letter-spacing:-.06em;color:var(--accent);opacity:.13;text-align:right;transform:translateX(8%);user-select:none;}
+    @media (max-width:768px){.statement__grid{grid-template-columns:1fr;}.statement__mark{display:none;}}
+
+    /* ─── VIDEO HERO — Primitive 5 (poster fallback + directional scrim) ─ */
+    .vhero{position:relative;min-height:clamp(560px,78svh,860px);display:flex;align-items:center;overflow:hidden;isolation:isolate;}
+    .vhero__media{position:absolute;inset:0;z-index:0;background:#0c0c0c;}
+    .vhero__video{width:100%;height:100%;object-fit:cover;display:block;}
+    .vhero__scrim{position:absolute;inset:0;background:linear-gradient(105deg,rgba(8,8,8,.82) 0%,rgba(8,8,8,.55) 34%,rgba(8,8,8,0) 70%);}
+    .vhero__content{position:relative;z-index:1;color:#fff;max-width:660px;padding:64px 0;}
+    .vhero__eyebrow{font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#fff;opacity:.72;margin-bottom:26px;}
+    .vhero__headline{font-family:var(--font-display);font-size:clamp(42px,5.4vw,76px);font-weight:500;line-height:1.0;letter-spacing:-.035em;color:#fff;margin-bottom:26px;}
+    .vhero__sub{font-size:clamp(16px,1.5vw,20px);line-height:1.55;color:rgba(255,255,255,.84);max-width:540px;margin-bottom:36px;}
+    .vhero .btn-ghost{color:#fff;border-bottom-color:#fff;}
+
+    /* ─── FINAL CTA — committed-color drench (8.3 crescendo) ───────── */
+    .final{position:relative;overflow:hidden;background:var(--accent);color:#fff;padding:clamp(96px,12vw,168px) 0;}
+    .final__inner{position:relative;z-index:1;max-width:880px;}
+    .final__headline{font-family:var(--font-display);font-size:clamp(40px,5.6vw,84px);font-weight:500;line-height:.98;letter-spacing:-.035em;color:#fff;margin-bottom:28px;max-width:14ch;}
+    .final__sub{font-size:clamp(17px,1.6vw,21px);line-height:1.5;color:rgba(255,255,255,.86);max-width:540px;margin-bottom:42px;}
+    .final .btn-primary{background:#fff;color:var(--accent);}
+    .final .btn-primary::before{background:linear-gradient(105deg,transparent 40%,rgba(220,60,32,.14) 50%,transparent 60%);}
+    .final .btn-ghost{color:#fff;border-bottom-color:rgba(255,255,255,.6);}
+    .final__ctas{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+    .final__glow{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 60% 70% at 78% 30%,rgba(255,255,255,.16),transparent 60%);}
+
+    /* ─── FOOTER ───────────────────────────────────────────────────── */
+    footer{background:var(--bg-inverse);color:rgba(255,255,255,.7);padding:64px 0 40px;}
+    .foot-inner{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;}
+    .foot-logo{font-family:var(--font-display);font-weight:900;font-size:20px;color:#fff;}
+    .foot-disc{font-size:12px;color:rgba(255,255,255,.4);max-width:520px;line-height:1.6;}
+
+    /* reveal safety baseline */
+    .reveal{opacity:1;}
+    @media (prefers-reduced-motion:no-preference){
+      html.js .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s var(--motion-ease),transform .7s var(--motion-ease);}
+      html.js .reveal.in{opacity:1;transform:none;}
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <div class="grain" aria-hidden="true"></div>
+
+  <nav id="nav">
+    <div class="container nav-inner">
+      <span class="nav-logo">Field</span>
+      <a href="#final" class="nav-cta">Start a project →</a>
+    </div>
+  </nav>
+
+  <main id="main">
+
+    <!-- HERO — Primitive 4 mesh gradient -->
+    <section class="hero" id="hero" aria-labelledby="hero-headline">
+      <div class="mesh" aria-hidden="true">
+        <span class="mesh__blob mesh__blob--1"></span>
+        <span class="mesh__blob mesh__blob--2"></span>
+        <span class="mesh__blob mesh__blob--3"></span>
+        <span class="mesh__blob mesh__blob--4"></span>
+      </div>
+      <div class="container hero__content">
+        <p class="hero__eyebrow">Brand &amp; Narrative Studio</p>
+        <h1 class="hero__headline" id="hero-headline">
+          <span class="hl-frame">You built something rare.</span>
+          <span class="hl-cycle">Now fix the <span class="cyc__slot" aria-hidden="true"><span class="cyc__w is-on">story</span><span class="cyc__w">pitch</span><span class="cyc__w">website</span><span class="cyc__w">brand</span></span></span>
+          <span class="sr-only">You built something rare. Now fix the story, pitch, website, and brand.</span>
+        </h1>
+        <p class="hero__sub">We're the studio founders call when what they've built is finally too good for how they're explaining it. Naming, positioning, narrative, and the site that carries it.</p>
+        <div class="hero__ctas">
+          <a href="#final" class="btn-primary">Start a project</a>
+          <a href="#work" class="btn-ghost">See the work →</a>
+        </div>
+        <p class="hero__note"><!-- [VERIFY] -->Used by 40+ founders from pre-seed to Series&nbsp;B.</p>
+      </div>
+    </section>
+
+    <!-- STATEMENT — counterweight composition (8.4) -->
+    <section class="statement" id="work" aria-labelledby="statement-lead">
+      <div class="container statement__grid">
+        <div>
+          <p class="statement__lead reveal" id="statement-lead">The gap isn't your product. It's the half-second before anyone understands it.</p>
+          <p class="statement__body reveal">Most founders out-build their own explanation. The work is sharp; the words around it are still a first draft. We close that gap — so the pitch, the page, and the product finally say the same thing.</p>
+        </div>
+        <div class="statement__mark" aria-hidden="true">01</div>
+      </div>
+    </section>
+
+    <!-- VIDEO HERO — Primitive 5 (poster fallback + directional scrim) -->
+    <section class="vhero" id="film" aria-labelledby="vhero-headline">
+      <div class="vhero__media" aria-hidden="true">
+        <!-- [PLACEHOLDER] poster: a real client build swaps in HERO_LOOP.mp4 + a real poster.
+             With no asset, the poster (a composed dark frame) is what shows — the never-blank contract. -->
+        <video class="vhero__video" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='900'%3E%3Cdefs%3E%3CradialGradient id='g' cx='72%25' cy='32%25' r='80%25'%3E%3Cstop offset='0' stop-color='%23241a16'/%3E%3Cstop offset='1' stop-color='%230c0c0c'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width='1600' height='900' fill='url(%23g)'/%3E%3C/svg%3E" muted loop playsinline preload="none">
+          <source data-src="assets/video/HERO_LOOP.mp4" type="video/mp4">
+        </video>
+        <div class="vhero__scrim"></div>
+      </div>
+      <div class="container">
+        <div class="vhero__content">
+          <p class="vhero__eyebrow">The film, not the slideshow</p>
+          <h1 class="vhero__headline" id="vhero-headline">Your launch should feel like a premiere.</h1>
+          <p class="vhero__sub">When you have real footage, the hero shows the work in motion — not a stock smile. The scrim hugs the words; the far side of the frame stays clean.</p>
+          <a href="#final" class="btn-ghost">Book the studio →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA — committed-color drench (8.3) -->
+    <section class="final" id="final" aria-labelledby="final-headline">
+      <div class="final__glow" aria-hidden="true"></div>
+      <div class="container final__inner">
+        <h2 class="final__headline" id="final-headline">Let's make it impossible to misunderstand.</h2>
+        <p class="final__sub">One project. Six weeks. The story, the page, and the proof — finally pulling in the same direction.</p>
+        <div class="final__ctas">
+          <a href="#" class="btn-primary">Start a project</a>
+          <a href="#" class="btn-ghost">Book a 20-min fit call →</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container foot-inner">
+      <div>
+        <div class="foot-logo">Field</div>
+        <p class="foot-disc">Brand &amp; narrative studio. <!-- [PLACEHOLDER] address / contact -->Built as a website-factory replay-corpus fixture.</p>
+      </div>
+      <p class="foot-disc">© 2026 Field Studio. This is a QA fixture, not a live site.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.documentElement.classList.add('js');
+    (function(){
+      var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* Lenis + ScrollTrigger */
+      if(window.gsap && window.ScrollTrigger){ gsap.registerPlugin(ScrollTrigger); }
+      if(window.Lenis && !reduce){
+        var lenis = new Lenis();
+        lenis.on('scroll', function(){ if(window.ScrollTrigger) ScrollTrigger.update(); });
+        gsap.ticker.add(function(t){ lenis.raf(t*1000); });
+        gsap.ticker.lagSmoothing(0);
+      }
+
+      /* nav scrolled state */
+      var nav = document.getElementById('nav');
+      addEventListener('scroll', function(){ nav.classList.toggle('scrolled', scrollY > 40); }, {passive:true});
+
+      /* PRIMITIVE 4 — mesh blob drift (desynchronized) */
+      var mesh = document.querySelector('.mesh');
+      if(mesh && window.gsap && !reduce){
+        mesh.querySelectorAll('.mesh__blob').forEach(function(b,i){
+          gsap.to(b,{xPercent:(i%2?-14:14),yPercent:(i%2?12:-12),scale:1.12,duration:9+i*2.4,ease:'sine.inOut',repeat:-1,yoyo:true});
+        });
+      }
+
+      /* PRIMITIVE 1 — cycling word (grid-stack, opacity+y only) */
+      var slot = document.querySelector('.cyc__slot');
+      if(slot){
+        var words = slot.querySelectorAll('.cyc__w');
+        if(words.length > 1 && !reduce && window.gsap){
+          var i = 0;
+          gsap.set(words,{yPercent:function(idx){return idx===0?0:36;},opacity:function(idx){return idx===0?1:0;}});
+          var tl = gsap.timeline({repeat:-1,delay:1.6});
+          words.forEach(function(){
+            var cur=words[i], nx=words[(i+1)%words.length];
+            (function(cur,nx){
+              tl.to(cur,{yPercent:-36,opacity:0,duration:.5,ease:'power3.in'},'+=1.15')
+                .fromTo(nx,{yPercent:36,opacity:0},{yPercent:0,opacity:1,duration:.55,ease:'power3.out'},'<0.05');
+            })(cur,nx); i=(i+1)%words.length;
+          });
+        }
+      }
+
+      /* PRIMITIVE 5 — lazy video with poster fallback */
+      var v = document.querySelector('.vhero__video');
+      if(v && !reduce){
+        var src = v.querySelector('source[data-src]');
+        if(src){
+          var io = new IntersectionObserver(function(entries,obs){
+            entries.forEach(function(e){
+              if(!e.isIntersecting) return;
+              src.src = src.dataset.src; v.load();
+              var p = v.play(); if(p && p.catch) p.catch(function(){});
+              obs.disconnect();
+            });
+          },{rootMargin:'200px'});
+          io.observe(v);
+        }
+      }
+
+      /* scroll reveal (safety baseline: visible by default) */
+      if(window.gsap && window.ScrollTrigger && !reduce){
+        gsap.utils.toArray('.reveal').forEach(function(el){
+          ScrollTrigger.create({trigger:el,start:'top 86%',once:true,onEnter:function(){el.classList.add('in');}});
+        });
+        requestAnimationFrame(function(){
+          document.querySelectorAll('.reveal:not(.in)').forEach(function(el){ if(el.getBoundingClientRect().top < innerHeight*0.95) el.classList.add('in'); });
+        });
+      } else {
+        document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+      }
+    })();
+  </script>
+</body>
+</html>

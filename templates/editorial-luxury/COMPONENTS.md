@@ -128,6 +128,109 @@ Use native `required`/`type`/`reportValidity()` — never a custom regex validat
 
 ---
 
+## PRIMITIVE 4 — Animated mesh-gradient hero background
+**CONTRACT:** never blank (static composed mesh with no JS); `prefers-reduced-motion` → frozen static frame; layout/height unaffected (it's an absolutely-positioned sibling *behind* the content, clipped by `overflow:hidden`); brand-palette tints only (no rainbow/purple→blue slop); text above it stays legible.
+
+Extracted from Stripe's WebGL `minigl` hero and Zoom's "work connects" hero (see `docs/REFERENCES.md` → Hero). The factory-fit implementation is **not** a WebGL shader — it's 4–6 soft `radial-gradient` blobs drifting on slow, *desynchronized* GSAP loops, so the field breathes instead of pulsing in unison. Richer and more premium than the single mouse-radial of MOTION_TIERS T3.1; it is the **T3 mesh upgrade**.
+
+The non-obvious correctness facts (why this is frozen): (1) the blob layer and the hero copy are **siblings** — copy is never a child of the animated layer, so a transform/repaint on the mesh can never shift or hide the text. (2) Both `.hero` and `.mesh` are `overflow:hidden` so vw-sized blobs that bleed past the edges are *clipped*, never adding to `scrollWidth` (no `viewport-overflow`). (3) Blobs carry no text content, so they can't trip `collapsed-height`. (4) Drift is `xPercent/yPercent` only — never animating `background-position` or `width` (cheap GPU transform, no layout).
+
+```html
+<section class="hero" id="hero">
+  <div class="mesh" aria-hidden="true">
+    <span class="mesh__blob mesh__blob--1"></span>
+    <span class="mesh__blob mesh__blob--2"></span>
+    <span class="mesh__blob mesh__blob--3"></span>
+    <span class="mesh__blob mesh__blob--4"></span>
+  </div>
+  <div class="hero__content"><!-- eyebrow / headline / sub / CTAs (Primitive 1 cycling word fits here) --></div>
+</section>
+<style>
+  .hero{ position:relative; overflow:hidden; isolation:isolate; }
+  .hero__content{ position:relative; z-index:1; }      /* sibling ABOVE the mesh, never a child */
+  .mesh{ position:absolute; inset:0; z-index:0; overflow:hidden; background:var(--bg-base); }
+  .mesh__blob{
+    position:absolute; border-radius:50%;
+    filter:blur(72px);                                 /* Stripe-soft: large blur, low detail */
+    opacity:.55; will-change:transform;
+    mix-blend-mode:multiply;                           /* LIGHT bg. On a dark hero use 'screen'/'lighten' + raise opacity */
+  }
+  /* 4 stops = tints of the BRAND palette ONLY (accent + an analogous/neutral companion).
+     Define --accent-2-rgb in tokens for a second brand tint; falls back to accent. */
+  .mesh__blob--1{ width:48vw;height:48vw; left:-6vw;  top:-12vw;  background:radial-gradient(circle, rgba(var(--accent-rgb),.42), transparent 66%); }
+  .mesh__blob--2{ width:46vw;height:46vw; right:-12vw;top:2vw;    background:radial-gradient(circle, rgba(var(--accent-2-rgb,var(--accent-rgb)),.30), transparent 66%); }
+  .mesh__blob--3{ width:54vw;height:54vw; left:10vw;  bottom:-30vw;background:radial-gradient(circle, rgba(var(--accent-rgb),.22), transparent 66%); }
+  .mesh__blob--4{ width:42vw;height:42vw; right:8vw;  bottom:-20vw;background:radial-gradient(circle, rgba(var(--text-muted-rgb,160,160,160),.40), transparent 66%); }
+  @media (prefers-reduced-motion: reduce){ .mesh__blob{ animation:none!important; } }
+</style>
+<script>
+(function(){
+  var mesh=document.querySelector('.mesh'); if(!mesh) return;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;   // static composed frame
+  if(!window.gsap) return;                                             // no-JS/GSAP-fail → static
+  mesh.querySelectorAll('.mesh__blob').forEach(function(b,i){
+    gsap.to(b,{                                                        // desynchronized drift — no unison pulse
+      xPercent:(i%2? -14:14), yPercent:(i%2? 12:-12), scale:1.12,
+      duration:9 + i*2.4, ease:'sine.inOut', repeat:-1, yoyo:true
+    });
+  });
+})();
+</script>
+```
+**QA invariants:** `scrollWidth ≤ viewport` (blobs clipped — `viewport-overflow` must stay clean); hero text contrast ≥ 4.5:1 body / 3:1 large over the mesh (keep blob opacity modest or place copy on the calmer half); mesh stops are brand tints, never a 220–290° hue (PART 7 / PART 9.1).
+
+---
+
+## PRIMITIVE 5 — Video hero with directional scrim
+**CONTRACT:** never blank (a `poster` always loads first and is shown if video is absent/slow/failed/blocked); legible (a *directional* gradient scrim guarantees text contrast on the copy side — never a uniform dark box over the whole frame); `prefers-reduced-motion` → no autoplay, poster only; lazy (no video bytes fetched until the hero is near the viewport).
+
+Extracted from Zoom / Mercury / Linear product-video heroes (see `docs/REFERENCES.md` → Hero). Use **only when the client has a real video/footage asset** — never a CSS simulation (MOTION_TIERS T3.3). The make-or-break detail is the scrim: a `105deg` gradient anchored to the text side leaves the far side of the footage clean while still clearing contrast where the words are.
+
+```html
+<section class="vhero" id="hero">
+  <div class="vhero__media" aria-hidden="true">
+    <video class="vhero__video" poster="[POSTER.jpg]" muted loop playsinline preload="none">
+      <source data-src="[HERO_LOOP.mp4]" type="video/mp4">
+    </video>
+    <div class="vhero__scrim"></div>
+  </div>
+  <div class="vhero__content"><!-- eyebrow / headline / sub / CTAs --></div>
+</section>
+<style>
+  .vhero{ position:relative; min-height:clamp(620px,86svh,940px); display:flex; align-items:center; overflow:hidden; isolation:isolate; }
+  .vhero__media{ position:absolute; inset:0; z-index:0; background:#0c0c0c; }   /* base so it's never white if poster is slow */
+  .vhero__video{ width:100%; height:100%; object-fit:cover; display:block; }
+  /* Directional scrim — anchored to the LEFT (text) side. NOT a uniform rectangle. */
+  .vhero__scrim{ position:absolute; inset:0;
+    background:linear-gradient(105deg, rgba(8,8,8,.80) 0%, rgba(8,8,8,.55) 34%, rgba(8,8,8,0) 70%); }
+  .vhero__content{ position:relative; z-index:1; color:#fff; max-width:640px; }
+  .vhero__content h1{ color:#fff; }
+  .vhero__content p{ color:rgba(255,255,255,.84); }
+  @media (max-width:768px){                                  /* narrow: footage busier → bottom-anchored scrim */
+    .vhero__scrim{ background:linear-gradient(180deg, rgba(8,8,8,.42) 0%, rgba(8,8,8,.82) 100%); }
+  }
+</style>
+<script>
+(function(){
+  var v=document.querySelector('.vhero__video'); if(!v) return;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;   // poster only, no motion
+  var src=v.querySelector('source[data-src]'); if(!src) return;
+  var io=new IntersectionObserver(function(entries,obs){
+    entries.forEach(function(e){
+      if(!e.isIntersecting) return;
+      src.src=src.dataset.src; v.load();                               // fetch only when in view
+      var p=v.play(); if(p&&p.catch) p.catch(function(){});            // autoplay blocked → poster stays (still fine)
+      obs.disconnect();
+    });
+  },{rootMargin:'200px'});
+  io.observe(v);
+})();
+</script>
+```
+**QA invariants:** copy contrast ≥ 4.5:1 body / 3:1 large over the *lightest* pixel the scrim covers (scrim opacity is the lever); poster present (hero never empty); no `<source src>` set until in view (lazy); reduced-motion shows poster, never autoplays. **If there is no real asset, delete the `<video>` and ship the poster as a still hero** — do not fake it.
+
+---
+
 ## RGB-triplet rule (also a frozen contract)
 Every hex token that feeds a shadow/blur (`--accent`, `--primary`/`--text-primary`, `--bg-base`, `--bg-inverse`) MUST also define its `--*-rgb` triplet. Missing triplets silently break every `rgba(var(--x-rgb), …)` shadow. (See DESIGN_TOKENS.)
 
