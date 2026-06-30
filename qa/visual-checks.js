@@ -94,21 +94,30 @@
           ' CPL — far below the ' + cfg.displayCPLMin + '-' + cfg.displayCPLMax + ' display band. It wraps into a starved 1-2-word column. Needs ≥ ' +
           Math.round(9 * fontPx) + 'px (3 words/line). Check for an em-based max-width on a parent (em resolves to the small inherited font).',
           { fontPx: Math.round(fontPx), widthPx: Math.round(r.width), cpl: Math.round(cpl), containerPx: Math.round(container) });
-      } else if (cpl > cfg.displayCPLMax + 8) {
+      } else if (cpl > cfg.displayCPLMax + 8 && el.textContent.trim().length > cfg.displayCPLMax + 8) {
+        // LED-005: gate on actual text length — a SHORT heading in a wide box isn't "too wide"
         add('P2', 'display-too-wide', sel(el),
           Math.round(fontPx) + 'px heading runs ' + Math.round(cpl) + ' CPL — reads like body, loses hierarchy. Cap measure near ' + cfg.displayCPLMax + ' CPL.',
           { cpl: Math.round(cpl) });
       }
     });
 
-    /* ---- P2: body measure too wide ---- */
+    /* ---- P2: body measure too wide (running prose only) ---- */
     Array.from(document.querySelectorAll('p,li,blockquote')).forEach(el => {
       const c = cs(el), r = rect(el);
       const fontPx = parseFloat(c.fontSize);
       if (fontPx > cfg.bodyFontMax) return;
       if (!el.textContent || el.textContent.trim().length < 40) return;
+      // LED-005: only flag LEFT-aligned running prose. Centered lines, label rows,
+      // and tracked/uppercase text are not body measure — skip to avoid false positives.
+      if (/center|right/.test(c.textAlign)) return;
+      if (c.textTransform === 'uppercase' || parseFloat(c.letterSpacing) > 0.5) return;
+      const words = el.textContent.trim().split(/\s+/).length;
+      if (words / (el.textContent.trim().length / 6) < 0.7) return; // mostly non-word chars → not prose
       const cpl = r.width / (cfg.avgCharEm * fontPx);
-      if (cpl > cfg.bodyCPLMax) {
+      // LED-005: box width ≠ line length. Only flag if the text is long enough to actually
+      // wrap past the limit; a short single-line paragraph in a wide box is not too-wide.
+      if (cpl > cfg.bodyCPLMax && el.textContent.trim().length > cfg.bodyCPLMax) {
         add('P2', 'measure-too-wide', sel(el),
           'Body text ≈ ' + Math.round(cpl) + ' CPL (>' + cfg.bodyCPLMax + '). Constrain to ~65ch.', { cpl: Math.round(cpl) });
       }

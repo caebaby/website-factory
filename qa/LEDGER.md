@@ -42,6 +42,19 @@ Append-only. Each entry: what broke, why, how it was caught, and what permanent 
 - **Permanent artifact:** `FACTORY_LEARNING.md` render-stage anti-fooling rules + `qa/visual-checks.js` `anim-not-finished` surfacing.
 - **Status:** ✅ documented.
 
+### LED-005 — Checker measured box-width as a proxy for line length (false positives)
+- **Context:** the Field cold-rebuild QA run flagged 18 P2s; ~11 were false — `measure-too-wide` / `display-too-wide` fired on SHORT text sitting in a WIDE box (one-word service names, a 50-char hero note, centered label rows). Box width ≠ actual line length.
+- **Caught by:** orchestrator triage during the rebuild verification (the critic teaching the cheap gate).
+- **Fix (in `qa/visual-checks.js`):** (a) skip centered/right-aligned, uppercase, and tracked `<p>` (not running prose); (b) gate both checks on actual `textContent.length` exceeding the CPL threshold — a short heading/paragraph in a wide box is not "too wide."
+- **Result:** 18 → 7 P2s, all genuine (body paragraphs needing a measure cap). The checker now reports only real defects.
+- **Status:** ✅ closed — the loop refined its own gate.
+
+### Episode — Field cold rebuild on SONNET (model-agnostic consistency test)
+- **Build:** field/index-rebuild.html, Agent 04 cold on **Sonnet** (original was Opus), reading the now-complete docs (incl. COMPONENTS + LAYOUT_CRAFT).
+- **Deterministic gate:** **0 P0 blockers, 0 P1 warnings** on first inspection. The original cold build shipped a P0 collapsed cycle (LED-001) + P1 trapped headings (LED-002); the rebuild reproduced NEITHER — it pasted the COMPONENTS cycle primitive (slot 106px) and avoided the em-trap (heading 19 CPL). Eyebrows muted, accent scarce (LED-003 avoided).
+- **Repair pass:** 7 genuine P2 body-measure items → capped `.pain-desc`/`.service-desc` per LAYOUT_CRAFT → re-verify **0 defects, fully clean.**
+- **Conclusion:** the system produces the quality, not the model. Different model + same docs = consistent, clean result. ✅
+
 ---
 
 ## Open doc tensions to resolve (found during the Field build)
