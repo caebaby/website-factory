@@ -15,6 +15,8 @@ Each primitive below ships with a one-line **CONTRACT** (the invariant it guaran
 
 The non-obvious correctness fact (the whole reason to freeze this): **stack the words in ONE CSS grid cell (`grid-area:1/1`), not with `position:absolute`.** Absolute children leave the flow → the slot gets 0 height → the word is clipped to nothing. Grid-stacked words stay in flow → the cell sizes to the tallest/widest word → height *cannot* collapse.
 
+**PLACEMENT RULE (LED-006 — learned the hard way):** the grid-stack cell sizes to the *widest* word. If the cycling word sits MID-LINE with text after it (`Your [cycle] is a mess`), every shorter word leaves a visible dead gap before the following text — it reads broken. **Put the cycling word at a line END** (nothing follows it inline): give it its own line, or make it the last word of its line. Then the variable-width cell causes no gap and no shift. Bonus: a cycling word alone on its line wants to be the hero's focal moment — oversize it and color it the accent ("a single oversize word as a hero"). This is *taste*, which the deterministic gate cannot see — it's why the Tier-B critic exists.
+
 ```html
 <h1 class="cyc">
   <span>Your product is great. Your</span>

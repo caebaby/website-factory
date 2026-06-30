@@ -55,6 +55,19 @@ Append-only. Each entry: what broke, why, how it was caught, and what permanent 
 - **Repair pass:** 7 genuine P2 body-measure items → capped `.pain-desc`/`.service-desc` per LAYOUT_CRAFT → re-verify **0 defects, fully clean.**
 - **Conclusion:** the system produces the quality, not the model. Different model + same docs = consistent, clean result. ✅
 
+### LED-006 — Cycling word mid-line creates a dead gap (taste defect, gate-invisible)
+- **Build:** field/index-rebuild.html. The Sonnet rebuild passed the deterministic gate clean (0/0/0) and a fresh QA agent cleared it to SHIP — but Chris's eye flagged it as unimpressive. Specific defect: the cycling-word slot ("Your story␣␣␣is a mess") left a visible gap, because the grid-stack cell sizes to the widest word and the word sat mid-line with text after it.
+- **Caught by:** the human + the Tier-B taste critic (`impeccable`). The deterministic gate could NOT see it — it's not a collapse/overflow/trap; it's composition.
+- **Fix:** placement rule added to COMPONENTS Primitive 1 — put the cycling word at a line END (its own line), oversize it, color it the accent → gap gone, becomes the hero's focal moment.
+- **Status:** ✅ closed (primitive updated; rebuild hero re-cut).
+
+### Episode — Tier-B taste pass on the Field rebuild (the lesson that matters most)
+- **Trigger:** the rebuild passed every geometric check + a fresh QA agent said SHIP, yet read flat/timid. Chris: "this isn't great… took a step back."
+- **THE LESSON:** **deterministic-clean ≠ impressive.** The gate is a FLOOR (not broken, no slop, on-brand). It is NOT a CEILING (memorable, $25k). "Passes the rules" must never equal "ship" — ship requires the Tier-B taste pass too. Shipping on geometry alone is the same false confidence, one level up, as a builder grading itself.
+- **The taste critic earned its seat:** `impeccable`'s brand register reframed the problem from "a few bugs" to "the whole thing is timid — restrained color where a bold studio gets Committed permission; the editorial-typographic reflex executed safe." Fixes: cycling word → oversized vermillion focal (LED-006); eyebrow committed to accent; hero void tightened; final CTA → vermillion drench (committed-color crescendo). Geometry stayed 0/0/0; the design went from flat to bold.
+- **Process change:** the ship gate is now **geometry-pass AND taste-pass**, both by fresh independent agents. Floor is model-agnostic (proven); the ceiling still needs the taste critic with teeth + richer "make it sing" docs + ideally a capable builder.
+- **Status:** ✅ rebuild re-cut and re-verified; process updated.
+
 ---
 
 ## Open doc tensions to resolve (found during the Field build)

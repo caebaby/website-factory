@@ -298,6 +298,30 @@
         var(--bg-inverse);
       color: rgba(255,255,255,.87);
     }
+    /* Committed-color crescendo: the close is a vermillion drench (brand register:
+       Drenched strategy for brand/campaign closes). Identity stays warm-white;
+       this single section commits the accent as voice. */
+    .bg-accent {
+      background:
+        radial-gradient(ellipse at 78% 18%, rgba(255,255,255,.10) 0%, transparent 52%),
+        radial-gradient(ellipse at 15% 90%, rgba(20,20,15,.16) 0%, transparent 55%),
+        var(--accent);
+      color: #FBF7F2;
+    }
+    .bg-accent .final-statement { color: #FFF8F3; }
+    .bg-accent .final-sub { color: rgba(255,247,242,.78); }
+    /* On vermillion, the CTA flips to a cream button with vermillion text (strong contrast) */
+    .bg-accent .btn-primary-light {
+      background: #FBF7F2; color: var(--accent);
+      box-shadow: 0 1px 2px rgba(20,20,15,.18), 0 10px 34px rgba(20,20,15,.22);
+    }
+    .bg-accent .btn-primary-light:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 2px 6px rgba(20,20,15,.22), 0 16px 44px rgba(20,20,15,.30);
+    }
+    .bg-accent .btn-primary-light::before {
+      background: linear-gradient(105deg, transparent 40%, rgba(var(--accent-rgb),.14) 50%, transparent 60%);
+    }
 
     /* ─── SCROLL REVEAL (PRIMITIVE 3 — verbatim contract) ─────────── */
     .reveal { opacity: 1; }
@@ -322,37 +346,45 @@
 
     /* ─── HERO (1B The Statement) ────────────────────────────────── */
     .hero {
-      min-height: 100svh;
+      min-height: clamp(620px, 86svh, 940px);
       display: flex; flex-direction: column; justify-content: center;
-      padding: clamp(120px,12vw,160px) 0 clamp(80px,8vw,120px);
+      padding: clamp(116px,11vw,148px) 0 clamp(64px,7vw,96px);
       position: relative;
       overflow: hidden;
       /* Mouse-reactive gradient: T3.1 */
       background:
-        radial-gradient(ellipse 70% 60% at var(--mouse-x, 50%) var(--mouse-y, 40%), rgba(var(--accent-rgb),.06) 0%, transparent 60%),
+        radial-gradient(ellipse 70% 60% at var(--mouse-x, 50%) var(--mouse-y, 40%), rgba(var(--accent-rgb),.08) 0%, transparent 60%),
         var(--bg-base);
     }
     .hero__eyebrow {
-      font-size: 11px; font-weight: 700; letter-spacing: .18em;
-      text-transform: uppercase; color: var(--text-muted);
-      margin-bottom: 32px;
+      font-size: 12px; font-weight: 700; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 28px;
+      display: inline-flex; align-items: center; gap: 14px;
     }
+    .hero__eyebrow::after { content:""; width: 56px; height: 2px; background: var(--accent); }
     .hero__headline {
       font-family: var(--font-display);
       font-size: var(--size-display);
       font-weight: var(--weight-display);
-      line-height: var(--leading-display);
+      line-height: 0.98;
       letter-spacing: var(--tracking-display);
       color: var(--text-primary);
-      /* measure rule: at 64px min, need ≥ 9×64 = 576px — full grid width satisfies this */
-      /* no max-width in em (em-trap) — container (px-based) holds width */
-      margin-bottom: clamp(24px, 3vw, 40px);
+      margin-bottom: clamp(28px, 3.2vw, 44px);
+      text-wrap: balance;
     }
+    .hl-frame { display: block; }
+    /* The cycling clause is its own line — nothing follows the slot inline, so the
+       grid-stack slot is variable-width with NO gap and NO layout shift. The
+       cycling word is the hero's focal moment: oversized + vermillion + heavy. */
+    .hl-cycle { display: block; }
+    .hl-your { color: var(--text-primary); }
 
-    /* ─── CYCLING WORD (PRIMITIVE 1 — verbatim contract) ─────────── */
+    /* ─── CYCLING WORD (PRIMITIVE 1 — grid-stack contract) ─────────── */
     .cyc__slot {
       display: inline-grid;
       color: var(--accent);
+      font-weight: 700;
       vertical-align: baseline;
     }
     .cyc__w {
@@ -909,7 +941,9 @@
 
         <!-- PRIMITIVE 1: Cycling word hero — pasted verbatim, parameterized -->
         <h1 class="hero__headline" id="hero-headline">
-          Your product is great. Your&nbsp;<span class="cyc__slot" aria-hidden="true"><span class="cyc__w is-on">story</span><span class="cyc__w">pitch</span><span class="cyc__w">website</span><span class="cyc__w">brand</span></span> is a mess.
+          <span class="hl-frame">Your product is great.</span>
+          <span class="hl-cycle"><span class="hl-your">Your</span> <span class="cyc__slot" aria-hidden="true"><span class="cyc__w is-on">story</span><span class="cyc__w">pitch</span><span class="cyc__w">website</span><span class="cyc__w">brand</span></span></span>
+          <span class="hl-frame">is a mess.</span>
           <span class="sr-only">Your product is great. Your story, pitch, website, and brand are a mess.</span>
         </h1>
 
@@ -1235,7 +1269,7 @@
     </section>
 
     <!-- ─── SECTION 10: FINAL CTA (8C Immersive Close — dark) ─────── -->
-    <section class="final-cta bg-inverse" id="final-cta" aria-label="Start a project with Field">
+    <section class="final-cta bg-accent" id="final-cta" aria-label="Start a project with Field">
       <div class="container">
         <h2 class="final-statement reveal">You built something worth explaining well.</h2>
         <p class="final-sub reveal">Tell us what you're making. We'll tell you, honestly, whether we can help.</p>
