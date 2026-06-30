@@ -3,6 +3,25 @@ Last updated: 2026-06-29 (overnight: self-improving QA system + Field repair)
 
 ---
 
+## ▶ NEXT SESSION — Raise the ceiling (start here, fresh context)
+
+The floor is model-agnostic and proven (any model + docs → not-broken, on-brand, no slop). The **ceiling** (impressive, memorable, $25k) is the open work. Tier-B taste pass proved a build can pass every geometric check + be cleared by a fresh QA agent and still read timid. Ship gate is now geometry-pass AND taste-pass.
+
+**1. Richen the "make it sing" encoding** (so the next COLD build comes out bold, not just clean):
+- LAYOUT_CRAFT / a new EXCELLENCE section: composition counterweight (no dead-half), color-commitment guidance (Restrained vs Committed vs Drenched — bold brands must commit; one tiny accent on warm-white = timid), the signature-moment quality bar, density rhythm.
+- Pull the right lessons from the `impeccable` brand register (committed color, single-oversize-word hero, "safe = invisible", the editorial-typographic reflex trap) into our LLM-agnostic docs so any model applies them.
+
+**2. Reference-extraction protocol** (how the ceiling rises over time):
+- Define the protocol: admired site → NAME the exact technique(s) → codify as a tested COMPONENTS primitive + a LAYOUT_CRAFT rule + a REFERENCES.md entry → build agent deploys it.
+- First targets to extract (Chris flagged):
+  - **Zoom hero** — (a) animated multi-stop **mesh gradient** (richer than our single T3.1 mouse radial; Stripe-style ~soft 4–6 stop drift, CSS or canvas), and (b) **product video hero with scrim** (only when client has the asset). Build both as COMPONENTS primitives (mesh-gradient bg + video-hero with poster fallback, reduced-motion pause, lazy-load), add to MOTION_TIERS T3 + SECTION_PATTERNS Hero, and a REFERENCES entry. Pull the real Zoom hero to extract precisely.
+
+**3. Then:** run the full geometry+taste loop on a REAL client build (AWP), with the live `impeccable` Tier-B critic in the loop.
+
+Everything needed is in the committed docs — this is the model-agnostic handoff working as designed.
+
+---
+
 ## CONSOLIDATION — Repair loop wired + process cleaned (model-agnostic)
 
 Goal locked: **hand the factory to any suite of models → consistent $25k quality.** Quality lives in docs + tested primitives + a deterministic gate + repair loop, not in a prompt or one model's taste.
