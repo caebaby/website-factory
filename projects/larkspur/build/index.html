@@ -143,11 +143,16 @@ section{padding:var(--section-pad) 0;position:relative}
 .nav-toggle{display:none;background:none;border:none;color:var(--text-primary);cursor:pointer}
 
 /* ── Hero (1A The Split) ── */
-.hero{min-height:100vh;display:flex;align-items:center;padding-top:120px;
+.hero{position:relative;overflow:hidden;min-height:100vh;display:flex;align-items:center;padding:148px 0 80px;
   background:
     radial-gradient(ellipse at 18% 30%,rgba(var(--accent-rgb),.07) 0%,transparent 52%),
     radial-gradient(ellipse at 82% 75%,rgba(255,255,255,.025) 0%,transparent 50%),
     var(--bg-base);}
+/* cursor-reactive copper light */
+.hero-glow{position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(460px circle at var(--mx,28%) var(--my,42%), rgba(var(--accent-rgb),.11), transparent 68%);}
+.hero .wrap{position:relative;z-index:1}
+.coord .cglow-fade{transition:opacity .6s}
 .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}
 .hero h1{font-size:var(--size-display);line-height:var(--leading-display);margin-bottom:28px}
 .hero h1 em{font-style:normal;color:var(--accent)}
@@ -292,13 +297,42 @@ section{padding:var(--section-pad) 0;position:relative}
 .foot-legal{margin-top:34px;font-size:12px;line-height:1.7;color:var(--text-muted);max-width:90ch}
 .foot-bottom{margin-top:26px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-size:12.5px;color:var(--text-muted)}
 
+/* ── Pain: big question + system bridge ── */
+.big-q{font-size:clamp(30px,4.2vw,52px);font-weight:300;line-height:1.12;color:var(--text-primary);max-width:20ch}
+.big-q .q{color:var(--accent)}
+.pain-intro{font-size:var(--size-lead);color:var(--text-secondary);max-width:48ch;margin:0 0 40px}
+.system-bridge{margin-top:64px;border-top:1px solid var(--border);padding-top:48px;display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.system-bridge .bridge-copy{max-width:60ch}
+.system-bridge p{font-size:var(--size-lead);color:var(--text-secondary);line-height:1.5}
+.system-bridge .sys-name{margin-top:10px;font-family:var(--font-display);font-weight:400;font-size:clamp(22px,2.4vw,30px);color:var(--text-primary)}
+.system-bridge .sys-name b{color:var(--accent);font-weight:500}
+
+/* ── Insights / content section ── */
+.insights{background:var(--bg-surface);background-image:radial-gradient(ellipse at 15% 20%,rgba(var(--accent-rgb),.04) 0%,transparent 55%)}
+.insights .head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:56px;flex-wrap:wrap}
+.insights h2{font-size:var(--size-h2);max-width:18ch}
+.insights .head a{font-size:14.5px;font-weight:600;color:var(--accent);white-space:nowrap}
+.insights .head a .arrow{display:inline-block;transition:transform .3s var(--motion-ease)}
+.insights .head a:hover .arrow{transform:translateX(5px)}
+.ins-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--col-gap)}
+.icard{display:flex;flex-direction:column;padding:34px 32px;border:1px solid var(--border);border-radius:var(--radius);background:var(--bg-elevated);box-shadow:var(--shadow-card);transition:transform .35s var(--motion-ease),box-shadow .35s var(--motion-ease),border-color .35s;min-height:280px}
+.icard:hover{transform:translateY(-5px);box-shadow:var(--shadow-card-hover);border-color:rgba(var(--accent-rgb),.4)}
+.icard .tag{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
+.icard h3{font-size:21px;font-weight:500;line-height:1.3;margin-bottom:14px}
+.icard p{font-size:14.5px;line-height:1.6;color:var(--text-secondary);flex:1}
+.icard .read{margin-top:22px;font-size:13.5px;font-weight:600;color:var(--text-primary);display:inline-flex;gap:8px;align-items:center}
+.icard .read .arrow{transition:transform .3s var(--motion-ease)}
+.icard:hover .read{color:var(--accent)}
+.icard:hover .read .arrow{transform:translateX(4px)}
+
 /* ── Responsive ── */
 @media (max-width:1024px){
   :root{--section-pad:80px}
   .hero .wrap{grid-template-columns:1fr;gap:50px}
   .coord{max-width:400px}
-  .pain-grid,.icp-grid,.proof-stats,.proc-steps{grid-template-columns:repeat(2,1fr)}
+  .pain-grid,.icp-grid,.proof-stats,.proc-steps,.ins-grid{grid-template-columns:repeat(2,1fr)}
   .proc-line{display:none}
+  .system-bridge{flex-direction:column;align-items:flex-start}
 }
 @media (max-width:768px){
   .wrap{padding:0 24px}
@@ -306,7 +340,7 @@ section{padding:var(--section-pad) 0;position:relative}
   .nav-links{position:fixed;inset:0;flex-direction:column;justify-content:center;background:rgba(var(--bg-base-rgb),.97);backdrop-filter:blur(20px);transform:translateX(100%);transition:transform .4s var(--motion-ease);gap:28px;font-size:20px}
   .nav-links.open{transform:none}
   .nav-toggle{display:block;z-index:1001}
-  .svc-grid,.tg,.foot-top{grid-template-columns:1fr}
+  .svc-grid,.tg,.foot-top,.ins-grid{grid-template-columns:1fr}
   .trust .wrap{flex-direction:column;align-items:flex-start}
   .fit-card{padding:40px 26px}
   .pain-grid,.icp-grid,.proof-stats{grid-template-columns:1fr 1fr}
@@ -350,10 +384,11 @@ section{padding:var(--section-pad) 0;position:relative}
 
 <!-- ── HERO (1A The Split) ── -->
 <section class="hero" id="hero">
+  <div class="hero-glow" id="heroGlow" aria-hidden="true"></div>
   <div class="wrap">
     <div class="hero-copy">
       <div class="eyebrow">For founders after the exit</div>
-      <h1 id="heroH1">The hard part isn't the exit.<br>It's the <em>ninety days</em> after.</h1>
+      <h1 id="heroH1">The hard part isn't the exit. It's the <em>ninety days</em> after.</h1>
       <p class="lead">Newly liquid founders make irreversible decisions fast — under pressure, on a clock, with advice that's quietly conflicted. Larkspur is fee-only counsel for the one window where the mistakes are permanent.</p>
       <div class="hero-cta">
         <a href="#fit" class="btn btn-primary" id="heroCta">See if we're a fit <span class="arrow" aria-hidden="true">→</span></a>
@@ -365,36 +400,52 @@ section{padding:var(--section-pad) 0;position:relative}
     <!-- Signature moment: coordination graph -->
     <div class="coord" aria-hidden="true">
       <svg id="coordSvg" viewBox="0 0 460 460">
-        <!-- connectors -->
-        <g stroke="#C17F49" stroke-width="1.3" fill="none" opacity=".85">
-          <path class="cline" d="M230 230 L230 80"/>
-          <path class="cline" d="M230 230 L372.7 183.6"/>
-          <path class="cline" d="M230 230 L318.2 351.4"/>
-          <path class="cline" d="M230 230 L141.8 351.4"/>
-          <path class="cline" d="M230 230 L87.3 183.6"/>
-        </g>
-        <!-- outer ring -->
-        <circle class="cring" cx="230" cy="230" r="150" stroke="rgba(255,255,255,.10)" stroke-width="1" fill="none"/>
-        <!-- satellite nodes -->
-        <g class="cnode"><circle cx="230" cy="80" r="7" fill="#0D0D0D" stroke="#C17F49" stroke-width="1.5"/><text class="node-label" x="230" y="60" text-anchor="middle">Tax exposure</text></g>
-        <g class="cnode"><circle cx="372.7" cy="183.6" r="7" fill="#0D0D0D" stroke="#C17F49" stroke-width="1.5"/><text class="node-label" x="384" y="178" text-anchor="start">Timing</text></g>
-        <g class="cnode"><circle cx="318.2" cy="351.4" r="7" fill="#0D0D0D" stroke="#C17F49" stroke-width="1.5"/><text class="node-label" x="318.2" y="382" text-anchor="middle">Estate</text></g>
-        <g class="cnode"><circle cx="141.8" cy="351.4" r="7" fill="#0D0D0D" stroke="#C17F49" stroke-width="1.5"/><text class="node-label" x="141.8" y="382" text-anchor="middle">Diversification</text></g>
-        <g class="cnode"><circle cx="87.3" cy="183.6" r="7" fill="#0D0D0D" stroke="#C17F49" stroke-width="1.5"/><text class="node-label" x="76" y="178" text-anchor="end">Concentration</text></g>
-        <!-- center -->
-        <g class="ccenter">
-          <circle cx="230" cy="230" r="58" fill="#141414" stroke="rgba(193,127,73,.5)" stroke-width="1.5"/>
-          <circle cx="230" cy="230" r="58" fill="none" stroke="#C17F49" stroke-width="1.5" stroke-dasharray="3 6" opacity=".5"/>
-          <text class="center-sub" x="230" y="222" text-anchor="middle">Liquidity event</text>
-          <text class="center-label" x="230" y="244" text-anchor="middle">$18.4M</text>
+        <defs>
+          <radialGradient id="ctrGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#C17F49" stop-opacity=".30"/>
+            <stop offset="55%" stop-color="#C17F49" stop-opacity=".05"/>
+            <stop offset="100%" stop-color="#C17F49" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <g id="coordInner">
+          <!-- faint orbit ring -->
+          <circle class="cring" cx="230" cy="230" r="150" stroke="rgba(255,255,255,.06)" stroke-width="1" fill="none"/>
+          <!-- breathing copper glow behind center -->
+          <circle class="cglow" cx="230" cy="230" r="118" fill="url(#ctrGlow)"/>
+          <!-- spokes: from center-node EDGE (r58) to satellite EDGE (r~143) — no piercing -->
+          <g stroke="#C17F49" stroke-width="1.25" fill="none" opacity=".62" stroke-linecap="round">
+            <path class="cline" d="M230 172 L230 89"/>
+            <path class="cline" d="M285.2 212.1 L364.8 186.2"/>
+            <path class="cline" d="M264.1 276.9 L313.4 344.8"/>
+            <path class="cline" d="M195.9 276.9 L146.6 344.8"/>
+            <path class="cline" d="M174.8 212.1 L95.2 186.2"/>
+          </g>
+          <!-- satellite nodes (hollow ring + copper core) -->
+          <g class="cnode"><circle cx="230" cy="80" r="6.5" fill="#0D0D0D" stroke="#C17F49" stroke-width="1.3"/><circle cx="230" cy="80" r="2.4" fill="#C17F49"/><text class="node-label" x="230" y="58" text-anchor="middle">Tax exposure</text></g>
+          <g class="cnode"><circle cx="372.7" cy="183.6" r="6.5" fill="#0D0D0D" stroke="#C17F49" stroke-width="1.3"/><circle cx="372.7" cy="183.6" r="2.4" fill="#C17F49"/><text class="node-label" x="386" y="179" text-anchor="start">Timing</text></g>
+          <g class="cnode"><circle cx="318.2" cy="351.4" r="6.5" fill="#0D0D0D" stroke="#C17F49" stroke-width="1.3"/><circle cx="318.2" cy="351.4" r="2.4" fill="#C17F49"/><text class="node-label" x="318.2" y="384" text-anchor="middle">Estate</text></g>
+          <g class="cnode"><circle cx="141.8" cy="351.4" r="6.5" fill="#0D0D0D" stroke="#C17F49" stroke-width="1.3"/><circle cx="141.8" cy="351.4" r="2.4" fill="#C17F49"/><text class="node-label" x="141.8" y="384" text-anchor="middle">Diversification</text></g>
+          <g class="cnode"><circle cx="87.3" cy="183.6" r="6.5" fill="#0D0D0D" stroke="#C17F49" stroke-width="1.3"/><circle cx="87.3" cy="183.6" r="2.4" fill="#C17F49"/><text class="node-label" x="74" y="179" text-anchor="end">Concentration</text></g>
+          <!-- center (drawn last → clean join over spokes) -->
+          <g class="ccenter">
+            <circle cx="230" cy="230" r="58" fill="#121212" stroke="rgba(193,127,73,.55)" stroke-width="1.3"/>
+            <text class="center-sub" x="230" y="223" text-anchor="middle">Liquidity event</text>
+            <text class="center-label" x="230" y="245" text-anchor="middle">$18.4M</text>
+          </g>
         </g>
       </svg>
     </div>
   </div>
 </section>
 
-<!-- ── PAIN (2A Ticker + Cards) ── -->
+<!-- ── PAIN (2A Ticker + Cards) — opens with the big question, closes by naming the system ── -->
 <section class="pain" id="pain">
+  <div class="wrap">
+    <div class="reveal" style="margin-bottom:52px">
+      <div class="eyebrow">The question you're actually asking</div>
+      <h2 class="big-q">"The money's in. <span class="q">What do I do first</span> — and what can't I undo?"</h2>
+    </div>
+  </div>
   <div class="ticker" aria-hidden="true">
     <div class="ticker-track">
       <span class="ticker-item">A 9-figure tax bill you didn't model</span>
@@ -413,10 +464,7 @@ section{padding:var(--section-pad) 0;position:relative}
     </div>
   </div>
   <div class="wrap">
-    <div class="reveal" style="max-width:60ch;margin-bottom:56px">
-      <div class="eyebrow">What the window actually feels like</div>
-      <h2 style="font-size:var(--size-h2)">You're a world-class operator who has never done this exact thing once.</h2>
-    </div>
+    <p class="pain-intro reveal">You're a world-class operator who has never done this exact thing once. Most founders are holding all four of these at the same time:</p>
     <div class="pain-grid">
       <div class="pain-card reveal">
         <div class="pain-num">01</div>
@@ -438,6 +486,14 @@ section{padding:var(--section-pad) 0;position:relative}
         <h3>No one coordinates</h3>
         <p>Your CPA, attorney, and broker each see one slice. Nobody owns the whole board — so the pieces work against each other.</p>
       </div>
+    </div>
+    <!-- bridge: introduce the named system -->
+    <div class="system-bridge reveal">
+      <div class="bridge-copy">
+        <p>There's an order to the next ninety days. Most people find it one decision too late.</p>
+        <p class="sys-name">We built that order into a method — <b>The&nbsp;90-Day&nbsp;Sequence</b>.</p>
+      </div>
+      <a href="#process" class="btn btn-ghost">See the sequence <span class="arrow" aria-hidden="true">→</span></a>
     </div>
   </div>
 </section>
@@ -593,9 +649,9 @@ section{padding:var(--section-pad) 0;position:relative}
 <section class="proc" id="process">
   <div class="wrap">
     <div class="reveal">
-      <div class="eyebrow">How it works</div>
-      <h2>Exactly what happens when you reach out.</h2>
-      <p class="proc-sub lead">No mystery, no pressure. Four steps from first email to a coordinated plan — most of it inside your liquidity window.</p>
+      <div class="eyebrow">The 90-Day Sequence</div>
+      <h2>The order we run, every time.</h2>
+      <p class="proc-sub lead">No mystery, no pressure. Four moves from first email to a coordinated plan — most of it executed inside your liquidity window, while the deadlines still matter.</p>
     </div>
     <div class="proc-track">
       <svg class="proc-line" viewBox="0 0 1000 2" preserveAspectRatio="none" aria-hidden="true"><path id="procPath" d="M0 1 L1000 1" stroke="#C17F49" stroke-width="2" fill="none" opacity=".55"/></svg>
@@ -617,9 +673,9 @@ section{padding:var(--section-pad) 0;position:relative}
       <h2 style="font-size:var(--size-h2)">Specific outcomes, named people.</h2>
     </div>
     <div class="proof-stats">
-      <div class="stat reveal"><div class="num" data-count="1200" data-prefix="$" data-suffix="M">$0</div><div class="lab">Liquidity coordinated since 2009<sup style="color:var(--accent)">*</sup></div></div>
+      <div class="stat reveal"><div class="num" data-count="1.2" data-decimals="1" data-prefix="$" data-suffix="B">$0</div><div class="lab">Liquidity coordinated since 2009<sup style="color:var(--accent)">*</sup></div></div>
       <div class="stat reveal"><div class="num" data-count="94" data-suffix="%">0%</div><div class="lab">Of clients still with us after five years</div></div>
-      <div class="stat reveal"><div class="num" data-count="0" data-prefix="$" data-suffix="">$0</div><div class="lab">Earned from commissions or product sales</div></div>
+      <div class="stat reveal"><div class="num" data-count="100" data-suffix="%">0%</div><div class="lab">Fee-only — zero commissions, ever</div></div>
       <div class="stat reveal"><div class="num" data-count="48" data-suffix="hr">0</div><div class="lab">From first email to your fit read</div></div>
     </div>
     <div class="tg">
@@ -635,6 +691,39 @@ section{padding:var(--section-pad) 0;position:relative}
         <p class="quote">"They told me, in the first call, that I probably didn't need to diversify as fast as I feared. No one paid on AUM says that."</p>
         <div class="who"><span class="n">[VERIFY — client name]</span><span class="r">VP Engineering, post-IPO · Seattle</span></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── INSIGHTS / CONTENT (authority without pressure) ── -->
+<section class="insights" id="insights">
+  <div class="wrap">
+    <div class="head reveal">
+      <div>
+        <div class="eyebrow">Field notes</div>
+        <h2>What we wish every founder knew before the wire cleared.</h2>
+      </div>
+      <a href="#">All field notes <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+    <div class="ins-grid">
+      <a href="#" class="icard reveal">
+        <span class="tag">Tax</span>
+        <h3>QSBS: the $10M exclusion most founders miss by a few months</h3>
+        <p>Qualified Small Business Stock can shield millions from federal tax — but only if you held it long enough and the company qualified. Here's how to check before you sell.</p>
+        <span class="read">Read the note <span class="arrow" aria-hidden="true">→</span></span>
+      </a>
+      <a href="#" class="icard reveal">
+        <span class="tag">Equity</span>
+        <h3>The 83(b) clock, and why thirty days decides six figures</h3>
+        <p>One election, a tight window, and a number most founders only learn about after it's expired. What it does, who it's for, and the deadline that can't be extended.</p>
+        <span class="read">Read the note <span class="arrow" aria-hidden="true">→</span></span>
+      </a>
+      <a href="#" class="icard reveal">
+        <span class="tag">Strategy</span>
+        <h3>Your first diversification trade should be smaller than you think</h3>
+        <p>The instinct after a windfall is to act big and fast. The math — and the regret data — usually argue for a staged unwind. Here's the framing we use with clients.</p>
+        <span class="read">Read the note <span class="arrow" aria-hidden="true">→</span></span>
+      </a>
     </div>
   </div>
 </section>
@@ -779,19 +868,49 @@ if (window.gsap){
   if (document.fonts && document.fonts.ready){ document.fonts.ready.then(heroHeadline); }
   else { heroHeadline(); }
 
-  /* ── Signature moment: coordination graph ── */
+  /* ── Signature moment: coordination graph (clean draw + breathing glow + cursor parallax) ── */
   if (!reduced){
     const tl = gsap.timeline({delay:0.3});
-    tl.from('.ccenter',{scale:0.6,opacity:0,transformOrigin:'230px 230px',duration:0.7,ease:'back.out(1.6)'})
-      .from('.cring',{drawSVG:'50% 50%',opacity:0,duration:0.8,ease:'power2.inOut'},'-=0.2');
+    tl.from('.ccenter',{scale:0.7,opacity:0,transformOrigin:'230px 230px',duration:0.7,ease:'back.out(1.5)'})
+      .from('.cglow',{opacity:0,duration:0.9,ease:'power2.out'},'-=0.45')
+      .from('.cring',{drawSVG:'50% 50%',opacity:0,duration:0.9,ease:'power2.inOut'},'-=0.7');
     if (window.DrawSVGPlugin){
-      tl.from('.cline',{drawSVG:'0%',duration:0.7,ease:'power2.out',stagger:0.1},'-=0.4');
+      tl.from('.cline',{drawSVG:'0%',duration:0.6,ease:'power2.out',stagger:0.08},'-=0.55');
     }
-    tl.from('.cnode',{opacity:0,scale:0.4,transformOrigin:'center',duration:0.5,ease:'back.out(2)',stagger:0.08},'-=0.3');
-    // gentle continuous float
+    tl.from('.cnode',{opacity:0,scale:0.5,transformOrigin:'center',duration:0.5,ease:'back.out(2)',stagger:0.07},'-=0.3');
+    // breathing copper glow
+    gsap.to('.cglow',{scale:1.07,opacity:0.8,transformOrigin:'230px 230px',duration:4.5,ease:'sine.inOut',yoyo:true,repeat:-1});
+    // gentle per-node float
     gsap.utils.toArray('.cnode').forEach((n,i)=>{
-      gsap.to(n,{y:i%2?6:-6,duration:5+i*0.4,ease:'sine.inOut',yoyo:true,repeat:-1,delay:1+i*0.2});
+      gsap.to(n,{y:i%2?5:-5,duration:5+i*0.4,ease:'sine.inOut',yoyo:true,repeat:-1,delay:1+i*0.25});
     });
+    // cursor parallax: whole constellation drifts toward the pointer
+    const inner = document.getElementById('coordInner');
+    if (inner){
+      const ix = gsap.quickTo(inner,'x',{duration:0.9,ease:'power3.out'});
+      const iy = gsap.quickTo(inner,'y',{duration:0.9,ease:'power3.out'});
+      window.__coordParallax = (dx,dy)=>{ ix(dx*26); iy(dy*20); };
+    }
+  }
+
+  /* ── Hero: cursor-reactive copper light + graph parallax ── */
+  if (!reduced){
+    const hero = document.getElementById('hero');
+    const glow = document.getElementById('heroGlow');
+    if (hero){
+      let raf=0;
+      hero.addEventListener('mousemove', e=>{
+        const r = hero.getBoundingClientRect();
+        const px = (e.clientX-r.left)/r.width, py=(e.clientY-r.top)/r.height;
+        if (raf) return;
+        raf = requestAnimationFrame(()=>{
+          raf=0;
+          if (glow){ glow.style.setProperty('--mx',(px*100)+'%'); glow.style.setProperty('--my',(py*100)+'%'); }
+          if (window.__coordParallax) window.__coordParallax(px-0.5, py-0.5);
+        });
+      });
+      hero.addEventListener('mouseleave', ()=>{ if(window.__coordParallax) window.__coordParallax(0,0); });
+    }
   }
 
   /* ── Magnetic primary CTA (quickTo) ── */
@@ -815,13 +934,14 @@ if (window.gsap){
       scrollTrigger:{trigger:'.proc-track',start:'top 72%',once:true}});
   }
 
-  /* ── Stat counters: blur-to-sharp ── */
+  /* ── Stat counters: blur-to-sharp (decimal-aware) ── */
   gsap.utils.toArray('.stat .num').forEach(el=>{
     const target=parseFloat(el.dataset.count);
     const prefix=el.dataset.prefix||''; const suffix=el.dataset.suffix||'';
+    const dec=parseInt(el.dataset.decimals||'0');
     const render=v=>{
-      let n=Math.ceil(v);
-      el.innerHTML=prefix+n.toLocaleString()+(suffix?'<span class="u">'+suffix+'</span>':'');
+      const n = dec ? v.toFixed(dec) : Math.ceil(v).toLocaleString();
+      el.innerHTML=prefix+n+(suffix?'<span class="u">'+suffix+'</span>':'');
     };
     if (reduced){ render(target); return; }
     const obj={v:0};
