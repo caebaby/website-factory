@@ -3,6 +3,29 @@ Last updated: 2026-06-29
 
 ---
 
+## System State: Token System WIRED + Validated by Direction 01
+
+The 5-dial token system is now live in the pipeline (the archetype fork is dead), and the first end-to-end proof build (Larkspur) is built and verified. The Opus audit's mid-migration blockers are resolved.
+
+### Resolved this session (from the Opus audit)
+- ✅ Agents 02.5 / 04 / 05 rewired from the dead archetype system to tokens + patterns + tiers + fundamentals + page-system
+- ✅ Font contradiction fixed — Inter/DM Sans removed from DESIGN_TOKENS, replaced with Fontshare (Cabinet Grotesk, Switzer, General Sans); DESIGN.md ban and token mandate now agree
+- ✅ GSAP-vs-vanilla resolved — DESIGN.md + Agent 04 now permit GSAP/Lenis CDN (supersedes "vanilla JS only")
+- ✅ Missing TRUST pattern added to SECTION_PATTERNS (manifest core #4) + the Design Brief template
+- ✅ RGB-triplet rule + cross-doc precedence rule added to DESIGN_TOKENS
+- ✅ DESIGN.md reframed as the tone-AGNOSTIC quality floor (light/mixed/dark all valid)
+- ✅ DESIGN_DIRECTIONS.md marked DEPRECATED
+
+### Direction 01 — Larkspur Private Wealth (proof of concept) ✅ BUILT + VERIFIED
+- `projects/larkspur/` — brief + homepage built through the new system
+- Config: dark / balanced / expressive / modernist-sans / graphic-system / copper accent
+- **Deliberately the inverse of AWP** (light / editorial-serif / navy-gold / photography) to prove the system makes unrelated sites
+- Verified in preview: 9 sections render, dark tokens correct (#0D0D0D base, #1C1C1C surface), 3-layer shadows, copper accent in exactly 3 places, Fontshare fonts (no banned fonts), fit-assessment multi-step works, no-JS/GSAP-fail safe, prefers-reduced-motion handled
+- Signature moment: custom SVG coordination graph in hero (DrawSVG animated)
+- Hero screenshot = genuinely $25k-grade dark execution
+
+---
+
 ## System State: Design System Foundation COMPLETE
 
 The editorial-luxury template now has a full 7-document design system. Every build agent reads these before touching code.
