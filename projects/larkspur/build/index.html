@@ -143,7 +143,7 @@ section{padding:var(--section-pad) 0;position:relative}
 .nav-toggle{display:none;background:none;border:none;color:var(--text-primary);cursor:pointer}
 
 /* ── Hero (1A The Split) ── */
-.hero{position:relative;overflow:hidden;min-height:100vh;display:flex;align-items:center;padding:148px 0 80px;
+.hero{position:relative;overflow:hidden;min-height:88vh;display:flex;align-items:center;padding:132px 0 56px;
   background:
     radial-gradient(ellipse at 18% 30%,rgba(var(--accent-rgb),.07) 0%,transparent 52%),
     radial-gradient(ellipse at 82% 75%,rgba(255,255,255,.025) 0%,transparent 50%),
@@ -254,7 +254,9 @@ section{padding:var(--section-pad) 0;position:relative}
 .proc h2{font-size:var(--size-h2);margin-bottom:14px;max-width:22ch}
 .proc-sub{max-width:50ch;margin-bottom:70px}
 .proc-track{position:relative}
-.proc-line{position:absolute;top:28px;left:5%;right:5%;height:2px;overflow:visible}
+.proc-line{position:absolute;top:28px;left:4%;right:5%;height:2px;overflow:visible}
+.proc-ongoing{position:absolute;top:20px;right:0;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);opacity:.85;display:flex;align-items:center;gap:7px}
+.proc-ongoing .dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
 .proc-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--col-gap);position:relative}
 .proc-step{text-align:left}
 .proc-node{width:56px;height:56px;border-radius:50%;background:var(--bg-elevated);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:18px;color:var(--accent);margin-bottom:26px;box-shadow:var(--shadow-card);position:relative;z-index:2}
@@ -297,6 +299,12 @@ section{padding:var(--section-pad) 0;position:relative}
 .foot-legal{margin-top:34px;font-size:12px;line-height:1.7;color:var(--text-muted);max-width:90ch}
 .foot-bottom{margin-top:26px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-size:12.5px;color:var(--text-muted)}
 
+/* ── Balanced section header (heading left, supporting line right) — kills the left-pinned void ── */
+.sec-head{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:end;margin-bottom:60px}
+.sec-head>div:first-child{min-width:0}
+.sec-head h2{margin:0}
+.sec-head .lead{margin:0;padding-bottom:4px}
+
 /* ── Pain: big question + system bridge ── */
 .big-q{font-size:clamp(30px,4.2vw,52px);font-weight:300;line-height:1.12;color:var(--text-primary);max-width:20ch}
 .big-q .q{color:var(--accent)}
@@ -331,8 +339,10 @@ section{padding:var(--section-pad) 0;position:relative}
   .hero .wrap{grid-template-columns:1fr;gap:50px}
   .coord{max-width:400px}
   .pain-grid,.icp-grid,.proof-stats,.proc-steps,.ins-grid{grid-template-columns:repeat(2,1fr)}
-  .proc-line{display:none}
+  .proc-line,.proc-ongoing{display:none}
   .system-bridge{flex-direction:column;align-items:flex-start}
+  .sec-head{grid-template-columns:1fr;gap:20px;align-items:start}
+  .sec-head .lead{padding-bottom:0}
 }
 @media (max-width:768px){
   .wrap{padding:0 24px}
@@ -438,14 +448,8 @@ section{padding:var(--section-pad) 0;position:relative}
   </div>
 </section>
 
-<!-- ── PAIN (2A Ticker + Cards) — opens with the big question, closes by naming the system ── -->
-<section class="pain" id="pain">
-  <div class="wrap">
-    <div class="reveal" style="margin-bottom:52px">
-      <div class="eyebrow">The question you're actually asking</div>
-      <h2 class="big-q">"The money's in. <span class="q">What do I do first</span> — and what can't I undo?"</h2>
-    </div>
-  </div>
+<!-- ── PAIN (2A Ticker + Cards) — ticker snug under hero, then the big question, then pains ── -->
+<section class="pain" id="pain" style="padding-top:0">
   <div class="ticker" aria-hidden="true">
     <div class="ticker-track">
       <span class="ticker-item">A 9-figure tax bill you didn't model</span>
@@ -464,7 +468,13 @@ section{padding:var(--section-pad) 0;position:relative}
     </div>
   </div>
   <div class="wrap">
-    <p class="pain-intro reveal">You're a world-class operator who has never done this exact thing once. Most founders are holding all four of these at the same time:</p>
+    <div class="sec-head reveal" style="margin-bottom:44px">
+      <div>
+        <div class="eyebrow">The question you're actually asking</div>
+        <h2 class="big-q">"The money's in. <span class="q">What do I do first</span> — and what can't I undo?"</h2>
+      </div>
+      <p class="lead pain-intro">You're a world-class operator who has never done this exact thing once. Most founders are holding all four of these worries at the same time:</p>
+    </div>
     <div class="pain-grid">
       <div class="pain-card reveal">
         <div class="pain-num">01</div>
@@ -517,9 +527,11 @@ section{padding:var(--section-pad) 0;position:relative}
 
 <!-- ── ICP SELF-SORT (3A Profile Cards) ── -->
 <section class="icp" id="who">
-  <div class="head reveal">
-    <div class="eyebrow">Who we work with</div>
-    <h2>We work with one kind of person at one kind of moment.</h2>
+  <div class="sec-head reveal">
+    <div>
+      <div class="eyebrow">Who we work with</div>
+      <h2>We work with one kind of person at one kind of moment.</h2>
+    </div>
     <p class="lead">Not "high-net-worth individuals." Founders and operators in the specific months around a liquidity event. If that's you, you'll recognize yourself below.</p>
   </div>
   <div class="icp-grid">
@@ -618,8 +630,13 @@ section{padding:var(--section-pad) 0;position:relative}
 <!-- ── SERVICES (5B Outcome Cards) ── -->
 <section class="svc" id="services">
   <div class="wrap">
-    <div class="reveal"><div class="eyebrow">What we actually do</div>
-    <h2>Four moves that decide the next thirty years.</h2></div>
+    <div class="sec-head reveal">
+      <div>
+        <div class="eyebrow">What we actually do</div>
+        <h2>Four moves that decide the next thirty years.</h2>
+      </div>
+      <p class="lead">Each one has its own deadline. Together they decide how much of this windfall actually reaches your family — and your future.</p>
+    </div>
     <div class="svc-grid">
       <div class="svc-card reveal">
         <svg class="mark" viewBox="0 0 38 38" fill="none"><path d="M19 4l13 5v8c0 8-5.5 13-13 17C11 30 6 25 6 17V9l13-5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
@@ -648,13 +665,23 @@ section{padding:var(--section-pad) 0;position:relative}
 <!-- ── PROCESS (6A Timeline) ── -->
 <section class="proc" id="process">
   <div class="wrap">
-    <div class="reveal">
-      <div class="eyebrow">The 90-Day Sequence</div>
-      <h2>The order we run, every time.</h2>
-      <p class="proc-sub lead">No mystery, no pressure. Four moves from first email to a coordinated plan — most of it executed inside your liquidity window, while the deadlines still matter.</p>
+    <div class="sec-head reveal">
+      <div>
+        <div class="eyebrow">The 90-Day Sequence</div>
+        <h2>The order we run, every time.</h2>
+      </div>
+      <p class="lead">No mystery, no pressure. Four moves from first email to a coordinated plan — most of it executed inside your liquidity window, while the deadlines still matter.</p>
     </div>
     <div class="proc-track">
-      <svg class="proc-line" viewBox="0 0 1000 2" preserveAspectRatio="none" aria-hidden="true"><path id="procPath" d="M0 1 L1000 1" stroke="#C17F49" stroke-width="2" fill="none" opacity=".55"/></svg>
+      <svg class="proc-line" viewBox="0 0 1000 2" preserveAspectRatio="none" aria-hidden="true">
+        <defs><linearGradient id="procGrad" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0" stop-color="#C17F49" stop-opacity=".55"/>
+          <stop offset="0.74" stop-color="#C17F49" stop-opacity=".5"/>
+          <stop offset="1" stop-color="#C17F49" stop-opacity="0"/>
+        </linearGradient></defs>
+        <path id="procPath" d="M0 1 L1000 1" stroke="url(#procGrad)" stroke-width="2" fill="none"/>
+      </svg>
+      <div class="proc-ongoing" aria-hidden="true"><span class="dot"></span> Ongoing</div>
       <div class="proc-steps">
         <div class="proc-step reveal"><div class="proc-node">01</div><h3>Fit call</h3><p>A 20-minute call to confirm we're the right counsel for your situation — and to tell you honestly if we're not.</p></div>
         <div class="proc-step reveal"><div class="proc-node">02</div><h3>The board</h3><p>We map every moving piece — tax, concentration, estate, timing — into one picture, with your CPA and attorney in the room.</p></div>
@@ -668,9 +695,12 @@ section{padding:var(--section-pad) 0;position:relative}
 <!-- ── PROOF (7A Stats + Testimonials) ── -->
 <section class="proof" id="proof">
   <div class="wrap">
-    <div class="reveal" style="max-width:54ch;margin-bottom:64px">
-      <div class="eyebrow">The record</div>
-      <h2 style="font-size:var(--size-h2)">Specific outcomes, named people.</h2>
+    <div class="sec-head reveal">
+      <div>
+        <div class="eyebrow">The record</div>
+        <h2 style="font-size:var(--size-h2)">Specific outcomes, named people.</h2>
+      </div>
+      <p class="lead">Real numbers, real names, real timelines — the opposite of the vague reassurance most advisors offer.</p>
     </div>
     <div class="proof-stats">
       <div class="stat reveal"><div class="num" data-count="1.2" data-decimals="1" data-prefix="$" data-suffix="B">$0</div><div class="lab">Liquidity coordinated since 2009<sup style="color:var(--accent)">*</sup></div></div>
