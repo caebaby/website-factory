@@ -28,7 +28,7 @@ If a build is bad, that's a gap in the docs / primitives / checks — fix the sy
 
 **Parallelism:** 01+02 together; 02.5 after 02; 03 parallel with 02.5; 04 after 02.5+03; 05 after 04.
 
-**The QA repair loop (Agent 05 owns it):** RENDER → INSPECT (`qa/visual-checks.js`, deterministic) → CRITIQUE (Tier-B taste critic, detect-only) → verdict → `repair(defects)` to Agent 04 (scoped) → RE-VERIFY. Hard cap 3 iterations; escalate on stall/regression. Every caught defect → a new check / rule / blessed component. See `FACTORY_LEARNING.md`.
+**The QA repair loop:** the orchestrator spawns a FRESH, independent agent for every build, repair, and verification — **the builder never grades its own work** (self-verification is how a build once shipped a collapsed signature element while reporting "verified"). The loop: RENDER → INSPECT (`node qa/run-checks.js <file> '<accent>'` — a zero-dep headless gate that exits 0/1 on the P0 count) → CRITIQUE (Tier-B taste critic, detect-only) → verdict → `repair(defects)` to a fresh Agent 04 (scoped) → RE-VERIFY with a fresh Agent 05. Hard cap 3 iterations; escalate on stall/regression. Every caught defect → a new check / rule / blessed component. See `FACTORY_LEARNING.md`.
 
 ---
 
