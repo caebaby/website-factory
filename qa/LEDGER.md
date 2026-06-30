@@ -98,6 +98,25 @@ Append-only. Each entry: what broke, why, how it was caught, and what permanent 
 - **Verification stack used:** `node qa/run-checks.js` (geometry, headless Chrome) + `npx impeccable detect` (a11y/slop deterministic) + an independent design-director subagent (Tier-B taste). Ship = geometry-pass AND taste-pass; achieved.
 - **Status:** ✅ proof shipped as a known-good replay-corpus fixture: `qa/fixtures/signature-hero-proof.html`.
 
+### Episode — Chris-curated reference extraction, 7 sites (2026-06-30)
+- **Trigger:** Chris supplied 7 admired sites with per-site commentary (BetterUp, Maven, Modern Health, Facet, Wealthspire, Work.co, Instrument) to extract into the playbook — the first real run of the RULE #4 protocol on a batch.
+- **What was codified:**
+  - **COMPONENTS Primitive 6** — scroll-driven section color theming (from instrument.com): paired-theme sections, fixed-layer crossfade, text inversion; floor = solid readable sections with no JS. Verified: geometry 0 P0; mechanism confirmed live (scrolling swaps `--theme-bg`/`--theme-fg`/`--theme-accent`, fixed layer crossfades, body text inverts). Fixture: `qa/fixtures/scroll-color-theming.html`.
+  - **LAYOUT_CRAFT 8.7** — premium has more than one register (warm-human, photography-led, from Maven) — counters the cool-editorial default reflex.
+  - **LAYOUT_CRAFT 8.3 "Committed-on-clean"** (work.co) — clean ≠ timid; one bold color punches harder on a minimal ground.
+  - **LAYOUT_CRAFT 9.3** — the scroll-color-theming rule (pairs Primitive 6).
+  - **LAYOUT_CRAFT PART 10** — content-block archetype library + the no-two-adjacent-alike rhythm rule (BetterUp/Maven section variety; the real "next level").
+  - **LAYOUT_CRAFT PART 7 dated-UI tells** (wealthspire.com) — beveled buttons, 2010s flat-icon packs, web-2.0 chrome: "competent but 2012" is its own way to lose.
+  - **docs/REFERENCES.md** — Chris-Curated Extractions section (7 entries with STEAL/AVOID tags; his "not a fan of their branding" = take structure, never palette/chrome).
+- **`[VERIFY]` open:** BetterUp's exact hero (text scrape saw a typographic word-cycle hero — our Primitive 1 — but Chris referenced a "hero image"; may be a background visual). Wealthspire exact hero layout. Instrument exact palette/timing. Worth a live browse pass before relying on those specifics.
+- **Status:** ✅ extraction codified + Primitive 6 verified. Next batch of refs/commentary from Chris pending.
+
+### LED-010 — `accent-fill-absent` false-fires on scroll-themed pages (known limitation, accepted)
+- **Context:** the scroll-color-theming fixture trips `accent-fill-absent` (P2) because its accent *ground* (section 4 + the per-theme accent) only appears on scroll; at the frozen top state the fixed color layer is the first (dark) theme, so no accent fill is statically visible.
+- **Why it's accepted:** the check is P2 informational and explicitly defers to the Tier-B critic; the page demonstrably commits to accent (it's just off-screen at inspect time). Not worth coupling the deterministic check to Primitive 6's data attributes.
+- **Lesson:** the static gate inspects ONE scroll state — any commitment that only manifests on scroll (themed grounds, scroll-revealed drench) is the taste critic's call, not the gate's. Documented so it isn't "fixed" into a brittle special-case.
+- **Status:** ✅ documented, accepted.
+
 ---
 
 ## Open doc tensions to resolve (found during the Field build)

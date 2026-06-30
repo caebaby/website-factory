@@ -72,6 +72,43 @@ A reference with no primitive + rule + entry is just a bookmark. Don't add bookm
 
 ---
 
+## Chris-Curated Extractions (2026-06-30)
+
+Chris-supplied references with his own commentary (the curation signal). Each is tagged with what to **STEAL** and what to **AVOID** — his "not a fan of their branding" is a load-bearing instruction: take the structure/technique, never the palette/chrome he flagged. Artifacts produced are linked; `[VERIFY]` = confirm against the live site before relying on the exact spec.
+
+### betterup.com ⭐ (Chris: "one of the better examples… quality, layout, hero, content blocks, sections all next level")
+- **Hero:** centered typographic hero with an **animated word-substitution** headline ("Better ___ across the board" cycling performance/productivity/innovation/retention/revenue…). This is *our* cycling-word move (COMPONENTS Primitive 1) — cross-confirmed by a best-in-class site. `[VERIFY]` whether the current hero also carries a background photo/video (Chris referenced a "hero image"; text scrape saw none — likely a background visual the scraper skipped).
+- **STEAL — the section-rhythm system (the real "next level"):** centered hero → social-proof **metric cards** (logo + quantified result + "Read story") → logo bar → **split narrative + staggered-angle product-screenshot carousel** → 3-icon platform row → **full-bleed image with overlaid white stat blocks** → 4-product card grid → CTA over a full-bleed team photo → dark footer. *No two adjacent sections share a layout.* → codified in LAYOUT_CRAFT PART 10 (content-block archetypes + section rhythm).
+- **STEAL — quantified proof in every card** ("21% uptick in workforce efficiency"), not vague claims.
+- Register: enterprise B2B, ~85% neutral / 10–15% accent. **[DESIGN + CONVERTS]**
+
+### mavenclinic.com ⭐ (Chris: "love everything about this")
+- **Hero:** split-asymmetric — copy left in generous whitespace, **rotating documentary lifestyle photography** right (real pregnancy/newborn/family moments, warm natural light, zero clinical stock). → SECTION_PATTERNS 1A, but with the **warm-human-premium imagery rule** (LAYOUT_CRAFT 8.7).
+- **STEAL — the warm-human-premium register:** Maven True Green (muted sophisticated teal-green, ~10% of the page), 60%+ whitespace, **oversized bold stat numbers (72px+)**, member testimonials on a **warm sage/mint background** with real member photos. Proves premium ≠ cold — a different lane from our cool editorial-luxury default. → LAYOUT_CRAFT 8.7 (warm-human-premium) + 8.3 example.
+- **STEAL — dense↔breathing alternation:** packed feature lists alternate with airy single-stat showcases (density rhythm 8.5 done right).
+- **AVOID:** nothing (Chris's full-steal favorite). **[DESIGN + CONVERTS]**
+
+### modernhealth.com (Chris: "all around great quality though not a HUGE fan of their brand colors")
+- **STEAL:** overall structural quality, section variety, type hierarchy, generous whitespace.
+- **AVOID:** their brand palette — do not lift their colors. Apply the structure with the client's own tokens. **[CONVERTS / structure only — not the palette]**
+
+### work.co (Chris: "clean with the contrast of the bold orange… but too simple")
+- **STEAL — bold-color-contrast-on-clean:** a near-neutral, very clean page where a single **bold orange** carries the brand in committed bursts (a Committed color strategy on a minimal ground). A concrete LAYOUT_CRAFT 8.3 "Committed-on-clean" example: clean ≠ timid when one saturated color is allowed to punch.
+- **AVOID / NOTE:** it's *too sparse* for our 9-section conversion skeleton — steal the **color-contrast principle**, not the minimal content density. **[DESIGN ONLY — principle, not IA]**
+
+### facet.com (Chris: "clean and really simple, not a fan of their branding choices")
+- **STEAL:** the clean, simple, uncluttered layout discipline and spacing restraint.
+- **AVOID:** their branding/palette choices. **[DESIGN ONLY — layout discipline, not brand]**
+
+### wealthspire.com (Chris: "like the hero section, but DO NOT like the buttons/icons — a bit dated")
+- **STEAL — the hero section composition only.** `[VERIFY]` exact hero layout against the live site before reuse.
+- **AVOID — the dated UI chrome:** their **buttons and icon set read dated** (beveled/skeuomorphic / older flat-icon library). → codified as an explicit anti-pattern in LAYOUT_CRAFT PART 7 (dated-UI tells): no beveled/gradient-bevel buttons, no generic 2010s flat-icon packs; use the DESIGN.md button system + custom/duotone or single-weight line icons. **[hero structure only — AVOID the chrome]**
+
+### instrument.com (Chris: "love how this site changes colors as you scroll")
+- **STEAL — scroll-driven page recoloring:** the whole ground crossfades between bold flat color themes as you scroll, with text/UI inverting to stay legible. → **Extracted** as COMPONENTS Primitive 6 (scroll-driven section color theming) + LAYOUT_CRAFT 9.3 + the verified fixture `qa/fixtures/scroll-color-theming.html`. Built palette-agnostic (each build supplies its own paired themes) — more reusable than copying Instrument's exact colors. `[VERIFY]` Instrument's exact palette/timing if a close match is ever wanted. **[DESIGN — technique extracted]**
+
+---
+
 ## Section-Mapped References
 
 ### Hero Section

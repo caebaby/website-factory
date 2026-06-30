@@ -231,6 +231,45 @@ Extracted from Zoom / Mercury / Linear product-video heroes (see `docs/REFERENCE
 
 ---
 
+## PRIMITIVE 6 — Scroll-driven section color theming
+**CONTRACT:** never blank, never unreadable (every section paints its OWN solid theme as the floor — readable with no JS and under reduced-motion); with JS + motion-OK, the whole page background + text color **crossfade smoothly** between section themes as you scroll; text/UI invert with the theme so contrast is always preserved; layout unaffected (the crossfading layer is `position:fixed; z-index:-1`).
+
+Extracted from **instrument.com** (the page recolors as you scroll — see `docs/REFERENCES.md` → Color/Motion). The non-obvious correctness fact (why this is frozen): the smooth page-level crossfade is a JS *enhancement*, so the **floor must stand alone** — each `.tsec` carries its own `data-bg`/`data-fg` and paints them as a solid, readable block. JS then makes the sections transparent and reveals a single fixed background layer that transitions its color; without JS (or under reduced-motion) you simply get solid, correctly-colored, readable sections. Every theme is a *paired* `{bg, fg}` chosen for contrast — that pairing is the whole reason the inversion stays legible.
+
+```html
+<div class="theme-bg" aria-hidden="true"></div>
+<main>
+  <section class="tsec" data-bg="#0E0E0C" data-fg="#FAFAF8" data-accent="#DC3C20"><!-- dark theme --></section>
+  <section class="tsec" data-bg="#FAFAF8" data-fg="#14140F" data-accent="#DC3C20"><!-- light theme --></section>
+  <section class="tsec" data-bg="#103B2E" data-fg="#EAF3EE" data-accent="#E7A23C"><!-- jewel theme --></section>
+</main>
+<style>
+  :root{ --theme-bg:#FAFAF8; --theme-fg:#14140F; --theme-accent:#DC3C20; }
+  .theme-bg{ position:fixed; inset:0; z-index:-1; background:var(--theme-bg); transition:background-color .7s ease; }
+  /* FLOOR (no-JS / reduced-motion): each section paints its own solid theme — always readable */
+  .tsec{ background:var(--sec-bg); color:var(--sec-fg); }
+  /* ENHANCED (JS + motion-OK): sections go transparent so the fixed layer shows through and crossfades */
+  html.theme-js .tsec{ background:transparent; }
+  html.theme-js body{ color:var(--theme-fg); transition:color .7s ease; }
+  @media (prefers-reduced-motion:reduce){ .theme-bg, html.theme-js body{ transition:none; } }
+</style>
+<script>
+(function(){
+  var secs=[].slice.call(document.querySelectorAll('.tsec')); if(!secs.length) return;
+  secs.forEach(function(s){ s.style.setProperty('--sec-bg',s.dataset.bg); s.style.setProperty('--sec-fg',s.dataset.fg); }); // floor
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return; // stay on the floor
+  var r=document.documentElement; r.classList.add('theme-js');
+  function apply(s){ r.style.setProperty('--theme-bg',s.dataset.bg); r.style.setProperty('--theme-fg',s.dataset.fg); if(s.dataset.accent) r.style.setProperty('--theme-accent',s.dataset.accent); }
+  apply(secs[0]);
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting && e.intersectionRatio>=0.55) apply(e.target); }); },{threshold:[0.55]});
+  secs.forEach(function(s){ io.observe(s); });
+})();
+</script>
+```
+**QA invariants:** each theme's `{data-bg, data-fg}` must clear ≥ 4.5:1 body / 3:1 large (the pairing is the contract — never set a light fg on a light bg theme); `.theme-bg` holds no content (won't trip `collapsed-height`); no `viewport-overflow` from the fixed layer. **Use sparingly** — 3–5 theme moves across a long page is a signature; recoloring every section is noise. The accent should also swap per theme (`--theme-accent`) so CTAs stay legible on each ground.
+
+---
+
 ## RGB-triplet rule (also a frozen contract)
 Every hex token that feeds a shadow/blur (`--accent`, `--primary`/`--text-primary`, `--bg-base`, `--bg-inverse`) MUST also define its `--*-rgb` triplet. Missing triplets silently break every `rgba(var(--x-rgb), …)` shadow. (See DESIGN_TOKENS.)
 

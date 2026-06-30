@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll Color Theming Proof — Primitive 6 (Instrument)</title>
+  <meta name="description" content="Replay-corpus fixture: COMPONENTS Primitive 6 — scroll-driven section color theming. Page recolors smoothly as you scroll; solid readable sections as the no-JS floor.">
+
+  <!-- Verifies COMPONENTS Primitive 6 (extracted from instrument.com). Floor: each .tsec
+       paints its own solid theme (readable, no-JS). Enhanced: a fixed layer crossfades
+       between section themes on scroll, text inverts. Gate: 0 P0 expected. -->
+
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --theme-bg:#FAFAF8; --theme-fg:#14140F; --theme-accent:#DC3C20;
+      --font:'Satoshi',sans-serif;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{font-size:16px;}
+    body{font-family:var(--font);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+    .container{max-width:1180px;margin:0 auto;padding:0 80px;}
+    @media (max-width:768px){.container{padding:0 24px;}}
+
+    /* fixed crossfading color layer */
+    .theme-bg{position:fixed;inset:0;z-index:-1;background:var(--theme-bg);transition:background-color .7s ease;}
+
+    /* FLOOR: each section paints its own solid theme (readable with no JS / reduced-motion) */
+    .tsec{background:var(--sec-bg);color:var(--sec-fg);padding:clamp(96px,16vh,180px) 0;}
+    /* ENHANCED: JS makes sections transparent so the fixed layer crossfades through */
+    html.theme-js .tsec{background:transparent;}
+    html.theme-js body{color:var(--theme-fg);transition:color .7s ease;}
+    @media (prefers-reduced-motion:reduce){.theme-bg,html.theme-js body{transition:none;}}
+
+    .eyebrow{font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;opacity:.6;margin-bottom:24px;}
+    .tsec h2{font-family:var(--font);font-size:clamp(40px,6vw,92px);font-weight:500;line-height:1.0;letter-spacing:-.035em;max-width:15ch;margin-bottom:26px;}
+    .tsec p{font-size:clamp(17px,1.6vw,21px);line-height:1.55;max-width:60ch;opacity:.85;}
+    .tag{display:inline-block;margin-top:34px;padding:13px 24px;font-weight:700;font-size:14px;background:var(--theme-accent);color:#fff;}
+    .swatch{margin-top:18px;font-size:13px;opacity:.6;letter-spacing:.04em;}
+  </style>
+</head>
+<body>
+  <div class="theme-bg" aria-hidden="true"></div>
+
+  <main>
+    <section class="tsec" data-bg="#0E0E0C" data-fg="#FAFAF8" data-accent="#DC3C20" aria-label="Dark theme section">
+      <div class="container">
+        <p class="eyebrow">Scroll to recolor the page</p>
+        <h2>The page is the canvas, not the frame.</h2>
+        <p>As you scroll, the whole ground shifts color and the type inverts to stay legible. Each section declares a paired theme; the background crossfades between them.</p>
+        <span class="tag">Dark · #0E0E0C</span>
+        <div class="swatch">data-bg #0E0E0C / data-fg #FAFAF8</div>
+      </div>
+    </section>
+
+    <section class="tsec" data-bg="#FAFAF8" data-fg="#14140F" data-accent="#DC3C20" aria-label="Light theme section">
+      <div class="container">
+        <p class="eyebrow">Smooth, not abrupt</p>
+        <h2>A 0.7s crossfade reads as intentional, not a flicker.</h2>
+        <p>The transition is a single CSS animation on a fixed layer, driven by an IntersectionObserver at the section midpoint. No scroll-jank, no per-frame work.</p>
+        <span class="tag">Light · #FAFAF8</span>
+        <div class="swatch">data-bg #FAFAF8 / data-fg #14140F</div>
+      </div>
+    </section>
+
+    <section class="tsec" data-bg="#103B2E" data-fg="#EAF3EE" data-accent="#E7A23C" aria-label="Jewel theme section">
+      <div class="container">
+        <p class="eyebrow">The accent swaps too</p>
+        <h2>On a jewel ground the accent shifts to stay visible.</h2>
+        <p>Each theme carries its own accent so a CTA never disappears against the new background. The pairing of background, foreground, and accent is the contract.</p>
+        <span class="tag">Jewel · #103B2E</span>
+        <div class="swatch">data-bg #103B2E / data-fg #EAF3EE / accent #E7A23C</div>
+      </div>
+    </section>
+
+    <section class="tsec" data-bg="#DC3C20" data-fg="#FFF6F2" data-accent="#0E0E0C" aria-label="Accent theme section">
+      <div class="container">
+        <p class="eyebrow">Use sparingly</p>
+        <h2>Three to five theme moves is a signature. Recoloring every section is noise.</h2>
+        <p>Without JS or under reduced-motion, every section above is still a solid, readable, correctly-colored block. The crossfade is the enhancement, never the load-bearing floor.</p>
+        <span class="tag">Accent · #DC3C20</span>
+        <div class="swatch">data-bg #DC3C20 / data-fg #FFF6F2 / accent #0E0E0C</div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+  (function(){
+    var secs=[].slice.call(document.querySelectorAll('.tsec')); if(!secs.length) return;
+    secs.forEach(function(s){ s.style.setProperty('--sec-bg',s.dataset.bg); s.style.setProperty('--sec-fg',s.dataset.fg); s.style.setProperty('--theme-accent',s.dataset.accent); });
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+    var r=document.documentElement; r.classList.add('theme-js');
+    function apply(s){ r.style.setProperty('--theme-bg',s.dataset.bg); r.style.setProperty('--theme-fg',s.dataset.fg); if(s.dataset.accent) r.style.setProperty('--theme-accent',s.dataset.accent); }
+    apply(secs[0]);
+    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting && e.intersectionRatio>=0.55) apply(e.target); }); },{threshold:[0.55]});
+    secs.forEach(function(s){ io.observe(s); });
+  })();
+  </script>
+</body>
+</html>

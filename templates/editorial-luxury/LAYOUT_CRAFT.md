@@ -150,6 +150,11 @@ A page firing **≥ 4** of these reads as AI-generated (audit of 1,590 sites). H
 
 Cross-reference: the existing `avoid-ai-design` / `impeccable` skills and the impeccable.style 44-rule detector implement much of this.
 
+**DATED-UI tells (a sibling failure to AI-slop — flagged from wealthspire.com):** "competent but 2012" is its own way to lose. Avoid: [HARD where noted]
+- **Beveled / gradient-bevel / glossy buttons** (inset highlight + drop shadow to fake a 3D key). Use the flat-but-deep DESIGN.md button system (shimmer + layered shadow), never a skeuomorphic bevel. [HARD]
+- **Generic 2010s flat-icon packs** (the ubiquitous thin-line or filled-circle stock sets). Use custom/duotone icons, a single consistent line-weight set, or none — icons should look drawn for this brand, not licensed by the thousand. [TUNE]
+- **Web-2.0 chrome:** hard 1px inset borders everywhere, tab "pills" with heavy borders, faux-letterpress text-shadow on light type, tight rounded corners on everything. Lift the *composition* of an admired older site (e.g. a strong hero) but never its dated chrome.
+
 ---
 
 ## PART 8 — MAKE IT SING (the ceiling: bold, not just clean)
@@ -183,6 +188,7 @@ Pick the level from **positioning**, then build to it:
 
 - **The timidity check [measurable proxy]:** a brand positioned as bold/modern/challenger that has **zero** elements using the accent as a *background fill* covering a meaningful area (only `color:` glyphs) is **timid — flag it.** Resolution: drench at least one zone (the final-CTA crescendo is the lowest-risk, highest-impact place — see the Field rebuild's vermillion close). The deterministic gate now surfaces this as `accent-fill-absent` (informational P2) — but only the critic decides whether Restrained was *intended*.
 - **Commitment is a crescendo, not a constant:** Committed/Drenched works best when color *builds* — quiet open, one mid-page accent zone, full drench at the close. A page that is loud everywhere is as monotonous as one that is quiet everywhere (see 8.5).
+- **Committed-on-clean (work.co):** a near-neutral, very clean page where a single bold color (work.co's orange) carries the brand in committed bursts. The lesson: **clean ≠ timid.** A minimal, disciplined layout that lets one saturated color *punch* is Committed, not Restrained — the cleanliness makes the color louder, not quieter. Don't read "clean" as license to drop to one-glyph accent.
 
 ### 8.4 — Composition counterweight, raised (no dead-half, no timid balance) [TASTE → ties to PART 5]
 PART 5 makes the *dead-half* a measurable fail. The ceiling rule is about the **quality of the counterweight**, which the gate can't judge:
@@ -205,6 +211,13 @@ Every $25k page has **exactly one** moment someone screenshots and sends to a co
 - **One, occasionally two — never more.** Placed at the fold or at the page's emotional climax (the final CTA). Overuse cheapens all of them (MOTION_TIERS caps Tier 3 at 2/page — this is the *taste* reason for that cap).
 - **Technical ambition is the point.** The signature moment should be the one place the build reaches past "competent CSS" — a real animated mesh, a drawn diagram, a scroll-scrubbed reveal. If the whole page could have been hand-coded in 20 minutes, there is no signature moment.
 
+### 8.7 — Premium has more than one register: warm-human, not only cool-editorial [TASTE]
+The editorial-luxury default reads *cool, restrained, private-bank*. That is **one** premium register, not the only one. The reflex to make every premium brand cool-and-restrained is itself a timidity trap when the brand is about people, care, or warmth. **mavenclinic.com** is the proof: unmistakably premium *and* warm-human — a muted jewel-green (~10%), 60%+ whitespace, oversize stats, and, decisively, **documentary lifestyle photography of real people in genuine moments** (not clinical stock), testimonials on a warm sage ground.
+
+- **Pick the register from the brand, not from the template's comfort zone.** Wealth/heritage → cool-editorial; health/family/coaching/consumer → warm-human; challenger/creative → bold-graphic. The token system already flexes here (warm bg tints, a jewel/warm accent) — *use it*, don't default everything to navy-on-cream.
+- **Warm-human premium is photography-led [HARD when the brand implies people].** Real documentary photography of real people beats any diagram or CSS panel for health/family/coaching/consumer brands. A colored block where a human photo belongs is the failure (mirrors the brand register's imagery rule). Cool-editorial can carry typography-only; warm-human usually cannot.
+- **Restraint still applies** — warm ≠ loud. Maven is warm *and* disciplined: one accent, heavy whitespace, oversize stats as the punctuation.
+
 ---
 
 ## PART 9 — SIGNATURE BACKGROUNDS (reference-extracted primitives)
@@ -225,6 +238,37 @@ When the client has a **real** product video or strong footage, a video hero out
 - **Scrim, not a box [HARD]:** legibility comes from a **directional gradient scrim** anchored to the text side (e.g. `linear-gradient(105deg, rgba(0,0,0,.62) 0–38%, transparent 70%)`), *not* a uniform dark rectangle over the whole frame (SECTION_PATTERNS 1D: "NO gradient overlay rectangles"). The scrim must guarantee text contrast (≥ 4.5:1 body / ≥ 3:1 large over the *lightest* pixel it covers) while leaving the far side of the footage clean. → **`COMPONENTS.md` Primitive 5.**
 - **Never blank, never fake [HARD]:** a `poster` image always loads first and is what shows if video fails / is slow / is absent — so the hero is never empty. **Never simulate video with CSS gradients** (MOTION_TIERS T3.3) — if there's no real asset, ship the poster as a still hero and move on.
 - **Performance + motion [HARD]:** `muted playsinline loop`, `preload="none"`, lazy-load the source via IntersectionObserver (no autoplay download until in view); `prefers-reduced-motion` → do not autoplay, show the poster. This is the difference between a cinematic hero and a 12 MB autoplaying jank-fest.
+
+### 9.3 — Scroll-driven section color theming [extracted: instrument.com] [HARD where noted]
+The page recolors as you scroll: the whole ground crossfades between bold flat color themes section to section, and the text/UI **invert** to stay legible. A standout signature for brands that can carry color as voice (creative, challenger, bold-graphic). → **`COMPONENTS.md` Primitive 6.**
+
+- **Floor must stand alone [HARD]:** the smooth crossfade is a JS *enhancement*; each section declares its own `{bg, fg}` and paints them solid, so with no JS / under reduced-motion you still get solid, correctly-colored, **readable** sections. Never a transparent section that relies on the crossfade for legibility.
+- **Paired, contrast-checked themes [HARD]:** every theme is a `{bg, fg, accent}` triple chosen for contrast (≥ 4.5:1 body / 3:1 large) — the inversion only stays legible because the pairing guarantees it. The accent swaps per theme so a CTA never vanishes on the new ground.
+- **Use sparingly [TASTE]:** 3–5 theme moves across a long page is a signature; recoloring every section is noise. The crossfade is `~0.7s` on a single fixed layer (not per-frame work) — intentional, not a flicker.
+
+---
+
+## PART 10 — CONTENT-BLOCK ARCHETYPES & SECTION RHYTHM (reference-extracted)
+
+The "next level" quality of **betterup.com** and **mavenclinic.com** is not any single hero — it's that **no two adjacent sections share a layout**, and each block is a *known premium archetype* executed cleanly. This operationalizes the 8.5 density-rhythm rule into a concrete block library Agent 04 sequences. [TASTE with measurable proxies]
+
+### 10.1 — The block archetype library
+Sequence the page from these; vary the archetype every section. Each maps to a SECTION_PATTERNS option.
+
+| Archetype | What it is | Premium-execution note |
+|-----------|------------|------------------------|
+| **Metric proof card row** | logo / client + a *quantified* result ("21% uptick…") + "read story" | numbers must be specific and real; vague = generic (PART 6) |
+| **Staggered-asset cluster** | product/output shots fanned at slight angles in a split's free half | the counterweight (8.4) for a copy-left split; needs real assets |
+| **Full-bleed image + overlaid stat blocks** | a photo band with white stat cards floating over it | the image must be real/credible; stats `[VERIFY]`, never invented |
+| **Oversize-stat showcase** | 1–4 metrics at 72px+ display weight, heavy whitespace | the "exhale" breath between dense blocks (Maven) |
+| **Numbered editorial rows** | full-width rows, big numeral + headline + body, hairlines | the "inhale" depth block (already SECTION_PATTERNS 2B/5A) |
+| **Warm testimonial cards** | real member photo + quote + name/role, on a warm tinted ground | photography-led; warm bg = the human-premium signal (8.7) |
+| **Tone-flip authority strip** | a single recolored band of credibility (SECTION_PATTERNS T1) | the structural "pause" — highest trust-per-pixel |
+
+### 10.2 — The rhythm rule [measurable proxy]
+- **No two adjacent sections share a layout archetype OR a density.** Alternate dense (card grid, feature list) ↔ sparse (oversize-stat exhale, single statement). This is SECTION_PATTERNS selection rule 6 + 8.5, made enforceable at the block level.
+- **Every claim-bearing block carries a specific number or named proof**, not adjectives — the BetterUp tell ("21% uptick in workforce efficiency", "14× ROI"), never "dramatically improved."
+- **One full-bleed image band per ~3–4 text blocks** to break scroll fatigue (the BetterUp/Maven cadence). For people/health/consumer brands it must be real photography (8.7), not a CSS panel.
 
 ---
 
