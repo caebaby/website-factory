@@ -313,20 +313,18 @@ h1,h2,h3{
   margin:30px 0 0;
   text-wrap:balance;
 }
-/* Cycling word slot — fixed so layout never jumps. ACCENT place 3. */
+/* Cycling word slot — inline-grid stacks all words in one cell, so the slot
+   auto-sizes to the widest/tallest word and can NEVER collapse to 0 height.
+   No magic min-width, no overflow clipping (descender-safe). ACCENT place 3. */
 .cycle{
-  display:inline-block;position:relative;color:var(--accent);
-  min-width:5.4ch;          /* widest of: story/pitch/website/brand */
-  text-align:left;
-  vertical-align:baseline;
-  overflow:hidden;
+  display:inline-grid;color:var(--accent);
+  text-align:left;vertical-align:baseline;
 }
 .cycle .word{
-  display:inline-block;white-space:nowrap;
+  grid-area:1/1;white-space:nowrap;
 }
-/* Static fallback when no JS / reduced motion: first word only */
-.cycle .word:not(:first-child){display:none;}
-.js .cycle .word{display:inline-block;}
+/* No-JS / reduced-motion fallback: show first word, hide the rest (still sizes the slot) */
+.cycle .word:not(:first-child){opacity:0;}
 
 .hero-sub{
   margin-top:38px;max-width:54ch;
@@ -348,7 +346,10 @@ h1,h2,h3{
 /* ============================================================
    PAIN — 2B The Editorial Stack
    ============================================================ */
-.pain-head{max-width:18em;}
+/* measure governed by the inner .section-h2 (16em ≈ 1024px @64px ≈ 32 CPL).
+   NOT an em cap on this container — em here resolves to the ~18px inherited font
+   (= ~324px), which crushes the 64px heading into a 9-CPL column. */
+.pain-head{max-width:none;}
 .pain-stack{margin-top:78px;}
 .pain-row{
   display:grid;grid-template-columns:minmax(110px,180px) 1fr;gap:var(--col-gap);
@@ -397,7 +398,7 @@ h1,h2,h3{
   font-size:var(--size-h2);line-height:1.04;letter-spacing:-0.03em;
   max-width:14ch;
 }
-.icp-list{margin-top:54px;display:flex;flex-direction:column;gap:8px;max-width:24ch;}
+.icp-list{margin-top:54px;display:flex;flex-direction:column;gap:8px;max-width:none;}
 .icp-item{
   display:flex;gap:24px;align-items:baseline;
   font-family:var(--font-display);font-weight:500;
@@ -505,7 +506,7 @@ h1,h2,h3{
 /* ============================================================
    PROCESS — 6A The Timeline (SVG line draw)
    ============================================================ */
-.proc-head{max-width:14em;}
+.proc-head{max-width:none;}
 .proc-wrap{margin-top:78px;position:relative;}
 .proc-line{position:absolute;top:38px;left:0;right:0;height:2px;pointer-events:none;z-index:0;}
 .proc-line svg{width:100%;height:2px;overflow:visible;}
@@ -1178,28 +1179,21 @@ h1,h2,h3{
       // static: show only the first word
       words.forEach(function(w,i){ w.style.display = i===0 ? 'inline-block':'none'; });
     } else {
-      // stack words absolutely inside the fixed-width slot so layout never jumps
-      gsap.set(cycle, { position:'relative' });
-      words.forEach(function(w,i){
-        gsap.set(w, {
-          position: i===0 ? 'relative':'absolute',
-          left:0, top:0,
-          yPercent: i===0 ? 0 : 100,
-          opacity: i===0 ? 1 : 0,
-          clipPath: i===0 ? 'inset(0 0 0 0)' : 'inset(0 0 100% 0)'
-        });
-      });
+      // Words are grid-stacked in ONE cell (CSS inline-grid) → they stay in flow,
+      // so the slot sizes to the widest/tallest word and can NEVER collapse to 0.
+      // Animate opacity + y only — no absolute positioning, no clip-path (descender-safe).
+      words.forEach(function(w,i){ gsap.set(w, { yPercent: i===0 ? 0 : 36, opacity: i===0 ? 1 : 0 }); });
       var idx = 0;
       var tl = gsap.timeline({ repeat:-1, delay:1.6 });
-      words.forEach(function(_, i){
+      words.forEach(function(){
         var cur = words[idx];
         var nextIdx = (idx+1) % words.length;
         var nxt = words[nextIdx];
         (function(cur, nxt){
-          tl.to(cur, { yPercent:-100, clipPath:'inset(0 0 100% 0)', opacity:0, duration:0.55, ease:'power3.in' }, '+=1.05')
+          tl.to(cur, { yPercent:-36, opacity:0, duration:0.5, ease:'power3.in' }, '+=1.05')
             .fromTo(nxt,
-              { yPercent:100, clipPath:'inset(100% 0 0 0)', opacity:0, position:'absolute', left:0, top:0 },
-              { yPercent:0, clipPath:'inset(0 0 0 0)', opacity:1, duration:0.6, ease:'power3.out',
+              { yPercent:36, opacity:0 },
+              { yPercent:0, opacity:1, duration:0.55, ease:'power3.out',
                 onStart:function(){ cycle.setAttribute('aria-label', nxt.textContent); } },
               '<0.05');
         })(cur, nxt);
