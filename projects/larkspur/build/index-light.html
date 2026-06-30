@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Larkspur Private Wealth — Counsel for the ninety days after the exit</title>
+<meta name="description" content="Fee-only wealth counsel for founders and operators in the window right after a liquidity event.">
+
+<!-- Sync flag so reveal-hiding only applies when JS is on (no-JS = content visible, never black) -->
+<script>document.documentElement.classList.add('js')</script>
+
+<!-- Fonts: EB Garamond (Google) + General Sans (Fontshare) — none on the banned list -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   LARKSPUR PRIVATE WEALTH — Style B (Light Editorial)
+   Tone: light · Density: editorial · Motion: expressive
+   Type: editorial-serif · Visual: graphic-system · Accent: claret
+   SAME content + conversion spine + quality floor as the dark build —
+   only the 5 dials changed. Proof the system carries quality across styles.
+   ============================================================ */
+
+:root{
+  /* ── Tone: light (warm editorial cream) ── */
+  --bg-base:#F6F2EA;        --bg-base-rgb:246,242,234;
+  --bg-surface:#FFFFFF;
+  --bg-elevated:#FBF8F1;
+  --bg-inverse:#1E2620;
+  --text-primary:#1E2420;   --primary-rgb:30,36,32;
+  --text-secondary:#5B584F;
+  --text-muted:#8C887C;
+  --border:rgba(30,36,32,.13);
+
+  /* ── Accent: deep claret (single accent, 3 placements) ── */
+  --accent:#8A2F39;         --accent-rgb:138,47,57;
+  --accent-muted:#B5666D;
+
+  /* ── Type: editorial-serif ── */
+  --font-display:'EB Garamond',Georgia,serif;
+  --font-body:'General Sans','Nunito Sans',sans-serif;
+  --size-display:clamp(54px,6.4vw,108px);
+  --size-h2:clamp(34px,4.2vw,60px);
+  --size-h3:clamp(21px,2.2vw,28px);
+  --size-lead:clamp(18px,1.7vw,21px);
+  --size-body:17px;
+  --weight-display:400;
+  --leading-display:1.0;
+  --tracking-display:-.018em;
+
+  /* ── Density: editorial (more whitespace) ── */
+  --section-pad:130px;
+  --col-gap:48px;
+  --radius:2px;
+  --maxw:1240px;
+
+  /* ── Motion: expressive ── */
+  --motion-base:.7s;
+  --motion-ease:cubic-bezier(.16,1,.3,1);
+  --motion-stagger:50ms;
+
+  /* ── Light-surface 3-layer shadow (soft, no inner glow) ── */
+  --shadow-card:
+    0 1px 2px rgba(30,36,32,.04),
+    0 6px 18px rgba(30,36,32,.06),
+    0 18px 44px rgba(30,36,32,.06);
+  --shadow-card-hover:
+    0 2px 6px rgba(30,36,32,.06),
+    0 12px 30px rgba(30,36,32,.09),
+    0 28px 60px rgba(30,36,32,.10);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg-base);
+  color:var(--text-secondary);
+  font-family:var(--font-body);
+  font-size:var(--size-body);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+::selection{background:rgba(var(--accent-rgb),.30);color:#fff}
+h1,h2,h3,h4{font-family:var(--font-display);color:var(--text-primary);font-weight:var(--weight-display);letter-spacing:var(--tracking-display);line-height:1.04}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+/* ── Grain overlay (analog texture) ── */
+.grain{position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+/* ── Skip link (a11y) ── */
+.skip-link{position:absolute;left:-999px;top:0;z-index:10000;background:var(--accent);color:#fff;padding:12px 20px;border-radius:var(--radius)}
+.skip-link:focus{left:16px;top:16px}
+
+/* ── Layout ── */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 40px}
+section{padding:var(--section-pad) 0;position:relative}
+.eyebrow{font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:14px;margin-bottom:26px}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .7s var(--motion-ease) .1s}
+.reveal.in .eyebrow::before{transform:scaleX(1)}
+.lead{font-size:var(--size-lead);color:var(--text-secondary);line-height:1.6;max-width:46ch}
+
+/* ── Reveal animation base (no-motion-first, no-JS-safe) ──
+   Only hide when JS is confirmed (html.js) AND motion is allowed.
+   If JS or GSAP fails, content stays visible — never a black page. */
+.reveal{opacity:1}
+@media (prefers-reduced-motion:no-preference){
+  html.js .reveal{opacity:0;transform:translateY(26px);transition:opacity var(--motion-base) var(--motion-ease),transform var(--motion-base) var(--motion-ease)}
+  html.js .reveal.in{opacity:1;transform:none}
+}
+
+/* ── Buttons ── */
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-body);font-size:15px;font-weight:600;letter-spacing:.01em;padding:16px 30px;border-radius:var(--radius);cursor:pointer;border:none;position:relative;overflow:hidden;transition:transform .25s var(--motion-ease),box-shadow .25s var(--motion-ease)}
+.btn .arrow{transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
+.btn:hover .arrow{transform:translateX(5px)}
+.btn-primary{background:var(--accent);color:#FBF7F0;
+  box-shadow:0 1px 2px rgba(var(--accent-rgb),.25),0 8px 28px rgba(var(--accent-rgb),.28),inset 0 1px 0 rgba(255,255,255,.25)}
+.btn-primary::before{content:"";position:absolute;top:0;left:-110%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.32),transparent);transition:left .5s var(--motion-ease);pointer-events:none}
+.btn-primary:hover::before{left:110%}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 2px 4px rgba(var(--accent-rgb),.3),0 14px 40px rgba(var(--accent-rgb),.42),inset 0 1px 0 rgba(255,255,255,.3)}
+.btn-ghost{background:transparent;color:var(--text-primary);border:1px solid rgba(30,36,32,.22)}
+.btn-ghost:hover{border-color:var(--accent);color:#fff;background:rgba(var(--accent-rgb),.06)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* ── Nav ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:78px;display:flex;align-items:center;transition:background .3s var(--motion-ease),border-color .3s,box-shadow .3s;border-bottom:1px solid transparent}
+.nav.scrolled{background:rgba(var(--bg-base-rgb),.72);backdrop-filter:blur(18px) saturate(1.3);-webkit-backdrop-filter:blur(18px) saturate(1.3);border-bottom-color:var(--border);box-shadow:0 1px 0 rgba(255,255,255,.04) inset,0 8px 30px rgba(0,0,0,.4)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;width:100%}
+.brand{display:flex;align-items:center;gap:11px;font-family:var(--font-display);font-weight:500;font-size:21px;color:var(--text-primary);letter-spacing:-.01em}
+.brand svg{width:22px;height:26px;flex:none}
+.nav-links{display:flex;align-items:center;gap:34px}
+.nav-link{font-size:14.5px;font-weight:500;color:var(--text-secondary);position:relative;transition:color .25s}
+.nav-link::after{content:"";position:absolute;left:0;bottom:-6px;height:1.5px;width:0;background:var(--accent);transition:width .28s var(--motion-ease)}
+.nav-link:hover{color:var(--text-primary)}
+.nav-link:hover::after{width:100%}
+.nav-cta{font-size:14.5px;font-weight:600;padding:11px 22px;border-radius:var(--radius);background:rgba(30,36,32,.04);border:1px solid var(--border);color:var(--text-primary);transition:background .25s,border-color .25s}
+.nav-cta:hover{background:rgba(var(--accent-rgb),.12);border-color:var(--accent)}
+.nav-toggle{display:none;background:none;border:none;color:var(--text-primary);cursor:pointer}
+
+/* ── Hero (1A The Split) ── */
+.hero{position:relative;overflow:hidden;min-height:88vh;display:flex;align-items:center;padding:132px 0 56px;
+  background:
+    radial-gradient(ellipse at 18% 30%,rgba(var(--accent-rgb),.07) 0%,transparent 52%),
+    radial-gradient(ellipse at 82% 75%,rgba(255,255,255,.025) 0%,transparent 50%),
+    var(--bg-base);}
+/* cursor-reactive copper light */
+.hero-glow{position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(460px circle at var(--mx,28%) var(--my,42%), rgba(var(--accent-rgb),.11), transparent 68%);}
+.hero .wrap{position:relative;z-index:1}
+.coord .cglow-fade{transition:opacity .6s}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}
+.hero h1{font-size:var(--size-display);line-height:var(--leading-display);margin-bottom:28px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .lead{margin-bottom:38px;max-width:42ch}
+.hero-cta{display:flex;gap:16px;flex-wrap:wrap}
+.hero-note{margin-top:26px;font-size:13.5px;color:var(--text-muted);display:flex;align-items:center;gap:9px}
+.hero-note .dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+/* SplitText line masking */
+.split-line{overflow:hidden;display:block}
+
+/* ── Coordination SVG (signature moment) ── */
+.coord{position:relative;width:100%;max-width:480px;margin:0 auto;aspect-ratio:1}
+.coord svg{width:100%;height:auto;overflow:visible}
+.coord .node-label{font-family:var(--font-body);font-size:12.5px;font-weight:500;letter-spacing:.04em;fill:var(--text-secondary)}
+.coord .center-label{font-family:var(--font-display);font-size:14px;font-weight:500;fill:var(--text-primary);letter-spacing:.01em}
+.coord .center-sub{font-family:var(--font-body);font-size:10.5px;letter-spacing:.18em;fill:var(--accent);text-transform:uppercase}
+
+/* ── Pain (2A Ticker + Cards) ── */
+.pain{background:var(--bg-surface);
+  background-image:radial-gradient(ellipse at 80% 20%,rgba(var(--accent-rgb),.045) 0%,transparent 55%);}
+.ticker{position:relative;overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:20px 0;margin-bottom:72px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.ticker-track{display:flex;gap:0;white-space:nowrap;width:max-content;animation:scroll-x 38s linear infinite}
+@media (prefers-reduced-motion:reduce){.ticker-track{animation:none}}
+.ticker:hover .ticker-track{animation-play-state:paused}
+.ticker-item{font-family:var(--font-display);font-weight:400;font-size:21px;color:var(--text-secondary);padding:0 30px;display:inline-flex;align-items:center;gap:30px}
+.ticker-item::after{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent);opacity:.7}
+@keyframes scroll-x{to{transform:translateX(-50%)}}
+.pain-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--col-gap)}
+.pain-card{padding:34px 30px;border:1px solid var(--border);border-radius:var(--radius);background:var(--bg-elevated);box-shadow:var(--shadow-card);position:relative;overflow:hidden;transition:transform .35s var(--motion-ease),box-shadow .35s var(--motion-ease)}
+.pain-card::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;background:linear-gradient(90deg,transparent,var(--accent),transparent);transform:scaleX(0);transition:transform .4s var(--motion-ease)}
+.pain-card:hover{transform:translateY(-5px)}
+.pain-card:hover{box-shadow:var(--shadow-card-hover)}
+.pain-card:hover::after{transform:scaleX(1)}
+.pain-num{font-family:var(--font-display);font-size:13px;font-weight:500;color:var(--accent);letter-spacing:.1em;margin-bottom:18px}
+.pain-card h3{font-size:19px;font-weight:500;margin-bottom:12px;line-height:1.25}
+.pain-card p{font-size:14.5px;line-height:1.6;color:var(--text-secondary)}
+
+/* ── Trust (T1 Authority Strip — DARK tone-flip in the light site) ── */
+.trust{background:var(--bg-inverse);padding:66px 0;border-top:none;border-bottom:none}
+.trust .trust-statement{color:#F4EFE5}
+.trust .trust-statement b{color:var(--accent-muted)}
+.trust .trust-proof .k{color:#F4EFE5}
+.trust .trust-proof .l{color:rgba(255,255,255,.5)}
+.trust .trust-marks{border-top-color:rgba(255,255,255,.14)}
+.trust .trust-marks span{color:rgba(255,255,255,.5)}
+.trust .wrap{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.trust-statement{font-family:var(--font-display);font-weight:300;font-size:clamp(20px,2.1vw,26px);color:var(--text-primary);line-height:1.35;max-width:30ch}
+.trust-statement b{color:var(--accent);font-weight:500}
+.trust-proof{display:flex;gap:38px;flex-wrap:wrap}
+.trust-proof .item{display:flex;flex-direction:column;gap:4px}
+.trust-proof .k{font-family:var(--font-display);font-size:27px;font-weight:400;color:var(--text-primary)}
+.trust-proof .l{font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted)}
+.trust-marks{margin-top:34px;border-top:1px solid var(--border);padding-top:26px;display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+.trust-marks span{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted)}
+
+/* ── ICP (3A Profile Cards) ── */
+.icp .head{max-width:60ch;margin-bottom:60px}
+.icp h2{font-size:var(--size-h2);margin-bottom:22px}
+.icp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--col-gap)}
+.icp-card{padding:36px 30px;border:1px solid var(--border);border-radius:var(--radius);background:var(--bg-surface);box-shadow:var(--shadow-card);transition:transform .35s var(--motion-ease),box-shadow .35s var(--motion-ease),border-color .35s}
+.icp-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-card-hover);border-color:rgba(var(--accent-rgb),.4)}
+.icp-card .mark{width:40px;height:40px;margin-bottom:24px;color:var(--accent)}
+.icp-card h3{font-size:20px;font-weight:500;margin-bottom:13px;line-height:1.2}
+.icp-card p{font-size:14.5px;line-height:1.6}
+
+/* ── Fit Assessment (4A Multi-Step) ── */
+.fit{background:var(--bg-surface);background-image:radial-gradient(ellipse at 50% 0%,rgba(var(--accent-rgb),.06) 0%,transparent 55%)}
+.fit-card{max-width:720px;margin:0 auto;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;box-shadow:var(--shadow-card);padding:54px 56px;text-align:center}
+.fit-head{margin-bottom:36px}
+.fit-head .eyebrow{justify-content:center}
+.fit-head h2{font-size:clamp(28px,3.2vw,40px);margin-bottom:14px}
+.fit-progress{display:flex;gap:8px;justify-content:center;margin-bottom:42px}
+.fit-progress .bar{width:52px;height:3px;border-radius:2px;background:rgba(255,255,255,.12);transition:background .4s var(--motion-ease)}
+.fit-progress .bar.active{background:var(--accent)}
+.fit-step{display:none}
+.fit-step.active{display:block;animation:stepIn .5s var(--motion-ease)}
+@keyframes stepIn{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:none}}
+.fit-q{font-family:var(--font-display);font-weight:400;font-size:25px;color:var(--text-primary);margin-bottom:30px;line-height:1.25}
+.fit-options{display:flex;flex-direction:column;gap:13px;max-width:480px;margin:0 auto 8px}
+.fit-opt{padding:17px 24px;border:1px solid var(--border);border-radius:var(--radius);background:var(--bg-surface);color:var(--text-secondary);font-size:16px;font-family:var(--font-body);cursor:pointer;text-align:left;transition:border-color .25s,background .25s,color .25s}
+.fit-opt:hover{border-color:var(--accent);color:var(--text-primary);background:rgba(var(--accent-rgb),.06)}
+.fit-field{max-width:480px;margin:0 auto}
+.fit-field label{display:block;text-align:left;font-size:13px;letter-spacing:.04em;color:var(--text-muted);margin-bottom:9px}
+.fit-field input{width:100%;padding:16px 18px;background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius);color:var(--text-primary);font-size:16px;font-family:var(--font-body);transition:border-color .25s,box-shadow .25s}
+.fit-field input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(var(--accent-rgb),.16)}
+.fit-back{margin-top:26px;background:none;border:none;color:var(--text-muted);font-size:13.5px;font-family:var(--font-body);cursor:pointer;transition:color .25s}
+.fit-back:hover{color:var(--text-primary)}
+.fit-done{display:none}
+.fit-done.show{display:block;animation:stepIn .5s var(--motion-ease)}
+.fit-done .check{width:54px;height:54px;margin:0 auto 22px;color:var(--accent)}
+
+/* ── Services (5B Outcome Cards) ── */
+.svc h2{font-size:var(--size-h2);margin-bottom:60px;max-width:24ch}
+.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--col-gap)}
+.svc-card{padding:44px 42px;border:1px solid var(--border);border-radius:var(--radius);background:var(--bg-surface);box-shadow:var(--shadow-card);position:relative;overflow:hidden;transition:transform .35s var(--motion-ease),box-shadow .35s var(--motion-ease)}
+.svc-card::before{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 42%,rgba(var(--accent-rgb),.06) 50%,transparent 58%);transform:translateX(-100%);transition:transform .6s var(--motion-ease);pointer-events:none}
+.svc-card:hover::before{transform:translateX(100%)}
+.svc-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-card-hover)}
+.svc-card .mark{width:38px;height:38px;color:var(--accent);margin-bottom:26px}
+.svc-verb{font-family:var(--font-display);font-size:clamp(24px,2.6vw,32px);font-weight:400;color:var(--text-primary);margin-bottom:14px}
+.svc-card p{font-size:15.5px;line-height:1.6;max-width:42ch}
+
+/* ── Process (6A Timeline) ── */
+.proc{background:var(--bg-surface)}
+.proc h2{font-size:var(--size-h2);margin-bottom:14px;max-width:22ch}
+.proc-sub{max-width:50ch;margin-bottom:70px}
+.proc-track{position:relative}
+.proc-line{position:absolute;top:28px;left:4%;right:5%;height:2px;overflow:visible}
+.proc-ongoing{position:absolute;top:20px;right:0;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);opacity:.85;display:flex;align-items:center;gap:7px}
+.proc-ongoing .dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.proc-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--col-gap);position:relative}
+.proc-step{text-align:left}
+.proc-node{width:56px;height:56px;border-radius:50%;background:var(--bg-elevated);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:18px;color:var(--accent);margin-bottom:26px;box-shadow:var(--shadow-card);position:relative;z-index:2}
+.proc-step h3{font-size:19px;font-weight:500;margin-bottom:11px}
+.proc-step p{font-size:14.5px;line-height:1.6}
+
+/* ── Proof (7A Stats + Testimonials) ── */
+.proof-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--col-gap);padding-bottom:30px;margin-bottom:78px;border-bottom:1px solid var(--border)}
+.stat .num{font-family:var(--font-display);font-weight:300;font-size:clamp(40px,5vw,64px);color:var(--text-primary);line-height:1;letter-spacing:-.03em}
+.stat .num .u{color:var(--accent)}
+.stat .lab{margin-top:14px;font-size:14px;color:var(--text-secondary);max-width:24ch}
+.tg{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--col-gap)}
+.tcard{padding:38px 34px;border:1px solid var(--border);border-radius:var(--radius);background:var(--bg-surface);box-shadow:var(--shadow-card);transition:transform .35s var(--motion-ease),box-shadow .35s var(--motion-ease)}
+.tcard:hover{transform:translateY(-4px);box-shadow:var(--shadow-card-hover)}
+.tcard .quote{font-family:var(--font-display);font-weight:400;font-size:18.5px;line-height:1.5;color:var(--text-primary);margin-bottom:26px}
+.tcard .who{display:flex;flex-direction:column;gap:3px;border-top:1px solid var(--border);padding-top:20px}
+.tcard .who .n{font-weight:600;color:var(--text-primary);font-size:15px}
+.tcard .who .r{font-size:13px;color:var(--text-muted)}
+
+/* ── Final CTA (8A Centered Close) ── */
+.close{text-align:center;
+  background:
+    radial-gradient(ellipse at 50% 40%,rgba(var(--accent-rgb),.10) 0%,transparent 58%),
+    var(--bg-base);}
+.close h2{font-size:clamp(34px,4.4vw,58px);font-weight:300;max-width:18ch;margin:0 auto 22px}
+.close .lead{margin:0 auto 40px;text-align:center;max-width:48ch}
+.close .hero-cta{justify-content:center}
+
+/* ── Footer (9B Rich) ── */
+.foot{background:var(--bg-surface);border-top:1px solid var(--border);padding:74px 0 40px}
+.foot-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;padding-bottom:50px;border-bottom:1px solid var(--border)}
+.foot .brand{margin-bottom:20px}
+.foot-blurb{font-size:14px;max-width:34ch;color:var(--text-secondary)}
+.foot-contact{margin-top:22px;font-size:14px;line-height:1.9}
+.foot-contact a:hover{color:var(--accent)}
+.foot col,.foot-col{display:flex;flex-direction:column;gap:13px}
+.foot-col h4{font-family:var(--font-body);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);font-weight:600;margin-bottom:6px}
+.foot-col a{font-size:14.5px;color:var(--text-secondary);transition:color .25s}
+.foot-col a:hover{color:var(--accent)}
+.foot-legal{margin-top:34px;font-size:12px;line-height:1.7;color:var(--text-muted);max-width:90ch}
+.foot-bottom{margin-top:26px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-size:12.5px;color:var(--text-muted)}
+
+/* ── Balanced section header (heading left, supporting line right) — kills the left-pinned void ── */
+.sec-head{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:end;margin-bottom:60px}
+.sec-head>div:first-child{min-width:0}
+.sec-head h2{margin:0}
+.sec-head .lead{margin:0;padding-bottom:4px}
+
+/* ── Pain: big question + system bridge ── */
+.big-q{font-size:clamp(30px,4.2vw,52px);font-weight:300;line-height:1.12;color:var(--text-primary);max-width:20ch}
+.big-q .q{color:var(--accent)}
+.pain-intro{font-size:var(--size-lead);color:var(--text-secondary);max-width:48ch;margin:0 0 40px}
+.system-bridge{margin-top:64px;border-top:1px solid var(--border);padding-top:48px;display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.system-bridge .bridge-copy{max-width:60ch}
+.system-bridge p{font-size:var(--size-lead);color:var(--text-secondary);line-height:1.5}
+.system-bridge .sys-name{margin-top:10px;font-family:var(--font-display);font-weight:400;font-size:clamp(22px,2.4vw,30px);color:var(--text-primary)}
+.system-bridge .sys-name b{color:var(--accent);font-weight:500}
+
+/* ── Insights / content section ── */
+.insights{background:var(--bg-surface);background-image:radial-gradient(ellipse at 15% 20%,rgba(var(--accent-rgb),.04) 0%,transparent 55%)}
+.insights .head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:56px;flex-wrap:wrap}
+.insights h2{font-size:var(--size-h2);max-width:18ch}
+.insights .head a{font-size:14.5px;font-weight:600;color:var(--accent);white-space:nowrap}
+.insights .head a .arrow{display:inline-block;transition:transform .3s var(--motion-ease)}
+.insights .head a:hover .arrow{transform:translateX(5px)}
+.ins-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--col-gap)}
+.icard{display:flex;flex-direction:column;padding:34px 32px;border:1px solid var(--border);border-radius:var(--radius);background:var(--bg-elevated);box-shadow:var(--shadow-card);transition:transform .35s var(--motion-ease),box-shadow .35s var(--motion-ease),border-color .35s;min-height:280px}
+.icard:hover{transform:translateY(-5px);box-shadow:var(--shadow-card-hover);border-color:rgba(var(--accent-rgb),.4)}
+.icard .tag{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
+.icard h3{font-size:21px;font-weight:500;line-height:1.3;margin-bottom:14px}
+.icard p{font-size:14.5px;line-height:1.6;color:var(--text-secondary);flex:1}
+.icard .read{margin-top:22px;font-size:13.5px;font-weight:600;color:var(--text-primary);display:inline-flex;gap:8px;align-items:center}
+.icard .read .arrow{transition:transform .3s var(--motion-ease)}
+.icard:hover .read{color:var(--accent)}
+.icard:hover .read .arrow{transform:translateX(4px)}
+
+/* ── Responsive ── */
+@media (max-width:1024px){
+  :root{--section-pad:80px}
+  .hero .wrap{grid-template-columns:1fr;gap:50px}
+  .coord{max-width:400px}
+  .pain-grid,.icp-grid,.proof-stats,.proc-steps,.ins-grid{grid-template-columns:repeat(2,1fr)}
+  .proc-line,.proc-ongoing{display:none}
+  .system-bridge{flex-direction:column;align-items:flex-start}
+  .sec-head{grid-template-columns:1fr;gap:20px;align-items:start}
+  .sec-head .lead{padding-bottom:0}
+}
+@media (max-width:768px){
+  .wrap{padding:0 24px}
+  :root{--section-pad:64px}
+  .nav-links{position:fixed;inset:0;flex-direction:column;justify-content:center;background:rgba(var(--bg-base-rgb),.97);backdrop-filter:blur(20px);transform:translateX(100%);transition:transform .4s var(--motion-ease);gap:28px;font-size:20px}
+  .nav-links.open{transform:none}
+  .nav-toggle{display:block;z-index:1001}
+  .svc-grid,.tg,.foot-top,.ins-grid{grid-template-columns:1fr}
+  .trust .wrap{flex-direction:column;align-items:flex-start}
+  .fit-card{padding:40px 26px}
+  .pain-grid,.icp-grid,.proof-stats{grid-template-columns:1fr 1fr}
+}
+@media (max-width:480px){
+  .pain-grid,.icp-grid,.proof-stats{grid-template-columns:1fr}
+  .btn{width:100%;justify-content:center}
+  .hero-cta{flex-direction:column}
+}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- ── NAV ── -->
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a href="#" class="brand" aria-label="Larkspur Private Wealth home">
+      <svg viewBox="0 0 22 26" fill="none" aria-hidden="true">
+        <path d="M11 1C9 6 6 8 6 12a5 5 0 0010 0c0-4-3-6-5-11z" fill="currentColor" opacity=".0"/>
+        <path d="M11 2c-1.6 4-4 5.6-4 9a4 4 0 008 0c0-3.4-2.4-5-4-9z" stroke="#8A2F39" stroke-width="1.4"/>
+        <path d="M11 14v11M11 18l-4-2M11 21l4-2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+      Larkspur
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#pain" class="nav-link">The Problem</a>
+      <a href="#who" class="nav-link">Who We Serve</a>
+      <a href="#services" class="nav-link">What We Do</a>
+      <a href="#process" class="nav-link">How It Works</a>
+      <a href="#fit" class="nav-cta">See if we're a fit</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M4 8h18M4 14h18M4 20h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- ── HERO (1A The Split) ── -->
+<section class="hero" id="hero">
+  <div class="hero-glow" id="heroGlow" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero-copy">
+      <div class="eyebrow">For founders after the exit</div>
+      <h1 id="heroH1">The hard part isn't the exit. It's the <em>ninety days</em> after.</h1>
+      <p class="lead">Newly liquid founders make irreversible decisions fast — under pressure, on a clock, with advice that's quietly conflicted. Larkspur is fee-only counsel for the one window where the mistakes are permanent.</p>
+      <div class="hero-cta">
+        <a href="#fit" class="btn btn-primary" id="heroCta">See if we're a fit <span class="arrow" aria-hidden="true">→</span></a>
+        <a href="#process" class="btn btn-ghost">How it works</a>
+      </div>
+      <div class="hero-note"><span class="dot" aria-hidden="true"></span> No products sold. No commissions. No custody of your assets.</div>
+    </div>
+
+    <!-- Signature moment: coordination graph -->
+    <div class="coord" aria-hidden="true">
+      <svg id="coordSvg" viewBox="0 0 460 460">
+        <defs>
+          <radialGradient id="ctrGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#8A2F39" stop-opacity=".30"/>
+            <stop offset="55%" stop-color="#8A2F39" stop-opacity=".05"/>
+            <stop offset="100%" stop-color="#8A2F39" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <g id="coordInner">
+          <!-- faint orbit ring -->
+          <circle class="cring" cx="230" cy="230" r="150" stroke="rgba(30,36,32,.14)" stroke-width="1" fill="none"/>
+          <!-- breathing copper glow behind center -->
+          <circle class="cglow" cx="230" cy="230" r="118" fill="url(#ctrGlow)"/>
+          <!-- spokes: from center-node EDGE (r58) to satellite EDGE (r~143) — no piercing -->
+          <g stroke="#8A2F39" stroke-width="1.25" fill="none" opacity=".62" stroke-linecap="round">
+            <path class="cline" d="M230 172 L230 89"/>
+            <path class="cline" d="M285.2 212.1 L364.8 186.2"/>
+            <path class="cline" d="M264.1 276.9 L313.4 344.8"/>
+            <path class="cline" d="M195.9 276.9 L146.6 344.8"/>
+            <path class="cline" d="M174.8 212.1 L95.2 186.2"/>
+          </g>
+          <!-- satellite nodes (hollow ring + copper core) -->
+          <g class="cnode"><circle cx="230" cy="80" r="6.5" fill="#FFFFFF" stroke="#8A2F39" stroke-width="1.3"/><circle cx="230" cy="80" r="2.4" fill="#8A2F39"/><text class="node-label" x="230" y="58" text-anchor="middle">Tax exposure</text></g>
+          <g class="cnode"><circle cx="372.7" cy="183.6" r="6.5" fill="#FFFFFF" stroke="#8A2F39" stroke-width="1.3"/><circle cx="372.7" cy="183.6" r="2.4" fill="#8A2F39"/><text class="node-label" x="386" y="179" text-anchor="start">Timing</text></g>
+          <g class="cnode"><circle cx="318.2" cy="351.4" r="6.5" fill="#FFFFFF" stroke="#8A2F39" stroke-width="1.3"/><circle cx="318.2" cy="351.4" r="2.4" fill="#8A2F39"/><text class="node-label" x="318.2" y="384" text-anchor="middle">Estate</text></g>
+          <g class="cnode"><circle cx="141.8" cy="351.4" r="6.5" fill="#FFFFFF" stroke="#8A2F39" stroke-width="1.3"/><circle cx="141.8" cy="351.4" r="2.4" fill="#8A2F39"/><text class="node-label" x="141.8" y="384" text-anchor="middle">Diversification</text></g>
+          <g class="cnode"><circle cx="87.3" cy="183.6" r="6.5" fill="#FFFFFF" stroke="#8A2F39" stroke-width="1.3"/><circle cx="87.3" cy="183.6" r="2.4" fill="#8A2F39"/><text class="node-label" x="74" y="179" text-anchor="end">Concentration</text></g>
+          <!-- center (drawn last → clean join over spokes) -->
+          <g class="ccenter">
+            <circle cx="230" cy="230" r="58" fill="#FFFFFF" stroke="rgba(138,47,57,.5)" stroke-width="1.3"/>
+            <text class="center-sub" x="230" y="223" text-anchor="middle">Liquidity event</text>
+            <text class="center-label" x="230" y="245" text-anchor="middle">$18.4M</text>
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ── PAIN (2A Ticker + Cards) — ticker snug under hero, then the big question, then pains ── -->
+<section class="pain" id="pain" style="padding-top:0">
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span class="ticker-item">A 9-figure tax bill you didn't model</span>
+      <span class="ticker-item">80% of your net worth in one ticker</span>
+      <span class="ticker-item">Everyone suddenly wants a meeting</span>
+      <span class="ticker-item">A wirehouse pitch dressed as advice</span>
+      <span class="ticker-item">Lock-ups, 83(b)s, QSBS you half-understand</span>
+      <span class="ticker-item">No idea what "enough" actually means</span>
+      <!-- duplicate for seamless loop -->
+      <span class="ticker-item">A 9-figure tax bill you didn't model</span>
+      <span class="ticker-item">80% of your net worth in one ticker</span>
+      <span class="ticker-item">Everyone suddenly wants a meeting</span>
+      <span class="ticker-item">A wirehouse pitch dressed as advice</span>
+      <span class="ticker-item">Lock-ups, 83(b)s, QSBS you half-understand</span>
+      <span class="ticker-item">No idea what "enough" actually means</span>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="sec-head reveal" style="margin-bottom:44px">
+      <div>
+        <div class="eyebrow">The question you're actually asking</div>
+        <h2 class="big-q">"The money's in. <span class="q">What do I do first</span> — and what can't I undo?"</h2>
+      </div>
+      <p class="lead pain-intro">You're a world-class operator who has never done this exact thing once. Most founders are holding all four of these worries at the same time:</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card reveal">
+        <div class="pain-num">01</div>
+        <h3>The clock is real</h3>
+        <p>Diversification, gifting, and tax elections have deadlines measured in weeks. Miss the window and the option is simply gone.</p>
+      </div>
+      <div class="pain-card reveal">
+        <div class="pain-num">02</div>
+        <h3>The advice is conflicted</h3>
+        <p>The "free" advisor your bank assigned is paid on products and AUM. Their incentives and your interests are not the same thing.</p>
+      </div>
+      <div class="pain-card reveal">
+        <div class="pain-num">03</div>
+        <h3>It's all concentrated</h3>
+        <p>Most of your wealth is in the company you just left or sold. One position now decides your family's entire outcome.</p>
+      </div>
+      <div class="pain-card reveal">
+        <div class="pain-num">04</div>
+        <h3>No one coordinates</h3>
+        <p>Your CPA, attorney, and broker each see one slice. Nobody owns the whole board — so the pieces work against each other.</p>
+      </div>
+    </div>
+    <!-- bridge: introduce the named system -->
+    <div class="system-bridge reveal">
+      <div class="bridge-copy">
+        <p>There's an order to the next ninety days. Most people find it one decision too late.</p>
+        <p class="sys-name">We built that order into a method — <b>The&nbsp;90-Day&nbsp;Sequence</b>.</p>
+      </div>
+      <a href="#process" class="btn btn-ghost">See the sequence <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ── TRUST (T1 Authority Strip) ── -->
+<section class="trust reveal" id="trust" aria-label="Our standard">
+  <div class="wrap">
+    <div class="trust-statement">We are <b>fee-only fiduciaries</b> — legally bound to your interest, paid only by you, never by a product.</div>
+    <div class="trust-proof">
+      <div class="item"><span class="k">$0</span><span class="l">In commissions, ever</span></div>
+      <div class="item"><span class="k">$1.2B<sup style="font-size:.5em;color:var(--accent)">*</sup></span><span class="l">Liquidity coordinated</span></div>
+      <div class="item"><span class="k">17 yrs</span><span class="l">Average advisor tenure</span></div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="trust-marks">
+      <span>CFP®</span><span>CFA</span><span>CPA / PFS</span><span>Registered Investment Adviser</span><span>Custody at Schwab &amp; Fidelity</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── ICP SELF-SORT (3A Profile Cards) ── -->
+<section class="icp" id="who">
+  <div class="sec-head reveal">
+    <div>
+      <div class="eyebrow">Who we work with</div>
+      <h2>We work with one kind of person at one kind of moment.</h2>
+    </div>
+    <p class="lead">Not "high-net-worth individuals." Founders and operators in the specific months around a liquidity event. If that's you, you'll recognize yourself below.</p>
+  </div>
+  <div class="icp-grid">
+    <div class="icp-card reveal">
+      <svg class="mark" viewBox="0 0 40 40" fill="none"><path d="M8 30V18l12-8 12 8v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M16 30v-8h8v8" stroke="currentColor" stroke-width="1.6"/></svg>
+      <h3>Venture-backed founder</h3>
+      <p>Your company was acquired or went public. Most of your worth converted to cash or stock in a single quarter.</p>
+    </div>
+    <div class="icp-card reveal">
+      <svg class="mark" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="13" stroke="currentColor" stroke-width="1.6"/><path d="M20 12v8l6 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <h3>Bootstrapped seller</h3>
+      <p>You sold the business you built over fifteen years. The wire cleared, and now the hardest financial decision of your life starts.</p>
+    </div>
+    <div class="icp-card reveal">
+      <svg class="mark" viewBox="0 0 40 40" fill="none"><path d="M10 28l7-9 6 5 8-12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M31 12h-5M31 12v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <h3>Equity-comp executive</h3>
+      <p>A decade of RSUs and options just vested or got bought out. You're suddenly liquid and dangerously concentrated.</p>
+    </div>
+    <div class="icp-card reveal">
+      <svg class="mark" viewBox="0 0 40 40" fill="none"><path d="M20 7v26M20 7l-7 7M20 7l7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 33h22" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <h3>Secondary liquidity</h3>
+      <p>You took chips off the table in a secondary or tender. Real money is in motion while you still run the company.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FIT ASSESSMENT (4A Multi-Step) ── -->
+<section class="fit" id="fit">
+  <div class="wrap">
+    <div class="fit-card reveal">
+      <div class="fit-head">
+        <div class="eyebrow">The fit assessment</div>
+        <h2>Answer four questions. See if we're the right fit.</h2>
+        <p style="color:var(--text-secondary);font-size:15.5px">Two minutes. No call required to find out.</p>
+      </div>
+      <div class="fit-progress" aria-hidden="true">
+        <span class="bar active"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </div>
+
+      <form id="fitForm" novalidate>
+        <div class="fit-step active" data-step="1">
+          <p class="fit-q">Where are you in the liquidity window?</p>
+          <div class="fit-options">
+            <button type="button" class="fit-opt" data-next>It already happened — the money is in</button>
+            <button type="button" class="fit-opt" data-next>It's signed and closing in the next few months</button>
+            <button type="button" class="fit-opt" data-next>It's likely within the next year</button>
+          </div>
+        </div>
+        <div class="fit-step" data-step="2">
+          <p class="fit-q">Roughly how large is the event?</p>
+          <div class="fit-options">
+            <button type="button" class="fit-opt" data-next>$5M – $15M</button>
+            <button type="button" class="fit-opt" data-next>$15M – $50M</button>
+            <button type="button" class="fit-opt" data-next>$50M+</button>
+          </div>
+          <button type="button" class="fit-back" data-back>← Back</button>
+        </div>
+        <div class="fit-step" data-step="3">
+          <p class="fit-q">What's keeping you up at night?</p>
+          <div class="fit-options">
+            <button type="button" class="fit-opt" data-next>The tax bill and the deadlines</button>
+            <button type="button" class="fit-opt" data-next>Being this concentrated in one position</button>
+            <button type="button" class="fit-opt" data-next>Not knowing if I ever have to work again</button>
+          </div>
+          <button type="button" class="fit-back" data-back>← Back</button>
+        </div>
+        <div class="fit-step" data-step="4">
+          <p class="fit-q">Do you currently have a fee-only advisor?</p>
+          <div class="fit-options">
+            <button type="button" class="fit-opt" data-next>No — I'm figuring this out alone</button>
+            <button type="button" class="fit-opt" data-next>I have a broker, but it feels conflicted</button>
+            <button type="button" class="fit-opt" data-next>Yes, but I want a second read on the window</button>
+          </div>
+          <button type="button" class="fit-back" data-back>← Back</button>
+        </div>
+        <div class="fit-step" data-step="5">
+          <p class="fit-q">Where should we send your fit result?</p>
+          <div class="fit-field">
+            <label for="fitEmail">Work or personal email</label>
+            <input type="email" id="fitEmail" name="email" placeholder="you@example.com" autocomplete="email" required>
+          </div>
+          <div style="margin-top:22px"><button type="submit" class="btn btn-primary" style="width:auto">Get my fit result <span class="arrow" aria-hidden="true">→</span></button></div>
+          <button type="button" class="fit-back" data-back>← Back</button>
+        </div>
+      </form>
+
+      <div class="fit-done" id="fitDone">
+        <svg class="check" viewBox="0 0 54 54" fill="none"><circle cx="27" cy="27" r="25" stroke="currentColor" stroke-width="1.5" opacity=".4"/><path d="M17 27l7 7 14-15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h2 style="font-size:28px;margin-bottom:12px">You're a likely fit.</h2>
+        <p style="color:var(--text-secondary);max-width:42ch;margin:0 auto">We'll review your answers and email you a short, specific read on your window within one business day — including whether you even need us. <em>This is a demo form; no data was sent.</em></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES (5B Outcome Cards) ── -->
+<section class="svc" id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="eyebrow">What we actually do</div>
+        <h2>Four moves that decide the next thirty years.</h2>
+      </div>
+      <p class="lead">Each one has its own deadline. Together they decide how much of this windfall actually reaches your family — and your future.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card reveal">
+        <svg class="mark" viewBox="0 0 38 38" fill="none"><path d="M19 4l13 5v8c0 8-5.5 13-13 17C11 30 6 25 6 17V9l13-5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        <div class="svc-verb">Shelter the gain</div>
+        <p>QSBS, charitable structures, gifting, and trust timing — executed before the deadlines close, so you keep what the tax code lets you keep.</p>
+      </div>
+      <div class="svc-card reveal">
+        <svg class="mark" viewBox="0 0 38 38" fill="none"><rect x="6" y="20" width="6" height="12" stroke="currentColor" stroke-width="1.5"/><rect x="16" y="13" width="6" height="19" stroke="currentColor" stroke-width="1.5"/><rect x="26" y="6" width="6" height="26" stroke="currentColor" stroke-width="1.5"/></svg>
+        <div class="svc-verb">Diversify the position</div>
+        <p>A staged, tax-aware plan to unwind concentration without flinching — turning one fragile bet into a portfolio that can't be wiped out by one earnings call.</p>
+      </div>
+      <div class="svc-card reveal">
+        <svg class="mark" viewBox="0 0 38 38" fill="none"><circle cx="19" cy="19" r="14" stroke="currentColor" stroke-width="1.5"/><path d="M19 9v10l7 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <div class="svc-verb">Structure the estate</div>
+        <p>Wills, trusts, and entity design coordinated with your attorney so the wealth moves to the people and causes you choose — not to the IRS by default.</p>
+      </div>
+      <div class="svc-card reveal">
+        <svg class="mark" viewBox="0 0 38 38" fill="none"><path d="M6 30l8-10 6 5 12-16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M32 9v8M32 9h-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <div class="svc-verb">Define "enough"</div>
+        <p>A clear-eyed plan that answers the only question that actually matters: do you ever have to work for money again — and what does this wealth make possible if you don't?</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROCESS (6A Timeline) ── -->
+<section class="proc" id="process">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="eyebrow">The 90-Day Sequence</div>
+        <h2>The order we run, every time.</h2>
+      </div>
+      <p class="lead">No mystery, no pressure. Four moves from first email to a coordinated plan — most of it executed inside your liquidity window, while the deadlines still matter.</p>
+    </div>
+    <div class="proc-track">
+      <svg class="proc-line" viewBox="0 0 1000 2" preserveAspectRatio="none" aria-hidden="true">
+        <defs><linearGradient id="procGrad" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0" stop-color="#8A2F39" stop-opacity=".55"/>
+          <stop offset="0.74" stop-color="#8A2F39" stop-opacity=".5"/>
+          <stop offset="1" stop-color="#8A2F39" stop-opacity="0"/>
+        </linearGradient></defs>
+        <path id="procPath" d="M0 1 L1000 1" stroke="url(#procGrad)" stroke-width="2" fill="none"/>
+      </svg>
+      <div class="proc-ongoing" aria-hidden="true"><span class="dot"></span> Ongoing</div>
+      <div class="proc-steps">
+        <div class="proc-step reveal"><div class="proc-node">01</div><h3>Fit call</h3><p>A 20-minute call to confirm we're the right counsel for your situation — and to tell you honestly if we're not.</p></div>
+        <div class="proc-step reveal"><div class="proc-node">02</div><h3>The board</h3><p>We map every moving piece — tax, concentration, estate, timing — into one picture, with your CPA and attorney in the room.</p></div>
+        <div class="proc-step reveal"><div class="proc-node">03</div><h3>The plan</h3><p>A sequenced, deadline-aware plan you can actually execute — what happens this week, this quarter, this year.</p></div>
+        <div class="proc-step reveal"><div class="proc-node">04</div><h3>Execution</h3><p>We coordinate the moves and stay on the board with you long after the window closes. Not a one-time report.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROOF (7A Stats + Testimonials) ── -->
+<section class="proof" id="proof">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="eyebrow">The record</div>
+        <h2 style="font-size:var(--size-h2)">Specific outcomes, named people.</h2>
+      </div>
+      <p class="lead">Real numbers, real names, real timelines — the opposite of the vague reassurance most advisors offer.</p>
+    </div>
+    <div class="proof-stats">
+      <div class="stat reveal"><div class="num" data-count="1.2" data-decimals="1" data-prefix="$" data-suffix="B">$0</div><div class="lab">Liquidity coordinated since 2009<sup style="color:var(--accent)">*</sup></div></div>
+      <div class="stat reveal"><div class="num" data-count="94" data-suffix="%">0%</div><div class="lab">Of clients still with us after five years</div></div>
+      <div class="stat reveal"><div class="num" data-count="100" data-suffix="%">0%</div><div class="lab">Fee-only — zero commissions, ever</div></div>
+      <div class="stat reveal"><div class="num" data-count="48" data-suffix="hr">0</div><div class="lab">From first email to your fit read</div></div>
+    </div>
+    <div class="tg">
+      <div class="tcard reveal">
+        <p class="quote">"Larkspur was the only advisor in the room who didn't have something to sell me. They saved more in tax than their fee for the next decade."</p>
+        <div class="who"><span class="n">[VERIFY — client name]</span><span class="r">Founder, acquired SaaS company · Austin</span></div>
+      </div>
+      <div class="tcard reveal">
+        <p class="quote">"I had a CPA, a lawyer, and a broker who never spoke to each other. Larkspur made them one team and I finally understood my own situation."</p>
+        <div class="who"><span class="n">[VERIFY — client name]</span><span class="r">Former CEO, bootstrapped exit · Denver</span></div>
+      </div>
+      <div class="tcard reveal">
+        <p class="quote">"They told me, in the first call, that I probably didn't need to diversify as fast as I feared. No one paid on AUM says that."</p>
+        <div class="who"><span class="n">[VERIFY — client name]</span><span class="r">VP Engineering, post-IPO · Seattle</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── INSIGHTS / CONTENT (authority without pressure) ── -->
+<section class="insights" id="insights">
+  <div class="wrap">
+    <div class="head reveal">
+      <div>
+        <div class="eyebrow">Field notes</div>
+        <h2>What we wish every founder knew before the wire cleared.</h2>
+      </div>
+      <a href="#">All field notes <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+    <div class="ins-grid">
+      <a href="#" class="icard reveal">
+        <span class="tag">Tax</span>
+        <h3>QSBS: the $10M exclusion most founders miss by a few months</h3>
+        <p>Qualified Small Business Stock can shield millions from federal tax — but only if you held it long enough and the company qualified. Here's how to check before you sell.</p>
+        <span class="read">Read the note <span class="arrow" aria-hidden="true">→</span></span>
+      </a>
+      <a href="#" class="icard reveal">
+        <span class="tag">Equity</span>
+        <h3>The 83(b) clock, and why thirty days decides six figures</h3>
+        <p>One election, a tight window, and a number most founders only learn about after it's expired. What it does, who it's for, and the deadline that can't be extended.</p>
+        <span class="read">Read the note <span class="arrow" aria-hidden="true">→</span></span>
+      </a>
+      <a href="#" class="icard reveal">
+        <span class="tag">Strategy</span>
+        <h3>Your first diversification trade should be smaller than you think</h3>
+        <p>The instinct after a windfall is to act big and fast. The math — and the regret data — usually argue for a staged unwind. Here's the framing we use with clients.</p>
+        <span class="read">Read the note <span class="arrow" aria-hidden="true">→</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FINAL CTA (8A Centered Close) ── -->
+<section class="close" id="close">
+  <div class="wrap reveal">
+    <h2>The window doesn't reopen.</h2>
+    <p class="lead">The decisions you make in the months after the money lands are the ones you can't take back. Find out — in two minutes — whether Larkspur is the right counsel for yours.</p>
+    <div class="hero-cta">
+      <a href="#fit" class="btn btn-primary">See if we're a fit <span class="arrow" aria-hidden="true">→</span></a>
+      <a href="#process" class="btn btn-ghost">Read how it works</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ── FOOTER (9B Rich) ── -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <div class="brand">
+          <svg viewBox="0 0 22 26" fill="none" aria-hidden="true"><path d="M11 2c-1.6 4-4 5.6-4 9a4 4 0 008 0c0-3.4-2.4-5-4-9z" stroke="#8A2F39" stroke-width="1.4"/><path d="M11 14v11M11 18l-4-2M11 21l4-2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          Larkspur
+        </div>
+        <p class="foot-blurb">Fee-only wealth counsel for founders and operators in the window after a liquidity event.</p>
+        <div class="foot-contact">
+          <a href="mailto:hello@larkspur.example">hello@larkspur.example</a><br>
+          <a href="tel:+15125550110">+1 (512) 555-0110</a><br>
+          <span style="color:var(--text-muted)">Austin · Denver · Remote</span>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Firm</h4>
+        <a href="#who">Who we serve</a>
+        <a href="#services">What we do</a>
+        <a href="#process">How it works</a>
+        <a href="#proof">Results</a>
+      </div>
+      <div class="foot-col">
+        <h4>Start</h4>
+        <a href="#fit">Fit assessment</a>
+        <a href="mailto:hello@larkspur.example">Email us</a>
+        <a href="#fit">Book a fit call</a>
+      </div>
+      <div class="foot-col">
+        <h4>Legal</h4>
+        <a href="#">Form ADV</a>
+        <a href="#">Form CRS</a>
+        <a href="#">Privacy policy</a>
+        <a href="#">Client login</a>
+      </div>
+    </div>
+    <!-- COMPLIANCE: Required before launch — verify entity name, CRD, and figures -->
+    <p class="foot-legal">
+      Larkspur Private Wealth is a Registered Investment Adviser. Registration does not imply a certain level of skill or training. <sup>*</sup>[VERIFY] figures are illustrative for this demo build and must be confirmed before launch. This material is for informational purposes only and is not investment, legal, or tax advice. Past performance is not a guarantee of future results. All investing involves risk, including the possible loss of principal. Consult your own tax and legal advisors regarding your specific situation.
+    </p>
+    <div class="foot-bottom">
+      <span>© 2026 Larkspur Private Wealth. All rights reserved.</span>
+      <span>Built on the editorial-luxury factory · Direction 01</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ── Libraries (CDN — permitted) ── -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/DrawSVGPlugin.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.25/dist/lenis.min.js"></script>
+<script>
+const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ── Nav: scrolled state + mobile toggle ── */
+const nav = document.getElementById('nav');
+const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 30);
+onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+/* ── Lenis smooth scroll ── */
+if (!reduced && window.Lenis){
+  const lenis = new Lenis({duration:1.1, easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+  function raf(t){ lenis.raf(t); requestAnimationFrame(raf); }
+  requestAnimationFrame(raf);
+  // anchor links through lenis
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const id=a.getAttribute('href'); if(id.length<2)return;
+      const el=document.querySelector(id); if(!el)return;
+      e.preventDefault(); lenis.scrollTo(el,{offset:-70});
+    });
+  });
+}
+
+if (!window.gsap){
+  /* GSAP failed to load — reveal everything so the page is never blank */
+  document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+}
+
+if (window.gsap){
+  gsap.registerPlugin(ScrollTrigger);
+  if (window.DrawSVGPlugin) gsap.registerPlugin(DrawSVGPlugin);
+
+  /* ── Reveal on scroll ── */
+  if (!reduced){
+    gsap.utils.toArray('.reveal').forEach(el=>{
+      ScrollTrigger.create({
+        trigger:el, start:'top 84%', once:true,
+        onEnter:()=>el.classList.add('in')
+      });
+    });
+    /* Backfill: if the page loads already scrolled (refresh / deep-link),
+       reveal anything in or above the viewport so nothing stays hidden. */
+    requestAnimationFrame(()=>{
+      document.querySelectorAll('.reveal:not(.in)').forEach(el=>{
+        if (el.getBoundingClientRect().top < window.innerHeight*0.95) el.classList.add('in');
+      });
+    });
+  } else {
+    document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+  }
+
+  /* ── Hero: animate on LOAD (not scroll) so it shows immediately.
+       gsap.from leaves elements visible at rest, so a JS failure can't hide them.
+       Wait for fonts so SplitText measures real line breaks. ── */
+  /* Fade eyebrow/lead/CTA immediately (no font dependency — CTA must not wait on fonts) */
+  if (!reduced){
+    gsap.from('.hero-copy .eyebrow, .hero-copy .lead, .hero-cta, .hero-note',
+      {opacity:0, y:22, duration:0.9, ease:'expo.out', stagger:0.08, delay:0.15});
+  }
+  /* Headline line-reveal waits for fonts so SplitText measures real line breaks */
+  const heroHeadline = ()=>{
+    if (reduced || !window.SplitText) return;
+    const split = new SplitText('#heroH1', {type:'lines', linesClass:'split-line'});
+    gsap.from(split.lines, {yPercent:115, duration:1, ease:'expo.out', stagger:0.12});
+  };
+  if (document.fonts && document.fonts.ready){ document.fonts.ready.then(heroHeadline); }
+  else { heroHeadline(); }
+
+  /* ── Signature moment: coordination graph (clean draw + breathing glow + cursor parallax) ── */
+  if (!reduced){
+    const tl = gsap.timeline({delay:0.3});
+    tl.from('.ccenter',{scale:0.7,opacity:0,transformOrigin:'230px 230px',duration:0.7,ease:'back.out(1.5)'})
+      .from('.cglow',{opacity:0,duration:0.9,ease:'power2.out'},'-=0.45')
+      .from('.cring',{drawSVG:'50% 50%',opacity:0,duration:0.9,ease:'power2.inOut'},'-=0.7');
+    if (window.DrawSVGPlugin){
+      tl.from('.cline',{drawSVG:'0%',duration:0.6,ease:'power2.out',stagger:0.08},'-=0.55');
+    }
+    tl.from('.cnode',{opacity:0,scale:0.5,transformOrigin:'center',duration:0.5,ease:'back.out(2)',stagger:0.07},'-=0.3');
+    // breathing copper glow
+    gsap.to('.cglow',{scale:1.07,opacity:0.8,transformOrigin:'230px 230px',duration:4.5,ease:'sine.inOut',yoyo:true,repeat:-1});
+    // gentle per-node float
+    gsap.utils.toArray('.cnode').forEach((n,i)=>{
+      gsap.to(n,{y:i%2?5:-5,duration:5+i*0.4,ease:'sine.inOut',yoyo:true,repeat:-1,delay:1+i*0.25});
+    });
+    // cursor parallax: whole constellation drifts toward the pointer
+    const inner = document.getElementById('coordInner');
+    if (inner){
+      const ix = gsap.quickTo(inner,'x',{duration:0.9,ease:'power3.out'});
+      const iy = gsap.quickTo(inner,'y',{duration:0.9,ease:'power3.out'});
+      window.__coordParallax = (dx,dy)=>{ ix(dx*26); iy(dy*20); };
+    }
+  }
+
+  /* ── Hero: cursor-reactive copper light + graph parallax ── */
+  if (!reduced){
+    const hero = document.getElementById('hero');
+    const glow = document.getElementById('heroGlow');
+    if (hero){
+      let raf=0;
+      hero.addEventListener('mousemove', e=>{
+        const r = hero.getBoundingClientRect();
+        const px = (e.clientX-r.left)/r.width, py=(e.clientY-r.top)/r.height;
+        if (raf) return;
+        raf = requestAnimationFrame(()=>{
+          raf=0;
+          if (glow){ glow.style.setProperty('--mx',(px*100)+'%'); glow.style.setProperty('--my',(py*100)+'%'); }
+          if (window.__coordParallax) window.__coordParallax(px-0.5, py-0.5);
+        });
+      });
+      hero.addEventListener('mouseleave', ()=>{ if(window.__coordParallax) window.__coordParallax(0,0); });
+    }
+  }
+
+  /* ── Magnetic primary CTA (quickTo) ── */
+  if (!reduced){
+    const cta = document.getElementById('heroCta');
+    if (cta){
+      const xTo = gsap.quickTo(cta,'x',{duration:0.4,ease:'power3.out'});
+      const yTo = gsap.quickTo(cta,'y',{duration:0.4,ease:'power3.out'});
+      cta.addEventListener('mousemove',e=>{
+        const r=cta.getBoundingClientRect();
+        xTo((e.clientX-r.left-r.width/2)*0.35);
+        yTo((e.clientY-r.top-r.height/2)*0.5);
+      });
+      cta.addEventListener('mouseleave',()=>{xTo(0);yTo(0);});
+    }
+  }
+
+  /* ── Process timeline draw ── */
+  if (!reduced && window.DrawSVGPlugin){
+    gsap.from('#procPath',{drawSVG:'0%',duration:1.4,ease:'power2.inOut',
+      scrollTrigger:{trigger:'.proc-track',start:'top 72%',once:true}});
+  }
+
+  /* ── Stat counters: blur-to-sharp (decimal-aware) ── */
+  gsap.utils.toArray('.stat .num').forEach(el=>{
+    const target=parseFloat(el.dataset.count);
+    const prefix=el.dataset.prefix||''; const suffix=el.dataset.suffix||'';
+    const dec=parseInt(el.dataset.decimals||'0');
+    const render=v=>{
+      const n = dec ? v.toFixed(dec) : Math.ceil(v).toLocaleString();
+      el.innerHTML=prefix+n+(suffix?'<span class="u">'+suffix+'</span>':'');
+    };
+    if (reduced){ render(target); return; }
+    const obj={v:0};
+    ScrollTrigger.create({trigger:el,start:'top 86%',once:true,onEnter:()=>{
+      gsap.to(obj,{v:target,duration:2,ease:'power2.out',
+        onUpdate(){ render(obj.v); el.style.filter=`blur(${(1-obj.v/(target||1))*7}px)`; },
+        onComplete(){ el.style.filter='none'; render(target); }
+      });
+    }});
+  });
+}
+
+/* ── Fit assessment multi-step (vanilla) ── */
+(function(){
+  const form=document.getElementById('fitForm');
+  const done=document.getElementById('fitDone');
+  const bars=document.querySelectorAll('.fit-progress .bar');
+  let step=1; const total=5;
+  const show=n=>{
+    form.querySelectorAll('.fit-step').forEach(s=>s.classList.toggle('active',+s.dataset.step===n));
+    bars.forEach((b,i)=>b.classList.toggle('active',i<n-1 || i===0));
+    bars.forEach((b,i)=>b.classList.toggle('active',i<n));
+    step=n;
+  };
+  form.querySelectorAll('[data-next]').forEach(b=>b.addEventListener('click',()=>{ if(step<total) show(step+1); }));
+  form.querySelectorAll('[data-back]').forEach(b=>b.addEventListener('click',()=>{ if(step>1) show(step-1); }));
+  form.addEventListener('submit',e=>{
+    e.preventDefault();
+    const email=document.getElementById('fitEmail');
+    if(!email.value || !email.checkValidity()){ email.focus(); return; }
+    form.style.display='none';
+    document.querySelector('.fit-progress').style.display='none';
+    document.querySelector('.fit-head').style.display='none';
+    done.classList.add('show');
+  });
+})();
+</script>
+</body>
+</html>
