@@ -3,6 +3,19 @@ Last updated: 2026-06-29 (overnight: self-improving QA system + Field repair)
 
 ---
 
+## CONSOLIDATION — Repair loop wired + process cleaned (model-agnostic)
+
+Goal locked: **hand the factory to any suite of models → consistent $25k quality.** Quality lives in docs + tested primitives + a deterministic gate + repair loop, not in a prompt or one model's taste.
+
+- ✅ **Repair loop wired** — Agent 05 now OWNS the loop (render → `visual-checks.js` → Tier-B taste critic → verdict → `repair(defects)` to Agent 04 → re-verify; 3-iteration cap, escalate on stall/regression). Agent 04 has a Repair Mode (scoped fixes, fix-the-root via LAYOUT_CRAFT/COMPONENTS, swap in tested primitives).
+- ✅ **Taste critic slotted in** — `impeccable` / `avoid-ai-design` run as the **detect-only Tier-B critic** (judgment layer), never as builder. Its deterministic 44-rule slop detector was **ported into `qa/visual-checks.js`** (indigo accent, gradient text, side-stripe border, flat 0.1 shadow, uniform radius) — runs free every build, model-agnostic.
+- ✅ **Process cleaned** — removed deprecated/contradictory docs (git history preserves): `DESIGN_DIRECTIONS.md` (old archetypes), the duplicate template `REFERENCES.md`, `docs/FACTORY-V2-PROCESS.md`, `docs/ANIMATION_LIBRARY.md` (old vanilla-only, contradicted GSAP), `projects/awp/BUILD_PROMPT.md`, and the `build-a/c/d` experiment folders.
+- ✅ **`CLAUDE.md` rewritten** — current pipeline, the 9-doc template stack, the model-agnostic goal, GSAP-allowed (supersedes "vanilla JS only"), the QA loop.
+
+Template doc stack is now coherent and non-overlapping: SECTION_MANIFEST · DESIGN · DESIGN_TOKENS · SECTION_PATTERNS · MOTION_TIERS · DESIGN_FUNDAMENTALS · LAYOUT_CRAFT · COMPONENTS · PAGE_SYSTEM.
+
+---
+
 ## OVERNIGHT SESSION — Self-Improving Factory (the big shift)
 
 The factory was proven to produce the *skin* reliably but fail *layout craft* (Field shipped a collapsed signature element + headings trapped in 324px columns, and CSS-grep QA passed it). Fixed the root cause and built the compounding system:

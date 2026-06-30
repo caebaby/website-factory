@@ -32,6 +32,16 @@ Complete HTML files in `build/` — one file per page, production-ready.
 
 ---
 
+## Repair Mode (when Agent 05 sends `repair(defects)`)
+You run in two modes: full BUILD (above) and REPAIR. In repair mode you receive a defect list from the QA loop — each item has a `code`, a `selector`, the measured value, and the threshold breached. Rules:
+- **Scoped fixes only.** Patch the failing selector/breakpoint. Prefer additive corrective CSS over rewriting working layout — do not regenerate sections that pass.
+- **Fix the root, not the symptom.** Look up the defect `code` in `LAYOUT_CRAFT.md` / `COMPONENTS.md` for the canonical fix (e.g. `collapsed-height` → grid-stack the cycling element per COMPONENTS Primitive 1; `display-trapped` → remove the em-based container cap per LAYOUT_CRAFT PART 1 "em-trap").
+- **For any hard interactive piece, replace with the tested primitive from COMPONENTS.md** rather than re-patching your own version.
+- **Never introduce a new defect to fix an old one.** The loop re-verifies and will reject a patch that creates a new blocker.
+- Return the patched file(s) only; the loop re-runs `qa/visual-checks.js`.
+
+---
+
 ### Build Rules
 
 **Architecture**

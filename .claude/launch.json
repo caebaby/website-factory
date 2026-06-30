@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "larkspur",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8097", "--directory", "projects/larkspur/build"],
+      "port": 8097
+    }
+  ]
+}

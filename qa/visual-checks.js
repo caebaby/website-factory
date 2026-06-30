@@ -166,6 +166,44 @@
       }
     }
 
+    /* ---- P1/P2: AI-SLOP TELLS (ported from the impeccable/avoid-ai-design 44-rule
+       detector + slop research — deterministic, run free every build) ---- */
+    (function slop() {
+      const toHsl = (rgbStr) => {
+        const m = rgbStr.match(/\d+(\.\d+)?/g); if (!m) return null;
+        let r = +m[0]/255, g = +m[1]/255, b = +m[2]/255;
+        const mx = Math.max(r,g,b), mn = Math.min(r,g,b); let h = 0, s = 0, l = (mx+mn)/2;
+        if (mx !== mn) { const d = mx-mn; s = l > 0.5 ? d/(2-mx-mn) : d/(mx+mn);
+          h = mx===r ? (g-b)/d+(g<b?6:0) : mx===g ? (b-r)/d+2 : (r-g)/d+4; h *= 60; }
+        return { h, s, l };
+      };
+      // 1. AI-default indigo/violet/purple accent on the primary CTA
+      const cta = document.querySelector('.btn-primary,[class*=cta] a,button[type=submit],.nav-cta');
+      if (cta) { const bg = toHsl(cs(cta).backgroundColor);
+        if (bg && bg.h >= 250 && bg.h <= 290 && bg.s > 0.5)
+          add('P1', 'slop-indigo-accent', sel(cta), 'Primary CTA uses an AI-default indigo/violet accent (hue ' + Math.round(bg.h) + '°). Choose a hue outside 250-290°.', { hue: Math.round(bg.h) }); }
+      // 2. gradient text
+      all.forEach(el => { const c = cs(el);
+        if ((c.webkitBackgroundClip === 'text' || c.backgroundClip === 'text') &&
+            /transparent|rgba\(0, 0, 0, 0\)/.test((c.webkitTextFillColor||'') + c.color) && el.textContent.trim())
+          add('P2', 'slop-gradient-text', sel(el), 'Gradient-clipped text — an immediate AI tell. Use a solid color.'); });
+      // 3. side-stripe card border (one-edge accent on a rounded card — "most reliable AI tell")
+      all.forEach(el => { const c = cs(el);
+        const w = ['borderTopWidth','borderLeftWidth','borderRightWidth','borderBottomWidth'].map(p => parseFloat(c[p]) || 0);
+        if (w.filter(x => x >= 3).length === 1 && c.borderRadius !== '0px' && el.children.length)
+          add('P2', 'slop-side-stripe', sel(el), 'One-edge thick accent border on a rounded card — a top AI tell.'); });
+      // 4. same flat ~0.1-opacity single shadow repeated everywhere
+      const shadows = {}; all.forEach(el => { const s = cs(el).boxShadow; if (s && s !== 'none') shadows[s] = (shadows[s]||0)+1; });
+      Object.keys(shadows).forEach(s => { if (shadows[s] >= 4 && /0\.1\)/.test(s) && (s.match(/rgba?\(/g)||[]).length <= 1)
+        add('P2', 'slop-flat-shadow', 'multiple', 'A single flat ~0.1-opacity shadow on ' + shadows[s] + ' elements. Use a layered (multi-stop) shadow.', { count: shadows[s] }); });
+      // 5. uniform border-radius everywhere (no radius intent)
+      const radii = {}; let rounded = 0;
+      all.forEach(el => { const r = cs(el).borderRadius; if (r && r !== '0px') { radii[r] = (radii[r]||0)+1; rounded++; } });
+      const topR = Object.entries(radii).sort((a,b) => b[1]-a[1])[0];
+      if (rounded > 10 && topR && topR[1]/rounded > 0.8)
+        add('P2', 'slop-uniform-radius', 'multiple', Math.round(topR[1]/rounded*100) + '% of rounded elements share radius ' + topR[0] + ' — no radius intent (vary cards/buttons/pills).', { radius: topR[0] });
+    })();
+
     const blockers = defects.filter(d => d.severity === 'P0');
     const warnings = defects.filter(d => d.severity === 'P1');
     return {

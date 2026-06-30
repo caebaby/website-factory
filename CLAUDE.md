@@ -1,140 +1,78 @@
 # Website Factory — Claude Instructions
 
-## What This Repo Is
-An end-to-end pipeline for building high-converting, premium-quality websites on demand. Client fills out an intake form → agent pipeline runs → production-ready site on a review link within 24–48 hours.
+## What this repo is
+An end-to-end pipeline that turns a client intake into a premium, high-converting, single-file website. Client fills an intake → agent pipeline runs → a QA repair loop drives it clean → production-ready site on a review link.
 
-**Target:** Full site in under 5 hours of agent time. One human gate: Johnny, pre-deploy.
+**Target:** $25k agency quality, in under ~5 hours of agent time, with one human gate (Johnny) pre-deploy.
+
+## The core goal: model-agnostic, consistent quality
+The entire system is designed so you can hand it to **any suite of models** and get a great, consistent product. The quality does NOT live in a clever prompt or a single model's taste — it lives in:
+- **LLM-agnostic docs** (the craft, the rules, the tokens) any model reads and applies,
+- **tested code primitives** the build agent *assembles* (never re-derives), and
+- a **deterministic QA gate + repair loop** that inspects rendered pixels and fixes defects before ship.
+
+If a build is bad, that's a gap in the docs / primitives / checks — fix the system, not the prompt. The system compounds (see `FACTORY_LEARNING.md`).
 
 ---
 
-## How to Start a New Project
-
-### Step 1 — Set up project folder
-```
-projects/[client-slug]/
-  INTAKE.md          ← client brief (fill from templates/_base/INTAKE.md)
-  DESIGN.md          ← client color/font/logo overrides (fill from projects/_base/DESIGN.md)
-  SITEMAP.md         ← all pages + section order (fill from SITEMAP template)
-  research/          ← Agent 01 output
-  strategy/          ← Agent 02 + 02.5 output
-  copy/              ← Agent 03 output
-  build/             ← Agent 04 output (final HTML files)
-  qa/                ← Agent 05 output
-```
-
-### Step 2 — Select template
-```
-templates/
-  editorial-luxury/  ← Financial advisory, wealth management, law, professional services
-    DESIGN.md             ← Quality floor: shadow system, hover library, anti-slop rules
-    DESIGN_DIRECTIONS.md  ← Variation system: 4 archetypes, layout patterns, signature moments
-    SECTION_MANIFEST.md   ← Conversion architecture: mandatory sections, order, enforcement
-  clean-craft/       ← Trades, artisan, agriculture (not yet extracted)
-    DESIGN.md             ← [To be built]
-```
-
-### Step 3 — Run agents in order
+## The pipeline
 
 | Agent | File | Reads | Produces |
-|-------|------|-------|---------|
+|-------|------|-------|----------|
 | 01 Research | `agents/01_research.md` | `INTAKE.md` | `research/ICP_BRIEF.md` |
-| 02 Strategy | `agents/02_strategy.md` | `INTAKE.md` + `research/` + `SECTION_MANIFEST.md` | `strategy/COPY_STRATEGY.md` |
-| 02.5 Design Direction | `agents/02.5_design_direction.md` | INTAKE + research + strategy + DESIGN.md + DESIGN_DIRECTIONS.md | `strategy/DESIGN_BRIEF.md` |
-| 03 Copy | `agents/03_copy.md` | `strategy/` + `research/` + `SECTION_MANIFEST.md` | `copy/COPY_ALL.md` |
-| 04 Build | `agents/04_build.md` | `templates/[t]/DESIGN.md` + `templates/[t]/DESIGN_DIRECTIONS.md` + `templates/[t]/SECTION_MANIFEST.md` + `strategy/DESIGN_BRIEF.md` + `projects/[s]/DESIGN.md` + `SITEMAP.md` + `copy/` | `build/*.html` |
-| 05 QA | `agents/05_qa.md` | `build/` + `DESIGN.md` + `DESIGN_DIRECTIONS.md` + `SECTION_MANIFEST.md` + `DESIGN_BRIEF.md` + `SITEMAP.md` + `copy/` + `INTAKE.md` | `qa/QA_REPORT.md` |
+| 02 Strategy | `agents/02_strategy.md` | INTAKE + research + `SECTION_MANIFEST.md` | `strategy/COPY_STRATEGY.md` |
+| 02.5 Design Direction | `agents/02.5_design_direction.md` | INTAKE + research + strategy + `DESIGN_TOKENS.md` + `SECTION_PATTERNS.md` + `MOTION_TIERS.md` | `strategy/DESIGN_BRIEF.md` (5-dial config + per-section patterns + signature moment) |
+| 03 Copy | `agents/03_copy.md` | strategy + research + `SECTION_MANIFEST.md` | `copy/COPY_ALL.md` |
+| 04 Build | `agents/04_build.md` | the template doc stack (below) + DESIGN_BRIEF + client DESIGN.md + SITEMAP + COPY_ALL | `build/*.html` |
+| 05 QA + Repair Loop | `agents/05_qa.md` | build/ + the template docs + `qa/visual-checks.js` + brief/manifest | `qa/QA_REPORT.md`, drives repair, updates `qa/LEDGER.md` |
 
-**Parallelism:**
-- Agents 01 + 02 can run simultaneously if intake is complete
-- Agent 02.5 runs after 02 (needs strategy + research)
-- Agent 03 can run in parallel with 02.5 (both consume strategy, don't depend on each other)
-- Agent 04 starts after both 02.5 and 03 finish
-- Agent 05 runs after 04
+**Parallelism:** 01+02 together; 02.5 after 02; 03 parallel with 02.5; 04 after 02.5+03; 05 after 04.
 
-**Hard rules for Agent 04:**
-1. It must read `templates/[template]/DESIGN.md` before writing any CSS. If DESIGN.md is missing, stop and request it.
-2. It must read `strategy/DESIGN_BRIEF.md` before choosing layouts. If missing, stop and run Agent 02.5 first.
-3. The archetype and layout patterns in DESIGN_BRIEF.md override the default layouts in BUILD_PROMPT.md. BUILD_PROMPT defines WHAT sections exist. DESIGN_BRIEF defines HOW they look.
-
-### Step 4 — Johnny gate
-Johnny reviews `qa/QA_REPORT.md` against the checklist. Status must be READY TO SHIP. No exceptions.
-
-### Step 5 — Deploy
-1. Push `build/` to a new Vercel project
-2. Connect client domain
-3. Wire Calendly/GHL form endpoints
-4. Confirm compliance disclaimer in footer
-5. Send review link + Loom to client
+**The QA repair loop (Agent 05 owns it):** RENDER → INSPECT (`qa/visual-checks.js`, deterministic) → CRITIQUE (Tier-B taste critic, detect-only) → verdict → `repair(defects)` to Agent 04 (scoped) → RE-VERIFY. Hard cap 3 iterations; escalate on stall/regression. Every caught defect → a new check / rule / blessed component. See `FACTORY_LEARNING.md`.
 
 ---
 
-## What Goes in Each Project File
+## Template doc stack — `templates/editorial-luxury/`
+The design system is layered. Each doc owns one job; none overlap.
 
-### INTAKE.md
-Everything about the client: who they are, who they serve, their story, their proof, brand assets, timeline. See `templates/_base/INTAKE.md` for the full template. Must be at least 70% complete before running agents.
+| Doc | Owns | Changes per client? |
+|-----|------|---------------------|
+| `SECTION_MANIFEST.md` | The 9-section conversion skeleton + order | No (structure) |
+| `DESIGN.md` | Universal quality floor (shadows, shimmer, grain, anti-slop, frosted nav) — **tone-agnostic** | No (craft floor) |
+| `DESIGN_TOKENS.md` | The 5 dials (Tone/Density/Motion/Type/Visual) + exact CSS token values | Yes (the skin) |
+| `SECTION_PATTERNS.md` | 3–4 layout patterns per section | Yes (composition) |
+| `MOTION_TIERS.md` | T1/T2/T3 animation specs (GSAP) | Per Motion dial |
+| `DESIGN_FUNDAMENTALS.md` | Hierarchy / type / color / spacing / a11y physics | No |
+| `LAYOUT_CRAFT.md` | Measure-by-size, line-height/tracking, rag, whitespace/composition, AI-slop tells — all machine-checkable | No |
+| `COMPONENTS.md` | **Tested code primitives** (cycle hero, multi-step form, scroll reveal) to ASSEMBLE, not re-derive | No |
+| `PAGE_SYSTEM.md` | Inner-page architecture (About/Services/Contact/etc.) | No |
 
-### DESIGN.md (client-level)
-Color token overrides for the template. Maps client's brand colors to the template's CSS variable names. Also includes: fonts, logo spec, tagline, brand voice notes. See `projects/awp/DESIGN.md` as a reference.
-
-### SITEMAP.md
-All pages to be built + section order per page + nav labels. Each section has a named conversion job (not just a content description). See `projects/awp/SITEMAP.md` as a reference.
-
----
-
-## Design Standard
-
-All sites built on this factory are held to $25k agency quality. The standard is defined in three pillars, each with a distinct job:
-
-**Pillar 1 — Conversion Architecture (never changes):** `templates/[template]/SECTION_MANIFEST.md`
-- 9 mandatory core sections in fixed order (the MQL→SQL pipeline)
-- 3 tiers: Core (mandatory) / Standard (default, droppable with reason) / Optional (added per client)
-- Every section has a named conversion job and emotional contract
-- Agent 05 blocks shipping if any Tier 1 section is missing or reordered
-
-**Pillar 2 — Quality Floor (never changes):** `templates/[template]/DESIGN.md`
-- 3-layer shadow stacks on all cards (never single box-shadow)
-- Shimmer pseudo-element on primary CTA buttons
-- Background radial gradient depth on every section (never flat color)
-- Frosted glass nav on scroll
-- Grain overlay on every page
-- Zero banned fonts (Inter, Arial, Roboto, system-ui)
-- Zero AI tells: no bento grids, no gradient orbs, no glassmorphism, no eyebrow pills
-
-**Pillar 3 — Variation System (changes per client):** `templates/[template]/DESIGN_DIRECTIONS.md`
-- 4 archetypes: Institution, Editor, Modernist, Heritage
-- Layout pattern menus for each section
-- Signature moment selection (one per site)
-- Interaction style by archetype (duration, easing, hover lift, stagger)
-- Agent 02.5 selects the archetype and patterns → produces `strategy/DESIGN_BRIEF.md`
-
-**How the three pillars interact:**
-- SECTION_MANIFEST says WHAT sections exist and in what order (structure)
-- DESIGN.md says WHAT QUALITY those sections must meet (craft)
-- DESIGN_DIRECTIONS says HOW those sections look (personality)
-- BUILD_PROMPT.md is now deprecated — the pipeline generates everything through clean layers
-
-Agent 05 enforces all three pillars in the QA report before anything ships.
+Cross-build: `docs/REFERENCES.md` (Chris-approved reference sites), `qa/visual-checks.js` (the gate), `qa/LEDGER.md` (the factory's memory), `FACTORY_LEARNING.md` (the loop).
 
 ---
 
-## Project Registry
+## Hard rules for Agent 04 (build)
+1. Read the full template doc stack + the DESIGN_BRIEF before writing CSS.
+2. Set the `:root` token block from DESIGN_TOKENS per the brief — including every `--*-rgb` triplet. Never hardcode a color that has a token.
+3. **Assemble the hard interactive pieces from `COMPONENTS.md` — do NOT re-author them from a description** (that is exactly how the signature cycle element once shipped collapsed).
+4. Size every heading measure with the `LAYOUT_CRAFT.md` PART 1 formula. Never put a container `max-width` in `em` (the em-trap).
+5. Libraries: GSAP 3.13 + ScrollTrigger (+ SplitText/DrawSVG) and Lenis 1.3.25 via CDN are permitted and expected for the motion tiers. Fonts via Google/Fontshare `<link>`. Nothing else. (This supersedes the old "vanilla JS only" rule.)
 
+## Technical principles (all templates)
+1. Single self-contained HTML file per page — no build step, no npm.
+2. CSS custom properties for all colors.
+3. GSAP/Lenis via CDN for motion; respect `prefers-reduced-motion`; never let a JS/GSAP failure blank the page (no-JS-safe reveals; hero animates on load, CTA never waits on JS/fonts).
+4. Mobile-first; verify at 390 / 768 / 1280.
+5. Placeholders visibly marked; never fabricate stats/credentials/testimonials.
+
+---
+
+## Project registry
 | Client | Template | Folder | Status |
 |--------|----------|--------|--------|
-| Anchor Wealth Planning (Alex Miller) | editorial-luxury | `projects/awp/` | 🟡 Intake partial — waiting on Alex |
-| LongView Planning Partners | editorial-luxury | separate repo | 🟡 Active |
-| Farrier (TBD) | clean-craft | `projects/farrier/` | 🔴 Template not built yet |
-
----
-
-## Technical Principles (all templates)
-
-1. **Single HTML files** — no build step, no dependencies, no npm
-2. **CSS custom properties** for all colors — never hardcode hex values
-3. **Vanilla JS only** — IntersectionObserver for scroll animations
-4. **Mobile-first** — test at 375px, 768px, 1440px
-5. **No placeholder copy in build** — all `[NEEDED]` fields must be visibly marked
-6. **Self-contained** — every page works standalone
+| Anchor Wealth Planning (Alex Miller) | editorial-luxury | `projects/awp/` | 🟡 Intake partial |
+| Larkspur (demo, dark + light) | editorial-luxury | `projects/larkspur/` | ✅ Two style proofs |
+| Field (demo, typographic/cinematic) | editorial-luxury | `projects/field/` | ✅ Built cold + repaired |
 
 ---
 
