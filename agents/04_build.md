@@ -13,6 +13,8 @@ You do not invent copy. You do not make design decisions not supported by the te
 4. `templates/[template-name]/SECTION_PATTERNS.md` — the layout patterns to implement per section
 5. `templates/[template-name]/MOTION_TIERS.md` — the animation tier to implement (exact GSAP code)
 6. `templates/[template-name]/DESIGN_FUNDAMENTALS.md` — hierarchy/type/color/spacing/a11y physics
+6b. `templates/[template-name]/LAYOUT_CRAFT.md` — measure-by-size, line-height/tracking, rag, whitespace/composition, AI-slop tells (all machine-checkable). Size every heading measure with the PART 1 formula; satisfy the counterweight rule for any capped column or big-type hero; avoid every PART 7 tell.
+6c. `templates/[template-name]/COMPONENTS.md` — TESTED primitives (cycling-word hero, multi-step form, scroll reveal). For these hard interactive pieces, PASTE + parameterize the primitive — do NOT re-derive from a description (that is how the signature element shipped collapsed).
 7. `templates/[template-name]/PAGE_SYSTEM.md` — inner-page architecture (for non-homepage pages)
 8. `strategy/DESIGN_BRIEF.md` (from Agent 02.5) — the dial config + pattern picks + motion tier + signature moment for THIS client
 9. `projects/[slug]/DESIGN.md` — client color/font/logo overrides

@@ -1,5 +1,23 @@
 # Website Factory — Status
-Last updated: 2026-06-29
+Last updated: 2026-06-29 (overnight: self-improving QA system + Field repair)
+
+---
+
+## OVERNIGHT SESSION — Self-Improving Factory (the big shift)
+
+The factory was proven to produce the *skin* reliably but fail *layout craft* (Field shipped a collapsed signature element + headings trapped in 324px columns, and CSS-grep QA passed it). Fixed the root cause and built the compounding system:
+
+- ✅ **Field repaired to bar** — cycle slot (grid-stack, can't collapse) + em-trap columns (now 32 CPL). Verified by measurement.
+- ✅ **`qa/visual-checks.js`** — executable rendered-geometry QA gate. Catches collapse / overflow / display-trapped / accent-overuse / banned fonts. Tested: passes fixed Field, would have failed the broken one. This is the missing pixel-level QA.
+- ✅ **`templates/editorial-luxury/LAYOUT_CRAFT.md`** — the craft, machine-checkable: measure-by-size formula, line-height/tracking tables, rag rules, whitespace/composition, AI-slop tells. From a 12-agent research pass (Bringhurst, Apple HIG, Material, Carbon, Refactoring UI, slop detectors).
+- ✅ **`templates/editorial-luxury/COMPONENTS.md`** — golden primitives (cycling-word hero, multi-step form, scroll reveal) as TESTED code the build agent assembles, never re-derives. Plus the component-vs-prose decision rule.
+- ✅ **`FACTORY_LEARNING.md`** — the self-improving loop: build→render→inspect→critique→repair→re-verify→learn; the 3-layer defect ledger; how each caught defect becomes a permanent check / rule / blessed component and compounds.
+- ✅ **`qa/LEDGER.md`** — seeded with tonight's 4 real defects (LED-001..004) + 4 open doc tensions.
+- ✅ Agents 04 + 05 wired to read the craft/components docs and RUN the visual checker.
+
+**Next (V1+):** wire the repair loop into 04/05 prompts; add the LLM critic + gold exemplars; automate the ledger + replay corpus + pixel baselines on blessed components. Resolve the 4 open doc tensions in LEDGER.md.
+
+---
 
 ---
 
