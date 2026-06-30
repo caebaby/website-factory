@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Field — Brand &amp; Narrative Studio</title>
+<meta name="description" content="Field is a brand &amp; narrative studio for founders whose product is great but whose story is a mess. Naming, positioning, narrative, and the site that carries it.">
+
+<!-- Fonts: Satoshi + General Sans via Fontshare (no banned fonts) -->
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&f[]=general-sans@400,500&display=swap" rel="stylesheet">
+
+<!-- ROBUSTNESS: add `js` class immediately so reveal-hidden state only applies when JS runs.
+     If GSAP never loads, the fallback script below force-reveals everything. Never a blank page. -->
+<script>document.documentElement.classList.add('js');</script>
+
+<style>
+/* ============================================================
+   :ROOT TOKENS — from DESIGN_BRIEF CSS OVERRIDES (verbatim)
+   ============================================================ */
+:root{
+  --bg-base:          #FAFAF8;
+  --bg-base-rgb:      250,250,248;
+  --bg-surface:       #FFFFFF;
+  --bg-elevated:      #F2F1EC;
+  --bg-inverse:       #0E0E0C;
+  --bg-inverse-rgb:   14,14,12;
+  --text-primary:     #14140F;
+  --primary-rgb:      20,20,15;
+  --text-secondary:   #555149;
+  --text-muted:       #9A968C;
+  --border:           rgba(20,20,15,.12);
+  --accent:           #DC3C20;
+  --accent-rgb:       220,60,32;
+  --accent-muted:     #B53219;
+  --accent-glow:      rgba(220,60,32,.12);
+
+  --font-display:     'Satoshi','General Sans',sans-serif;
+  --font-body:        'Satoshi','General Sans',sans-serif;
+  --size-display:     clamp(64px,9vw,180px);   /* type IS the image — go huge */
+  --weight-display:   500;
+  --leading-display:  0.92;
+  --tracking-display: -0.04em;
+
+  --section-pad:      136px;
+  --col-gap:          48px;
+  --grid-max:         1280px;
+  --radius:           0px;                      /* sharp edges = gallery */
+
+  --motion-base:      0.95s;
+  --motion-ease:      cubic-bezier(0.16,1,0.3,1);
+  --motion-stagger:   40ms;
+
+  /* 3-layer shadow stacks — NEVER a single box-shadow */
+  --shadow-card:       0 1px 2px rgba(20,20,15,.04), 0 6px 18px rgba(20,20,15,.06), 0 18px 44px rgba(20,20,15,.06);
+  --shadow-card-hover: 0 2px 6px rgba(20,20,15,.06), 0 12px 30px rgba(20,20,15,.10), 0 30px 64px rgba(20,20,15,.10);
+
+  /* Type scale (≤6 distinct sizes goal) */
+  --size-h2:    clamp(34px,5vw,68px);
+  --size-h3:    clamp(22px,2.4vw,30px);
+  --size-lead:  clamp(18px,1.7vw,22px);
+  --size-body:  17px;
+  --size-small: 14px;
+  --size-micro: 12px;
+}
+
+/* ============================================================
+   RESET
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto;}}
+body{
+  font-family:var(--font-body);
+  background:var(--bg-base);
+  color:var(--text-secondary);
+  font-size:var(--size-body);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img,svg{display:block;max-width:100%;}
+a{color:inherit;text-decoration:none;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;}
+ul{list-style:none;}
+
+::selection{background:var(--accent);color:#fff;}
+::-moz-selection{background:var(--accent);color:#fff;}
+
+:focus-visible{
+  outline:3px solid var(--accent);
+  outline-offset:3px;
+  border-radius:2px;
+}
+
+/* Skip link */
+.skip-link{
+  position:absolute;left:-999px;top:0;z-index:2000;
+  background:var(--text-primary);color:#fff;
+  padding:12px 20px;font-size:14px;font-weight:700;
+}
+.skip-link:focus{left:8px;top:8px;}
+
+/* ============================================================
+   GRAIN OVERLAY (light build — keep ~0.025)
+   ============================================================ */
+.grain{
+  position:fixed;inset:0;z-index:9999;pointer-events:none;
+  opacity:.025;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.wrap{max-width:var(--grid-max);margin:0 auto;padding:0 40px;}
+.section{position:relative;padding:var(--section-pad) 0;}
+.section-tight{padding:calc(var(--section-pad) * .62) 0;}
+
+/* Section background depth — never flat */
+.section{
+  background:
+    radial-gradient(ellipse 70% 55% at 18% 12%, rgba(var(--accent-rgb),.035) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 50% at 88% 90%, rgba(var(--primary-rgb),.028) 0%, transparent 55%),
+    var(--bg-base);
+}
+.section--elevated{
+  background:
+    radial-gradient(ellipse 65% 50% at 82% 18%, rgba(var(--accent-rgb),.03) 0%, transparent 52%),
+    var(--bg-elevated);
+}
+
+.eyebrow{
+  display:inline-flex;align-items:center;gap:14px;
+  font-size:var(--size-micro);font-weight:700;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--accent);
+}
+.eyebrow::after{
+  content:"";display:block;height:1px;width:46px;background:var(--accent);
+  transform:scaleX(0);transform-origin:left;transition:transform .7s var(--motion-ease) .15s;
+}
+.reveal.in .eyebrow::after,.eyebrow.in::after{transform:scaleX(1);}
+
+h1,h2,h3{
+  font-family:var(--font-display);color:var(--text-primary);
+  font-weight:var(--weight-display);
+  letter-spacing:var(--tracking-display);line-height:1.04;
+}
+.section-h2{
+  font-size:var(--size-h2);line-height:1.06;max-width:16em;
+  letter-spacing:-0.03em;margin-top:26px;
+}
+.lead{font-size:var(--size-lead);line-height:1.55;color:var(--text-secondary);max-width:60ch;}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn-primary{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:18px 34px;min-height:48px;
+  background:var(--accent);color:#fff;
+  font-size:15px;font-weight:700;letter-spacing:.02em;
+  border-radius:var(--radius);position:relative;overflow:hidden;
+  box-shadow:0 1px 2px rgba(var(--accent-rgb),.18), 0 6px 22px rgba(var(--accent-rgb),.28);
+  transition:transform .24s var(--motion-ease), box-shadow .24s var(--motion-ease);
+  will-change:transform;
+}
+/* Shimmer sweep — loops + on hover */
+.btn-primary::before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.22) 50%,transparent 60%);
+  transform:translateX(-100%);pointer-events:none;
+}
+@media (prefers-reduced-motion: no-preference){
+  .btn-primary::before{animation:shimmer 3.4s ease-in-out infinite;animation-delay:1.4s;}
+}
+.btn-primary:hover::before{animation:none;transform:translateX(100%);transition:transform .5s var(--motion-ease);}
+@keyframes shimmer{0%{transform:translateX(-100%);}60%,100%{transform:translateX(110%);}}
+.btn-primary .arrow{transition:transform .26s cubic-bezier(.34,1.56,.64,1);}
+.btn-primary:hover{
+  transform:translateY(-2px);
+  box-shadow:0 2px 6px rgba(var(--accent-rgb),.22), 0 12px 36px rgba(var(--accent-rgb),.42);
+}
+.btn-primary:hover .arrow{transform:translateX(5px);}
+
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:18px 28px;min-height:48px;
+  color:var(--text-primary);font-size:15px;font-weight:600;letter-spacing:.01em;
+  border:1.5px solid var(--border);border-radius:var(--radius);
+  transition:border-color .24s var(--motion-ease), color .24s var(--motion-ease), background .24s var(--motion-ease);
+}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);background:rgba(var(--accent-rgb),.03);}
+.btn-ghost .arrow{transition:transform .26s cubic-bezier(.34,1.56,.64,1);}
+.btn-ghost:hover .arrow{transform:translateX(4px);}
+
+.btn-ghost-dark{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:18px 32px;min-height:48px;
+  color:#fff;font-size:15px;font-weight:600;
+  border:1.5px solid rgba(255,255,255,.28);border-radius:var(--radius);
+  transition:border-color .24s var(--motion-ease), background .24s var(--motion-ease);
+}
+.btn-ghost-dark:hover{border-color:#fff;background:rgba(255,255,255,.06);}
+
+/* Soft text link with drawing underline */
+.text-link{
+  position:relative;display:inline-flex;align-items:center;gap:8px;
+  font-weight:600;color:var(--text-primary);
+}
+.text-link::after{
+  content:"";position:absolute;left:0;bottom:-3px;height:1.5px;width:0;
+  background:var(--accent);transition:width .3s var(--motion-ease);
+}
+.text-link:hover{color:var(--accent);}
+.text-link:hover::after{width:100%;}
+.text-link .arrow{transition:transform .26s cubic-bezier(.34,1.56,.64,1);}
+.text-link:hover .arrow{transform:translateX(4px);}
+
+/* ============================================================
+   NAV — frosted glass on scroll
+   ============================================================ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  height:74px;display:flex;align-items:center;
+  background:transparent;border-bottom:1px solid transparent;
+  transition:background .3s var(--motion-ease), box-shadow .3s var(--motion-ease),
+             border-color .3s var(--motion-ease), height .3s var(--motion-ease);
+}
+.nav.scrolled{
+  height:64px;
+  background:rgba(var(--bg-base-rgb),.82);
+  backdrop-filter:blur(18px) saturate(1.4);
+  -webkit-backdrop-filter:blur(18px) saturate(1.4);
+  border-bottom-color:var(--border);
+  box-shadow:0 1px 0 rgba(255,255,255,.7) inset, 0 4px 24px rgba(var(--primary-rgb),.06);
+}
+.nav-inner{max-width:var(--grid-max);margin:0 auto;padding:0 40px;width:100%;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;}
+.logo{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--font-display);font-weight:700;font-size:23px;
+  letter-spacing:-0.02em;color:var(--text-primary);
+}
+.logo .mark{
+  width:13px;height:13px;background:var(--accent);  /* ACCENT place 1: logo mark */
+  display:inline-block;transform:rotate(0deg);
+  box-shadow:0 0 0 0 rgba(var(--accent-rgb),.5);
+}
+.nav-links{display:flex;align-items:center;gap:34px;}
+.nav-link{
+  position:relative;font-size:15px;font-weight:500;color:var(--text-secondary);
+  transition:color .22s var(--motion-ease);padding:6px 0;
+}
+.nav-link::after{
+  content:"";position:absolute;left:0;bottom:0;height:1.5px;width:0;
+  background:var(--accent);transition:width .24s var(--motion-ease);
+}
+.nav-link:hover{color:var(--text-primary);}
+.nav-link:hover::after{width:100%;}
+.nav-cta{margin-left:6px;}
+
+.nav-toggle{
+  display:none;width:44px;height:44px;align-items:center;justify-content:center;
+  flex-direction:column;gap:5px;
+}
+.nav-toggle span{display:block;width:24px;height:2px;background:var(--text-primary);
+  transition:transform .3s var(--motion-ease), opacity .3s var(--motion-ease);}
+
+/* Mobile overlay menu */
+.mobile-menu{
+  position:fixed;inset:0;z-index:1500;
+  background:var(--bg-base);
+  display:flex;flex-direction:column;justify-content:center;gap:8px;
+  padding:40px;
+  transform:translateY(-100%);
+  transition:transform .5s var(--motion-ease);
+  visibility:hidden;
+}
+.mobile-menu.open{transform:translateY(0);visibility:visible;}
+.mobile-menu a{
+  font-family:var(--font-display);font-size:clamp(30px,8vw,46px);
+  font-weight:500;color:var(--text-primary);letter-spacing:-0.03em;
+  padding:10px 0;border-bottom:1px solid var(--border);
+}
+.mobile-menu a.mobile-cta{color:var(--accent);border-bottom:none;margin-top:18px;}
+.mobile-close{
+  position:absolute;top:22px;right:30px;width:44px;height:44px;
+  font-size:30px;color:var(--text-primary);line-height:1;
+}
+
+/* ============================================================
+   HERO — 1B The Statement (type IS the image)
+   ============================================================ */
+.hero{
+  position:relative;min-height:100svh;display:flex;align-items:center;
+  padding-top:120px;padding-bottom:80px;overflow:hidden;
+  /* mouse-reactive subtle vermillion light (Tier 3) layered over base depth */
+  background:
+    radial-gradient(ellipse 60% 55% at var(--mouse-x,32%) var(--mouse-y,38%), var(--accent-glow) 0%, transparent 58%),
+    radial-gradient(ellipse 55% 45% at 85% 88%, rgba(var(--primary-rgb),.03) 0%, transparent 55%),
+    var(--bg-base);
+}
+.hero-inner{max-width:var(--grid-max);margin:0 auto;padding:0 40px;width:100%;}
+.hero h1{
+  font-size:var(--size-display);
+  line-height:var(--leading-display);
+  letter-spacing:var(--tracking-display);
+  font-weight:var(--weight-display);
+  color:var(--text-primary);
+  max-width:14ch;
+  margin:30px 0 0;
+  text-wrap:balance;
+}
+/* Cycling word slot — fixed so layout never jumps. ACCENT place 3. */
+.cycle{
+  display:inline-block;position:relative;color:var(--accent);
+  min-width:5.4ch;          /* widest of: story/pitch/website/brand */
+  text-align:left;
+  vertical-align:baseline;
+  overflow:hidden;
+}
+.cycle .word{
+  display:inline-block;white-space:nowrap;
+}
+/* Static fallback when no JS / reduced motion: first word only */
+.cycle .word:not(:first-child){display:none;}
+.js .cycle .word{display:inline-block;}
+
+.hero-sub{
+  margin-top:38px;max-width:54ch;
+  font-size:var(--size-lead);line-height:1.55;color:var(--text-secondary);
+}
+.hero-ctas{display:flex;align-items:center;gap:18px;margin-top:44px;flex-wrap:wrap;}
+.hero-note{
+  margin-top:46px;font-size:var(--size-small);color:var(--text-muted);
+  letter-spacing:.01em;display:flex;align-items:center;gap:12px;
+}
+.hero-note::before{content:"";width:30px;height:1px;background:var(--text-muted);display:inline-block;}
+
+/* ============================================================
+   REVEAL STATES (gated behind .js; force-shown if GSAP fails)
+   ============================================================ */
+.js .reveal{opacity:0;}
+.js .reveal.in,.no-gsap .reveal{opacity:1;}
+
+/* ============================================================
+   PAIN — 2B The Editorial Stack
+   ============================================================ */
+.pain-head{max-width:18em;}
+.pain-stack{margin-top:78px;}
+.pain-row{
+  display:grid;grid-template-columns:minmax(110px,180px) 1fr;gap:var(--col-gap);
+  align-items:start;
+  padding:46px 0;border-top:1px solid var(--border);
+}
+.pain-row:last-child{border-bottom:1px solid var(--border);}
+.pain-num{
+  font-family:var(--font-display);font-weight:500;
+  font-size:clamp(48px,6vw,88px);line-height:.9;
+  color:var(--accent);                       /* ACCENT place 3: pain row numbers */
+  letter-spacing:-0.04em;
+}
+.pain-headline{
+  font-family:var(--font-display);font-weight:500;
+  font-size:clamp(26px,3.4vw,44px);line-height:1.08;letter-spacing:-0.03em;
+  color:var(--text-primary);max-width:18ch;
+}
+.pain-desc{margin-top:18px;font-size:var(--size-lead);line-height:1.5;color:var(--text-secondary);max-width:48ch;}
+
+/* ============================================================
+   TRUST — T3 The Quiet Mark
+   ============================================================ */
+.trust{text-align:center;}
+.trust-line{
+  font-family:var(--font-display);font-weight:400;
+  font-size:clamp(20px,2.3vw,28px);line-height:1.4;letter-spacing:-0.02em;
+  color:var(--text-primary);max-width:24ch;margin:0 auto;
+}
+.trust-rule{width:54px;height:2px;background:var(--accent);margin:34px auto;}
+.trust-marks{
+  display:flex;flex-wrap:wrap;justify-content:center;align-items:center;
+  gap:14px 30px;
+}
+.trust-marks span{
+  font-size:var(--size-small);font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--text-muted);
+}
+.trust-marks .dot{color:var(--accent);font-weight:700;}
+
+/* ============================================================
+   ICP — 3B The Direct Question (pure typography)
+   ============================================================ */
+.icp{text-align:left;}
+.icp-head{
+  font-size:var(--size-h2);line-height:1.04;letter-spacing:-0.03em;
+  max-width:14ch;
+}
+.icp-list{margin-top:54px;display:flex;flex-direction:column;gap:8px;max-width:24ch;}
+.icp-item{
+  display:flex;gap:24px;align-items:baseline;
+  font-family:var(--font-display);font-weight:500;
+  font-size:clamp(22px,2.8vw,38px);line-height:1.18;letter-spacing:-0.025em;
+  color:var(--text-primary);max-width:30ch;
+  padding:14px 0;
+}
+.icp-dash{color:var(--accent);flex:none;font-weight:500;}
+.icp-close{margin-top:50px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.icp-close-line{font-size:var(--size-lead);color:var(--text-secondary);}
+
+/* ============================================================
+   FIT ASSESSMENT — 4C The CTA Gate (opens inline multi-step)
+   ============================================================ */
+.fit{text-align:center;}
+.fit-head{
+  font-size:var(--size-h2);line-height:1.05;letter-spacing:-0.03em;
+  max-width:18ch;margin:26px auto 0;
+}
+.fit-sub{margin:24px auto 0;max-width:46ch;font-size:var(--size-lead);color:var(--text-secondary);}
+.fit-gate{margin-top:42px;}
+
+.fit-card{
+  max-width:680px;margin:46px auto 0;
+  background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:48px 44px;text-align:left;position:relative;overflow:hidden;
+  /* Level 3 elevated — 3-layer + inner top glow */
+  box-shadow:0 4px 8px rgba(20,20,15,.05), 0 18px 48px rgba(20,20,15,.10),
+             0 40px 80px rgba(20,20,15,.08), inset 0 1px 0 rgba(255,255,255,.9);
+  display:none;
+}
+.fit-card.open{display:block;}
+.fit-progress{display:flex;gap:8px;margin-bottom:30px;}
+.fit-progress .seg{height:3px;flex:1;background:var(--border);overflow:hidden;}
+.fit-progress .seg.active{background:var(--accent);}
+.fit-step{display:none;}
+.fit-step.active{display:block;}
+.fit-qnum{font-size:var(--size-micro);font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);}
+.fit-q{font-family:var(--font-display);font-weight:500;font-size:clamp(22px,2.6vw,30px);
+  line-height:1.2;letter-spacing:-0.02em;color:var(--text-primary);margin:14px 0 26px;}
+.fit-options{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.fit-opt{
+  text-align:left;padding:18px 22px;min-height:56px;
+  border:1.5px solid var(--border);border-radius:var(--radius);
+  font-size:16px;font-weight:500;color:var(--text-primary);background:var(--bg-base);
+  transition:border-color .2s var(--motion-ease), background .2s var(--motion-ease), transform .2s var(--motion-ease);
+}
+.fit-opt:hover{border-color:var(--accent);transform:translateY(-2px);}
+.fit-opt.selected{border-color:var(--accent);background:rgba(var(--accent-rgb),.06);}
+.fit-field{display:flex;flex-direction:column;gap:8px;}
+.fit-field label{font-size:var(--size-small);font-weight:600;color:var(--text-primary);}
+.fit-field input{
+  height:52px;padding:12px 18px;font-family:var(--font-body);font-size:16px;
+  color:var(--text-primary);background:rgba(255,255,255,.95);
+  border:1.5px solid var(--border);border-radius:var(--radius);
+  box-shadow:inset 0 2px 4px rgba(var(--primary-rgb),.05),0 1px 0 rgba(255,255,255,.8);
+  transition:border-color .2s var(--motion-ease), box-shadow .2s var(--motion-ease);
+}
+.fit-field input:focus{
+  outline:none;border-color:var(--accent);
+  box-shadow:inset 0 2px 4px rgba(var(--primary-rgb),.03),0 0 0 3px rgba(var(--accent-rgb),.16),0 1px 0 rgba(255,255,255,.8);
+}
+.fit-nav{display:flex;align-items:center;justify-content:space-between;margin-top:30px;gap:16px;}
+.fit-back{font-size:14px;font-weight:600;color:var(--text-muted);min-height:44px;padding:0 6px;display:inline-flex;align-items:center;}
+.fit-back:hover{color:var(--text-primary);}
+.fit-success{display:none;text-align:center;padding:18px 0;}
+.fit-success.show{display:block;}
+.fit-success .check{
+  width:54px;height:54px;margin:0 auto 22px;border-radius:50%;
+  background:rgba(var(--accent-rgb),.1);display:flex;align-items:center;justify-content:center;
+}
+.fit-success-h{font-family:var(--font-display);font-weight:500;font-size:clamp(24px,3vw,34px);
+  letter-spacing:-0.02em;color:var(--text-primary);margin-bottom:14px;}
+.fit-success p{max-width:42ch;margin:0 auto;color:var(--text-secondary);}
+
+/* ============================================================
+   SERVICES — 5A The Numbered Editorial
+   ============================================================ */
+.svc-stack{margin-top:74px;}
+.svc-row{
+  display:grid;grid-template-columns:minmax(90px,150px) 1fr auto;gap:var(--col-gap);
+  align-items:baseline;
+  padding:44px 0;border-top:1px solid var(--border);position:relative;
+}
+.svc-row:last-child{border-bottom:1px solid var(--border);}
+.svc-num{
+  font-family:var(--font-display);font-weight:400;font-size:clamp(20px,2vw,26px);
+  color:var(--text-muted);letter-spacing:.04em;
+}
+.svc-body{max-width:54ch;}
+.svc-name{
+  font-family:var(--font-display);font-weight:500;
+  font-size:clamp(28px,3.4vw,46px);line-height:1.05;letter-spacing:-0.03em;
+  color:var(--text-primary);
+}
+.svc-desc{margin-top:16px;font-size:var(--size-lead);line-height:1.5;color:var(--text-secondary);}
+.svc-link{align-self:center;white-space:nowrap;}
+.svc-row::after{
+  content:"";position:absolute;left:0;bottom:-1px;height:2px;width:0;
+  background:linear-gradient(90deg,var(--accent),transparent);
+  transition:width .5s var(--motion-ease);
+}
+.svc-row:hover::after{width:42%;}
+
+/* ============================================================
+   PROCESS — 6A The Timeline (SVG line draw)
+   ============================================================ */
+.proc-head{max-width:14em;}
+.proc-wrap{margin-top:78px;position:relative;}
+.proc-line{position:absolute;top:38px;left:0;right:0;height:2px;pointer-events:none;z-index:0;}
+.proc-line svg{width:100%;height:2px;overflow:visible;}
+.proc-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--col-gap);position:relative;z-index:1;}
+.proc-step{position:relative;}
+.proc-dot{
+  width:14px;height:14px;border-radius:50%;background:var(--accent);
+  margin-bottom:24px;position:relative;
+  box-shadow:0 0 0 6px rgba(var(--accent-rgb),.1);
+}
+.proc-num{font-family:var(--font-display);font-weight:500;font-size:clamp(20px,2vw,24px);
+  color:var(--text-muted);letter-spacing:.02em;}
+.proc-name{font-family:var(--font-display);font-weight:500;font-size:var(--size-h3);
+  letter-spacing:-0.02em;color:var(--text-primary);margin:10px 0 14px;}
+.proc-desc{font-size:16px;line-height:1.55;color:var(--text-secondary);max-width:34ch;}
+
+/* ============================================================
+   PROOF — 7C The Anchor Testimonial + 3 stats
+   ============================================================ */
+.proof-grid{display:grid;grid-template-columns:1.55fr 1fr;gap:72px;align-items:start;margin-top:40px;}
+.anchor-quote{
+  font-family:var(--font-display);font-weight:500;
+  font-size:clamp(26px,3vw,40px);line-height:1.22;letter-spacing:-0.025em;
+  color:var(--text-primary);position:relative;
+}
+.anchor-quote .mark{color:var(--accent);}
+.anchor-attr{margin-top:34px;font-size:var(--size-small);color:var(--text-secondary);
+  letter-spacing:.02em;display:flex;align-items:center;gap:12px;}
+.anchor-attr::before{content:"";width:30px;height:1px;background:var(--accent);display:inline-block;}
+.stat-blocks{display:flex;flex-direction:column;gap:0;}
+.stat-block{padding:28px 0;border-top:1px solid var(--border);}
+.stat-block:last-child{border-bottom:1px solid var(--border);}
+.stat-num{font-family:var(--font-display);font-weight:500;font-size:clamp(36px,4vw,56px);
+  line-height:1;letter-spacing:-0.03em;color:var(--text-primary);}
+.stat-num .accent{color:var(--accent);}
+.stat-label{margin-top:10px;font-size:var(--size-small);color:var(--text-muted);letter-spacing:.02em;max-width:26ch;}
+
+/* ============================================================
+   FINAL CTA — 8C The Immersive Close (DARK tone flip)
+   ============================================================ */
+.close{
+  position:relative;min-height:100svh;display:flex;align-items:center;
+  padding:var(--section-pad) 0;overflow:hidden;
+  background:
+    radial-gradient(ellipse 65% 55% at 50% 30%, rgba(var(--accent-rgb),.16) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 90%, rgba(255,255,255,.03) 0%, transparent 60%),
+    var(--bg-inverse);
+  color:#fff;
+}
+.close-inner{max-width:var(--grid-max);margin:0 auto;padding:0 40px;width:100%;text-align:center;}
+.close .eyebrow{color:var(--accent);justify-content:center;text-shadow:0 0 22px rgba(var(--accent-rgb),.4);}
+.close h2{
+  font-family:var(--font-display);font-weight:500;color:#fff;
+  font-size:clamp(40px,6.5vw,96px);line-height:1.0;letter-spacing:-0.035em;
+  max-width:16ch;margin:32px auto 0;text-shadow:0 2px 30px rgba(0,0,0,.3);
+  text-wrap:balance;
+}
+.close-sub{margin:34px auto 0;max-width:48ch;font-size:var(--size-lead);
+  line-height:1.55;color:rgba(255,255,255,.62);}
+.close-cta{margin-top:48px;}
+
+/* ============================================================
+   FOOTER — 9C Minimal
+   ============================================================ */
+.footer{
+  background:var(--bg-inverse);color:#fff;padding:60px 0 50px;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+.footer-inner{max-width:var(--grid-max);margin:0 auto;padding:0 40px;
+  display:flex;flex-direction:column;align-items:center;gap:30px;text-align:center;}
+.footer .logo{color:#fff;}
+.footer .logo .mark{background:var(--accent);}
+.footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 30px;}
+.footer-links a{font-size:var(--size-small);font-weight:500;color:rgba(255,255,255,.66);
+  position:relative;transition:color .22s var(--motion-ease);}
+.footer-links a::after{content:"";position:absolute;left:0;bottom:-3px;height:1.5px;width:0;
+  background:var(--accent);transition:width .24s var(--motion-ease);}
+.footer-links a:hover{color:#fff;}
+.footer-links a:hover::after{width:100%;}
+.footer-legal{font-size:13px;color:rgba(255,255,255,.4);max-width:60ch;line-height:1.6;}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:1024px){
+  :root{--section-pad:96px;--col-gap:36px;}
+  .proof-grid{gap:48px;}
+}
+@media (max-width:900px){
+  .proc-steps{grid-template-columns:1fr 1fr;gap:48px 36px;}
+  .proc-line{display:none;}
+  .proof-grid{grid-template-columns:1fr;gap:48px;}
+}
+@media (max-width:768px){
+  :root{--section-pad:72px;}
+  .wrap,.hero-inner,.nav-inner,.close-inner,.footer-inner{padding-left:24px;padding-right:24px;}
+  .nav-links{display:none;}
+  .nav-cta{display:none;}
+  .nav-toggle{display:flex;}
+  .hero{padding-top:100px;}
+  .hero h1{margin-top:18px;max-width:100%;}
+  .cycle{min-width:4.6ch;}
+  .pain-row{grid-template-columns:1fr;gap:14px;padding:36px 0;}
+  .pain-num{font-size:54px;}
+  .svc-row{grid-template-columns:1fr;gap:14px;}
+  .svc-link{justify-self:start;align-self:start;margin-top:8px;}
+  .fit-card{padding:34px 26px;}
+  .fit-options{grid-template-columns:1fr;}
+  .icp-list,.pain-head,.icp-head{max-width:100%;}
+}
+@media (max-width:480px){
+  :root{--section-pad:56px;}
+  .proc-steps{grid-template-columns:1fr;gap:40px;}
+  .hero-ctas{flex-direction:column;align-items:stretch;}
+  .hero-ctas .btn-primary,.hero-ctas .btn-ghost{width:100%;}
+  .icp-close,.fit-gate{flex-direction:column;align-items:stretch;}
+  .icp-close .btn-primary{width:100%;}
+}
+
+/* ============================================================
+   REDUCED MOTION — no-motion-first guards for CSS
+   ============================================================ */
+@media (prefers-reduced-motion: reduce){
+  .btn-primary::before{animation:none;}
+  *{transition-duration:0.01ms !important;}
+  .js .reveal{opacity:1 !important;transform:none !important;}
+}
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ============================ NAV (Section 1) ============================ -->
+<nav class="nav" id="nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a href="#" class="logo" aria-label="Field — home">
+      <span class="mark" aria-hidden="true"></span>Field
+    </a>
+    <ul class="nav-links">
+      <li><a href="#problem" class="nav-link">The Problem</a></li>
+      <li><a href="#process" class="nav-link">How We Work</a></li>
+      <li><a href="#proof" class="nav-link">The Work</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+    </ul>
+    <a href="#fit" class="btn-primary nav-cta">Start a project <span class="arrow" aria-hidden="true">→</span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <button class="mobile-close" id="mobileClose" aria-label="Close menu">×</button>
+  <a href="#problem">The Problem</a>
+  <a href="#process">How We Work</a>
+  <a href="#proof">The Work</a>
+  <a href="#about">About</a>
+  <a href="#fit" class="mobile-cta">Start a project →</a>
+</div>
+
+<main id="main">
+
+<!-- ============================ HERO (Section 2 · 1B The Statement) ============================ -->
+<header class="hero" id="hero">
+  <div class="hero-inner">
+    <div class="eyebrow hero-eyebrow">Brand &amp; Narrative Studio</div>
+    <h1>
+      Your product is great. Your
+      <span class="cycle" id="cycle" aria-label="story">
+        <span class="word">story</span><span class="word">pitch</span><span class="word">website</span><span class="word">brand</span>
+      </span>
+      is a mess.
+    </h1>
+    <p class="hero-sub">
+      We're the studio founders call when what they've built is finally too good for how they're explaining it.
+      Naming, positioning, narrative, and the site that carries it.
+    </p>
+    <div class="hero-ctas">
+      <a href="#fit" class="btn-primary btn-magnetic">Start a project <span class="arrow" aria-hidden="true">→</span></a>
+      <a href="#proof" class="btn-ghost">See the work <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+    <!-- [VERIFY] founder count -->
+    <div class="hero-note">Used by 40+ founders from pre-seed to Series B.</div>
+  </div>
+</header>
+
+<!-- ============================ PROBLEM (Section 3 · 2B The Editorial Stack) ============================ -->
+<section class="section" id="problem" aria-labelledby="problem-h">
+  <div class="wrap">
+    <div class="reveal pain-head">
+      <div class="eyebrow">Why Founders Find Us</div>
+      <h2 class="section-h2" id="problem-h">You can build the thing. Explaining it is a different skill.</h2>
+    </div>
+    <div class="pain-stack">
+      <div class="pain-row reveal">
+        <div class="pain-num">01</div>
+        <div>
+          <div class="pain-headline">&ldquo;We do a lot of things&rdquo;</div>
+          <p class="pain-desc">You're so close to the product that you can't say the one sentence that makes a stranger get it.</p>
+        </div>
+      </div>
+      <div class="pain-row reveal">
+        <div class="pain-num">02</div>
+        <div>
+          <div class="pain-headline">The deck doesn't match the company</div>
+          <p class="pain-desc">Your traction is real. Your pitch looks like a template. Investors feel the gap before they can name it.</p>
+        </div>
+      </div>
+      <div class="pain-row reveal">
+        <div class="pain-num">03</div>
+        <div>
+          <div class="pain-headline">Every page sounds like everyone</div>
+          <p class="pain-desc">&ldquo;AI-powered platform that empowers teams.&rdquo; You sound like the 900 startups the buyer already ignored.</p>
+        </div>
+      </div>
+      <div class="pain-row reveal">
+        <div class="pain-num">04</div>
+        <div>
+          <div class="pain-headline">You've outgrown the founder-built site</div>
+          <p class="pain-desc">It got you here. It will not get you to the round, the hire, or the enterprise logo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ TRUST (Section 4 · T3 The Quiet Mark) — no CTA ============================ -->
+<section class="section section--elevated" aria-label="Our standard">
+  <div class="wrap trust reveal">
+    <!-- [VERIFY] studio standard claim -->
+    <p class="trust-line">A studio, not a freelancer marketplace. Senior people, the whole way through.</p>
+    <div class="trust-rule" aria-hidden="true"></div>
+    <div class="trust-marks">
+      <span>Fintech</span><span class="dot" aria-hidden="true">·</span>
+      <span>Dev Tools</span><span class="dot" aria-hidden="true">·</span>
+      <span>Climate</span><span class="dot" aria-hidden="true">·</span>
+      <span>Health</span><span class="dot" aria-hidden="true">·</span>
+      <span>Consumer</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ ICP SELF-SORT (Section 5 · 3B The Direct Question) ============================ -->
+<section class="section" id="who" aria-labelledby="icp-h">
+  <div class="wrap icp">
+    <h2 class="icp-head reveal" id="icp-h">Does this sound like you?</h2>
+    <div class="icp-list">
+      <div class="icp-item reveal"><span class="icp-dash" aria-hidden="true">—</span><span>You've raised, or you're about to, and the story has to be airtight.</span></div>
+      <div class="icp-item reveal"><span class="icp-dash" aria-hidden="true">—</span><span>You know your product is better than your category's defaults, and it doesn't show.</span></div>
+      <div class="icp-item reveal"><span class="icp-dash" aria-hidden="true">—</span><span>You'd rather pay once for senior work than manage five freelancers.</span></div>
+      <div class="icp-item reveal"><span class="icp-dash" aria-hidden="true">—</span><span>You want a narrative you can repeat — in the deck, the site, the sales call.</span></div>
+    </div>
+    <div class="icp-close reveal">
+      <span class="icp-close-line">If you nodded twice, we should talk.</span>
+      <a href="#fit" class="text-link">Start a project <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FIT ASSESSMENT (Section 6 · 4C The CTA Gate) ============================ -->
+<section class="section section--elevated" id="fit" aria-labelledby="fit-h">
+  <div class="wrap fit">
+    <div class="reveal">
+      <div class="eyebrow" style="justify-content:center;">The Fit Check</div>
+      <h2 class="fit-head" id="fit-h">Not every founder is a fit. Let's find out in four questions.</h2>
+      <p class="fit-sub">Two minutes. You'll know if we're right for this stage before you ever book a call.</p>
+    </div>
+    <div class="fit-gate reveal" id="fitGate">
+      <button class="btn-primary" id="fitOpen">Take the 2-minute fit check <span class="arrow" aria-hidden="true">→</span></button>
+    </div>
+
+    <!-- Inline multi-step assessment (demo — no data sent) -->
+    <form class="fit-card" id="fitCard" novalidate>
+      <div class="fit-progress" aria-hidden="true">
+        <span class="seg active" data-seg="0"></span>
+        <span class="seg" data-seg="1"></span>
+        <span class="seg" data-seg="2"></span>
+        <span class="seg" data-seg="3"></span>
+        <span class="seg" data-seg="4"></span>
+      </div>
+
+      <div class="fit-step active" data-step="0">
+        <div class="fit-qnum">Question 1 of 4</div>
+        <div class="fit-q">What stage are you?</div>
+        <div class="fit-options">
+          <button type="button" class="fit-opt">Pre-seed</button>
+          <button type="button" class="fit-opt">Seed</button>
+          <button type="button" class="fit-opt">Series A–B</button>
+          <button type="button" class="fit-opt">Beyond</button>
+        </div>
+      </div>
+
+      <div class="fit-step" data-step="1">
+        <div class="fit-qnum">Question 2 of 4</div>
+        <div class="fit-q">What's the most broken right now?</div>
+        <div class="fit-options">
+          <button type="button" class="fit-opt">The narrative</button>
+          <button type="button" class="fit-opt">The deck</button>
+          <button type="button" class="fit-opt">The website</button>
+          <button type="button" class="fit-opt">All of it</button>
+        </div>
+      </div>
+
+      <div class="fit-step" data-step="2">
+        <div class="fit-qnum">Question 3 of 4</div>
+        <div class="fit-q">What's the deadline pressure?</div>
+        <div class="fit-options">
+          <button type="button" class="fit-opt">Raising now</button>
+          <button type="button" class="fit-opt">Big launch</button>
+          <button type="button" class="fit-opt">Rebrand</button>
+          <button type="button" class="fit-opt">No hard date</button>
+        </div>
+      </div>
+
+      <div class="fit-step" data-step="3">
+        <div class="fit-qnum">Question 4 of 4</div>
+        <div class="fit-q">Budget reality for senior studio work?</div>
+        <div class="fit-options">
+          <button type="button" class="fit-opt">Under $15k</button>
+          <button type="button" class="fit-opt">$15–40k</button>
+          <button type="button" class="fit-opt">$40k+</button>
+          <button type="button" class="fit-opt">Not sure yet</button>
+        </div>
+      </div>
+
+      <div class="fit-step" data-step="4">
+        <div class="fit-qnum">Last step</div>
+        <div class="fit-q">Where do we send your fit result?</div>
+        <div class="fit-field">
+          <label for="fitEmail">Email address</label>
+          <input id="fitEmail" name="email" type="email" autocomplete="email" placeholder="you@company.com" aria-required="true">
+        </div>
+        <div class="fit-nav">
+          <button type="button" class="fit-back" data-back>← Back</button>
+          <button type="submit" class="btn-primary" id="fitSubmit">See my fit result <span class="arrow" aria-hidden="true">→</span></button>
+        </div>
+      </div>
+
+      <div class="fit-success" id="fitSuccess" role="status" aria-live="polite">
+        <div class="check" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#DC3C20" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12 10 18 20 6"/></svg>
+        </div>
+        <div class="fit-success-h">You look like a fit.</div>
+        <p>We'll send a short, specific read on your situation within one business day.
+          <br><span style="color:var(--text-muted);font-size:14px;">(Demo form — no data sent.)</span></p>
+      </div>
+
+      <div class="fit-nav" id="fitStepNav">
+        <button type="button" class="fit-back" id="fitBackMain" data-back style="visibility:hidden;">← Back</button>
+        <span style="font-size:13px;color:var(--text-muted);">Pick an option to continue</span>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ============================ SERVICES (Section 7 · 5A The Numbered Editorial) ============================ -->
+<section class="section" id="services" aria-labelledby="svc-h">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">What We Do</div>
+      <h2 class="section-h2" id="svc-h">Four things, done at a level you can't fake.</h2>
+    </div>
+    <div class="svc-stack">
+      <div class="svc-row reveal">
+        <div class="svc-num">01</div>
+        <div class="svc-body">
+          <h3 class="svc-name">Naming</h3>
+          <p class="svc-desc">A name you can own, defend, and say out loud without flinching. Trademark-aware from day one.</p>
+        </div>
+        <a href="#fit" class="text-link svc-link">Learn more <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+      <div class="svc-row reveal">
+        <div class="svc-num">02</div>
+        <div class="svc-body">
+          <h3 class="svc-name">Positioning</h3>
+          <p class="svc-desc">The one sentence, the category, and the wedge — so a stranger gets it and a buyer chooses you.</p>
+        </div>
+        <a href="#fit" class="text-link svc-link">Learn more <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+      <div class="svc-row reveal">
+        <div class="svc-num">03</div>
+        <div class="svc-body">
+          <h3 class="svc-name">Narrative</h3>
+          <p class="svc-desc">The story that runs through your deck, your site, and your sales calls. One spine, every surface.</p>
+        </div>
+        <a href="#fit" class="text-link svc-link">Learn more <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+      <div class="svc-row reveal">
+        <div class="svc-num">04</div>
+        <div class="svc-body">
+          <h3 class="svc-name">The site</h3>
+          <p class="svc-desc">The website that finally looks like the company you've actually built. Designed and shipped, not just specced.</p>
+        </div>
+        <a href="#fit" class="text-link svc-link">Learn more <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PROCESS (Section 8 · 6A The Timeline) ============================ -->
+<section class="section section--elevated" id="process" aria-labelledby="proc-h">
+  <div class="wrap">
+    <div class="reveal proc-head">
+      <div class="eyebrow">How We Work</div>
+      <h2 class="section-h2" id="proc-h">How a project runs.</h2>
+    </div>
+    <div class="proc-wrap">
+      <div class="proc-line" aria-hidden="true">
+        <svg viewBox="0 0 1000 2" preserveAspectRatio="none">
+          <line class="draw-line" x1="0" y1="1" x2="1000" y2="1"
+            stroke="rgba(20,20,15,.18)" stroke-width="2" stroke-dasharray="6 8"/>
+        </svg>
+      </div>
+      <div class="proc-steps reveal-group">
+        <div class="proc-step">
+          <div class="proc-dot" aria-hidden="true"></div>
+          <div class="proc-num">01</div>
+          <h3 class="proc-name">Immersion</h3>
+          <p class="proc-desc">A week inside your world — calls, docs, customers — until we can sell it better than you can.</p>
+        </div>
+        <div class="proc-step">
+          <div class="proc-dot" aria-hidden="true"></div>
+          <div class="proc-num">02</div>
+          <h3 class="proc-name">The spine</h3>
+          <p class="proc-desc">We write the core narrative and positioning. You approve the one sentence before anything is designed.</p>
+        </div>
+        <div class="proc-step">
+          <div class="proc-dot" aria-hidden="true"></div>
+          <div class="proc-num">03</div>
+          <h3 class="proc-name">Make</h3>
+          <p class="proc-desc">Naming, identity, and the site get built from that spine. Senior people, weekly shows.</p>
+        </div>
+        <div class="proc-step">
+          <div class="proc-dot" aria-hidden="true"></div>
+          <div class="proc-num">04</div>
+          <h3 class="proc-name">Handoff</h3>
+          <p class="proc-desc">You leave with the assets, the messaging, and a story your whole team can repeat. Ours, then yours.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PROOF (Section 9-content · 7C The Anchor Testimonial) ============================ -->
+<section class="section" id="proof" aria-labelledby="proof-h">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">The Work</div>
+      <h2 class="section-h2 sr-only-label" id="proof-h" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);">Proof</h2>
+    </div>
+    <div class="proof-grid">
+      <blockquote class="anchor-quote reveal">
+        <span class="mark" aria-hidden="true">&ldquo;</span>We'd raised a seed on a deck I was embarrassed by. Field gave us a sentence, a story, and a site — we closed the A in six weeks and three partners quoted our own narrative back to us.<span class="mark" aria-hidden="true">&rdquo;</span>
+        <!-- [VERIFY] founder name + company before launch -->
+        <footer class="anchor-attr">Founder name [VERIFY], Founder &amp; CEO · Company [VERIFY]</footer>
+      </blockquote>
+      <div class="stat-blocks reveal-group">
+        <div class="stat-block">
+          <!-- [VERIFY] -->
+          <div class="stat-num"><span class="stat-count" data-target="40" data-suffix="+">40+</span></div>
+          <div class="stat-label">founders, pre-seed to Series B</div>
+        </div>
+        <div class="stat-block">
+          <!-- [VERIFY] -->
+          <div class="stat-num"><span class="stat-count" data-target="6" data-suffix="">6</span> <span style="font-size:.5em;color:var(--text-muted);font-weight:500;">weeks</span></div>
+          <div class="stat-label">typical narrative-to-launch</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num"><span class="accent">1</span> <span style="font-size:.5em;color:var(--text-muted);font-weight:500;">spine</span></div>
+          <div class="stat-label">deck, site, and sales, finally aligned</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================ FINAL CTA (Section 9 · 8C The Immersive Close) ============================ -->
+<section class="close" id="about" aria-labelledby="close-h">
+  <div class="close-inner">
+    <div class="eyebrow reveal">Start a Project</div>
+    <h2 id="close-h" class="reveal">You built something worth explaining well.</h2>
+    <p class="close-sub reveal">Tell us what you're making. We'll tell you, honestly, whether we can help.</p>
+    <div class="close-cta reveal">
+      <a href="#fit" class="btn-primary btn-magnetic">Start a project <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FOOTER (9C Minimal) ============================ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <a href="#" class="logo" aria-label="Field — home"><span class="mark" aria-hidden="true"></span>Field</a>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="#problem">The Problem</a>
+      <a href="#process">How We Work</a>
+      <a href="#proof">The Work</a>
+      <a href="#about">About</a>
+      <a href="#fit">Start a project</a>
+    </nav>
+    <!-- COMPLIANCE: Required before launch — verify legal entity name -->
+    <p class="footer-legal">© 2026 Field Studio. [VERIFY entity]. A brand &amp; narrative studio.</p>
+  </div>
+</footer>
+
+<!-- ============================ SCRIPTS ============================ -->
+<!-- 1. GSAP core -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+<!-- 2. GSAP plugins -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/DrawSVGPlugin.min.js"></script>
+<!-- 3. Lenis (after GSAP) -->
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.25/dist/lenis.min.js"></script>
+
+<script>
+(function(){
+  "use strict";
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hasGSAP = typeof window.gsap !== 'undefined';
+
+  /* ---------- ROBUSTNESS: if GSAP missing, reveal everything immediately ---------- */
+  function forceReveal(){
+    document.documentElement.classList.add('no-gsap');
+    document.querySelectorAll('.reveal, .reveal-group').forEach(function(el){
+      el.classList.add('in');
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    });
+    document.querySelectorAll('.eyebrow').forEach(function(e){ e.classList.add('in'); });
+    document.querySelectorAll('.stat-count').forEach(function(el){
+      if(el.dataset.target) el.textContent = el.dataset.target + (el.dataset.suffix || '');
+    });
+  }
+  if(!hasGSAP){ forceReveal(); }
+
+  /* =========================================================
+     NAV — scroll glass + mobile menu (works without GSAP)
+     ========================================================= */
+  var nav = document.getElementById('nav');
+  function onScroll(){ nav.classList.toggle('scrolled', window.scrollY > 40); }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  var navToggle = document.getElementById('navToggle');
+  var mobileMenu = document.getElementById('mobileMenu');
+  var mobileClose = document.getElementById('mobileClose');
+  function openMenu(){ mobileMenu.classList.add('open'); mobileMenu.setAttribute('aria-hidden','false'); navToggle.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+  function closeMenu(){ mobileMenu.classList.remove('open'); mobileMenu.setAttribute('aria-hidden','true'); navToggle.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+  if(navToggle){ navToggle.addEventListener('click', openMenu); }
+  if(mobileClose){ mobileClose.addEventListener('click', closeMenu); }
+  mobileMenu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeMenu(); });
+
+  /* =========================================================
+     FIT ASSESSMENT — multi-step (vanilla, GSAP-independent)
+     ========================================================= */
+  var fitOpen = document.getElementById('fitOpen');
+  var fitGate = document.getElementById('fitGate');
+  var fitCard = document.getElementById('fitCard');
+  var steps = fitCard ? Array.prototype.slice.call(fitCard.querySelectorAll('.fit-step')) : [];
+  var segs = fitCard ? Array.prototype.slice.call(fitCard.querySelectorAll('.fit-progress .seg')) : [];
+  var current = 0;
+  var stepNav = document.getElementById('fitStepNav');
+  var backMain = document.getElementById('fitBackMain');
+
+  function showStep(i){
+    current = i;
+    steps.forEach(function(s,idx){ s.classList.toggle('active', idx===i); });
+    segs.forEach(function(s,idx){ s.classList.toggle('active', idx<=i); });
+    // main bottom nav only shown on choice steps (not on the email step which has its own nav)
+    if(stepNav){ stepNav.style.display = (i < steps.length-1) ? 'flex' : 'none'; }
+    if(backMain){ backMain.style.visibility = (i>0 && i<steps.length-1) ? 'visible' : 'hidden'; }
+    var firstFocus = steps[i].querySelector('.fit-opt, input');
+    if(firstFocus){ firstFocus.focus({preventScroll:true}); }
+  }
+  if(fitOpen){
+    fitOpen.addEventListener('click', function(){
+      fitGate.style.display='none';
+      fitCard.classList.add('open');
+      showStep(0);
+    });
+  }
+  fitCard && fitCard.querySelectorAll('.fit-step').forEach(function(step){
+    step.querySelectorAll('.fit-opt').forEach(function(opt){
+      opt.addEventListener('click', function(){
+        step.querySelectorAll('.fit-opt').forEach(function(o){ o.classList.remove('selected'); });
+        opt.classList.add('selected');
+        setTimeout(function(){ if(current < steps.length-1) showStep(current+1); }, 180);
+      });
+    });
+  });
+  fitCard && fitCard.querySelectorAll('[data-back]').forEach(function(b){
+    b.addEventListener('click', function(){ if(current>0) showStep(current-1); });
+  });
+  if(fitCard){
+    fitCard.addEventListener('submit', function(e){
+      e.preventDefault();
+      var email = document.getElementById('fitEmail');
+      if(!email.value || !/.+@.+\..+/.test(email.value)){
+        email.setAttribute('aria-invalid','true'); email.focus(); return;
+      }
+      steps.forEach(function(s){ s.classList.remove('active'); });
+      if(stepNav) stepNav.style.display='none';
+      segs.forEach(function(s){ s.classList.add('active'); });
+      document.getElementById('fitSuccess').classList.add('show');
+    });
+  }
+
+  /* =========================================================
+     Everything below requires GSAP. Bail to CSS fallback otherwise.
+     ========================================================= */
+  if(!hasGSAP) return;
+
+  gsap.registerPlugin(ScrollTrigger);
+  if(window.SplitText) gsap.registerPlugin(SplitText);
+  if(window.DrawSVGPlugin) gsap.registerPlugin(DrawSVGPlugin);
+
+  /* ---------- Lenis smooth scroll (T1.1) ---------- */
+  if(window.Lenis && !reduced){
+    var lenis = new Lenis({ duration:1.1, smoothWheel:true });
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(function(time){ lenis.raf(time*1000); });
+    gsap.ticker.lagSmoothing(0);
+    // anchor links route through Lenis
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){
+      a.addEventListener('click', function(e){
+        var id = a.getAttribute('href');
+        if(id.length>1){
+          var t = document.querySelector(id);
+          if(t){ e.preventDefault(); lenis.scrollTo(t, {offset:-60}); }
+        }
+      });
+    });
+  }
+
+  /* ---------- HERO load animation (T2.1 SplitText / fallback) ---------- */
+  // Hero must be visible immediately; we animate FROM a visible-ish state on load.
+  var heroEyebrow = document.querySelector('.hero-eyebrow');
+  if(heroEyebrow) heroEyebrow.classList.add('in');
+
+  if(!reduced){
+    var h1 = document.querySelector('.hero h1');
+    if(window.SplitText && h1){
+      // Split into lines, mask each line, reveal upward
+      var split = new SplitText(h1, { type:'lines', linesClass:'split-line' });
+      split.lines.forEach(function(line){
+        var w = document.createElement('div');
+        w.style.cssText = 'overflow:hidden;display:block;';
+        line.parentNode.insertBefore(w, line);
+        w.appendChild(line);
+      });
+      gsap.from(split.lines, { y:'108%', opacity:0, duration:1.0, ease:'power4.out', stagger:0.09, delay:0.1 });
+    } else if(h1){
+      gsap.from(h1, { y:30, opacity:0, duration:0.9, ease:'power3.out' });
+    }
+    gsap.from('.hero-sub', { y:24, opacity:0, duration:0.8, ease:'power3.out', delay:0.45 });
+    gsap.from('.hero-ctas', { y:20, opacity:0, duration:0.7, ease:'power3.out', delay:0.6 });
+    gsap.from('.hero-note', { opacity:0, duration:0.7, ease:'power2.out', delay:0.85 });
+  }
+
+  /* ---------- SIGNATURE MOMENT: hero word-cycle (Tier 3) ---------- */
+  var cycle = document.getElementById('cycle');
+  if(cycle){
+    var words = Array.prototype.slice.call(cycle.querySelectorAll('.word'));
+    if(reduced){
+      // static: show only the first word
+      words.forEach(function(w,i){ w.style.display = i===0 ? 'inline-block':'none'; });
+    } else {
+      // stack words absolutely inside the fixed-width slot so layout never jumps
+      gsap.set(cycle, { position:'relative' });
+      words.forEach(function(w,i){
+        gsap.set(w, {
+          position: i===0 ? 'relative':'absolute',
+          left:0, top:0,
+          yPercent: i===0 ? 0 : 100,
+          opacity: i===0 ? 1 : 0,
+          clipPath: i===0 ? 'inset(0 0 0 0)' : 'inset(0 0 100% 0)'
+        });
+      });
+      var idx = 0;
+      var tl = gsap.timeline({ repeat:-1, delay:1.6 });
+      words.forEach(function(_, i){
+        var cur = words[idx];
+        var nextIdx = (idx+1) % words.length;
+        var nxt = words[nextIdx];
+        (function(cur, nxt){
+          tl.to(cur, { yPercent:-100, clipPath:'inset(0 0 100% 0)', opacity:0, duration:0.55, ease:'power3.in' }, '+=1.05')
+            .fromTo(nxt,
+              { yPercent:100, clipPath:'inset(100% 0 0 0)', opacity:0, position:'absolute', left:0, top:0 },
+              { yPercent:0, clipPath:'inset(0 0 0 0)', opacity:1, duration:0.6, ease:'power3.out',
+                onStart:function(){ cycle.setAttribute('aria-label', nxt.textContent); } },
+              '<0.05');
+        })(cur, nxt);
+        idx = nextIdx;
+      });
+    }
+  }
+
+  /* ---------- TIER 3: mouse-reactive vermillion hero light ---------- */
+  if(!reduced){
+    var hero = document.getElementById('hero');
+    var mx=0.32, my=0.38, cx=0.32, cy=0.38, rafActive=false;
+    hero.addEventListener('mousemove', function(e){
+      var r = hero.getBoundingClientRect();
+      mx = (e.clientX - r.left)/r.width;
+      my = (e.clientY - r.top)/r.height;
+      if(!rafActive){ rafActive=true; requestAnimationFrame(tick); }
+    });
+    function tick(){
+      cx += (mx-cx)*0.06; cy += (my-cy)*0.06;
+      hero.style.setProperty('--mouse-x', (cx*100).toFixed(2)+'%');
+      hero.style.setProperty('--mouse-y', (cy*100).toFixed(2)+'%');
+      if(Math.abs(mx-cx)>0.001 || Math.abs(my-cy)>0.001){ requestAnimationFrame(tick); }
+      else { rafActive=false; }
+    }
+  }
+
+  /* ---------- TIER 1.3: scroll reveals (rotateX + Y) ---------- */
+  var revealEase = 'power3.out';
+  gsap.utils.toArray('.reveal').forEach(function(el){
+    gsap.set(el, {opacity:0});
+    var anim = reduced ? {opacity:1, duration:0.4} :
+      {opacity:1, rotateX:0, y:0, duration:0.95, ease:revealEase};
+    if(!reduced){ gsap.set(el, {rotateX:-12, y:22, transformPerspective:800, transformOrigin:'0% 50%'}); }
+    ScrollTrigger.create({
+      trigger:el, start:'top 88%', once:true,
+      onEnter:function(){ el.classList.add('in'); gsap.to(el, anim); }
+    });
+  });
+  gsap.utils.toArray('.reveal-group').forEach(function(group){
+    var kids = group.children;
+    gsap.set(kids, {opacity:0});
+    if(!reduced){ gsap.set(kids, {rotateX:-10, y:18, transformPerspective:800}); }
+    ScrollTrigger.create({
+      trigger:group, start:'top 85%', once:true,
+      onEnter:function(){
+        group.classList.add('in');
+        gsap.to(kids, reduced ?
+          {opacity:1, duration:0.4, stagger:0.05} :
+          {opacity:1, rotateX:0, y:0, duration:0.75, ease:revealEase, stagger:0.06});
+      }
+    });
+  });
+
+  /* ---------- TIER 3: scroll-scrubbed reveal on the pain stack ---------- */
+  if(!reduced){
+    gsap.utils.toArray('#problem .pain-row').forEach(function(row){
+      var num = row.querySelector('.pain-num');
+      gsap.fromTo(num, { letterSpacing:'-0.02em', xPercent:-4, opacity:0.55 },
+        { letterSpacing:'-0.04em', xPercent:0, opacity:1, ease:'none',
+          scrollTrigger:{ trigger:row, start:'top 92%', end:'top 45%', scrub:0.6 } });
+    });
+  }
+
+  /* ---------- TIER 2.2: magnetic buttons (max 2) ---------- */
+  if(!reduced){
+    document.querySelectorAll('.btn-magnetic').forEach(function(btn){
+      var xTo = gsap.quickTo(btn, 'x', {duration:0.4, ease:'power4.out'});
+      var yTo = gsap.quickTo(btn, 'y', {duration:0.4, ease:'power4.out'});
+      btn.addEventListener('mousemove', function(e){
+        var r = btn.getBoundingClientRect();
+        xTo((e.clientX - r.left - r.width/2)*0.3);
+        yTo((e.clientY - r.top - r.height/2)*0.3);
+      });
+      btn.addEventListener('mouseleave', function(){
+        gsap.to(btn, {x:0, y:0, duration:0.6, ease:'elastic.out(1,0.35)'});
+      });
+    });
+  }
+
+  /* ---------- TIER 2.5: process SVG line draw ---------- */
+  if(!reduced){
+    var procLine = document.querySelector('.proc-line .draw-line');
+    if(procLine){
+      var len = procLine.getTotalLength ? procLine.getTotalLength() : 1000;
+      procLine.style.strokeDasharray = len;
+      procLine.style.strokeDashoffset = len;
+      ScrollTrigger.create({
+        trigger:'.proc-wrap', start:'top 72%', once:true,
+        onEnter:function(){
+          gsap.to(procLine, {strokeDashoffset:0, duration:1.4, ease:'power2.inOut'});
+          gsap.fromTo('.proc-dot', {scale:0, opacity:0},
+            {scale:1, opacity:1, duration:0.5, ease:'back.out(1.7)', stagger:0.18, delay:0.25});
+        }
+      });
+    }
+  } else {
+    var pl = document.querySelector('.proc-line .draw-line');
+    if(pl){ pl.style.strokeDashoffset = 0; }
+  }
+
+  /* ---------- TIER 2.4: blur-to-sharp stat counters ---------- */
+  document.querySelectorAll('.stat-count').forEach(function(el){
+    var target = parseFloat(el.dataset.target);
+    var suffix = el.dataset.suffix || '';
+    if(reduced){ el.textContent = target + suffix; return; }
+    var obj = {val:0};
+    ScrollTrigger.create({
+      trigger:el, start:'top 85%', once:true,
+      onEnter:function(){
+        gsap.to(obj, { val:target, duration:1.8, ease:'power2.out',
+          onUpdate:function(){
+            var p = obj.val/target;
+            el.textContent = Math.round(obj.val) + suffix;
+            el.style.filter = 'blur(' + ((1-p)*6).toFixed(2) + 'px)';
+          },
+          onComplete:function(){ el.textContent = target + suffix; el.style.filter='none'; }
+        });
+      }
+    });
+  });
+
+  ScrollTrigger.refresh();
+})();
+</script>
+</body>
+</html>
