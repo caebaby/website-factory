@@ -18,6 +18,12 @@
       "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "8099", "--directory", "qa/fixtures"],
       "port": 8099
+    },
+    {
+      "name": "awp",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8096", "--directory", "projects/awp/build"],
+      "port": 8096
     }
   ]
 }

@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anchor Wealth Planning | Houston, TX — Fiduciary Wealth Management</title>
+  <meta name="description" content="Alex Miller and Anchor Wealth Planning coordinate your investments, taxes, and estate plan with your CPA and attorney — for oil &amp; gas executives, business owners, and HNW families in Houston, TX.">
+
+  <!-- ============================================================================
+       AWP — DIRECTION 2: WARM (the human-relationship register)
+       Tests LAYOUT_CRAFT 8.7: warm-human premium applied to wealth — the trusted
+       human coordinator, NOT a cold institution. Photography-led, warmer palette,
+       oversize stats, testimonials on a warm ground (Maven register in AWP gold).
+       Built per: EXAMPLES_SHARED.md DIRECTION 2 + the editorial-luxury doc stack.
+       Primitives assembled (COMPONENTS.md): P2 multi-step form, P3 scroll reveal.
+       Fonts: EB Garamond + Nunito Sans (AWP brand subs). Accent gate: #b18f4d.
+       ============================================================================ -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Nunito+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Motion engine (CDN) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.25/dist/lenis.min.js"></script>
+
+  <style>
+    /* ============================================================================
+       DESIGN TOKENS — Tone: light-warm | Density: balanced | Motion: expressive
+       Type: editorial-serif headers + Nunito Sans body | Visual: photography
+       Color commitment: Committed-warm — gold/bronze carries more surface; a warm
+       cream-gold testimonial band; crescendo to a warm close.
+       ============================================================================ */
+    :root {
+      /* Primary — Midnight navy (grounding only; warm direction leans gold) */
+      --primary:            #1e395a;
+      --primary-light:      #2d5474;
+      --primary-deep:       #14283f;
+      --primary-rgb:        30, 57, 90;
+
+      /* Accent — Burnished Gold (carries surface in this direction) */
+      --accent:             #b18f4d;
+      --accent-dark:        #957636;
+      --accent-deep:        #7d6230;
+      --accent-glow:        rgba(177,143,77,.35);
+      --accent-wash:        rgba(177,143,77,.06);
+      --accent-rgb:         177, 143, 77;
+      /* Warm bronze companion for the testimonial ground + depth */
+      --bronze:             #a07b3e;
+      --bronze-rgb:         160, 123, 62;
+
+      /* Secondary — Steel blue */
+      --secondary:          #3d5a75;
+      --secondary-rgb:      61, 90, 117;
+
+      /* Neutrals */
+      --pigeon:             #748ba0;
+      --pigeon-rgb:         116, 139, 160;
+      --robin:              #c0d8e9;
+      --robin-rgb:          192, 216, 233;
+
+      /* Backgrounds — warm cream dominant */
+      --bg-base:            #F5F0E6;
+      --bg-base-rgb:        245, 240, 230;
+      --bg-mid:             #EDE8DA;
+      --bg-warm:            #F1E7D2;   /* deeper warm cream — the warm-ground band */
+      --bg-warm-rgb:        241, 231, 210;
+      --bg-card:            #FFFFFF;
+
+      /* Text */
+      --text-primary:       #1e395a;
+      --text-body:          #46556a;   /* slightly warmer/darker than steel for AA on cream */
+      --text-muted:         #6f8398;
+      --text-light:         #FFFFFF;
+      --text-light-muted:   rgba(255,255,255,.72);
+
+      /* Borders */
+      --border-light:       rgba(30,57,90,.12);
+      --border-gold:        rgba(177,143,77,.32);
+      --border-warm:        rgba(160,123,62,.28);
+
+      /* Typography */
+      --font-display:       'EB Garamond', Georgia, serif;
+      --font-body:          'Nunito Sans', 'Helvetica Neue', sans-serif;
+
+      /* Type scale */
+      --t-display:          clamp(48px, 6.2vw, 84px);
+      --t-h1:               clamp(40px, 5.2vw, 66px);
+      --t-h2:               clamp(36px, 4.4vw, 56px);
+      --t-h3:               clamp(23px, 2.4vw, 30px);
+      --t-h4:               clamp(18px, 1.8vw, 21px);
+      --t-body:             clamp(16px, 1.6vw, 18px);
+      --t-small:            14px;
+      --t-micro:            11px;
+
+      /* Layout */
+      --maxw:               1200px;
+      --readable:           700px;
+      --section-v:          112px;     /* balanced-warm baseline */
+      --section-sm:         80px;
+      --gap:                28px;
+      --gap-lg:             56px;
+
+      /* Motion (expressive) */
+      --t-reveal:           0.7s cubic-bezier(.16,1,.3,1);
+      --t-hover:            0.32s cubic-bezier(.34,1.2,.64,1);
+      --t-stagger:          0.07s;
+      --hover-lift:         5px;
+      --ticker-duration:    34s;
+    }
+
+    /* ============================================================================
+       RESET & BASE
+       ============================================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; font-size: 16px; }
+    body {
+      font-family: var(--font-body);
+      font-size: var(--t-body);
+      line-height: 1.72;
+      color: var(--text-body);
+      background: var(--bg-base);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4, h5 {
+      font-family: var(--font-display);
+      color: var(--text-primary);
+      line-height: 1.12;
+      font-weight: 400;
+      text-wrap: balance;
+    }
+    p, li, blockquote { text-wrap: pretty; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: none; }
+    ::selection { background: rgba(var(--accent-rgb), .26); color: var(--primary-deep); }
+    img { max-width: 100%; height: auto; display: block; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+    .skip-link {
+      position: absolute; left: -9999px; top: 0; z-index: 10000;
+      padding: 10px 18px; background: var(--accent); color: #fff;
+      font-weight: 700; font-size: 14px; text-decoration: none;
+    }
+    .skip-link:focus { left: 0; }
+
+    /* GRAIN OVERLAY */
+    .grain-overlay {
+      position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: .03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* LAYOUT UTILITIES */
+    .container { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
+    .readable { max-width: var(--readable); }
+    .section { padding: var(--section-v) 0; position: relative; overflow: hidden; }
+    .section-sm { padding: var(--section-sm) 0; position: relative; overflow: hidden; }
+
+    /* Section background depth (never flat) */
+    .bg-cream {
+      background:
+        radial-gradient(ellipse at 12% 88%, rgba(var(--accent-rgb), .055) 0%, transparent 55%),
+        radial-gradient(ellipse at 88% 12%, rgba(var(--bronze-rgb), .045) 0%, transparent 52%),
+        var(--bg-base);
+    }
+    .bg-cream-mid {
+      background:
+        radial-gradient(ellipse at 82% 70%, rgba(var(--accent-rgb), .045) 0%, transparent 52%),
+        radial-gradient(ellipse at 16% 24%, rgba(var(--bronze-rgb), .04) 0%, transparent 50%),
+        var(--bg-mid);
+    }
+    /* The warm-ground band — gold/bronze owns more surface here (Maven sage move, AWP palette) */
+    .bg-warm {
+      background:
+        radial-gradient(ellipse at 20% 18%, rgba(var(--accent-rgb), .14) 0%, transparent 56%),
+        radial-gradient(ellipse at 84% 86%, rgba(var(--bronze-rgb), .16) 0%, transparent 58%),
+        linear-gradient(168deg, var(--bg-warm) 0%, #EDE0C6 100%);
+    }
+    .bg-dark {
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(var(--secondary-rgb), .42) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 20%, rgba(var(--accent-rgb), .12) 0%, transparent 42%),
+        var(--primary);
+    }
+
+    /* EYEBROW — muted ink in the warm register (LAYOUT_CRAFT 8.7 / fixture LED-003) */
+    .eyebrow {
+      font-family: var(--font-body);
+      font-size: var(--t-micro); font-weight: 800; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--text-muted);
+      display: inline-flex; align-items: center; gap: 14px;
+      margin-bottom: 22px;
+    }
+    .eyebrow::after {
+      content: ""; display: block; height: 2px; width: 48px;
+      background: var(--accent);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .6s ease .15s;
+    }
+    .reveal.visible .eyebrow::after,
+    .eyebrow.visible::after { transform: scaleX(1); }
+    .on-dark .eyebrow { color: rgba(255,255,255,.78); text-shadow: 0 0 20px rgba(var(--accent-rgb), .3); }
+
+    .section-intro { max-width: var(--readable); }
+    .section-intro h2 { font-size: var(--t-h2); margin-bottom: 22px; letter-spacing: -.01em; }
+    .section-intro p { font-size: var(--t-body); color: var(--text-body); }
+    .section-intro h2 em { font-style: italic; color: var(--accent-dark); }
+
+    /* ============================================================================
+       NAVIGATION — frosted glass on scroll
+       ============================================================================ */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      height: 78px; display: flex; align-items: center;
+      background: transparent; border-bottom: 1px solid transparent;
+      transition: background .3s ease, box-shadow .3s ease, border-color .3s ease, height .3s ease;
+    }
+    .nav.scrolled {
+      height: 66px;
+      background: rgba(var(--bg-base-rgb), .9);
+      backdrop-filter: blur(18px) saturate(1.4);
+      -webkit-backdrop-filter: blur(18px) saturate(1.4);
+      border-bottom-color: var(--border-light);
+      box-shadow: 0 1px 0 rgba(255,255,255,.8) inset, 0 4px 24px rgba(var(--primary-rgb), .08);
+    }
+    .nav-inner {
+      max-width: var(--maxw); margin: 0 auto; padding: 0 28px; width: 100%;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      display: inline-flex; align-items: center; gap: 12px;
+      color: var(--text-light); text-decoration: none; line-height: 1;
+    }
+    .nav.scrolled .nav-logo { color: var(--text-primary); }
+    .nav-logo .mark {
+      width: 34px; height: 34px; border-radius: 6px; flex: 0 0 auto;
+      background: linear-gradient(150deg, var(--accent) 0%, var(--accent-deep) 100%);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 2px 10px rgba(var(--accent-rgb), .4);
+    }
+    .nav-logo .mark svg { width: 18px; height: 18px; stroke: #fff; fill: none; stroke-width: 1.6; }
+    .nav-logo .wordmark { display: flex; flex-direction: column; gap: 2px; }
+    .nav-logo .word-main { font-family: var(--font-display); font-size: 23px; font-weight: 500; }
+    .nav-logo .word-sub {
+      font-family: var(--font-body); font-size: 8px; font-weight: 800;
+      letter-spacing: .24em; text-transform: uppercase; opacity: .72;
+    }
+    .nav-links { display: flex; align-items: center; gap: 38px; }
+    .nav-link {
+      position: relative; font-size: 14px; font-weight: 600;
+      color: var(--text-light-muted); text-decoration: none; transition: color .22s ease;
+    }
+    .nav.scrolled .nav-link { color: var(--secondary); }
+    .nav-link::after {
+      content: ''; position: absolute; left: 0; bottom: -6px;
+      height: 1.5px; width: 0; background: var(--accent); transition: width .22s ease;
+    }
+    .nav-link:hover { color: var(--accent); }
+    .nav-link:hover::after { width: 100%; }
+
+    .nav-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 11px 22px; background: var(--accent); color: #fff;
+      font-family: var(--font-body); font-size: 13px; font-weight: 700; letter-spacing: .03em;
+      border-radius: 6px; border: none; cursor: pointer; text-decoration: none;
+      position: relative; overflow: hidden;
+      box-shadow: 0 1px 2px rgba(var(--accent-rgb),.15), 0 4px 16px rgba(var(--accent-rgb),.3);
+      transition: transform .22s ease, box-shadow .22s ease;
+    }
+    .nav-cta::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,.2) 50%, transparent 60%);
+      transform: translateX(-100%); transition: transform .42s ease; pointer-events: none;
+    }
+    .nav-cta:hover::before { transform: translateX(100%); }
+    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 2px 4px rgba(var(--accent-rgb),.18), 0 8px 30px rgba(var(--accent-rgb),.42); }
+    .nav-cta .arrow { transition: transform .25s cubic-bezier(.34,1.56,.64,1); }
+    .nav-cta:hover .arrow { transform: translateX(5px); }
+
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--text-light); transition: background .22s ease; position: relative; }
+    .nav.scrolled .nav-toggle span { background: var(--text-primary); }
+    .nav-toggle span::before, .nav-toggle span::after { content: ''; position: absolute; left: 0; width: 24px; height: 2px; background: inherit; transition: transform .3s ease; }
+    .nav-toggle span::before { top: -7px; } .nav-toggle span::after { top: 7px; }
+    .nav-toggle.open span { background: transparent; }
+    .nav-toggle.open span::before { transform: rotate(45deg) translate(5px, 5px); background: var(--text-primary); }
+    .nav-toggle.open span::after { transform: rotate(-45deg) translate(5px, -5px); background: var(--text-primary); }
+    .mobile-menu {
+      position: fixed; inset: 0; z-index: 999; background: var(--bg-base);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 30px;
+      opacity: 0; pointer-events: none; transition: opacity .3s ease;
+    }
+    .mobile-menu.open { opacity: 1; pointer-events: all; }
+    .mobile-menu a { font-family: var(--font-display); font-size: 28px; color: var(--text-primary); text-decoration: none; }
+
+    /* ============================================================================
+       BUTTONS
+       ============================================================================ */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 17px 34px; background: var(--accent); color: #fff;
+      font-family: var(--font-body); font-size: 14px; font-weight: 700; letter-spacing: .03em;
+      border-radius: 6px; border: none; cursor: pointer; text-decoration: none;
+      position: relative; overflow: hidden;
+      box-shadow: 0 1px 2px rgba(var(--accent-rgb),.15), 0 4px 16px rgba(var(--accent-rgb),.3);
+      transition: transform .22s ease, box-shadow .22s ease;
+    }
+    .btn-primary::before {
+      content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.2), transparent);
+      animation: shimmer 3.2s ease-in-out infinite; animation-delay: 1.4s; pointer-events: none;
+    }
+    @keyframes shimmer { 0% { left: -100%; } 60%, 100% { left: 100%; } }
+    .btn-primary .arrow { transition: transform .25s cubic-bezier(.34,1.56,.64,1); }
+    .btn-primary:hover .arrow { transform: translateX(5px); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 2px 4px rgba(var(--accent-rgb),.18), 0 8px 32px rgba(var(--accent-rgb),.42); }
+
+    .btn-ghost-dark {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 17px 30px; background: transparent; color: #fff;
+      font-family: var(--font-body); font-size: 14px; font-weight: 700; letter-spacing: .03em;
+      border-radius: 6px; border: 1.5px solid rgba(255,255,255,.38); cursor: pointer; text-decoration: none;
+      transition: border-color .22s ease, background .22s ease;
+    }
+    .btn-ghost-dark:hover { border-color: #fff; background: rgba(255,255,255,.08); }
+    .btn-ghost-light {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 17px 30px; background: transparent; color: var(--primary);
+      font-family: var(--font-body); font-size: 14px; font-weight: 700; letter-spacing: .03em;
+      border-radius: 6px; border: 1.5px solid rgba(var(--primary-rgb),.3); cursor: pointer; text-decoration: none;
+      transition: border-color .22s ease, color .22s ease;
+    }
+    .btn-ghost-light:hover { border-color: var(--accent); color: var(--accent-dark); }
+
+    .soft-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-body); font-size: 15px; font-weight: 700;
+      color: var(--accent-dark); text-decoration: none; transition: gap .22s ease;
+    }
+    .soft-cta:hover { gap: 13px; }
+    .soft-cta .arrow { transition: transform .25s ease; }
+    .soft-cta:hover .arrow { transform: translateX(3px); }
+
+    /* Photo caption — the honest "placeholder, final photos are Alex's" note */
+    .photo-caption {
+      font-family: var(--font-body); font-size: 12px; font-weight: 600;
+      color: var(--text-muted); letter-spacing: .02em; margin-top: 12px;
+      display: inline-flex; align-items: center; gap: 7px;
+    }
+    .photo-caption::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent); flex: 0 0 auto;
+    }
+
+    /* ============================================================================
+       HERO — SECTION_PATTERNS 1A The Split (copy left, photography right)
+       Warm, human, immediately relational. The family-at-sunset image leads.
+       ============================================================================ */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 140px 0 84px; position: relative; overflow: hidden;
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: 1.06fr .94fr; gap: var(--gap-lg);
+      align-items: center; width: 100%;
+    }
+    .hero-content { max-width: 600px; }
+    .hero .eyebrow { color: var(--text-muted); }
+    .hero .eyebrow::after { background: var(--accent); }
+    .hero h1 {
+      font-size: var(--t-display); color: var(--text-primary); margin-bottom: 26px;
+      letter-spacing: -.015em; line-height: 1.04;
+    }
+    .hero h1 em { font-style: italic; color: var(--accent-dark); }
+    .hero-sub {
+      font-size: clamp(17px, 1.7vw, 20px); color: var(--text-body); line-height: 1.7;
+      margin-bottom: 38px; max-width: 540px;
+    }
+    .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 44px; }
+    .hero-proof {
+      display: flex; gap: 30px; flex-wrap: wrap;
+      padding-top: 32px; border-top: 1px solid var(--border-light);
+    }
+    .hero-proof-item { font-size: var(--t-small); color: var(--text-muted); line-height: 1.5; max-width: 150px; }
+    .hero-proof-item strong { color: var(--text-primary); font-weight: 700; display: block; margin-bottom: 3px; }
+
+    /* Hero photography frame — soft rounded, depth, warm tint overlay */
+    .hero-photo {
+      position: relative; border-radius: 14px; overflow: hidden;
+      aspect-ratio: 4/5; max-height: 620px;
+      box-shadow:
+        0 2px 8px rgba(var(--primary-rgb), .1),
+        0 20px 50px rgba(var(--primary-rgb), .18),
+        0 40px 90px rgba(var(--bronze-rgb), .14);
+    }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-photo::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: linear-gradient(195deg, transparent 50%, rgba(125,98,48,.22) 100%);
+    }
+    .hero-photo-frame {
+      position: absolute; inset: 10px; border: 1px solid rgba(255,255,255,.32);
+      border-radius: 9px; pointer-events: none; z-index: 2;
+    }
+    .hero-photo-badge {
+      position: absolute; left: 22px; bottom: 22px; z-index: 3;
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 9px 16px; border-radius: 8px;
+      background: rgba(245,240,230,.92); backdrop-filter: blur(6px);
+      box-shadow: 0 4px 18px rgba(var(--primary-rgb), .2);
+    }
+    .hero-photo-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+    .hero-photo-badge span {
+      font-family: var(--font-body); font-size: 12px; font-weight: 700;
+      color: var(--text-primary); letter-spacing: .02em;
+    }
+
+    /* ============================================================================
+       PAIN TICKER (marquee) — warm band
+       ============================================================================ */
+    .ticker-band {
+      background: var(--bg-mid);
+      border-top: 1px solid var(--border-warm); border-bottom: 1px solid var(--border-warm);
+      padding: 20px 0; overflow: hidden; position: relative;
+    }
+    .ticker-track {
+      display: flex; gap: 0; white-space: nowrap; width: max-content;
+      animation: ticker var(--ticker-duration) linear infinite;
+    }
+    .ticker-track:hover { animation-play-state: paused; }
+    .ticker-item {
+      font-family: var(--font-display); font-style: italic; font-size: 19px;
+      color: var(--text-muted); display: inline-flex; align-items: center; padding: 0 30px;
+    }
+    .ticker-item::after { content: '⚓'; font-size: 11px; color: var(--accent); font-style: normal; margin-left: 30px; opacity: .7; }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ============================================================================
+       PAIN — Editorial stack (2B), alternating quote sides
+       ============================================================================ */
+    .pain-stack { display: flex; flex-direction: column; margin-top: 12px; }
+    .pain-band {
+      display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap-lg);
+      align-items: center; padding: 56px 0; border-bottom: 1px solid var(--border-light);
+    }
+    .pain-band:last-child { border-bottom: none; }
+    .pain-band:nth-child(even) .pain-quote { order: 2; }
+    .pain-band:nth-child(even) .pain-context { order: 1; }
+    .pain-num {
+      font-family: var(--font-display); font-size: 20px; color: var(--accent);
+      font-weight: 600; letter-spacing: .05em; display: block; margin-bottom: 14px;
+    }
+    .pain-quote {
+      font-family: var(--font-display); font-size: clamp(21px, 2.3vw, 28px);
+      font-style: italic; color: var(--text-primary); line-height: 1.45;
+      position: relative; padding-left: 26px;
+    }
+    .pain-quote::before {
+      content: '"'; position: absolute; left: -6px; top: -18px;
+      font-size: 76px; color: var(--accent); opacity: .28; line-height: 1; font-family: var(--font-display);
+    }
+    .pain-context { font-size: var(--t-body); color: var(--text-body); line-height: 1.8; max-width: 540px; }
+    .pain-context strong { color: var(--text-primary); font-weight: 700; }
+
+    /* ============================================================================
+       TRUST — T2 Credential Editorial (warm): statement left, rows right
+       ============================================================================ */
+    .trust-layout {
+      display: grid; grid-template-columns: .9fr 1.1fr; gap: var(--gap-lg);
+      align-items: start; margin-top: 12px;
+    }
+    .trust-statement h2 { font-size: var(--t-h2); margin-bottom: 20px; letter-spacing: -.01em; }
+    .trust-statement p { font-size: var(--t-body); color: var(--text-body); line-height: 1.8; }
+    .trust-rows { display: flex; flex-direction: column; }
+    .trust-row {
+      display: grid; grid-template-columns: 52px 1fr; gap: 22px; align-items: start;
+      padding: 24px 0; border-bottom: 1px solid var(--border-light);
+    }
+    .trust-row:last-child { border-bottom: none; }
+    .trust-icon {
+      width: 52px; height: 52px; border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      background: rgba(var(--accent-rgb), .1); border: 1px solid var(--border-gold);
+    }
+    .trust-icon svg { width: 26px; height: 26px; stroke: var(--accent-dark); fill: none; stroke-width: 1.5; }
+    .trust-row h4 { font-size: var(--t-h4); font-weight: 600; color: var(--text-primary); margin-bottom: 5px; }
+    .trust-row p { font-size: var(--t-small); color: var(--text-muted); line-height: 1.62; }
+
+    /* ============================================================================
+       ICP SELF-SORT — 3A Profile Cards with photography accents
+       ============================================================================ */
+    .icp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); margin-top: 48px; }
+    .icp-card {
+      background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 12px;
+      overflow: hidden; position: relative;
+      box-shadow:
+        0 1px 2px rgba(var(--primary-rgb), .04),
+        0 4px 14px rgba(var(--primary-rgb), .08),
+        0 18px 40px rgba(var(--primary-rgb), .08);
+      transition: transform var(--t-hover), box-shadow var(--t-hover);
+    }
+    .icp-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      transform: scaleX(0); transition: transform .4s ease; z-index: 2;
+    }
+    .icp-card:hover { transform: translateY(calc(var(--hover-lift) * -1)); box-shadow: 0 2px 4px rgba(var(--primary-rgb), .05), 0 10px 30px rgba(var(--primary-rgb), .14), 0 30px 60px rgba(var(--bronze-rgb), .12); }
+    .icp-card:hover::after { transform: scaleX(1); }
+    .icp-card-body { padding: 30px 28px 32px; }
+    .icp-card-icon {
+      width: 54px; height: 54px; margin-bottom: 22px; border-radius: 10px;
+      background: rgba(var(--accent-rgb), .1); display: flex; align-items: center; justify-content: center;
+    }
+    .icp-card-icon svg { width: 28px; height: 28px; stroke: var(--accent-dark); fill: none; stroke-width: 1.3; }
+    .icp-card h3 { font-size: var(--t-h3); font-weight: 500; margin-bottom: 12px; }
+    .icp-card p { font-size: var(--t-small); color: var(--text-muted); margin-bottom: 22px; line-height: 1.62; }
+
+    /* ============================================================================
+       FIT ASSESSMENT — Primitive 2 multi-step form (the MQL gate)
+       ============================================================================ */
+    .fit-wrap { max-width: 720px; margin: 48px auto 0; }
+    .fit-card {
+      background: var(--bg-card); border-radius: 16px;
+      padding: 48px 44px; position: relative; overflow: hidden;
+      box-shadow:
+        0 4px 8px rgba(var(--primary-rgb), .06),
+        0 16px 48px rgba(var(--primary-rgb), .14),
+        0 48px 90px rgba(var(--bronze-rgb), .1);
+    }
+    /* Top accent header as a layered gradient bar (not a single-edge border — avoids the AI side-stripe tell) */
+    .fit-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px;
+      background: linear-gradient(90deg, var(--accent-deep), var(--accent) 40%, var(--bronze) 100%);
+    }
+    .wiz__progress {
+      font-family: var(--font-body); font-size: 12px; font-weight: 800; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px;
+    }
+    .wiz__bar { height: 4px; background: rgba(var(--primary-rgb), .08); border-radius: 4px; overflow: hidden; margin-bottom: 30px; }
+    .wiz__bar i { display: block; height: 100%; width: 25%; background: linear-gradient(90deg, var(--accent), var(--bronze)); border-radius: 4px; transition: width .45s cubic-bezier(.16,1,.3,1); }
+    .wiz__step { display: block; }
+    .js .wiz__step { display: none; }
+    .js .wiz__step.is-active { display: block; animation: stepIn .5s cubic-bezier(.16,1,.3,1); }
+    @keyframes stepIn { from { opacity: 0; transform: translateX(18px); } to { opacity: 1; transform: translateX(0); } }
+    .wiz__step legend {
+      font-family: var(--font-display); font-size: clamp(22px, 2.2vw, 27px); color: var(--text-primary);
+      margin-bottom: 22px; line-height: 1.25; display: block; width: 100%;
+    }
+    .wiz__step legend:focus { outline: none; }
+    .fit-options { display: flex; flex-direction: column; gap: 12px; }
+    .fit-option {
+      display: flex; align-items: center; gap: 12px;
+      padding: 15px 18px; border: 1.5px solid var(--border-light); border-radius: 9px;
+      font-size: 15px; color: var(--text-body); cursor: pointer; background: rgba(255,255,255,.7);
+      box-shadow: inset 0 1px 3px rgba(var(--primary-rgb),.04);
+      transition: border-color .2s ease, background .2s ease, transform .2s ease;
+    }
+    .fit-option:hover { border-color: var(--accent); background: rgba(var(--accent-rgb),.06); transform: translateX(3px); }
+    .fit-option:has(input:checked) { border-color: var(--accent); background: rgba(var(--accent-rgb),.1); }
+    .fit-option input { accent-color: var(--accent); width: 18px; height: 18px; flex: 0 0 auto; }
+    .wiz__nav { display: flex; align-items: center; gap: 16px; margin-top: 28px; flex-wrap: wrap; }
+    .wiz__nav button[data-prev] {
+      background: transparent; border: none; color: var(--text-muted); font-family: var(--font-body);
+      font-size: 14px; font-weight: 700; cursor: pointer; padding: 14px 6px; transition: color .2s ease;
+    }
+    .wiz__nav button[data-prev]:hover { color: var(--accent-dark); }
+    .wiz__nav button[data-next], .wiz__nav button[type=submit] {
+      display: inline-flex; align-items: center; gap: 9px; margin-left: auto;
+      padding: 15px 30px; background: var(--accent); color: #fff;
+      font-family: var(--font-body); font-size: 14px; font-weight: 700; letter-spacing: .02em;
+      border-radius: 7px; border: none; cursor: pointer; position: relative; overflow: hidden;
+      box-shadow: 0 1px 2px rgba(var(--accent-rgb),.15), 0 4px 16px rgba(var(--accent-rgb),.28);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .wiz__nav button[data-next]:hover, .wiz__nav button[type=submit]:hover { transform: translateY(-2px); box-shadow: 0 2px 4px rgba(var(--accent-rgb),.18), 0 8px 30px rgba(var(--accent-rgb),.4); }
+    .fit-email-label { font-family: var(--font-body); font-size: 14px; font-weight: 700; color: var(--text-primary); display: block; margin-bottom: 10px; }
+    .fit-email {
+      width: 100%; padding: 16px 18px; font-size: 16px; font-family: var(--font-body);
+      background: rgba(255,255,255,.9); border: 1.5px solid var(--border-light); border-radius: 9px;
+      color: var(--text-primary); box-shadow: inset 0 2px 4px rgba(var(--primary-rgb),.05);
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+    .fit-email:focus { border-color: var(--accent); box-shadow: inset 0 2px 4px rgba(var(--primary-rgb),.04), 0 0 0 3px rgba(var(--accent-rgb),.15); outline: none; }
+    .fit-micro { font-size: 13px; color: var(--text-muted); margin-top: 14px; font-style: italic; }
+
+    /* ============================================================================
+       SERVICES — 5A Numbered Editorial, with the planning-hands image anchor
+       ============================================================================ */
+    .services-layout { display: grid; grid-template-columns: 1fr; gap: 0; margin-top: 16px; }
+    .services-feature {
+      display: grid; grid-template-columns: .82fr 1.18fr; gap: var(--gap-lg);
+      align-items: center; margin-bottom: 64px;
+    }
+    .services-photo { position: relative; border-radius: 14px; overflow: hidden; aspect-ratio: 5/4;
+      box-shadow: 0 2px 8px rgba(var(--primary-rgb), .1), 0 18px 44px rgba(var(--primary-rgb), .16); }
+    .services-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .services-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(200deg, transparent 55%, rgba(125,98,48,.2) 100%); pointer-events: none; }
+    .services-feature-copy h3 { font-size: var(--t-h3); margin-bottom: 12px; font-weight: 500; }
+    .services-feature-copy p { font-size: var(--t-body); color: var(--text-body); line-height: 1.78; }
+    .services-feature-copy .lead-line { font-family: var(--font-display); font-style: italic; font-size: 20px; color: var(--accent-dark); margin-bottom: 14px; }
+
+    .service-item {
+      display: grid; grid-template-columns: 78px 1fr; gap: var(--gap-lg);
+      padding: 40px 0; border-bottom: 1px solid var(--border-light); align-items: start;
+    }
+    .service-item:last-of-type { border-bottom: none; }
+    .service-numeral { font-family: var(--font-display); font-size: 56px; font-weight: 400; color: var(--accent); opacity: .26; line-height: 1; }
+    .service-content h3 { font-size: var(--t-h3); font-weight: 500; margin-bottom: 8px; }
+    .service-pain { font-family: var(--font-display); font-style: italic; font-size: 18px; color: var(--accent-dark); margin-bottom: 14px; }
+    .service-content p { font-size: var(--t-body); color: var(--text-body); line-height: 1.8; max-width: 640px; }
+
+    /* ============================================================================
+       PROCESS — vertical step path with warm margin notes
+       ============================================================================ */
+    .process-steps { display: flex; flex-direction: column; margin-top: 48px; }
+    .process-step {
+      display: grid; grid-template-columns: 1fr 270px; gap: 48px;
+      padding: 36px 0 36px 36px; position: relative;
+      border-left: 2px solid var(--border-gold); margin-left: 18px;
+    }
+    .process-step::before {
+      content: ''; position: absolute; left: -9px; top: 42px; width: 16px; height: 16px;
+      border-radius: 50%; background: var(--bg-base); border: 3px solid var(--accent);
+      box-shadow: 0 0 0 5px rgba(var(--accent-rgb), .12);
+    }
+    .process-step-num { font-family: var(--font-body); font-size: 12px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--accent-dark); margin-bottom: 10px; }
+    .process-step-body { max-width: 580px; }
+    .process-step-body h3 { font-size: var(--t-h3); font-weight: 500; margin-bottom: 14px; color: var(--text-primary); }
+    .process-step-body p { font-family: var(--font-display); font-size: 19px; line-height: 1.7; color: var(--text-body); }
+    .process-margin-note {
+      font-family: var(--font-display); font-style: italic; font-size: 16px; color: var(--accent-dark);
+      line-height: 1.5; padding: 8px 0; align-self: center;
+      opacity: 0; transform: translateX(-12px); transition: opacity .5s ease .35s, transform .5s ease .35s;
+    }
+    .reveal.visible .process-margin-note { opacity: 1; transform: translateX(0); }
+    .process-margin-note::before { content: '← '; font-style: normal; }
+    .process-callout {
+      margin: 44px 0 0 18px; padding: 28px 34px; border-radius: 0 12px 12px 0;
+      background: rgba(var(--accent-rgb), .08); border-left: 3px solid var(--accent);
+    }
+    .process-callout p { font-family: var(--font-display); font-style: italic; font-size: 19px; color: var(--text-primary); line-height: 1.6; max-width: 62ch; }
+    .process-cta-wrap { margin: 36px 0 0 18px; }
+
+    /* ============================================================================
+       ABOUT — warm split with smiling-man placeholder photo
+       ============================================================================ */
+    .about-split { display: grid; grid-template-columns: .82fr 1.18fr; gap: var(--gap-lg); align-items: center; margin-top: 12px; }
+    .about-photo { position: relative; border-radius: 14px; overflow: hidden; aspect-ratio: 4/5; max-height: 540px;
+      box-shadow: 0 2px 8px rgba(var(--primary-rgb), .1), 0 18px 50px rgba(var(--primary-rgb), .16), 0 36px 80px rgba(var(--bronze-rgb), .12); }
+    .about-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .about-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(195deg, transparent 55%, rgba(30,57,90,.22) 100%); pointer-events: none; }
+    .about-copy h2 { font-size: var(--t-h2); margin-bottom: 22px; letter-spacing: -.01em; }
+    .about-copy h2 mark { background: rgba(var(--accent-rgb), .16); }
+    .about-copy > p { font-size: var(--t-body); color: var(--text-body); line-height: 1.82; margin-bottom: 26px; max-width: 56ch; }
+    .about-creds { display: flex; flex-wrap: wrap; gap: 10px; }
+    .cred-chip {
+      display: inline-block; padding: 7px 15px; border: 1px solid var(--border-gold); border-radius: 6px;
+      font-size: 13px; font-weight: 700; color: var(--text-primary); background: rgba(var(--accent-rgb),.05);
+    }
+
+    /* ============================================================================
+       SIGNATURE PEAK — Oversize-stat showcase (the warm exhale)
+       72px+ gold stat numbers, blur-to-sharp count-up, over a warm cream-gold ground
+       ============================================================================ */
+    .stats-peak { padding: 124px 0; }
+    .stats-peak .eyebrow { color: var(--accent-deep); }
+    .stats-peak .stats-head { max-width: 660px; margin-bottom: 60px; }
+    .stats-peak .stats-head h2 { font-size: var(--t-h2); letter-spacing: -.01em; }
+    .stats-peak .stats-head h2 em { font-style: italic; color: var(--accent-deep); }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; }
+    .stat-item { display: flex; flex-direction: column; gap: 14px; }
+    .stat-number {
+      font-family: var(--font-display); font-size: clamp(64px, 8vw, 104px); font-weight: 500;
+      color: var(--accent-deep); line-height: .9; letter-spacing: -.03em;
+    }
+    .stat-number .unit { font-size: .5em; }
+    .stat-rule { width: 44px; height: 3px; background: var(--accent); border-radius: 2px; }
+    .stat-label { font-size: 15px; color: var(--text-body); line-height: 1.5; max-width: 210px; font-weight: 600; }
+
+    /* ============================================================================
+       PROOF — 7C Anchor Testimonial on the warm ground (the warm peak)
+       Magazine pull-quote + planning-hands image alongside. HONEST pending state.
+       ============================================================================ */
+    .proof-band { padding: 124px 0; }
+    .proof-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: var(--gap-lg); align-items: center; margin-top: 8px; }
+    .testimonial-feature { position: relative; }
+    .testimonial-pending-tag {
+      display: inline-flex; align-items: center; gap: 8px; margin-bottom: 24px;
+      padding: 7px 15px; border-radius: 20px; background: rgba(var(--bronze-rgb), .14);
+      border: 1px solid var(--border-warm);
+      font-family: var(--font-body); font-size: 11px; font-weight: 800; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--accent-deep);
+    }
+    .testimonial-pending-tag svg { width: 14px; height: 14px; stroke: var(--accent-deep); fill: none; stroke-width: 1.8; }
+    .testimonial-quote {
+      font-family: var(--font-display); font-size: clamp(26px, 3vw, 38px); font-style: italic;
+      color: var(--text-primary); line-height: 1.4; position: relative; margin-bottom: 22px;
+    }
+    .testimonial-quote::before {
+      content: '"'; position: absolute; left: -8px; top: -40px; font-family: var(--font-display);
+      font-size: 110px; color: var(--accent); opacity: .2; line-height: 1;
+    }
+    .testimonial-author { font-family: var(--font-body); font-size: 14px; font-weight: 700; color: var(--text-muted); letter-spacing: .03em; }
+    .testimonial-note { font-size: 13px; color: var(--text-muted); margin-top: 26px; font-style: italic; line-height: 1.6; max-width: 460px; }
+    .proof-photo { position: relative; border-radius: 14px; overflow: hidden; aspect-ratio: 4/5; max-height: 560px;
+      box-shadow: 0 2px 8px rgba(var(--primary-rgb), .12), 0 22px 56px rgba(var(--bronze-rgb), .2); }
+    .proof-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .proof-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(200deg, transparent 52%, rgba(125,98,48,.26) 100%); pointer-events: none; }
+    /* supporting mini testimonials (also honest pending) */
+    .proof-support { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); margin-top: 64px; }
+    .proof-support-card {
+      background: rgba(255,255,255,.55); border: 1px solid var(--border-warm); border-radius: 12px;
+      padding: 28px 28px; box-shadow: inset 0 1px 0 rgba(255,255,255,.7);
+    }
+    .proof-support-card .pending-mini { font-family: var(--font-body); font-size: 10px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--accent-deep); margin-bottom: 12px; display: block; }
+    .proof-support-card p { font-family: var(--font-display); font-style: italic; font-size: 19px; color: var(--text-primary); line-height: 1.5; margin-bottom: 14px; }
+    .proof-support-card .who { font-size: 13px; font-weight: 700; color: var(--text-muted); }
+
+    /* ============================================================================
+       FINAL CTA — 8B Split warm close (crescendo: gold owns the card surface)
+       ============================================================================ */
+    .final-cta { padding: 120px 0; }
+    .final-grid { display: grid; grid-template-columns: 1fr .9fr; gap: var(--gap-lg); align-items: center; }
+    .final-copy .eyebrow { color: rgba(255,255,255,.8); }
+    .final-copy h2 { font-size: var(--t-h2); color: #fff; margin-bottom: 22px; letter-spacing: -.01em; text-shadow: 0 2px 14px rgba(0,0,0,.22); }
+    .final-copy h2 em { font-style: italic; color: var(--robin); }
+    .final-copy p { font-size: var(--t-body); color: var(--text-light-muted); line-height: 1.8; max-width: 52ch; }
+    /* the gold-drenched card = committed-warm crescendo (accent OWNS this surface) */
+    .final-card {
+      background: linear-gradient(155deg, var(--accent) 0%, var(--accent-deep) 100%);
+      border-radius: 16px; padding: 44px 40px; position: relative; overflow: hidden;
+      box-shadow: 0 4px 16px rgba(var(--accent-rgb), .35), 0 28px 64px rgba(125,98,48,.4), inset 0 1px 0 rgba(255,255,255,.22);
+    }
+    .final-card::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 70% 60% at 80% 18%, rgba(255,255,255,.18), transparent 60%);
+    }
+    .final-card h3 { font-family: var(--font-display); font-size: 27px; color: #fff; margin-bottom: 12px; position: relative; }
+    .final-card p { font-size: 15px; color: rgba(255,255,255,.9); line-height: 1.6; margin-bottom: 26px; position: relative; }
+    .final-card-btns { display: flex; flex-direction: column; gap: 14px; position: relative; }
+    .btn-on-gold {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 17px 30px; background: #fff; color: var(--accent-deep);
+      font-family: var(--font-body); font-size: 14px; font-weight: 700; letter-spacing: .03em;
+      border-radius: 7px; text-decoration: none; transition: transform .22s ease, box-shadow .22s ease;
+      box-shadow: 0 4px 16px rgba(0,0,0,.18);
+    }
+    .btn-on-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,.26); }
+    .btn-on-gold .arrow { transition: transform .25s cubic-bezier(.34,1.56,.64,1); }
+    .btn-on-gold:hover .arrow { transform: translateX(5px); }
+    .btn-on-gold-ghost {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 16px 30px; background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.5);
+      font-family: var(--font-body); font-size: 14px; font-weight: 700; border-radius: 7px;
+      text-decoration: none; transition: border-color .22s ease, background .22s ease;
+    }
+    .btn-on-gold-ghost:hover { border-color: #fff; background: rgba(255,255,255,.1); }
+
+    /* ============================================================================
+       FOOTER — Rich (9B)
+       ============================================================================ */
+    .footer { padding: 80px 0 36px; background: var(--bg-mid); border-top: 1px solid var(--border-light); }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: var(--gap-lg); margin-bottom: 52px; }
+    .footer-brand .footmark { display: inline-flex; align-items: center; gap: 11px; margin-bottom: 14px; }
+    .footer-brand .footmark .mark { width: 32px; height: 32px; border-radius: 6px; background: linear-gradient(150deg, var(--accent), var(--accent-deep)); display: flex; align-items: center; justify-content: center; }
+    .footer-brand .footmark .mark svg { width: 17px; height: 17px; stroke: #fff; fill: none; stroke-width: 1.6; }
+    .footer-brand .footmark h4 { font-family: var(--font-display); font-size: 23px; font-weight: 500; color: var(--text-primary); }
+    .footer-brand .tagline { font-family: var(--font-display); font-style: italic; font-size: 16px; color: var(--accent-dark); margin-bottom: 16px; }
+    .footer-brand p { font-size: var(--t-small); color: var(--text-muted); line-height: 1.7; max-width: 330px; }
+    .footer-col h5 { font-family: var(--font-body); font-size: var(--t-micro); font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--text-primary); margin-bottom: 18px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+    .footer-col a, .footer-col li { font-size: var(--t-small); color: var(--text-muted); text-decoration: none; transition: color .22s ease; }
+    .footer-col a:hover { color: var(--accent-dark); }
+    .footer-bottom { padding-top: 30px; border-top: 1px solid var(--border-light); display: flex; flex-direction: column; gap: 16px; }
+    .footer-disclaimer { font-size: 12px; color: var(--text-muted); line-height: 1.7; max-width: 70ch; }
+    .footer-meta { font-size: 13px; color: var(--text-muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-imagery-note { font-size: 12px; color: var(--text-muted); font-style: italic; max-width: 64ch; }
+
+    /* PLACEHOLDER MARKS */
+    mark.ph {
+      background: rgba(var(--accent-rgb), .15); color: var(--primary);
+      padding: 1px 6px; border-radius: 3px; font-weight: 600; border: 1px dashed var(--accent);
+    }
+
+    /* SCROLL REVEAL — safety baseline (visible by default, P3 contract) */
+    .reveal { opacity: 1; }
+    @media (prefers-reduced-motion: no-preference) {
+      html.js .reveal { opacity: 0; transform: translateY(28px); transition: opacity var(--t-reveal), transform var(--t-reveal); }
+      html.js .reveal.visible { opacity: 1; transform: none; }
+      html.js .reveal-children > * { opacity: 0; transform: translateY(22px); transition: opacity var(--t-reveal), transform var(--t-reveal); }
+      html.js .reveal-children.visible > * { opacity: 1; transform: none; }
+      html.js .reveal-children.visible > *:nth-child(1) { transition-delay: 0s; }
+      html.js .reveal-children.visible > *:nth-child(2) { transition-delay: var(--t-stagger); }
+      html.js .reveal-children.visible > *:nth-child(3) { transition-delay: calc(var(--t-stagger) * 2); }
+      html.js .reveal-children.visible > *:nth-child(4) { transition-delay: calc(var(--t-stagger) * 3); }
+      html.js .reveal-children.visible > *:nth-child(5) { transition-delay: calc(var(--t-stagger) * 4); }
+      html.js .reveal-children.visible > *:nth-child(6) { transition-delay: calc(var(--t-stagger) * 5); }
+    }
+
+    /* ============================================================================
+       RESPONSIVE
+       ============================================================================ */
+    @media (max-width: 1024px) {
+      :root { --section-v: 84px; --section-sm: 64px; }
+      .stats-peak, .proof-band, .final-cta { padding: 92px 0; }
+      .hero-grid { grid-template-columns: 1fr; gap: 44px; }
+      .hero-photo { max-height: 520px; max-width: 480px; }
+      .trust-layout { grid-template-columns: 1fr; gap: 36px; }
+      .icp-grid { grid-template-columns: 1fr; max-width: 460px; }
+      .services-feature { grid-template-columns: 1fr; gap: 32px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 44px 32px; }
+      .proof-grid { grid-template-columns: 1fr; gap: 40px; }
+      .proof-photo { max-width: 440px; }
+      .about-split { grid-template-columns: 1fr; gap: 36px; }
+      .about-photo { max-width: 420px; }
+      .final-grid { grid-template-columns: 1fr; gap: 36px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      :root { --section-v: 64px; }
+      .nav-links, .nav-cta { display: none; }
+      .nav-toggle { display: block; }
+      .hero { padding: 112px 0 56px; min-height: auto; }
+      .hero-ctas { flex-direction: column; }
+      .hero-ctas .btn-primary, .hero-ctas .btn-ghost-light { width: 100%; justify-content: center; }
+      .hero-proof { gap: 18px; }
+      .pain-band { grid-template-columns: 1fr; gap: 22px; }
+      .pain-band:nth-child(even) .pain-quote { order: 1; }
+      .pain-band:nth-child(even) .pain-context { order: 2; }
+      .process-step { grid-template-columns: 1fr; gap: 14px; }
+      .process-margin-note::before { content: '↑ '; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .proof-support { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-meta { flex-direction: column; }
+      .fit-card { padding: 32px 24px 36px; }
+      .service-item { grid-template-columns: 1fr; gap: 8px; }
+      .service-numeral { font-size: 44px; }
+    }
+    @media (max-width: 480px) {
+      :root { --section-v: 52px; }
+      .stats-peak, .proof-band, .final-cta { padding: 72px 0; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .btn-primary { width: 100%; justify-content: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .ticker-track { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#fit-check" class="skip-link">Skip to fit check</a>
+
+  <!-- GRAIN OVERLAY -->
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index-warm.html" class="nav-logo" aria-label="Anchor Wealth Planning home">
+        <span class="mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 3v15M8 18c0 2 2 3 4 3s4-1 4-3M6 11h12M12 3a1.6 1.6 0 100 .1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <span class="wordmark">
+          <span class="word-main">Anchor</span>
+          <span class="word-sub">Wealth Planning</span>
+        </span>
+      </a>
+      <div class="nav-links">
+        <a href="about.html" class="nav-link">About</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="who-we-serve.html" class="nav-link">Who We Serve</a>
+        <a href="process.html" class="nav-link">Process</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+      <a href="contact.html" class="nav-cta">Book a Call <span class="arrow">→</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span></button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="who-we-serve.html">Who We Serve</a>
+    <a href="process.html">Process</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <main id="main">
+
+  <!-- ============================================================================
+       SECTION 1: HERO — 1A The Split (copy left, family-at-sunset photo right)
+       ============================================================================ -->
+  <section class="hero bg-cream">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content reveal">
+          <div class="eyebrow">Houston, TX · Fiduciary Wealth Management</div>
+          <h1>How do you turn a high income into lasting security when <em>no one is looking at the whole picture?</em></h1>
+          <p class="hero-sub">Alex Miller spent over a decade at Merrill Lynch before founding Anchor Wealth Planning to do one thing differently: coordinate your investments, taxes, and estate plan with your CPA and attorney — so you can stop being the glue.</p>
+          <div class="hero-ctas">
+            <a href="contact.html" class="btn-primary">Schedule a 30-Minute Conversation <span class="arrow">→</span></a>
+            <a href="#fit-check" class="btn-ghost-light">Take the 4-Question Fit Check</a>
+          </div>
+          <div class="hero-proof">
+            <div class="hero-proof-item"><strong>Fiduciary Standard</strong>Legally obligated to put your interests first</div>
+            <div class="hero-proof-item"><strong>Fee-Only</strong>No commissions, no products to push</div>
+            <div class="hero-proof-item"><strong>10+ Years<!-- VERIFY: confirm exact years at Merrill Lynch --></strong>At Merrill Lynch</div>
+            <div class="hero-proof-item"><strong>Houston-Based</strong>Permian Basin to Eagle Ford</div>
+          </div>
+        </div>
+        <div class="reveal">
+          <figure class="hero-photo">
+            <!-- Placeholder imagery — final photography from the client (Alex's real photos at launch) -->
+            <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=1600&q=80"
+                 alt="A multi-generational family walking together on a beach at sunset — the legacy a coordinated plan is meant to protect.">
+            <div class="hero-photo-frame" aria-hidden="true"></div>
+            <div class="hero-photo-badge">
+              <span class="dot" aria-hidden="true"></span>
+              <span>The legacy you're planning for</span>
+            </div>
+          </figure>
+          <figcaption class="photo-caption">Imagery placeholder — final photography from the client.</figcaption>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================
+       SECTION 2a: PAIN TICKER (marquee)
+       ============================================================================ -->
+  <div class="ticker-band" aria-hidden="true">
+    <div class="ticker-track">
+      <span class="ticker-item">"My CPA and my advisor never talk."</span>
+      <span class="ticker-item">"Every bonus season feels like a tax trap."</span>
+      <span class="ticker-item">"I'm the project manager of my own financial life."</span>
+      <span class="ticker-item">"No one is looking at my full picture."</span>
+      <span class="ticker-item">"I have a trust but I'm not sure it still fits."</span>
+      <span class="ticker-item">"My advisor doesn't understand my equity comp."</span>
+      <span class="ticker-item">"My net worth is locked inside my business."</span>
+      <!-- duplicate for seamless 50% loop -->
+      <span class="ticker-item">"My CPA and my advisor never talk."</span>
+      <span class="ticker-item">"Every bonus season feels like a tax trap."</span>
+      <span class="ticker-item">"I'm the project manager of my own financial life."</span>
+      <span class="ticker-item">"No one is looking at my full picture."</span>
+      <span class="ticker-item">"I have a trust but I'm not sure it still fits."</span>
+      <span class="ticker-item">"My advisor doesn't understand my equity comp."</span>
+      <span class="ticker-item">"My net worth is locked inside my business."</span>
+    </div>
+  </div>
+
+  <!-- ============================================================================
+       SECTION 3: THE PROBLEM (Pain Validation — editorial stack, NO CTA)
+       ============================================================================ -->
+  <section class="section bg-cream-mid" id="problem">
+    <div class="container">
+      <div class="section-intro reveal" style="margin-bottom: 40px;">
+        <div class="eyebrow">The Problem</div>
+        <h2>You're holding it all together. <em>That's the problem.</em></h2>
+        <p>If your financial life feels like a group project where you're the only one doing the coordination, you're not alone. Here's what we hear — in the words of people who finally found their way here.</p>
+      </div>
+
+      <div class="pain-stack">
+        <div class="pain-band reveal">
+          <div class="pain-quote"><span class="pain-num">01</span>"No one sees the full picture. My CPA handles taxes, my advisor handles investments, my attorney has the estate docs — and none of them talk to each other. I'm the one playing phone tag between all of them."</div>
+          <div class="pain-context">Your financial life has outgrown the siloed model. You have a CPA, an advisor, and an estate attorney — each excellent at their piece, none aware of the others. You've become the project manager of your own wealth, and you're paying for the gaps in between.</div>
+        </div>
+        <div class="pain-band reveal">
+          <div class="pain-quote"><span class="pain-num">02</span>"My RSUs vest, I get a huge tax hit, and by the time I think about selling to diversify, I'm emotionally attached to the stock and it's already dropped."</div>
+          <div class="pain-context">Equity compensation is how the energy industry pays its leaders. But RSU vesting, deferred comp elections, and blackout periods create a tax-timing problem that generalist advisors don't understand. Every bonus season feels like a trap because the planning window closes before you act.</div>
+        </div>
+        <div class="pain-band reveal">
+          <div class="pain-quote"><span class="pain-num">03</span>"We have a trust that was set up years ago. I'm honestly not sure if it's even funded correctly, or if it still matches what we actually own."</div>
+          <div class="pain-context">Your net worth has grown. Your estate documents haven't. Trusts set up at a different stage of life, beneficiary forms that haven't been updated, and a growing sense that the gap between your wealth and your plan is widening every year.</div>
+        </div>
+        <div class="pain-band reveal">
+          <div class="pain-quote"><span class="pain-num">04</span>"I know my business inside and out, but I have no idea what it's actually worth or what I'd walk away with after taxes if I sold."</div>
+          <div class="pain-context">Your net worth is locked inside an illiquid entity. Your personal finances and business finances are tangled. And if an unsolicited offer arrived tomorrow, you wouldn't have a team ready — because your advisor has never been through a liquidity event.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================
+       SECTION 4: TRUST ESTABLISHMENT (T2 Credential Editorial — NO CTA)
+       ============================================================================ -->
+  <section class="section bg-cream" id="trust">
+    <div class="container">
+      <div class="trust-layout">
+        <div class="trust-statement reveal">
+          <div class="eyebrow">Credentials</div>
+          <h2>Qualified. Independent. <em>Accountable to you.</em></h2>
+          <p>"Fiduciary" and "fee-only" aren't marketing words here — they're legal obligations Alex chose when he left the wirehouse. Not a claim. Here's what each one actually means for you.</p>
+        </div>
+        <div class="trust-rows reveal-children">
+          <div class="trust-row">
+            <div class="trust-icon"><svg viewBox="0 0 26 26"><path d="M13 2 L13 24 M5 8 L21 8 M7 8 Q7 18 13 22 Q19 18 19 8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div><h4>Fiduciary Standard</h4><p>Legally obligated to act in your best interest. A legal obligation Alex chose when he left the wirehouse model — not a tagline.</p></div>
+          </div>
+          <div class="trust-row">
+            <div class="trust-icon"><svg viewBox="0 0 26 26"><rect x="4" y="6" width="18" height="14" rx="1.5"/><circle cx="13" cy="13" r="3.5"/><path d="M13 6 L13 20"/></svg></div>
+            <div><h4>Fee-Only</h4><p>Paid only by clients. No commissions, no product incentives, no hidden conflicts. You know exactly what you pay and why.</p></div>
+          </div>
+          <div class="trust-row">
+            <div class="trust-icon"><svg viewBox="0 0 26 26"><path d="M13 2 L22 6 L22 14 Q22 21 13 24 Q4 21 4 14 L4 6 Z"/><path d="M9 13 L12 16 L18 9" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div><h4>Credentialed &amp; Licensed<!-- VERIFY: confirm Alex's exact designations — CFP®, ChFC?, Series 65 --></h4><p><mark class="ph" title="VERIFY: Alex's specific designations — CFP®, ChFC?, Series 65?">CFP® · Series 65</mark> — the specific designations behind the advice. Confirmed with Alex before launch.</p></div>
+          </div>
+          <div class="trust-row">
+            <div class="trust-icon"><svg viewBox="0 0 26 26"><path d="M13 3 L13 23 M8 23 L18 23 M6 8 L20 8 Q20 15 13 18 Q6 15 6 8"/></svg></div>
+            <div><h4>10+ Years at Merrill Lynch<!-- VERIFY: confirm exact years --></h4><p>Institutional training. Alex learned how the machine works — then chose to leave it to give advice without a product quota.</p></div>
+          </div>
+          <div class="trust-row">
+            <div class="trust-icon"><svg viewBox="0 0 26 26"><rect x="4" y="8" width="18" height="14" rx="1"/><path d="M2 8 L13 2 L24 8" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 13 L16 13 M10 17 L16 17"/></svg></div>
+            <div><h4>Independent RIA</h4><p>We answer to clients, not a corporate parent. The advice you get is the advice we'd give our own family.</p></div>
+          </div>
+          <div class="trust-row">
+            <div class="trust-icon"><svg viewBox="0 0 26 26"><circle cx="13" cy="11" r="8"/><path d="M13 19 L13 24 M9 24 L17 24" stroke-linecap="round"/><path d="M13 6 L13 16 M8 11 L18 11"/></svg></div>
+            <div><h4>Houston-Based</h4><p>We live in the energy capital. Permian Basin, Eagle Ford, commodity cycles — this is our world, not a coastal firm's afterthought.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================
+       SECTION 5: WHO WE SERVE (ICP Self-Sort — 3A Profile Cards)
+       ============================================================================ -->
+  <section class="section bg-cream-mid" id="who-we-serve">
+    <div class="container">
+      <div class="section-intro reveal">
+        <div class="eyebrow">Who We Serve</div>
+        <h2>We specialize. <em>Generalists are everywhere.</em></h2>
+        <p>If you don't see yourself below, we may not be the right fit — and we'll tell you that honestly.</p>
+      </div>
+
+      <div class="icp-grid reveal-children">
+        <div class="icp-card">
+          <div class="icp-card-body">
+            <div class="icp-card-icon"><svg viewBox="0 0 28 28"><path d="M8 25 L20 25 M10 25 L14 7 L18 25 M12 25 L14 19 L16 25 M7 12 L21 12 M9 9 L19 9 M11 6 L17 6 M14 7 L14 4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h3>Oil &amp; Gas Executives</h3>
+            <p>Equity comp, deferred income, commodity-cycle exposure. You're paid in stock and options the way the industry pays its leaders — and your advisor needs to speak that language fluently.</p>
+            <a href="who-we-serve.html#oil-gas" class="soft-cta">See how we work with you <span class="arrow">→</span></a>
+          </div>
+        </div>
+        <div class="icp-card">
+          <div class="icp-card-body">
+            <div class="icp-card-icon"><svg viewBox="0 0 28 28"><rect x="5" y="8" width="8" height="17"/><rect x="14" y="4" width="9" height="21"/><path d="M7 12 L11 12 M7 16 L11 16 M7 20 L11 20 M16 8 L21 8 M16 12 L21 12 M16 16 L21 16 M16 20 L21 20"/></svg></div>
+            <h3>Business Owners</h3>
+            <p>Closely-held business, approaching a transition, net worth locked inside the company. The exit conversation should start years before the LOI — not at the closing table.</p>
+            <a href="who-we-serve.html#business-owners" class="soft-cta">See how we work with you <span class="arrow">→</span></a>
+          </div>
+        </div>
+        <div class="icp-card">
+          <div class="icp-card-body">
+            <div class="icp-card-icon"><svg viewBox="0 0 28 28"><path d="M4 24 L4 14 L14 6 L24 14 L24 24" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 24 L10 17 L18 17 L18 24"/><path d="M3 24 L25 24" stroke-linecap="round"/><circle cx="14" cy="12" r="1.6"/></svg></div>
+            <h3>High-Net-Worth Families</h3>
+            <p>Multi-generational wealth, estate and trust complexity, a coordinated advisory team that needs a point person. Your wealth has outgrown the plan that was built for it.</p>
+            <a href="who-we-serve.html#hnw-families" class="soft-cta">See how we work with you <span class="arrow">→</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================
+       SECTION 6: FIT ASSESSMENT — Primitive 2 multi-step form (MQL gate)
+       Submits natively with no JS (all steps visible); native validation per step.
+       ============================================================================ -->
+  <section class="section bg-cream" id="fit-check">
+    <div class="container">
+      <div class="section-intro reveal" style="text-align: center; max-width: 620px; margin: 0 auto;">
+        <div class="eyebrow" style="justify-content: center;">Fit Check</div>
+        <h2>Are we the right fit <em>for you?</em></h2>
+        <p>Four questions. Two minutes. We'll tell you honestly whether we can help — and if we can't, we'll refer you to someone who can.</p>
+      </div>
+
+      <div class="fit-wrap reveal">
+        <div class="fit-card">
+          <!-- Demo form: posts to # (no real endpoint). Primitive 2 contract: no-JS shows all steps + submits. -->
+          <form class="wiz" action="#" method="post" novalidate>
+            <p class="wiz__progress" aria-live="polite">Step <span data-current>1</span> of 4</p>
+            <div class="wiz__bar" aria-hidden="true"><i data-bar></i></div>
+
+            <fieldset class="wiz__step is-active" data-step="1">
+              <legend>What best describes your situation?</legend>
+              <div class="fit-options">
+                <label class="fit-option"><input type="radio" name="situation" value="oil-gas" required> Oil &amp; gas executive with equity comp</label>
+                <label class="fit-option"><input type="radio" name="situation" value="business"> Business owner thinking about a transition</label>
+                <label class="fit-option"><input type="radio" name="situation" value="coordination"> Coordinating wealth across multiple professionals</label>
+                <label class="fit-option"><input type="radio" name="situation" value="other"> Something else</label>
+              </div>
+              <div class="wiz__nav"><button type="button" data-next>Continue <span aria-hidden="true">→</span></button></div>
+            </fieldset>
+
+            <fieldset class="wiz__step" data-step="2">
+              <legend>What's your approximate investable asset range?</legend>
+              <div class="fit-options">
+                <label class="fit-option"><input type="radio" name="assets" value="500k-2m" required> $500K – $2M</label>
+                <label class="fit-option"><input type="radio" name="assets" value="2m-5m"> $2M – $5M</label>
+                <label class="fit-option"><input type="radio" name="assets" value="5m-10m"> $5M – $10M</label>
+                <label class="fit-option"><input type="radio" name="assets" value="10m+"> $10M+</label>
+              </div>
+              <div class="wiz__nav"><button type="button" data-prev>← Back</button><button type="button" data-next>Continue <span aria-hidden="true">→</span></button></div>
+            </fieldset>
+
+            <fieldset class="wiz__step" data-step="3">
+              <legend>What's your biggest concern right now?</legend>
+              <div class="fit-options">
+                <label class="fit-option"><input type="radio" name="concern" value="tax" required> Tax coordination (CPA and advisor aren't aligned)</label>
+                <label class="fit-option"><input type="radio" name="concern" value="equity"> Equity comp (RSUs, deferred comp, concentration)</label>
+                <label class="fit-option"><input type="radio" name="concern" value="estate"> Estate and legacy (trusts, beneficiaries, transfer)</label>
+                <label class="fit-option"><input type="radio" name="concern" value="business"> Business transition (valuation, exit, succession)</label>
+              </div>
+              <div class="wiz__nav"><button type="button" data-prev>← Back</button><button type="button" data-next>Continue <span aria-hidden="true">→</span></button></div>
+            </fieldset>
+
+            <fieldset class="wiz__step" data-step="4">
+              <legend>Are you currently working with a financial advisor?</legend>
+              <div class="fit-options">
+                <label class="fit-option"><input type="radio" name="current" value="specialist" required> Yes, but looking for a specialist</label>
+                <label class="fit-option"><input type="radio" name="current" value="coordination"> Yes, but looking for better coordination</label>
+                <label class="fit-option"><input type="radio" name="current" value="diy"> No, managing it myself</label>
+                <label class="fit-option"><input type="radio" name="current" value="ready"> No, but ready to start</label>
+              </div>
+              <div style="margin-top: 26px;">
+                <label class="fit-email-label" for="fitEmail">Where should we send your results?</label>
+                <input class="fit-email" id="fitEmail" type="email" name="email" placeholder="your@email.com" autocomplete="email" required>
+              </div>
+              <div class="wiz__nav"><button type="button" data-prev>← Back</button><button type="submit">Get My Fit Assessment <span aria-hidden="true">→</span></button></div>
+              <p class="fit-micro">No spam. No sales pitch. Just an honest answer about whether we're a match.</p>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================
+       SECTION 7: THE SOLUTION (Services — 5A Numbered Editorial + planning-hands)
+       ============================================================================ -->
+  <section class="section bg-cream-mid" id="services">
+    <div class="container">
+      <div class="section-intro reveal" style="margin-bottom: 8px;">
+        <div class="eyebrow">What We Do</div>
+        <h2>One plan. Your CPA and attorney <em>both work from it.</em></h2>
+        <p>Most advisors manage your investments and stop there. We coordinate your investments, taxes, estate, and business strategy into a single living document — and we make sure your CPA and attorney are reading from the same page.</p>
+      </div>
+
+      <!-- The differentiator anchored by the coordinated-planning photo (hands over documents) -->
+      <div class="services-feature reveal">
+        <figure class="services-photo">
+          <!-- Placeholder imagery — final photography from the client -->
+          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=80"
+               alt="Several pairs of hands working together over laptops and printed documents at a table — the coordinated planning meeting that is the core differentiator.">
+        </figure>
+        <div class="services-feature-copy">
+          <p class="lead-line">The work that happens between the professionals.</p>
+          <h3>Coordinated Planning</h3>
+          <p>We run joint planning meetings with your CPA and estate attorney. One living document, referenced by all three. When your CPA makes a tax move, your portfolio reflects it. When your attorney updates your trust, your investment strategy adjusts. You stop being the translator — that's the whole point of Anchor.</p>
+        </div>
+      </div>
+
+      <div class="services-layout">
+        <div class="service-item reveal">
+          <div class="service-numeral">02</div>
+          <div class="service-content">
+            <h3>Investment Management</h3>
+            <p class="service-pain">"My advisor doesn't understand my situation."</p>
+            <p>Built around your actual life — your vesting schedule, your blackout periods, your commodity exposure — not a model portfolio. We manage concentration risk, tax-loss harvesting, and asset location in coordination with your tax strategy, not in isolation.</p>
+          </div>
+        </div>
+        <div class="service-item reveal">
+          <div class="service-numeral">03</div>
+          <div class="service-content">
+            <h3>Tax Strategy &amp; Coordination</h3>
+            <p class="service-pain">"Every bonus season feels like a tax trap."</p>
+            <p>We sit down with your CPA before year-end — not after. We model RSU vesting events, deferred comp elections, and bonus timing against your actual tax situation. Proactive tax planning, not reactive tax preparation.</p>
+          </div>
+        </div>
+        <div class="service-item reveal">
+          <div class="service-numeral">04</div>
+          <div class="service-content">
+            <h3>Equity Compensation Planning</h3>
+            <p class="service-pain">"My RSUs and bonus feel like a tax trap every year."</p>
+            <p>RSU vesting schedules, NQDC elections, 10b5-1 plans, blackout period strategy. We model concentration risk against the commodity cycle and build a diversification plan that respects your constraints — not one that ignores them.</p>
+          </div>
+        </div>
+        <div class="service-item reveal">
+          <div class="service-numeral">05</div>
+          <div class="service-content">
+            <h3>Estate &amp; Legacy Planning</h3>
+            <p class="service-pain">"I have real wealth but no plan for what comes after me."</p>
+            <p>We review your existing trusts against your current net worth. We coordinate with your estate attorney to fund trusts correctly, update beneficiaries, and ensure your documents still match your life. Legacy planning is a living process, not a one-time document.</p>
+          </div>
+        </div>
+        <div class="service-item reveal">
+          <div class="service-numeral">06</div>
+          <div class="service-content">
+            <h3>Business Owner Planning</h3>
+            <p class="service-pain">"I don't know what I'd walk away with if I sold."</p>
+            <p>We start the exit conversation 3–5 years before the LOI. Entity structure optimization, personal and business wealth separation, pre-sale tax strategy, and post-liquidity management. By the time a buyer appears, you're ready.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 40px;">
+        <a href="services.html" class="soft-cta">See all services <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================
+       SECTION 8: THE PATH (Process — warm vertical step path)
+       ============================================================================ -->
+  <section class="section bg-cream" id="process">
+    <div class="container">
+      <div class="section-intro reveal" style="margin-bottom: 8px;">
+        <div class="eyebrow">How It Works</div>
+        <h2>Here's what working with us <em>actually looks like.</em></h2>
+        <p>No surprise sales process. No pressure. Just a clear path from your first question to a coordinated plan.</p>
+      </div>
+
+      <div class="process-steps">
+        <div class="process-step reveal">
+          <div class="process-step-body">
+            <div class="process-step-num">Step 01 · Discovery</div>
+            <h3>A conversation, not a pitch.</h3>
+            <p>A 30-minute conversation. You tell us about your situation — your equity comp, your business, your family, your concerns. We listen, ask questions, and tell you honestly whether we can help.</p>
+          </div>
+          <div class="process-margin-note">this is just a conversation, no obligation</div>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-step-body">
+            <div class="process-step-num">Step 02 · Assessment</div>
+            <h3>We map the gaps.</h3>
+            <p>We review your full financial picture — investments, tax returns, equity documents, estate plan, business interests. We identify the gaps between where you are and where your wealth needs to be. You get a written assessment, whether or not you become a client.</p>
+          </div>
+          <div class="process-margin-note">usually 1–2 weeks</div>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-step-body">
+            <div class="process-step-num">Step 03 · Plan</div>
+            <h3>One living document.</h3>
+            <p>We build your coordinated plan — investment strategy, tax plan, estate review, and (for business owners) exit roadmap. We walk your CPA and estate attorney through it. Everyone reads from the same page.</p>
+          </div>
+          <div class="process-margin-note">you keep this document</div>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-step-body">
+            <div class="process-step-num">Step 04 · Partnership</div>
+            <h3>We take the project-manager role.</h3>
+            <p>We implement the plan and meet quarterly to keep it current. When your equity vests, when the commodity cycle turns, when a business opportunity appears — we've already modeled it. You stop being the project manager. We take that role.</p>
+          </div>
+          <div class="process-margin-note">proactive, not reactive</div>
+        </div>
+      </div>
+
+      <div class="process-callout reveal">
+        <p>The first call is just a conversation. 30 minutes. No deck, no pitch, no pressure. If we're not a fit, we'll tell you — and refer you to someone who is.</p>
+      </div>
+
+      <div class="process-cta-wrap reveal">
+        <a href="contact.html" class="btn-primary">Schedule the First Call <span class="arrow">→</span></a>
+        <p style="margin-top: 12px; font-size: var(--t-small); color: var(--text-muted);">30 minutes. No obligation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================
+       SECTION 8a: ABOUT THE ADVISOR (warm split — smiling-man placeholder)
+       ============================================================================ -->
+  <section class="section bg-cream-mid" id="about-teaser">
+    <div class="container">
+      <div class="about-split">
+        <div class="reveal">
+          <figure class="about-photo">
+            <!-- Placeholder imagery — final photography from the client (Alex's real headshot at launch) -->
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=80"
+                 alt="A warm, approachable advisor smiling in conversation — placeholder for Alex Miller's headshot.">
+          </figure>
+          <figcaption class="photo-caption">Placeholder portrait — Alex's real headshot at launch.</figcaption>
+        </div>
+        <div class="about-copy reveal">
+          <div class="eyebrow">Your Advisor</div>
+          <h2><mark class="ph" title="VERIFY: confirm name">Alex Miller</mark> left the wirehouse to give advice without a product quota.</h2>
+          <p>10+ years inside Merrill Lynch taught Alex how the machine works — and why it doesn't always serve the client.<!-- VERIFY: confirm exact years --> He founded Anchor Wealth Planning to coordinate the work that siloed advisors leave to the client: taxes, investments, estate, and the conversations between the professionals who handle them.</p>
+          <div class="about-creds">
+            <span class="cred-chip"><mark class="ph" title="VERIFY: CFP®?">CFP®</mark></span>
+            <span class="cred-chip"><mark class="ph" title="VERIFY: Series 65?">Series 65</mark></span>
+            <span class="cred-chip">10+ yrs Merrill Lynch</span>
+            <span class="cred-chip">Fiduciary</span>
+            <span class="cred-chip">Fee-Only</span>
+          </div>
+          <div style="margin-top: 28px;">
+            <a href="about.html" class="soft-cta">Alex's full story <span class="arrow">→</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================
+       SIGNATURE PEAK A — Oversize-stat showcase (the warm exhale)
+       72px+ gold stats, blur-to-sharp count-up, over the warm cream-gold ground.
+       ============================================================================ -->
+  <section class="stats-peak bg-warm" id="stats">
+    <div class="container">
+      <div class="stats-head reveal">
+        <div class="eyebrow">By the Numbers</div>
+        <h2>The math of <em>coordinated</em> wealth.</h2>
+      </div>
+      <div class="stats-grid reveal-children">
+        <div class="stat-item">
+          <div class="stat-number"><span class="stat-count" data-target="10" data-suffix="">0</span><span class="unit">+</span><!-- VERIFY: confirm exact years --></div>
+          <div class="stat-rule" aria-hidden="true"></div>
+          <div class="stat-label">Years at Merrill Lynch before founding Anchor</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">100<span class="unit">%</span></div>
+          <div class="stat-rule" aria-hidden="true"></div>
+          <div class="stat-label">Fiduciary and fee-only. Always.</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">1</div>
+          <div class="stat-rule" aria-hidden="true"></div>
+          <div class="stat-label">Living plan your CPA and attorney share</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">3</div>
+          <div class="stat-rule" aria-hidden="true"></div>
+          <div class="stat-label">Professionals, finally reading from the same page</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================
+       SIGNATURE PEAK B — PROOF (7C Anchor Testimonial, HONEST pending state)
+       Magazine pull-quote + planning image alongside. Never fabricate a quote.
+       ============================================================================ -->
+  <section class="proof-band bg-cream-mid" id="testimonials">
+    <div class="container">
+      <div class="section-intro reveal" style="text-align: center; max-width: 620px; margin: 0 auto 8px;">
+        <div class="eyebrow" style="justify-content: center;">Client Voices</div>
+        <h2>What it sounds like when <em>the pieces finally fit.</em></h2>
+      </div>
+
+      <div class="proof-grid">
+        <div class="testimonial-feature reveal">
+          <span class="testimonial-pending-tag">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Illustrative — added at launch
+          </span>
+          <!-- TESTIMONIAL: never fabricate. Suggested angle shown in muted italic, clearly labeled pending. -->
+          <blockquote class="testimonial-quote">For the first time, my CPA and my advisor are actually talking to each other.</blockquote>
+          <div class="testimonial-author">— Client testimonial, pending FINRA approval</div>
+          <p class="testimonial-note">This is the suggested angle for the lead testimonial, not a real quote. Real, named client quotes are added at launch once approved under FINRA advertising rules.</p>
+        </div>
+        <div class="reveal">
+          <figure class="proof-photo">
+            <!-- Placeholder imagery — final photography from the client -->
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80"
+                 alt="Hands of advisor and clients collaborating over planning documents — the coordinated relationship the testimonials describe.">
+          </figure>
+          <figcaption class="photo-caption">Imagery placeholder — final photography from the client.</figcaption>
+        </div>
+      </div>
+
+      <div class="proof-support reveal-children">
+        <div class="proof-support-card">
+          <span class="pending-mini">Illustrative · added at launch</span>
+          <!-- TESTIMONIAL: business owner — exit-readiness. Suggested angle only. -->
+          <p>"We started the conversation three years before we sold. By the time the offer came, there were no surprises."</p>
+          <div class="who">Suggested angle — business owner · pending FINRA approval</div>
+        </div>
+        <div class="proof-support-card">
+          <span class="pending-mini">Illustrative · added at launch</span>
+          <!-- TESTIMONIAL: HNW family — estate coordination. Suggested angle only. -->
+          <p>"They sat down with our attorney and rewrote a trust that hadn't been touched in eight years. We finally know it's right."</p>
+          <div class="who">Suggested angle — HNW family · pending FINRA approval</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================
+       SECTION 9: FINAL CTA — 8B Split warm close (gold-drenched card crescendo)
+       ============================================================================ -->
+  <section class="final-cta bg-dark on-dark" id="final-cta">
+    <div class="container">
+      <div class="final-grid">
+        <div class="final-copy reveal">
+          <div class="eyebrow">The First Call Is Just a Conversation</div>
+          <h2>You've been the project manager <em>long enough.</em></h2>
+          <p>If your CPA and your advisor aren't reading from the same plan, you're doing the work your wealth manager should be doing. Let's fix that. 30 minutes. No pitch. We'll listen to your situation and tell you honestly whether we're a fit.</p>
+        </div>
+        <div class="final-card reveal">
+          <h3>Start with one conversation.</h3>
+          <p>No deck. No pressure. The worst that happens is a free second opinion from a fiduciary.</p>
+          <div class="final-card-btns">
+            <a href="contact.html" class="btn-on-gold">Schedule a 30-Minute Conversation <span class="arrow">→</span></a>
+            <a href="#fit-check" class="btn-on-gold-ghost">Take the 4-Question Fit Check</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- ============================================================================
+       FOOTER (Rich 9B)
+       ============================================================================ -->
+  <!-- COMPLIANCE: Required before launch -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footmark">
+            <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v15M8 18c0 2 2 3 4 3s4-1 4-3M6 11h12" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <h4>Anchor</h4>
+          </div>
+          <p class="tagline">"Charting the course towards your financial legacy."</p>
+          <p>Houston-based fiduciary wealth management for oil &amp; gas executives, business owners, and high-net-worth families.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Navigation</h5>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="who-we-serve.html">Who We Serve</a></li>
+            <li><a href="process.html">Process</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Specialties</h5>
+          <ul>
+            <li><a href="who-we-serve.html#oil-gas">Oil &amp; Gas Executives</a></li>
+            <li><a href="who-we-serve.html#business-owners">Business Owners</a></li>
+            <li><a href="who-we-serve.html#hnw-families">HNW Families</a></li>
+            <li><a href="services.html">Equity Compensation</a></li>
+            <li><a href="services.html">Estate &amp; Legacy</a></li>
+            <li><a href="services.html">Coordinated Planning</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <ul>
+            <li><mark class="ph" title="VERIFY: Phone">[Phone]</mark></li>
+            <li><mark class="ph" title="VERIFY: Email">[Email]</mark></li>
+            <li>Houston, TX <mark class="ph" title="VERIFY: Full address">[Address]</mark></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-imagery-note">Imagery placeholder — all photography on this page is a stand-in; final photography will be the client's own.</p>
+        <!-- COMPLIANCE: Required before launch -->
+        <p class="footer-disclaimer">
+          <mark class="ph" title="VERIFY: RIA entity name">[RIA Entity Name]</mark> is a registered investment advisor. Information presented is for educational purposes only and does not intend to make an offer or solicitation for the sale or purchase of any specific securities, investments, or investment strategies. Investments involve risk and unless otherwise stated, are not guaranteed. Past performance is not a guarantee of future results.
+        </p>
+        <div class="footer-meta">
+          <span>© 2026 Anchor Wealth Planning. All rights reserved.</span>
+          <span>Houston, TX</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================================
+       JAVASCRIPT — GSAP/Lenis (expressive tier). Hero never waits on JS.
+       ============================================================================ -->
+  <script>
+    document.documentElement.classList.add('js'); // sync, before paint
+    (function () {
+      var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* ---- Lenis smooth scroll + ScrollTrigger (T1.1) ---- */
+      if (window.gsap && window.ScrollTrigger) { gsap.registerPlugin(ScrollTrigger); }
+      if (window.Lenis && !reduce) {
+        var lenis = new Lenis();
+        lenis.on('scroll', function () { if (window.ScrollTrigger) ScrollTrigger.update(); });
+        gsap.ticker.add(function (t) { lenis.raf(t * 1000); });
+        gsap.ticker.lagSmoothing(0);
+      }
+
+      /* ---- Nav frosted glass on scroll (T1.2) ---- */
+      var nav = document.getElementById('nav');
+      addEventListener('scroll', function () { nav.classList.toggle('scrolled', scrollY > 40); }, { passive: true });
+
+      /* ---- Mobile menu ---- */
+      var navToggle = document.getElementById('navToggle');
+      var mobileMenu = document.getElementById('mobileMenu');
+      navToggle.addEventListener('click', function () { navToggle.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
+      mobileMenu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { navToggle.classList.remove('open'); mobileMenu.classList.remove('open'); }); });
+
+      /* ---- Scroll reveal (Primitive 3 — visible by default; JS adds hidden start) ---- */
+      function showAll() {
+        document.querySelectorAll('.reveal, .reveal-children').forEach(function (e) { e.classList.add('visible'); });
+      }
+      if (reduce || !window.gsap || !window.ScrollTrigger) {
+        showAll();
+      } else {
+        gsap.utils.toArray('.reveal, .reveal-children').forEach(function (el) {
+          ScrollTrigger.create({ trigger: el, start: 'top 86%', once: true, onEnter: function () { el.classList.add('visible'); } });
+        });
+        // backfill anything already in view on load (mid-page entry / short pages)
+        requestAnimationFrame(function () {
+          document.querySelectorAll('.reveal:not(.visible), .reveal-children:not(.visible)').forEach(function (el) {
+            if (el.getBoundingClientRect().top < innerHeight * 0.95) el.classList.add('visible');
+          });
+        });
+      }
+
+      /* ---- Blur-to-sharp stat count-up (T2.4) ---- */
+      function runCount(el) {
+        var target = parseFloat(el.dataset.target);
+        var suffix = el.dataset.suffix || '';
+        if (!(target > 0)) { return; }
+        if (reduce || !window.gsap) { el.textContent = target + suffix; return; }
+        var obj = { v: 0 };
+        gsap.to(obj, {
+          v: target, duration: 2.0, ease: 'power2.out',
+          onUpdate: function () {
+            var p = obj.v / target;
+            el.textContent = Math.round(obj.v) + suffix;
+            el.style.filter = 'blur(' + ((1 - p) * 7) + 'px)';
+          },
+          onComplete: function () { el.textContent = target + suffix; el.style.filter = 'none'; }
+        });
+      }
+      var counts = document.querySelectorAll('.stat-count');
+      if (counts.length) {
+        if (reduce || !window.ScrollTrigger) {
+          counts.forEach(function (el) { el.textContent = el.dataset.target + (el.dataset.suffix || ''); });
+        } else {
+          counts.forEach(function (el) {
+            ScrollTrigger.create({ trigger: el, start: 'top 84%', once: true, onEnter: function () { runCount(el); } });
+          });
+        }
+      }
+
+      /* ---- PRIMITIVE 2 — Multi-step form (the MQL gate) ---- */
+      (function () {
+        var f = document.querySelector('.wiz'); if (!f) return;
+        var steps = [].slice.call(f.querySelectorAll('.wiz__step'));
+        var cur = f.querySelector('[data-current]');
+        var bar = f.querySelector('[data-bar]');
+        var i = 0;
+        function show(n) {
+          steps.forEach(function (s, k) {
+            var active = k === n;
+            s.classList.toggle('is-active', active);
+            active ? s.setAttribute('aria-current', 'step') : s.removeAttribute('aria-current');
+          });
+          if (cur) cur.textContent = n + 1;
+          if (bar) bar.style.width = ((n + 1) / steps.length * 100) + '%';
+          i = n;
+          var lg = steps[n].querySelector('legend');
+          if (lg) { lg.tabIndex = -1; lg.focus(); }
+        }
+        function valid(s) {
+          var fs = s.querySelectorAll('input,select,textarea');
+          for (var k = 0; k < fs.length; k++) { if (!fs[k].checkValidity()) { fs[k].reportValidity(); return false; } }
+          return true;
+        }
+        f.addEventListener('click', function (e) {
+          if (e.target.closest('[data-next]')) { if (valid(steps[i])) show(Math.min(i + 1, steps.length - 1)); }
+          else if (e.target.closest('[data-prev]')) { show(Math.max(i - 1, 0)); }
+        });
+        f.addEventListener('submit', function (e) { e.preventDefault(); /* demo — no real endpoint */
+          var btn = f.querySelector('[type=submit]');
+          if (btn && valid(steps[steps.length - 1])) { btn.textContent = 'Thank you — we’ll be in touch'; }
+        });
+        show(0);
+      })();
+    })();
+  </script>
+</body>
+</html>

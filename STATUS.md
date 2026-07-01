@@ -1,22 +1,47 @@
 # Website Factory — Status
-Last updated: 2026-06-30 (ceiling raised: "make it sing" docs + mesh/video hero primitives + Tier-B repair proven on taste)
+Last updated: 2026-07-01 (THE PIVOT — cold-generation-from-prose disproven; moving to a self-owned design system + assemble-not-generate)
+
+> **Standing instruction (Chris, 2026-07-01):** update this status doc with EVERY learning lesson, each session, for the next session. The "Learnings" section below is append-only memory.
 
 ---
 
-## ▶ NEXT SESSION — Run the ceiling loop on a REAL client build (start here, fresh context)
+## ▶ NEXT SESSION — Build the self-owned design system + assemble the Anchor Warm page (start here)
 
-The ceiling is now **encoded and proven on a fixture**. The remaining step is to run the full geometry+taste loop end-to-end on a real client (AWP), with the live `impeccable` Tier-B critic in the loop, and confirm a COLD build comes out bold — then promote the mesh/video primitives off "proof" into a shipped client hero.
+**The big pivot this session:** cold agents generating whole pages from prose docs does NOT produce consistent quality (proof below). We are switching to: **a self-owned, portable design system (semantic tokens + owned components + a visual catalog) that any AI/agent ASSEMBLES pages from — no vendor lock-in, model-agnostic.** The approved Anchor hero is component #1. This is the Ras Mic "design system → build with AI" workflow, but as plain files in our repo instead of claude.ai/`claude_design` MCP (Chris's explicit constraint: no reliance on Claude/Claude Design).
 
-**1. Cold-build AWP through the pipeline** with the richened docs (PARTS 8–9 + Primitives 4/5). Then drive the loop:
-- `node qa/run-checks.js projects/awp/build/<file>.html '<accentHex>'` → must be 0 P0.
-- Independent Tier-B taste pass (`impeccable`, detect-only) → must clear bold-vs-timid against LAYOUT_CRAFT 8.1–8.6.
-- Repair any taste defects (the loop now demonstrably closes on taste, not just geometry — see LED-007/008), re-verify, log to `qa/LEDGER.md`.
+**Where we are:** the Anchor **Warm hero is APPROVED** and built to the validated reference bar — `projects/awp/build/warm-hero.html` (skyline) + `warm-hero-family.html` + `warm-hero-oilfield.html` (Chris likes family + oil field; images in `projects/awp/build/assets/`). The 3 cold-agent builds (`index-heritage/warm/modern.html`) are the REJECTED "before" (timid + literally broken — kept as evidence, not deliverables).
 
-**2. Resolve the template-level tensions surfaced this session** (qa/LEDGER.md open tensions 5–7), since they affect every build:
-- The mandatory ICP eyebrow vs the hero-eyebrow-chip slop tell (#5) — eyebrow → muted ink by default; decide the chip question. **Needs Chris.**
-- `--text-muted` fails AA on `--bg-base` (#6) — darken the token.
+**Do next, in order:**
+1. **Scaffold the design system in the repo (portable, no Claude):**
+   - `tokens.css` — semantic AWP tokens (`--color-brand-navy`, `--color-brand-gold`, `--space-md`, `--radius-pill`, type scale). Single source of truth. (Upgrade path: `tokens.json` W3C format + Style Dictionary if we ever need multi-format output.)
+   - `components/` — the approved hero frozen as **component #1** (`components/hero-fullbleed.html`), then each new blessed component as its own owned file.
+   - `catalog.html` — a "kitchen sink" page rendering every component = our **visual gold standard** (the thing the build matches + the critic measures against; replaces prose rubrics).
+2. **Extract + build the remaining Anchor sections as owned components** (same method as the hero: study references → MEASURE → build to bar → own it): pain/problem, trust, ICP self-sort, fit-check form, services, process, proof, final CTA, footer. Re-skin free OSS (HyperUI/Radix/GSAP) for the plumbing (forms/accordion/nav) to our tokens — $0.
+3. **Assemble the full Anchor Warm page from the components** — the proof that assemble-not-generate works. Check every section in a real browser before showing Chris (no more half-broken handoffs).
+4. **Add gate checks** to `qa/visual-checks.js`: hero media must cover ≥60% of hero box at ≥85% opacity (kills the faded hero); hero primary CTA above the fold.
+5. **Deploy** the 3 hero variants + the full page as **live review links for Alex** (deploy is Chris's account action — get it to one command he approves).
 
-**3. Then:** promote a blessed mesh/video hero into the real AWP build once it passes both gates N times (the COMPONENTS blessing path).
+**Copy note (Chris's domain):** reference heroes use SHORT punchy headlines; Anchor's is the long question. Offer 2-3 punchier H1 options, don't rewrite unilaterally.
+
+---
+
+## 🎓 LEARNINGS — 2026-07-01 (the pivot; append-only for next session)
+
+1. **Cold generation from prose does NOT give consistent quality.** 3 cold-agent AWP homepages (Heritage/Warm/Modern) passed the geometry gate (0/0/0) AND 3 independent Tier-B taste critics (all PASS) — yet were timid AND literally broken (faded/boxed hero, a junk anchor watermark, text overlapping the process rule, a broken count-up stat bar, a stray form border). Docs *describe* quality; cold agents revert to the template mean (cream/Garamond/safe). Prose is advisory and gets ignored.
+2. **The automated QA loop manufactures FALSE CONFIDENCE.** The geometry gate checks a fixed list at one width with animations frozen → it can't see text-overlap, a broken first-paint count-up, or a stray border. The taste critics graded the *concept* generously (one literally praised a broken element). **"Passes" ≠ "great." Never relay automated "ship" — a human eye gates great-vs-fine.** I made this mistake (told Chris "all 3 pass, ships to Alex").
+3. **Quality must live in CODE (components), DEFAULTS (tokens), or CHECKS (gate) — never prose.** The prose extraction of the first 7 sites never changed output. Only components/defaults/checks reproduce.
+4. **Real extraction = look → MEASURE (live) → build to the bar → own it.** Measured 6 warm-hero references live (Maven/Lyra/Spring/Included/Hinge/Alma) → the **validated full-bleed-media-hero pattern**: full-bleed photo/video (`object-fit:cover`, ~full viewport) · large LIGHT/medium display + ONE accent (italic-serif word OR a colored line) · solid brand-color PILL primary + ghost secondary · warm real imagery · one committed brand color. Legibility = directional scrim / whole-image darken / frosted content card. (Measured specs e.g. Maven = Helvetica Now 300 76px + Ivar Display italic 91px.)
+5. **The anti-pattern our builds hit (now provable):** boxed/faded image (10% opacity skyline), all-one-heavy-serif headline, decorative watermark instead of a real image. The doc words "restraint / subtle / whisper / 8% opacity" literally produced the invisible hero. **Kill timid defaults for heroes.**
+6. **The hero is ~80% of first impression** and needs a bold-by-default tested primitive, not "1 of 9 sections."
+7. **Consistency mechanism = ASSEMBLE from a blessed component library, not GENERATE.** Generation is reserved for NEW components (careful, human-approved); client pages assemble proven parts → variance disappears.
+8. **Design tokens = semantic variables** (`color-brand-primary`, not `#hex`) — the bridge design↔code; one change propagates (theming / brand change / shared vocabulary).
+9. **The missing technical layer** (Ras Mic "Building beautiful UI using AI"): a machine-readable **design-system artifact** (tokens + a components showcase) that the build agent READS and IMPLEMENTS from. His stack = claude.ai `.dc.html` design files + `claude_design` MCP + Claude Code implementing into SvelteKit.
+10. **Chris's constraint: NO vendor lock-in (no Claude/Claude Design).** Portable equivalent = the design system as plain files in OUR git repo: `tokens.css`/`tokens.json` (Style Dictionary/W3C) + owned component files (shadcn *philosophy*: you own the code) + `catalog.html` + **the repo itself as the "connector"** (any agent reads files; MCP optional/self-hosted). Works with any model.
+11. **Don't buy component packs.** Marketplace kits (Tailwind Plus ~$299) make sites look templated — the slop look. Distinctive = extraction (free). Plumbing = free OSS (HyperUI/shadcn/Radix/GSAP) re-skinned to tokens. **$0 plan.**
+12. **Stack note:** factory outputs vanilla single-file HTML; free OSS libs are React/Tailwind → adapt patterns, don't `npm install`. Possible future: move the factory to a React/Astro component stack so libs + token tooling (Style Dictionary/Storybook) drop in directly. Separate decision, not needed now.
+13. **The workflow that WORKED this session** (do this): look at real references in a browser + MEASURE them → build ONE component by hand to those specs → iterate against Chris's eye → hero-first, show before building the rest. That is the factory's real workflow; cold autonomous generation is demoted to proposing-new-components-only.
+
+---
 
 ### ✅ DONE this session (2026-06-30) — the ceiling encoding + primitives
 - **"Make it sing" encoded** — `LAYOUT_CRAFT.md` PART 8 (the ceiling, LLM-agnostic, with a new **[TASTE]** confidence tier): 8.1 *safe=invisible*, 8.2 *editorial-reflex trap*, 8.3 *color commitment* (Restrained/Committed/Drenched + the timidity check), 8.4 *counterweight raised*, 8.5 *density rhythm*, 8.6 *signature-moment quality bar*. Floor vs ceiling framing throughout.
