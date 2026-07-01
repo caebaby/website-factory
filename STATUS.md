@@ -1,25 +1,21 @@
 # Website Factory — Status
-Last updated: 2026-07-01 (THE PIVOT — cold-generation-from-prose disproven; moving to a self-owned design system + assemble-not-generate)
+Last updated: 2026-07-01 (Anchor WARM homepage built + verified; next = two more genuinely-different design styles, then finalize/deploy)
 
 > **Standing instruction (Chris, 2026-07-01):** update this status doc with EVERY learning lesson, each session, for the next session. The "Learnings" section below is append-only memory.
 
 ---
 
-## ▶ NEXT SESSION — Build the self-owned design system + assemble the Anchor Warm page (start here)
+## ▶ NEXT SESSION — Two MORE design styles + finalize/deploy the Warm page (start here)
 
-**The big pivot this session:** cold agents generating whole pages from prose docs does NOT produce consistent quality (proof below). We are switching to: **a self-owned, portable design system (semantic tokens + owned components + a visual catalog) that any AI/agent ASSEMBLES pages from — no vendor lock-in, model-agnostic.** The approved Anchor hero is component #1. This is the Ras Mic "design system → build with AI" workflow, but as plain files in our repo instead of claude.ai/`claude_design` MCP (Chris's explicit constraint: no reliance on Claude/Claude Design).
-
-**Where we are:** the Anchor **Warm hero is APPROVED** and built to the validated reference bar — `projects/awp/build/warm-hero.html` (skyline) + `warm-hero-family.html` + `warm-hero-oilfield.html` (Chris likes family + oil field; images in `projects/awp/build/assets/`). The 3 cold-agent builds (`index-heritage/warm/modern.html`) are the REJECTED "before" (timid + literally broken — kept as evidence, not deliverables).
+**Where we are:** the full Anchor **WARM homepage is BUILT + verified** — `projects/awp/build/warm-home.html`. Hand-built to the approved-hero bar, color-diverse (navy hero → cream → navy → cream → cream-mid → cream → cream-mid → **gold proof** → navy CTA → deep-navy footer), corrected copy (leads on coordinated planning; ALL fiduciary/fee-only/RIA claims removed → `[VERIFY]`), honest pending placeholders, gate 0 P0. Hero: Ken Burns + family/energy/city crossfade, 6px buttons. Proof: centered testimonial moment + scroll count-up. Fit-form fieldset border fixed. Chris has iterated it live and is largely happy.
 
 **Do next, in order:**
-1. **Scaffold the design system in the repo (portable, no Claude):**
-   - `tokens.css` — semantic AWP tokens (`--color-brand-navy`, `--color-brand-gold`, `--space-md`, `--radius-pill`, type scale). Single source of truth. (Upgrade path: `tokens.json` W3C format + Style Dictionary if we ever need multi-format output.)
-   - `components/` — the approved hero frozen as **component #1** (`components/hero-fullbleed.html`), then each new blessed component as its own owned file.
-   - `catalog.html` — a "kitchen sink" page rendering every component = our **visual gold standard** (the thing the build matches + the critic measures against; replaces prose rubrics).
-2. **Extract + build the remaining Anchor sections as owned components** (same method as the hero: study references → MEASURE → build to bar → own it): pain/problem, trust, ICP self-sort, fit-check form, services, process, proof, final CTA, footer. Re-skin free OSS (HyperUI/Radix/GSAP) for the plumbing (forms/accordion/nav) to our tokens — $0.
-3. **Assemble the full Anchor Warm page from the components** — the proof that assemble-not-generate works. Check every section in a real browser before showing Chris (no more half-broken handoffs).
-4. **Add gate checks** to `qa/visual-checks.js`: hero media must cover ≥60% of hero box at ≥85% opacity (kills the faded hero); hero primary CTA above the fold.
-5. **Deploy** the 3 hero variants + the full page as **live review links for Alex** (deploy is Chris's account action — get it to one command he approves).
+1. **Build TWO MORE completely different design STYLES for Anchor** (Chris's explicit ask — genuinely distinct, NOT color variants of Warm). Hand-built to the bar (NOT cold-generated). Give Alex a real choice of *style direction*. Likely: a cool-editorial / private-bank style and a bold-modern style — but each must differ in layout, motion, type feel, and color treatment, not just palette. Same method: study references → measure → build → verify section-by-section in-browser.
+2. **Mobile pass** on warm-home (real device-width verification — the resize tooling was flaky; use Claude_Preview device emulation or DevTools).
+3. **Brand-fidelity decisions (Chris):** (a) exact brand gold `#b18f4d` vs the brightened `#c9a24b` I used for legibility on dark — pick one; (b) for launch, license the real brand fonts (Adobe Garamond Pro + Proxima Nova via Adobe Fonts) vs the free EB Garamond + Nunito Sans web substitutes.
+4. **`[VERIFY]` with Alex:** regulatory status (RIA/hybrid/BD) + fee model, exact Merrill years, real FINRA-approved testimonials, phone/email, compliance entity name.
+5. **Extract the built Warm sections into the component library** (the deferred design-system scaffold: `tokens.css` + `components/` + `catalog.html`) — now we have a real gold-standard page to harvest from.
+6. **Deploy** warm-home + the 3 hero image variants as **live review links for Alex** (Chris's account approves the deploy).
 
 **Copy note (Chris's domain):** reference heroes use SHORT punchy headlines; Anchor's is the long question. Offer 2-3 punchier H1 options, don't rewrite unilaterally.
 
@@ -42,6 +38,10 @@ Last updated: 2026-07-01 (THE PIVOT — cold-generation-from-prose disproven; mo
 13. **The workflow that WORKED this session** (do this): look at real references in a browser + MEASURE them → build ONE component by hand to those specs → iterate against Chris's eye → hero-first, show before building the rest. That is the factory's real workflow; cold autonomous generation is demoted to proposing-new-components-only.
 14. **AWP copy is built on UNVERIFIED positioning — inaccurate.** The pipeline copy leads on "fiduciary / fee-only / independent RIA / left the wirehouse to avoid product quotas / no commissions." Chris (2026-07-01): fiduciary + fee-only are NOT confirmed for Alex; **check with Alex** on (a) regulatory status (RIA / hybrid / BD) and (b) fee model (fee-only / fee-based / commission). **Correction: strip ALL regulatory + fee claims → `[VERIFY]`; reposition the whole page on the TRUE, distinctive differentiator — coordinated planning (works with the client's CPA + attorney, one living plan) + 10+ yrs at Merrill Lynch (VERIFY exact) + Houston + the ICP pains.** General rule reaffirmed: never ship claims we can't verify; lead with what's true. (Same class as the Axiom/AGL accuracy rule.)
 15. **Hero motion + shape tuning (approved direction):** Ken Burns slow drift + crossfade rotation through the 3 hero images (family→energy→city) tells the whole ICP story; reduced-motion/no-JS falls back to one static image. Buttons: full-pill read too rounded — moved to `--radius-btn:6px` (clean rounded-rect, token-tunable). Chris wants **color diversification** across the page (dark hero → cream → gold-drenched zone → navy band → cream → dark close; scroll-recolor as the bold option) and, future, a **client-chosen theme dial** (trivial once colors are semantic tokens).
+16. **Colors/fonts used = brand-accurate, one tuned exception.** navy `#1e395a` + cream `#F5F0E6` = EXACT AWP brand guide; fonts EB Garamond + Nunito Sans = the brand's own specified *web substitutes* for Adobe Garamond Pro + Proxima Nova (paid). GOLD brightened to `#c9a24b` from brand `#b18f4d` for legibility on dark grounds — **decision pending** (snap to exact `#b18f4d`, or keep brightened). For launch, consider licensing the real paid brand fonts via Adobe Fonts.
+17. **Proof section — the good version is a centered testimonial MOMENT**, not a flat grid of small stats floating in a gold void: a feature quote + large quotation mark, richer *radial* gold ground, and a balanced stat row under a hairline divider. Plus a scroll-triggered count-up + blur-to-sharp ("spin on scroll") on the numeric stats (MOTION T2.4 pattern). General: a testimonial/proof section wants ONE hero quote, not four competing tiny stats.
+18. **`<fieldset>` default border = the "weird lines" in forms.** Always reset `fieldset{border:0;padding:0;margin:0;min-width:0}` — otherwise the legend renders sitting on the border. Add to the design-system base reset so no form ships with it again.
+19. **Chris wants TWO MORE genuinely different design STYLES** for Anchor (not palette variants — different layout/motion/type/color treatment), hand-built to the bar, so Alex chooses a style direction. This is the multi-direction idea done RIGHT (hand-built, not cold-generated).
 
 ---
 

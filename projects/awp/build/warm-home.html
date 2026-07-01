@@ -369,10 +369,10 @@
       <!-- Illustrative placeholder — replace with a real, FINRA-approved client quote + attribution before launch. -->
       <p class="note">Illustrative — real client testimonials added before launch.</p>
     </div>
-    <div class="stats rise">
-      <div class="stat"><b>10+</b><span>Years at Merrill Lynch<!-- VERIFY exact --></span></div>
+    <div class="stats rise" id="stats">
+      <div class="stat"><b class="statn" data-count="10" data-suffix="+">10+</b><span>Years at Merrill Lynch<!-- VERIFY exact --></span></div>
       <div class="stat"><b>3&#8594;1</b><span>Professionals coordinated into one plan</span></div>
-      <div class="stat"><b>1</b><span>Living document your whole team shares</span></div>
+      <div class="stat"><b class="statn" data-count="1">1</b><span>Living document your whole team shares</span></div>
       <div class="stat"><b>Quarterly</b><span>Reviews — proactive, never reactive</span></div>
     </div>
   </div>
@@ -428,6 +428,23 @@
       f.addEventListener('click',function(e){if(e.target.matches('[data-next]'))show(Math.min(i+1,steps.length-1));else if(e.target.matches('[data-prev]'))show(Math.max(i-1,0));});
       f.addEventListener('submit',function(e){e.preventDefault();var em=f.querySelector('input[type=email]');if(em&&!em.checkValidity()){em.reportValidity();return;}f.innerHTML='<p style="font-family:var(--serif);font-size:24px;color:var(--ink);text-align:center;padding:30px 0">Thank you. We\'ll be in touch within one business day.<br><span style="font-size:15px;font-family:var(--sans);color:var(--ink-mute)">(Demo — no data submitted.)</span></p>';});
       show(0);})();
+    // proof stats — count up + blur-to-sharp when scrolled into view ("spin on scroll")
+    (function(){
+      var row=document.getElementById('stats'); if(!row) return;
+      if(reduce||!('IntersectionObserver' in window)) return;
+      var ran=false;
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){
+        if(!e.isIntersecting||ran) return; ran=true;
+        row.querySelectorAll('.statn[data-count]').forEach(function(el){
+          var target=parseFloat(el.dataset.count), suf=el.dataset.suffix||'', t0=null, dur=1500;
+          function tick(ts){ if(!t0)t0=ts; var p=Math.min((ts-t0)/dur,1), ease=1-Math.pow(1-p,3);
+            el.textContent=Math.round(target*ease)+suf; el.style.filter='blur('+((1-ease)*7).toFixed(1)+'px)';
+            if(p<1) requestAnimationFrame(tick); else { el.textContent=target+suf; el.style.filter='none'; } }
+          requestAnimationFrame(tick);
+        });
+      });},{threshold:.45});
+      io.observe(row);
+    })();
   })();
 </script>
 </body>
