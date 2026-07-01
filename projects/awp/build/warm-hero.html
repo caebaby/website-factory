@@ -19,6 +19,7 @@
     --serif:'EB Garamond',Georgia,serif;
     --sans:'Nunito Sans','Helvetica Neue',sans-serif;
     --maxw:1240px;
+    --radius-btn:6px;
     --ease:cubic-bezier(.16,1,.3,1);
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -37,7 +38,7 @@
   .nav-links a{font-size:14.5px;font-weight:600;color:var(--ink-on-dark);opacity:.9;transition:opacity .2s;}
   .nav-links a:hover{opacity:1;}
   @media(max-width:900px){.nav-links{display:none;}}
-  .pill{display:inline-flex;align-items:center;gap:9px;border-radius:999px;font-family:var(--sans);font-weight:700;font-size:14.5px;letter-spacing:.01em;padding:13px 26px;cursor:pointer;border:none;transition:transform .2s var(--ease),box-shadow .2s var(--ease);}
+  .pill{display:inline-flex;align-items:center;gap:9px;border-radius:var(--radius-btn);font-family:var(--sans);font-weight:700;font-size:14.5px;letter-spacing:.01em;padding:13px 26px;cursor:pointer;border:none;transition:transform .2s var(--ease),box-shadow .2s var(--ease);}
   .pill-gold{background:var(--gold);color:var(--navy-deep);box-shadow:0 2px 10px rgba(var(--gold-rgb),.32),0 8px 28px rgba(var(--gold-rgb),.24);}
   .pill-gold:hover{transform:translateY(-2px);box-shadow:0 3px 12px rgba(var(--gold-rgb),.4),0 12px 34px rgba(var(--gold-rgb),.32);}
   .pill-gold .arw{transition:transform .25s var(--ease);}
@@ -47,8 +48,12 @@
 
   /* ── HERO ──────────────────────────────────────────── */
   .hero{position:relative;min-height:clamp(640px,94svh,1020px);display:flex;align-items:center;overflow:hidden;isolation:isolate;}
-  .hero__media{position:absolute;inset:0;z-index:-2;}
-  .hero__media img{width:100%;height:100%;object-fit:cover;object-position:50% 42%;display:block;}
+  .hero__media{position:absolute;inset:0;z-index:-2;overflow:hidden;background:#0e1c2e;}
+  /* crossfading slides + slow Ken Burns drift = a living hero, not a frozen photo */
+  .hslide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 46%;opacity:0;transition:opacity 1.8s ease;will-change:opacity,transform;}
+  .hslide.is-on{opacity:1;}
+  @media (prefers-reduced-motion:no-preference){ .hslide{animation:kenburns 26s ease-in-out infinite alternate;} }
+  @keyframes kenburns{ from{transform:scale(1.06)} to{transform:scale(1.15) translate3d(-1.4%,-1%,0)} }
   /* directional + base scrim: legible white text on the left/lower, warm navy, image breathes upper-right */
   .hero__scrim{position:absolute;inset:0;z-index:-1;
     background:
@@ -93,10 +98,11 @@
 </nav>
 
 <header class="hero">
-  <div class="hero__media">
-    <!-- [PLACEHOLDER] Houston energy-capital skyline at dusk. Final: client / licensed photography. -->
-    <img src="https://images.unsplash.com/photo-1701233605035-74b7a05d78e6?auto=format&fit=crop&w=2200&q=80"
-         alt="Houston skyline at dusk — the energy capital, seen as a whole">
+  <div class="hero__media" aria-hidden="true">
+    <!-- [PLACEHOLDER] crossfading: family (legacy) → energy → city. Final: client / licensed photography. -->
+    <img class="hslide is-on" src="assets/hero-family.jpg" alt="">
+    <img class="hslide" src="assets/hero-oilfield.jpg" alt="">
+    <img class="hslide" src="https://images.unsplash.com/photo-1701233605035-74b7a05d78e6?auto=format&fit=crop&w=2200&q=80" alt="">
   </div>
   <div class="hero__scrim"></div>
   <div class="hero__grain"></div>
@@ -111,8 +117,8 @@
     </div>
 
     <p class="trustline rise">
-      <span>Fiduciary</span>
-      <span>Fee-only</span>
+      <!-- ACCURACY: removed "Fiduciary / Fee-only" per Chris — not accurate for Alex. Leading with the true differentiator instead. Confirm real credibility markers. -->
+      <span>Coordinated planning</span>
       <span>10+ yrs at Merrill Lynch<!-- VERIFY exact years --></span>
       <span>Houston-based</span>
     </p>
@@ -125,6 +131,13 @@
     if(matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelectorAll('.rise').forEach(e=>e.classList.add('in'));return;}
     var els=[].slice.call(document.querySelectorAll('.rise'));
     els.forEach(function(el,i){ setTimeout(function(){el.classList.add('in');}, 120 + i*110); });
+  })();
+  // hero image crossfade (family → energy → city). Static first slide with no JS / reduced-motion.
+  (function(){
+    var slides=[].slice.call(document.querySelectorAll('.hslide'));
+    if(slides.length<2 || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var i=0;
+    setInterval(function(){ slides[i].classList.remove('is-on'); i=(i+1)%slides.length; slides[i].classList.add('is-on'); }, 6000);
   })();
 </script>
 </body>
