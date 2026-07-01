@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anchor Wealth Planning — Coordinated wealth for Houston executives, owners & families</title>
+<meta name="description" content="Anchor Wealth Planning coordinates your investments, taxes, and estate plan with your CPA and attorney — one living plan, so you can stop being the glue.">
+
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@300,400,500,700&f[]=switzer@400,500,600,700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#0A0A0A; --bg1:#141414; --bg2:#1C1C1C;
+    --gold:#c9a24b; --gold-soft:#dcc07e; --gold-deep:#a8823a; --gold-rgb:201,162,75;
+    --ink:#EDEBE7; --ink-rgb:237,235,231;
+    --ink-soft:#A8A49E; --ink-mute:rgba(237,235,231,.58);
+    --cream:#F5F0E6; --cream-ink:#1b2a3c; --cream-ink-soft:#4b5b6e;
+    --border:rgba(237,235,231,.10); --border-2:rgba(237,235,231,.16);
+    --sans-d:'Cabinet Grotesk','General Sans',sans-serif;
+    --sans-b:'Switzer','General Sans',sans-serif;
+    --maxw:1280px; --radius-btn:6px; --radius-card:6px;
+    --ease:cubic-bezier(.16,1,.3,1);
+    --shadow-card:inset 0 1px 0 rgba(255,255,255,.06),0 1px 0 rgba(0,0,0,.4),0 4px 16px rgba(0,0,0,.3);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{font-size:16px;scroll-behavior:smooth;}
+  body{font-family:var(--sans-b);background:var(--bg);color:var(--ink-soft);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.6;}
+  a{color:inherit;text-decoration:none;}
+  h1,h2,h3{font-family:var(--sans-d);color:var(--ink);font-weight:300;line-height:.94;letter-spacing:-.03em;}
+  ::selection{background:var(--gold);color:var(--bg);}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(24px,4vw,56px);}
+  .eyebrow{display:inline-flex;align-items:center;gap:11px;font-family:var(--sans-b);font-weight:600;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-soft);}
+  .eyebrow::before{content:"";width:16px;height:2px;background:var(--gold);}
+
+  /* buttons */
+  .btn{display:inline-flex;align-items:center;gap:9px;border-radius:var(--radius-btn);font-family:var(--sans-b);font-weight:600;font-size:14px;letter-spacing:.01em;padding:14px 26px;cursor:pointer;border:none;transition:background .2s,border-color .2s,color .2s;}
+  .btn .arw{transition:transform .25s var(--ease);} .btn:hover .arw{transform:translateX(4px);}
+  .btn-gold{background:var(--gold);color:#0A0A0A;box-shadow:0 2px 10px rgba(var(--gold-rgb),.22),0 8px 26px rgba(var(--gold-rgb),.14);}
+  .btn-gold:hover{background:var(--gold-soft);}
+  .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--border-2);}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold-soft);}
+
+  section{position:relative;}
+  .pad{padding:clamp(64px,7.5vw,104px) 0;}
+  .pad-sm{padding:clamp(44px,5.5vw,68px) 0;}
+  .bg-0{background:var(--bg);} .bg-1{background:var(--bg1);} .bg-2{background:var(--bg2);}
+  .rule{border-top:1px solid var(--border);}
+
+  .sec-head{max-width:600px;margin-bottom:clamp(32px,4vw,52px);}
+  .sec-head .eyebrow{margin-bottom:18px;}
+  .sec-head h2{font-size:clamp(28px,3.4vw,44px);}
+  .sec-head p{margin-top:16px;font-size:16px;color:var(--ink-mute);max-width:54ch;}
+
+  /* reveal */
+  .rise{opacity:1;}
+  @media (prefers-reduced-motion:no-preference){
+    html.js .rise{opacity:0;transform:translateY(18px);}
+    html.js .rise.in{opacity:1;transform:none;transition:opacity .6s var(--ease),transform .6s var(--ease);}
+  }
+
+  /* ── NAV ─────────────────────────────── */
+  nav{position:fixed;top:0;left:0;right:0;z-index:60;padding:20px 0;transition:padding .3s var(--ease),background .3s,box-shadow .3s;}
+  nav.scrolled{padding:12px 0;background:rgba(10,10,10,.86);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);box-shadow:0 1px 0 var(--border);}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;gap:24px;}
+  .brand{display:flex;flex-direction:column;line-height:1;}
+  .brand b{font-family:var(--sans-d);font-weight:500;font-size:21px;color:var(--ink);letter-spacing:-.01em;}
+  .brand small{font-family:var(--sans-b);font-weight:600;font-size:9.5px;letter-spacing:.3em;color:var(--gold-soft);margin-top:5px;}
+  .nav-links{display:flex;gap:28px;align-items:center;}
+  .nav-links a{font-size:14px;font-weight:500;color:var(--ink-soft);} .nav-links a:hover{color:var(--gold-soft);}
+  @media(max-width:920px){.nav-links{display:none;}}
+
+  /* ── HERO ────────────────────────────── */
+  /* Chris: hero needed to feel dynamic, not just a richer static gradient — assembled from
+     COMPONENTS.md Primitive 4 (animated mesh-gradient), corrected per LED-007's lesson
+     (opacity/blur tuned so it reads as color, not a pale haze) and adapted for a dark hero
+     (screen blend, not multiply, per the primitive's own dark-mode note). */
+  .hero{position:relative;min-height:clamp(600px,90svh,940px);display:flex;align-items:center;padding-top:88px;overflow:hidden;isolation:isolate;background:var(--bg);}
+  .hero__mesh{position:absolute;inset:0;z-index:0;overflow:hidden;background:radial-gradient(80% 60% at 8% 95%,#140f0a 0%,transparent 60%);}
+  .mesh-blob{position:absolute;border-radius:50%;filter:blur(78px);opacity:.5;will-change:transform;mix-blend-mode:screen;}
+  .mesh-blob--1{width:50vw;height:50vw;right:-10vw;top:-16vw;background:radial-gradient(circle,rgba(var(--gold-rgb),.55),transparent 68%);}
+  .mesh-blob--2{width:38vw;height:38vw;right:8vw;bottom:-16vw;background:radial-gradient(circle,rgba(var(--gold-rgb),.32),transparent 68%);}
+  .mesh-blob--3{width:34vw;height:34vw;left:-6vw;bottom:-10vw;background:radial-gradient(circle,rgba(220,192,126,.26),transparent 68%);}
+  @media(prefers-reduced-motion:reduce){.mesh-blob{animation:none!important;}}
+  .hero__grid{position:relative;z-index:1;display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(24px,4vw,56px);align-items:center;width:100%;}
+  @media(max-width:960px){.hero__grid{grid-template-columns:1fr;}}
+  .hl{font-size:clamp(34px,4.4vw,58px);letter-spacing:-.025em;max-width:16ch;}
+  .hl em{font-style:normal;font-family:var(--sans-d);font-weight:500;color:var(--gold-soft);}
+  .hero__sub{font-size:clamp(16px,1.3vw,18px);line-height:1.6;color:var(--ink-mute);max-width:46ch;margin-top:22px;}
+  .hero__sub b{color:var(--ink-soft);font-weight:600;}
+  .hero__ctas{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:34px;}
+  .trustline{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px;margin-top:clamp(32px,4vw,48px);}
+  .trustline span{display:inline-flex;align-items:center;gap:10px;font-family:var(--sans-b);font-weight:600;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute);}
+  .trustline span::before{content:"";width:5px;height:5px;border-radius:1px;background:var(--gold);flex:none;}
+
+  /* hero diagram — the signature moment, not decoration: sized and inked to command the column */
+  .diagram{position:relative;aspect-ratio:1/1;max-width:640px;width:112%;margin:0 auto;}
+  @media(max-width:960px){.diagram{max-width:420px;width:100%;}}
+  .diagram svg{width:100%;height:100%;overflow:visible;}
+  .dg-line{fill:none;stroke:var(--gold);stroke-width:2;opacity:.9;}
+  .dg-node circle{fill:var(--bg1);stroke:rgba(var(--gold-rgb),.45);stroke-width:1.5;}
+  .dg-node.center circle{fill:var(--gold);stroke:none;}
+  @media(prefers-reduced-motion:no-preference){
+    @keyframes dg-glow{0%,100%{filter:drop-shadow(0 0 10px rgba(var(--gold-rgb),.35));}50%{filter:drop-shadow(0 0 26px rgba(var(--gold-rgb),.65));}}
+    .dg-node.center circle{animation:dg-glow 3.6s ease-in-out infinite;}
+  }
+  .dg-node text{font-family:var(--sans-b);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;fill:var(--ink);}
+  .dg-node.center text{fill:var(--bg);font-weight:700;font-size:14px;}
+  .dg-dot{fill:var(--gold-soft);}
+
+  /* ── PAIN (SECTION_PATTERNS 2A — Ticker + Cards; was a stacked-row clone of Warm's Pain,
+     now genuinely different composition + gives the page continuous motion right after the hero) */
+  .ticker{overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:20px 0;margin:4px 0 clamp(32px,3.8vw,48px);}
+  .ticker-track{display:flex;width:max-content;}
+  .ticker-group{display:flex;flex:none;}
+  @media(prefers-reduced-motion:no-preference){.ticker-track{animation:ticker-scroll 34s linear infinite;}}
+  @keyframes ticker-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .ticker span{font-family:var(--sans-d);font-weight:400;font-size:clamp(18px,2.1vw,27px);color:var(--ink-mute);white-space:nowrap;padding-right:48px;letter-spacing:-.01em;}
+  .ticker span::after{content:"—";color:var(--gold);opacity:.65;padding-left:48px;}
+  .pain-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);}
+  @media(max-width:860px){.pain-cards{grid-template-columns:1fr 1fr;}}
+  @media(max-width:520px){.pain-cards{grid-template-columns:1fr;}}
+  /* Chris: these cards underperform — give the numeral real scale (matches the Process timeline's
+     oversized-numeral treatment) and the card some depth instead of a flat fill. */
+  .pain-card{background:linear-gradient(165deg,var(--bg2) 0%,var(--bg1) 100%);padding:clamp(28px,3vw,36px) clamp(24px,2.6vw,30px);position:relative;}
+  .pain-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease);}
+  .pain-card:hover::before{transform:scaleX(1);}
+  .pain-card-n{font-family:var(--sans-d);font-weight:400;font-size:clamp(38px,4.2vw,50px);color:var(--gold);line-height:1;display:block;margin-bottom:16px;letter-spacing:-.02em;}
+  .pain-card h3{font-family:var(--sans-d);font-weight:500;font-size:19px;margin-bottom:10px;color:var(--ink);letter-spacing:-.01em;}
+  .pain-card p{font-size:13.5px;color:var(--ink-mute);line-height:1.6;}
+
+  /* ── LIGHT BAND (Chris: too dark, needs real light moments — not just gold accents) ──
+     a genuine cream tonal break, not a gold accent. Reuses Warm's exact cream/ink tokens
+     for a deliberate cross-style brand thread. */
+  .bg-cream{background:var(--cream);color:var(--cream-ink-soft);}
+  .bg-cream h2,.bg-cream h3{color:var(--cream-ink);}
+  .bg-cream .eyebrow{color:var(--gold-deep);}
+  .bg-cream .eyebrow::before{background:var(--gold-deep);}
+  .bg-cream .sec-head p{color:var(--cream-ink-soft);}
+  .bg-cream .cred p{color:var(--cream-ink-soft);}
+  .bg-cream .cred+.cred{border-left-color:rgba(27,42,60,.14);}
+
+  /* ── CREDIBILITY (horizontal strip — deliberately NOT a card grid, breaks rhythm vs. Who-We-Serve) ── */
+  .cred-strip{display:grid;grid-template-columns:repeat(4,1fr);margin-top:clamp(8px,1.2vw,16px);}
+  @media(max-width:920px){.cred-strip{grid-template-columns:repeat(2,1fr);row-gap:clamp(24px,3vw,32px);}}
+  .cred{position:relative;padding:0 clamp(20px,2.4vw,32px) 0 0;}
+  .cred+.cred{border-left:1px solid var(--border);padding-left:clamp(20px,2.4vw,32px);}
+  @media(max-width:920px){.cred:nth-child(2n+1){border-left:none;padding-left:0;}}
+  .cred-n{font-family:var(--sans-d);font-size:15px;font-weight:500;color:var(--cream-ink-soft);letter-spacing:.04em;margin-bottom:14px;display:block;}
+  /* Chris: wants animation on the light section too — icons that scale/fade in, piggybacking on
+     the already-proven .rise.in trigger rather than a new independent tween (no LED-011 risk:
+     purely decorative, text is unaffected if this never fires). */
+  .cred-ic{width:26px;height:26px;color:var(--gold-deep);margin-bottom:16px;display:block;}
+  @media(prefers-reduced-motion:no-preference){
+    .cred-ic{opacity:0;transform:scale(.6) rotate(-8deg);}
+    html.js .rise.in .cred-ic{animation:cred-ic-in .5s var(--ease) forwards;}
+    .cred:nth-child(1) .cred-ic{animation-delay:.05s;} .cred:nth-child(2) .cred-ic{animation-delay:.15s;}
+    .cred:nth-child(3) .cred-ic{animation-delay:.25s;} .cred:nth-child(4) .cred-ic{animation-delay:.35s;}
+    @keyframes cred-ic-in{to{opacity:1;transform:scale(1) rotate(0);}}
+  }
+  .cred h3{font-family:var(--sans-b);font-size:15px;font-weight:600;color:var(--cream-ink);margin-bottom:8px;letter-spacing:0;}
+  .cred p{font-size:13.5px;color:var(--ink-mute);line-height:1.6;}
+
+  /* ── ICP (SECTION_PATTERNS 3C — Segment Branches; was the same boxed-card-grid pattern as
+     Warm's ICP section, now vertical paths with dividers instead of cards) ── */
+  .branches{display:grid;grid-template-columns:repeat(3,1fr);}
+  @media(max-width:860px){.branches{grid-template-columns:1fr;}}
+  .branch{position:relative;padding:0 clamp(24px,2.8vw,40px) 0 0;}
+  .branch+.branch{border-left:1px solid var(--border);padding-left:clamp(24px,2.8vw,40px);}
+  @media(max-width:860px){.branch+.branch{border-left:none;padding-left:0;border-top:1px solid var(--border);padding-top:32px;margin-top:32px;}}
+  .branch .ic{width:32px;height:32px;color:var(--gold);margin-bottom:20px;display:block;}
+  .branch h3{font-family:var(--sans-d);font-weight:500;font-size:23px;margin-bottom:16px;letter-spacing:-.01em;}
+  .branch ul{list-style:none;margin-bottom:22px;}
+  .branch li{position:relative;padding-left:18px;font-size:14px;color:var(--ink-mute);line-height:1.6;margin-bottom:10px;}
+  .branch li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:1.5px;background:var(--gold);}
+  .branch .lnk{font-family:var(--sans-b);font-weight:600;font-size:13px;color:var(--gold-soft);display:inline-flex;gap:7px;align-items:center;}
+  .branch:hover .lnk .arw{transform:translateX(4px);}
+
+  /* ── FIT FORM ─────────────────────────── */
+  /* mid-page gold ramp (critique: gold had no build-up before the Proof climax) — a compact,
+     positioned wash behind the fit-card, not a full drench; the crescendo now has a step. */
+  #fit{background:radial-gradient(62% 95% at 72% 50%,rgba(var(--gold-rgb),.12),var(--bg1) 62%);}
+  .fit-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(32px,4vw,60px);align-items:center;}
+  @media(max-width:860px){.fit-grid{grid-template-columns:1fr;}}
+  /* Chris: too dark, needs light moments — the ONE place you take action is the ONE light surface. */
+  /* Chris: the flat cream fill felt stark against the dark surround — give it the same kind of
+     gradient depth the Proof gold section has, plus a warm ambient glow to soften the transition
+     into the dark background instead of reading as a hard cutout. */
+  /* Chris flagged the radial "spotlight" version as odd — switched to a clean linear sweep at the
+     same 155deg angle as the Proof section's gradient, so the two "depth" surfaces on the page
+     read as one deliberate family instead of two different improvised effects. */
+  /* Shadow curve is a real extracted value (stashwealth.com card elevation: 0 40px 80px rgba(0,0,0,.15)),
+     not an approximated multi-layer stack — opacity raised because our backdrop is near-black, not white. */
+  .fit-card{background:linear-gradient(155deg,#FFFFFF 0%,#F5F0E6 45%,#EBE1CC 100%);border-radius:var(--radius-card);box-shadow:0 40px 80px rgba(0,0,0,.4),0 0 50px rgba(var(--gold-rgb),.12);border-top:2px solid var(--gold);padding:clamp(26px,3vw,42px);}
+  @media(prefers-reduced-motion:no-preference){
+    @keyframes fitpulse{0%{box-shadow:0 40px 80px rgba(0,0,0,.4),0 0 50px rgba(var(--gold-rgb),.12),0 0 0 0 rgba(var(--gold-rgb),.5);}70%{box-shadow:0 40px 80px rgba(0,0,0,.4),0 0 50px rgba(var(--gold-rgb),.12),0 0 0 24px rgba(var(--gold-rgb),0);}100%{box-shadow:0 40px 80px rgba(0,0,0,.4),0 0 50px rgba(var(--gold-rgb),.12),0 0 0 0 rgba(var(--gold-rgb),0);}}
+    .fit-card.in{animation:fitpulse 1.7s ease-out .4s 3;}
+  }
+  /* Chris: the CARD kept changing but the form inside never did — this is the actual fix.
+     Progress: reuses the page's own big-numeral language (Process/Pain) instead of a generic loading
+     bar. Options: lettered badges + bottom-rule instead of default bordered boxes, with the same
+     left-reveal hover accent already used on the pain/ICP cards, so the form finally reads as part
+     of this page's system instead of an unstyled default. */
+  .wiz__head{display:flex;align-items:baseline;gap:16px;margin-bottom:26px;}
+  .wiz__prog-num{font-family:var(--sans-d);font-weight:400;font-size:34px;color:var(--gold-deep);line-height:1;}
+  .wiz__prog-of{font-family:var(--sans-b);font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream-ink-soft);}
+  .wiz__segs{display:flex;gap:6px;flex:1;align-self:center;}
+  .wiz__seg{flex:1;height:3px;border-radius:2px;background:rgba(27,42,60,.12);}
+  .wiz__seg.is-active,.wiz__seg.is-done{background:var(--gold);}
+  .wiz__step{display:block;border:0;padding:0;margin:0;min-width:0;}
+  .js .wiz__step{display:none;} .js .wiz__step.is-active{display:block;animation:fade .4s var(--ease);}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .wiz__step legend{font-family:var(--sans-d);font-weight:500;font-size:clamp(19px,2vw,24px);color:var(--cream-ink);margin-bottom:20px;display:block;}
+  .opt{position:relative;display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:none;border:none;border-bottom:1px solid rgba(27,42,60,.14);padding:15px 4px;margin:0;font-family:var(--sans-b);font-size:15px;font-weight:500;color:var(--cream-ink);cursor:pointer;transition:padding-left .25s var(--ease);}
+  .opt:last-of-type{border-bottom:none;}
+  .opt::before{content:attr(data-letter);flex:none;width:26px;height:26px;border-radius:50%;border:1.5px solid rgba(var(--gold-rgb),.45);font-family:var(--sans-d);font-weight:500;font-size:14px;color:var(--gold-deep);display:flex;align-items:center;justify-content:center;transition:background .25s var(--ease),color .25s var(--ease),border-color .25s var(--ease);}
+  .opt:hover{padding-left:12px;}
+  .opt:hover::before{background:var(--gold);border-color:var(--gold);color:#fff;}
+  .wiz input[type=email]{width:100%;padding:14px 16px;border:1.5px solid rgba(27,42,60,.16);border-radius:6px;background:#fff;font-family:var(--sans-b);font-size:15px;color:var(--cream-ink);margin-bottom:14px;}
+  .wiz input[type=email]:focus{outline:none;border-color:var(--gold);}
+  .wiz input[type=email]::placeholder{color:var(--cream-ink-soft);}
+  .wiz__back{background:none;border:none;color:var(--cream-ink-soft);font-family:var(--sans-b);font-weight:500;font-size:13.5px;cursor:pointer;padding:8px 0;}
+  .wiz__micro{font-size:12px;color:var(--cream-ink-soft);margin-top:14px;text-align:center;}
+  .wiz__nav{display:flex;justify-content:space-between;align-items:center;margin-top:8px;}
+
+  /* ── SERVICES (SECTION_PATTERNS 5C — Accordion; was the same numbered-editorial-list pattern
+     as Warm's Services, now real interactivity instead of a hover state) ── */
+  .acc-item{border-top:1px solid var(--border);}
+  .acc-item:last-child{border-bottom:1px solid var(--border);}
+  .acc-head{display:grid;grid-template-columns:44px 1fr auto auto;gap:clamp(16px,2.4vw,32px);align-items:center;width:100%;padding:clamp(20px,2.4vw,26px) 0;background:none;border:none;cursor:pointer;text-align:left;font:inherit;color:inherit;}
+  .acc-n{font-family:var(--sans-d);font-size:18px;color:var(--gold);opacity:.65;font-weight:500;}
+  .acc-title{font-family:var(--sans-d);font-weight:500;font-size:clamp(19px,1.9vw,23px);letter-spacing:-.01em;color:var(--ink);}
+  .acc-tag{font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute);white-space:nowrap;}
+  @media(max-width:640px){.acc-tag{display:none;}}
+  .acc-plus{position:relative;width:16px;height:16px;flex:none;}
+  .acc-plus::before,.acc-plus::after{content:"";position:absolute;top:50%;left:50%;background:var(--gold);transition:transform .3s var(--ease);}
+  .acc-plus::before{width:16px;height:1.5px;transform:translate(-50%,-50%);}
+  .acc-plus::after{width:1.5px;height:16px;transform:translate(-50%,-50%);}
+  .acc-item.is-open .acc-plus::after{transform:translate(-50%,-50%) rotate(90deg);opacity:0;}
+  .acc-body{display:grid;grid-template-rows:0fr;}
+  @media(prefers-reduced-motion:no-preference){.acc-body{transition:grid-template-rows .4s var(--ease);}}
+  .acc-item.is-open .acc-body{grid-template-rows:1fr;}
+  .acc-body-in{overflow:hidden;}
+  .acc-body-content{padding:0 0 clamp(20px,2.4vw,26px) 44px;}
+  .svc-pain{color:var(--gold-soft);font-family:var(--sans-b);font-weight:500;font-style:italic;font-size:14px;margin-bottom:10px;}
+  .acc-body-content p:not(.svc-pain){font-size:14px;color:var(--ink-mute);max-width:66ch;line-height:1.6;}
+
+  /* ── PROCESS (connected timeline — echoes the hero diagram's line motif; big numerals are the
+     oversized-scale moment the critique asked for outside the gold section, deliberately NOT
+     watermark-opacity per LED-008 — full gold, not a faint ghost) ──────────────────────────── */
+  .timeline{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,2.6vw,36px);padding-top:14px;}
+  @media(max-width:860px){.timeline{grid-template-columns:1fr 1fr;}}
+  @media(max-width:520px){.timeline{grid-template-columns:1fr;}}
+  .tl-line{position:absolute;top:14px;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--border-2) 3%,var(--border-2) 97%,transparent);}
+  @media(max-width:860px){.tl-line{display:none;}}
+  .tl-step{position:relative;}
+  .tl-marker{position:absolute;top:10px;left:0;width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 5px var(--bg1),0 0 12px rgba(var(--gold-rgb),.5);display:block;}
+  @media(max-width:860px){.tl-marker{display:none;}}
+  .tl-num{font-family:var(--sans-d);font-weight:400;font-size:clamp(44px,4.4vw,58px);color:var(--gold);line-height:1;margin:28px 0 12px;letter-spacing:-.02em;}
+  @media(max-width:860px){.tl-num{margin-top:6px;}}
+  .step h3{font-family:var(--sans-d);font-weight:500;font-size:20px;margin-bottom:8px;}
+  .step p{font-size:13.5px;color:var(--ink-mute);line-height:1.55;}
+  .step .when{margin-top:12px;font-family:var(--sans-b);font-weight:600;color:var(--gold-soft);font-size:12px;text-transform:uppercase;letter-spacing:.06em;}
+
+  /* ── PROOF (gold climax) ──────────────── */
+  .bg-gold{background:linear-gradient(155deg,#dcb965 0%,#c9a24b 55%,#a8823a 100%);color:#0A0A0A;}
+  .bg-gold .eyebrow{color:#0A0A0A;} .bg-gold .eyebrow::before{background:#0A0A0A;}
+  .bg-gold h2{color:#0A0A0A;}
+  .proof-quote{max-width:860px;margin:clamp(34px,4.5vw,54px) auto clamp(40px,4.5vw,64px);position:relative;}
+  .proof-quote::before{content:"\201C";font-family:var(--sans-d);font-weight:700;font-size:clamp(70px,10vw,130px);line-height:.5;color:rgba(10,10,10,.18);display:block;margin-bottom:clamp(4px,1vw,12px);}
+  .proof-quote blockquote{font-family:var(--sans-d);font-weight:400;font-size:clamp(21px,2.7vw,36px);line-height:1.28;color:#0A0A0A;letter-spacing:-.01em;}
+  .proof-quote .note{margin-top:22px;font-family:var(--sans-b);font-weight:600;font-size:14px;color:#0A0A0A;}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,2.6vw,40px);max-width:1000px;margin:0 auto;border-top:1px solid rgba(10,10,10,.2);padding-top:clamp(30px,3.6vw,46px);}
+  .stat{text-align:center;}
+  .stat b{display:block;font-family:var(--sans-d);font-weight:500;font-size:clamp(36px,4.2vw,56px);line-height:1;color:#0A0A0A;letter-spacing:-.02em;}
+  .stat span{display:block;margin-top:8px;font-size:12.5px;font-weight:600;color:#0A0A0A;line-height:1.4;}
+  @media(max-width:720px){.stats{grid-template-columns:1fr 1fr;gap:28px 20px;}}
+  .ph{background:rgba(10,10,10,.08);border:1px dashed rgba(10,10,10,.3);border-radius:4px;padding:1px 6px;font-size:.82em;font-style:normal;font-family:var(--sans-b);font-weight:600;color:rgba(10,10,10,.65);}
+  .ph-dark{background:rgba(237,235,231,.06);border:1px dashed var(--border-2);border-radius:4px;padding:1px 6px;font-size:.82em;font-style:normal;font-family:var(--sans-b);font-weight:600;color:var(--ink-mute);}
+
+  /* ── INSIGHTS (rebuilt — Chris flagged this as the weakest section: 3 equal boxes, no energy.
+     Now: a moving topic ticker for ambient motion + an asymmetric featured/supporting split
+     instead of three identical cards.) ── */
+  .tag-ticker{overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:14px 0;margin-bottom:clamp(28px,3.2vw,40px);}
+  .tag-ticker span{font-family:var(--sans-b);font-weight:600;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute);white-space:nowrap;padding-right:32px;}
+  .tag-ticker span::after{content:"\00B7";color:var(--gold);padding-left:32px;}
+  .insights-split{display:grid;grid-template-columns:1.3fr 1fr;gap:1px;background:var(--border);}
+  @media(max-width:860px){.insights-split{grid-template-columns:1fr;}}
+  .insight-featured{background:var(--bg1);padding:clamp(30px,3.4vw,44px);display:flex;flex-direction:column;justify-content:center;}
+  .insight-featured h3{font-family:var(--sans-d);font-weight:400;font-size:clamp(23px,2.5vw,31px);line-height:1.28;color:var(--ink);margin:16px 0 14px;letter-spacing:-.01em;}
+  .insight-featured p{font-size:15px;color:var(--ink-mute);line-height:1.6;max-width:46ch;margin-bottom:20px;}
+  .insight-cta{font-family:var(--sans-b);font-weight:600;font-size:13px;color:var(--gold-soft);display:inline-flex;gap:7px;align-items:center;}
+  .insight-supporting{display:flex;flex-direction:column;gap:1px;background:var(--border);}
+  .insight-sm{background:var(--bg1);padding:clamp(20px,2.2vw,26px);flex:1;}
+  .insight-sm h3{font-family:var(--sans-d);font-weight:400;font-size:16.5px;line-height:1.32;color:var(--ink);margin:10px 0 8px;}
+  .insight-sm p{font-size:12.5px;color:var(--ink-mute);line-height:1.55;}
+  .insight-tag{display:inline-block;font-family:var(--sans-b);font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:14px;}
+  .insight-note{margin-top:clamp(24px,2.8vw,36px);text-align:center;font-size:12.5px;color:var(--ink-mute);}
+
+  /* ── FINAL CTA ────────────────────────── */
+  .final{text-align:center;}
+  .final h2{font-size:clamp(30px,4.4vw,54px);color:var(--ink);max-width:16ch;margin:0 auto 18px;}
+  .final h2 em{font-style:normal;font-family:var(--sans-d);font-weight:500;color:var(--gold-soft);}
+  .final p{color:var(--ink-mute);font-size:clamp(15px,1.4vw,17px);max-width:50ch;margin:0 auto 36px;}
+  .final .hero__ctas{justify-content:center;}
+
+  /* ── FOOTER ───────────────────────────── */
+  footer{background:#050505;color:var(--ink-mute);padding:clamp(48px,5.5vw,72px) 0 32px;border-top:1px solid var(--border);}
+  .foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:32px;padding-bottom:38px;border-bottom:1px solid var(--border);}
+  @media(max-width:820px){.foot-top{grid-template-columns:1fr 1fr;gap:28px;}}
+  .foot-top h4{font-family:var(--sans-b);font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:15px;}
+  .foot-top a,.foot-top p{display:block;font-size:13.5px;color:var(--ink-mute);margin-bottom:9px;line-height:1.5;}
+  .foot-top a:hover{color:var(--ink);}
+  .foot-brand b{font-family:var(--sans-d);font-weight:500;font-size:20px;color:var(--ink);display:block;margin-bottom:8px;}
+  .foot-brand em{font-style:normal;color:var(--gold-soft);font-family:var(--sans-d);}
+  .foot-legal{margin-top:24px;font-size:11px;color:rgba(237,235,231,.32);line-height:1.6;max-width:70ch;}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <div class="wrap nav-in">
+    <span class="brand"><b>Anchor</b><small>WEALTH PLANNING</small></span>
+    <div class="nav-links">
+      <a href="#serve">Who We Serve</a><a href="#services">Services</a><a href="#process">Process</a><a href="#fit">Fit Check</a>
+    </div>
+    <a class="btn btn-gold btn-magnetic" href="#fit">Book a Call <span class="arw">→</span></a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero bg-0" id="top">
+  <div class="hero__mesh" aria-hidden="true">
+    <span class="mesh-blob mesh-blob--1"></span>
+    <span class="mesh-blob mesh-blob--2"></span>
+    <span class="mesh-blob mesh-blob--3"></span>
+  </div>
+  <div class="wrap hero__grid">
+    <div>
+      <p class="eyebrow rise">Houston, TX · Wealth Management</p>
+      <h1 class="hl rise" style="margin-top:22px">How do you turn a high income into lasting security when no one sees <em>the whole picture?</em></h1>
+      <p class="hero__sub rise">Investments, taxes, and estate, coordinated with your CPA and attorney, so you can <b>stop being the glue.</b></p>
+      <div class="hero__ctas rise">
+        <a class="btn btn-gold btn-magnetic" href="#fit">Schedule a 30-Minute Conversation <span class="arw">→</span></a>
+        <a class="btn btn-ghost" href="#fit">Take the 4-Question Fit Check</a>
+      </div>
+      <p class="trustline rise">
+        <span>Coordinated planning</span>
+        <span>10+ yrs at Merrill Lynch<!-- VERIFY exact years --></span>
+        <span>Houston-based</span>
+      </p>
+    </div>
+    <div class="diagram rise" aria-hidden="true">
+      <svg viewBox="0 0 480 480">
+        <path class="dg-line" id="ln-a" d="M240,240 L240,74"/>
+        <path class="dg-line" id="ln-b" d="M240,240 L96,362"/>
+        <path class="dg-line" id="ln-c" d="M240,240 L384,362"/>
+        <circle class="dg-dot" id="dot-a" r="3.5"><animateMotion dur="3.2s" repeatCount="indefinite" path="M240,240 L240,74"/></circle>
+        <circle class="dg-dot" id="dot-b" r="3.5"><animateMotion dur="3.6s" repeatCount="indefinite" path="M240,240 L96,362"/></circle>
+        <circle class="dg-dot" id="dot-c" r="3.5"><animateMotion dur="4s" repeatCount="indefinite" path="M240,240 L384,362"/></circle>
+        <g class="dg-node"><circle cx="240" cy="74" r="46"/><text x="240" y="70" text-anchor="middle">Your</text><text x="240" y="86" text-anchor="middle">CPA</text></g>
+        <g class="dg-node"><circle cx="96" cy="362" r="46"/><text x="96" y="358" text-anchor="middle">Your</text><text x="96" y="374" text-anchor="middle">Attorney</text></g>
+        <g class="dg-node"><circle cx="384" cy="362" r="46"/><text x="384" y="358" text-anchor="middle">Your</text><text x="384" y="374" text-anchor="middle">Portfolio</text></g>
+        <g class="dg-node center"><circle cx="240" cy="240" r="58"/><text x="240" y="236" text-anchor="middle">ONE</text><text x="240" y="253" text-anchor="middle">PLAN</text></g>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<!-- PAIN -->
+<section class="pad bg-0" id="problem">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <p class="eyebrow">The Problem</p>
+      <h2>You're holding it all together. That's the problem.</h2>
+      <p>If your financial life feels like a group project where you're the only one coordinating, you're not alone. Here's what we hear — in the words of the people who found their way here.</p>
+    </div>
+  </div>
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <div class="ticker-group">
+        <span>Phone tag with your CPA</span>
+        <span>Tax bills you didn't plan for</span>
+        <span>A trust nobody's checked in years</span>
+        <span>An exit you can't price</span>
+        <span>Three professionals, zero coordination</span>
+        <span>Vesting deadlines that sneak up</span>
+        <span>Estate documents stuck in the past</span>
+        <span>No one sees the whole picture</span>
+      </div>
+      <div class="ticker-group">
+        <span>Phone tag with your CPA</span>
+        <span>Tax bills you didn't plan for</span>
+        <span>A trust nobody's checked in years</span>
+        <span>An exit you can't price</span>
+        <span>Three professionals, zero coordination</span>
+        <span>Vesting deadlines that sneak up</span>
+        <span>Estate documents stuck in the past</span>
+        <span>No one sees the whole picture</span>
+      </div>
+    </div>
+  </div>
+  <div class="wrap pain-cards rise">
+    <div class="pain-card"><span class="pain-card-n">01</span><h3>Siloed Advisors</h3><p>Your CPA, advisor, and attorney don't talk to each other. You're the one playing phone tag between all three.</p></div>
+    <div class="pain-card"><span class="pain-card-n">02</span><h3>Surprise Tax Hits</h3><p>RSU vesting and bonus timing create tax bills that generalist advisors don't see coming.</p></div>
+    <div class="pain-card"><span class="pain-card-n">03</span><h3>Outdated Estate Plans</h3><p>Your net worth has grown. Your trust and estate documents haven't kept up with it.</p></div>
+    <div class="pain-card"><span class="pain-card-n">04</span><h3>An Exit You Can't Price</h3><p>You don't know what you'd actually walk away with after taxes if an offer came tomorrow.</p></div>
+  </div>
+</section>
+
+<!-- CREDIBILITY -->
+<section class="pad bg-cream" id="why">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <p class="eyebrow">Why Anchor</p>
+      <h2>One advisor who sees the whole picture.</h2>
+      <p>Most advisors manage your investments and stop there. We coordinate the work that siloed teams leave to you — and make sure the professionals in your life are reading from the same page.</p>
+    </div>
+  </div>
+  <div class="wrap cred-strip rise">
+    <div class="cred"><svg class="cred-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg><span class="cred-n">01</span><h3>Coordinated, not siloed</h3><p>We run joint planning meetings with your CPA and estate attorney and maintain one living document all three work from. You stop being the translator.</p></div>
+    <div class="cred"><svg class="cred-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l8 4v5c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg><span class="cred-n">02</span><h3>A decade of institutional training</h3><p>Alex Miller spent 10+ years<!-- VERIFY exact --> at Merrill Lynch before founding Anchor — the discipline and resources of the institution, applied independently.</p></div>
+    <div class="cred"><svg class="cred-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-5h6v5"/></svg><span class="cred-n">03</span><h3>Built for complexity</h3><p>Equity comp, deferred income, business transitions, multi-generational estates. If your situation is complicated, that's exactly the work we do.</p></div>
+    <div class="cred"><svg class="cred-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-5.2-7-11a7 7 0 0114 0c0 5.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg><span class="cred-n">04</span><h3>Houston, not a coastal afterthought</h3><p>We live in the energy capital. Permian Basin to Eagle Ford, commodity cycles and closely-held companies — this is our world, not a footnote.</p></div>
+  </div>
+  <p class="wrap" style="margin-top:32px;font-size:12px;color:var(--ink-mute)"><!-- VERIFY with Alex: regulatory status (RIA/hybrid/BD) + fee model before adding fiduciary/fee-only/credential claims. --></p>
+</section>
+
+<!-- ICP -->
+<section class="pad bg-0" id="serve">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <p class="eyebrow">Who We Serve</p>
+      <h2>We specialize. Generalists are everywhere.</h2>
+      <p>If you see yourself below, we should talk. If you don't, we'll tell you honestly — and point you to someone who's a better fit.</p>
+    </div>
+  </div>
+  <div class="wrap branches rise">
+    <div class="branch"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 21h16M6 21V9l6-4 6 4v12"/><path d="M10 21v-6h4v6M9 3v3M15 3v3"/></svg><h3>Oil &amp; Gas Executives</h3>
+      <ul><li>Paid in stock and options the way the industry pays its leaders</li><li>Equity comp, deferred income, commodity-cycle exposure</li><li>Your advisor needs to speak that language fluently</li></ul>
+      <a class="lnk" href="#fit">See how we work with you <span class="arw">→</span></a></div>
+    <div class="branch"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V7h14v14M9 11h2M13 11h2M9 15h2M13 15h2"/></svg><h3>Business Owners</h3>
+      <ul><li>Closely-held company, a transition on the horizon</li><li>Net worth locked inside the business</li><li>The exit conversation should start years before the LOI, not at the closing table</li></ul>
+      <a class="lnk" href="#fit">See how we work with you <span class="arw">→</span></a></div>
+    <div class="branch"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11l9-7 9 7M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg><h3>High-Net-Worth Families</h3>
+      <ul><li>Multi-generational wealth, estate and trust complexity</li><li>A coordinated team that needs a point person</li><li>Your wealth has outgrown the plan it was built for</li></ul>
+      <a class="lnk" href="#fit">See how we work with you <span class="arw">→</span></a></div>
+  </div>
+</section>
+
+<!-- FIT ASSESSMENT -->
+<section class="pad-sm bg-1" id="fit">
+  <div class="wrap fit-grid">
+    <div class="rise">
+      <p class="eyebrow" style="margin-bottom:18px">Fit Check</p>
+      <h2 style="font-size:clamp(28px,3.2vw,42px)">Are we the right fit for you?</h2>
+      <p style="margin-top:16px;font-size:15.5px;color:var(--ink-mute);max-width:44ch">Four questions. Two minutes. We'll tell you honestly whether we can help — and if we can't, we'll point you to someone who can.</p>
+    </div>
+    <div class="fit-card rise">
+      <form class="wiz" action="#" method="post" novalidate>
+        <div class="wiz__head">
+          <span class="wiz__prog-num" data-current-num>01</span>
+          <div class="wiz__segs" data-segs><span class="wiz__seg is-active"></span><span class="wiz__seg"></span><span class="wiz__seg"></span><span class="wiz__seg"></span></div>
+        </div>
+        <fieldset class="wiz__step is-active" data-step="1"><legend>What best describes your situation?</legend>
+          <button type="button" class="opt" data-letter="A" data-next>Oil &amp; gas executive with equity comp</button>
+          <button type="button" class="opt" data-letter="B" data-next>Business owner thinking about a transition</button>
+          <button type="button" class="opt" data-letter="C" data-next>Coordinating wealth across multiple professionals</button>
+          <button type="button" class="opt" data-letter="D" data-next>Something else</button>
+        </fieldset>
+        <fieldset class="wiz__step" data-step="2"><legend>Your approximate investable assets?</legend>
+          <button type="button" class="opt" data-letter="A" data-next>$500K – $2M</button>
+          <button type="button" class="opt" data-letter="B" data-next>$2M – $5M</button>
+          <button type="button" class="opt" data-letter="C" data-next>$5M – $10M</button>
+          <button type="button" class="opt" data-letter="D" data-next>$10M+</button>
+          <div class="wiz__nav"><button type="button" class="wiz__back" data-prev>← Back</button></div>
+        </fieldset>
+        <fieldset class="wiz__step" data-step="3"><legend>Your biggest concern right now?</legend>
+          <button type="button" class="opt" data-letter="A" data-next>Tax coordination — CPA and advisor aren't aligned</button>
+          <button type="button" class="opt" data-letter="B" data-next>Equity comp — RSUs, deferred comp, concentration</button>
+          <button type="button" class="opt" data-letter="C" data-next>Estate &amp; legacy — trusts, beneficiaries, transfer</button>
+          <button type="button" class="opt" data-letter="D" data-next>Business transition — valuation, exit, succession</button>
+          <div class="wiz__nav"><button type="button" class="wiz__back" data-prev>← Back</button></div>
+        </fieldset>
+        <fieldset class="wiz__step" data-step="4"><legend>Where should we send your results?</legend>
+          <input type="email" required placeholder="you@email.com" autocomplete="email">
+          <div class="wiz__nav"><button type="button" class="wiz__back" data-prev>← Back</button><button type="submit" class="btn btn-gold">Get My Fit Assessment <span class="arw">→</span></button></div>
+          <p class="wiz__micro">No spam. No sales pitch. Just an honest answer about whether we're a match.</p>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="pad bg-0" id="services">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <p class="eyebrow">What We Do</p>
+      <h2>One plan. Your CPA and attorney both work from it.</h2>
+      <p>We coordinate your investments, taxes, estate, and business strategy into a single living document — and keep the professionals in your life reading from the same page.</p>
+    </div>
+    <div class="rise" id="svc-accordion">
+      <div class="acc-item is-open"><button class="acc-head" type="button" aria-expanded="true"><span class="acc-n">01</span><span class="acc-title">Coordinated Planning</span><span class="acc-tag">The Core</span><span class="acc-plus" aria-hidden="true"></span></button><div class="acc-body"><div class="acc-body-in"><div class="acc-body-content"><p class="svc-pain">"No one sees the full picture."</p><p>Joint planning meetings with your CPA and estate attorney. One living document all three reference. When a tax move is made, your portfolio reflects it — you stop being the translator.</p></div></div></div></div>
+      <div class="acc-item"><button class="acc-head" type="button" aria-expanded="false"><span class="acc-n">02</span><span class="acc-title">Investment Management</span><span class="acc-tag">Ongoing</span><span class="acc-plus" aria-hidden="true"></span></button><div class="acc-body"><div class="acc-body-in"><div class="acc-body-content"><p class="svc-pain">"My portfolio doesn't fit my actual life."</p><p>Built around your real constraints — vesting schedules, blackout periods, commodity exposure, concentrated positions — not a model allocation. Managed in coordination with your tax strategy, not in isolation.</p></div></div></div></div>
+      <div class="acc-item"><button class="acc-head" type="button" aria-expanded="false"><span class="acc-n">03</span><span class="acc-title">Tax Strategy &amp; Coordination</span><span class="acc-tag">Proactive</span><span class="acc-plus" aria-hidden="true"></span></button><div class="acc-body"><div class="acc-body-in"><div class="acc-body-content"><p class="svc-pain">"Every bonus season feels like a tax trap."</p><p>We sit down with your CPA before year-end — not after. RSU vesting, deferred comp elections, and bonus timing modeled against your real situation. Proactive planning, not reactive prep.</p></div></div></div></div>
+      <div class="acc-item"><button class="acc-head" type="button" aria-expanded="false"><span class="acc-n">04</span><span class="acc-title">Equity Compensation Planning</span><span class="acc-tag">Specialty</span><span class="acc-plus" aria-hidden="true"></span></button><div class="acc-body"><div class="acc-body-in"><div class="acc-body-content"><p class="svc-pain">"My RSUs feel like a trap every year."</p><p>Vesting-schedule modeling, NQDC elections, 10b5-1 plans, blackout-period strategy. A diversification plan that respects your constraints instead of pretending they don't exist.</p></div></div></div></div>
+      <div class="acc-item"><button class="acc-head" type="button" aria-expanded="false"><span class="acc-n">05</span><span class="acc-title">Estate &amp; Legacy Planning</span><span class="acc-tag">Long View</span><span class="acc-plus" aria-hidden="true"></span></button><div class="acc-body"><div class="acc-body-in"><div class="acc-body-content"><p class="svc-pain">"I have real wealth but no plan for after."</p><p>We review existing trusts against your current net worth and coordinate with your attorney to fund them correctly and keep beneficiaries current. Legacy planning as a living process, not a one-time document.</p></div></div></div></div>
+      <div class="acc-item"><button class="acc-head" type="button" aria-expanded="false"><span class="acc-n">06</span><span class="acc-title">Business Owner Planning</span><span class="acc-tag">Transition</span><span class="acc-plus" aria-hidden="true"></span></button><div class="acc-body"><div class="acc-body-in"><div class="acc-body-content"><p class="svc-pain">"I don't know what I'd walk away with."</p><p>We start the exit conversation 3–5 years before the LOI. Entity structure, personal/business separation, pre-sale tax strategy, post-liquidity management. By the time a buyer appears, you're ready.</p></div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="pad bg-1" id="process">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <p class="eyebrow">How It Works</p>
+      <h2>Here's what working with us actually looks like.</h2>
+      <p>No surprise sales process. No pressure. A clear path from your first question to a coordinated plan.</p>
+    </div>
+  </div>
+  <div class="wrap timeline rise">
+    <div class="tl-line" aria-hidden="true"></div>
+    <div class="tl-step step"><span class="tl-marker" aria-hidden="true"></span><div class="tl-num">01</div><h3>Discovery</h3><p>A 30-minute conversation. You tell us about your situation — equity comp, business, family, concerns. We listen and tell you honestly whether we can help.</p><p class="when">30 min · no obligation</p></div>
+    <div class="tl-step step"><span class="tl-marker" aria-hidden="true"></span><div class="tl-num">02</div><h3>Assessment</h3><p>We review your full picture — investments, tax returns, equity documents, estate plan, business interests — and identify the gaps. You get a written assessment either way.</p><p class="when">usually 1–2 weeks</p></div>
+    <div class="tl-step step"><span class="tl-marker" aria-hidden="true"></span><div class="tl-num">03</div><h3>The Plan</h3><p>We build your coordinated plan — the living document — and walk your CPA and estate attorney through it. Everyone reads from the same page.</p><p class="when">you keep this document</p></div>
+    <div class="tl-step step"><span class="tl-marker" aria-hidden="true"></span><div class="tl-num">04</div><h3>Partnership</h3><p>We implement and meet quarterly to keep it current. When equity vests or the cycle turns, we've already modeled it. You stop being the project manager.</p><p class="when">proactive, not reactive</p></div>
+  </div>
+</section>
+
+<!-- PROOF (gold climax) -->
+<section class="pad bg-gold" id="proof">
+  <div class="wrap" style="text-align:center">
+    <p class="eyebrow rise" style="justify-content:center">Proof</p>
+    <h2 class="rise" style="max-width:22ch;margin:18px auto 0">What it sounds like when the pieces finally fit.</h2>
+    <div class="proof-quote rise">
+      <blockquote>"For the first time, my CPA and my advisor are actually talking to each other — I finally feel like someone sees the whole picture."</blockquote>
+      <!-- Illustrative placeholder — replace with a real, FINRA-approved client quote + attribution before launch. -->
+      <p class="note">Illustrative — real client testimonials added before launch.</p>
+    </div>
+    <div class="stats rise" id="stats">
+      <div class="stat"><b class="statn" data-count="10" data-suffix="+">10+</b><span>Years at Merrill Lynch<!-- VERIFY exact --></span></div>
+      <div class="stat"><b>3&#8594;1</b><span>Professionals coordinated into one plan</span></div>
+      <div class="stat"><b class="statn" data-count="1">1</b><span>Living document your whole team shares</span></div>
+      <div class="stat"><b>Quarterly</b><span>Reviews — proactive, never reactive</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- INSIGHTS / CONTENT -->
+<section class="pad-sm bg-1" id="insights">
+  <!-- Chris: ticker read as "in the wrong place" sitting under the heading — moved to bridge
+       directly off the gold Proof section instead. -->
+  <div class="tag-ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <div class="ticker-group"><span>Equity Compensation</span><span>Tax Timing</span><span>Estate Planning</span><span>Business Transitions</span><span>Coordinated Planning</span><span>RSU Vesting</span></div>
+      <div class="ticker-group"><span>Equity Compensation</span><span>Tax Timing</span><span>Estate Planning</span><span>Business Transitions</span><span>Coordinated Planning</span><span>RSU Vesting</span></div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="sec-head rise" style="margin-bottom:clamp(28px,3.4vw,42px)">
+      <p class="eyebrow">Insights</p>
+      <h2 style="font-size:clamp(24px,2.8vw,34px)">Not ready to talk yet? Start here.</h2>
+      <p>Coordinated-planning insights for Houston executives, owners, and families — articles and conversations from Anchor.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="insights-split rise">
+      <div class="insight-featured">
+        <span class="insight-tag">Podcast</span>
+        <h3>What &quot;Coordinated Planning&quot; Actually Looks Like</h3>
+        <p>A conversation on what changes when your CPA, attorney, and advisor read from the same plan — recorded with Houston-area professionals who've been through it.</p>
+        <span class="insight-cta">Listen — coming soon <span class="arw">→</span></span>
+      </div>
+      <div class="insight-supporting">
+        <div class="insight-sm"><span class="insight-tag">Article</span><h3>How RSU Vesting Creates a Tax-Timing Trap</h3><p>Equity comp is how the energy industry pays its leaders — and how generalist advisors miss the timing.</p></div>
+        <div class="insight-sm"><span class="insight-tag">Article</span><h3>The Exit Conversation Should Start Years Before the LOI</h3><p>Why business owners who wait until an offer arrives leave money and options on the table.</p></div>
+      </div>
+    </div>
+    <p class="insight-note rise">Illustrative topics — Anchor's content library launches with real articles and episodes before the site goes live.</p>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="pad bg-0 final" id="start">
+  <div class="wrap">
+    <p class="eyebrow rise" style="justify-content:center">The first call is just a conversation</p>
+    <h2 class="rise" style="margin-top:18px">You've been the project manager <em>long enough.</em></h2>
+    <p class="rise">If your CPA and your advisor aren't reading from the same plan, you're doing the work your wealth manager should be doing. Thirty minutes. No pitch. We'll tell you honestly whether we're a fit.</p>
+    <div class="hero__ctas rise">
+      <a class="btn btn-gold btn-magnetic" href="#fit">Schedule a 30-Minute Conversation <span class="arw">→</span></a>
+      <a class="btn btn-ghost" href="#fit">Take the 4-Question Fit Check</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand"><b>Anchor</b><em>"Charting the course toward your financial legacy."</em><p style="margin-top:14px">Houston-based wealth management for oil &amp; gas executives, business owners, and high-net-worth families.</p></div>
+      <div><h4>Explore</h4><a href="#serve">Who We Serve</a><a href="#services">Services</a><a href="#process">Process</a><a href="#insights">Insights</a><a href="#fit">Fit Check</a></div>
+      <div><h4>Specialties</h4><a href="#services">Coordinated Planning</a><a href="#services">Equity Compensation</a><a href="#services">Estate &amp; Legacy</a><a href="#services">Business Transition</a></div>
+      <div><h4>Contact</h4><p><span class="ph-dark">Phone — VERIFY</span></p><p><span class="ph-dark">Email — VERIFY</span></p><p>Houston, TX</p></div>
+    </div>
+    <p class="foot-legal">
+      <!-- COMPLIANCE: Required before launch — confirm entity name + registration with Alex. -->
+      <span class="ph-dark">[Entity name] — VERIFY registration &amp; required disclosures.</span> Information presented is for educational purposes only and does not constitute an offer or solicitation to buy or sell any security or investment strategy. Investments involve risk and are not guaranteed. Past performance is not a guarantee of future results.<br><br>
+      © 2026 Anchor Wealth Planning. All rights reserved.
+    </p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/DrawSVGPlugin.min.js"></script>
+<script>
+  document.documentElement.classList.add('js');
+  (function(){
+    var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduce||!('IntersectionObserver' in window)){document.querySelectorAll('.rise').forEach(function(e){e.classList.add('in');});}
+    else{var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+      document.querySelectorAll('.rise').forEach(function(e){io.observe(e);});
+      document.querySelectorAll('.hero .rise').forEach(function(el,i){setTimeout(function(){el.classList.add('in');},100+i*90);});}
+    var nav=document.getElementById('nav');addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>40);},{passive:true});
+
+    // hero mesh-gradient drift (Primitive 4) — desynchronized durations so blobs breathe, not pulse in unison
+    if(window.gsap && !reduce){
+      document.querySelectorAll('.mesh-blob').forEach(function(b,i){
+        gsap.to(b,{xPercent:(i%2?-12:12),yPercent:(i%2?10:-10),scale:1.12,duration:10+i*2.6,ease:'sine.inOut',repeat:-1,yoyo:true});
+      });
+    }
+
+    // magnetic buttons (T2.2)
+    if(window.gsap && !reduce){
+      document.querySelectorAll('.btn-magnetic').forEach(function(btn){
+        var xTo=gsap.quickTo(btn,'x',{duration:.4,ease:'power4.out'}), yTo=gsap.quickTo(btn,'y',{duration:.4,ease:'power4.out'});
+        btn.addEventListener('mousemove',function(e){var r=btn.getBoundingClientRect();xTo((e.clientX-r.left-r.width/2)*.3);yTo((e.clientY-r.top-r.height/2)*.3);});
+        btn.addEventListener('mouseleave',function(){gsap.to(btn,{x:0,y:0,duration:.6,ease:'elastic.out(1,0.35)'});});
+      });
+    }
+
+    // hero diagram lines draw on load (T2.5, DrawSVG) — decorative, aria-hidden, degrades to static fully-drawn.
+    // Same rAF-stall safety net as above.
+    if(window.gsap && window.DrawSVGPlugin && !reduce){
+      gsap.registerPlugin(DrawSVGPlugin);
+      var twL=gsap.from('.dg-line',{drawSVG:'0%',duration:1.1,ease:'power2.inOut',stagger:.22,delay:.3});
+      var twN=gsap.from('.dg-node',{opacity:0,scale:.85,duration:.6,ease:'back.out(1.6)',stagger:.22,delay:.5,transformOrigin:'center'});
+      setTimeout(function(){ if(twL.progress()<1) twL.progress(1); if(twN.progress()<1) twN.progress(1); },1800);
+    }
+
+    // 3D tilt on ICP cards (T2.3) — perspective on the PARENT, not the card
+    if(window.gsap && !reduce && matchMedia('(hover:hover)').matches){
+      document.querySelectorAll('.tilt-parent').forEach(function(p){ p.style.perspective='900px'; });
+      document.querySelectorAll('.tilt-card').forEach(function(card){
+        var xTo=gsap.quickTo(card,'rotateX',{duration:.25,ease:'power2.out'}), yTo=gsap.quickTo(card,'rotateY',{duration:.25,ease:'power2.out'});
+        card.addEventListener('mousemove',function(e){var r=card.getBoundingClientRect();var x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;xTo(-y*6);yTo(x*6);});
+        card.addEventListener('mouseleave',function(){gsap.to(card,{rotateX:0,rotateY:0,duration:.7,ease:'elastic.out(1,0.4)'});});
+      });
+    }
+
+    // services accordion — only one open at a time; height animates via grid-template-rows (CSS handles
+    // the no-JS/no-motion floor since .acc-item.is-open is set server-side on item 1, not JS-gated)
+    (function(){
+      var wrap=document.getElementById('svc-accordion'); if(!wrap) return;
+      var items=[].slice.call(wrap.querySelectorAll('.acc-item'));
+      function openItem(item){
+        if(item.classList.contains('is-open')) return;
+        items.forEach(function(i){ i.classList.remove('is-open'); i.querySelector('.acc-head').setAttribute('aria-expanded','false'); });
+        item.classList.add('is-open'); item.querySelector('.acc-head').setAttribute('aria-expanded','true');
+      }
+      // manual click still works — lets someone jump straight to a service without scrolling
+      wrap.addEventListener('click',function(e){
+        var btn=e.target.closest('.acc-head'); if(!btn) return;
+        var item=btn.closest('.acc-item'); var wasOpen=item.classList.contains('is-open');
+        items.forEach(function(i){ i.classList.remove('is-open'); i.querySelector('.acc-head').setAttribute('aria-expanded','false'); });
+        if(!wasOpen) openItem(item);
+      });
+      // Chris: auto-open as you scroll through — the item nearest viewport-center expands itself
+      if('IntersectionObserver' in window){
+        var io=new IntersectionObserver(function(entries){
+          entries.forEach(function(entry){ if(entry.isIntersecting) openItem(entry.target); });
+        },{rootMargin:'-42% 0px -42% 0px',threshold:0});
+        items.forEach(function(item){ io.observe(item); });
+      }
+    })();
+
+    // multi-step fit form
+    (function(){var f=document.querySelector('.wiz');if(!f)return;var steps=[].slice.call(f.querySelectorAll('.wiz__step')),curNum=f.querySelector('[data-current-num]'),segs=[].slice.call(f.querySelectorAll('[data-segs] .wiz__seg')),i=0;
+      function show(n){steps.forEach(function(s,k){s.classList.toggle('is-active',k===n);});i=n;if(curNum)curNum.textContent=String(n+1).padStart(2,'0');segs.forEach(function(seg,k){seg.classList.toggle('is-active',k===n);seg.classList.toggle('is-done',k<n);});var lg=steps[n].querySelector('legend');if(lg){lg.tabIndex=-1;lg.focus({preventScroll:true});}}
+      f.addEventListener('click',function(e){if(e.target.matches('[data-next]'))show(Math.min(i+1,steps.length-1));else if(e.target.matches('[data-prev]'))show(Math.max(i-1,0));});
+      f.addEventListener('submit',function(e){e.preventDefault();var em=f.querySelector('input[type=email]');if(em&&!em.checkValidity()){em.reportValidity();return;}f.innerHTML='<p style="font-family:var(--sans-d);font-weight:400;font-size:22px;color:var(--cream-ink);text-align:center;padding:26px 0">Thank you. We\'ll be in touch within one business day.<br><span style="font-size:14px;font-family:var(--sans-b);color:var(--cream-ink-soft)">(Demo — no data submitted.)</span></p>';});
+      show(0);})();
+
+    // proof stats — count up + blur-to-sharp when scrolled into view (T2.4)
+    (function(){
+      var row=document.getElementById('stats'); if(!row) return;
+      if(reduce||!('IntersectionObserver' in window)) return;
+      var ran=false;
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){
+        if(!e.isIntersecting||ran) return; ran=true;
+        row.querySelectorAll('.statn[data-count]').forEach(function(el){
+          var target=parseFloat(el.dataset.count), suf=el.dataset.suffix||'', t0=null, dur=1400, done=false;
+          function finish(){ if(done) return; done=true; el.textContent=target+suf; el.style.filter='none'; }
+          function tick(ts){ if(!t0)t0=ts; var p=Math.min((ts-t0)/dur,1), ease=1-Math.pow(1-p,3);
+            el.textContent=Math.round(target*ease)+suf; el.style.filter='blur('+((1-ease)*6).toFixed(1)+'px)';
+            if(p<1) requestAnimationFrame(tick); else finish(); }
+          requestAnimationFrame(tick);
+          // rAF-stall safety net (same class of risk as the hero — see LED-004): never leave a stat stuck mid-count.
+          setTimeout(finish,2200);
+        });
+      });},{threshold:.45});
+      io.observe(row);
+    })();
+  })();
+</script>
+</body>
+</html>

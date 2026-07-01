@@ -1,21 +1,193 @@
 # Website Factory — Status
-Last updated: 2026-07-01 (Anchor WARM homepage built + verified; next = two more genuinely-different design styles, then finalize/deploy)
+Last updated: 2026-07-01 (LATE SESSION — Maven-method build shipped as the gold-standard exemplar; copy dialed to the ICP research; **codification VALIDATED via a cold-build test** (Kindred, physician vertical). Direction locked: build a **Pack Library** catalog + use **Fable** to author Packs so any/lower-tier LLM can execute them. See "WHERE WE ARE + NEXT DIRECTION" below.)
 
 > **Standing instruction (Chris, 2026-07-01):** update this status doc with EVERY learning lesson, each session, for the next session. The "Learnings" section below is append-only memory.
 
 ---
 
-## ▶ NEXT SESSION — Two MORE design styles + finalize/deploy the Warm page (start here)
+## ▶ WHERE WE ARE + NEXT DIRECTION (2026-07-01, late session)
 
-**Where we are:** the full Anchor **WARM homepage is BUILT + verified** — `projects/awp/build/warm-home.html`. Hand-built to the approved-hero bar, color-diverse (navy hero → cream → navy → cream → cream-mid → cream → cream-mid → **gold proof** → navy CTA → deep-navy footer), corrected copy (leads on coordinated planning; ALL fiduciary/fee-only/RIA claims removed → `[VERIFY]`), honest pending placeholders, gate 0 P0. Hero: Ken Burns + family/energy/city crossfade, 6px buttons. Proof: centered testimonial moment + scroll count-up. Fit-form fieldset border fixed. Chris has iterated it live and is largely happy.
+### ✅ DONE this session
+- **Maven-method build shipped:** `projects/awp/build/maven-home.html` — built by measuring mavenclinic.com LIVE (real computed CSS) and retinting to Anchor. Chris's verdict: strongest of the three AWP homepages → **this is now the gold-standard exemplar ("the main piece").** Language signature: light-SANS-300 display + serif-italic accent phrase · flat NO-shadow radius-8 cards · ONE saturated accent moment · mostly-light tonal map (the "too dark" fix). Distinct from `warm-home.html` (serif-everywhere) and paused `dark-home.html` ("too dark", stays paused, not deleted).
+- **Copy dialed to the ICP research** (RMBC via `research/ICP_BRIEF.md`): named-pain hero, mechanism crystallized ("one living plan"), insider fluency, compliance overlay (ALL fiduciary/fee/regulatory claims → `[VERIFY]`; Alex's registration undetermined → also picks the SEC-Marketing-Rule vs FINRA-2210 regime). Copy is "fine, not the focus" per Chris.
+- **CODIFICATION VALIDATED — the big result.** Extracted the exemplar into the first **Design Language Pack**: `templates/packs/warm-premium.pack.md` (retintable token ROLES + tested global CSS + per-section composition map + register invariants + ship gate; core rule = **retint the colors, keep the numbers**). Ran a **COLD-BUILD TEST**: a fresh agent, walled off from the exemplar + all prose docs, built `projects/_coldtest/kindred/index.html` from ONLY the Pack + a brief — different vertical (physicians), brand (forest-green/brass), fonts (Hanken/Newsreader). Independently verified (0 shadowed cards/21, exactly 1 accent section, sans-300 + serif-italic accent, AA-clean, no overflow). **Chris: "pretty happy… some aspects better than the hand-built one"** (hero + ICP images better; reads as its own brand, not a clone). Proof that quality lives in the measured Pack, reproducible cold.
+
+### ▶ THE DIRECTION (Chris, this session)
+1. **Elevate the sections.** The Maven language is "high quality but very simple" (Maven itself is restrained). Elevation = measure RICHER references into Packs + give each section more sophisticated composition options (asymmetry, layering, editorial detail, intentional motion). Same move as building the catalog.
+2. **Build the catalog = a "Pack Library"** (`templates/packs/`), one measured Pack per Chris-approved reference. Raw material already curated in `docs/REFERENCES.md` (BetterUp ⭐, Maven ⭐, Modern Health, Facet, Wealthspire, Work.co, Instrument + Stripe/Zoom/Stashwealth/Pictet/Hoare's/Pitch). Today they're PROSE bookmarks; the job is to MEASURE each into a Pack. (Working name **"Pack Library"** — confirm w/ Chris.)
+3. **The Fable strategy (the core process design).** Use the top model (**Fable 5**) as the **Pack-author / design-director** — the taste-heavy work: measuring references, authoring Packs, composition/mapping/elevation decisions, curating the catalog. LOWER-tier LLMs are the **executors** — assemble from Pack + retint + drop copy (the cold test showed a general agent can). Net: **the capable model encodes taste ONCE into the Pack; any/cheap LLM executes it** = "plug into any LLM." Mechanism: spawn Fable agents (`model:'fable'`) for authoring/hardening; validate execution on Haiku/Sonnet.
+
+### ▶ NEXT STEPS (ordered)
+1. **Harden Pack → v1.1 (Fable as design-director)** — Chris's Kindred review + the cold agent's flagged gaps: kill the "odd" wave motif → meaningful coordination-mark or cut; **promote the Fit-assessment to a standout "mini-hero"** (it's the #1 conversion event but reads as a plain box — inconsistent fonts, low weight); proof moment = deepen accent + cream/light text (Chris dislikes "green on gold"; also fixes 4.51:1); elevate insights (featured item vs 3 equal); bake in imagery direction (warm/human, avoid clinical), no-JS form fallback, bento dark-card spec, an icon set.
+2. **Elevate the composition vocabulary (Fable)** — richer section options in the Pack (BetterUp "next-level" section rhythm; Instrument scroll-color; editorial/asymmetric layouts).
+3. **Measure the next 1–2 references into Packs (Fable)** — e.g. dark-confident (Stashwealth) + restrained-editorial (Pictet), so the library has ≥3 distinct languages.
+4. **Re-run the cold test on a LOWER-tier model** (Haiku/Sonnet) from the hardened Pack — proves the taste survives in the Pack = truly plug-into-any-LLM.
+5. **Only after 1–4 pass:** demote the prose-generation docs. KEEP: the 9-section skeleton, the QA gate (`qa/visual-checks.js`), the tested code primitives.
+
+---
+
+## ✅ EXECUTED 2026-07-01 — the Maven-replication build prompt (done; see outcome above)
+
+**Where we are RIGHT NOW:** `projects/awp/build/dark-home.html` (Dark Precision / Style 3) went through FOUR rounds of real feedback (critique-agent → Chris round 2 → Chris round 3 → Chris round 4) and individual fixes each time, but Chris's cumulative verdict is that it doesn't cohere ("elements are high quality, but overall it doesn't meet my mark") and **"too dark" came up at nearly every single round** — the hero, the fit-assessment section's background, and finally the whole page. That's not noise; it's the clearest signal in four rounds. Continuing to patch Dark Precision is paused, not abandoned — **the file stays as-is, do not delete it.**
+
+**The pivot:** rather than a 5th patch round, Chris wants to test a different METHOD entirely — high-fidelity component replication from a specific reference (mavenclinic.com, chosen over Zoom specifically because it's Chris's own zero-caveat favorite in `docs/REFERENCES.md`), extracting real computed CSS values instead of building from an abstracted impression. This directly answers a question Chris raised earlier in the same session ("what if I said pull all components from Zoom and replicate for wealth brand X") — we proved the concept works on one component (Stashwealth's real button/shadow values, applied to the fit-card) and now it's the primary method for a full build, not a one-off trick.
+
+**Known risk going in (flagged to Chris, he chose to proceed anyway):** Maven is warm/light/human-photography register — it's already one of Warm's OWN reference sites. Real chance this build converges toward something close to `warm-home.html` rather than landing as a genuinely distinct third option. The prompt below explicitly instructs the next session to check for that and report it honestly rather than let Chris discover it.
+
+### ▶ Ready-to-run prompt for the Maven-replication session
+Paste this into a new session (or continue in this one if Chris says to just run it here):
+
+```
+Continue website-factory work (repo: ~/Documents/Claude Projects/website-factory).
+
+First read, in order: STATUS.md (especially the "Round 3"/"Round 4" and mesh-gradient/fit-card
+sections), CLAUDE.md, qa/LEDGER.md (especially LED-011 and LED-012), docs/REFERENCES.md.
+
+CONTEXT: We built a second homepage style ("Dark Precision," projects/awp/build/dark-home.html)
+through many rounds of section-by-section reactive feedback. It has good individual pieces but
+doesn't cohere, and "too dark" came up as a complaint at nearly every stage — hero, a form
+section's background, and the overall verdict. I'm not confident patching it further will fix
+that. This session replaces it with a different METHOD, not just another patch.
+
+THE METHOD (this is the actual point of this session — read carefully, don't skip):
+Build a new AWP homepage style by replicating mavenclinic.com's actual design components at
+HIGH FIDELITY — meaning you inspect the live site and extract real computed CSS values, not
+values you approximate from memory or a general impression of "looks like Maven."
+
+Concretely, for hero layout, buttons, cards, spacing scale, shadows, type scale, section padding
+rhythm, and hover/transition timing: open mavenclinic.com in a browser (Claude_Preview or
+claude-in-chrome tools), and read the ACTUAL computed style via JS (getComputedStyle in
+preview_eval / javascript_tool) for the real elements — not a guess. Record exact px values,
+exact easing curves, exact border-radius, exact shadow stacks, exact font-size/weight/tracking.
+Then reuse those exact measured numbers in the build, retinted to Anchor's brand (gold #c9a24b,
+navy #1e395a) and rewritten with Anchor's copy. Don't take "inspiration" and then improvise your
+own numbers — copy the numbers, change the paint and the words.
+
+Worked example of what this looks like, from earlier this session (stashwealth.com's real
+button): padding 17.8px 23.7px, border-radius 0px, box-shadow none, font Poppins 11.9px/600/
+uppercase/0.95px tracking, transition opacity 0.1s linear. That's the level of specificity to
+extract — not "a clean flat button with bold uppercase text."
+
+Where Maven has no equivalent to a section we need (it doesn't have pain-validation, ICP
+self-sort, or fit-assessment sections), build that section's layout using Maven's established
+visual language (its card style, spacing rhythm, type scale) — don't fall back to generic
+defaults for the sections it doesn't have an analog for.
+
+KEEP UNCHANGED (already correct, not what this session is testing):
+- The 9-section conversion skeleton + `#insights` — copy verbatim from dark-home.html or
+  warm-home.html in projects/awp/build/ (same sections, same copy, same positioning).
+- The multi-step fit-assessment form's MECHANISM (Primitive 2 in COMPONENTS.md) — restyle its
+  appearance to match Maven's component language, don't rebuild its interaction logic.
+- Never fabricate stats/testimonials/credentials — mark unconfirmed claims `[VERIFY]`.
+
+RISK TO WATCH: Maven is warm/light/human-photography register — one of Warm's own reference
+sites already. There's a real chance this converges toward something close to warm-home.html
+rather than reading as a genuinely different third option. Before showing me, compare your
+result side-by-side against warm-home.html and tell me honestly whether it's actually distinct
+or whether it landed too close — don't let that discovery be mine to make.
+
+BUILD AS: `projects/awp/build/maven-home.html` — a new file. Leave dark-home.html as-is (paused,
+not deleted).
+
+VERIFY every section in a real browser before showing me — geometry, contrast, no overflow,
+console clean. STATUS.md's "Tooling gotchas" notes (screenshot blanks at nonzero scrollY,
+viewport resets to 0×0 after reload, IntersectionObserver/rAF suppressed in backgrounded tabs)
+will save you time — read them before you hit the same walls fresh.
+
+Build the hero first, verified, and show me before building the rest of the page.
+```
+
+---
+
+## Dark Precision — history (rounds 1–4, paused 2026-07-01)
+
+*Everything below is how we got here — useful context for whoever picks this back up, not the current TODO. The current TODO is the Maven prompt above.*
+
+### Round 2 — Chris's live feedback (2026-07-01, after seeing it in his browser)
+Chris: high quality, great layout, BUT (1) too dark — not enough light sections/accents, (2) the Insights section specifically doesn't stand out, (3) wants more animation — "the highest quality websites have really good animations", and most importantly (4) **"this is pretty much the exact same layout as Warm... I don't want to fall into a rut... I feel like that creativity was not exercised."**
+
+**(4) is the one that matters most going forward.** Auditing honestly: out of ~10 sections, only Hero and (post-critique-repair) Why-Anchor/Process had genuinely different composition from Warm — Pain, ICP, Services, Insights were Warm's exact layout skeleton, just recolored. Root cause: **I never consulted `templates/editorial-luxury/SECTION_PATTERNS.md`** — the doc that exists specifically to prevent this (3–4 different layout patterns per section, e.g. Services has Numbered-Editorial / Outcome-Cards / Accordion). I mentally cloned Warm section-by-section instead of choosing. **Standing rule for every future style build, starting with Style 2: open SECTION_PATTERNS.md and deliberately pick a DIFFERENT pattern per section than whatever the other existing style(s) already used.** Don't rely on token/color/motion differences alone to carry "genuinely different" — composition has to actually vary.
+
+**Fixes applied (all four Chris points), using the pattern library properly this time:**
+- **Pain:** Editorial Stack (2B, same as Warm) → **Ticker + Cards (2A)** — a continuous CSS marquee of short pain-phrases, then a 4-card row (was 4 stacked full-width rows). Immediate motion right after the hero.
+- **Why Anchor:** kept the horizontal-strip layout from round 1, but made it a **genuine light cream band** (`--cream`/`--cream-ink` tokens, reused verbatim from Warm — a deliberate cross-style thread) — a real tonal break, not another gold accent. This is the "too dark" fix.
+- **ICP:** Profile Cards (3A, same as Warm) → **Segment Branches (3C)** — vertical paths with dividers instead of boxed cards.
+- **Fit Check card:** made the card itself **light/cream** instead of dark — the one place you take action is now the one bright surface on the page. (Second "too dark" fix.)
+- **Services:** Numbered Editorial (5A, same as Warm) → **Accordion (5C)** — click to expand, only one open at a time, height-animated via `grid-template-rows: 0fr→1fr` (no JS height measuring needed). Real interactivity, not just a hover state.
+- **Insights** (the section Chris named directly): rebuilt from 3 equal boxes into a moving topic ticker + an asymmetric **featured/supporting split** (one large item, two compact ones) — the section had no energy before; this gives it both motion and hierarchy.
+- Caught and fixed one real bug while doing this: `.cred h3` (an old rule) and `.bg-cream h3` had **identical CSS specificity**, so the old dark-mode color was winning the cascade and the credential headings were rendering near-invisible on the new cream background. Verified via contrast math (was fine everywhere else — this was the one collision).
+
+**Still true from round 1 (not re-litigated, still valid):** the diagram-size/section-rhythm/gold-ramp/scale fixes from the independent critique (LED-011, LED-012 tooling lessons) all still stand — round 2 built on top of them, didn't replace them.
+
+### Round 3 — Chris's live walkthrough after round 2 (same session, 2026-07-01)
+Section-by-section as he scrolled: hero graphic "pretty good"; hero bg "too intense and dark," text "hard on the eyes"; ticker "I like"; the 4 pain cards "not great... underperforming"; the light Why-Anchor section "nice," wants animation on it; Who-We-Serve "nice, I like the icons"; Fit card contrast against dark "doesn't really work"; Services accordion "I like this," wants it to auto-open on scroll; Proof gold gradient "looks good... has some depth," but still "too much dark" overall; Insights ticker liked but "in the wrong place" (should bridge off the gold section, not sit under the heading).
+
+**Fixes applied:**
+- **Hero bg:** flat `#0A0A0A` → a layered radial gradient (warm dark tone seeming to emanate from the diagram, top-right, plus a soft second glow bottom-left) — richer, less flat, addresses both the "intense" bg and (indirectly) the "hard on the eyes" text.
+- **Pain cards:** numerals bumped from 15px → 38–50px (now matching the Process timeline's oversized-numeral scale) + a subtle `--bg2→--bg1` gradient instead of a flat fill. These were the one section left visually thin after the round-2 rework.
+- **Why Anchor:** restored small line-icons (removed during the round-2 strip conversion) with a scale+fade entrance — piggybacks on the already-proven `.rise.in` trigger rather than an independent tween, so no LED-011-class risk (purely decorative; text unaffected if it never fires).
+- **Fit card:** flat cream fill → a soft radial gradient (white → cream → warm cream) + an added warm ambient glow in the box-shadow, so it reads as an integrated, designed surface bridging into the dark background rather than a hard cutout. Same "depth" quality Chris liked on Proof, applied here.
+- **Services accordion:** now auto-opens the item nearest viewport-center as you scroll (IntersectionObserver, `rootMargin:-42%/-42%`), closing the previous one — manual click still works too, for jumping around.
+- **Insights ticker:** moved from between the heading and the content split to the very top of the section, immediately adjacent to Proof — now reads as a deliberate bridge off the gold climax instead of a stray element under the heading.
+- Structural bug caught and fixed while moving the ticker: a leftover pair of closing `</div>` tags from the old position — verified full page still renders/parses clean after.
+
+**Verification note:** confirmed `IntersectionObserver` callbacks are ALSO suppressed in this session's backgrounded verification tab (not just `requestAnimationFrame`, per LED-011) — a fresh, isolated test observer never fired despite the target element being demonstrably centered in the viewport. Not treated as a real bug: this project's existing `.rise` scroll-reveal system uses the identical API and is already confirmed working for Chris in his real (focused) browser, so the accordion's auto-open logic was verified by direct invocation instead (bypassing the observer) and shipped with reasonable confidence rather than blocked on an unfalsifiable-in-this-harness test.
+
+### Round 4 — animations confirmed working, but two misses + the real diagnosis (same session, 2026-07-01)
+Chris confirmed round 3's scroll-triggered accordion animation actually works in his real browser (resolves the round-3 verification caveat above). New feedback: hero mesh "still isn't great," wants actual motion not just a richer static gradient; fit-card gradient direction ("this image still looks odd" — a radial spotlight, screenshot attached); process concern about the whole methodology ("requiring quite a bit from me... haven't utilized the website examples well" — the "pull all components from Zoom" question, answered in-chat and partly demonstrated live, see below).
+
+**Fixes applied:**
+- **Hero:** upgraded from a static layered gradient to `COMPONENTS.md` Primitive 4 (animated mesh-gradient) properly assembled — 3 GSAP-drifted blobs, `screen` blend mode (the primitive's own dark-hero note, not `multiply`), opacity/blur tuned per LED-007's lesson so it reads as color, not haze. Verified the tween registers correctly via `gsap.getTweensOf()` — `getAnimations()` doesn't see GSAP JS-tweens, a distinct check from the CSS-`@keyframes` scrubbing technique used elsewhere.
+- **Fit-card gradient:** radial "spotlight" (bright point outside the card's own bounds) → linear `155deg` sweep, same angle as the Proof section's already-approved gradient, so the two "depth" surfaces read as one deliberate family instead of two improvised effects.
+- **Methodology tangent, resolved in-chat, informed the eventual pivot:** Chris asked what would happen if he said "pull all components from Zoom and replicate for wealth brand X." Answered directly (would reduce iteration, real tradeoff is Zoom has no equivalent to our conversion-structure sections + originality risk from cloning one live competitor's implementation too literally) and then **proved the concept concretely** rather than just discussing it: extracted stashwealth.com's actual button CSS and a real card-elevation shadow (`0 40px 80px rgba(0,0,0,.15)`) via live computed-style inspection, and applied the extracted shadow curve to the fit-card. This is the moment that seeded the eventual full pivot below.
+- **Tab-confusion diagnostic:** Chris said "I don't see the changes" after the mesh/shadow fixes. Used `computer-use` (screenshot, read-tier access) to look at his actual screen — found 5 near-identical "Anchor Wealth Plan" tabs open (accumulated across the session), only the frontmost had the update. Not a code bug; a browser-hygiene issue. Told him to close the duplicates and hard-refresh going forward.
+
+### Round 4b — the fit-card's THIRD miss revealed the actual bug (same session, 2026-07-01)
+Chris, after confirming animations work: "you didn't change the form section really." Three rounds of feedback on this element had all been reacting to the CARD WRAPPER (color → radial gradient → linear gradient → shadow), but the ACTUAL FORM CONTENT — the answer buttons, the progress bar — had been the exact same generic bordered-box styling since the very first build. That's the real diagnosis: polishing the frame while the picture never changed. Fixed the actual form: progress bar → a bold gold numeral (`01`–`04`, matching the page's own Process/Pain numeral scale) + four segmented fill-bars instead of a generic loading bar; answer buttons → lettered circle badges (A/B/C/D) + bottom-rule instead of default bordered boxes, with the same left-reveal hover accent used on the pain/ICP cards. Verified the step-advance logic (numeral text, segment fill state) via direct function calls, not just visual inspection.
+
+**Chris's response to the fixed form:** confirmed the form itself is now good. But: hero mesh "isn't great... too dark," fit-card's surrounding dark section background "doesn't work" ("the whole thing looks a bit odd"), and a holistic verdict — "there's elements that are high quality, but overall it doesn't meet my mark... not sure what to do from this point." **"Too dark" is now a pattern across four separate rounds** (hero twice, the fit-section background, the overall verdict) — see the pivot decision at the top of this file.
+
+### What's built in Dark Precision (`dark-home.html`)
+- Dials: Tone=`dark`·Density=`dense`·Motion=`expressive`·Type=`modernist-sans` (Cabinet Grotesk/Switzer)·Visual=`graphic-system`. Near-black base (`#0A0A0A`/`#141414`/`#1C1C1C` elevation steps), Anchor's gold as a continuous accent (not one drenched zone).
+- **Signature moment:** animated SVG "coordination graph" hero — 3 outer nodes (Your CPA / Your Attorney / Your Portfolio) connecting to a center "ONE PLAN" node, DrawSVG line-draw + native-SVG traveling dots + a continuous CSS glow pulse on the center node. Literalizes Anchor's actual differentiator instead of a generic icon.
+- **Proof section is the gold climax** — inverts Warm's pattern: everywhere else is dark/gold-accented, Proof alone is a full bright-gold drench (`linear-gradient(155deg,#dcb965,#c9a24b,#a8823a)`) with near-black text, checked at 5.6–10.5:1 across the whole gradient by hand (automated checker can't see gradients — don't trust it for this section).
+- Fit Check carries the same `fitpulse` gold-ring reveal built for Warm this session (see below), retokenized to this file's dark palette.
+
+### Independent critique verdict (full report in the session — condensed here) + repairs made
+The critique's verdict was **"needs work,"** citing 4 real, specific defects (not nitpicks) — all four were fixed and re-verified this session:
+1. **Hero diagram was too small/generic** (300×300px, ~5% of hero area, flat 0.55-opacity lines, thin dark nodes indistinguishable from a stock "how it works" icon, static after the initial draw). → Enlarged to 640×640px (grid ratio flipped to `.92fr 1.08fr` to give it the room), lines bumped to opacity `.9`/`stroke-width:2`, outer nodes got a gold-tinted ring, center node got a continuous `dg-glow` CSS pulse so it never goes fully static.
+2. **Section-rhythm repetition — Why-Anchor and Who-We-Serve, adjacent, shared the identical "eyebrow→h2→intro→N-col card grid" skeleton** (a direct PART 10 "no two adjacent sections share a layout" violation). → Why-Anchor rebuilt as a horizontal hairline-divided **strip** (numbered `01–04`, no boxes) — genuinely different composition from ICP's boxed cards, not a recolor.
+3. **Gold had no ramp before the Proof climax** — "black, black, black, then suddenly full gold." → Added a compact radial gold wash behind the Fit Assessment card (`#fit{background:radial-gradient(62% 95% at 72% 50%,rgba(var(--gold-rgb),.12),var(--bg1) 62%)}`) as a mid-page step.
+4. **"Dense" read as small/spec-sheet, not confident precision** — no oversized-scale moment outside the gold section. → Process rebuilt as a connected **timeline** (hairline + gold dot markers, echoing the hero diagram's line motif) with big **bold gold numerals** (`01–04` at up to 58px) — deliberately full-color, not watermark-opacity (LED-008's lesson: a counterweight needs ink, not just size).
+
+Critique also cleared some false alarms worth knowing about: nav-on-gold contrast (fine — the scroll scrim handles it on any real scroll), stat counters "stuck mid-blur" (was a stale-screenshot timing artifact — the safety-net fix, below, actually works), and uniform 6px border-radius (deliberate systemization for this register, not slop).
+
+### Two things caught during the build that are bigger than this one page — logged as `qa/LEDGER.md` LED-011 and LED-012
+- **LED-011:** `gsap.from()`-based reveals (SplitText hero headline, DrawSVG diagram) can get stuck **permanently invisible** if `requestAnimationFrame` stalls (confirmed live: backgrounded browser tab, `gsap.ticker` barely advancing) — not just a verification-tooling artifact, a real gap in the "animate hero on load" pattern COMPONENTS.md already documents. Fixed here (dropped SplitText from the hero entirely in favor of the already-proven `.rise` CSS-transition system; added a `setTimeout`-forced-completion safety net to the diagram tweens and the proof stat-counters). **Still open:** COMPONENTS.md Primitive 3's contract should be formally extended to require this safety net on any future `gsap.from()`-gated reveal — not yet written back, flagged for next session.
+- **LED-12:** `--ink-mute`-style **alpha-blended** "muted text" tokens fail real contrast math even when a naive automated check says they're fine (checked ~16.6:1, actual blended value was ~3.6:1 — a genuine AA failure). This is the same defect class as the never-fixed **open doc tension #6** (`--text-muted` failing AA on light `--bg-base`, logged during the Field build) now confirmed on the dark side too. Fixed here (`--ink-mute` alpha `.42→.58`). **Still open:** fix the light-mode token the same way, and get a proper alpha-blending contrast checker into the QA toolkit — the naive version is worse than no check.
+
+**Where we are:** the full Anchor **WARM homepage is BUILT + verified** — `projects/awp/build/warm-home.html`. Hand-built to the approved-hero bar, color-diverse (navy hero → cream → navy → cream → cream-mid → cream → cream-mid → **gold proof** → navy CTA → **cream-mid insights** → deep-navy footer), corrected copy (leads on coordinated planning; ALL fiduciary/fee-only/RIA claims removed → `[VERIFY]`), honest pending placeholders, gate 0 P0. Hero: Ken Burns + family/energy/city crossfade, 6px buttons. Proof: centered testimonial moment + scroll count-up. Fit-form fieldset border fixed. Chris has iterated it live and is largely happy.
+
+**Added this session:** an Insights/Resources section (`#insights`, between Final CTA and Footer) — 3 illustrative article/podcast teaser cards + an honest "illustrative topics" disclaimer note (mirrors the Proof section's testimonial-disclaimer pattern). Closes the "homepage is missing content" gap flagged below. Alex has NOT confirmed a podcast (`INTAKE.md` §8 lists Resources/blog as an unchecked Phase 2 item) — topics are illustrative, not real assets; format (article vs. podcast) still needs Alex's input. Verified: correct geometry/no overflow, colors match tokens exactly, 3-layer card shadow (was missing on first pass — fixed to match the anti-slop card rule). Must carry into Style 2 and Style 3 builds (see below) — same section, new treatment per style.
+
+**Also this session (Chris's live feedback on Warm):**
+- **Fit Check now pulses on scroll-reveal** — `.fit-card.in` gets a 3-cycle gold ring animation (`fitpulse` keyframe, reuses the existing `.rise` reveal trigger, respects `prefers-reduced-motion`, settles back to the plain `--shadow-card` rest state — not an infinite glow, which DESIGN_TOKENS flags as a cheap tell). Draws the eye to the page's #1 conversion event without being obnoxious.
+- **Proof section darkened, not just recolored.** Chris wanted white/light text on the gold proof section; the *existing* pale gold (`#dcb965`→`#a8833a`) fails contrast with light text (~1.9:1 on the light end — checked the actual luminance math before touching it). Fix: deepened the gradient to a rich bronze (`#7d5f29`→`#674c1e`→`#4d3a16`) so `--on-dark` text clears ≥5:1 everywhere in the gradient, then flipped heading/quote/stats/eyebrow to `--on-dark`. Same ask, same "bold" outcome, actually legible. Reads noticeably more dramatic than the old pale version — worth Chris's eyes on it live.
+- **Build order flip:** Chris saw Warm live and called it "safe" — confirmed Style 3 (Dark Precision) builds before Style 2 (Cool-Editorial) since it's the direct answer to "go bolder." See updated NEXT SESSION list above.
+
+**Tooling gotchas confirmed this session (save future-session time):**
+- `location.reload()` via `preview_eval` resets the viewport to 0×0 — always re-call `preview_resize` with an explicit size AFTER a reload, before reading any geometry (`innerWidth`/`getBoundingClientRect` return garbage/zero for one read cycle otherwise).
+- Browser scroll-position restoration persists across `location.reload()` (and `scrollY` clamps to the new max when you `display:none` sections above the fold) — don't assume scroll resets to 0; explicitly `window.scrollTo(0,0)` (with `scrollBehavior='auto'`, the page defaults to smooth) and verify `scrollY` in a *separate* eval call before trusting position-dependent reads.
+- **To verify a timed CSS animation (not just a scroll reveal), don't poll wall-clock — race conditions from tool round-trip latency make hit-or-miss sampling unreliable.** Use the Web Animations API instead: `el.getAnimations().find(a => a.animationName==='yourname')`, then `.pause()` + set `.currentTime` to scrub to an exact frame, then read `getComputedStyle`. Deterministic, not timing-dependent.
 
 **Do next, in order:**
-1. **Build TWO MORE completely different design STYLES for Anchor** (Chris's explicit ask — genuinely distinct, NOT color variants of Warm). Hand-built to the bar (NOT cold-generated). Give Alex a real choice of *style direction*. Likely: a cool-editorial / private-bank style and a bold-modern style — but each must differ in layout, motion, type feel, and color treatment, not just palette. Same method: study references → measure → build → verify section-by-section in-browser.
-2. **Mobile pass** on warm-home (real device-width verification — the resize tooling was flaky; use Claude_Preview device emulation or DevTools).
-3. **Brand-fidelity decisions (Chris):** (a) exact brand gold `#b18f4d` vs the brightened `#c9a24b` I used for legibility on dark — pick one; (b) for launch, license the real brand fonts (Adobe Garamond Pro + Proxima Nova via Adobe Fonts) vs the free EB Garamond + Nunito Sans web substitutes.
-4. **`[VERIFY]` with Alex:** regulatory status (RIA/hybrid/BD) + fee model, exact Merrill years, real FINRA-approved testimonials, phone/email, compliance entity name.
-5. **Extract the built Warm sections into the component library** (the deferred design-system scaffold: `tokens.css` + `components/` + `catalog.html`) — now we have a real gold-standard page to harvest from.
-6. **Deploy** warm-home + the 3 hero image variants as **live review links for Alex** (Chris's account approves the deploy).
+1. **Show Chris Dark Precision live and get his real reaction** — first thing, before touching anything else. He hasn't seen it. Bring the open brand-fidelity + `[VERIFY]` questions (item 3/4 below) to that conversation since they apply to every style, not just Warm.
+2. **Build Style 2 — Cool-Editorial/Private-Bank** (the second of the two Chris asked for). Config locked from the pre-build brainstorm, not yet started: Tone=`light`·Density=`editorial`·Motion=`restrained`·Type=`editorial-serif`·Visual=`typographic` (no photography — Chris confirmed). Anchors: Pictet/Hoare's Bank (restraint-as-credential; `[VERIFY]` — not yet live-measured the way Dark Precision's refs were, only cited from `docs/REFERENCES.md`'s existing entries). Near-white base, navy as ink only, gold in exactly one place. Signature moment: pure typographic hero composition, no imagery anywhere. Carries `#insights` + same copy as Warm/Dark Precision, same method (measure refs live → build → run it through a critique pass like Dark Precision got, since Chris's live eye may again not be available the moment it's built) → verify section-by-section.
+3. **Mobile pass** on warm-home (real device-width verification — the resize tooling was flaky; use Claude_Preview device emulation or DevTools). **Specific finding (2026-07-01):** `preview_screenshot` reliably blanks at ANY non-zero `scrollY` on this page (confirmed at y=800, y=6000, y=9600 — not a distance thing); scroll=0 always renders correctly regardless of viewport height. Workaround used: resize the viewport tall enough to bring the target below-the-fold, OR temporarily `display:none` the sections above it + force `.rise.in` (animations to end-state) + screenshot at scroll=0. `preview_inspect` (computed styles + bounding box) is unaffected and was more useful than screenshots for verifying geometry/colors during this session.
+4. **Brand-fidelity decisions (Chris):** (a) exact brand gold `#b18f4d` vs the brightened `#c9a24b` I used for legibility on dark — pick one; (b) for launch, license the real brand fonts (Adobe Garamond Pro + Proxima Nova via Adobe Fonts) vs the free EB Garamond + Nunito Sans web substitutes.
+5. **`[VERIFY]` with Alex:** regulatory status (RIA/hybrid/BD) + fee model, exact Merrill years, real FINRA-approved testimonials, phone/email, compliance entity name.
+6. **Extract the built Warm sections into the component library** (the deferred design-system scaffold: `tokens.css` + `components/` + `catalog.html`) — now we have a real gold-standard page to harvest from.
+7. **Deploy** warm-home + the 3 hero image variants as **live review links for Alex** (Chris's account approves the deploy).
 
 **Copy note (Chris's domain):** reference heroes use SHORT punchy headlines; Anchor's is the long question. Offer 2-3 punchier H1 options, don't rewrite unilaterally.
 
@@ -23,7 +195,7 @@ Last updated: 2026-07-01 (Anchor WARM homepage built + verified; next = two more
 - **We need the FULL page set, not just the homepage:** About, Services, Who We Serve, Process, Contact (see `projects/awp/SITEMAP.md`). Build each to the same bar as `warm-home.html`, in the chosen style.
 - **Model the page structure on the Longview Advisors site.** Find it first — likely in `~/Documents/advisor-sites/` (per CLAUDE.md sibling repos: "Longview site and advisor site builds") or GitHub `caebaby`. Review ALL its pages; AWP will be "something very similar." Read it before designing the inner pages.
 - **Copy workflow:** once page structure is set → do copy research → produce a **client-fillable copy doc** (structured, one field per page/slot) for Alex to fill in, so we drop it in and it looks sharp (like INTAKE/COPY_ALL but client-facing + fillable, keyed to each page section).
-- **The homepage is missing CONTENT:** add a content/resources section to the homepage (blog + podcasts), and plan content pages (blog, podcasts, resources). Content is part of the deliverable, not an afterthought.
+- **The homepage was missing CONTENT — now added** to `warm-home.html` (`#insights`, illustrative placeholder — see "Added this session" above). Still need: plan the actual content pages (blog, podcasts, resources — Phase 2 per `SITEMAP.md`), and confirm with Alex whether a podcast is real before the format ships as more than a placeholder. Content is part of the deliverable, not an afterthought.
 
 ---
 

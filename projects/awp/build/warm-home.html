@@ -34,7 +34,7 @@
   .eyebrow{display:inline-flex;align-items:center;gap:13px;font-family:var(--sans);font-weight:700;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-deep);}
   .eyebrow::before{content:"";width:38px;height:1.5px;background:var(--gold);}
   .on-dark .eyebrow{color:var(--gold-soft);} .on-dark .eyebrow::before{background:var(--gold-soft);}
-  .bg-gold .eyebrow{color:var(--navy-deep);} .bg-gold .eyebrow::before{background:var(--navy-deep);}
+  .bg-gold .eyebrow{color:var(--on-dark);} .bg-gold .eyebrow::before{background:var(--navy-deep);}
 
   /* buttons */
   .btn{display:inline-flex;align-items:center;gap:9px;border-radius:var(--radius-btn);font-family:var(--sans);font-weight:700;font-size:14.5px;letter-spacing:.01em;padding:14px 27px;cursor:pointer;border:none;transition:transform .2s var(--ease),box-shadow .2s var(--ease),background .2s;}
@@ -51,8 +51,8 @@
   .pad-sm{padding:clamp(56px,7vw,88px) 0;}
   .bg-cream{background:var(--cream);} .bg-cream-mid{background:var(--cream-mid);}
   .bg-navy{background:var(--navy-deep);color:var(--on-dark);}
-  .bg-gold{background:radial-gradient(130% 130% at 15% -15%,#dcb965 0%,#cba650 46%,#a8833a 100%);color:var(--navy-deep);}
-  .bg-navy h2,.bg-navy h3{color:var(--white);} .bg-gold h2,.bg-gold h3{color:var(--navy-deep);}
+  .bg-gold{background:radial-gradient(130% 130% at 15% -15%,#7d5f29 0%,#674c1e 46%,#4d3a16 100%);color:var(--on-dark);}
+  .bg-navy h2,.bg-navy h3{color:var(--white);} .bg-gold h2,.bg-gold h3{color:var(--on-dark);}
 
   .sec-head{max-width:640px;margin-bottom:clamp(40px,5vw,64px);}
   .sec-head .eyebrow{margin-bottom:22px;}
@@ -129,6 +129,10 @@
   .fit-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(36px,5vw,72px);align-items:center;}
   @media(max-width:860px){.fit-grid{grid-template-columns:1fr;}}
   .fit-card{background:var(--white);border-radius:14px;box-shadow:var(--shadow-card);border-top:3px solid var(--gold);padding:clamp(30px,3.5vw,48px);}
+  @media(prefers-reduced-motion:no-preference){
+    @keyframes fitpulse{0%{box-shadow:var(--shadow-card),0 0 0 0 rgba(var(--gold-rgb),.5);}70%{box-shadow:var(--shadow-card),0 0 0 26px rgba(var(--gold-rgb),0);}100%{box-shadow:var(--shadow-card),0 0 0 0 rgba(var(--gold-rgb),0);}}
+    .fit-card.in{animation:fitpulse 1.7s ease-out .4s 3;}
+  }
   .wiz__prog{font-family:var(--sans);font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:14px;}
   .wiz__bar{height:3px;background:var(--cream-mid);border-radius:3px;overflow:hidden;margin-bottom:30px;}
   .wiz__bar i{display:block;height:100%;background:var(--gold);border-radius:3px;transition:width .4s var(--ease);}
@@ -168,13 +172,13 @@
   /* ── PROOF (gold) ────────────────────── */
   /* proof = a centered testimonial MOMENT: feature quote + supporting stat row */
   .proof-quote{max-width:880px;margin:clamp(38px,5vw,60px) auto clamp(44px,5vw,72px);position:relative;}
-  .proof-quote::before{content:"\201C";font-family:var(--serif);font-size:clamp(78px,11vw,148px);line-height:.5;color:rgba(20,40,64,.16);display:block;margin-bottom:clamp(4px,1vw,14px);}
-  .proof-quote blockquote{font-family:var(--serif);font-style:italic;font-size:clamp(23px,3vw,40px);line-height:1.3;color:var(--navy-deep);}
-  .proof-quote .note{margin-top:24px;font-family:var(--serif);font-style:italic;font-weight:500;font-size:16px;color:rgba(20,40,64,.58);}
-  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,3vw,44px);max-width:1020px;margin:0 auto;border-top:1px solid rgba(20,40,64,.22);padding-top:clamp(34px,4vw,52px);}
+  .proof-quote::before{content:"\201C";font-family:var(--serif);font-size:clamp(78px,11vw,148px);line-height:.5;color:rgba(244,239,230,.2);display:block;margin-bottom:clamp(4px,1vw,14px);}
+  .proof-quote blockquote{font-family:var(--serif);font-style:italic;font-size:clamp(23px,3vw,40px);line-height:1.3;color:var(--on-dark);}
+  .proof-quote .note{margin-top:24px;font-family:var(--serif);font-style:italic;font-weight:500;font-size:16px;color:rgba(244,239,230,.72);}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,3vw,44px);max-width:1020px;margin:0 auto;border-top:1px solid rgba(244,239,230,.22);padding-top:clamp(34px,4vw,52px);}
   .stat{text-align:center;}
-  .stat b{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(40px,4.6vw,62px);line-height:1;color:var(--navy-deep);letter-spacing:-.02em;}
-  .stat span{display:block;margin-top:10px;font-size:13.5px;font-weight:600;color:rgba(20,40,64,.74);line-height:1.4;}
+  .stat b{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(40px,4.6vw,62px);line-height:1;color:var(--on-dark);letter-spacing:-.02em;}
+  .stat span{display:block;margin-top:10px;font-size:13.5px;font-weight:600;color:rgba(244,239,230,.78);line-height:1.4;}
   @media(max-width:720px){.stats{grid-template-columns:1fr 1fr;gap:32px 24px;}}
   .ph{background:rgba(20,40,64,.1);border:1px dashed rgba(20,40,64,.35);border-radius:5px;padding:1px 7px;font-size:.82em;font-style:normal;font-family:var(--sans);font-weight:700;color:rgba(20,40,64,.7);}
 
@@ -184,6 +188,15 @@
   .final h2 em{font-style:italic;color:var(--gold-soft);}
   .final p{color:var(--on-dark-mute);font-size:clamp(17px,1.6vw,20px);max-width:52ch;margin:0 auto 40px;}
   .final .hero__ctas{justify-content:center;}
+
+  /* ── INSIGHTS (content/resources) ─────── */
+  .insights-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,2vw,28px);}
+  @media(max-width:860px){.insights-grid{grid-template-columns:1fr;}}
+  .insight{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-card);padding:clamp(26px,2.6vw,34px);box-shadow:var(--shadow-card);}
+  .insight-tag{display:inline-block;font-family:var(--sans);font-weight:700;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:14px;}
+  .insight h3{font-family:var(--serif);font-style:italic;font-weight:500;font-size:20px;line-height:1.32;color:var(--ink);margin-bottom:10px;}
+  .insight p{font-size:14.5px;color:var(--ink-soft);line-height:1.6;}
+  .insight-note{margin-top:clamp(28px,3vw,40px);text-align:center;font-size:13px;color:var(--ink-mute);}
 
   /* ── FOOTER ──────────────────────────── */
   footer{background:#0c1928;color:var(--on-dark-mute);padding:clamp(56px,6vw,80px) 0 36px;}
@@ -363,7 +376,7 @@
 <section class="pad bg-gold" id="proof">
   <div class="wrap" style="text-align:center">
     <p class="eyebrow rise" style="justify-content:center">Proof</p>
-    <h2 class="rise" style="color:var(--navy-deep);max-width:22ch;margin:20px auto 0">What it sounds like when the pieces finally fit.</h2>
+    <h2 class="rise" style="color:var(--on-dark);max-width:22ch;margin:20px auto 0">What it sounds like when the pieces finally fit.</h2>
     <div class="proof-quote rise">
       <blockquote>"For the first time, my CPA and my advisor are actually talking to each other — I finally feel like someone sees the whole picture."</blockquote>
       <!-- Illustrative placeholder — replace with a real, FINRA-approved client quote + attribution before launch. -->
@@ -391,12 +404,29 @@
   </div>
 </section>
 
+<!-- INSIGHTS / CONTENT -->
+<section class="pad-sm bg-cream-mid" id="insights">
+  <div class="wrap">
+    <div class="sec-head rise" style="margin-bottom:clamp(32px,4vw,48px)">
+      <p class="eyebrow">Insights</p>
+      <h2 style="font-size:clamp(26px,3.2vw,38px)">Not ready to talk yet? Start here.</h2>
+      <p>Coordinated-planning insights for Houston executives, owners, and families — articles and conversations from Anchor.</p>
+    </div>
+    <div class="insights-grid rise">
+      <div class="insight"><span class="insight-tag">Article</span><h3>How RSU Vesting Creates a Tax-Timing Trap</h3><p>Equity comp is how the energy industry pays its leaders — and how generalist advisors miss the timing.</p></div>
+      <div class="insight"><span class="insight-tag">Podcast</span><h3>What &quot;Coordinated Planning&quot; Actually Looks Like</h3><p>A conversation on what changes when your CPA, attorney, and advisor read from the same plan.</p></div>
+      <div class="insight"><span class="insight-tag">Article</span><h3>The Exit Conversation Should Start Years Before the LOI</h3><p>Why business owners who wait until an offer arrives leave money and options on the table.</p></div>
+    </div>
+    <p class="insight-note rise">Illustrative topics — Anchor's content library launches with real articles and episodes before the site goes live.</p>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <div class="wrap">
     <div class="foot-top">
       <div class="foot-brand"><b>Anchor</b><em>"Charting the course toward your financial legacy."</em><p style="margin-top:14px">Houston-based wealth management for oil &amp; gas executives, business owners, and high-net-worth families.</p></div>
-      <div><h4>Explore</h4><a href="#serve">Who We Serve</a><a href="#services">Services</a><a href="#process">Process</a><a href="#fit">Fit Check</a></div>
+      <div><h4>Explore</h4><a href="#serve">Who We Serve</a><a href="#services">Services</a><a href="#process">Process</a><a href="#insights">Insights</a><a href="#fit">Fit Check</a></div>
       <div><h4>Specialties</h4><a href="#services">Coordinated Planning</a><a href="#services">Equity Compensation</a><a href="#services">Estate &amp; Legacy</a><a href="#services">Business Transition</a></div>
       <div><h4>Contact</h4><p><span class="ph">Phone — VERIFY</span></p><p><span class="ph">Email — VERIFY</span></p><p>Houston, TX</p></div>
     </div>

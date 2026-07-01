@@ -57,6 +57,7 @@ Cross-build: `docs/REFERENCES.md` (Chris-approved reference sites), `qa/visual-c
 3. **Assemble the hard interactive pieces from `COMPONENTS.md` — do NOT re-author them from a description** (that is exactly how the signature cycle element once shipped collapsed).
 4. Size every heading measure with the `LAYOUT_CRAFT.md` PART 1 formula. Never put a container `max-width` in `em` (the em-trap).
 5. Libraries: GSAP 3.13 + ScrollTrigger (+ SplitText/DrawSVG) and Lenis 1.3.25 via CDN are permitted and expected for the motion tiers. Fonts via Google/Fontshare `<link>`. Nothing else. (This supersedes the old "vanilla JS only" rule.)
+6. **When building more than one style for the same client, open `SECTION_PATTERNS.md` and deliberately pick a DIFFERENT pattern per section than whatever the other style(s) already used** (e.g. if one style's Services is Numbered-Editorial, the next should be Outcome-Cards or Accordion — not a recolor of the same list). Token/color/motion differences alone are NOT enough to make a build "genuinely different" — composition has to actually vary, or it reads as a reskin. Hand-building without going through Agent 02.5 makes this easy to skip by just mentally cloning the prior build section-by-section; don't. (Learned the hard way on Dark Precision, 2026-07-01 — see `STATUS.md`.)
 
 ## Technical principles (all templates)
 1. Single self-contained HTML file per page — no build step, no npm.

@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kindred Wealth — Wealth care for the people who care for everyone else</title>
+<meta name="description" content="Boutique wealth advisory for physicians, private-practice owners, and physician families. One living plan — coordinated with your CPA and attorney.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* ── COLOR ROLES — retinted to Kindred Wealth brand ──────────────── */
+  --ground:#F4F1E9;        /* primary light section bg */
+  --ground-alt:#E8E3D5;    /* secondary light bg — a real tonal step darker */
+  --card-pale:#ffffff;     /* pale card fill on light */
+  --dark:#16302a;          /* deep forest — primary DARK ground + display ink */
+  --dark-2:#264d42;        /* mid forest — secondary dark (dark-card elevation) */
+  --ink:#1b2a25;           /* display heading ink on light */
+  --ink-body:#4c5a54;      /* body text on light */
+  --on-dark:#F3EFE4;       /* text on dark grounds */
+  --on-dark-mute:rgba(243,239,228,.74);
+  --accent:#b8894a;        /* THE one committed color */
+  --accent-soft:#d8b483;   /* lighter accent — eyebrows/links/icons ON DARK */
+  --accent-ink:#6f4e22;    /* AA-safe DEEP accent for small text ON LIGHT (6.67:1 / 5.87:1 — passes) */
+  --accent-rgb:184,137,74;
+  --border:rgba(22,48,42,.14);
+
+  /* ── METRICS — FIXED (measured from Maven) ──────── */
+  --maxw:1512px;
+  --gutter:clamp(24px,5vw,96px);
+  --radius-btn:4px;
+  --radius-card:8px;
+  --radius-media:12px;
+  --btn-border:1.5px;
+  --dur:.4s;
+  --ease:ease;
+  --ease-soft:cubic-bezier(.16,1,.3,1);
+
+  /* ── FONTS — Kindred brand fonts fit to the roles ── */
+  --sans:'Hanken Grotesk','Helvetica Neue',Arial,sans-serif;
+  --serif:'Newsreader',Georgia,serif;
+}
+
+/* ── §3 GLOBAL CSS SYSTEM (pasted verbatim) ───────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:16px;scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--ground);color:var(--ink-body);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.5;letter-spacing:-.01em;}
+a{color:inherit;text-decoration:none;} img{display:block;max-width:100%;}
+::selection{background:var(--accent);color:var(--dark);}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter);}
+section{position:relative;}
+.pad{padding:clamp(80px,9vw,120px) 0;} .pad-sm{padding:clamp(56px,7vw,88px) 0;}
+
+/* grounds */
+.bg-ground{background:var(--ground);} .bg-ground-alt{background:var(--ground-alt);}
+.bg-dark{background:var(--dark);color:var(--on-dark);}
+.bg-dark-2{background:var(--dark-2);color:var(--on-dark);}
+.bg-accent{background:var(--accent);color:var(--dark);}
+
+/* eyebrow */
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font:600 12px/1.3 var(--sans);letter-spacing:1px;text-transform:uppercase;color:var(--accent-ink);}
+.eyebrow::before{content:"";width:22px;height:1.5px;background:currentColor;flex:none;}
+.bg-dark .eyebrow,.bg-dark-2 .eyebrow{color:var(--accent-soft);}
+.bg-accent .eyebrow{color:var(--dark);}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:var(--radius-btn);font:600 18px/1.2 var(--sans);letter-spacing:-.36px;padding:10px 24px;border:var(--btn-border) solid transparent;cursor:pointer;transition:background-color var(--dur) var(--ease),border-color var(--dur) var(--ease),color var(--dur) var(--ease),transform var(--dur) var(--ease-soft);}
+.btn .arw{transition:transform var(--dur) var(--ease-soft);} .btn:hover .arw{transform:translateX(4px);}
+.btn-primary{background:var(--accent);border-color:var(--accent);color:var(--dark);}
+.btn-primary:hover{background:var(--card-pale);border-color:var(--card-pale);color:var(--dark);}
+.btn-outline{background:transparent;border-color:var(--accent);color:var(--accent);}
+.btn-outline:hover{background:var(--accent);border-color:var(--accent);color:var(--dark);}
+.btn-sm{font-size:15px;padding:8px 20px;}
+
+/* nav */
+nav{position:fixed;inset:0 0 auto;z-index:60;height:64px;display:flex;align-items:center;transition:background var(--dur),box-shadow var(--dur);}
+nav.scrolled{background:color-mix(in srgb,var(--dark) 92%,transparent);backdrop-filter:blur(16px) saturate(1.3);-webkit-backdrop-filter:blur(16px) saturate(1.3);}
+.nav-in{width:100%;display:flex;align-items:center;justify-content:space-between;gap:24px;}
+.nav-links{display:flex;gap:34px;align-items:center;}
+.nav-links a{font:600 16px var(--sans);color:var(--on-dark);opacity:.92;transition:opacity .2s,color .2s;}
+.nav-links a:hover{opacity:1;color:var(--accent-soft);}
+@media(max-width:940px){.nav-links{display:none;}}
+
+/* section head */
+.sec-head{max-width:760px;margin-bottom:clamp(44px,5vw,68px);}
+.sec-head.center{margin-inline:auto;text-align:center;}
+.sec-head .eyebrow{margin-bottom:22px;} .sec-head.center .eyebrow{justify-content:center;}
+.sec-head h2{font:300 clamp(30px,4.4vw,60px)/1.05 var(--sans);letter-spacing:-.025em;color:var(--ink);}
+.sec-head h2 em{font-family:var(--serif);font-style:italic;font-weight:400;font-size:1.05em;letter-spacing:-.01em;}
+.sec-head p:not(.eyebrow){margin-top:20px;font-size:clamp(17px,1.4vw,20px);line-height:1.55;color:var(--ink-body);max-width:60ch;}
+.sec-head.center p:not(.eyebrow){margin-inline:auto;}
+.bg-dark .sec-head h2,.bg-dark-2 .sec-head h2{color:#fff;}
+.bg-dark .sec-head p:not(.eyebrow),.bg-dark-2 .sec-head p:not(.eyebrow){color:var(--on-dark-mute);}
+.bg-accent .sec-head h2{color:var(--dark);} .bg-accent .sec-head p:not(.eyebrow){color:color-mix(in srgb,var(--dark) 82%,transparent);}
+
+/* card DNA */
+.card{border-radius:var(--radius-card);overflow:hidden;position:relative;}
+
+/* reveal (no-JS safe) */
+.rise{opacity:1;}
+@media (prefers-reduced-motion:no-preference){
+  html.js .rise{opacity:0;transform:translateY(22px);}
+  html.js .rise.in{opacity:1;transform:none;transition:opacity .7s var(--ease-soft),transform .7s var(--ease-soft);}
+}
+
+/* ── SECTION-SPECIFIC CSS (built in-language from §4) ─────────────── */
+
+/* NAV brand */
+.brand{font:400 24px/1 var(--serif);font-style:italic;letter-spacing:-.01em;color:var(--on-dark);}
+.brand b{font-family:var(--sans);font-weight:600;font-style:normal;}
+
+/* HERO */
+.hero{min-height:clamp(660px,93svh,960px);display:flex;align-items:center;position:relative;overflow:hidden;color:var(--on-dark);}
+.hero-img{position:absolute;inset:0;z-index:0;background:var(--dark);}
+.hero-img img{width:100%;height:100%;object-fit:cover;}
+.hero-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(22,48,42,.82) 0%,rgba(22,48,42,.55) 34%,rgba(22,48,42,.12) 66%,rgba(22,48,42,0) 82%);}
+.hero .wrap{position:relative;z-index:3;width:100%;padding-top:110px;padding-bottom:96px;}
+.hero-inner{max-width:820px;}
+.hero h1{font:300 clamp(40px,5.2vw,76px)/1.02 var(--sans);letter-spacing:-.02em;color:var(--on-dark);margin-top:26px;}
+.hero h1 em{font-family:var(--serif);font-style:italic;font-weight:400;font-size:1.08em;letter-spacing:-.005em;}
+.hero-sub{margin-top:26px;max-width:56ch;font:400 clamp(17px,1.45vw,24px)/1.5 var(--sans);letter-spacing:-.02em;color:var(--on-dark-mute);}
+.hero-sub b{color:var(--on-dark);font-weight:500;}
+.hero-cta{margin-top:38px;display:flex;flex-wrap:wrap;gap:12px;}
+.hero .btn-outline{color:var(--on-dark);border-color:var(--on-dark);}
+.hero .btn-outline:hover{background:var(--accent);border-color:var(--accent);color:var(--dark);}
+.img-label{position:absolute;right:var(--gutter);bottom:40px;z-index:3;font:600 12px/1.3 var(--sans);letter-spacing:1px;text-transform:uppercase;color:var(--on-dark-mute);}
+.img-label::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent);margin-right:9px;vertical-align:middle;}
+/* hero wave signature */
+.wave{position:absolute;left:0;bottom:56px;z-index:2;width:min(620px,58vw);height:auto;overflow:visible;opacity:.9;pointer-events:none;}
+.wave g{will-change:transform;}
+@keyframes wavedrift{from{transform:translateX(-14px);}to{transform:translateX(16px);}}
+@media (prefers-reduced-motion:no-preference){
+  .wave .w1{animation:wavedrift 13s var(--ease) infinite alternate;}
+  .wave .w2{animation:wavedrift 17s var(--ease) infinite alternate-reverse;}
+  .wave .w3{animation:wavedrift 21s var(--ease) infinite alternate;}
+}
+
+/* PAIN */
+.pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.pain-card{background:var(--ground-alt);border-radius:var(--radius-card);padding:32px;position:relative;}
+.pain-card::after{content:"";position:absolute;top:22px;right:22px;width:10px;height:10px;border-radius:50%;background:var(--accent);}
+.pain-num{font:300 clamp(40px,4.4vw,58px)/1 var(--sans);letter-spacing:-.03em;color:var(--accent-ink);}
+.pain-quote{margin-top:16px;font:400 clamp(18px,1.5vw,22px)/1.4 var(--serif);font-style:italic;color:var(--ink);letter-spacing:-.005em;}
+.pain-cap{margin-top:14px;font-size:14px;line-height:1.5;color:var(--ink-body);}
+
+/* WHY — dark, dark-2 cards */
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.why-card{background:var(--dark-2);border-radius:var(--radius-card);padding:38px;}
+.why-icon{width:34px;height:34px;color:var(--accent-soft);}
+.why-card h3{margin-top:22px;font:600 clamp(19px,1.5vw,23px)/1.25 var(--sans);letter-spacing:-.015em;color:#fff;}
+.why-card p{margin-top:12px;font-size:16px;line-height:1.55;color:var(--on-dark-mute);}
+
+/* WHO — ICP photo cards */
+.who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.icp-card{background:var(--dark);border-radius:var(--radius-card);overflow:hidden;position:relative;min-height:clamp(400px,42vw,480px);display:flex;flex-direction:column;justify-content:flex-end;}
+.icp-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
+.icp-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(22,48,42,.92) 6%,rgba(22,48,42,.55) 42%,rgba(22,48,42,.08) 78%);}
+.icp-badge{position:absolute;top:20px;left:20px;z-index:2;width:14px;height:14px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 6px rgba(var(--accent-rgb),.28);}
+.icp-body{position:relative;z-index:2;padding:28px;color:var(--on-dark);}
+.icp-body h3{font:600 clamp(20px,1.7vw,25px)/1.2 var(--sans);letter-spacing:-.015em;color:#fff;}
+.icp-body p{margin-top:12px;font-size:15px;line-height:1.55;color:var(--on-dark-mute);}
+.icp-link{margin-top:16px;display:inline-flex;align-items:center;gap:8px;font:600 14px var(--sans);letter-spacing:.3px;color:var(--accent-soft);}
+.icp-link .arw{transition:transform var(--dur) var(--ease-soft);}
+.icp-card:hover .icp-link .arw{transform:translateX(4px);}
+
+/* FIT / CAPTURE */
+.fit-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,72px);align-items:center;}
+.fit-copy .eyebrow{margin-bottom:22px;}
+.fit-copy h2{font:300 clamp(30px,4.4vw,60px)/1.05 var(--sans);letter-spacing:-.025em;color:var(--ink);}
+.fit-copy h2 em{font-family:var(--serif);font-style:italic;font-weight:400;font-size:1.05em;letter-spacing:-.01em;}
+.fit-copy p{margin-top:20px;font-size:clamp(17px,1.4vw,20px);line-height:1.55;color:var(--ink-body);max-width:52ch;}
+.fit-card{background:var(--card-pale);border:1px solid var(--border);border-radius:var(--radius-card);padding:clamp(28px,3vw,42px);}
+.fit-prog-track{height:5px;border-radius:3px;background:var(--ground-alt);overflow:hidden;}
+.fit-prog-bar{height:100%;width:25%;background:var(--accent);border-radius:3px;transition:width var(--dur) var(--ease-soft);}
+.fit-step-count{margin-top:12px;font:600 12px/1.3 var(--sans);letter-spacing:1px;text-transform:uppercase;color:var(--accent-ink);}
+.fit-form fieldset{border:0;margin-top:26px;}
+.fit-form legend{font:300 clamp(20px,2vw,26px)/1.2 var(--sans);letter-spacing:-.02em;color:var(--ink);}
+.fit-options{margin-top:20px;display:grid;gap:12px;}
+.fit-opt{display:block;width:100%;text-align:left;background:var(--ground);border:1.5px solid var(--border);border-radius:var(--radius-btn);padding:15px 18px;font:500 16px var(--sans);letter-spacing:-.01em;color:var(--ink);cursor:pointer;transition:background-color var(--dur) var(--ease),border-color var(--dur) var(--ease);}
+.fit-opt:hover{background:rgba(var(--accent-rgb),.10);border-color:var(--accent);}
+.fit-input{width:100%;margin-top:20px;background:var(--ground);border:1.5px solid var(--border);border-radius:var(--radius-btn);padding:15px 18px;font:400 16px var(--sans);color:var(--ink);}
+.fit-input:focus{outline:none;border-color:var(--accent);}
+.fit-nav{margin-top:26px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.fit-back{background:none;border:0;font:600 15px var(--sans);color:var(--ink-body);cursor:pointer;opacity:.8;transition:opacity .2s;}
+.fit-back:hover{opacity:1;}
+.fit-thanks{padding:20px 0;}
+.fit-thanks h3{font:300 clamp(24px,2.4vw,32px)/1.15 var(--sans);letter-spacing:-.02em;color:var(--ink);}
+.fit-thanks h3 em{font-family:var(--serif);font-style:italic;font-weight:400;}
+.fit-thanks p{margin-top:16px;font-size:16px;line-height:1.6;color:var(--ink-body);max-width:44ch;}
+.no-js .fit-prog-track,.no-js .fit-step-count{display:none;}
+.no-js .fit-form fieldset[hidden]{display:block;}
+.no-js .fit-form fieldset .fit-nav{display:none;}
+.no-js .fit-form fieldset[data-step="4"] .fit-nav{display:flex;}
+.no-js .fit-form fieldset[data-step="4"] .fit-back{display:none;}
+
+/* SERVICES — bento */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:24px;}
+.svc{border-radius:var(--radius-card);padding:34px;background:var(--card-pale);}
+.svc.c3{grid-column:span 3;} .svc.c2{grid-column:span 2;} .svc.c6{grid-column:span 6;}
+.svc.dark{background:var(--dark);color:var(--on-dark);}
+.svc-tag{font:600 12px/1.3 var(--sans);letter-spacing:1px;text-transform:uppercase;color:var(--accent-ink);}
+.svc.dark .svc-tag{color:var(--accent-soft);}
+.svc h3{margin-top:16px;font:600 clamp(20px,1.7vw,25px)/1.2 var(--sans);letter-spacing:-.015em;color:var(--ink);}
+.svc.dark h3{color:#fff;}
+.svc .pain-line{margin-top:12px;font:400 17px/1.4 var(--serif);font-style:italic;color:var(--accent-ink);letter-spacing:-.005em;}
+.svc.dark .pain-line{color:var(--accent-soft);}
+.svc p{margin-top:12px;font-size:15px;line-height:1.55;color:var(--ink-body);}
+.svc.dark p{color:var(--on-dark-mute);}
+.svc.c6{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px;}
+.svc.c6 .svc-txt{max-width:60ch;}
+
+/* PROCESS */
+.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+.proc-step{border-top:1.5px solid var(--border);padding-top:24px;}
+.proc-num{font:300 clamp(44px,4.6vw,60px)/1 var(--sans);letter-spacing:-.03em;color:var(--accent-ink);}
+.proc-step h3{margin-top:18px;font:600 clamp(18px,1.4vw,21px)/1.25 var(--sans);letter-spacing:-.015em;color:var(--ink);}
+.proc-step p{margin-top:12px;font-size:15px;line-height:1.55;color:var(--ink-body);}
+.proc-when{margin-top:14px;font:400 15px/1.4 var(--serif);font-style:italic;color:var(--accent-ink);}
+
+/* PROOF — the accent moment */
+.proof-quote{max-width:820px;margin:0 auto;background:var(--card-pale);border-radius:var(--radius-card);padding:clamp(36px,4vw,56px);position:relative;}
+.proof-glyph{font:400 90px/.6 var(--serif);font-style:italic;color:var(--accent);display:block;height:44px;}
+.proof-quote blockquote{margin-top:8px;font:400 clamp(20px,2vw,28px)/1.4 var(--serif);font-style:italic;color:var(--dark);letter-spacing:-.01em;}
+.proof-note{margin-top:22px;font:600 14px var(--sans);letter-spacing:.3px;color:var(--dark);opacity:.72;}
+.proof-stats{max-width:960px;margin:clamp(44px,5vw,64px) auto 0;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center;}
+.proof-stat .n{font:300 clamp(36px,3.6vw,52px)/1 var(--sans);letter-spacing:-.03em;color:var(--dark);}
+.proof-stat .c{margin-top:10px;font-size:14px;line-height:1.4;color:var(--dark);opacity:.78;}
+
+/* FINAL CTA — light close */
+.cta{text-align:center;position:relative;overflow:hidden;}
+.cta-glow{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);width:min(760px,90vw);height:min(760px,90vw);z-index:0;background:radial-gradient(circle,rgba(var(--accent-rgb),.22) 0%,rgba(var(--accent-rgb),0) 62%);pointer-events:none;}
+.cta .wrap{position:relative;z-index:1;}
+.cta h2{max-width:16ch;margin:0 auto;font:300 clamp(32px,4.6vw,64px)/1.04 var(--sans);letter-spacing:-.025em;color:var(--ink);}
+.cta h2 em{font-family:var(--serif);font-style:italic;font-weight:400;font-size:1.05em;}
+.cta p{margin:22px auto 0;max-width:52ch;font-size:clamp(17px,1.4vw,20px);line-height:1.55;color:var(--ink-body);}
+.cta-btns{margin-top:34px;display:flex;flex-wrap:wrap;gap:12px;justify-content:center;}
+
+/* INSIGHTS */
+.ins-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.ins-card{background:var(--card-pale);border-radius:var(--radius-card);padding:32px;border:1px solid var(--border);display:flex;flex-direction:column;}
+.ins-tag{font:600 12px/1.3 var(--sans);letter-spacing:1px;text-transform:uppercase;color:var(--accent-ink);}
+.ins-card h3{margin-top:16px;font:400 clamp(20px,1.7vw,25px)/1.25 var(--serif);font-style:italic;color:var(--ink);letter-spacing:-.005em;}
+.ins-card p{margin-top:12px;font-size:15px;line-height:1.55;color:var(--ink-body);}
+.ins-link{margin-top:20px;font:600 14px var(--sans);letter-spacing:.3px;color:var(--accent-ink);}
+
+/* FOOTER */
+.footer{padding:clamp(64px,7vw,96px) 0 40px;}
+.foot-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;}
+.foot-brand{font:400 34px/1 var(--serif);font-style:italic;letter-spacing:-.01em;color:var(--on-dark);}
+.foot-brand b{font-family:var(--sans);font-weight:600;font-style:normal;}
+.foot-tag{margin-top:18px;max-width:34ch;font-size:15px;line-height:1.6;color:var(--on-dark-mute);}
+.foot-col h4{font:600 12px/1.3 var(--sans);letter-spacing:1px;text-transform:uppercase;color:var(--accent-soft);}
+.foot-col ul{list-style:none;margin-top:18px;display:grid;gap:12px;}
+.foot-col a{font-size:15px;color:var(--on-dark-mute);transition:color .2s;}
+.foot-col a:hover{color:var(--on-dark);}
+.foot-legal{margin-top:clamp(48px,5vw,72px);padding-top:28px;border-top:1px solid rgba(243,239,228,.14);display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;}
+.foot-disclaim{max-width:70ch;font-size:12.5px;line-height:1.6;color:rgba(243,239,228,.6);}
+.foot-copy{font-size:12.5px;color:rgba(243,239,228,.6);}
+
+/* verify tag */
+.vf{display:inline-block;font:600 9px/1 var(--sans);letter-spacing:.5px;text-transform:uppercase;color:var(--accent);border:1px solid rgba(var(--accent-rgb),.5);border-radius:3px;padding:2px 4px;vertical-align:middle;margin-left:6px;opacity:.85;}
+.bg-accent .vf{color:var(--dark);border-color:rgba(22,48,42,.35);}
+.bg-dark .vf,.bg-dark-2 .vf{color:var(--accent-soft);border-color:rgba(216,180,131,.4);}
+
+/* responsive */
+@media(max-width:940px){
+  .pain-grid,.why-grid,.who-grid,.fit-grid,.proc-grid,.proof-stats,.ins-grid{grid-template-columns:1fr 1fr;}
+  .bento{grid-template-columns:repeat(2,1fr);}
+  .svc.c3,.svc.c2,.svc.c6{grid-column:span 2;}
+  .foot-top{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:640px){
+  .pain-grid,.why-grid,.who-grid,.fit-grid,.proc-grid,.proof-stats,.ins-grid,.bento{grid-template-columns:1fr;}
+  .svc.c3,.svc.c2,.svc.c6{grid-column:span 1;}
+  .proof-stats{grid-template-columns:1fr 1fr;}
+  .foot-top{grid-template-columns:1fr;}
+  .fit-grid{gap:36px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="wrap nav-in">
+    <a href="#top" class="brand">Kindred <b>Wealth</b></a>
+    <div class="nav-links">
+      <a href="#why">Why Kindred</a>
+      <a href="#who">Who We Serve</a>
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#fit" class="btn btn-primary btn-sm">Take the Fit Check</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="hero-img">
+    <!-- [VERIFY] hero image: warm physician / family -->
+    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2000&auto=format&fit=crop" alt="Physician in a warm, unhurried moment">
+  </div>
+  <div class="hero-scrim"></div>
+
+  <!-- Signature drifting sine waves -->
+  <svg class="wave" viewBox="0 0 620 120" fill="none" aria-hidden="true" preserveAspectRatio="none">
+    <g class="w1">
+      <path d="M0 60 C 90 20, 180 100, 270 60 S 450 20, 540 60 S 620 80, 620 70" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+      <circle cx="540" cy="60" r="3.4" fill="var(--accent)"/>
+    </g>
+    <g class="w2">
+      <path d="M0 78 C 100 44, 200 108, 300 78 S 480 48, 560 82" stroke="var(--accent-soft)" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+      <circle cx="560" cy="82" r="3" fill="var(--accent-soft)"/>
+    </g>
+    <g class="w3">
+      <path d="M0 44 C 110 14, 210 74, 320 44 S 500 16, 600 46" stroke="rgba(243,239,228,.55)" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+      <circle cx="600" cy="46" r="2.6" fill="rgba(243,239,228,.55)"/>
+    </g>
+  </svg>
+
+  <div class="wrap">
+    <div class="hero-inner">
+      <span class="eyebrow rise">For Physicians, Practice Owners &amp; Their Families</span>
+      <h1 class="rise">Your income arrived. <em>The plan didn't.</em></h1>
+      <p class="hero-sub rise">Kindred coordinates your comp, taxes, practice, and estate with your CPA and attorney into <b>one living plan</b> — so your money isn't one more thing you manage between patients.</p>
+      <div class="hero-cta rise">
+        <a href="#fit" class="btn btn-primary">Schedule a 20-Minute Call <span class="arw">→</span></a>
+        <a href="#fit" class="btn btn-outline">Take the 4-Question Fit Check</a>
+      </div>
+    </div>
+  </div>
+  <span class="img-label">One living plan</span>
+</header>
+
+<!-- PAIN -->
+<section class="bg-ground pad" id="pain">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <span class="eyebrow">The gap</span>
+      <h2>You out-earn your plan. <em>That's the problem.</em></h2>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card rise">
+        <div class="pain-num">01</div>
+        <p class="pain-quote">"I make great money and still feel behind. Loans, taxes, a mortgage, and no time to figure out the rest."</p>
+        <p class="pain-cap">The income showed up faster than the strategy did.</p>
+      </div>
+      <div class="pain-card rise">
+        <div class="pain-num">02</div>
+        <p class="pain-quote">"My comp is a maze — base, RVUs, bonus, a 401(k), a 457, deferred comp — and no one's optimizing across it."</p>
+        <p class="pain-cap">Every piece managed alone; nothing coordinated.</p>
+      </div>
+      <div class="pain-card rise">
+        <div class="pain-num">03</div>
+        <p class="pain-quote">"I own the practice, but I have no idea what it's worth or what my buy-out actually looks like."</p>
+        <p class="pain-cap">Your largest asset, and the least clearly modeled.</p>
+      </div>
+      <div class="pain-card rise">
+        <div class="pain-num">04</div>
+        <p class="pain-quote">"One malpractice claim scares me more than the market. I don't know if my assets are actually protected."</p>
+        <p class="pain-cap">Protection, not just returns, is what lets you sleep.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY KINDRED -->
+<section class="bg-dark pad" id="why">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <span class="eyebrow">Why Kindred</span>
+      <h2>One advisor who sees <em>the whole chart.</em></h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card rise">
+        <svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>
+        <h3>Coordinated, not siloed</h3>
+        <p>Your CPA, attorney, and advisor rowing in the same direction — from one plan, not four disconnected inboxes.</p>
+      </div>
+      <div class="why-card rise">
+        <svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M12 20V4M20 20v-7"/></svg>
+        <h3>Built for physician complexity</h3>
+        <p>RVU comp, PSLF, 457 plans, backdoor Roth, practice economics — the specifics generalists skip past.</p>
+      </div>
+      <div class="why-card rise">
+        <svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 4v5c0 4-3 7-7 9-4-2-7-5-7-9V7z"/></svg>
+        <h3>Asset &amp; income protection first</h3>
+        <p>We protect what you've built before we optimize it — malpractice exposure, disability, and estate come first.</p>
+      </div>
+      <div class="why-card rise">
+        <svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+        <h3>A single point person</h3>
+        <p>One name to call, so you're not managing money in the ninety seconds between patients. <span class="vf">VERIFY</span> credentials on file.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE SERVE -->
+<section class="bg-ground pad" id="who">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <span class="eyebrow">Who we serve</span>
+      <h2>We speak physician. <em>Generalists don't.</em></h2>
+    </div>
+    <div class="who-grid">
+      <article class="icp-card rise">
+        <!-- [VERIFY] photo: attending physician -->
+        <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=1400&auto=format&fit=crop" alt="Attending physician">
+        <div class="icp-scrim"></div>
+        <span class="icp-badge"></span>
+        <div class="icp-body">
+          <h3>Attending Physicians</h3>
+          <p>RVU comp, 401(k)/457/backdoor Roth, PSLF vs. refinance, and the tax hit no one warned you about.</p>
+          <a href="#fit" class="icp-link">See if we fit <span class="arw">→</span></a>
+        </div>
+      </article>
+      <article class="icp-card rise">
+        <!-- [VERIFY] photo: practice owner -->
+        <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1400&auto=format&fit=crop" alt="Private-practice owner">
+        <div class="icp-scrim"></div>
+        <span class="icp-badge"></span>
+        <div class="icp-body">
+          <h3>Practice Owners</h3>
+          <p>Practice valuation, buy-in/buy-out, overhead, entity structure — and an exit that doesn't gut the practice.</p>
+          <a href="#fit" class="icp-link">See if we fit <span class="arw">→</span></a>
+        </div>
+      </article>
+      <article class="icp-card rise">
+        <!-- [VERIFY] photo: physician family -->
+        <img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?q=80&w=1400&auto=format&fit=crop" alt="Physician family">
+        <div class="icp-scrim"></div>
+        <span class="icp-badge"></span>
+        <div class="icp-body">
+          <h3>Physician Families</h3>
+          <p>Malpractice &amp; asset protection, disability &amp; income protection, estate, and education funding.</p>
+          <a href="#fit" class="icp-link">See if we fit <span class="arw">→</span></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FIT CHECK -->
+<section class="bg-ground-alt pad" id="fit">
+  <div class="wrap">
+    <div class="fit-grid">
+      <div class="fit-copy rise">
+        <span class="eyebrow">The fit check</span>
+        <h2>Four questions. <em>Two minutes.</em></h2>
+        <p>We'll tell you honestly whether we can help — and if we can't, we'll point you to someone who can.</p>
+      </div>
+      <div class="fit-card rise">
+        <form class="fit-form" id="fitForm" autocomplete="on">
+          <div class="fit-prog-track"><div class="fit-prog-bar" id="fitBar"></div></div>
+          <div class="fit-step-count" id="fitCount">Step 1 of 4</div>
+
+          <fieldset data-step="1">
+            <legend>Which best describes you?</legend>
+            <div class="fit-options">
+              <button type="button" class="fit-opt" data-next>Attending physician (employed)</button>
+              <button type="button" class="fit-opt" data-next>Private-practice owner or partner</button>
+              <button type="button" class="fit-opt" data-next>Physician household / spouse</button>
+              <button type="button" class="fit-opt" data-next>Resident or fellow, planning ahead</button>
+            </div>
+          </fieldset>
+
+          <fieldset data-step="2" hidden>
+            <legend>Roughly, your household comp band?</legend>
+            <div class="fit-options">
+              <button type="button" class="fit-opt" data-next>Under $300k</button>
+              <button type="button" class="fit-opt" data-next>$300k – $600k</button>
+              <button type="button" class="fit-opt" data-next>$600k – $1M</button>
+              <button type="button" class="fit-opt" data-next>$1M+</button>
+            </div>
+            <div class="fit-nav"><button type="button" class="fit-back" data-prev>← Back</button></div>
+          </fieldset>
+
+          <fieldset data-step="3" hidden>
+            <legend>What's the biggest thing on your mind?</legend>
+            <div class="fit-options">
+              <button type="button" class="fit-opt" data-next>Making sense of my comp &amp; taxes</button>
+              <button type="button" class="fit-opt" data-next>Protecting assets &amp; my income</button>
+              <button type="button" class="fit-opt" data-next>My practice — value, buy-out, or exit</button>
+              <button type="button" class="fit-opt" data-next>Estate &amp; funding my kids' future</button>
+            </div>
+            <div class="fit-nav"><button type="button" class="fit-back" data-prev>← Back</button></div>
+          </fieldset>
+
+          <fieldset data-step="4" hidden>
+            <legend>Where should we send your fit result?</legend>
+            <input class="fit-input" type="email" name="email" placeholder="you@example.com" aria-label="Email address" required>
+            <div class="fit-nav">
+              <button type="button" class="fit-back" data-prev>← Back</button>
+              <button type="submit" class="btn btn-primary">Get my fit result <span class="arw">→</span></button>
+            </div>
+          </fieldset>
+        </form>
+
+        <div class="fit-thanks" id="fitThanks" hidden>
+          <h3>Thank you — <em>we'll be in touch.</em></h3>
+          <p>This is a demo. In production, a Kindred advisor reviews your answers and replies within one business day with an honest read on fit.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="bg-ground pad" id="services">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <span class="eyebrow">Services</span>
+      <h2>One plan. <em>Your CPA and attorney both work from it.</em></h2>
+    </div>
+    <div class="bento">
+      <div class="svc c3 dark rise">
+        <div class="svc-tag">Foundation</div>
+        <h3>Coordinated Planning</h3>
+        <p class="pain-line">"Everyone had a piece; no one had the whole picture."</p>
+        <p>One living plan that your CPA and attorney build from — not four professionals guessing at each other's work.</p>
+      </div>
+      <div class="svc c3 rise">
+        <div class="svc-tag">Cash flow</div>
+        <h3>Comp &amp; Cash-Flow Strategy</h3>
+        <p class="pain-line">"Base, RVUs, bonus, 457 — optimized across, not apart."</p>
+        <p>We model your whole comp structure so every dollar has a job before it lands.</p>
+      </div>
+      <div class="svc c2 rise">
+        <div class="svc-tag">Tax</div>
+        <h3>Tax Coordination</h3>
+        <p class="pain-line">"The tax hit no one warned you about."</p>
+        <p>Proactive, year-round planning in lockstep with your CPA.</p>
+      </div>
+      <div class="svc c2 rise">
+        <div class="svc-tag">Protection</div>
+        <h3>Asset &amp; Malpractice Protection</h3>
+        <p class="pain-line">"One claim scares me more than the market."</p>
+        <p>Structure and coverage that shield what you've built.</p>
+      </div>
+      <div class="svc c2 dark rise">
+        <div class="svc-tag">Practice</div>
+        <h3>Practice &amp; Exit Planning</h3>
+        <p class="pain-line">"What's it worth, and what does my exit look like?"</p>
+        <p>Valuation, buy-in/buy-out, and an exit that doesn't gut the practice.</p>
+      </div>
+      <div class="svc c6 rise">
+        <div class="svc-txt">
+          <div class="svc-tag">Legacy</div>
+          <h3>Estate &amp; Education</h3>
+          <p class="pain-line">"Provide for the family, fund the kids, leave it clean."</p>
+          <p>Estate structure and education funding, coordinated with your attorney so your intentions actually hold up.</p>
+        </div>
+        <a href="#fit" class="btn btn-primary">Start with the fit check <span class="arw">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="bg-ground-alt pad" id="process">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <span class="eyebrow">The process</span>
+      <h2>Here's what working with us <em>actually looks like.</em></h2>
+    </div>
+    <div class="proc-grid">
+      <div class="proc-step rise">
+        <div class="proc-num">01</div>
+        <h3>Discovery</h3>
+        <p>A focused conversation to understand your situation and whether we're the right fit. No obligation.</p>
+        <p class="proc-when">20 minutes</p>
+      </div>
+      <div class="proc-step rise">
+        <div class="proc-num">02</div>
+        <h3>Assessment</h3>
+        <p>We review comp, taxes, protection, and practice — and tell you what we find, in writing, either way.</p>
+        <p class="proc-when">1–2 weeks</p>
+      </div>
+      <div class="proc-step rise">
+        <div class="proc-num">03</div>
+        <h3>The Plan</h3>
+        <p>One living document. We brief your CPA and attorney so everyone works from the same page.</p>
+        <p class="proc-when">Once, then living</p>
+      </div>
+      <div class="proc-step rise">
+        <div class="proc-num">04</div>
+        <h3>Partnership</h3>
+        <p>Quarterly reviews — and we've already modeled your next contract or vesting event before it arrives.</p>
+        <p class="proc-when">Quarterly</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF (the one accent moment) -->
+<section class="bg-accent pad" id="proof">
+  <div class="wrap">
+    <div class="sec-head center rise">
+      <span class="eyebrow">Proof</span>
+      <h2>What it sounds like when <em>someone finally has the whole chart.</em></h2>
+    </div>
+    <div class="proof-quote rise">
+      <span class="proof-glyph">&ldquo;</span>
+      <blockquote>For the first time, my CPA, my attorney, and my advisor were reading from the same plan. I stopped being the one holding it all together in my head.</blockquote>
+      <p class="proof-note">Illustrative testimonial <span class="vf">VERIFY</span></p>
+    </div>
+    <div class="proof-stats">
+      <div class="proof-stat rise"><div class="n">15+ yrs<span class="vf">VERIFY</span></div><div class="c">Serving physician households</div></div>
+      <div class="proof-stat rise"><div class="n">3 → 1</div><div class="c">Professionals coordinated into one plan</div></div>
+      <div class="proof-stat rise"><div class="n">1</div><div class="c">Living document, kept current</div></div>
+      <div class="proof-stat rise"><div class="n">Quarterly</div><div class="c">Reviews, modeled ahead</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA (light close) -->
+<section class="bg-ground pad cta" id="cta">
+  <div class="cta-glow"></div>
+  <div class="wrap">
+    <h2 class="rise">You've been managing money <em>between patients.</em></h2>
+    <p class="rise">Twenty minutes. No pitch. We'll tell you honestly whether we're a fit.</p>
+    <div class="cta-btns rise">
+      <a href="#fit" class="btn btn-primary">Schedule a 20-Minute Call <span class="arw">→</span></a>
+      <a href="#fit" class="btn btn-outline" style="color:var(--accent);border-color:var(--accent);">Take the Fit Check</a>
+    </div>
+  </div>
+</section>
+
+<!-- INSIGHTS -->
+<section class="bg-ground-alt pad" id="insights">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <span class="eyebrow">Insights</span>
+      <h2>Reading for the <em>time-poor physician.</em></h2>
+    </div>
+    <div class="ins-grid">
+      <article class="ins-card rise">
+        <div class="ins-tag">Article · Illustrative <span class="vf">VERIFY</span></div>
+        <h3>457(b) vs. 401(k): where your next dollar should go</h3>
+        <p>A plain-language walk through the deferred-comp decision most attendings get wrong by default.</p>
+        <span class="ins-link">Read →</span>
+      </article>
+      <article class="ins-card rise">
+        <div class="ins-tag">Podcast · Illustrative <span class="vf">VERIFY</span></div>
+        <h3>What your practice is actually worth</h3>
+        <p>How valuation, buy-outs, and overhead really shape an owner's exit — with a practice-transition advisor.</p>
+        <span class="ins-link">Listen →</span>
+      </article>
+      <article class="ins-card rise">
+        <div class="ins-tag">Article · Illustrative <span class="vf">VERIFY</span></div>
+        <h3>Asset protection before the claim, not after</h3>
+        <p>The structures that matter for physicians — and why they only work if you set them up early.</p>
+        <span class="ins-link">Read →</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-dark footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <div class="foot-brand">Kindred <b>Wealth</b></div>
+        <p class="foot-tag">Wealth care for the people who care for everyone else.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#why">Why Kindred</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#insights">Insights</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Specialties</h4>
+        <ul>
+          <li><a href="#who">Attending Physicians</a></li>
+          <li><a href="#who">Practice Owners</a></li>
+          <li><a href="#who">Physician Families</a></li>
+          <li><a href="#fit">The Fit Check</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+10000000000">(000) 000-0000 <span class="vf">VERIFY</span></a></li>
+          <li><a href="mailto:hello@kindredwealth.example">hello@kindredwealth.example <span class="vf">VERIFY</span></a></li>
+          <li><a href="#fit">Schedule a call</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-legal">
+      <p class="foot-disclaim">Kindred Wealth provides educational information only and does not constitute investment, tax, or legal advice. All investments involve risk, including possible loss of principal. Past performance is not a guarantee of future results. Consult your own qualified professionals before acting. This page is a demonstration; all statistics, testimonials, and credentials are illustrative and marked for verification.</p>
+      <p class="foot-copy">© 2026 Kindred Wealth. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// html.js + no-js fallback flag
+document.documentElement.classList.add('js');
+document.documentElement.classList.remove('no-js');
+
+// nav.scrolled on scrollY>40
+var nav=document.getElementById('nav');
+function onScroll(){ if(window.scrollY>40){nav.classList.add('scrolled');}else{nav.classList.remove('scrolled');} }
+onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
+
+// IntersectionObserver reveals for .rise (except hero, which fires on load)
+var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+var heroRises=Array.prototype.slice.call(document.querySelectorAll('.hero .rise'));
+if(!reduce && 'IntersectionObserver' in window){
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{rootMargin:'0px 0px -8% 0px',threshold:0.08});
+  document.querySelectorAll('.rise').forEach(function(el){ if(heroRises.indexOf(el)===-1) io.observe(el); });
+}else{
+  document.querySelectorAll('.rise').forEach(function(el){ el.classList.add('in'); });
+}
+// hero .rise fire on load via setTimeout stagger (never gsap.from)
+window.addEventListener('load',function(){
+  heroRises.forEach(function(el,i){ setTimeout(function(){ el.classList.add('in'); }, 120 + i*120); });
+});
+// safety: ensure hero shows even if load already fired
+heroRises.forEach(function(el,i){ setTimeout(function(){ el.classList.add('in'); }, 200 + i*120); });
+
+// Multi-step fit form
+(function(){
+  var form=document.getElementById('fitForm');
+  if(!form) return;
+  var steps=Array.prototype.slice.call(form.querySelectorAll('fieldset'));
+  var bar=document.getElementById('fitBar');
+  var count=document.getElementById('fitCount');
+  var thanks=document.getElementById('fitThanks');
+  var total=steps.length, cur=0;
+  function show(i){
+    cur=Math.max(0,Math.min(total-1,i));
+    steps.forEach(function(fs,idx){ fs.hidden = idx!==cur; });
+    bar.style.width=((cur+1)/total*100)+'%';
+    count.textContent='Step '+(cur+1)+' of '+total;
+  }
+  show(0);
+  form.addEventListener('click',function(e){
+    var n=e.target.closest('[data-next]');
+    var p=e.target.closest('[data-prev]');
+    if(n){ e.preventDefault(); show(cur+1); }
+    else if(p){ e.preventDefault(); show(cur-1); }
+  });
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var email=form.querySelector('input[type=email]');
+    if(email && !email.checkValidity()){ email.reportValidity(); return; }
+    form.hidden=true;
+    thanks.hidden=false;
+  });
+})();
+</script>
+</body>
+</html>

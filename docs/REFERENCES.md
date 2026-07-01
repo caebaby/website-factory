@@ -199,11 +199,11 @@ Chris-supplied references with his own commentary (the curation signal). Each is
 
 **[DESIGN + CONVERTS]**
 
-- **twosigma.com** ⭐ — The "Bloomberg terminal meets consumer brand" benchmark. Tech-meets-finance aesthetic, dark interface, data visualization emphasis. Steal: the way data visualization IS the design, not decoration.
+- **twosigma.com** ⭐ `[VERIFY — re-checked 2026-07-01, site has changed]` — This entry's "dark interface" claim is now STALE: live-checked and the current homepage is white/light (`#fff` bg, `#000` text), not dark. Still worth stealing the type-scale discipline (110px display headline, -1.5px tracking, 600 weight, tight ~91% line-height) as a benchmark for confident scale — but do not cite it as a dark-mode reference until re-verified; the "Bloomberg terminal" register may now live on an inner product/research page, not the homepage.
 
-- **stashwealth.com** ⭐ — Full black advisory site that converts HNW clients under 40. Typography-forward, modern. Proof that full-dark works in wealth management. Steal: bold copy that assumes a smart reader.
+- **stashwealth.com** ⭐ — Full black advisory site that converts HNW clients under 40. Typography-forward, modern. Proof that full-dark works in wealth management. Steal: bold copy that assumes a smart reader. `[VERIFIED live 2026-07-01]` — genuinely full black (`#000`-ish) bg, centered hero, Oswald (condensed sans) 67.84px/400 weight, tight -1.36px tracking, line-height ~1.06. Copy: "Get Your Financial Sh*t Together."
 
-- **xapo.com/bank** — Crypto-adjacent private bank. Black + warm metal accents. Genuinely premium dark financial site — futuristic without being loud. Steal: the single warm-metal accent system on true dark.
+- **xapo.com/bank** `[URL MOVED — VERIFY]` — now redirects/404s; the live site is **xapobank.com/en**. Re-checked 2026-07-01: HelveticaNowDisplay 64px/400 weight, -1.3px tracking, near-black bg (`rgb(9,4,2)`), warm **copper/burnt-orange** accent (not gold) on a full-bleed atmospheric photo hero (left-aligned headline, not a graphic-system/diagram hero) — a live BTC-price pill and a sports-sponsorship badge are nice "data as UI chrome" and real-world-credibility details. Steal: the single warm-metal-accent-on-true-dark system. Note it's photography-led, not diagram/graphic-system-led — for a graphic-system dark hero, mercury.com/linear.app's "product visual as hero" guidance (see Hero section above) is the closer model.
 
 - **pitch.com** — Buttery animations, bold-but-not-loud palette, excellent typographic hierarchy. Dark done well in SaaS. Steal: animation pacing that communicates product speed and quality.
 
