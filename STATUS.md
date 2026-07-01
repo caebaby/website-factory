@@ -1,7 +1,56 @@
 # Website Factory — Status
-Last updated: 2026-07-01 (LATE SESSION — Maven-method build shipped as the gold-standard exemplar; copy dialed to the ICP research; **codification VALIDATED via a cold-build test** (Kindred, physician vertical). Direction locked: build a **Pack Library** catalog + use **Fable** to author Packs so any/lower-tier LLM can execute them. See "WHERE WE ARE + NEXT DIRECTION" below.)
+Last updated: 2026-07-01 (FABLE SESSION — **Pack hardened to v1.1** against Chris's Kindred review; the v1.1 changes are applied to the Kindred build and browser-verified, awaiting Chris's eyes. Next: composition-vocabulary elevation (BetterUp measure), more Packs, lower-tier cold test.)
 
 > **Standing instruction (Chris, 2026-07-01):** update this status doc with EVERY learning lesson, each session, for the next session. The "Learnings" section below is append-only memory.
+
+---
+
+## ▶ PACK v1.1 HARDENING — DONE, AWAITING CHRIS (2026-07-01, Fable session)
+
+**What changed (all in `templates/packs/warm-premium.pack.md` v1.1 AND applied live to
+`projects/_coldtest/kindred/index.html` so Chris can react section-by-section at `:8096`):**
+1. **Wave motif KILLED → the CONVERGENCE MARK** (§5): three thin strands (CPA · attorney · portfolio)
+   converging into one pulsing node = "one living plan." Flow-dots ride native SMIL `animateMotion`
+   toward the node (no JS, can't strand content — LED-011-proof); ring breathes 4.5s; reduced-motion
+   hides the dots. Decision: REPLACED rather than cut — the register needs its one signature motion,
+   and this one literalizes the mechanism instead of decorating.
+2. **Fit assessment → MINI-HERO** (§4): full-width `--dark` panel (radius 12) inside a light section —
+   contained darkness, so the tonal map stays mostly light. Radial accent glow + a dotless mark echo in
+   the panel; copy side gets a 3-item reassurance row (icon-set checks). Form card got ONE type scale:
+   big 300-weight step numeral `01–04` + 4-segment progress (the Round-4b-approved pattern), legend
+   sans-300 28px, options 15.5/600.
+3. **Proof = `--accent-deep` (new root role) with LIGHT text** (§2/§4): 155deg gradient built by
+   color-mix around the deep accent. Kills "green on gold." Verified on Kindred: 5.59:1 headline /
+   4.89:1 captions on the gradient's LIGHTEST stop (alpha-blended math, LED-012 style).
+4. **Insights → featured split** (§4): `1.55fr/1fr` — one lead card (3px accent top bar, 32px serif-italic
+   title, real excerpt) + 2 compact stacked cards.
+5. **Baked in:** §6 imagery direction (warm-documentary-human; never clinical/exam-room/boardroom-stock),
+   §8.1 no-JS multi-step fallback (proven recipe from the cold build), §8.2 bento dark-card placement
+   (1–2, diagonal, never adjacent), §8.3 icon set (8 tested 1.6px-stroke line icons), explicit
+   section-padding rhythm (Fit + Insights = `.pad-sm`; uniform padding trips the monotony check).
+
+**Defects found & fixed WHILE hardening (both fixed in Pack + Kindred):**
+- **Hero eyebrow was `--accent-ink` (dark brown) on the dark-scrimmed photo — near-invisible.** The
+  exemplar had a `.hero .eyebrow{accent-soft}` override the Pack v1.0 never codified; the cold agent
+  faithfully reproduced the gap. Pack §3 now carries the rule. (Classic Pack-method lesson: a cold-build
+  defect = a Pack gap, fix the Pack.)
+- **`--accent-soft` eyebrow (3.30:1) and `.74`-alpha mute text (3.88:1) fail AA on the deep-accent
+  gradient's light stop** — on that ground everything is now solid `--on-dark` (eyebrow/lead) or
+  `rgba(on-dark,.9)` (captions). LED-012 class, caught with the alpha-blending contrast math.
+
+**Verification (Kindred, hardened):** deterministic gate **0 P0 / 0 P1 / 0 P2**; no horizontal overflow
+at 390/1280; wizard advance/back/segments verified by driving the DOM; no-JS fallback verified by class
+simulation (all steps visible, chrome hidden, submit kept); console clean; mark + ring animations
+registered; screenshots taken of hero / fit panel / proof / insights.
+
+**⚠️ Note for Chris:** the pristine v1.0 cold-build artifact is preserved at commit `109667e`
+("Checkpoint: Pack v1.0 + Kindred cold-build test") — the live file now carries v1.1.
+
+**NEXT (unchanged order):** ① Chris reacts to v1.1 → ② composition-vocabulary elevation (measure
+BetterUp's section-rhythm system live) → ③ full Kindred cold-REBUILD from the v1.1 Pack (fresh agent,
+Pack-only — the file edits this session were surgical, not a cold-execution test) → ④ measure
+Stashwealth (dark-confident) + Pictet (restrained-editorial) into Packs + director step → ⑤ cold test
+on Haiku/Sonnet.
 
 ---
 

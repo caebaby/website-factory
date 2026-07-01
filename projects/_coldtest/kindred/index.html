@@ -23,6 +23,7 @@
   --accent:#b8894a;        /* THE one committed color */
   --accent-soft:#d8b483;   /* lighter accent — eyebrows/links/icons ON DARK */
   --accent-ink:#6f4e22;    /* AA-safe DEEP accent for small text ON LIGHT (6.67:1 / 5.87:1 — passes) */
+  --accent-deep:#684b1f;   /* v1.1: the PROOF ground — carries LIGHT text (on-dark ≥5:1) */
   --accent-rgb:184,137,74;
   --border:rgba(22,48,42,.14);
 
@@ -56,13 +57,16 @@ section{position:relative;}
 .bg-ground{background:var(--ground);} .bg-ground-alt{background:var(--ground-alt);}
 .bg-dark{background:var(--dark);color:var(--on-dark);}
 .bg-dark-2{background:var(--dark-2);color:var(--on-dark);}
-.bg-accent{background:var(--accent);color:var(--dark);}
+.bg-accent-deep{background:linear-gradient(155deg,
+  color-mix(in srgb,var(--accent-deep) 78%,var(--accent)) 0%,
+  var(--accent-deep) 52%,
+  color-mix(in srgb,var(--accent-deep) 82%,#000) 100%);color:var(--on-dark);}
 
 /* eyebrow */
 .eyebrow{display:inline-flex;align-items:center;gap:10px;font:600 12px/1.3 var(--sans);letter-spacing:1px;text-transform:uppercase;color:var(--accent-ink);}
 .eyebrow::before{content:"";width:22px;height:1.5px;background:currentColor;flex:none;}
-.bg-dark .eyebrow,.bg-dark-2 .eyebrow{color:var(--accent-soft);}
-.bg-accent .eyebrow{color:var(--dark);}
+.bg-dark .eyebrow,.bg-dark-2 .eyebrow,.hero .eyebrow{color:var(--accent-soft);}
+.bg-accent-deep .eyebrow{color:var(--on-dark);} /* accent-soft fails AA on the gradient's light stop */
 
 /* buttons */
 .btn{display:inline-flex;align-items:center;gap:8px;border-radius:var(--radius-btn);font:600 18px/1.2 var(--sans);letter-spacing:-.36px;padding:10px 24px;border:var(--btn-border) solid transparent;cursor:pointer;transition:background-color var(--dur) var(--ease),border-color var(--dur) var(--ease),color var(--dur) var(--ease),transform var(--dur) var(--ease-soft);}
@@ -90,9 +94,9 @@ nav.scrolled{background:color-mix(in srgb,var(--dark) 92%,transparent);backdrop-
 .sec-head h2 em{font-family:var(--serif);font-style:italic;font-weight:400;font-size:1.05em;letter-spacing:-.01em;}
 .sec-head p:not(.eyebrow){margin-top:20px;font-size:clamp(17px,1.4vw,20px);line-height:1.55;color:var(--ink-body);max-width:60ch;}
 .sec-head.center p:not(.eyebrow){margin-inline:auto;}
-.bg-dark .sec-head h2,.bg-dark-2 .sec-head h2{color:#fff;}
+.bg-dark .sec-head h2,.bg-dark-2 .sec-head h2,.bg-accent-deep .sec-head h2{color:#fff;}
 .bg-dark .sec-head p:not(.eyebrow),.bg-dark-2 .sec-head p:not(.eyebrow){color:var(--on-dark-mute);}
-.bg-accent .sec-head h2{color:var(--dark);} .bg-accent .sec-head p:not(.eyebrow){color:color-mix(in srgb,var(--dark) 82%,transparent);}
+.bg-accent-deep .sec-head p:not(.eyebrow){color:var(--on-dark);} /* .74 mute fails AA on the light stop */
 
 /* card DNA */
 .card{border-radius:var(--radius-card);overflow:hidden;position:relative;}
@@ -126,15 +130,19 @@ nav.scrolled{background:color-mix(in srgb,var(--dark) 92%,transparent);backdrop-
 .hero .btn-outline:hover{background:var(--accent);border-color:var(--accent);color:var(--dark);}
 .img-label{position:absolute;right:var(--gutter);bottom:40px;z-index:3;font:600 12px/1.3 var(--sans);letter-spacing:1px;text-transform:uppercase;color:var(--on-dark-mute);}
 .img-label::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent);margin-right:9px;vertical-align:middle;}
-/* hero wave signature */
-.wave{position:absolute;left:0;bottom:56px;z-index:2;width:min(620px,58vw);height:auto;overflow:visible;opacity:.9;pointer-events:none;}
-.wave g{will-change:transform;}
-@keyframes wavedrift{from{transform:translateX(-14px);}to{transform:translateX(16px);}}
-@media (prefers-reduced-motion:no-preference){
-  .wave .w1{animation:wavedrift 13s var(--ease) infinite alternate;}
-  .wave .w2{animation:wavedrift 17s var(--ease) infinite alternate-reverse;}
-  .wave .w3{animation:wavedrift 21s var(--ease) infinite alternate;}
-}
+/* signature: the CONVERGENCE MARK — 3 strands (CPA/attorney/portfolio) → one node (one living plan) */
+.mark{pointer-events:none;overflow:visible;}
+.hero-mark{position:absolute;left:0;bottom:56px;z-index:2;width:min(620px,58vw);height:auto;opacity:.9;}
+.mark path{fill:none;stroke-linecap:round;}
+.mark .s1{stroke:var(--accent);stroke-width:1.6;}
+.mark .s2{stroke:var(--accent-soft);stroke-width:1.4;}
+.mark .s3{stroke:rgba(243,239,228,.5);stroke-width:1.2;}
+.mark .f1{fill:var(--accent);} .mark .f2{fill:var(--accent-soft);} .mark .f3{fill:rgba(243,239,228,.75);}
+.mark .node{fill:var(--accent);}
+.mark .ring{fill:none;stroke:var(--accent-soft);stroke-width:1.2;transform-box:fill-box;transform-origin:center;}
+@media (prefers-reduced-motion:no-preference){.mark .ring{animation:ringpulse 4.5s ease-in-out infinite;}}
+@keyframes ringpulse{0%,100%{transform:scale(1);opacity:.55;}50%{transform:scale(1.4);opacity:.12;}}
+@media (prefers-reduced-motion:reduce){.mark .f1,.mark .f2,.mark .f3{display:none;}.mark .ring{opacity:.4;}}
 
 /* PAIN */
 .pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
@@ -164,31 +172,41 @@ nav.scrolled{background:color-mix(in srgb,var(--dark) 92%,transparent);backdrop-
 .icp-link .arw{transition:transform var(--dur) var(--ease-soft);}
 .icp-card:hover .icp-link .arw{transform:translateX(4px);}
 
-/* FIT / CAPTURE */
-.fit-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,72px);align-items:center;}
-.fit-copy .eyebrow{margin-bottom:22px;}
-.fit-copy h2{font:300 clamp(30px,4.4vw,60px)/1.05 var(--sans);letter-spacing:-.025em;color:var(--ink);}
+/* FIT / CAPTURE — THE MINI-HERO (v1.1): full-width dark panel, one type scale */
+.fit-panel{position:relative;background:var(--dark);color:var(--on-dark);border-radius:var(--radius-media);overflow:hidden;padding:clamp(40px,5.5vw,84px);}
+.fit-panel::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 82% 0%,rgba(var(--accent-rgb),.16),transparent 55%);pointer-events:none;}
+.fit-mark{position:absolute;left:-30px;bottom:-14px;width:min(420px,46%);height:auto;opacity:.35;}
+.fit-grid{position:relative;display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(36px,5vw,72px);align-items:center;}
+.fit-copy .eyebrow{margin-bottom:22px;color:var(--accent-soft);}
+.fit-copy h2{font:300 clamp(30px,4.4vw,54px)/1.05 var(--sans);letter-spacing:-.025em;color:#fff;}
 .fit-copy h2 em{font-family:var(--serif);font-style:italic;font-weight:400;font-size:1.05em;letter-spacing:-.01em;}
-.fit-copy p{margin-top:20px;font-size:clamp(17px,1.4vw,20px);line-height:1.55;color:var(--ink-body);max-width:52ch;}
-.fit-card{background:var(--card-pale);border:1px solid var(--border);border-radius:var(--radius-card);padding:clamp(28px,3vw,42px);}
-.fit-prog-track{height:5px;border-radius:3px;background:var(--ground-alt);overflow:hidden;}
-.fit-prog-bar{height:100%;width:25%;background:var(--accent);border-radius:3px;transition:width var(--dur) var(--ease-soft);}
-.fit-step-count{margin-top:12px;font:600 12px/1.3 var(--sans);letter-spacing:1px;text-transform:uppercase;color:var(--accent-ink);}
+.fit-copy p{margin-top:20px;font-size:clamp(17px,1.4vw,20px);line-height:1.55;color:var(--on-dark-mute);max-width:46ch;}
+.fit-assure{margin-top:28px;display:grid;gap:14px;list-style:none;}
+.fit-assure li{display:flex;align-items:center;gap:12px;font:500 15px var(--sans);color:var(--on-dark);}
+.fit-assure svg{width:20px;height:20px;color:var(--accent-soft);flex:none;}
+.fit-card{background:var(--card-pale);border-radius:var(--radius-card);padding:clamp(30px,3.4vw,46px);}
+.wiz-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;}
+.wiz-num{font:300 clamp(34px,3vw,44px)/1 var(--sans);letter-spacing:-.03em;color:var(--accent-ink);}
+.wiz-label{font:600 12px/1.3 var(--sans);letter-spacing:1px;text-transform:uppercase;color:var(--ink-body);padding-bottom:5px;}
+.wiz-segs{margin-top:14px;display:grid;grid-template-columns:repeat(4,1fr);gap:6px;}
+.wiz-segs i{height:3px;border-radius:3px;background:var(--ground-alt);transition:background var(--dur) var(--ease);}
+.wiz-segs i.on{background:var(--accent);}
 .fit-form fieldset{border:0;margin-top:26px;}
-.fit-form legend{font:300 clamp(20px,2vw,26px)/1.2 var(--sans);letter-spacing:-.02em;color:var(--ink);}
+.fit-form legend{font:300 clamp(21px,2.2vw,28px)/1.1 var(--sans);letter-spacing:-.02em;color:var(--ink);}
 .fit-options{margin-top:20px;display:grid;gap:12px;}
-.fit-opt{display:block;width:100%;text-align:left;background:var(--ground);border:1.5px solid var(--border);border-radius:var(--radius-btn);padding:15px 18px;font:500 16px var(--sans);letter-spacing:-.01em;color:var(--ink);cursor:pointer;transition:background-color var(--dur) var(--ease),border-color var(--dur) var(--ease);}
+.fit-opt{display:block;width:100%;text-align:left;background:var(--ground);border:1.5px solid var(--border);border-radius:var(--radius-btn);padding:15px 18px;font:600 15.5px var(--sans);letter-spacing:-.01em;color:var(--ink);cursor:pointer;transition:background-color var(--dur) var(--ease),border-color var(--dur) var(--ease);}
 .fit-opt:hover{background:rgba(var(--accent-rgb),.10);border-color:var(--accent);}
 .fit-input{width:100%;margin-top:20px;background:var(--ground);border:1.5px solid var(--border);border-radius:var(--radius-btn);padding:15px 18px;font:400 16px var(--sans);color:var(--ink);}
 .fit-input:focus{outline:none;border-color:var(--accent);}
 .fit-nav{margin-top:26px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
 .fit-back{background:none;border:0;font:600 15px var(--sans);color:var(--ink-body);cursor:pointer;opacity:.8;transition:opacity .2s;}
 .fit-back:hover{opacity:1;}
+.fit-micro{margin-top:14px;font-size:12.5px;color:var(--ink-body);text-align:center;}
 .fit-thanks{padding:20px 0;}
 .fit-thanks h3{font:300 clamp(24px,2.4vw,32px)/1.15 var(--sans);letter-spacing:-.02em;color:var(--ink);}
 .fit-thanks h3 em{font-family:var(--serif);font-style:italic;font-weight:400;}
 .fit-thanks p{margin-top:16px;font-size:16px;line-height:1.6;color:var(--ink-body);max-width:44ch;}
-.no-js .fit-prog-track,.no-js .fit-step-count{display:none;}
+.no-js .wiz-head,.no-js .wiz-segs{display:none;}
 .no-js .fit-form fieldset[hidden]{display:block;}
 .no-js .fit-form fieldset .fit-nav{display:none;}
 .no-js .fit-form fieldset[data-step="4"] .fit-nav{display:flex;}
@@ -218,14 +236,14 @@ nav.scrolled{background:color-mix(in srgb,var(--dark) 92%,transparent);backdrop-
 .proc-step p{margin-top:12px;font-size:15px;line-height:1.55;color:var(--ink-body);}
 .proc-when{margin-top:14px;font:400 15px/1.4 var(--serif);font-style:italic;color:var(--accent-ink);}
 
-/* PROOF — the accent moment */
+/* PROOF — the one saturated moment (v1.1: deep accent ground, LIGHT text) */
 .proof-quote{max-width:820px;margin:0 auto;background:var(--card-pale);border-radius:var(--radius-card);padding:clamp(36px,4vw,56px);position:relative;}
 .proof-glyph{font:400 90px/.6 var(--serif);font-style:italic;color:var(--accent);display:block;height:44px;}
 .proof-quote blockquote{margin-top:8px;font:400 clamp(20px,2vw,28px)/1.4 var(--serif);font-style:italic;color:var(--dark);letter-spacing:-.01em;}
 .proof-note{margin-top:22px;font:600 14px var(--sans);letter-spacing:.3px;color:var(--dark);opacity:.72;}
-.proof-stats{max-width:960px;margin:clamp(44px,5vw,64px) auto 0;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center;}
-.proof-stat .n{font:300 clamp(36px,3.6vw,52px)/1 var(--sans);letter-spacing:-.03em;color:var(--dark);}
-.proof-stat .c{margin-top:10px;font-size:14px;line-height:1.4;color:var(--dark);opacity:.78;}
+.proof-stats{max-width:960px;margin:clamp(44px,5vw,64px) auto 0;padding-top:clamp(30px,3.6vw,48px);border-top:1px solid rgba(243,239,228,.25);display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center;}
+.proof-stat .n{font:300 clamp(36px,3.6vw,52px)/1 var(--sans);letter-spacing:-.03em;color:var(--on-dark);}
+.proof-stat .c{margin-top:10px;font-size:14px;line-height:1.4;color:rgba(243,239,228,.9);}
 
 /* FINAL CTA — light close */
 .cta{text-align:center;position:relative;overflow:hidden;}
@@ -236,13 +254,19 @@ nav.scrolled{background:color-mix(in srgb,var(--dark) 92%,transparent);backdrop-
 .cta p{margin:22px auto 0;max-width:52ch;font-size:clamp(17px,1.4vw,20px);line-height:1.55;color:var(--ink-body);}
 .cta-btns{margin-top:34px;display:flex;flex-wrap:wrap;gap:12px;justify-content:center;}
 
-/* INSIGHTS */
-.ins-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-.ins-card{background:var(--card-pale);border-radius:var(--radius-card);padding:32px;border:1px solid var(--border);display:flex;flex-direction:column;}
+/* INSIGHTS — featured split (v1.1): one lead item + compact stack */
+.ins-grid{display:grid;grid-template-columns:1.55fr 1fr;gap:24px;align-items:stretch;}
+.ins-feat{position:relative;background:var(--card-pale);border-radius:var(--radius-card);border:1px solid var(--border);padding:clamp(32px,3.4vw,48px);display:flex;flex-direction:column;overflow:hidden;}
+.ins-feat::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);}
+.ins-feat h3{margin-top:18px;font:400 clamp(24px,2.4vw,32px)/1.25 var(--serif);font-style:italic;color:var(--ink);letter-spacing:-.005em;max-width:22ch;}
+.ins-feat p{margin-top:14px;font-size:16px;line-height:1.6;color:var(--ink-body);max-width:56ch;}
+.ins-feat .ins-link{margin-top:auto;padding-top:22px;}
+.ins-stack{display:grid;gap:24px;}
+.ins-card{background:var(--card-pale);border-radius:var(--radius-card);padding:26px 28px;border:1px solid var(--border);display:flex;flex-direction:column;}
 .ins-tag{font:600 12px/1.3 var(--sans);letter-spacing:1px;text-transform:uppercase;color:var(--accent-ink);}
-.ins-card h3{margin-top:16px;font:400 clamp(20px,1.7vw,25px)/1.25 var(--serif);font-style:italic;color:var(--ink);letter-spacing:-.005em;}
-.ins-card p{margin-top:12px;font-size:15px;line-height:1.55;color:var(--ink-body);}
-.ins-link{margin-top:20px;font:600 14px var(--sans);letter-spacing:.3px;color:var(--accent-ink);}
+.ins-card h3{margin-top:14px;font:400 20px/1.3 var(--serif);font-style:italic;color:var(--ink);letter-spacing:-.005em;}
+.ins-card p{margin-top:10px;font-size:14.5px;line-height:1.55;color:var(--ink-body);}
+.ins-link{margin-top:16px;font:600 14px var(--sans);letter-spacing:.3px;color:var(--accent-ink);}
 
 /* FOOTER */
 .footer{padding:clamp(64px,7vw,96px) 0 40px;}
@@ -260,12 +284,14 @@ nav.scrolled{background:color-mix(in srgb,var(--dark) 92%,transparent);backdrop-
 
 /* verify tag */
 .vf{display:inline-block;font:600 9px/1 var(--sans);letter-spacing:.5px;text-transform:uppercase;color:var(--accent);border:1px solid rgba(var(--accent-rgb),.5);border-radius:3px;padding:2px 4px;vertical-align:middle;margin-left:6px;opacity:.85;}
-.bg-accent .vf{color:var(--dark);border-color:rgba(22,48,42,.35);}
-.bg-dark .vf,.bg-dark-2 .vf{color:var(--accent-soft);border-color:rgba(216,180,131,.4);}
+.bg-dark .vf,.bg-dark-2 .vf,.bg-accent-deep .vf{color:var(--accent-soft);border-color:rgba(216,180,131,.4);}
 
 /* responsive */
 @media(max-width:940px){
-  .pain-grid,.why-grid,.who-grid,.fit-grid,.proc-grid,.proof-stats,.ins-grid{grid-template-columns:1fr 1fr;}
+  .pain-grid,.why-grid,.who-grid,.proc-grid,.proof-stats{grid-template-columns:1fr 1fr;}
+  .fit-grid,.ins-grid{grid-template-columns:1fr;}
+  .fit-grid{gap:40px;}
+  .fit-mark{opacity:.22;}
   .bento{grid-template-columns:repeat(2,1fr);}
   .svc.c3,.svc.c2,.svc.c6{grid-column:span 2;}
   .foot-top{grid-template-columns:1fr 1fr;}
@@ -303,20 +329,16 @@ nav.scrolled{background:color-mix(in srgb,var(--dark) 92%,transparent);backdrop-
   </div>
   <div class="hero-scrim"></div>
 
-  <!-- Signature drifting sine waves -->
-  <svg class="wave" viewBox="0 0 620 120" fill="none" aria-hidden="true" preserveAspectRatio="none">
-    <g class="w1">
-      <path d="M0 60 C 90 20, 180 100, 270 60 S 450 20, 540 60 S 620 80, 620 70" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-      <circle cx="540" cy="60" r="3.4" fill="var(--accent)"/>
-    </g>
-    <g class="w2">
-      <path d="M0 78 C 100 44, 200 108, 300 78 S 480 48, 560 82" stroke="var(--accent-soft)" stroke-width="1.4" stroke-linecap="round" fill="none"/>
-      <circle cx="560" cy="82" r="3" fill="var(--accent-soft)"/>
-    </g>
-    <g class="w3">
-      <path d="M0 44 C 110 14, 210 74, 320 44 S 500 16, 600 46" stroke="rgba(243,239,228,.55)" stroke-width="1.2" stroke-linecap="round" fill="none"/>
-      <circle cx="600" cy="46" r="2.6" fill="rgba(243,239,228,.55)"/>
-    </g>
+  <!-- Signature: the convergence mark — three strands (comp/taxes · practice · estate) → one living plan -->
+  <svg class="mark hero-mark" viewBox="0 0 640 200" aria-hidden="true" preserveAspectRatio="xMinYMid meet">
+    <path class="s1" d="M-20,30 C 160,10 340,60 556,100"/>
+    <path class="s2" d="M-20,106 C 180,96 380,104 556,100"/>
+    <path class="s3" d="M-20,178 C 160,196 340,142 556,100"/>
+    <circle class="f1" r="3.2"><animateMotion dur="9s"  repeatCount="indefinite" path="M-20,30 C 160,10 340,60 556,100"/></circle>
+    <circle class="f2" r="2.8"><animateMotion dur="12s" repeatCount="indefinite" path="M-20,106 C 180,96 380,104 556,100"/></circle>
+    <circle class="f3" r="2.4"><animateMotion dur="15s" repeatCount="indefinite" path="M-20,178 C 160,196 340,142 556,100"/></circle>
+    <circle class="node" cx="556" cy="100" r="5.5"/>
+    <circle class="ring" cx="556" cy="100" r="13"/>
   </svg>
 
   <div class="wrap">
@@ -442,19 +464,33 @@ nav.scrolled{background:color-mix(in srgb,var(--dark) 92%,transparent);backdrop-
   </div>
 </section>
 
-<!-- FIT CHECK -->
-<section class="bg-ground-alt pad" id="fit">
+<!-- FIT CHECK — the mini-hero (v1.1) -->
+<section class="bg-ground pad-sm" id="fit">
   <div class="wrap">
-    <div class="fit-grid">
-      <div class="fit-copy rise">
+    <div class="fit-panel rise">
+      <!-- convergence-mark echo (no flow-dots) -->
+      <svg class="mark fit-mark" viewBox="0 0 640 200" aria-hidden="true" preserveAspectRatio="xMinYMid meet">
+        <path class="s1" d="M-20,30 C 160,10 340,60 556,100"/>
+        <path class="s2" d="M-20,106 C 180,96 380,104 556,100"/>
+        <path class="s3" d="M-20,178 C 160,196 340,142 556,100"/>
+        <circle class="node" cx="556" cy="100" r="5.5"/>
+        <circle class="ring" cx="556" cy="100" r="13"/>
+      </svg>
+      <div class="fit-grid">
+      <div class="fit-copy">
         <span class="eyebrow">The fit check</span>
         <h2>Four questions. <em>Two minutes.</em></h2>
         <p>We'll tell you honestly whether we can help — and if we can't, we'll point you to someone who can.</p>
+        <ul class="fit-assure">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Two minutes — four questions, nothing to prepare</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.4 2.4 4.6-5"/></svg>No pitch, no pressure, no spam</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg>An honest answer either way</li>
+        </ul>
       </div>
-      <div class="fit-card rise">
+      <div class="fit-card">
         <form class="fit-form" id="fitForm" autocomplete="on">
-          <div class="fit-prog-track"><div class="fit-prog-bar" id="fitBar"></div></div>
-          <div class="fit-step-count" id="fitCount">Step 1 of 4</div>
+          <div class="wiz-head"><span class="wiz-num" id="fitNum">01</span><span class="wiz-label" id="fitCount">of 04</span></div>
+          <div class="wiz-segs" id="fitSegs" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
 
           <fieldset data-step="1">
             <legend>Which best describes you?</legend>
@@ -502,6 +538,8 @@ nav.scrolled{background:color-mix(in srgb,var(--dark) 92%,transparent);backdrop-
           <h3>Thank you — <em>we'll be in touch.</em></h3>
           <p>This is a demo. In production, a Kindred advisor reviews your answers and replies within one business day with an honest read on fit.</p>
         </div>
+        <p class="fit-micro">No spam. No sales pitch. Just an honest answer about whether we're a match.</p>
+      </div>
       </div>
     </div>
   </div>
@@ -594,8 +632,8 @@ nav.scrolled{background:color-mix(in srgb,var(--dark) 92%,transparent);backdrop-
   </div>
 </section>
 
-<!-- PROOF (the one accent moment) -->
-<section class="bg-accent pad" id="proof">
+<!-- PROOF (the one saturated moment — deep accent, light text) -->
+<section class="bg-accent-deep pad" id="proof">
   <div class="wrap">
     <div class="sec-head center rise">
       <span class="eyebrow">Proof</span>
@@ -629,31 +667,33 @@ nav.scrolled{background:color-mix(in srgb,var(--dark) 92%,transparent);backdrop-
 </section>
 
 <!-- INSIGHTS -->
-<section class="bg-ground-alt pad" id="insights">
+<section class="bg-ground-alt pad-sm" id="insights">
   <div class="wrap">
     <div class="sec-head rise">
       <span class="eyebrow">Insights</span>
       <h2>Reading for the <em>time-poor physician.</em></h2>
     </div>
     <div class="ins-grid">
-      <article class="ins-card rise">
-        <div class="ins-tag">Article · Illustrative <span class="vf">VERIFY</span></div>
+      <article class="ins-feat rise">
+        <div class="ins-tag">Featured · Article · Illustrative <span class="vf">VERIFY</span></div>
         <h3>457(b) vs. 401(k): where your next dollar should go</h3>
-        <p>A plain-language walk through the deferred-comp decision most attendings get wrong by default.</p>
-        <span class="ins-link">Read →</span>
+        <p>A plain-language walk through the deferred-comp decision most attendings get wrong by default — what a 457(b) actually is, when its risks are worth it, and how to sequence it against your 401(k), backdoor Roth, and loan payoff.</p>
+        <span class="ins-link">Read the guide →</span>
       </article>
-      <article class="ins-card rise">
-        <div class="ins-tag">Podcast · Illustrative <span class="vf">VERIFY</span></div>
-        <h3>What your practice is actually worth</h3>
-        <p>How valuation, buy-outs, and overhead really shape an owner's exit — with a practice-transition advisor.</p>
-        <span class="ins-link">Listen →</span>
-      </article>
-      <article class="ins-card rise">
-        <div class="ins-tag">Article · Illustrative <span class="vf">VERIFY</span></div>
-        <h3>Asset protection before the claim, not after</h3>
-        <p>The structures that matter for physicians — and why they only work if you set them up early.</p>
-        <span class="ins-link">Read →</span>
-      </article>
+      <div class="ins-stack">
+        <article class="ins-card rise">
+          <div class="ins-tag">Podcast · Illustrative <span class="vf">VERIFY</span></div>
+          <h3>What your practice is actually worth</h3>
+          <p>How valuation, buy-outs, and overhead really shape an owner's exit.</p>
+          <span class="ins-link">Listen →</span>
+        </article>
+        <article class="ins-card rise">
+          <div class="ins-tag">Article · Illustrative <span class="vf">VERIFY</span></div>
+          <h3>Asset protection before the claim, not after</h3>
+          <p>The structures that matter for physicians — and why timing decides whether they work.</p>
+          <span class="ins-link">Read →</span>
+        </article>
+      </div>
     </div>
   </div>
 </section>
@@ -733,15 +773,17 @@ heroRises.forEach(function(el,i){ setTimeout(function(){ el.classList.add('in');
   var form=document.getElementById('fitForm');
   if(!form) return;
   var steps=Array.prototype.slice.call(form.querySelectorAll('fieldset'));
-  var bar=document.getElementById('fitBar');
+  var num=document.getElementById('fitNum');
   var count=document.getElementById('fitCount');
+  var segs=Array.prototype.slice.call(document.querySelectorAll('#fitSegs i'));
   var thanks=document.getElementById('fitThanks');
   var total=steps.length, cur=0;
   function show(i){
     cur=Math.max(0,Math.min(total-1,i));
     steps.forEach(function(fs,idx){ fs.hidden = idx!==cur; });
-    bar.style.width=((cur+1)/total*100)+'%';
-    count.textContent='Step '+(cur+1)+' of '+total;
+    num.textContent='0'+(cur+1);
+    count.textContent='of 0'+total;
+    segs.forEach(function(s,k){ s.classList.toggle('on',k<=cur); });
   }
   show(0);
   form.addEventListener('click',function(e){
