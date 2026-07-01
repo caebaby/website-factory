@@ -19,6 +19,12 @@ Last updated: 2026-07-01 (Anchor WARM homepage built + verified; next = two more
 
 **Copy note (Chris's domain):** reference heroes use SHORT punchy headlines; Anchor's is the long question. Offer 2-3 punchier H1 options, don't rewrite unilaterally.
 
+### Beyond the homepage — the real scope (Chris, 2026-07-01)
+- **We need the FULL page set, not just the homepage:** About, Services, Who We Serve, Process, Contact (see `projects/awp/SITEMAP.md`). Build each to the same bar as `warm-home.html`, in the chosen style.
+- **Model the page structure on the Longview Advisors site.** Find it first — likely in `~/Documents/advisor-sites/` (per CLAUDE.md sibling repos: "Longview site and advisor site builds") or GitHub `caebaby`. Review ALL its pages; AWP will be "something very similar." Read it before designing the inner pages.
+- **Copy workflow:** once page structure is set → do copy research → produce a **client-fillable copy doc** (structured, one field per page/slot) for Alex to fill in, so we drop it in and it looks sharp (like INTAKE/COPY_ALL but client-facing + fillable, keyed to each page section).
+- **The homepage is missing CONTENT:** add a content/resources section to the homepage (blog + podcasts), and plan content pages (blog, podcasts, resources). Content is part of the deliverable, not an afterthought.
+
 ---
 
 ## 🎓 LEARNINGS — 2026-07-01 (the pivot; append-only for next session)
