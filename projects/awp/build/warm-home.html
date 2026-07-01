@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anchor Wealth Planning — Coordinated wealth for Houston executives, owners & families</title>
+<meta name="description" content="Anchor Wealth Planning coordinates your investments, taxes, and estate plan with your CPA and attorney — one living plan, so you can stop being the glue.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito+Sans:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --navy:#1e395a; --navy-deep:#142840; --navy-rgb:30,57,90;
+    --gold:#c9a24b; --gold-soft:#dcc07e; --gold-deep:#a8823a; --gold-rgb:201,162,75;
+    --cream:#F5F0E6; --cream-mid:#EDE7D9; --white:#fff;
+    --ink:#1b2a3c; --ink-soft:#4b5b6e; --ink-mute:#7d8a99;
+    --on-dark:#F4EFE6; --on-dark-mute:rgba(244,239,230,.68);
+    --border:rgba(30,57,90,.14); --border-dark:rgba(244,239,230,.18);
+    --serif:'EB Garamond',Georgia,serif;
+    --sans:'Nunito Sans','Helvetica Neue',sans-serif;
+    --maxw:1200px; --radius-btn:6px; --radius-card:10px;
+    --ease:cubic-bezier(.16,1,.3,1);
+    --shadow-card:0 1px 2px rgba(20,30,45,.04),0 8px 24px rgba(20,30,45,.07),0 24px 56px rgba(20,30,45,.07);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{font-size:16px;scroll-behavior:smooth;}
+  body{font-family:var(--sans);background:var(--cream);color:var(--ink-soft);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.6;}
+  a{color:inherit;text-decoration:none;}
+  h1,h2,h3{font-family:var(--serif);color:var(--ink);font-weight:500;line-height:1.08;letter-spacing:-.01em;}
+  ::selection{background:var(--gold);color:var(--navy-deep);}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(24px,4vw,64px);}
+  .eyebrow{display:inline-flex;align-items:center;gap:13px;font-family:var(--sans);font-weight:700;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-deep);}
+  .eyebrow::before{content:"";width:38px;height:1.5px;background:var(--gold);}
+  .on-dark .eyebrow{color:var(--gold-soft);} .on-dark .eyebrow::before{background:var(--gold-soft);}
+  .bg-gold .eyebrow{color:var(--navy-deep);} .bg-gold .eyebrow::before{background:var(--navy-deep);}
+
+  /* buttons */
+  .btn{display:inline-flex;align-items:center;gap:9px;border-radius:var(--radius-btn);font-family:var(--sans);font-weight:700;font-size:14.5px;letter-spacing:.01em;padding:14px 27px;cursor:pointer;border:none;transition:transform .2s var(--ease),box-shadow .2s var(--ease),background .2s;}
+  .btn .arw{transition:transform .25s var(--ease);} .btn:hover .arw{transform:translateX(4px);}
+  .btn-gold{background:var(--gold);color:var(--navy-deep);box-shadow:0 2px 10px rgba(var(--gold-rgb),.28),0 8px 26px rgba(var(--gold-rgb),.2);}
+  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 3px 12px rgba(var(--gold-rgb),.36),0 12px 32px rgba(var(--gold-rgb),.28);}
+  .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--border);}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold-deep);}
+  .on-dark .btn-ghost{color:var(--on-dark);border-color:var(--border-dark);} .on-dark .btn-ghost:hover{border-color:var(--gold-soft);color:var(--white);}
+  .btn-white{background:var(--white);color:var(--navy);} .btn-white:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,0,0,.16);}
+
+  section{position:relative;}
+  .pad{padding:clamp(84px,10vw,140px) 0;}
+  .pad-sm{padding:clamp(56px,7vw,88px) 0;}
+  .bg-cream{background:var(--cream);} .bg-cream-mid{background:var(--cream-mid);}
+  .bg-navy{background:var(--navy-deep);color:var(--on-dark);}
+  .bg-gold{background:linear-gradient(150deg,var(--gold) 0%,var(--gold-deep) 100%);color:var(--navy-deep);}
+  .bg-navy h2,.bg-navy h3{color:var(--white);} .bg-gold h2,.bg-gold h3{color:var(--navy-deep);}
+
+  .sec-head{max-width:640px;margin-bottom:clamp(40px,5vw,64px);}
+  .sec-head .eyebrow{margin-bottom:22px;}
+  .sec-head h2{font-size:clamp(30px,4vw,52px);}
+  .sec-head p{margin-top:20px;font-size:clamp(17px,1.5vw,19px);color:var(--ink-soft);max-width:56ch;}
+  .bg-navy .sec-head p{color:var(--on-dark-mute);} .bg-gold .sec-head p{color:rgba(20,40,64,.8);}
+
+  /* reveal */
+  .rise{opacity:1;}
+  @media (prefers-reduced-motion:no-preference){
+    html.js .rise{opacity:0;transform:translateY(20px);}
+    html.js .rise.in{opacity:1;transform:none;transition:opacity .7s var(--ease),transform .7s var(--ease);}
+  }
+
+  /* ── NAV ─────────────────────────────── */
+  nav{position:fixed;top:0;left:0;right:0;z-index:60;padding:22px 0;transition:padding .3s var(--ease),background .3s,box-shadow .3s;}
+  nav.scrolled{padding:12px 0;background:rgba(20,40,64,.9);backdrop-filter:blur(16px) saturate(1.3);-webkit-backdrop-filter:blur(16px) saturate(1.3);box-shadow:0 1px 0 rgba(255,255,255,.06);}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;gap:24px;}
+  .brand{display:flex;flex-direction:column;line-height:1;}
+  .brand b{font-family:var(--serif);font-weight:500;font-size:23px;color:var(--white);}
+  .brand small{font-family:var(--sans);font-weight:700;font-size:10px;letter-spacing:.32em;color:var(--gold-soft);margin-top:5px;}
+  .nav-links{display:flex;gap:30px;align-items:center;}
+  .nav-links a{font-size:14.5px;font-weight:600;color:var(--on-dark);opacity:.9;} .nav-links a:hover{opacity:1;color:var(--gold-soft);}
+  @media(max-width:920px){.nav-links{display:none;}}
+
+  /* ── HERO ────────────────────────────── */
+  .hero{position:relative;min-height:clamp(640px,94svh,1020px);display:flex;align-items:center;overflow:hidden;isolation:isolate;color:var(--on-dark);}
+  .hero__media{position:absolute;inset:0;z-index:-2;overflow:hidden;background:#0e1c2e;}
+  .hslide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 46%;opacity:0;transition:opacity 1.8s ease;will-change:opacity,transform;}
+  .hslide.is-on{opacity:1;}
+  @media (prefers-reduced-motion:no-preference){.hslide{animation:kb 26s ease-in-out infinite alternate;}}
+  @keyframes kb{from{transform:scale(1.06)}to{transform:scale(1.15) translate3d(-1.4%,-1%,0)}}
+  .hero__scrim{position:absolute;inset:0;z-index:-1;background:linear-gradient(96deg,rgba(15,28,46,.92) 0%,rgba(17,32,52,.76) 34%,rgba(20,40,64,.3) 66%,rgba(20,40,64,.05) 100%),linear-gradient(0deg,rgba(13,24,40,.97) 0%,rgba(13,24,40,.6) 16%,rgba(13,24,40,.1) 40%,rgba(13,24,40,0) 64%);}
+  .hero__inner{position:relative;z-index:1;padding-top:96px;padding-bottom:40px;width:100%;}
+  .hero__eyebrow{margin-bottom:30px;}
+  .hl{font-family:var(--serif);font-weight:400;color:var(--white);font-size:clamp(38px,5.1vw,70px);line-height:1.04;letter-spacing:-.012em;max-width:17ch;text-shadow:0 2px 30px rgba(8,16,28,.4);}
+  .hl em{font-style:italic;font-weight:500;color:var(--gold-soft);}
+  .hero__sub{font-size:clamp(17px,1.5vw,20px);line-height:1.55;color:var(--on-dark-mute);max-width:50ch;margin-top:26px;}
+  .hero__sub b{color:var(--on-dark);font-weight:700;}
+  .hero__ctas{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:38px;}
+  .trustline{display:flex;flex-wrap:wrap;align-items:center;gap:16px 30px;margin-top:clamp(38px,5vw,62px);}
+  .trustline span{display:inline-flex;align-items:center;gap:30px;font-family:var(--sans);font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--on-dark);}
+  .trustline span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold);flex:none;}
+
+  /* ── PAIN (editorial stack) ──────────── */
+  .pain-row{display:grid;grid-template-columns:auto 1fr;gap:0 clamp(24px,4vw,56px);padding:clamp(28px,3.5vw,44px) 0;border-top:1px solid var(--border);align-items:start;}
+  .pain-row:last-child{border-bottom:1px solid var(--border);}
+  .pain-num{font-family:var(--serif);font-size:clamp(40px,5vw,68px);font-weight:500;line-height:.9;color:var(--gold);opacity:.85;}
+  .pain-q{font-family:var(--serif);font-style:italic;font-size:clamp(21px,2.2vw,29px);line-height:1.3;color:var(--ink);margin-bottom:12px;}
+  .pain-c{font-size:clamp(15px,1.4vw,16.5px);color:var(--ink-soft);max-width:62ch;}
+
+  /* ── CREDIBILITY (navy) ──────────────── */
+  .cred-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(28px,3vw,44px) clamp(40px,5vw,72px);}
+  @media(max-width:720px){.cred-grid{grid-template-columns:1fr;}}
+  .cred{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start;}
+  .cred .ic{width:34px;height:34px;color:var(--gold-soft);flex:none;}
+  .cred h3{font-size:20px;color:var(--white);margin-bottom:7px;font-family:var(--sans);font-weight:700;letter-spacing:0;}
+  .cred p{font-size:15px;color:var(--on-dark-mute);line-height:1.55;}
+
+  /* ── ICP cards ───────────────────────── */
+  .icp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,2vw,28px);}
+  @media(max-width:860px){.icp-grid{grid-template-columns:1fr;}}
+  .icp{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-card);padding:clamp(30px,3vw,40px);box-shadow:var(--shadow-card);transition:transform .35s var(--ease),box-shadow .35s var(--ease);position:relative;overflow:hidden;}
+  .icp:hover{transform:translateY(-6px);box-shadow:0 4px 10px rgba(20,30,45,.06),0 18px 44px rgba(20,30,45,.14);}
+  .icp::after{content:"";position:absolute;left:0;top:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),transparent);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease);}
+  .icp:hover::after{transform:scaleX(1);}
+  .icp .ic{width:40px;height:40px;color:var(--gold-deep);margin-bottom:22px;}
+  .icp h3{font-size:24px;margin-bottom:12px;}
+  .icp p{font-size:15px;color:var(--ink-soft);line-height:1.6;margin-bottom:20px;}
+  .icp .lnk{font-family:var(--sans);font-weight:700;font-size:13.5px;color:var(--gold-deep);display:inline-flex;gap:7px;align-items:center;}
+  .icp:hover .lnk .arw{transform:translateX(4px);}
+
+  /* ── FIT FORM ────────────────────────── */
+  .fit-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(36px,5vw,72px);align-items:center;}
+  @media(max-width:860px){.fit-grid{grid-template-columns:1fr;}}
+  .fit-card{background:var(--white);border-radius:14px;box-shadow:var(--shadow-card);border-top:3px solid var(--gold);padding:clamp(30px,3.5vw,48px);}
+  .wiz__prog{font-family:var(--sans);font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:14px;}
+  .wiz__bar{height:3px;background:var(--cream-mid);border-radius:3px;overflow:hidden;margin-bottom:30px;}
+  .wiz__bar i{display:block;height:100%;background:var(--gold);border-radius:3px;transition:width .4s var(--ease);}
+  .wiz__step{display:block;}
+  .js .wiz__step{display:none;} .js .wiz__step.is-active{display:block;animation:fade .4s var(--ease);}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .wiz__step legend{font-family:var(--serif);font-size:clamp(21px,2.2vw,27px);color:var(--ink);margin-bottom:22px;display:block;}
+  .opt{display:block;width:100%;text-align:left;background:var(--white);border:1.5px solid var(--border);border-radius:8px;padding:15px 18px;margin-bottom:11px;font-family:var(--sans);font-size:15.5px;font-weight:600;color:var(--ink);cursor:pointer;transition:border-color .2s,background .2s,transform .1s;}
+  .opt:hover{border-color:var(--gold);background:rgba(var(--gold-rgb),.05);}
+  .opt:active{transform:scale(.995);}
+  .wiz input[type=email]{width:100%;padding:15px 18px;border:1.5px solid var(--border);border-radius:8px;font-family:var(--sans);font-size:16px;color:var(--ink);margin-bottom:14px;}
+  .wiz input[type=email]:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(var(--gold-rgb),.14);}
+  .wiz__nav{display:flex;justify-content:space-between;align-items:center;margin-top:8px;}
+  .wiz__back{background:none;border:none;color:var(--ink-mute);font-family:var(--sans);font-weight:600;font-size:14px;cursor:pointer;padding:8px 0;}
+  .wiz__micro{font-size:12.5px;color:var(--ink-mute);margin-top:14px;text-align:center;}
+
+  /* ── SERVICES (numbered editorial) ───── */
+  .svc{display:grid;grid-template-columns:auto 1fr auto;gap:clamp(20px,3vw,48px);align-items:baseline;padding:clamp(26px,3vw,38px) 0;border-top:1px solid var(--border);}
+  .svc:last-child{border-bottom:1px solid var(--border);}
+  .svc-n{font-family:var(--serif);font-size:clamp(28px,3vw,40px);color:var(--gold);opacity:.7;font-weight:500;}
+  .svc-body h3{font-size:clamp(22px,2.2vw,28px);margin-bottom:6px;}
+  .svc-pain{font-style:italic;color:var(--gold-deep);font-family:var(--serif);font-size:16px;margin-bottom:12px;}
+  .svc-body p{font-size:15px;color:var(--ink-soft);max-width:66ch;line-height:1.6;}
+  @media(max-width:640px){.svc{grid-template-columns:auto 1fr;} .svc>.svc-tag{display:none;}}
+  .svc-tag{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute);white-space:nowrap;padding-top:6px;}
+
+  /* ── PROCESS ─────────────────────────── */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,2vw,32px);counter-reset:s;}
+  @media(max-width:860px){.steps{grid-template-columns:1fr 1fr;}}
+  @media(max-width:520px){.steps{grid-template-columns:1fr;}}
+  .step{position:relative;padding-top:26px;border-top:2px solid var(--gold);}
+  .step-n{font-family:var(--serif);font-size:15px;font-weight:600;color:var(--gold-deep);letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px;}
+  .step h3{font-size:22px;margin-bottom:10px;}
+  .step p{font-size:14.5px;color:var(--ink-soft);line-height:1.55;}
+  .step .when{margin-top:12px;font-style:italic;font-family:var(--serif);color:var(--gold-deep);font-size:15px;}
+
+  /* ── PROOF (gold) ────────────────────── */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(24px,3vw,48px);margin-bottom:clamp(48px,6vw,80px);}
+  @media(max-width:720px){.stats{grid-template-columns:1fr 1fr;gap:36px 24px;}}
+  .stat b{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(46px,6vw,76px);line-height:1;color:var(--navy-deep);letter-spacing:-.02em;}
+  .stat span{display:block;margin-top:10px;font-size:14px;font-weight:600;color:rgba(20,40,64,.72);line-height:1.4;}
+  .quote{max-width:820px;}
+  .quote blockquote{font-family:var(--serif);font-style:italic;font-size:clamp(22px,2.6vw,34px);line-height:1.32;color:var(--navy-deep);}
+  .quote .who{margin-top:22px;font-family:var(--sans);font-weight:700;font-size:14px;color:rgba(20,40,64,.8);letter-spacing:.02em;}
+  .ph{background:rgba(20,40,64,.1);border:1px dashed rgba(20,40,64,.35);border-radius:5px;padding:1px 7px;font-size:.82em;font-style:normal;font-family:var(--sans);font-weight:700;color:rgba(20,40,64,.7);}
+
+  /* ── FINAL CTA ───────────────────────── */
+  .final{text-align:center;}
+  .final h2{font-size:clamp(34px,5vw,64px);color:var(--white);max-width:16ch;margin:0 auto 20px;}
+  .final h2 em{font-style:italic;color:var(--gold-soft);}
+  .final p{color:var(--on-dark-mute);font-size:clamp(17px,1.6vw,20px);max-width:52ch;margin:0 auto 40px;}
+  .final .hero__ctas{justify-content:center;}
+
+  /* ── FOOTER ──────────────────────────── */
+  footer{background:#0c1928;color:var(--on-dark-mute);padding:clamp(56px,6vw,80px) 0 36px;}
+  .foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:36px;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.08);}
+  @media(max-width:820px){.foot-top{grid-template-columns:1fr 1fr;gap:32px;}}
+  .foot-top h4{font-family:var(--sans);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:16px;}
+  .foot-top a,.foot-top p{display:block;font-size:14.5px;color:var(--on-dark-mute);margin-bottom:9px;line-height:1.5;}
+  .foot-top a:hover{color:var(--white);}
+  .foot-brand b{font-family:var(--serif);font-size:22px;color:var(--white);display:block;margin-bottom:8px;}
+  .foot-brand em{font-style:italic;color:var(--gold-soft);font-family:var(--serif);}
+  .foot-legal{margin-top:28px;font-size:11.5px;color:rgba(244,239,230,.4);line-height:1.6;max-width:70ch;}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <div class="wrap nav-in">
+    <span class="brand"><b>Anchor</b><small>WEALTH PLANNING</small></span>
+    <div class="nav-links">
+      <a href="#serve">Who We Serve</a><a href="#services">Services</a><a href="#process">Process</a><a href="#fit">Fit Check</a>
+    </div>
+    <a class="btn btn-gold" href="#fit">Book a Call <span class="arw">→</span></a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero on-dark" id="top">
+  <div class="hero__media" aria-hidden="true">
+    <img class="hslide is-on" src="assets/hero-family.jpg" alt="">
+    <img class="hslide" src="assets/hero-oilfield.jpg" alt="">
+    <img class="hslide" src="https://images.unsplash.com/photo-1701233605035-74b7a05d78e6?auto=format&fit=crop&w=2200&q=80" alt="">
+  </div>
+  <div class="hero__scrim"></div>
+  <div class="wrap hero__inner">
+    <p class="eyebrow hero__eyebrow rise">Houston, TX · Wealth Management</p>
+    <h1 class="hl rise">How do you turn a high income into lasting security when no one sees <em>the whole picture?</em></h1>
+    <p class="hero__sub rise">Investments, taxes, and estate, coordinated with your CPA and attorney, so you can <b>stop being the glue.</b></p>
+    <div class="hero__ctas rise">
+      <a class="btn btn-gold" href="#fit">Schedule a 30-Minute Conversation <span class="arw">→</span></a>
+      <a class="btn btn-ghost" href="#fit">Take the 4-Question Fit Check</a>
+    </div>
+    <p class="trustline rise">
+      <span>Coordinated planning</span>
+      <span>10+ yrs at Merrill Lynch<!-- VERIFY exact years --></span>
+      <span>Houston-based</span>
+    </p>
+  </div>
+</header>
+
+<!-- PAIN -->
+<section class="pad bg-cream" id="problem">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <p class="eyebrow">The Problem</p>
+      <h2>You're holding it all together. That's the problem.</h2>
+      <p>If your financial life feels like a group project where you're the only one coordinating, you're not alone. Here's what we hear — in the words of the people who found their way here.</p>
+    </div>
+    <div class="pain-row rise"><div class="pain-num">01</div><div><p class="pain-q">"My CPA, my advisor, and my attorney never talk to each other. I'm the one playing phone tag between all of them."</p><p class="pain-c">Your financial life has outgrown the siloed model. Three excellent professionals, none aware of the others — and you're paying for the gaps in between.</p></div></div>
+    <div class="pain-row rise"><div class="pain-num">02</div><div><p class="pain-q">"My RSUs vest, I take a tax hit I didn't plan for, and the window to act closes before I do."</p><p class="pain-c">Equity compensation is how the energy industry pays its leaders. Vesting, deferred comp, and blackout periods create a tax-timing problem generalist advisors don't understand.</p></div></div>
+    <div class="pain-row rise"><div class="pain-num">03</div><div><p class="pain-q">"We have a trust from years ago. I'm honestly not sure it's funded right, or that it still fits what we own."</p><p class="pain-c">Your net worth has grown. Your estate documents haven't. The gap between your wealth and your plan widens every year no one is watching the whole.</p></div></div>
+    <div class="pain-row rise"><div class="pain-num">04</div><div><p class="pain-q">"I know my business inside and out — but I don't know what I'd actually walk away with after taxes if I sold."</p><p class="pain-c">Your net worth is locked inside an illiquid entity, personal and business finances tangled. If an offer arrived tomorrow, you wouldn't have a team ready.</p></div></div>
+  </div>
+</section>
+
+<!-- CREDIBILITY (navy tone-flip) -->
+<section class="pad bg-navy on-dark" id="why">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <p class="eyebrow">Why Anchor</p>
+      <h2>One advisor who sees the whole picture.</h2>
+      <p>Most advisors manage your investments and stop there. We coordinate the work that siloed teams leave to you — and make sure the professionals in your life are reading from the same page.</p>
+    </div>
+    <div class="cred-grid">
+      <div class="cred rise"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg><div><h3>Coordinated, not siloed</h3><p>We run joint planning meetings with your CPA and estate attorney and maintain one living document all three work from. You stop being the translator.</p></div></div>
+      <div class="cred rise"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l8 4v5c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg><div><h3>A decade of institutional training</h3><p>Alex Miller spent 10+ years<!-- VERIFY exact --> at Merrill Lynch before founding Anchor — the discipline and resources of the institution, applied independently.</p></div></div>
+      <div class="cred rise"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-5h6v5"/></svg><div><h3>Built for complexity</h3><p>Equity comp, deferred income, business transitions, multi-generational estates. If your situation is complicated, that's exactly the work we do.</p></div></div>
+      <div class="cred rise"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-5.2-7-11a7 7 0 0114 0c0 5.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg><div><h3>Houston, not a coastal afterthought</h3><p>We live in the energy capital. Permian Basin to Eagle Ford, commodity cycles and closely-held companies — this is our world, not a footnote.</p></div></div>
+    </div>
+    <p style="margin-top:38px;font-size:13px;color:rgba(244,239,230,.5)"><!-- VERIFY with Alex: regulatory status (RIA/hybrid/BD) + fee model before adding fiduciary/fee-only/credential claims. --></p>
+  </div>
+</section>
+
+<!-- ICP -->
+<section class="pad bg-cream" id="serve">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <p class="eyebrow">Who We Serve</p>
+      <h2>We specialize. Generalists are everywhere.</h2>
+      <p>If you see yourself below, we should talk. If you don't, we'll tell you honestly — and point you to someone who's a better fit.</p>
+    </div>
+    <div class="icp-grid">
+      <div class="icp rise"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 21h16M6 21V9l6-4 6 4v12"/><path d="M10 21v-6h4v6M9 3v3M15 3v3"/></svg><h3>Oil &amp; Gas Executives</h3><p>Equity comp, deferred income, commodity-cycle exposure. You're paid in stock and options the way the industry pays its leaders — your advisor needs to speak that language fluently.</p><a class="lnk" href="#fit">See how we work with you <span class="arw">→</span></a></div>
+      <div class="icp rise"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V7h14v14M9 11h2M13 11h2M9 15h2M13 15h2"/></svg><h3>Business Owners</h3><p>Closely-held company, a transition on the horizon, net worth locked inside the business. The exit conversation should start years before the LOI — not at the closing table.</p><a class="lnk" href="#fit">See how we work with you <span class="arw">→</span></a></div>
+      <div class="icp rise"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11l9-7 9 7M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg><h3>High-Net-Worth Families</h3><p>Multi-generational wealth, estate and trust complexity, a coordinated team that needs a point person. Your wealth has outgrown the plan it was built for.</p><a class="lnk" href="#fit">See how we work with you <span class="arw">→</span></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- FIT ASSESSMENT -->
+<section class="pad-sm bg-cream-mid" id="fit">
+  <div class="wrap fit-grid">
+    <div class="rise">
+      <p class="eyebrow" style="margin-bottom:20px">Fit Check</p>
+      <h2 style="font-size:clamp(30px,3.6vw,46px)">Are we the right fit for you?</h2>
+      <p style="margin-top:18px;font-size:17px;color:var(--ink-soft);max-width:44ch">Four questions. Two minutes. We'll tell you honestly whether we can help — and if we can't, we'll point you to someone who can.</p>
+    </div>
+    <div class="fit-card rise">
+      <form class="wiz" action="#" method="post" novalidate>
+        <p class="wiz__prog">Step <span data-current>1</span> of 4</p>
+        <div class="wiz__bar"><i data-fill style="width:25%"></i></div>
+        <fieldset class="wiz__step is-active" data-step="1"><legend>What best describes your situation?</legend>
+          <button type="button" class="opt" data-next>Oil &amp; gas executive with equity comp</button>
+          <button type="button" class="opt" data-next>Business owner thinking about a transition</button>
+          <button type="button" class="opt" data-next>Coordinating wealth across multiple professionals</button>
+          <button type="button" class="opt" data-next>Something else</button>
+        </fieldset>
+        <fieldset class="wiz__step" data-step="2"><legend>Your approximate investable assets?</legend>
+          <button type="button" class="opt" data-next>$500K – $2M</button>
+          <button type="button" class="opt" data-next>$2M – $5M</button>
+          <button type="button" class="opt" data-next>$5M – $10M</button>
+          <button type="button" class="opt" data-next>$10M+</button>
+          <div class="wiz__nav"><button type="button" class="wiz__back" data-prev>← Back</button></div>
+        </fieldset>
+        <fieldset class="wiz__step" data-step="3"><legend>Your biggest concern right now?</legend>
+          <button type="button" class="opt" data-next>Tax coordination — CPA and advisor aren't aligned</button>
+          <button type="button" class="opt" data-next>Equity comp — RSUs, deferred comp, concentration</button>
+          <button type="button" class="opt" data-next>Estate &amp; legacy — trusts, beneficiaries, transfer</button>
+          <button type="button" class="opt" data-next>Business transition — valuation, exit, succession</button>
+          <div class="wiz__nav"><button type="button" class="wiz__back" data-prev>← Back</button></div>
+        </fieldset>
+        <fieldset class="wiz__step" data-step="4"><legend>Where should we send your results?</legend>
+          <input type="email" required placeholder="you@email.com" autocomplete="email">
+          <div class="wiz__nav"><button type="button" class="wiz__back" data-prev>← Back</button><button type="submit" class="btn btn-gold">Get My Fit Assessment <span class="arw">→</span></button></div>
+          <p class="wiz__micro">No spam. No sales pitch. Just an honest answer about whether we're a match.</p>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="pad bg-cream" id="services">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <p class="eyebrow">What We Do</p>
+      <h2>One plan. Your CPA and attorney both work from it.</h2>
+      <p>We coordinate your investments, taxes, estate, and business strategy into a single living document — and keep the professionals in your life reading from the same page.</p>
+    </div>
+    <div class="rise">
+      <div class="svc"><div class="svc-n">01</div><div class="svc-body"><h3>Coordinated Planning</h3><p class="svc-pain">"No one sees the full picture."</p><p>Joint planning meetings with your CPA and estate attorney. One living document all three reference. When a tax move is made, your portfolio reflects it — you stop being the translator.</p></div><div class="svc-tag">The Core</div></div>
+      <div class="svc"><div class="svc-n">02</div><div class="svc-body"><h3>Investment Management</h3><p class="svc-pain">"My portfolio doesn't fit my actual life."</p><p>Built around your real constraints — vesting schedules, blackout periods, commodity exposure, concentrated positions — not a model allocation. Managed in coordination with your tax strategy, not in isolation.</p></div><div class="svc-tag">Ongoing</div></div>
+      <div class="svc"><div class="svc-n">03</div><div class="svc-body"><h3>Tax Strategy &amp; Coordination</h3><p class="svc-pain">"Every bonus season feels like a tax trap."</p><p>We sit down with your CPA before year-end — not after. RSU vesting, deferred comp elections, and bonus timing modeled against your real situation. Proactive planning, not reactive prep.</p></div><div class="svc-tag">Proactive</div></div>
+      <div class="svc"><div class="svc-n">04</div><div class="svc-body"><h3>Equity Compensation Planning</h3><p class="svc-pain">"My RSUs feel like a trap every year."</p><p>Vesting-schedule modeling, NQDC elections, 10b5-1 plans, blackout-period strategy. A diversification plan that respects your constraints instead of pretending they don't exist.</p></div><div class="svc-tag">Specialty</div></div>
+      <div class="svc"><div class="svc-n">05</div><div class="svc-body"><h3>Estate &amp; Legacy Planning</h3><p class="svc-pain">"I have real wealth but no plan for after."</p><p>We review existing trusts against your current net worth and coordinate with your attorney to fund them correctly and keep beneficiaries current. Legacy planning as a living process, not a one-time document.</p></div><div class="svc-tag">Long View</div></div>
+      <div class="svc"><div class="svc-n">06</div><div class="svc-body"><h3>Business Owner Planning</h3><p class="svc-pain">"I don't know what I'd walk away with."</p><p>We start the exit conversation 3–5 years before the LOI. Entity structure, personal/business separation, pre-sale tax strategy, post-liquidity management. By the time a buyer appears, you're ready.</p></div><div class="svc-tag">Transition</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="pad bg-cream-mid" id="process">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <p class="eyebrow">How It Works</p>
+      <h2>Here's what working with us actually looks like.</h2>
+      <p>No surprise sales process. No pressure. A clear path from your first question to a coordinated plan.</p>
+    </div>
+    <div class="steps rise">
+      <div class="step"><div class="step-n">Step 01</div><h3>Discovery</h3><p>A 30-minute conversation. You tell us about your situation — equity comp, business, family, concerns. We listen and tell you honestly whether we can help.</p><p class="when">30 minutes · no obligation</p></div>
+      <div class="step"><div class="step-n">Step 02</div><h3>Assessment</h3><p>We review your full picture — investments, tax returns, equity documents, estate plan, business interests — and identify the gaps. You get a written assessment either way.</p><p class="when">usually 1–2 weeks</p></div>
+      <div class="step"><div class="step-n">Step 03</div><h3>The Plan</h3><p>We build your coordinated plan — the living document — and walk your CPA and estate attorney through it. Everyone reads from the same page.</p><p class="when">you keep this document</p></div>
+      <div class="step"><div class="step-n">Step 04</div><h3>Partnership</h3><p>We implement and meet quarterly to keep it current. When equity vests or the cycle turns, we've already modeled it. You stop being the project manager.</p><p class="when">proactive, not reactive</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF (gold-drenched) -->
+<section class="pad bg-gold" id="proof">
+  <div class="wrap">
+    <div class="sec-head rise" style="max-width:560px">
+      <p class="eyebrow">Proof</p>
+      <h2 style="color:var(--navy-deep)">What it sounds like when the pieces finally fit.</h2>
+    </div>
+    <div class="stats rise">
+      <div class="stat"><b>10+</b><span>Years at Merrill Lynch<!-- VERIFY exact --></span></div>
+      <div class="stat"><b>3→1</b><span>Professionals coordinated into one plan</span></div>
+      <div class="stat"><b>1</b><span>Living document your whole team shares</span></div>
+      <div class="stat"><b>Quarterly</b><span>Reviews — proactive, never reactive</span></div>
+    </div>
+    <div class="quote rise">
+      <blockquote>"For the first time, my CPA and my advisor are actually talking to each other. <span class="ph">Illustrative — real client testimonials added at launch, pending approval.</span>"</blockquote>
+      <p class="who">— <span class="ph">Client name &amp; descriptor — pending</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="pad bg-navy on-dark final" id="start">
+  <div class="wrap">
+    <p class="eyebrow rise" style="justify-content:center;color:var(--gold-soft)">The first call is just a conversation</p>
+    <h2 class="rise" style="margin-top:20px">You've been the project manager <em>long enough.</em></h2>
+    <p class="rise">If your CPA and your advisor aren't reading from the same plan, you're doing the work your wealth manager should be doing. Thirty minutes. No pitch. We'll tell you honestly whether we're a fit.</p>
+    <div class="hero__ctas rise">
+      <a class="btn btn-gold" href="#fit">Schedule a 30-Minute Conversation <span class="arw">→</span></a>
+      <a class="btn btn-ghost" href="#fit">Take the 4-Question Fit Check</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand"><b>Anchor</b><em>"Charting the course toward your financial legacy."</em><p style="margin-top:14px">Houston-based wealth management for oil &amp; gas executives, business owners, and high-net-worth families.</p></div>
+      <div><h4>Explore</h4><a href="#serve">Who We Serve</a><a href="#services">Services</a><a href="#process">Process</a><a href="#fit">Fit Check</a></div>
+      <div><h4>Specialties</h4><a href="#services">Coordinated Planning</a><a href="#services">Equity Compensation</a><a href="#services">Estate &amp; Legacy</a><a href="#services">Business Transition</a></div>
+      <div><h4>Contact</h4><p><span class="ph">Phone — VERIFY</span></p><p><span class="ph">Email — VERIFY</span></p><p>Houston, TX</p></div>
+    </div>
+    <p class="foot-legal">
+      <!-- COMPLIANCE: Required before launch — confirm entity name + registration with Alex. -->
+      <span class="ph">[Entity name] — VERIFY registration &amp; required disclosures.</span> Information presented is for educational purposes only and does not constitute an offer or solicitation to buy or sell any security or investment strategy. Investments involve risk and are not guaranteed. Past performance is not a guarantee of future results.<br><br>
+      © 2026 Anchor Wealth Planning. All rights reserved.
+    </p>
+  </div>
+</footer>
+
+<script>
+  document.documentElement.classList.add('js');
+  (function(){
+    var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // reveal on scroll
+    if(reduce||!('IntersectionObserver' in window)){document.querySelectorAll('.rise').forEach(function(e){e.classList.add('in');});}
+    else{var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+      document.querySelectorAll('.rise').forEach(function(e){io.observe(e);});
+      // hero rises immediately (don't wait on scroll)
+      document.querySelectorAll('.hero .rise').forEach(function(el,i){setTimeout(function(){el.classList.add('in');},120+i*100);});}
+    // nav scrolled
+    var nav=document.getElementById('nav');addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>40);},{passive:true});
+    // hero crossfade
+    (function(){var s=[].slice.call(document.querySelectorAll('.hslide'));if(s.length<2||reduce)return;var i=0;setInterval(function(){s[i].classList.remove('is-on');i=(i+1)%s.length;s[i].classList.add('is-on');},6000);})();
+    // multi-step fit form
+    (function(){var f=document.querySelector('.wiz');if(!f)return;var steps=[].slice.call(f.querySelectorAll('.wiz__step')),cur=f.querySelector('[data-current]'),fill=f.querySelector('[data-fill]'),i=0;
+      function show(n){steps.forEach(function(s,k){s.classList.toggle('is-active',k===n);});i=n;if(cur)cur.textContent=n+1;if(fill)fill.style.width=((n+1)/steps.length*100)+'%';var lg=steps[n].querySelector('legend');if(lg){lg.tabIndex=-1;lg.focus({preventScroll:true});}}
+      f.addEventListener('click',function(e){if(e.target.matches('[data-next]'))show(Math.min(i+1,steps.length-1));else if(e.target.matches('[data-prev]'))show(Math.max(i-1,0));});
+      f.addEventListener('submit',function(e){e.preventDefault();var em=f.querySelector('input[type=email]');if(em&&!em.checkValidity()){em.reportValidity();return;}f.innerHTML='<p style="font-family:var(--serif);font-size:24px;color:var(--ink);text-align:center;padding:30px 0">Thank you. We\'ll be in touch within one business day.<br><span style="font-size:15px;font-family:var(--sans);color:var(--ink-mute)">(Demo — no data submitted.)</span></p>';});
+      show(0);})();
+  })();
+</script>
+</body>
+</html>
