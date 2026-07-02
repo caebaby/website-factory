@@ -110,6 +110,9 @@ svg{display:block;}
 
 .stagger > *{
   opacity:0;
+}
+.stagger.in > *{
+  opacity:1;
   animation:staggerRise .7s var(--ease-soft) backwards;
 }
 .stagger.in > *:nth-child(1){animation-delay:.03s;}

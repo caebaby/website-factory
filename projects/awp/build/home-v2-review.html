@@ -110,6 +110,9 @@ svg{display:block;}
 
 .stagger > *{
   opacity:0;
+}
+.stagger.in > *{
+  opacity:1;
   animation:staggerRise .7s var(--ease-soft) backwards;
 }
 .stagger.in > *:nth-child(1){animation-delay:.03s;}
@@ -2779,7 +2782,7 @@ body[data-hero="c"] .nav:not(.is-scrolled) .brand-sub{color:var(--accent-soft);}
 <!-- REVIEW-ONLY: font A/B toggle — strip for production -->
 <div id="fontToggle" style="position:fixed;left:14px;bottom:64px;z-index:999;background:#fff;border:1px solid rgba(20,40,64,.18);border-radius:6px;padding:8px 10px;font:600 10px/1 'Nunito Sans',sans-serif;letter-spacing:.8px;text-transform:uppercase;color:#4b5b6e;box-shadow:0 4px 18px rgba(0,0,0,.08);display:flex;gap:6px;align-items:center;">
   FONTS:
-  <button data-f="brand" class="on" style="border:1.5px solid rgba(20,40,64,.18);background:#c9a24b;color:#142840;border-radius:4px;padding:5px 9px;font:inherit;cursor:pointer;">Alex brand</button>
+  <button data-f="brand" style="border:1.5px solid rgba(20,40,64,.18);background:#c9a24b;color:#142840;border-radius:4px;padding:5px 9px;font:inherit;cursor:pointer;">Alex brand</button>
   <button data-f="kindred" style="border:1.5px solid rgba(20,40,64,.18);background:#F5F0E6;color:#1b2a3c;border-radius:4px;padding:5px 9px;font:inherit;cursor:pointer;">Kindred feel</button>
 </div>
 <script>
@@ -2788,8 +2791,8 @@ bs.forEach(function(b){b.onclick=function(){
   var k=b.dataset.f==='kindred';
   document.documentElement.style.setProperty('--sans',k?"'Hanken Grotesk','Helvetica Neue',Arial,sans-serif":"'Nunito Sans','Helvetica Neue',Arial,sans-serif");
   document.documentElement.style.setProperty('--serif',k?"'Newsreader',Georgia,serif":"'EB Garamond',Georgia,serif");
-  bs.forEach(function(x){x.style.background='#F5F0E6';x.style.color='#1b2a3c';x.classList.remove('on');});
-  b.style.background='#c9a24b';b.style.color='#142840';b.classList.add('on');
+  bs.forEach(function(x){x.style.background='#F5F0E6';x.style.color='#1b2a3c';});
+  b.style.background='#c9a24b';b.style.color='#142840';
 };});})();
 </script>
 </body>
