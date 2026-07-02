@@ -1,5 +1,63 @@
 # Website Factory — Status
-Last updated: 2026-07-01 (FABLE SESSION — **Pack hardened to v1.1** against Chris's Kindred review; the v1.1 changes are applied to the Kindred build and browser-verified, awaiting Chris's eyes. Next: composition-vocabulary elevation (BetterUp measure), more Packs, lower-tier cold test.)
+Last updated: 2026-07-02 (FABLE SESSION, day 2 — the factory became a real PIPELINE and Anchor's homepage is mid-flight through it. Read "WHERE WE ARE NOW" below first; everything under it is history.)
+
+---
+
+## ▶ WHERE WE ARE NOW (2026-07-02, current work state)
+
+### The system (all committed, all proven at least once)
+- **PRINT_SPEC.md** = the product contract (Chris's words): LOCKED = structure + component QUALITY
+  (pattern invariants, never stamped instances) + ICP copy + QA gauntlet; FLEXIBLE = palette/fonts/
+  ICP/advisor details; + the 8 "$25–50K team-built" signals + CONVERSION LAW (every interactive
+  element resolves toward the conversion event).
+- **The pipeline:** Director (taste tier, `agents/00_director.md`) → self-contained BUILD BRIEF
+  (invariants copied in, latitude explicit, forbidden absolute, gauntlet inline) → Executor (any
+  tier) → independent gate + repair. Proven on Anchor hero (3 rounds) + full homepage.
+  **One scope at a time; hero first; Chris gates direction — wrong direction costs one section.**
+- **EXECUTOR TIER POLICY (Chris, 2026-07-02): design-critical scopes = BEST design model
+  (Opus-tier); Sonnet = mechanical/cold-proof only** (it executes correctly but under-reaches on
+  taste even w/ ambition-floor briefs); Haiku only inside the full external loop (its self-checks
+  confabulate — LEDGER).
+- **Component/pattern layer:** catalog (31 patterns, 4-palette retint toggle) at
+  `templates/components/catalog.html` · 15 reference sites machine-harvested (`qa/harvest.js` →
+  `docs/harvest/*.json`) · `templates/ASSEMBLY.md` = mash-up rules (section-job organization,
+  6 diversity dials, selection vectors + 40% same-vertical distance rule, `docs/BUILD_REGISTRY.md`).
+  **Chris keep/kill pass on the 31 patterns still pending.**
+- **Video system** (packs §8.4, v1.4): ambient hero loop · click-to-play story/testimonial ·
+  featured video insight OR **vertical reels row (9:16, hover-autoplay muted, CTA closer card)** ·
+  3-moment budget · real-footage-only.
+
+### Anchor (the active build — `projects/awp/build/home-v2.html`)
+- Full homepage BUILT through the pipeline, gate 0P0/0P1. Hero = living-plan document SHUFFLE
+  carousel (4 docs, back-peek always real content, doc 4 = fit-check CTA — Chris approved concept).
+- **IN FLIGHT RIGHT NOW:** executor implementing ADDENDUM v2.2 (HOME_BRIEF §4b): THREE hero options
+  for Alex (A shuffle-carousel · B Kindred-style photo · C video hero) + review switcher ·
+  "Alex's Story" section (16:9 click-to-play) after Why Anchor · vertical REELS row after Insights.
+- **NEXT AFTER THAT (Chris directive): "Kindred feel, Alex's colors/branding/fonts" — an
+  Opus-tier DESIGN-ELEVATION pass** on home-v2: port the Kindred build's feel (the design Chris
+  rates best) onto Anchor tokens. Note for that pass: tokens/patterns already match; the likely
+  feel-carriers are execution details + FONTS — Anchor's brand substitutes (Nunito Sans + EB
+  Garamond) read softer than Kindred's Hanken Grotesk + Newsreader. Brand guide's REAL fonts are
+  paid (Proxima Nova + Adobe Garamond, Adobe Fonts) — decision still open with Chris/Alex; raise
+  it if the feel gap persists after the elevation pass.
+- Then: Chris reacts → Alex review link (he now wants Alex to see the hero options) → inner pages
+  per `projects/awp/SITE_ARCHITECTURE.md` (/fit-results FIRST — the MQL→SQL bridge) →
+  `COPY_DOC_FOR_ALEX.md` to Alex (Part 1 = compliance blockers).
+
+### AGL (staged, fires on "go")
+`projects/agl/BRIEF.md` — brand answered by measuring the LIVE site (Outfit 900/navy #0C1A35 system
+won; ARL green/purple dead); two hero previews specced (confident-b2b retint = recommendation vs
+AGL-current-faithful); Memphis video slots reserved; accuracy rules locked (sell the MODEL, Lane =
+peer, no inflated counts).
+
+### Open threads
+- **GLM 5.2 via Hermes** (Chris has it connected): head-to-head executor test — same Build Brief,
+  same gauntlet, vs the harness models. After Anchor homepage settles.
+- Chris keep/kill on catalog-31 · Haiku never solo · servers: use detached `nohup npx serve`
+  (preview-panel servers die between sessions; bit us 3×) · **always `open` finished work in
+  Chris's browser** (standing rule, in memory).
+- Rest of 2026-07-01→02 history (pack v1.1→v1.4 evolution, cold-build proofs, overnight run):
+  sections below.
 
 > **Standing instruction (Chris, 2026-07-01):** update this status doc with EVERY learning lesson, each session, for the next session. The "Learnings" section below is append-only memory.
 

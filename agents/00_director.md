@@ -53,3 +53,10 @@ next sections. A wrong direction costs one section, never a site.
 ## 9. Verification duty by tier: Sonnet+ = browser-verify before returning; Haiku = return
    unverified, external loop mandatory.
 ```
+
+## Executor tier policy (Chris, 2026-07-02)
+**Design-critical scopes (heroes, signature moments, full-page style passes): use the BEST design
+model available (Opus-tier in this harness; Fable for pack/brief authoring).** Sonnet = mechanical
+scopes (wiring, section assembly from tight invariants) and cold-test proofs only. Haiku = never
+without the full external loop. Rationale: Sonnet executes correctly but under-reaches on taste
+even with ambition-floor briefs — round 3 evidence.
