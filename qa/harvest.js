@@ -127,6 +127,13 @@ const PAYLOAD = `(function(){
     .filter(function(s){return s.offsetHeight>140&&s.offsetWidth>innerWidth*.7;})
     .filter(function(s,i,arr){return !arr.some(function(o){return o!==s&&o.contains(s)&&o.offsetHeight<s.offsetHeight*3;});})
     .slice(0,20);
+  // fallback for div-soup sites (Pictet/Hoare's/Squarespace-class): full-width content blocks
+  if(sections.length<3){
+    sections=[].slice.call(document.querySelectorAll('main > *, body > * > *, body > * > * > *'))
+      .filter(function(s){return s.offsetHeight>240&&s.offsetHeight<innerHeight*4&&s.offsetWidth>innerWidth*.7&&s.querySelector('h1,h2,h3,h4,p');})
+      .filter(function(s,i,arr){return !arr.some(function(o){return o!==s&&o.contains(s);});})
+      .slice(0,20);
+  }
   out.sectionFlow=sections.map(function(s,i){
     var c=getComputedStyle(s);
     var h2=s.querySelector('h1,h2,h3');

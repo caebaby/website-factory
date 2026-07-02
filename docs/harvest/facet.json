@@ -1,7 +1,7 @@
 {
  "url": "https://facet.com/",
  "title": "Financial planning for every facet of your life | Facet",
- "measured": "2026-07-02T12:04:24.125Z",
+ "measured": "2026-07-02T12:06:16.139Z",
  "viewport": "1440x813",
  "typeCensus": [
   [
@@ -201,7 +201,20 @@
    }
   ]
  ],
- "sectionFlow": [],
+ "sectionFlow": [
+  {
+   "i": 0,
+   "h": 783,
+   "bg": "rgb(0, 112, 152)",
+   "pad": "0px/0px",
+   "skeleton": "flex(column) kids:1",
+   "media": {
+    "imgs": 0,
+    "videos": 0
+   },
+   "head": null
+  }
+ ],
  "grounds": [
   [
    "rgb(0, 62, 84)",
@@ -227,7 +240,7 @@
  "accents": [
   [
    "rgb(0, 62, 84)",
-   788
+   787
   ],
   [
    "rgb(30, 115, 190)",

@@ -1,0 +1,339 @@
+{
+ "url": "https://www.zoom.com/",
+ "title": "One platform to connect | Zoom",
+ "measured": "2026-07-02T12:05:13.588Z",
+ "viewport": "1440x813",
+ "typeCensus": [
+  [
+   "li|16px|400|Almaden Sans|lh:16px|tr:normal|tt:none",
+   37
+  ],
+  [
+   "li|14px|400|Almaden Sans|lh:14px|tr:normal|tt:none",
+   18
+  ],
+  [
+   "p|14px|400|Almaden Sans|lh:18.9px|tr:normal|tt:none",
+   8
+  ],
+  [
+   "h3|20px|500|Almaden Sans|lh:23px|tr:-0.4px|tt:none",
+   4
+  ],
+  [
+   "p|16px|400|Almaden Sans|lh:20.8px|tr:normal|tt:none",
+   4
+  ],
+  [
+   "li|16px|400|Almaden Sans|lh:23.2px|tr:normal|tt:none",
+   4
+  ],
+  [
+   "p|12px|400|Almaden Sans|lh:14.4px|tr:normal|tt:none",
+   3
+  ],
+  [
+   "a|14px|500|Almaden Sans|lh:14px|tr:normal|tt:none",
+   3
+  ],
+  [
+   "h2|46px|500|Happy Face Semi Bold|lh:52.44px|tr:normal|tt:none",
+   2
+  ],
+  [
+   "a|14px|600|Almaden Sans|lh:14px|tr:normal|tt:none",
+   2
+  ],
+  [
+   "h1|54px|500|Happy Face Semi Bold|lh:60.48px|tr:normal|tt:none",
+   1
+  ],
+  [
+   "h2|46px|400|Happy Face Semi Bold|lh:52.44px|tr:-1.4px|tt:none",
+   1
+  ],
+  [
+   "h2|20px|600|Almaden Sans|lh:24px|tr:normal|tt:none",
+   1
+  ],
+  [
+   "h2|46px|500|Happy Face Semi Bold|lh:54px|tr:normal|tt:none",
+   1
+  ],
+  [
+   "h3|32px|500|Happy Face Semi Bold|lh:38.4px|tr:normal|tt:none",
+   1
+  ],
+  [
+   "p|14px|400|Almaden Sans|lh:16.8px|tr:normal|tt:none",
+   1
+  ],
+  [
+   "p|14px|400|Almaden Sans|lh:21px|tr:-0.28px|tt:none",
+   1
+  ],
+  [
+   "p|18px|400|Almaden Sans|lh:25.2px|tr:-0.56px|tt:none",
+   1
+  ],
+  [
+   "p|14px|600|Almaden Sans|lh:16.8px|tr:normal|tt:none",
+   1
+  ],
+  [
+   "p|10px|400|Almaden Sans|lh:10px|tr:normal|tt:none",
+   1
+  ],
+  [
+   "p|14px|400|Almaden Sans|lh:19.6px|tr:normal|tt:none",
+   1
+  ],
+  [
+   "p|22px|450|Almaden Sans|lh:22px|tr:normal|tt:none",
+   1
+  ],
+  [
+   "a|16px|400|Almaden Sans|lh:16px|tr:normal|tt:none",
+   1
+  ]
+ ],
+ "buttons": [
+  [
+   "rgb(11, 92, 255) | rgb(255, 255, 255) | 0px | 8px 16px | 16px | 400 | none | normal | 0px none rgb(255, 255, 255) | none",
+   {
+    "count": 2,
+    "example": "Skip to main content",
+    "transition": "all"
+   }
+  ],
+  [
+   "rgba(255, 255, 255, 0.1) | rgb(255, 255, 255) | 8px | 14px 16px | 12px | 500 | none | normal | 0px none rgb(255, 255, 255) | none",
+   {
+    "count": 2,
+    "example": "English",
+    "transition": "0.3s"
+   }
+  ],
+  [
+   "rgb(255, 255, 255) | rgb(0, 3, 31) | 8px | 16px | 14px | 500 | none | normal | 0px none rgb(0, 3, 31) | none",
+   {
+    "count": 2,
+    "example": "English",
+    "transition": "all"
+   }
+  ],
+  [
+   "rgb(230, 240, 255) | rgb(0, 5, 61) | 12px | 4px 20px | 14px | 600 | none | normal | 1px solid rgb(230, 240, 255) | none",
+   {
+    "count": 1,
+    "example": "Contact Sales",
+    "transition": "0.5s"
+   }
+  ],
+  [
+   "rgb(11, 92, 255) | rgb(255, 255, 255) | 12px | 4px 20px | 14px | 600 | none | normal | 1px solid rgb(11, 92, 255) | none",
+   {
+    "count": 1,
+    "example": "Sign Up Free",
+    "transition": "0.5s"
+   }
+  ],
+  [
+   "rgb(230, 240, 255) | rgb(0, 5, 61) | 12px | 16px 30px 16px 12px | 16px | 500 | none | normal | 0px none rgb(0, 5, 61) | none",
+   {
+    "count": 1,
+    "example": "Zoom Workplace",
+    "transition": "background 0.15s, color 0.15s"
+   }
+  ],
+  [
+   "rgb(0, 5, 61) | rgb(255, 255, 255) | 12px | 4px 20px | 16px | 600 | none | -0.64px | 1px solid rgb(0, 5, 61) | none",
+   {
+    "count": 1,
+    "example": "Explore products Explore produ",
+    "transition": "0.3s ease-in"
+   }
+  ],
+  [
+   "rgb(243, 248, 255) | rgb(0, 5, 61) | 12px | 4px 20px | 16px | 600 | none | -0.64px | 1px solid rgb(209, 222, 242) | none",
+   {
+    "count": 1,
+    "example": "Find your plan Find your plan",
+    "transition": "0.3s ease-in"
+   }
+  ]
+ ],
+ "cards": [
+  [
+   "bg:rgb(255, 255, 255) | r:12px | bd:none | sh:none | pad:0px",
+   {
+    "count": 3,
+    "w": 345,
+    "h": 457,
+    "hasImg": true,
+    "sample": ""
+   }
+  ]
+ ],
+ "sectionFlow": [
+  {
+   "i": 0,
+   "h": 1032,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "77.9px/0px",
+   "skeleton": "flex(row) kids:2",
+   "media": {
+    "imgs": 12,
+    "videos": 0
+   },
+   "head": "Find out what's possible when work connects"
+  },
+  {
+   "i": 1,
+   "h": 1004,
+   "bg": "rgb(255, 255, 255)",
+   "pad": "100px/0px",
+   "skeleton": "grid(12col) kids:1",
+   "media": {
+    "imgs": 1,
+    "videos": 1
+   },
+   "head": "My NotesYour new AI note taker"
+  },
+  {
+   "i": 2,
+   "h": 637,
+   "bg": "rgb(255, 255, 255)",
+   "pad": "80px/60px",
+   "skeleton": "grid(12col) kids:1",
+   "media": {
+    "imgs": 3,
+    "videos": 0
+   },
+   "head": null
+  },
+  {
+   "i": 3,
+   "h": 839,
+   "bg": "rgb(255, 255, 255)",
+   "pad": "60px/60px",
+   "skeleton": "grid(12col) kids:1",
+   "media": {
+    "imgs": 10,
+    "videos": 5
+   },
+   "head": "One platform. Endless ways to work together."
+  },
+  {
+   "i": 4,
+   "h": 254,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "60px/60px",
+   "skeleton": "block kids:1",
+   "media": {
+    "imgs": 12,
+    "videos": 0
+   },
+   "head": "Trusted by millions. Built for you."
+  },
+  {
+   "i": 5,
+   "h": 1069,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "grid(12col) kids:2",
+   "media": {
+    "imgs": 16,
+    "videos": 0
+   },
+   "head": "Businesses achieve more with Zoom"
+  },
+  {
+   "i": 6,
+   "h": 705,
+   "bg": "rgb(255, 255, 255)",
+   "pad": "60px/60px",
+   "skeleton": "grid(12col) kids:1",
+   "media": {
+    "imgs": 5,
+    "videos": 0
+   },
+   "head": "Meet My Notes: Your new AI note taker"
+  },
+  {
+   "i": 7,
+   "h": 336,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "40px/120px",
+   "skeleton": "flex(row) kids:2",
+   "media": {
+    "imgs": 0,
+    "videos": 0
+   },
+   "head": "See what Zoom can do for your business"
+  }
+ ],
+ "grounds": [
+  [
+   "rgb(255, 255, 255)",
+   10
+  ],
+  [
+   "rgb(224, 224, 230)",
+   4
+  ],
+  [
+   "rgb(105, 107, 110)",
+   2
+  ],
+  [
+   "rgb(230, 240, 255)",
+   1
+  ],
+  [
+   "rgb(0, 5, 61)",
+   1
+  ]
+ ],
+ "accents": [
+  [
+   "rgb(0, 5, 61)",
+   116
+  ],
+  [
+   "rgb(11, 92, 255)",
+   56
+  ],
+  [
+   "rgb(32, 87, 177)",
+   1
+  ],
+  [
+   "rgb(23, 34, 246)",
+   1
+  ]
+ ],
+ "transitions": [
+  [
+   "all",
+   153
+  ],
+  [
+   "background 0.15s",
+   36
+  ],
+  [
+   "background 0.15s, color 0.15s",
+   7
+  ],
+  [
+   "0.5s",
+   3
+  ],
+  [
+   "background 0.2s",
+   1
+  ]
+ ],
+ "animationsRunning": 2
+}

@@ -1,7 +1,7 @@
 {
  "url": "https://www.pictet.com/us/en",
  "title": "Pictet US | Leading European independent investment firm",
- "measured": "2026-07-02T12:03:36.758Z",
+ "measured": "2026-07-02T12:05:48.845Z",
  "viewport": "1440x813",
  "typeCensus": [
   [
@@ -153,20 +153,7 @@
    }
   ]
  ],
- "sectionFlow": [
-  {
-   "i": 0,
-   "h": 5541,
-   "bg": "rgba(0, 0, 0, 0)",
-   "pad": "0px/0px",
-   "skeleton": "block kids:1",
-   "media": {
-    "imgs": 13,
-    "videos": 2
-   },
-   "head": "Pictet US | Leading independent investment firm"
-  }
- ],
+ "sectionFlow": [],
  "grounds": [
   [
    "rgb(255, 255, 255)",

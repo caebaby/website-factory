@@ -1,0 +1,427 @@
+{
+ "url": "https://www.xapobank.com/en",
+ "title": "Grow & Protect Your Wealth in Bitcoin* & USD | Xapo Bank",
+ "measured": "2026-07-02T12:05:23.363Z",
+ "viewport": "1440x813",
+ "typeCensus": [
+  [
+   "li|0.9px|400|HelveticaNowDisplay|lh:normal|tr:normal|tt:none",
+   23
+  ],
+  [
+   "p|14px|400|HelveticaNowDisplay|lh:16px|tr:normal|tt:none",
+   20
+  ],
+  [
+   "h3|24px|400|HelveticaNowDisplay|lh:32px|tr:-0.25px|tt:none",
+   18
+  ],
+  [
+   "p|24px|400|HelveticaNowDisplay|lh:32px|tr:-0.25px|tt:none",
+   18
+  ],
+  [
+   "p|16px|400|HelveticaNowDisplay|lh:24px|tr:normal|tt:none",
+   17
+  ],
+  [
+   "li|16px|400|HelveticaNowDisplay|lh:24px|tr:normal|tt:none",
+   7
+  ],
+  [
+   "a|0.9px|400|Times|lh:normal|tr:normal|tt:none",
+   6
+  ],
+  [
+   "p|40px|400|HelveticaNowDisplay|lh:46px|tr:-0.5px|tt:none",
+   5
+  ],
+  [
+   "a|0.9px|400|HelveticaNowDisplay|lh:normal|tr:normal|tt:none",
+   5
+  ],
+  [
+   "h3|12px|700|HelveticaNowDisplay|lh:16px|tr:normal|tt:uppercase",
+   4
+  ],
+  [
+   "p|18px|400|HelveticaNowDisplay|lh:24px|tr:normal|tt:none",
+   4
+  ],
+  [
+   "h2|40px|400|HelveticaNowDisplay|lh:46px|tr:-0.5px|tt:none",
+   3
+  ],
+  [
+   "h3|18px|400|HelveticaNowDisplay|lh:24px|tr:normal|tt:none",
+   2
+  ],
+  [
+   "h3|36px|400|HelveticaNowDisplay|lh:38px|tr:-0.7px|tt:none",
+   2
+  ],
+  [
+   "h4|40px|400|HelveticaNowDisplay|lh:46px|tr:-0.5px|tt:none",
+   2
+  ],
+  [
+   "p|14px|400|HelveticaNowDisplay|lh:20px|tr:normal|tt:none",
+   2
+  ],
+  [
+   "h1|64px|400|HelveticaNowDisplay|lh:72px|tr:-1.3px|tt:none",
+   1
+  ],
+  [
+   "h2|40px|400|HelveticaNowDisplay|lh:46px|tr:-0.5px|tt:capitalize",
+   1
+  ],
+  [
+   "h2|43.2px|400|HelveticaNowDisplay|lh:38.016px|tr:3%|tt:uppercase",
+   1
+  ],
+  [
+   "h3|40px|400|HelveticaNowDisplay|lh:46px|tr:-0.5px|tt:none",
+   1
+  ],
+  [
+   "p|64px|400|HelveticaNowDisplay|lh:72px|tr:-1.3px|tt:none",
+   1
+  ],
+  [
+   "p|36px|400|HelveticaNowDisplay|lh:38px|tr:-0.7px|tt:none",
+   1
+  ],
+  [
+   "p|16px|400|HelveticaNowDisplay|lh:22px|tr:normal|tt:none",
+   1
+  ],
+  [
+   "p|12px|400|HelveticaNowDisplay|lh:16px|tr:normal|tt:none",
+   1
+  ]
+ ],
+ "buttons": [
+  [
+   "rgb(195, 72, 24) | rgb(255, 255, 255) | 100px | 15px 20px 15px 25px | 13.5px | 500 | none | normal | 0px none rgb(195, 72, 24) | none",
+   {
+    "count": 1,
+    "example": "Accept all",
+    "transition": "all"
+   }
+  ],
+  [
+   "rgb(195, 72, 24) | rgb(255, 255, 255) | 100px | 15px 20px 15px 25px | 12.6px | 500 | none | normal | 0px none rgb(195, 72, 24) | none",
+   {
+    "count": 1,
+    "example": "Configure",
+    "transition": "all"
+   }
+  ],
+  [
+   "rgb(195, 72, 24) | rgb(255, 255, 255) | 100px | 15px 20px 15px 25px | 13.5px | 500 | none | normal | 0px none rgb(255, 255, 255) | none",
+   {
+    "count": 1,
+    "example": "Reject All",
+    "transition": "all"
+   }
+  ],
+  [
+   "oklab(0.999994 0.0000455678 0.0000200868 / 0.1) | rgb(255, 255, 255) | 3.35544e+07px | 12px 26px | 16px | 500 | none | normal | 1px solid oklab(0.999994 0.0000455 | rgba(0, 0, 0, 0) 0px 0px 0px 0",
+   {
+    "count": 1,
+    "example": "Join now",
+    "transition": "color 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s cubic-bezier(0.4,"
+   }
+  ],
+  [
+   "rgb(195, 72, 19) | rgb(255, 255, 255) | 3.35544e+07px | 12px 26px | 16px | 500 | none | normal | 1px solid rgb(165, 53, 5) | rgba(0, 0, 0, 0) 0px 0px 0px 0",
+   {
+    "count": 1,
+    "example": "Sign up",
+    "transition": "color 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s cubic-bezier(0.4,"
+   }
+  ],
+  [
+   "rgb(195, 72, 19) | rgb(255, 255, 255) | 100px | 20px 25px | 13.3333px | 400 | none | normal | 0px none rgb(255, 255, 255) | none",
+   {
+    "count": 1,
+    "example": "Enter the website",
+    "transition": "background 0.3s cubic-bezier(0.4, 0.64, 0.68, 1), color 0.3s linear"
+   }
+  ]
+ ],
+ "cards": [
+  [
+   "bg:oklab(0.999994 0.0000455678 0.0000200868 / 0.06) | r:0px | bd:none | sh:none | pad:24px",
+   {
+    "count": 8,
+    "w": 350,
+    "h": 406,
+    "hasImg": false,
+    "sample": "Excellent service, well worth the annual"
+   }
+  ],
+  [
+   "bg:oklab(0.999994 0.0000455678 0.0000200868 / 0.06) | r:0px | bd:none | sh:none | pad:32px",
+   {
+    "count": 5,
+    "w": 350,
+    "h": 306,
+    "hasImg": false,
+    "sample": "Dedicated Relationship Managers"
+   }
+  ],
+  [
+   "bg:rgb(24, 19, 17) | r:0px | bd:none | sh:none | pad:20px",
+   {
+    "count": 5,
+    "w": 249,
+    "h": 120,
+    "hasImg": true,
+    "sample": ""
+   }
+  ],
+  [
+   "bg:rgba(0, 0, 0, 0) | r:0px | bd:1px solid rgb(36, 36, 36) | sh:none | pad:20px 36px",
+   {
+    "count": 1,
+    "w": 346,
+    "h": 134,
+    "hasImg": true,
+    "sample": ""
+   }
+  ],
+  [
+   "bg:rgba(255, 255, 255, 0.2) | r:0px | bd:1px solid rgba(255, 255, 255,  | sh:none | pad:24px",
+   {
+    "count": 1,
+    "w": 432,
+    "h": 328,
+    "hasImg": false,
+    "sample": "You Were Right About Bitcoin"
+   }
+  ],
+  [
+   "bg:rgb(243, 243, 243) | r:0px | bd:none | sh:none | pad:44px 30px 24px",
+   {
+    "count": 1,
+    "w": 440,
+    "h": 472,
+    "hasImg": true,
+    "sample": "Trending Articles"
+   }
+  ],
+  [
+   "bg:rgb(255, 255, 255) | r:0px | bd:none | sh:none | pad:70px 30px",
+   {
+    "count": 1,
+    "w": 660,
+    "h": 292,
+    "hasImg": false,
+    "sample": "Be in the know.Unlock the future of mone"
+   }
+  ],
+  [
+   "bg:rgb(255, 255, 255) | r:30px | bd:none | sh:none | pad:40px",
+   {
+    "count": 1,
+    "w": 730,
+    "h": 590,
+    "hasImg": false,
+    "sample": "Welcome to Xapo Bank"
+   }
+  ],
+  [
+   "bg:rgba(0, 0, 0, 0) | r:0px | bd: | sh:none | pad:27px 0px 18px",
+   {
+    "count": 1,
+    "w": 650,
+    "h": 262,
+    "hasImg": false,
+    "sample": ""
+   }
+  ]
+ ],
+ "sectionFlow": [
+  {
+   "i": 0,
+   "h": 8648,
+   "bg": "rgb(9, 4, 2)",
+   "pad": "0px/0px",
+   "skeleton": "block kids:14",
+   "media": {
+    "imgs": 32,
+    "videos": 2
+   },
+   "head": "The Members-Only Private Bank For Bitcoin Holders"
+  },
+  {
+   "i": 1,
+   "h": 813,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "block kids:1",
+   "media": {
+    "imgs": 2,
+    "videos": 1
+   },
+   "head": "The Members-Only Private Bank For Bitcoin Holders"
+  },
+  {
+   "i": 2,
+   "h": 833,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "120px/120px",
+   "skeleton": "block kids:4",
+   "media": {
+    "imgs": 3,
+    "videos": 0
+   },
+   "head": "Exclusive Benefits, Only For Members"
+  },
+  {
+   "i": 3,
+   "h": 876,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "20px/20px",
+   "skeleton": "grid(12col) kids:2",
+   "media": {
+    "imgs": 2,
+    "videos": 0
+   },
+   "head": "Peace of Mind for your Life Savings"
+  },
+  {
+   "i": 4,
+   "h": 586,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "120px/180px",
+   "skeleton": "flex(column) kids:2",
+   "media": {
+    "imgs": 0,
+    "videos": 0
+   },
+   "head": "Around Since the Beginning"
+  },
+  {
+   "i": 5,
+   "h": 456,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "60px/60px",
+   "skeleton": "block kids:1",
+   "media": {
+    "imgs": 1,
+    "videos": 0
+   },
+   "head": "Pay your Membership using the Currency that suits yo"
+  },
+  {
+   "i": 6,
+   "h": 1046,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "120px/120px",
+   "skeleton": "block kids:4",
+   "media": {
+    "imgs": 1,
+    "videos": 0
+   },
+   "head": "What Our Members Say"
+  },
+  {
+   "i": 7,
+   "h": 732,
+   "bg": "rgb(9, 4, 2)",
+   "pad": "0px/0px",
+   "skeleton": "block kids:2",
+   "media": {
+    "imgs": 1,
+    "videos": 0
+   },
+   "head": "You Were Right About Bitcoin"
+  }
+ ],
+ "grounds": [
+  [
+   "oklab(0.999994 0.0000455678 0.0000200868 / 0.06)",
+   5
+  ],
+  [
+   "rgb(9, 4, 2)",
+   3
+  ],
+  [
+   "rgb(20, 20, 20)",
+   2
+  ],
+  [
+   "rgba(0, 0, 0, 0.5)",
+   1
+  ],
+  [
+   "rgb(36, 36, 36)",
+   1
+  ],
+  [
+   "oklab(0.115485 0.0093619 0.01224 / 0.55)",
+   1
+  ]
+ ],
+ "accents": [
+  [
+   "rgb(33, 195, 19)",
+   6
+  ],
+  [
+   "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+   5
+  ],
+  [
+   "oklab(0.999994 0.0000455678 0.0000200868 / 0.06)",
+   5
+  ],
+  [
+   "rgb(195, 72, 24)",
+   3
+  ],
+  [
+   "rgb(195, 72, 19)",
+   1
+  ],
+  [
+   "rgb(255, 107, 0)",
+   1
+  ],
+  [
+   "oklab(0.115485 0.0093619 0.01224 / 0.55)",
+   1
+  ]
+ ],
+ "transitions": [
+  [
+   "all",
+   150
+  ],
+  [
+   "0.5s cubic-bezier(0.4, 0, 0.2, 1)",
+   13
+  ],
+  [
+   "color 0.3s cubic-bezier(0.4, 0.64, 0.68, 1), background-color 0.3s cub",
+   5
+  ],
+  [
+   "color 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s cubic-b",
+   4
+  ],
+  [
+   "opacity 0.3s linear, translate 0.3s cubic-bezier(0.4, 0.64, 0.68, 1), ",
+   1
+  ],
+  [
+   "background 0.3s cubic-bezier(0.4, 0.64, 0.68, 1), color 0.3s linear",
+   1
+  ]
+ ],
+ "animationsRunning": 4
+}

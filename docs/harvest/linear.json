@@ -1,0 +1,397 @@
+{
+ "url": "https://linear.app/",
+ "title": "Linear – The system for product development",
+ "measured": "2026-07-02T12:04:53.760Z",
+ "viewport": "1440x813",
+ "typeCensus": [
+  [
+   "a|13px|400|Inter Variable|lh:19.5px|tr:-0.13px|tt:none",
+   38
+  ],
+  [
+   "li|13px|400|Inter Variable|lh:19.5px|tr:-0.13px|tt:none",
+   34
+  ],
+  [
+   "a|16px|400|Inter Variable|lh:24px|tr:normal|tt:none",
+   14
+  ],
+  [
+   "li|16px|400|Inter Variable|lh:24px|tr:normal|tt:none",
+   13
+  ],
+  [
+   "span|12px|510|Inter Variable|lh:16.8px|tr:normal|tt:none",
+   13
+  ],
+  [
+   "span|13px|510|Inter Variable|lh:normal|tr:normal|tt:none",
+   11
+  ],
+  [
+   "p|15px|400|Inter Variable|lh:24px|tr:-0.165px|tt:none",
+   9
+  ],
+  [
+   "span|12px|590|Inter Variable|lh:16.8px|tr:normal|tt:none",
+   9
+  ],
+  [
+   "span|12px|400|Inter Variable|lh:16.8px|tr:normal|tt:none",
+   8
+  ],
+  [
+   "h2|48px|510|Inter Variable|lh:48px|tr:-1.056px|tt:none",
+   7
+  ],
+  [
+   "span|13px|400|Inter Variable|lh:19.5px|tr:-0.13px|tt:none",
+   7
+  ],
+  [
+   "h3|13px|510|Inter Variable|lh:19.5px|tr:-0.13px|tt:none",
+   5
+  ],
+  [
+   "p|24px|400|Inter Variable|lh:31.92px|tr:-0.288px|tt:none",
+   5
+  ],
+  [
+   "a|13px|400|Inter Variable|lh:19.5px|tr:normal|tt:none",
+   5
+  ],
+  [
+   "span|16px|400|Inter Variable|lh:24px|tr:normal|tt:none",
+   5
+  ],
+  [
+   "span|13px|400|Inter Variable|lh:22px|tr:-0.13px|tt:none",
+   5
+  ],
+  [
+   "span|64px|510|Inter Variable|lh:64px|tr:-1.408px|tt:none",
+   3
+  ],
+  [
+   "p|32px|400|Inter Variable|lh:36px|tr:-0.704px|tt:none",
+   2
+  ],
+  [
+   "a|16px|510|Inter Variable|lh:44px|tr:normal|tt:none",
+   2
+  ],
+  [
+   "span|15px|400|Inter Variable|lh:24px|tr:-0.165px|tt:none",
+   2
+  ],
+  [
+   "h1|64px|510|Inter Variable|lh:64px|tr:-1.408px|tt:none",
+   1
+  ],
+  [
+   "h2|72px|510|Inter Variable|lh:72px|tr:-1.584px|tt:none",
+   1
+  ],
+  [
+   "h3|20px|590|Inter Variable|lh:26.6px|tr:-0.24px|tt:none",
+   1
+  ],
+  [
+   "h4|16px|590|Inter Variable|lh:24px|tr:normal|tt:none",
+   1
+  ]
+ ],
+ "buttons": [
+  [
+   "rgba(0, 0, 0, 0) | rgb(208, 214, 224) | 9999px | 0px 10px 0px 5px | 12px | 510 | none | normal | 1px solid rgb(35, 37, 42) | none",
+   {
+    "count": 2,
+    "example": "Performance",
+    "transition": "filter 0.16s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.16s cubic-bezier("
+   }
+  ],
+  [
+   "rgb(94, 106, 210) | rgb(255, 255, 255) | 0px | 0px 16px | 14px | 510 | none | normal | 0px none rgb(255, 255, 255) | none",
+   {
+    "count": 1,
+    "example": "Skip to content →",
+    "transition": "all"
+   }
+  ],
+  [
+   "rgb(229, 229, 230) | rgb(8, 9, 10) | 9999px | 0px 12px | 13px | 510 | none | normal | 1px solid rgb(229, 229, 230) | rgba(0, 0, 0, 0) 0px 8px 2px 0",
+   {
+    "count": 1,
+    "example": "Sign up",
+    "transition": "border 0.16s cubic-bezier(0.25, 0.46, 0.45, 0.94), background-color 0.16s cubic-"
+   }
+  ],
+  [
+   "rgba(255, 255, 255, 0.04) | rgb(208, 214, 224) | 6px | 0px 6px | 13px | 510 | none | normal | 0px none rgb(208, 214, 224) | none",
+   {
+    "count": 1,
+    "example": "Faster app launch",
+    "transition": "all"
+   }
+  ],
+  [
+   "rgba(255, 255, 255, 0.05) | rgb(247, 248, 248) | 9999px | 0px 12px | 13px | 510 | none | normal | 0px none rgb(247, 248, 248) | rgba(255, 255, 255, 0.03) 0px ",
+   {
+    "count": 1,
+    "example": "Listen",
+    "transition": "border 0.16s cubic-bezier(0.25, 0.46, 0.45, 0.94), background-color 0.16s cubic-"
+   }
+  ],
+  [
+   "rgb(229, 229, 230) | rgb(8, 9, 10) | 9999px | 0px 20px | 16px | 510 | none | normal | 1px solid rgb(229, 229, 230) | rgba(0, 0, 0, 0) 0px 8px 2px 0",
+   {
+    "count": 1,
+    "example": "Get started",
+    "transition": "border 0.16s cubic-bezier(0.25, 0.46, 0.45, 0.94), background-color 0.16s cubic-"
+   }
+  ],
+  [
+   "rgba(255, 255, 255, 0.05) | rgb(247, 248, 248) | 9999px | 0px 20px | 16px | 510 | none | normal | 0px none rgb(247, 248, 248) | rgba(255, 255, 255, 0.03) 0px ",
+   {
+    "count": 1,
+    "example": "Contact sales",
+    "transition": "border 0.16s cubic-bezier(0.25, 0.46, 0.45, 0.94), background-color 0.16s cubic-"
+   }
+  ]
+ ],
+ "cards": [
+  [
+   "bg:rgba(255, 255, 255, 0.01) | r:6px | bd:1px solid rgba(255, 255, 255,  | sh:rgba(0, 0, 0, 0.2) 0px 0px 0px 1px | pad:12px 20px 16px 15px",
+   {
+    "count": 1,
+    "w": 646,
+    "h": 146,
+    "hasImg": true,
+    "sample": ""
+   }
+  ],
+  [
+   "bg:rgb(22, 23, 24) | r:8px | bd:1px solid rgba(255, 255, 255,  | sh:none | pad:0px",
+   {
+    "count": 1,
+    "w": 400,
+    "h": 488,
+    "hasImg": true,
+    "sample": ""
+   }
+  ],
+  [
+   "bg:rgba(0, 0, 0, 0) | r:12px | bd:none | sh:rgba(8, 9, 10, 0.6) 0px 4px 32px 0px | pad:0px",
+   {
+    "count": 1,
+    "w": 560,
+    "h": 424,
+    "hasImg": true,
+    "sample": ""
+   }
+  ],
+  [
+   "bg:rgba(0, 0, 0, 0) | r:12px | bd:none | sh:rgba(8, 9, 10, 0.1) 0px 0px 0px 1px, rgba(8, | pad:0px",
+   {
+    "count": 1,
+    "w": 560,
+    "h": 424,
+    "hasImg": true,
+    "sample": ""
+   }
+  ],
+  [
+   "bg:rgba(0, 0, 0, 0) | r:12px | bd:none | sh:rgba(8, 9, 10, 0.6) 0px 4px 32px 0px | pad:28px 24px 40px",
+   {
+    "count": 1,
+    "w": 520,
+    "h": 523,
+    "hasImg": false,
+    "sample": ""
+   }
+  ],
+  [
+   "bg:rgb(228, 242, 34) | r:8px | bd:none | sh:none | pad:24px 32px",
+   {
+    "count": 1,
+    "w": 432,
+    "h": 480,
+    "hasImg": false,
+    "sample": ""
+   }
+  ]
+ ],
+ "sectionFlow": [
+  {
+   "i": 0,
+   "h": 10332,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "block kids:11",
+   "media": {
+    "imgs": 32,
+    "videos": 0
+   },
+   "head": "The product development system for teams and agentsT"
+  },
+  {
+   "i": 1,
+   "h": 1224,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "128px/128px",
+   "skeleton": "grid(2col) kids:3",
+   "media": {
+    "imgs": 10,
+    "videos": 0
+   },
+   "head": "Make product operations self-driving"
+  },
+  {
+   "i": 2,
+   "h": 1216,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "128px/128px",
+   "skeleton": "grid(2col) kids:3",
+   "media": {
+    "imgs": 1,
+    "videos": 0
+   },
+   "head": "Define the product direction"
+  },
+  {
+   "i": 3,
+   "h": 1172,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "128px/128px",
+   "skeleton": "grid(2col) kids:3",
+   "media": {
+    "imgs": 8,
+    "videos": 0
+   },
+   "head": "Move work forward across teams and agents"
+  },
+  {
+   "i": 4,
+   "h": 1090,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "128px/128px",
+   "skeleton": "grid(2col) kids:2",
+   "media": {
+    "imgs": 1,
+    "videos": 0
+   },
+   "head": "Review PRs and agent output"
+  },
+  {
+   "i": 5,
+   "h": 1196,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "128px/128px",
+   "skeleton": "grid(2col) kids:3",
+   "media": {
+    "imgs": 1,
+    "videos": 0
+   },
+   "head": "Understand progress at scale"
+  },
+  {
+   "i": 6,
+   "h": 564,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "flex(row) kids:1",
+   "media": {
+    "imgs": 0,
+    "videos": 0
+   },
+   "head": null
+  },
+  {
+   "i": 7,
+   "h": 228,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "flex(row) kids:2",
+   "media": {
+    "imgs": 0,
+    "videos": 0
+   },
+   "head": "Built for the future. Available today."
+  }
+ ],
+ "grounds": [
+  [
+   "rgba(255, 255, 255, 0.02)",
+   12
+  ],
+  [
+   "rgb(8, 9, 10)",
+   3
+  ],
+  [
+   "rgba(255, 255, 255, 0.01)",
+   2
+  ],
+  [
+   "rgb(9, 10, 11)",
+   1
+  ],
+  [
+   "rgb(16, 17, 18)",
+   1
+  ],
+  [
+   "rgb(18, 19, 20)",
+   1
+  ],
+  [
+   "rgb(22, 23, 24)",
+   1
+  ],
+  [
+   "rgb(15, 16, 17)",
+   1
+  ]
+ ],
+ "accents": [
+  [
+   "rgb(94, 106, 210)",
+   1
+  ],
+  [
+   "rgb(39, 166, 68)",
+   1
+  ],
+  [
+   "rgb(243, 79, 82)",
+   1
+  ]
+ ],
+ "transitions": [
+  [
+   "all",
+   83
+  ],
+  [
+   "color 0.1s",
+   39
+  ],
+  [
+   "border 0.16s cubic-bezier(0.25, 0.46, 0.45, 0.94), background-color 0.",
+   10
+  ],
+  [
+   "color 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94), background 0.1s cubic",
+   8
+  ],
+  [
+   "transform 0.16s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+   7
+  ],
+  [
+   "filter 0.16s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+   6
+  ]
+ ],
+ "animationsRunning": 106
+}

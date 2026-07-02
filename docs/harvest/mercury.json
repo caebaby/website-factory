@@ -1,0 +1,339 @@
+{
+ "url": "https://mercury.com/",
+ "title": "Online Business Banking For Startups, Small Businesses & Scaling Companies",
+ "measured": "2026-07-02T12:04:43.837Z",
+ "viewport": "1440x813",
+ "typeCensus": [
+  [
+   "h3|16px|400|arcadia|lh:24px|tr:normal|tt:none",
+   10
+  ],
+  [
+   "li|12px|400|arcadia|lh:16.8px|tr:0.24px|tt:none",
+   8
+  ],
+  [
+   "a|16px|400|arcadia|lh:22.4px|tr:normal|tt:none",
+   7
+  ],
+  [
+   "li|16px|400|arcadia|lh:24px|tr:normal|tt:none",
+   7
+  ],
+  [
+   "span|16px|480|arcadia|lh:21.6px|tr:normal|tt:none",
+   6
+  ],
+  [
+   "h2|28px|480|arcadiaDisplay|lh:33.6px|tr:0.42px|tt:none",
+   5
+  ],
+  [
+   "span|21.008px|360|arcadia|lh:28.3608px|tr:normal|tt:none",
+   5
+  ],
+  [
+   "span|16px|400|arcadia|lh:22.4px|tr:normal|tt:none",
+   4
+  ],
+  [
+   "span|21.008px|480|arcadia|lh:25.2096px|tr:normal|tt:none",
+   4
+  ],
+  [
+   "span|18px|480|arcadia|lh:24.3px|tr:normal|tt:none",
+   4
+  ],
+  [
+   "span|18px|360|arcadia|lh:24.3px|tr:normal|tt:none",
+   4
+  ],
+  [
+   "h2|42px|480|arcadiaDisplay|lh:48.3px|tr:0.42px|tt:none",
+   3
+  ],
+  [
+   "a|16px|420|arcadia|lh:16px|tr:normal|tt:none",
+   3
+  ],
+  [
+   "a|16px|480|arcadia|lh:21.6px|tr:normal|tt:none",
+   3
+  ],
+  [
+   "span|16px|420|arcadia|lh:16px|tr:normal|tt:none",
+   3
+  ],
+  [
+   "span|21.008px|480|arcadiaDisplay|lh:25.2096px|tr:0.42016px|tt:none",
+   3
+  ],
+  [
+   "span|28px|360|arcadiaDisplay|lh:33.6px|tr:0.42px|tt:none",
+   3
+  ],
+  [
+   "blockquote|21.008px|480|arcadiaDisplay|lh:25.2096px|tr:0.42016px|tt:none",
+   3
+  ],
+  [
+   "p|21.008px|480|arcadia|lh:25.2096px|tr:normal|tt:none",
+   2
+  ],
+  [
+   "span|24px|480|arcadiaDisplay|lh:28.8px|tr:0.48px|tt:none",
+   2
+  ],
+  [
+   "h1|49.3472px|480|arcadiaDisplay|lh:54.2819px|tr:normal|tt:none",
+   1
+  ],
+  [
+   "h2|12px|400|arcadia|lh:16.8px|tr:0.24px|tt:none",
+   1
+  ],
+  [
+   "p|16px|420|arcadia|lh:16px|tr:normal|tt:none",
+   1
+  ],
+  [
+   "p|12px|400|arcadia|lh:16.8px|tr:0.24px|tt:none",
+   1
+  ]
+ ],
+ "buttons": [
+  [
+   "rgb(82, 102, 235) | rgb(255, 255, 255) | 32px | 0px 20px | 16px | 420 | none | normal | 0px solid rgb(255, 255, 255) | none",
+   {
+    "count": 3,
+    "example": "Open account",
+    "transition": "color 0.3s cubic-bezier(0, 0, 0.2, 1), background-color 0.3s cubic-bezier(0, 0, "
+   }
+  ],
+  [
+   "rgba(156, 180, 232, 0.2) | rgb(237, 237, 243) | 40px | 0px 20px | 16px | 420 | none | normal | 0px solid rgb(237, 237, 243) | none",
+   {
+    "count": 3,
+    "example": "Contact sales",
+    "transition": "color 0.3s cubic-bezier(0, 0, 0.2, 1), background-color 0.3s cubic-bezier(0, 0, "
+   }
+  ]
+ ],
+ "cards": [
+  [
+   "bg:rgb(30, 30, 42) | r:12px | bd:none | sh:none | pad:32px",
+   {
+    "count": 5,
+    "w": 320,
+    "h": 447,
+    "hasImg": true,
+    "sample": "Mercury hits $5.2B valuation"
+   }
+  ]
+ ],
+ "sectionFlow": [
+  {
+   "i": 0,
+   "h": 813,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "grid(1col) kids:1",
+   "media": {
+    "imgs": 1,
+    "videos": 1
+   },
+   "head": "Radically different banking"
+  },
+  {
+   "i": 1,
+   "h": 1626,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "block kids:1",
+   "media": {
+    "imgs": 2,
+    "videos": 8
+   },
+   "head": "Business banking & more"
+  },
+  {
+   "i": 2,
+   "h": 393,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "grid(16col) kids:1",
+   "media": {
+    "imgs": 0,
+    "videos": 0
+   },
+   "head": "Loved by 300K+ of the most ambitious entrepreneurs o"
+  },
+  {
+   "i": 3,
+   "h": 668,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "grid(16col) kids:1",
+   "media": {
+    "imgs": 6,
+    "videos": 0
+   },
+   "head": null
+  },
+  {
+   "i": 4,
+   "h": 1130,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "grid(16col) kids:1",
+   "media": {
+    "imgs": 4,
+    "videos": 0
+   },
+   "head": null
+  },
+  {
+   "i": 5,
+   "h": 338,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "grid(16col) kids:1",
+   "media": {
+    "imgs": 0,
+    "videos": 0
+   },
+   "head": null
+  },
+  {
+   "i": 6,
+   "h": 732,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "grid(16col) kids:1",
+   "media": {
+    "imgs": 6,
+    "videos": 0
+   },
+   "head": "Apply online in 10 minutes"
+  },
+  {
+   "i": 7,
+   "h": 712,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "grid(16col) kids:1",
+   "media": {
+    "imgs": 6,
+    "videos": 0
+   },
+   "head": "Send no-fee USD payments around the globe"
+  },
+  {
+   "i": 8,
+   "h": 1045,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "grid(16col) kids:1",
+   "media": {
+    "imgs": 4,
+    "videos": 0
+   },
+   "head": null
+  },
+  {
+   "i": 9,
+   "h": 449,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "grid(16col) kids:1",
+   "media": {
+    "imgs": 0,
+    "videos": 0
+   },
+   "head": "You’re creating something to stand the test of time."
+  },
+  {
+   "i": 10,
+   "h": 744,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "grid(16col) kids:1",
+   "media": {
+    "imgs": 3,
+    "videos": 0
+   },
+   "head": null
+  },
+  {
+   "i": 11,
+   "h": 621,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "grid(16col) kids:1",
+   "media": {
+    "imgs": 3,
+    "videos": 0
+   },
+   "head": "Mercury hits $5.2B valuation"
+  },
+  {
+   "i": 12,
+   "h": 787,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "grid(16col) kids:1",
+   "media": {
+    "imgs": 0,
+    "videos": 0
+   },
+   "head": "Banking – redesigned from the ground up."
+  },
+  {
+   "i": 13,
+   "h": 1107,
+   "bg": "rgb(23, 23, 33)",
+   "pad": "0px/0px",
+   "skeleton": "grid(16col) kids:1",
+   "media": {
+    "imgs": 0,
+    "videos": 0
+   },
+   "head": "Disclaimers and footnotes"
+  }
+ ],
+ "grounds": [
+  [
+   "rgb(23, 23, 33)",
+   3
+  ],
+  [
+   "rgb(39, 39, 53)",
+   1
+  ]
+ ],
+ "accents": [
+  [
+   "rgb(82, 102, 235)",
+   2
+  ],
+  [
+   "rgb(252, 146, 180)",
+   2
+  ]
+ ],
+ "transitions": [
+  [
+   "all",
+   145
+  ],
+  [
+   "color 0.3s cubic-bezier(0, 0, 0.2, 1), background-color 0.3s cubic-bez",
+   40
+  ],
+  [
+   "color 0.15s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.15s cubic",
+   15
+  ]
+ ],
+ "animationsRunning": 12
+}

@@ -1,7 +1,7 @@
 {
  "url": "https://www.hoaresbank.co.uk/",
  "title": "C. Hoare & Co. | private bank",
- "measured": "2026-07-02T12:03:45.683Z",
+ "measured": "2026-07-02T12:05:57.762Z",
  "viewport": "1440x813",
  "typeCensus": [
   [
@@ -113,7 +113,20 @@
    }
   ]
  ],
- "sectionFlow": [],
+ "sectionFlow": [
+  {
+   "i": 0,
+   "h": 715,
+   "bg": "rgb(0, 51, 46)",
+   "pad": "0px/0px",
+   "skeleton": "block kids:2",
+   "media": {
+    "imgs": 2,
+    "videos": 0
+   },
+   "head": null
+  }
+ ],
  "grounds": [
   [
    "rgb(255, 255, 255)",

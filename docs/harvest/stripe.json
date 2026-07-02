@@ -1,0 +1,439 @@
+{
+ "url": "https://stripe.com/",
+ "title": "Stripe | Financial Infrastructure to Grow Your Revenue",
+ "measured": "2026-07-02T12:05:04.266Z",
+ "viewport": "1440x813",
+ "typeCensus": [
+  [
+   "span|14px|300|sohne-var|lh:normal|tr:-0.42px|tt:none",
+   25
+  ],
+  [
+   "a|16px|400|sohne-var|lh:normal|tr:normal|tt:none",
+   23
+  ],
+  [
+   "p|16px|300|sohne-var|lh:22.4px|tr:normal|tt:none",
+   17
+  ],
+  [
+   "span|11px|300|sohne-var|lh:15.4px|tr:normal|tt:none",
+   17
+  ],
+  [
+   "li|16px|400|sohne-var|lh:normal|tr:normal|tt:none",
+   16
+  ],
+  [
+   "h3|26px|300|sohne-var|lh:29.12px|tr:-0.26px|tt:none",
+   13
+  ],
+  [
+   "h4|16px|400|sohne-var|lh:22.4px|tr:normal|tt:none",
+   13
+  ],
+  [
+   "a|16px|400|sohne-var|lh:16px|tr:normal|tt:none",
+   13
+  ],
+  [
+   "h3|22px|300|sohne-var|lh:24.2px|tr:-0.22px|tt:none",
+   12
+  ],
+  [
+   "p|16px|400|sohne-var|lh:22.4px|tr:normal|tt:none",
+   12
+  ],
+  [
+   "h4|16px|300|sohne-var|lh:22.4px|tr:normal|tt:none",
+   8
+  ],
+  [
+   "p|22px|300|sohne-var|lh:24.2px|tr:-0.22px|tt:none",
+   8
+  ],
+  [
+   "span|11px|300|sohne-var|lh:15.95px|tr:normal|tt:none",
+   8
+  ],
+  [
+   "p|32px|300|sohne-var|lh:35.2px|tr:-0.64px|tt:none",
+   5
+  ],
+  [
+   "a|14px|400|sohne-var|lh:14px|tr:normal|tt:none",
+   5
+  ],
+  [
+   "h2|32px|300|sohne-var|lh:35.2px|tr:-0.64px|tt:none",
+   4
+  ],
+  [
+   "p|26px|300|sohne-var|lh:29.12px|tr:-0.26px|tt:none",
+   4
+  ],
+  [
+   "p|48px|300|sohne-var|lh:48px|tr:-0.96px|tt:none",
+   4
+  ],
+  [
+   "span|9px|300|sohne-var|lh:11.7px|tr:-0.27px|tt:none",
+   4
+  ],
+  [
+   "h4|48px|300|sohne-var|lh:49.44px|tr:-0.96px|tt:none",
+   3
+  ],
+  [
+   "p|18px|300|sohne-var|lh:25.2px|tr:normal|tt:none",
+   3
+  ],
+  [
+   "span|11px|300|sohne-var|lh:16px|tr:-0.33px|tt:none",
+   3
+  ],
+  [
+   "h1|48px|300|sohne-var|lh:55.2px|tr:-0.96px|tt:none",
+   2
+  ],
+  [
+   "span|48px|300|sohne-var|lh:55.2px|tr:-0.96px|tt:none",
+   2
+  ]
+ ],
+ "buttons": [
+  [
+   "rgba(255, 255, 255, 0) | rgb(83, 58, 253) | 4px | 14.5px 24px 15.5px | 16px | 400 | none | normal | 1px solid rgb(185, 185, 249) | none",
+   {
+    "count": 9,
+    "example": "Read the letter",
+    "transition": "background-color 0.3s cubic-bezier(0.25, 1, 0.5, 1), color 0.3s cubic-bezier(0.2"
+   }
+  ],
+  [
+   "rgb(83, 58, 253) | rgb(255, 255, 255) | 4px | 15.5px 24px 16.5px | 16px | 400 | none | normal | 0px none rgb(255, 255, 255) | none",
+   {
+    "count": 7,
+    "example": "Get started",
+    "transition": "background-color 0.3s cubic-bezier(0.25, 1, 0.5, 1), color 0.3s cubic-bezier(0.2"
+   }
+  ],
+  [
+   "rgb(226, 228, 255) | rgb(83, 58, 253) | 4px | 0px | 16px | 400 | none | normal | 1px solid rgb(226, 228, 255) | none",
+   {
+    "count": 3,
+    "example": "Read the story",
+    "transition": "background 0.4s cubic-bezier(0.3, 0, 0.2, 1), color 0.4s cubic-bezier(0.3, 0, 0."
+   }
+  ],
+  [
+   "rgba(0, 0, 0, 0) | rgb(0, 0, 238) | 4px | 2px | 16px | 400 | none | normal | 1px solid rgb(229, 237, 245) | none",
+   {
+    "count": 2,
+    "example": "Stripe Press",
+    "transition": "border-color 0.2s, background-color 0.2s"
+   }
+  ],
+  [
+   "rgba(0, 0, 0, 0) | rgb(83, 58, 253) | 4px | 10.5px 20px 13.5px | 14px | 400 | none | normal | 1px solid rgb(255, 255, 255) | none",
+   {
+    "count": 1,
+    "example": "Sign inSign in",
+    "transition": "color 0.24s cubic-bezier(0.45, 0.05, 0.55, 0.95), background-color 0.24s cubic-b"
+   }
+  ],
+  [
+   "rgb(83, 58, 253) | rgb(255, 255, 255) | 4px | 15.5px 20px 16.5px | 14px | 400 | none | normal | 0px none rgb(255, 255, 255) | none",
+   {
+    "count": 1,
+    "example": "Contact sales",
+    "transition": "color 0.24s cubic-bezier(0.45, 0.05, 0.55, 0.95), background-color 0.24s cubic-b"
+   }
+  ],
+  [
+   "rgba(255, 255, 255, 0.65) | rgb(83, 58, 253) | 4px | 14.5px 24px 15.5px | 16px | 400 | none | normal | 1px solid rgb(185, 185, 249) | none",
+   {
+    "count": 1,
+    "example": "Sign up with Google",
+    "transition": "background-color 0.3s cubic-bezier(0.25, 1, 0.5, 1), color 0.3s cubic-bezier(0.2"
+   }
+  ],
+  [
+   "rgb(255, 255, 255) | rgb(83, 58, 253) | 4px | 15.5px 24px 16.5px | 16px | 400 | none | normal | 0px none rgb(83, 58, 253) | none",
+   {
+    "count": 1,
+    "example": "Watch now",
+    "transition": "background-color 0.3s cubic-bezier(0.25, 1, 0.5, 1), color 0.3s cubic-bezier(0.2"
+   }
+  ]
+ ],
+ "cards": [
+  [
+   "bg:rgb(229, 237, 245) | r:6px | bd:none | sh:none | pad:0px",
+   {
+    "count": 8,
+    "w": 332,
+    "h": 448,
+    "hasImg": true,
+    "sample": ""
+   }
+  ],
+  [
+   "bg:rgb(255, 255, 255) | r:0px | bd:none | sh:none | pad:0px",
+   {
+    "count": 6,
+    "w": 826,
+    "h": 684,
+    "hasImg": true,
+    "sample": ""
+   }
+  ],
+  [
+   "bg:rgb(248, 250, 253) | r:6px | bd:none | sh:none | pad:0px",
+   {
+    "count": 2,
+    "w": 608,
+    "h": 168,
+    "hasImg": true,
+    "sample": "Stripe Startups program."
+   }
+  ],
+  [
+   "bg:rgb(255, 255, 255) | r:6px | bd:none | sh:rgba(23, 23, 23, 0.06) 0px 3px 6px 0px | pad:0px",
+   {
+    "count": 1,
+    "w": 618,
+    "h": 539,
+    "hasImg": true,
+    "sample": ""
+   }
+  ],
+  [
+   "bg:rgb(255, 255, 255) | r:6px | bd:none | sh:rgba(0, 0, 0, 0.1) 0px 20.187px 40.374px -20 | pad:8px",
+   {
+    "count": 1,
+    "w": 276,
+    "h": 246,
+    "hasImg": true,
+    "sample": ""
+   }
+  ]
+ ],
+ "sectionFlow": [
+  {
+   "i": 0,
+   "h": 626,
+   "bg": "rgb(255, 255, 255)",
+   "pad": "0px/0px",
+   "skeleton": "grid(1col) kids:3",
+   "media": {
+    "imgs": 1,
+    "videos": 0
+   },
+   "head": "Financial infrastructure to grow your revenue. Accep"
+  },
+  {
+   "i": 1,
+   "h": 2196,
+   "bg": "rgb(255, 255, 255)",
+   "pad": "0px/0px",
+   "skeleton": "block kids:2",
+   "media": {
+    "imgs": 14,
+    "videos": 0
+   },
+   "head": "Flexible solutions for every business model."
+  },
+  {
+   "i": 2,
+   "h": 560,
+   "bg": "rgb(255, 255, 255)",
+   "pad": "0px/0px",
+   "skeleton": "grid(1col) kids:1",
+   "media": {
+    "imgs": 2,
+    "videos": 0
+   },
+   "head": null
+  },
+  {
+   "i": 3,
+   "h": 977,
+   "bg": "rgb(255, 255, 255)",
+   "pad": "0px/0px",
+   "skeleton": "flex(column) kids:4",
+   "media": {
+    "imgs": 5,
+    "videos": 0
+   },
+   "head": "The backbone of global commerce"
+  },
+  {
+   "i": 4,
+   "h": 4610,
+   "bg": "rgb(255, 255, 255)",
+   "pad": "0px/0px",
+   "skeleton": "flex(column) kids:1",
+   "media": {
+    "imgs": 18,
+    "videos": 0
+   },
+   "head": "Powering businesses of all sizes."
+  },
+  {
+   "i": 5,
+   "h": 1388,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "flex(row) kids:3",
+   "media": {
+    "imgs": 4,
+    "videos": 0
+   },
+   "head": "Transform your enterprise with agile financial infra"
+  },
+  {
+   "i": 6,
+   "h": 1026,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "flex(column) kids:3",
+   "media": {
+    "imgs": 9,
+    "videos": 0
+   },
+   "head": "Build a foundation for your startup that enables fas"
+  },
+  {
+   "i": 7,
+   "h": 1533,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "flex(column) kids:3",
+   "media": {
+    "imgs": 5,
+    "videos": 0
+   },
+   "head": "Make your SaaS platform a complete financial operati"
+  },
+  {
+   "i": 8,
+   "h": 2341,
+   "bg": "rgb(13, 23, 56)",
+   "pad": "0px/0px",
+   "skeleton": "flex(column) kids:1",
+   "media": {
+    "imgs": 2,
+    "videos": 0
+   },
+   "head": "Reliable, extensible infrastructure for every stack."
+  },
+  {
+   "i": 9,
+   "h": 1741,
+   "bg": "rgb(255, 255, 255)",
+   "pad": "0px/0px",
+   "skeleton": "flex(column) kids:1",
+   "media": {
+    "imgs": 10,
+    "videos": 0
+   },
+   "head": "What’s happening"
+  },
+  {
+   "i": 10,
+   "h": 380,
+   "bg": "rgb(248, 250, 253)",
+   "pad": "0px/0px",
+   "skeleton": "grid(12col) kids:1",
+   "media": {
+    "imgs": 0,
+    "videos": 0
+   },
+   "head": null
+  }
+ ],
+ "grounds": [
+  [
+   "rgb(127, 125, 252)",
+   31
+  ],
+  [
+   "rgb(255, 255, 255)",
+   19
+  ],
+  [
+   "rgb(229, 237, 245)",
+   8
+  ],
+  [
+   "rgba(248, 250, 253, 0.45)",
+   2
+  ],
+  [
+   "rgb(236, 240, 244)",
+   2
+  ]
+ ],
+ "accents": [
+  [
+   "rgb(83, 58, 253)",
+   218
+  ],
+  [
+   "rgb(127, 125, 252)",
+   34
+  ],
+  [
+   "rgb(255, 97, 24)",
+   18
+  ],
+  [
+   "rgb(107, 89, 254)",
+   4
+  ],
+  [
+   "rgb(129, 184, 26)",
+   2
+  ],
+  [
+   "rgba(0, 14, 255, 0.5)",
+   2
+  ],
+  [
+   "rgb(0, 214, 111)",
+   2
+  ],
+  [
+   "rgb(45, 37, 100)",
+   1
+  ]
+ ],
+ "transitions": [
+  [
+   "all",
+   103
+  ],
+  [
+   "color 0.3s cubic-bezier(0.25, 1, 0.5, 1)",
+   28
+  ],
+  [
+   "transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1)",
+   22
+  ],
+  [
+   "clip-path 0.8s cubic-bezier(0.165, 0.84, 0.44, 1)",
+   12
+  ],
+  [
+   "color 0.24s cubic-bezier(0.45, 0.05, 0.55, 0.95), background-color 0.2",
+   9
+  ],
+  [
+   "background-color 0.3s cubic-bezier(0.25, 1, 0.5, 1), color 0.3s cubic-",
+   6
+  ]
+ ],
+ "animationsRunning": 100
+}

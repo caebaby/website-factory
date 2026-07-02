@@ -1,7 +1,7 @@
 {
  "url": "https://www.modernhealth.com/",
  "title": "Modern Health: Mental Health Care Designed For Your Workforce",
- "measured": "2026-07-02T12:04:33.658Z",
+ "measured": "2026-07-02T12:06:25.667Z",
  "viewport": "1440x813",
  "typeCensus": [
   [
@@ -214,10 +214,70 @@
  "sectionFlow": [
   {
    "i": 0,
-   "h": 857,
+   "h": 813,
+   "bg": "rgb(0, 163, 255)",
+   "pad": "0px/0px",
+   "skeleton": "flex(column) kids:1",
+   "media": {
+    "imgs": 0,
+    "videos": 0
+   },
+   "head": "Workplace Wellness Insights, Delivered"
+  },
+  {
+   "i": 1,
+   "h": 751,
    "bg": "rgba(0, 0, 0, 0)",
    "pad": "0px/0px",
-   "skeleton": "block kids:1",
+   "skeleton": "flex(column) kids:1",
+   "media": {
+    "imgs": 1,
+    "videos": 0
+   },
+   "head": "The Global Standard in Mental Health"
+  },
+  {
+   "i": 2,
+   "h": 778,
+   "bg": "rgb(235, 233, 226)",
+   "pad": "128px/0px",
+   "skeleton": "flex(column) kids:1",
+   "media": {
+    "imgs": 1,
+    "videos": 0
+   },
+   "head": "Solve your greatest business challenges with Modern "
+  },
+  {
+   "i": 3,
+   "h": 1697,
+   "bg": "rgb(0, 163, 255)",
+   "pad": "128px/128px",
+   "skeleton": "flex(column) kids:1",
+   "media": {
+    "imgs": 4,
+    "videos": 0
+   },
+   "head": "The Modern Health Difference"
+  },
+  {
+   "i": 4,
+   "h": 890,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "96px/96px",
+   "skeleton": "flex(column) kids:1",
+   "media": {
+    "imgs": 1,
+    "videos": 0
+   },
+   "head": "Proof that mental health care pays off"
+  },
+  {
+   "i": 5,
+   "h": 985,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "flex(column) kids:1",
    "media": {
     "imgs": 5,
     "videos": 0
@@ -225,16 +285,40 @@
    "head": "Hear directly from our customers"
   },
   {
-   "i": 1,
-   "h": 875,
+   "i": 6,
+   "h": 828,
    "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/128px",
+   "skeleton": "flex(column) kids:1",
+   "media": {
+    "imgs": 0,
+    "videos": 0
+   },
+   "head": "Personalized health care at scale"
+  },
+  {
+   "i": 7,
+   "h": 1003,
+   "bg": "rgb(235, 233, 226)",
    "pad": "0px/0px",
-   "skeleton": "block kids:1",
+   "skeleton": "flex(column) kids:1",
    "media": {
     "imgs": 5,
     "videos": 0
    },
    "head": "Discover what our customer champions have to say"
+  },
+  {
+   "i": 8,
+   "h": 568,
+   "bg": "rgb(248, 246, 238)",
+   "pad": "0px/0px",
+   "skeleton": "flex(row) kids:2",
+   "media": {
+    "imgs": 3,
+    "videos": 0
+   },
+   "head": null
   }
  ],
  "grounds": [
