@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FIXTURE — Video Content System (warm-premium v1.3 §8.4)</title>
+<!--
+  Demonstrates the three video blocks with AWP tokens. Sample footage = CC0 MDN test clip
+  standing in for real assets — production uses REAL footage only ([VERIFY] slots otherwise).
+-->
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,400;1,500&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#F5F0E6;--ground-alt:#EDE7D9;--card-pale:#fff;--dark:#142840;--ink:#1b2a3c;--ink-body:#4b5b6e;
+  --on-dark:#F7F3EB;--on-dark-mute:rgba(247,243,235,.74);--accent:#c9a24b;--accent-soft:#dcc07e;--accent-ink:#7d5f26;
+  --accent-deep:#6d5122;--accent-rgb:201,162,75;--border:rgba(20,40,64,.14);
+  --maxw:1512px;--gutter:clamp(24px,5vw,96px);--radius-card:8px;--dur:.4s;--ease:ease;--ease-soft:cubic-bezier(.16,1,.3,1);
+  --sans:'Nunito Sans',sans-serif;--serif:'EB Garamond',serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--sans);background:var(--ground);color:var(--ink-body);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+img{display:block;max-width:100%;}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter);width:100%;min-width:0;}
+section{position:relative;}
+.pad{padding:clamp(64px,7vw,96px) 0;}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font:600 12px/1.3 var(--sans);letter-spacing:1px;text-transform:uppercase;color:var(--accent-ink);}
+.eyebrow::before{content:"";width:22px;height:1.5px;background:currentColor;}
+h2{font:300 clamp(28px,3.6vw,48px)/1.08 var(--sans);letter-spacing:-.025em;color:var(--ink);margin:14px 0 10px;}
+h2 em{font-family:var(--serif);font-style:italic;font-weight:400;font-size:1.05em;}
+.note{font-size:13px;color:var(--ink-body);max-width:64ch;}
+
+/* ═══ 1) VIDEO HERO — Primitive 5, warm-premium scrim numbers ═══ */
+.vhero{position:relative;min-height:clamp(520px,72svh,760px);display:flex;align-items:center;overflow:hidden;isolation:isolate;color:var(--on-dark);}
+.vhero__media{position:absolute;inset:0;z-index:0;background:#0e1c2e;}
+.vhero__media video,.vhero__media img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;}
+.vhero__scrim{position:absolute;inset:0;z-index:1;background:
+  linear-gradient(96deg,rgba(20,40,64,.88) 0%,rgba(20,40,64,.64) 30%,rgba(20,40,64,.26) 58%,rgba(20,40,64,0) 80%),
+  linear-gradient(180deg,rgba(16,30,50,.4) 0%,rgba(16,30,50,0) 24%,rgba(16,30,50,0) 72%,rgba(13,24,40,.4) 100%);}
+.vhero__content{position:relative;z-index:2;}
+.vhero h1{font:300 clamp(34px,4.6vw,64px)/1.05 var(--sans);letter-spacing:-.02em;color:#fff;max-width:18ch;text-shadow:0 2px 26px rgba(8,16,28,.34);}
+.vhero h1 em{font-family:var(--serif);font-style:italic;font-weight:400;font-size:1.08em;}
+.vhero p{margin-top:16px;max-width:46ch;color:var(--on-dark);}
+.vhero .eyebrow{color:var(--accent-soft);}
+
+/* ═══ 2) VIDEO TESTIMONIAL — proof block (§8.4.2), on the deep-accent ground ═══ */
+.bg-accent-deep{background:linear-gradient(155deg,color-mix(in srgb,var(--accent-deep) 78%,var(--accent)) 0%,var(--accent-deep) 52%,color-mix(in srgb,var(--accent-deep) 82%,#000) 100%);color:var(--on-dark);}
+.bg-accent-deep .eyebrow{color:var(--on-dark);}
+.bg-accent-deep h2{color:#fff;}
+.proof-split{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(28px,4vw,56px);align-items:center;}
+@media(max-width:860px){.proof-split{grid-template-columns:1fr;}}
+.vt{position:relative;aspect-ratio:16/9;background:var(--dark);border-radius:var(--radius-card);overflow:hidden;}
+.vt__poster{position:absolute;inset:0;border:0;padding:0;cursor:pointer;background:none;width:100%;}
+.vt__poster img{width:100%;height:100%;object-fit:cover;}
+.vt__poster::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.45));}
+.vt__play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:74px;height:74px;border-radius:50%;background:var(--accent);color:var(--dark);display:grid;place-items:center;z-index:1;transition:transform var(--dur) var(--ease-soft),background-color var(--dur);}
+.vt__play svg{width:30px;height:30px;margin-left:3px;}
+.vt__poster:hover .vt__play{transform:translate(-50%,-50%) scale(1.08);background:var(--card-pale);}
+.vt__dur{position:absolute;right:14px;bottom:12px;z-index:1;font:600 12px/1 var(--sans);letter-spacing:.5px;color:#fff;background:rgba(0,0,0,.55);padding:5px 9px;border-radius:4px;}
+.vt__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.proof-q blockquote{font:400 clamp(19px,2vw,26px)/1.4 var(--serif);font-style:italic;color:#fff;}
+.proof-q .who{margin-top:16px;font:600 14px var(--sans);color:var(--on-dark);}
+.proof-q .vf{display:inline-block;font:600 9px/1 var(--sans);letter-spacing:.5px;text-transform:uppercase;color:var(--accent-soft);border:1px solid rgba(220,192,126,.4);border-radius:3px;padding:2px 4px;margin-left:6px;}
+
+/* ═══ 3) VIDEO INSIGHT — featured card (§8.4.3) ═══ */
+.bg-ground-alt{background:var(--ground-alt);}
+.ins-grid{display:grid;grid-template-columns:1.55fr 1fr;gap:22px;align-items:stretch;}
+@media(max-width:860px){.ins-grid{grid-template-columns:1fr;}}
+.ins-feat{position:relative;background:var(--card-pale);border-radius:var(--radius-card);border:1px solid var(--border);overflow:hidden;display:flex;flex-direction:column;transition:transform var(--dur) var(--ease-soft);}
+.ins-feat:hover{transform:translateY(-4px);}
+.ins-feat::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);z-index:2;}
+.ins-feat .vt{border-radius:0;aspect-ratio:16/9;}
+.ins-feat .vt__play{width:56px;height:56px;}
+.ins-feat .vt__play svg{width:22px;height:22px;}
+.ins-body{padding:26px 30px 30px;}
+.ins-tag{font:600 12px/1.3 var(--sans);letter-spacing:1px;text-transform:uppercase;color:var(--accent-ink);}
+.ins-feat h3{margin-top:12px;font:400 clamp(22px,2.2vw,30px)/1.25 var(--serif);font-style:italic;color:var(--ink);max-width:24ch;}
+.ins-feat p{margin-top:10px;font-size:15px;color:var(--ink-body);max-width:56ch;}
+.ins-card{background:var(--card-pale);border-radius:var(--radius-card);border:1px solid var(--border);padding:24px 28px;transition:transform var(--dur) var(--ease-soft);}
+.ins-card:hover{transform:translateY(-4px);}
+.ins-card h3{margin-top:12px;font:400 19px/1.3 var(--serif);font-style:italic;color:var(--ink);}
+.ins-stack{display:grid;gap:22px;}
+</style>
+</head>
+<body>
+
+<!-- 1) VIDEO HERO -->
+<section class="vhero" id="vhero">
+  <div class="vhero__media" aria-hidden="true">
+    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1800&auto=format&fit=crop" alt="">
+    <video class="vhero__video" muted loop playsinline preload="none" poster="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1800&auto=format&fit=crop">
+      <source data-src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+    </video>
+    <div class="vhero__scrim"></div>
+  </div>
+  <div class="wrap vhero__content">
+    <span class="eyebrow">Block 1 · Ambient hero loop (autoplay muted, poster-first, lazy)</span>
+    <h1>The hero can carry <em>real footage.</em></h1>
+    <p>Poster loads first; the loop only fetches near the viewport; reduced-motion never autoplays. A failed video IS the photo hero.</p>
+  </div>
+</section>
+
+<!-- 2) VIDEO TESTIMONIAL -->
+<section class="bg-accent-deep pad" id="vtestimonial">
+  <div class="wrap">
+    <span class="eyebrow">Block 2 · Video testimonial (click-to-play — the choice to press play is the signal)</span>
+    <h2>What it sounds like <em>from a real client.</em></h2>
+    <div class="proof-split" style="margin-top:34px">
+      <div class="vt">
+        <button class="vt__poster" aria-label="Play testimonial video">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1400&auto=format&fit=crop" alt="">
+          <span class="vt__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+          <span class="vt__dur">0:29</span>
+        </button>
+        <video class="vt__video" controls playsinline preload="none" hidden poster="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1400&auto=format&fit=crop">
+          <source data-src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="proof-q">
+        <blockquote>"For the first time, my CPA and my advisor are actually talking to each other."</blockquote>
+        <p class="who">Client name · role <span class="vf">VERIFY — real footage + disclosure compliance before launch</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3) VIDEO INSIGHT FEATURED CARD -->
+<section class="bg-ground-alt pad" id="vinsight">
+  <div class="wrap">
+    <span class="eyebrow">Block 3 · Featured video insight</span>
+    <h2>Insights can lead with <em>an episode.</em></h2>
+    <div class="ins-grid" style="margin-top:34px">
+      <article class="ins-feat">
+        <div class="vt">
+          <button class="vt__poster" aria-label="Play episode">
+            <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=1400&auto=format&fit=crop" alt="">
+            <span class="vt__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+            <span class="vt__dur">0:29</span>
+          </button>
+          <video class="vt__video" controls playsinline preload="none" hidden poster="https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=1400&auto=format&fit=crop">
+            <source data-src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="ins-body">
+          <span class="ins-tag">Featured · Video · 0:29 · Illustrative</span>
+          <h3>What "coordinated planning" actually looks like</h3>
+          <p>One video card per Insights section — the featured slot. Compact cards stay text.</p>
+        </div>
+      </article>
+      <div class="ins-stack">
+        <article class="ins-card"><span class="ins-tag">Article</span><h3>Compact cards stay text</h3></article>
+        <article class="ins-card"><span class="ins-tag">Article</span><h3>Hierarchy: one video moment here</h3></article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+document.documentElement.classList.add('js');document.documentElement.classList.remove('no-js');
+// hero loop: lazy autoplay (Primitive 5)
+(function(){
+  var v=document.querySelector('.vhero__video');if(!v)return;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var src=v.querySelector('source[data-src]');if(!src)return;
+  var io=new IntersectionObserver(function(es,obs){es.forEach(function(e){if(!e.isIntersecting)return;
+    src.src=src.dataset.src;v.load();var p=v.play();if(p&&p.catch)p.catch(function(){});obs.disconnect();});},{rootMargin:'200px'});
+  io.observe(v);
+})();
+// click-to-play testimonial/insight blocks (§8.4.2)
+document.querySelectorAll('.vt').forEach(function(vt){
+  var btn=vt.querySelector('.vt__poster'),vid=vt.querySelector('.vt__video');
+  if(!btn||!vid)return;
+  var s=vid.querySelector('source[data-src]');
+  btn.addEventListener('click',function(){ if(s&&!s.src){s.src=s.dataset.src;vid.load();}
+    btn.hidden=true;vid.hidden=false;vid.play(); });
+});
+</script>
+</body>
+</html>

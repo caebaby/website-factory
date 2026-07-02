@@ -178,6 +178,23 @@ card-grid → stepper → photo-stats → centered → featured-split → dark f
 - Staggered reveals (§3), stat count-ups with LED-011 `setTimeout` guard, `prefers-reduced-motion`
   collapses everything to static-visible. No-JS form fallback per warm-premium §8.1 (identical recipe).
 
+## 5.5 VIDEO CONTENT SYSTEM (this register is BUILT for it)
+
+Sites ship with real video (Chris, 2026-07-01). **Only real footage — no asset yet = poster-still
+variant + `[VERIFY]` slot.** Budget: max 3 video moments (ambient hero loop · 1 proof story ·
+1 featured insight). Autoplay = hero loop only, muted; everything else click-to-play.
+
+- **Hero video:** the full-viewport hero runs footage behind the serif display (poster-first,
+  IO lazy-load, reduced-motion = poster, bottom/soft scrim — this is the measured BetterUp/Zoom
+  move). A failed video IS the still hero.
+- **Proof story video (replaces/augments the photo-stat band):** the full-bleed band's photo may be
+  FOOTAGE (ambient, muted) with the white 75/300 stat blocks overlaid — or a **click-to-play story
+  card**: 16:9 media, radius 16, accent PILL play button (74px circle, `--accent`, white glyph),
+  duration chip in a small pill (`rgba(0,0,0,.55)`, white 12px), caption "Watch the story · [M:SS]"
+  in 13px tracked caps. Native controls after click; zero bytes before click; poster never blank.
+- **Featured insight = video episode:** 16:9 poster top, 56px play pill, tag "VIDEO · [M:SS]",
+  serif title below. One per Insights.
+
 ## 6. Ship gate
 
 - [ ] Geometry: no collapse/overflow/em-trap at 390/768/1280; hero CTA above the fold.

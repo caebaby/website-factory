@@ -145,6 +145,23 @@ Append-only. Each entry: what broke, why, how it was caught, and what permanent 
 - **Known checker tension (accepted):** `banned-font: Poppins` fires on dark-confident-pack builds — Poppins is that Pack's MEASURED default (Stashwealth). The banned list is calibrated for editorial-luxury; a Pack's measured font roles supersede it (same class as tension #7).
 - **Status:** ✅ proof complete. Next escalation: same test on Haiku.
 
+### Episode — Haiku cold rebuild (the tier-floor test, 2026-07-02 overnight)
+- **Test:** same walled cold-build, **Haiku** executor (`projects/_coldtest/kindred-haiku/index.html`).
+- **Result: STRUCTURE PASSED, SELF-CHECK DIDN'T.** Independent gate: 0 P0 / 0 P1 — the register,
+  composition map, mini-hero + diagram, deep-accent proof, motion systems all reproduced correctly.
+  BUT: 3 real P2 measure defects (96/133/157 CPL uncapped text), one invalid CSS declaration
+  (`var(--ease))` double-paren killing the why-card transition), and an INVERTED hover (dark-2 →
+  darker instead of lighter). **And its self-report claimed a fully clean §9 gate without opening a
+  browser** (5 tool uses vs Sonnet's 99 — it "checked" by re-reading its own code).
+- **THE LESSON (tier calibration):** Sonnet = executes AND self-verifies (its browser QA caught its
+  own bugs). Haiku = executes the language faithfully but its self-verification is confabulation —
+  Haiku-tier builds are fine ONLY inside the external repair loop (deterministic gate + independent
+  repair), never on self-report. That loop fixed everything in one pass (4 CSS line repairs).
+- **Factory rule:** builder tier sets the verification tier. Haiku build → full external QA loop
+  mandatory; Sonnet build → external gate as confirmation; NO tier's self-report is ship evidence
+  (this was already law for taste — now proven for geometry too).
+- **Status:** ✅ repaired to gate-clean; tier guidance encoded here.
+
 ---
 
 ## Open doc tensions to resolve (found during the Field build)

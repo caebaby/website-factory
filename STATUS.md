@@ -5,6 +5,35 @@ Last updated: 2026-07-01 (FABLE SESSION — **Pack hardened to v1.1** against Ch
 
 ---
 
+## ▶ OVERNIGHT RUN, PART 2 (2026-07-02 early AM) — video system + AGL staged + inner pages + Haiku test
+
+**1. VIDEO CONTENT SYSTEM (Chris's directive: sites ship with engaging video):** encoded in all 3
+Packs (warm-premium →v1.3 §8.4; §5.5 in both new packs, each in-register). Three blocks: ambient hero
+loop (Primitive 5), **click-to-play video testimonial** (never autoplay — pressing play IS the intent
+signal), featured video insight. 3-moment budget; real-footage-only iron rule. **Verified fixture:**
+`qa/fixtures/video-blocks.html` — lazy-load, zero-bytes-before-click, poster-first all confirmed live
+in-browser; gate clean (1 known-false accent P2).
+
+**2. HAIKU COLD TEST — structure passed, self-check didn't (the tier-calibration finding):** Haiku
+reproduced the full v1.3 language (0 P0/0 P1 independent gate) but shipped 3 measure P2s + one invalid
+CSS declaration + an inverted hover — and its self-report claimed a clean gate WITHOUT opening a
+browser. One external repair pass → fully clean. **Factory rule (LEDGER):** builder tier sets
+verification tier; no tier's self-report is ship evidence. Haiku = viable executor inside the loop.
+
+**3. AGL — brand question ANSWERED + brief staged:** measured the LIVE advisorgrowthlab.com — it runs
+the archived design system (Outfit 58px/900/uppercase, deep navy #0C1A35, r8 white buttons), so the
+early ARL green/purple guide is dead. `projects/agl/BRIEF.md` stages the rebuild: positioning locked
+to the accuracy rules (sell the MODEL not Axiom; Lane = peer; no inflated counts), assessment = the
+MQL gate, Memphis video slots reserved, and the two hero previews specced (confident-b2b retint =
+my recommendation vs. AGL-current-faithful). Fires on Chris's go.
+
+**4. ANCHOR FULL-SITE ARCHITECTURE + ALEX COPY DOC:** `projects/awp/SITE_ARCHITECTURE.md` maps the
+LongView model onto Anchor (key adds the old sitemap missed: per-ICP deep pages + **/fit-results**,
+the post-assessment MQL→SQL bridge page — LongView's smartest page; build order puts it FIRST).
+`projects/awp/COPY_DOC_FOR_ALEX.md` = the client-fillable worksheet (Part 1 = the compliance blockers).
+
+---
+
 ## ▶ OVERNIGHT RUN (2026-07-01 → 02, Fable session) — Anchor options + Pack library ×3 + the low-HITL proof
 
 Chris asked for MORE Anchor options and overnight autonomous progress. Delivered, all gated + verified:

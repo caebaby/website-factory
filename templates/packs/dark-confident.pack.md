@@ -196,6 +196,22 @@ Max two consecutive darks; the drench is the climax; Fit is light.
 - Staggered reveals; stat count-ups w/ LED-011 guard; reduced-motion + no-JS = static-visible;
   no-JS form fallback per warm-premium §8.1.
 
+## 5.5 VIDEO CONTENT SYSTEM (in this language)
+
+Sites ship with real video (Chris, 2026-07-01). **Only real footage — no asset yet = poster-still
+variant + `[VERIFY]` slot.** Budget: max 3 video moments (ambient hero loop · 1 proof story ·
+1 featured insight). Autoplay = hero loop only, muted; everything else click-to-play.
+
+- **Hero video:** dark footage runs full-bleed behind the condensed display type (poster-first,
+  IO lazy-load, reduced-motion = poster). Scrim = flat `rgba(6,8,10,.55)` overall + deeper center
+  column for the centered copy. Dark-graded footage only — bright footage breaks the register.
+- **Proof story video (on the greige drench or paper):** 16:9 media, **radius 0** (square, like
+  everything), **SQUARE play button** (74px, `--greige` fill, `--ink` glyph — no circle in this
+  register), duration chip square (`rgba(0,0,0,.6)`, Poppins 600 11px caps). Click-to-play, native
+  controls, zero bytes before click, poster never blank. Caption row: "WATCH · [M:SS]" label style.
+- **Featured insight = video episode:** square 16:9 poster, square play affordance, "VIDEO · [M:SS]"
+  label, display-font title. One per Insights.
+
 ## 6. Ship gate
 
 - [ ] Geometry: no collapse/overflow/em-trap at 390/768/1280; CTA above fold.

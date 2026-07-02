@@ -1,4 +1,9 @@
-# Design Language Pack — `warm-premium` · v1.2
+# Design Language Pack — `warm-premium` · v1.3
+
+> **v1.3 (2026-07-02, overnight):** VIDEO CONTENT SYSTEM added (§8.4) — hero video variant
+> (Primitive 5), click-to-play video-testimonial proof block, video insight card, 3-moment
+> placement budget. Plus v1.2→v1.3 hardening from the Sonnet cold build (see changelog notes
+> inline: .wrap min-width, mobile nav CTA, accent-deep lightest-stop rule, unverified-stat rule).
 
 > **Provenance:** measured live from **mavenclinic.com** (computed styles, 2026-07-01) and proven in
 > `projects/awp/build/maven-home.html` (the gold-standard exemplar). Every number below is a
@@ -475,6 +480,68 @@ never emoji, never 2010s flat-icon packs. Base set (reuse; add new icons only in
 <!-- document  --> <svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6z"/><path d="M15 2v5h5M9 13h6M9 17h6"/></svg>
 <!-- check     --> <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.4 2.4 4.6-5"/></svg>
 ```
+
+## 8.4 VIDEO CONTENT SYSTEM (v1.3 — sites ship with real video; design for it)
+
+> Chris (2026-07-01): "these sites will have really engaging video content — upgrade the designs
+> with that in mind." Video is a first-class content type in every Pack, with three blocks.
+> **Iron rule: only REAL footage.** No asset yet → build the poster-still variant and mark the slot
+> `[VERIFY]`; never a CSS simulation, never stock that violates §6 imagery.
+
+### 8.4.1 Hero video (the flagship variant)
+Use `COMPONENTS.md` Primitive 5 verbatim (poster-first · directional scrim · IO lazy-load ·
+reduced-motion = poster only · autoplay muted loop). In THIS language: scrim uses the §4 HERO
+deep-copy-side numbers with `--dark` as the scrim color; H1/underline/sheen unchanged on top.
+The v1.2 hero photo recipe is the poster fallback — a video hero that fails IS the photo hero.
+
+### 8.4.2 Video-testimonial proof block (the strongest MQL→SQL asset)
+The Proof section's pale card gains a video variant: a 16:9 media card LEFT (radius 8, overflow
+hidden) + the pulled quote RIGHT. **Click-to-play, NEVER autoplay** (a talking head autoplaying
+muted reads as noise; the choice to press play is the engagement signal).
+```html
+<div class="vt card">
+  <button class="vt__poster" aria-label="Play: [NAME], [ROLE]">
+    <img src="[POSTER.jpg]" alt="">
+    <span class="vt__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+    <span class="vt__dur">[M:SS]</span>
+  </button>
+  <video class="vt__video" controls playsinline preload="none" poster="[POSTER.jpg]" hidden>
+    <source data-src="[STORY.mp4]" type="video/mp4"></video>
+</div>
+```
+```css
+.vt{position:relative;aspect-ratio:16/9;background:var(--dark);}
+.vt__poster{position:absolute;inset:0;border:0;padding:0;cursor:pointer;background:none;width:100%;}
+.vt__poster img{width:100%;height:100%;object-fit:cover;display:block;}
+.vt__poster::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.45));}
+.vt__play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:74px;height:74px;border-radius:50%;
+  background:var(--accent);color:var(--dark);display:grid;place-items:center;z-index:1;
+  transition:transform var(--dur) var(--ease-soft),background-color var(--dur);}
+.vt__play svg{width:30px;height:30px;margin-left:3px;}
+.vt__poster:hover .vt__play{transform:translate(-50%,-50%) scale(1.08);background:var(--card-pale);}
+.vt__dur{position:absolute;right:14px;bottom:12px;z-index:1;font:600 12px/1 var(--sans);letter-spacing:.5px;color:#fff;background:rgba(0,0,0,.55);padding:5px 9px;border-radius:4px;}
+.vt__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+```
+```js
+document.querySelectorAll('.vt').forEach(function(vt){
+  var btn=vt.querySelector('.vt__poster'),vid=vt.querySelector('.vt__video'),s=vid.querySelector('source[data-src]');
+  btn.addEventListener('click',function(){ if(s&&!s.src){s.src=s.dataset.src;vid.load();}
+    btn.hidden=true; vid.hidden=false; vid.play(); });
+});
+```
+CONTRACT: poster never blank; zero video bytes until the user clicks; native `controls` once playing
+(no custom scrubber to maintain); the play button is the accent — it doubles as the section's
+accent-owned surface. No-JS: wrap the poster in an `<a href="[STORY.mp4]">` fallback.
+
+### 8.4.3 Video insight card (featured slot)
+The Insights FEATURED card (v1.2 split) may be a video episode: 16:9 poster on top (radius 8 top
+corners), play glyph 56px + duration chip (same `.vt__*` pieces, scaled), tag "Video · [M:SS]",
+serif-italic title below. Compact stack cards stay text. One video card per Insights section.
+
+### 8.4.4 Placement budget
+Max THREE video moments per page: hero loop (ambient) + one video testimonial (Proof) + one video
+insight (featured). More reads as a media site, not an advisory. Autoplay is allowed ONLY for the
+ambient hero loop (muted). Everything else is click-to-play.
 
 ## 9. Ship gate (verify before done)
 
