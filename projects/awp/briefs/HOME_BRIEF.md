@@ -207,7 +207,7 @@ Reduced-motion/no-JS: static posters. Row = grid at ≥1024px, horizontal scroll
 Adjacency: Insights (featured split) → Reels (vertical row) → footer ✓.
 
 ## 5. FORBIDDEN (site-wide)
-Photography in the hero · decorative overlay graphics on media · gradient text · shadowed cards
+Photography in the hero (EXCEPT §4b variants B/C — Alex review options) · decorative overlay graphics on media · gradient text · shadowed cards
 (except the hero artifact frame) · pure #000 · Inter/Arial display · fabricated stats, names,
 credentials, fiduciary/fee/regulatory claims · uniform section padding · two adjacent sections
 sharing a layout skeleton · any interactive element that doesn't resolve toward the fit check.

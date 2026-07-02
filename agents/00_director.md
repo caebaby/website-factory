@@ -54,6 +54,15 @@ next sections. A wrong direction costs one section, never a site.
    unverified, external loop mandatory.
 ```
 
+## Brief-authoring lessons (from executor ambiguity reports — the loop working)
+- **Anchor names must match the section-id vocabulary** — define ids in the brief, use them in CTAs.
+- **Scrims over real photos: specify as MINIMUMS + state the AA law wins** — a pinned scrim formula
+  can be unsatisfiable over a bright photo; executor may compound a legibility veil (2026-07-02:
+  addendum scrim measured 2.45:1 over actual pixels; veil fixed it). Pre-flight photos when possible.
+- **Placeholder formats standardized:** durations = `0:xx` + VERIFY chip; never invent numbers.
+- Newer/explicit brief sections override older general rules — but amend the older rule with a
+  rider at issue time, don't leave the contradiction.
+
 ## Executor tier policy (Chris, 2026-07-02)
 **Design-critical scopes (heroes, signature moments, full-page style passes): use the BEST design
 model available (Opus-tier in this harness; Fable for pack/brief authoring).** Sonnet = mechanical

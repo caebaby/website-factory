@@ -1338,6 +1338,216 @@ svg{display:block;}
 @media (max-width:560px){
   .footer-grid{grid-template-columns:1fr;}
 }
+
+/* ============================================================
+   HERO VARIANTS (ADDENDUM v2.2) — body[data-hero] switching
+   ============================================================ */
+body[data-hero="a"] .hero-b, body[data-hero="a"] .hero-c{display:none;}
+body[data-hero="b"] .hero-a, body[data-hero="b"] .hero-c{display:none;}
+body[data-hero="c"] .hero-a, body[data-hero="c"] .hero-b{display:none;}
+
+.hero-media{position:relative;overflow:hidden;background:var(--dark);}
+.hero-media .hm-img,
+.hero-media .hm-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
+.hero-media::before{
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(96deg, rgba(20,40,64,.88) 0%, rgba(20,40,64,.64) 30%, rgba(20,40,64,.26) 58%, rgba(20,40,64,0) 80%);
+}
+.hero-media .hero-band{
+  position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(to bottom, rgba(20,40,64,.42) 0%, rgba(20,40,64,0) 16%, rgba(20,40,64,0) 80%, rgba(20,40,64,.48) 100%);
+}
+/* copy-side legibility veil: deepens the scrim behind the text column only,
+   so every text pixel clears AA over the photo's brightest region.
+   Re-verify contrast if the photo is swapped [VERIFY]. */
+.hero-media .hero-veil{
+  position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(96deg, rgba(20,40,64,.62) 0%, rgba(20,40,64,.62) 55%, rgba(20,40,64,0) 74%);
+}
+@media (max-width:860px){
+  .hero-media .hero-veil{
+    background:linear-gradient(96deg, rgba(20,40,64,.78) 0%, rgba(20,40,64,.78) 86%, rgba(20,40,64,.58) 100%);
+  }
+}
+.hero-media .hero-inner{position:relative;z-index:2;grid-template-columns:1fr;}
+.hero-media .h1{color:var(--on-dark);text-shadow:0 2px 26px rgba(8,16,28,.34);}
+.hero-media .sub{color:var(--on-dark);text-shadow:0 1px 14px rgba(8,16,28,.3);}
+.hero-media .eyebrow{color:var(--accent-soft);}
+.hero-media .eyebrow::before{background:var(--accent-soft);}
+.hero-media .btn-outline{color:var(--accent-soft);border-color:var(--accent-soft);}
+.hero-media .btn-outline:hover{background:var(--accent-soft);color:var(--dark);}
+.img-label{
+  position:absolute;bottom:20px;right:clamp(24px,5vw,96px);z-index:2;
+  font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--on-dark);
+  background:rgba(20,40,64,.85);
+  border-radius:20px;
+  padding:6px 14px;
+}
+
+/* nav resting state over photo/video heroes = on-dark */
+body[data-hero="b"] .nav:not(.is-scrolled) .brand-name,
+body[data-hero="c"] .nav:not(.is-scrolled) .brand-name,
+body[data-hero="b"] .nav:not(.is-scrolled) .nav-links a,
+body[data-hero="c"] .nav:not(.is-scrolled) .nav-links a{color:var(--on-dark);}
+body[data-hero="b"] .nav:not(.is-scrolled) .brand-sub,
+body[data-hero="c"] .nav:not(.is-scrolled) .brand-sub{color:var(--accent-soft);}
+
+/* review-only switcher chip rail */
+.hero-switch{
+  position:fixed;bottom:18px;left:18px;z-index:300;
+  display:flex;align-items:center;gap:4px;
+  background:var(--card);border:1px solid var(--border);border-radius:20px;
+  padding:6px 12px;
+  font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-body);
+}
+.hero-switch button{
+  appearance:none;border:none;background:transparent;
+  font:inherit;letter-spacing:inherit;text-transform:inherit;
+  color:var(--accent-ink);cursor:pointer;
+  padding:3px 8px;border-radius:12px;
+  transition:background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.hero-switch button[aria-pressed="true"]{background:var(--accent);color:var(--dark);}
+.hero-switch button:focus-visible{outline:2px solid var(--accent-ink);outline-offset:1px;}
+.no-js .hero-switch{display:none;}
+
+/* ============================================================
+   ALEX'S STORY (ADDENDUM v2.2)
+   ============================================================ */
+.story-grid{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:clamp(32px,4vw,64px);
+  align-items:center;
+}
+.vcard{
+  position:relative;
+  aspect-ratio:16/9;
+  border-radius:var(--radius-card);
+  overflow:hidden;
+  background:var(--dark);
+}
+.vcard video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.vplay{
+  position:absolute;inset:0;z-index:2;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(to top, rgba(10,18,30,.38), rgba(10,18,30,.06));
+  border:none;cursor:pointer;width:100%;
+  transition:opacity var(--dur) var(--ease);
+}
+.vplay-circle{
+  width:74px;height:74px;border-radius:50%;
+  background:var(--accent);
+  display:flex;align-items:center;justify-content:center;
+  transition:transform var(--dur) var(--ease-soft);
+}
+.vplay:hover .vplay-circle{transform:scale(1.07);}
+.vplay-circle svg{width:26px;height:26px;fill:var(--dark);margin-left:4px;}
+.vdur{
+  position:absolute;bottom:14px;right:14px;z-index:2;
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--on-dark);
+  background:rgba(20,40,64,.85);
+  border-radius:20px;padding:4px 10px;
+  transition:opacity var(--dur) var(--ease);
+}
+.vdur i{
+  font-style:normal;font-size:8.5px;
+  border:1px solid var(--accent-soft);color:var(--accent-soft);
+  border-radius:16px;padding:1px 6px;
+}
+.vcard.playing .vplay,
+.vcard.playing .vdur{opacity:0;pointer-events:none;}
+.no-js .vplay{display:none;}
+.no-js .vdur{opacity:1;}
+.story-copy p{
+  font-size:15.5px;line-height:1.65;color:var(--ink-body);
+  margin-top:16px;max-width:52ch;
+}
+.story-link{
+  display:inline-flex;align-items:center;gap:6px;
+  margin-top:22px;
+  font-size:15px;font-weight:600;color:var(--accent-ink);
+  transition:gap var(--dur) var(--ease);
+}
+.story-link:hover{gap:10px;}
+.story-chip{
+  display:inline-flex;align-items:center;
+  font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--accent-ink);border:1px solid var(--accent-ink);
+  border-radius:20px;padding:1px 7px;margin:0 3px;
+  vertical-align:2px;
+}
+@media (max-width:900px){
+  .story-grid{grid-template-columns:1fr;}
+}
+
+/* ============================================================
+   VERTICAL REELS (ADDENDUM v2.2)
+   ============================================================ */
+.reels-row{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+.reel-media{
+  position:relative;
+  aspect-ratio:9/16;
+  border-radius:var(--radius-card);
+  overflow:hidden;
+  background:var(--dark-2);
+  cursor:pointer;
+  transition:transform .4s var(--ease-soft);
+}
+.reel-media:hover,
+.reel-media:focus-visible{transform:scale(1.02);}
+.reel-media:focus-visible{outline:2px solid var(--accent-ink);outline-offset:3px;}
+.reel-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.reel-glyph{
+  position:absolute;bottom:14px;left:14px;z-index:2;
+  width:38px;height:38px;border-radius:50%;
+  background:rgba(20,40,64,.85);
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity var(--dur) var(--ease);
+}
+.reel-glyph svg{width:14px;height:14px;fill:var(--on-dark);margin-left:2px;}
+.reel-media.playing .reel-glyph,
+.reel-media.playing .vdur{opacity:0;}
+.reel-caption{
+  font-size:14px;line-height:1.45;color:var(--ink-body);
+  margin-top:10px;
+}
+.reel-cta{
+  aspect-ratio:9/16;
+  border-radius:var(--radius-card);
+  background:var(--dark);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:20px;padding:24px;text-align:center;
+  transition:transform .4s var(--ease-soft), background .4s var(--ease);
+}
+.reel-cta:hover{transform:translateY(-4px);background:color-mix(in srgb, var(--dark) 88%, #fff);}
+.reel-cta-line{
+  font-family:var(--sans);font-weight:300;
+  font-size:clamp(19px,1.6vw,24px);line-height:1.32;
+  color:var(--on-dark);
+}
+@media (max-width:1023px){
+  .reels-row{
+    display:flex;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    padding-bottom:10px;
+    -webkit-overflow-scrolling:touch;
+  }
+  .reel{flex:0 0 min(62vw,280px);scroll-snap-align:start;}
+}
+@media (prefers-reduced-motion:reduce){
+  .reel-media:hover,.reel-media:focus-visible{transform:none;}
+  .reel-cta:hover{transform:none;}
+}
 </style>
 </head>
 <body class="no-js" data-hero="a">
@@ -1360,7 +1570,7 @@ svg{display:block;}
   </div>
 </nav>
 
-<header class="hero">
+<header class="hero hero-a">
   <div class="wrap hero-inner">
     <div class="hero-copy">
       <p class="eyebrow hrise d1">For Houston Executives, Owners &amp; Families</p>
@@ -1536,6 +1746,48 @@ svg{display:block;}
   </div>
 </header>
 
+<!-- HERO B — Kindred-style photo hero (ADDENDUM v2.2 review variant) -->
+<header class="hero hero-b hero-media">
+  <img class="hm-img" src="assets/hero-family.jpg" alt="" loading="eager">
+  <!-- [VERIFY] licensed imagery -->
+  <div class="hero-band" aria-hidden="true"></div>
+  <div class="hero-veil" aria-hidden="true"></div>
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <p class="eyebrow hrise d1">For Houston Executives, Owners &amp; Families</p>
+      <h1 class="h1 hrise d2">You&rsquo;ve become the project manager of<br><em class="h1-underline">your own wealth.</em></h1>
+      <p class="sub hrise d3">Anchor coordinates your investments, taxes, and estate with your CPA and attorney into one living plan &mdash; so you can stop being the glue.</p>
+      <div class="cta-row hrise d4">
+        <a href="#book" class="btn btn-fill">Schedule a 30-Minute Conversation &rarr;</a>
+        <a href="#fit-check" class="btn btn-outline">Take the 4-Question Fit Check</a>
+      </div>
+    </div>
+  </div>
+  <span class="img-label">One Living Plan</span>
+</header>
+
+<!-- HERO C — video hero, same composition as B (ADDENDUM v2.2 review variant) -->
+<header class="hero hero-c hero-media">
+  <video class="hm-video" id="heroCVideo" muted loop playsinline preload="none" poster="assets/hero-family.jpg">
+    <source data-src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+  </video>
+  <!-- [VERIFY] demo clip — Alex's real footage replaces this -->
+  <div class="hero-band" aria-hidden="true"></div>
+  <div class="hero-veil" aria-hidden="true"></div>
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <p class="eyebrow hrise d1">For Houston Executives, Owners &amp; Families</p>
+      <h1 class="h1 hrise d2">You&rsquo;ve become the project manager of<br><em class="h1-underline">your own wealth.</em></h1>
+      <p class="sub hrise d3">Anchor coordinates your investments, taxes, and estate with your CPA and attorney into one living plan &mdash; so you can stop being the glue.</p>
+      <div class="cta-row hrise d4">
+        <a href="#book" class="btn btn-fill">Schedule a 30-Minute Conversation &rarr;</a>
+        <a href="#fit-check" class="btn btn-outline">Take the 4-Question Fit Check</a>
+      </div>
+    </div>
+  </div>
+  <span class="img-label">One Living Plan</span>
+</header>
+
 <section class="credbar">
   <div class="wrap credbar-inner">
     <span class="cred-item">10+ Years at Merrill Lynch <span class="verify-chip">Verify</span></span>
@@ -1612,6 +1864,34 @@ svg{display:block;}
         <h3 class="why-h3">Houston, not a coastal afterthought</h3>
         <p class="why-body">This is the energy capital &mdash; Permian Basin to Eagle Ford. Planning built around how Houston families actually earn.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ALEX'S STORY (ADDENDUM v2.2)
+     ============================================================ -->
+<section class="pad on-ground" id="story">
+  <div class="wrap story-grid">
+    <div class="rise">
+      <div class="vcard" id="storyCard">
+        <video muted playsinline preload="none" poster="assets/hero-oilfield.jpg">
+          <source data-src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+        </video>
+        <!-- [VERIFY] real Alex intro footage -->
+        <button class="vplay" type="button" aria-label="Play Alex's story video">
+          <span class="vplay-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+        </button>
+        <span class="vdur">0:xx <i>Verify</i></span>
+      </div>
+    </div>
+    <div class="story-copy rise">
+      <p class="eyebrow">Alex&rsquo;s Story</p>
+      <h2 class="h2">From Merrill Lynch to <em>your side of the table.</em></h2>
+      <p>Alex Miller spent more than a decade at Merrill Lynch <span class="story-chip">Verify</span> &mdash; institutional training in how disciplined planning is supposed to work, and a front-row seat to where the siloed model leaves families doing the coordinating themselves.</p>
+      <p>He founded Anchor to close that gap for Houston families: one advisor, one living plan, your CPA and attorney working from the same document &mdash; no product quotas, no siloes. <span class="story-chip">Verify tone</span></p>
+      <!-- [VERIFY tone w/ Alex — zero regulatory/fee claims] -->
+      <a href="#about" class="story-link">Read the full story &rarr;</a>
     </div>
   </div>
 </section>
@@ -1970,6 +2250,59 @@ svg{display:block;}
 </section>
 
 <!-- ============================================================
+     VERTICAL REELS (ADDENDUM v2.2)
+     ============================================================ -->
+<section class="pad-sm on-ground" id="reels">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <p class="eyebrow">Sixty seconds with Alex</p>
+      <h2 class="h2" style="font-size:clamp(24px,3vw,38px);">Straight answers, <em>no appointment needed.</em></h2>
+    </div>
+    <div class="reels-row stagger">
+      <div class="reel">
+        <div class="reel-media" data-video tabindex="0" role="button" aria-label="Play: Why your CPA and advisor should talk">
+          <video muted loop playsinline preload="none" poster="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&amp;w=800&amp;auto=format&amp;fit=crop">
+            <source data-src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+          </video>
+          <!-- [VERIFY] Alex's real vertical clips -->
+          <span class="reel-glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="vdur">0:xx <i>Verify</i></span>
+        </div>
+        <p class="reel-caption">Why your CPA and advisor should talk</p>
+      </div>
+      <div class="reel">
+        <div class="reel-media" data-video tabindex="0" role="button" aria-label="Play: The RSU window most executives miss">
+          <video muted loop playsinline preload="none" poster="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&amp;w=800&amp;auto=format&amp;fit=crop">
+            <source data-src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+          </video>
+          <!-- [VERIFY] Alex's real vertical clips -->
+          <span class="reel-glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="vdur">0:xx <i>Verify</i></span>
+        </div>
+        <p class="reel-caption">The RSU window most executives miss</p>
+      </div>
+      <div class="reel">
+        <div class="reel-media" data-video tabindex="0" role="button" aria-label="Play: What one living plan actually means">
+          <video muted loop playsinline preload="none" poster="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&amp;w=800&amp;auto=format&amp;fit=crop">
+            <source data-src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+          </video>
+          <!-- [VERIFY] Alex's real vertical clips -->
+          <span class="reel-glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="vdur">0:xx <i>Verify</i></span>
+        </div>
+        <p class="reel-caption">What &ldquo;one living plan&rdquo; actually means</p>
+      </div>
+      <div class="reel">
+        <div class="reel-cta">
+          <p class="reel-cta-line">Twenty minutes with Alex beats sixty seconds.</p>
+          <a href="#fit-check" class="btn btn-fill btn-sm">Book a Call &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
      FOOTER
      ============================================================ -->
 <footer class="footer">
@@ -2007,6 +2340,14 @@ svg{display:block;}
   </div>
 </footer>
 
+<!-- REVIEW-ONLY: strip for production -->
+<div class="hero-switch" role="group" aria-label="Hero variant switcher (review only)">
+  <span>Hero:</span>
+  <button type="button" data-hero="a" aria-pressed="true">A</button>
+  <button type="button" data-hero="b" aria-pressed="false">B</button>
+  <button type="button" data-hero="c" aria-pressed="false">C</button>
+</div>
+
 <script>
 (function(){
   document.body.classList.remove('no-js');
@@ -2022,10 +2363,12 @@ svg{display:block;}
   window.addEventListener('scroll', onScroll, {passive:true});
   onScroll();
 
-  /* ----- underline draw ~0.8s after H1 reveal ----- */
-  var h1em = document.getElementById('h1em');
-  if(h1em){
-    setTimeout(function(){ h1em.classList.add('draw'); }, reduceMotion ? 0 : 980);
+  /* ----- underline draw ~0.8s after H1 reveal (all hero variants) ----- */
+  var h1ems = document.querySelectorAll('.h1-underline');
+  if(h1ems.length){
+    setTimeout(function(){
+      h1ems.forEach(function(em){ em.classList.add('draw'); });
+    }, reduceMotion ? 0 : 980);
   }
 
   /* ----- generic IntersectionObserver reveal for .rise / .stagger ----- */
@@ -2291,6 +2634,125 @@ svg{display:block;}
       countEls.forEach(runCount);
     }
   }
+
+  /* ============================================================
+     ADDENDUM v2.2
+     ============================================================ */
+
+  /* ----- hero variant switcher (REVIEW-ONLY: strip for production) ----- */
+  var heroBtns = Array.prototype.slice.call(document.querySelectorAll('.hero-switch button'));
+  var heroCVideo = document.getElementById('heroCVideo');
+  var heroCSection = document.querySelector('.hero-c');
+  var heroCLoaded = false;
+
+  function loadHeroC(){
+    /* only when variant C is active + near viewport; reduced-motion = poster only;
+       a failed video IS Hero B (poster stays) */
+    if(reduceMotion || !heroCVideo || document.body.getAttribute('data-hero') !== 'c') return;
+    if(!heroCLoaded){
+      var src = heroCVideo.querySelector('source');
+      src.src = src.getAttribute('data-src');
+      heroCVideo.load();
+      heroCLoaded = true;
+    }
+    var p = heroCVideo.play();
+    if(p && p.catch){ p.catch(function(){}); }
+  }
+
+  /* synchronous near-viewport check (IO below handles scroll-based defer/pause) */
+  function heroCIsNear(){
+    if(!heroCSection) return false;
+    var r = heroCSection.getBoundingClientRect();
+    return r.bottom > -200 && r.top < window.innerHeight + 200;
+  }
+
+  /* IO: defer-load hero C when scrolled back near viewport; pause when away */
+  if(heroCSection && 'IntersectionObserver' in window){
+    var heroCIO = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){ loadHeroC(); }
+        else if(heroCVideo && heroCLoaded){ heroCVideo.pause(); }
+      });
+    }, {rootMargin:'200px 0px'});
+    heroCIO.observe(heroCSection);
+  }
+
+  function setHero(v){
+    document.body.setAttribute('data-hero', v);
+    heroBtns.forEach(function(b){
+      b.setAttribute('aria-pressed', b.getAttribute('data-hero') === v ? 'true' : 'false');
+    });
+    if(history.replaceState){
+      history.replaceState(null, '', location.pathname + location.search + '#hero-' + v);
+    }
+    if(v === 'c'){ if(heroCIsNear()){ loadHeroC(); } }
+    else if(heroCVideo && heroCLoaded){ heroCVideo.pause(); }
+  }
+
+  heroBtns.forEach(function(b){
+    b.addEventListener('click', function(){ setHero(b.getAttribute('data-hero')); });
+  });
+
+  /* hash persistence: shareable #hero-b / #hero-c links survive reload */
+  var heroHash = (location.hash || '').match(/^#hero-([abc])$/);
+  if(heroHash){ setHero(heroHash[1]); }
+
+  /* ----- Alex's Story: click-to-play, zero bytes before click ----- */
+  var storyCard = document.getElementById('storyCard');
+  if(storyCard){
+    var storyVideo = storyCard.querySelector('video');
+    var storyPlay = storyCard.querySelector('.vplay');
+    storyPlay.addEventListener('click', function(){
+      var src = storyVideo.querySelector('source');
+      if(!src.src){
+        src.src = src.getAttribute('data-src');
+        storyVideo.load();
+      }
+      storyVideo.setAttribute('controls','');
+      storyVideo.muted = false;
+      storyCard.classList.add('playing');
+      var p = storyVideo.play();
+      if(p && p.catch){ p.catch(function(){}); }
+    });
+  }
+
+  /* ----- reels: hover autoplay muted (desktop) / tap toggle (no-hover); zero bytes till interaction ----- */
+  var canHover = window.matchMedia('(hover: hover)').matches;
+  Array.prototype.forEach.call(document.querySelectorAll('.reel-media[data-video]'), function(card){
+    var v = card.querySelector('video');
+    var src = v.querySelector('source');
+    function ensure(){
+      if(!src.src){ src.src = src.getAttribute('data-src'); v.load(); }
+    }
+    function play(){
+      if(reduceMotion) return;                 /* reduced-motion = static posters */
+      ensure();
+      card.classList.add('playing');
+      var p = v.play();
+      if(p && p.catch){ p.catch(function(){}); }
+    }
+    function stop(){
+      v.pause();
+      try{ v.currentTime = 0; }catch(e){}
+      card.classList.remove('playing');
+    }
+    if(canHover){
+      card.addEventListener('mouseenter', play);
+      card.addEventListener('mouseleave', stop);
+      card.addEventListener('focusin', play);
+      card.addEventListener('focusout', stop);
+    } else {
+      card.addEventListener('click', function(){
+        if(card.classList.contains('playing')){ stop(); } else { play(); }
+      });
+      card.addEventListener('keydown', function(e){
+        if(e.key === 'Enter' || e.key === ' '){
+          e.preventDefault();
+          if(card.classList.contains('playing')){ stop(); } else { play(); }
+        }
+      });
+    }
+  });
 })();
 </script>
 
