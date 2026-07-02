@@ -558,6 +558,9 @@ reels-class content) + the row's LAST card is a CTA card in the same 9:16 frame 
 - Reduced-motion + no-JS: static posters, tap/click opens the file. Never sound without a tap on
   the video's own unmute.
 - Row scrolls horizontally on narrow viewports (`overflow-x:auto`, scroll-snap), grid on wide.
+  **The CTA closer card MUST get the same flex basis as the reel cards in the mobile scroller**
+  (`.reel,.reel-cta{flex:0 0 74%}`) — a class-scoped basis on `.reel` alone lets the CTA card
+  flex-shrink to a starved column (caught at 390px on AWP, 2026-07-02; the 1280-only gate misses it).
 - Real footage ONLY — placeholder posters carry `[VERIFY]` until the advisor's clips exist.
 
 ## 8.5 DOCUMENT/ARTIFACT PROPS (v1.5 — Chris, 2026-07-02, hero-A verdict)

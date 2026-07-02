@@ -556,7 +556,7 @@ body[data-hero="E"] nav:not(.scrolled) .nav-links a:hover{color:var(--accent-ink
    ============================================================ */
 .reels-row{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,1.6vw,22px);}
 @media(max-width:900px){.reels-row{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;padding-bottom:8px;-webkit-overflow-scrolling:touch;}
-  .reel{flex:0 0 74%;scroll-snap-align:start;}}
+  .reel,.reel-cta{flex:0 0 74%;scroll-snap-align:start;}}
 .reel{position:relative;}
 .reel-media{position:relative;aspect-ratio:9/16;border-radius:var(--radius-card);overflow:hidden;background:var(--dark);
   transition:transform var(--dur) var(--ease-soft);}
