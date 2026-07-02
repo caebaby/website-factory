@@ -43,10 +43,14 @@ Last updated: 2026-07-02 (FABLE SESSION, day 2 — the factory became a real PIP
   redacted specifics, never fabricated numbers; ICP-vignette sequence). Plus **Hero E** (Chris ask):
   light cream typographic split, no image — incl. nav-ink-on-light translation rule (executor-found
   gap, now in brief). All gates 0P0 (v3/review/E-default); occupancy 100%×4; E AA 5.23–12.81:1.
-- **ALEX PACKAGE LIVE:** design preview https://caebaby.github.io/anchor-review/ (public repo
-  `caebaby/anchor-review`, review snapshot w/ switchers; re-push there after Chris's next verdicts)
-  + copy worksheet as Google Doc (Drive: "Anchor Wealth Planning — Website Copy & Facts Worksheet",
-  owner-only until Chris shares).
+- **📤 SENT TO ALEX (2026-07-02):** design preview https://caebaby.github.io/anchor-review/
+  (public repo `caebaby/anchor-review` — snapshot w/ hero A–E switcher + font toggle; keep it in
+  sync with home-v3-review.html on every approved change) + copy worksheet Google Doc
+  ("Anchor Wealth Planning — Website Copy & Facts Worksheet"). **AWAITING ALEX:** direction
+  reaction · hero pick · worksheet Part 1 (compliance blockers). Same-day final round before send:
+  hero-A docs re-printed typeset (Pack §8.5) · Hero E added · rail centered · story video dominant
+  (.82/1.18) · reels moved up after Story · mobile reels-CTA collapse fixed (Pack §8.4.5 rule).
+  Artifact carousel = CONCEPT pending compliance [VERIFY].
 - **AWAITING CHRIS:** v3-vs-v2 verdict · hero pick (now A/B/C/D/E) · font pick (Alex brand vs
   Kindred feel — Hanken/Newsreader are FREE; paid option = real brand fonts Proxima Nova/Adobe
   Garamond).
