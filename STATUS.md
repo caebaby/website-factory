@@ -27,7 +27,24 @@ Last updated: 2026-07-02 (FABLE SESSION, day 2 — the factory became a real PIP
   featured video insight OR **vertical reels row (9:16, hover-autoplay muted, CTA closer card)** ·
   3-moment budget · real-footage-only.
 
-### Anchor (the active build — `projects/awp/build/home-v2.html`)
+### ⚡ SESSION END-STATE (2026-07-02, ~11:30 — read this first, supersedes the Anchor block below)
+- **`home-v3.html` = THE CLEAN PRINT and the live candidate** (commit `7c0875d`): one coherent
+  Opus pass from Pack v1.4 + `briefs/ANCHOR_PRINT_BRIEF.md` — built because home-v2 degraded
+  through 3 in-place edit rounds (Chris caught it). **LAW: clean re-prints from the Pack, never
+  elevation passes on finished pages** (LED-013 came from one).
+- home-v3 has: 4 hero variants (A shuffle-doc carousel · B photo · C **real Permian pumpjack
+  drone ambient** · D pumpjack↔second-angle rotation — Pexels #10227529/#10227587, royalty-free,
+  self-hosted `assets/pumpjack*.mp4`) + review switcher · Alex's Story video section · vertical
+  reels row · font toggle on the snapshot (`home-v3-review.html`, served :8095 via detached
+  `nohup npx serve website-factory/projects -p 8095`).
+- **AWAITING CHRIS:** v3-vs-v2 verdict · hero pick · font pick (Alex brand vs Kindred feel —
+  Hanken/Newsreader are FREE; paid option = real brand fonts Proxima Nova/Adobe Garamond).
+  Then: strip review toggles → Alex link → `/fit-results` + inner pages (SITE_ARCHITECTURE.md) →
+  send COPY_DOC_FOR_ALEX.md → AGL (projects/agl/BRIEF.md) → GLM-via-Hermes executor test.
+- Open checker item: LED-013 `opacity-invisible` check into qa/visual-checks.js.
+- Chris runs **caveman mode** (/caveman full) — keep responses terse.
+
+### Anchor (superseded by the block above — `projects/awp/build/home-v2.html` history)
 - Full homepage BUILT through the pipeline, gate 0P0/0P1. Hero = living-plan document SHUFFLE
   carousel (4 docs, back-peek always real content, doc 4 = fit-check CTA — Chris approved concept).
 - **IN FLIGHT RIGHT NOW:** executor implementing ADDENDUM v2.2 (HOME_BRIEF §4b): THREE hero options
