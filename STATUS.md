@@ -5,6 +5,51 @@ Last updated: 2026-07-01 (FABLE SESSION — **Pack hardened to v1.1** against Ch
 
 ---
 
+## ▶ OVERNIGHT RUN (2026-07-01 → 02, Fable session) — Anchor options + Pack library ×3 + the low-HITL proof
+
+Chris asked for MORE Anchor options and overnight autonomous progress. Delivered, all gated + verified:
+
+**1. Pack library grew to THREE measured languages:**
+- `templates/packs/warm-premium.pack.md` (v1.2, Maven) — now battle-hardened by two cold builds
+- `templates/packs/confident-b2b.pack.md` (v1.0, **BetterUp measured live**: Ivar-class serif 110px
+  display, pill r32 buttons w/ measured gradient-sweep hover `cubic-bezier(0,.55,.45,1)`, 112px rhythm,
+  off-white #F4F3E9, quantified-proof cards, no-two-adjacent-alike law). Also resolved the ledger
+  [VERIFY]: BetterUp's hero IS the word-substitution rotator, confirmed live.
+- `templates/packs/dark-confident.pack.md` (v1.0, **Stashwealth measured live**: Oswald 67.8px condensed,
+  square r0 greige buttons in 3 measured sizes, Poppins 600 uppercase, .1s snappy transitions, and
+  **THE ALTERNATION LAW** — max 2 consecutive dark sections, Fit converts on light — the "too dark"
+  killer encoded as register law).
+
+**2. Anchor options — one URL for the morning: `http://localhost:8095/awp/previews/`** (launch config
+`anchor-options` serves all of projects/ on :8095):
+- Option 1 (FULL page): `maven-home.html` **backported to v1.2** — fit mini-hero w/ labeled diagram
+  (CPA·Attorney·Portfolio → One Living Plan), deep-bronze proof w/ light text (was dark-on-gold),
+  sheen, stagger, hovers, featured insights, numeral-pop (40% mix — AWP's bright gold needed a lower
+  accent share than Kindred's; retint rule updated in the Pack), headline break + underline-draw,
+  services closer hosts the CTA. Gate: 0 P0/0 P1 (1 known-false P2: accent-fill checker matches raw
+  accent hex only, not the deep-mix drench — LED-010 class). Contrast fixed: proof captions solid
+  on-dark (the .9 alpha only cleared 4.45:1 on THIS palette — pack rule now conditional).
+- Option 2 (hero-only): `previews/hero-confident-b2b.html` — subagent-built from the Pack alone; found
+  and fixed its own 390px cred-bar overflow. Gate clean (P2 accent-fill = hero-only scope, expected).
+- Option 3 (hero-only): `previews/hero-dark-confident.html` — subagent-built; alpha-blend verified
+  10.7:1 body on navy-black. Gate: P1 banned-font Poppins = accepted checker tension (measured Pack
+  default; noted in LEDGER).
+
+**3. THE LOW-HITL PROOF PASSED:** a fresh **Sonnet** agent built the FULL Kindred homepage cold from
+ONLY the v1.2 Pack + brief (`projects/_coldtest/kindred-v12/index.html`). Gate 0/0/0. All v1.2 systems
+present. It returned 4 real Pack-hardening notes (all encoded): .wrap/.nav flex min-width trap; mobile
+nav-CTA recipe; accent-deep retint targets the gradient's LIGHTEST stop; **unverified stats never get
+`data-count`** (its own draft animated a fabricated "0+ yrs" — a motion-borne fabrication vector, now
+banned in the Pack). Full episode in `qa/LEDGER.md`. **Conclusion: cheap executors reproduce the
+quality AND QA the Pack. Chris's role shrinks to certifying Packs + picking options.**
+
+**NEXT (when Chris wakes):** ① he reacts to the 3 Anchor options at :8095 → full-build the pick(s) →
+inner pages (read Longview structure first) + Alex copy doc. ② AGL: pull brand from ~/Documents/axiom +
+positioning from clients/agl → 2 hero previews (likely confident-b2b + one more) → pick → build.
+③ Haiku-tier cold test (next escalation). ④ BetterUp composition vocabulary → deeper section options.
+
+---
+
 ## ▶ PACK v1.2 — CHRIS'S ROUND-2 FEEDBACK ENCODED (2026-07-01, Fable session, same day)
 
 Chris reviewed v1.1 live ("really solid, some flaws") and asked that feedback LOCK INTO the system,

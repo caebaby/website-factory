@@ -1,0 +1,203 @@
+<!-- ANCHOR HERO PREVIEW — dark-confident pack v1.0 (Stashwealth-measured). Hero-only; full build follows the pick. NOTE: full page obeys the ALTERNATION LAW — this dark opening pairs with light sections 3+. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anchor Wealth Planning — Hero Preview (dark-confident)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* ── ROLES — RETINTED for Anchor ── */
+  --black:#0C0F14;           /* Anchor navy-black page ground (never #000) */
+  --black-2:#141a22;         /* dark elevation step */
+  --paper:#F5F0E6;           /* the warm-light alternation ground */
+  --paper-2:#EDE7D9;         /* light elevation step */
+  --card-pale:#ffffff;
+  --greige:#c9a24b;          /* Anchor gold — THE committed neutral: buttons, numerals, one drench */
+  --greige-deep:#7d5f26;     /* AA-mid gold for small text on paper */
+  --ink:#1b2a3c;             /* heading ink on light */
+  --ink-body:#4b5b6e;        /* body on light */
+  --on-dark:#F7F3EB;
+  --on-dark-mute:rgba(247,243,235,.78); /* blended on --black = rgb(195,193,188) → 10.7:1 ✓ */
+  --greige-rgb:201,162,75;
+  --border-dark:rgba(247,243,235,.16);
+  --border-light:rgba(27,42,60,.16);
+
+  /* ── METRICS — FIXED (measured, do not retune) ── */
+  --maxw:1400px;
+  --gutter:clamp(20px,4vw,72px);
+  --radius:0px;              /* SQUARE. everywhere. */
+  --btn-pad-sm:17.8px 23.7px; --btn-fs-sm:11.9px; --btn-track-sm:.95px;
+  --btn-pad-md:20.9px 27.9px; --btn-fs-md:13.9px; --btn-track-md:.7px;
+  --btn-pad-lg:28.8px 38.4px; --btn-fs-lg:19.2px; --btn-track-lg:1.5px;
+  --dur:.12s; --ease:linear;
+  --dur-soft:.5s; --ease-soft:cubic-bezier(.16,1,.3,1);
+
+  /* ── FONTS — pack defaults ── */
+  --display:'Oswald','Arial Narrow',sans-serif;
+  --label:'Poppins','Helvetica Neue',sans-serif;
+}
+
+/* ===== Pack §3 global CSS (verbatim) ===== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:16px;scroll-behavior:smooth;}
+body{font-family:var(--label);background:var(--black);color:var(--on-dark-mute);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.6;}
+a{color:inherit;text-decoration:none;} img{display:block;max-width:100%;}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter);}
+section{position:relative;}
+.pad{padding:clamp(76px,8.5vw,116px) 0;} .pad-sm{padding:clamp(52px,6vw,84px) 0;}
+
+/* THE ALTERNATION grounds */
+.bg-black{background:var(--black);color:var(--on-dark-mute);}
+.bg-paper{background:var(--paper);color:var(--ink-body);}
+.bg-paper-2{background:var(--paper-2);color:var(--ink-body);}
+.bg-greige{background:var(--greige);color:var(--ink);}
+
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font:600 12px/1.3 var(--label);letter-spacing:1px;text-transform:uppercase;color:var(--greige);}
+.bg-paper .eyebrow,.bg-paper-2 .eyebrow{color:var(--greige-deep);}
+.bg-greige .eyebrow{color:var(--ink);}
+
+/* SQUARE buttons — measured values; hover = instant inversion */
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:0;font:600 var(--btn-fs-md)/1.2 var(--label);letter-spacing:var(--btn-track-md);text-transform:uppercase;padding:var(--btn-pad-md);cursor:pointer;border:1px solid var(--greige);transition:background-color var(--dur) var(--ease),color var(--dur) var(--ease),opacity var(--dur) var(--ease);}
+.btn-fill{background:var(--greige);color:var(--ink);}
+.btn-fill:hover{background:transparent;color:var(--greige);}
+.bg-paper .btn-fill{border-color:var(--ink);background:var(--ink);color:var(--paper);}
+.bg-paper .btn-fill:hover{background:transparent;color:var(--ink);}
+.btn-ghost{background:transparent;color:var(--greige);}
+.btn-ghost:hover{background:var(--greige);color:var(--ink);}
+.bg-paper .btn-ghost{border-color:var(--ink);color:var(--ink);}
+.bg-paper .btn-ghost:hover{background:var(--ink);color:var(--paper);}
+.btn-lg{font-size:var(--btn-fs-lg);letter-spacing:var(--btn-track-lg);padding:var(--btn-pad-lg);}
+.btn-sm{font-size:var(--btn-fs-sm);letter-spacing:var(--btn-track-sm);padding:var(--btn-pad-sm);}
+
+.sec-head{max-width:780px;margin-bottom:clamp(40px,5vw,60px);}
+.sec-head h2{font:400 clamp(28px,2.8vw,40px)/1.12 var(--display);letter-spacing:-.02em;color:var(--on-dark);}
+.bg-paper .sec-head h2,.bg-paper-2 .sec-head h2{color:var(--ink);}
+.bg-greige .sec-head h2{color:var(--ink);}
+.sec-head .eyebrow{margin-bottom:18px;}
+
+/* dark elevation: lighter fill, NEVER drop shadow */
+.card-dark{background:var(--black-2);border:1px solid var(--border-dark);}
+.card-light{background:var(--card-pale);border:1px solid var(--border-light);}
+
+/* reveals — .rise/.stagger system */
+.rise{opacity:1;}
+@media (prefers-reduced-motion:no-preference){
+  html.js .rise{opacity:0;transform:translateY(22px);}
+  html.js .rise.in{opacity:1;transform:none;transition:opacity .6s var(--ease-soft),transform .6s var(--ease-soft);}
+  html.js .stagger>*{opacity:0;}
+  html.js .stagger.in>*{opacity:1;animation:riseIn .6s var(--ease-soft) backwards;}
+  html.js .stagger.in>*:nth-child(2){animation-delay:.09s;} html.js .stagger.in>*:nth-child(3){animation-delay:.18s;}
+  html.js .stagger.in>*:nth-child(4){animation-delay:.27s;} html.js .stagger.in>*:nth-child(5){animation-delay:.36s;}
+  html.js .stagger.in>*:nth-child(6){animation-delay:.45s;} html.js .stagger.in>*:nth-child(7){animation-delay:.54s;}
+  html.js .stagger.in>*:nth-child(8){animation-delay:.63s;}
+}
+@keyframes riseIn{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:none;}}
+
+/* ===== Preview scope: nav + hero + pain pair ===== */
+
+/* NAV — fixed, hairline bottom, square CTA */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(12,15,20,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--border-dark);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;height:72px;}
+.brand{display:flex;align-items:baseline;gap:10px;line-height:1;}
+.brand-main{font:500 20px/1 var(--display);letter-spacing:.22em;color:var(--on-dark);text-transform:uppercase;}
+.brand-sub{font:600 9.5px/1 var(--label);letter-spacing:.18em;color:var(--greige);text-transform:uppercase;}
+.nav-links{display:flex;align-items:center;gap:clamp(18px,2.4vw,36px);}
+.nav-links a{font:600 12px/1.3 var(--label);letter-spacing:1px;text-transform:uppercase;color:var(--on-dark-mute);transition:color var(--dur) var(--ease);}
+.nav-links a:hover{color:var(--greige);}
+@media (max-width:820px){.nav-links{display:none;}}
+
+/* HERO — typographic, centered, barely-there gold radial (≤.06 alpha) */
+.hero{min-height:clamp(600px,86svh,880px);display:flex;align-items:center;padding-top:72px;background:var(--black);}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 50% 8%,rgba(var(--greige-rgb),.06),transparent 70%);pointer-events:none;}
+.hero-inner{position:relative;width:100%;max-width:900px;margin:0 auto;padding:clamp(56px,8vh,96px) var(--gutter);text-align:center;}
+.hero .eyebrow{margin-bottom:26px;}
+.hero h1{font:400 clamp(40px,4.7vw,68px)/1.06 var(--display);letter-spacing:-.02em;color:var(--on-dark);margin-bottom:26px;}
+.hero-sub{font:400 17px/1.6 var(--label);color:var(--on-dark-mute);max-width:52ch;margin:0 auto 40px;}
+.hero-ctas{display:flex;justify-content:center;align-items:center;gap:16px;flex-wrap:wrap;}
+@media (max-width:480px){
+  .hero-ctas{flex-direction:column;align-items:stretch;}
+  .hero-ctas .btn{justify-content:center;text-align:center;}
+}
+
+/* PAIN — 2-col rows, hairline top borders, gold numerals */
+.pain-row{display:grid;grid-template-columns:minmax(90px,180px) 1fr;gap:clamp(20px,4vw,64px);align-items:start;border-top:1px solid var(--border-dark);padding:clamp(36px,4.5vw,56px) var(--gutter);max-width:var(--maxw);margin:0 auto;transition:background-color var(--dur) var(--ease);}
+.pain-row:last-child{border-bottom:1px solid var(--border-dark);}
+.pain-row:hover{background:var(--black-2);}
+.pain-num{font:400 clamp(44px,4.8vw,64px)/1 var(--display);letter-spacing:-.02em;color:var(--greige);}
+.pain-quote{font:400 24px/1.35 var(--display);letter-spacing:-.01em;color:var(--on-dark);max-width:26em;margin-bottom:12px;}
+.pain-cap{font:400 15px/1.6 var(--label);color:var(--on-dark-mute);max-width:52ch;}
+@media (max-width:600px){
+  .pain-row{grid-template-columns:1fr;gap:14px;}
+  .pain-quote{font-size:21px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="#" class="brand" aria-label="Anchor Wealth Planning — home">
+      <span class="brand-main">Anchor</span>
+      <span class="brand-sub">Wealth Planning</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#">Who We Serve</a>
+      <a href="#">Services</a>
+      <a href="#">Process</a>
+    </nav>
+    <a href="#" class="btn btn-fill btn-sm">Book a Call</a>
+  </div>
+</header>
+
+<!-- HERO — typographic on the dark ground -->
+<section class="hero bg-black">
+  <div class="hero-inner stagger" id="hero-stagger">
+    <p class="eyebrow">For Houston Executives, Owners &amp; Families</p>
+    <h1>You&rsquo;ve become the project manager of your own wealth.</h1>
+    <p class="hero-sub">Anchor coordinates your investments, taxes, and estate with your CPA and attorney into one living plan &mdash; so you can stop being the glue.</p>
+    <div class="hero-ctas">
+      <a href="#" class="btn btn-fill">Schedule a 30-Minute Conversation</a>
+      <a href="#" class="btn btn-ghost">Take the Fit Check</a>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN — the allowed dark pair (full page: light sections follow, per ALTERNATION LAW) -->
+<section class="bg-black pad-sm" aria-label="The problem">
+  <div class="pain-row rise">
+    <div class="pain-num" aria-hidden="true">01</div>
+    <div>
+      <p class="pain-quote">&ldquo;My CPA, my advisor, and my attorney never talk to each other. I&rsquo;m the one playing phone tag.&rdquo;</p>
+      <p class="pain-cap">Three excellent professionals, none aware of the others.</p>
+    </div>
+  </div>
+  <div class="pain-row rise">
+    <div class="pain-num" aria-hidden="true">02</div>
+    <div>
+      <p class="pain-quote">&ldquo;My RSUs vest, I take a tax hit I didn&rsquo;t plan for, and the window closes before I act.&rdquo;</p>
+      <p class="pain-cap">Equity comp is how the industry pays its leaders &mdash; and how generalists miss the timing.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+/* JS-gated reveals: no-JS = fully static-visible; reduced-motion handled in CSS */
+document.documentElement.classList.add('js');
+(function(){
+  /* Hero animates on load — never waits on scroll or fonts */
+  var hero=document.getElementById('hero-stagger');
+  requestAnimationFrame(function(){hero.classList.add('in');});
+  var io=('IntersectionObserver' in window)?new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:.15}):null;
+  document.querySelectorAll('.rise').forEach(function(el){io?io.observe(el):el.classList.add('in');});
+})();
+</script>
+
+</body>
+</html>

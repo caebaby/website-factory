@@ -137,6 +137,14 @@ Append-only. Each entry: what broke, why, how it was caught, and what permanent 
 - **Permanent artifact — still open:** (a) resolve open tension #6 for the light-mode `--text-muted` token the same way (compute the real blended contrast, don't eyeball it); (b) promote a **contrast-checker snippet that alpha-blends before computing luminance** into the QA toolkit — the naive version is worse than no check, because it produces false confidence. A hand-rollable version: blend `effective = fg.rgb*fg.a + bg.rgb*(1-fg.a)` per channel, then apply the standard WCAG relative-luminance formula to `effective`, not to the raw foreground.
 - **Status:** ✅ closed for dark-home.html (verified re-check: 5.83–5.94:1 across all affected selectors). ⬜ light-mode token + reusable checker snippet are open.
 
+### Episode — Sonnet cold rebuild from warm-premium v1.2 (the low-HITL proof, 2026-07-01 overnight)
+- **Test:** a fresh **Sonnet** agent, walled to ONLY the v1.2 Pack + the Kindred brief, built the full homepage cold (`projects/_coldtest/kindred-v12/index.html`).
+- **Result: PASSED.** Independent gate 0/0/0 (after one 70ch disclaimer cap). All v1.2 systems present and correct: mini-hero + labeled diagram, deep-accent proof w/ light text, stagger, hovers, sheen, underline-draw, no-JS fallback, reduced-motion. It even solved `--accent-deep` to a boundary-exact 5.00:1 against the gradient's lightest stop.
+- **The agent HARDENED the Pack while executing it** — 4 real notes, all encoded back: (a) `.wrap`/`.nav-in` flex `min-width:0` trap (real mobile overflow it caught + fixed); (b) mobile nav-CTA sizing recipe; (c) accent-deep retint must target the gradient's LIGHTEST stop, not the base hex; (d) **unverified stats must never carry `data-count`** — its own first draft animated a placeholder into a fabricated "0+ yrs" on screen, caught in self-check. That last one is a fabrication vector the compliance rules didn't anticipate: motion can synthesize a claim no copy ever stated.
+- **THE LESSON:** the Pack method survives a lower-tier executor at full-page scope — and cold executors are also Pack QA: every ambiguity they hit is a hardening note. The cost of the proof was one review of their notes, not a rebuild.
+- **Known checker tension (accepted):** `banned-font: Poppins` fires on dark-confident-pack builds — Poppins is that Pack's MEASURED default (Stashwealth). The banned list is calibrated for editorial-luxury; a Pack's measured font roles supersede it (same class as tension #7).
+- **Status:** ✅ proof complete. Next escalation: same test on Haiku.
+
 ---
 
 ## Open doc tensions to resolve (found during the Field build)

@@ -24,6 +24,12 @@
       "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "8096", "--directory", "projects/awp/build"],
       "port": 8096
+    },
+    {
+      "name": "kindred-v12",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8095", "--directory", "projects/_coldtest/kindred-v12"],
+      "port": 8095
     }
   ]
 }

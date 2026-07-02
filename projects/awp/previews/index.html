@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anchor Wealth — Design Language Options (overnight build)</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&family=EB+Garamond:ital@1&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#142840;--gold:#c9a24b;--gold-ink:#7d5f26;--cream:#F5F0E6;--ink:#1b2a3c;--ink-soft:#4b5b6e;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Nunito Sans',sans-serif;background:var(--cream);color:var(--ink-soft);padding:clamp(28px,5vw,72px);line-height:1.55;}
+  .wrap{max-width:980px;margin:0 auto;}
+  h1{font-weight:300;font-size:clamp(30px,4.5vw,52px);line-height:1.05;letter-spacing:-.02em;color:var(--ink);}
+  h1 em{font-family:'EB Garamond',serif;font-style:italic;}
+  .sub{margin-top:14px;max-width:64ch;font-size:17px;}
+  .cards{margin-top:44px;display:grid;gap:18px;}
+  a.card{display:block;background:#fff;border-radius:8px;padding:26px 30px;text-decoration:none;color:inherit;border:1px solid rgba(20,40,64,.14);transition:transform .3s cubic-bezier(.16,1,.3,1);position:relative;overflow:hidden;}
+  a.card:hover{transform:translateY(-3px);}
+  a.card.rec::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold);}
+  .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold-ink);margin-bottom:8px;}
+  .card h2{font-weight:600;font-size:22px;color:var(--ink);letter-spacing:-.01em;}
+  .card p{margin-top:8px;font-size:15px;max-width:70ch;}
+  .card .go{margin-top:12px;font-weight:700;font-size:14px;color:var(--gold-ink);}
+  .note{margin-top:40px;font-size:13.5px;color:var(--ink-soft);max-width:76ch;border-top:1px solid rgba(20,40,64,.14);padding-top:20px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Anchor Wealth — <em>pick a direction.</em></h1>
+  <p class="sub">Three design languages, all conversion-identical (same skeleton, same copy, same fit-check mechanics). The warm-premium option is a FULL homepage; the other two are hero-only previews — the winner gets the full build.</p>
+  <div class="cards">
+    <a class="card rec" href="/awp/build/maven-home.html">
+      <span class="tag">Full homepage · warm-premium · Recommended starting point</span>
+      <h2>1 — Warm Premium (Maven language, now v1.2)</h2>
+      <p>The gold-standard exemplar upgraded overnight: fit mini-hero with the labeled convergence diagram (CPA · Attorney · Portfolio → One Living Plan), deep-bronze proof with light text, button sheen, staggered reveals, featured insights, headline on its own line.</p>
+      <span class="go">Open full page →</span>
+    </a>
+    <a class="card" href="/awp/previews/hero-confident-b2b.html">
+      <span class="tag">Hero-only preview · confident-b2b (BetterUp-measured)</span>
+      <h2>2 — Confident B2B</h2>
+      <p>Oversized editorial-serif display (~97px Fraunces), pill buttons with a gradient-sweep hover, warm off-white ground, credibility bar directly under the hero. The register that sells with numbers — also the leading candidate for AGL.</p>
+      <span class="go">Open hero preview →</span>
+    </a>
+    <a class="card" href="/awp/previews/hero-dark-confident.html">
+      <span class="tag">Hero-only preview · dark-confident (Stashwealth-measured)</span>
+      <h2>3 — Dark Confident</h2>
+      <p>Condensed-sans display on navy-black, square gold buttons, uppercase tracked labels. Built under the new ALTERNATION LAW (max two dark sections in a row; the fit check converts on a light section) — the "too dark" failure mode is banned at the Pack level.</p>
+      <span class="go">Open hero preview →</span>
+    </a>
+  </div>
+  <p class="note"><strong>Also built overnight:</strong> the Kindred cold-rebuild from the v1.2 Pack by a lower-tier model (the low-HITL proof) at <a href="/_coldtest/kindred-v12/index.html" style="color:var(--gold-ink)">/_coldtest/kindred-v12/</a> — compare against <a href="/_coldtest/kindred/index.html" style="color:var(--gold-ink)">the hand-hardened v1.2 build</a>. React to any of these section-by-section; every note becomes a Pack rule, not a patch.</p>
+</div>
+</body>
+</html>

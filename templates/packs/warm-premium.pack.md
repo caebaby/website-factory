@@ -93,7 +93,10 @@
   --accent-ink:#7d5f26;    /* AA-safe DEEP accent for small text ON LIGHT.
                               RETINT RULE: darken --accent until it clears 4.5:1 on --ground & --ground-alt */
   --accent-deep:#6d5122;   /* the PROOF ground (v1.1). RETINT RULE: darken --accent (keep its hue)
-                              until --on-dark clears ≥5:1 on it. Carries LIGHT text, never dark ink. */
+                              until --on-dark clears ≥5:1 — measured against the GRADIENT'S LIGHTEST
+                              STOP, which is color-mix(in srgb, var(--accent-deep) 78%, var(--accent))
+                              (≈1.0 ratio-point lighter than the base hex — checking only the base
+                              ships an AA failure on the gradient's top third). LIGHT text only. */
   --accent-rgb:201,162,75;
   --border:rgba(20,40,64,.14);
 
@@ -140,7 +143,9 @@ html{font-size:16px;scroll-behavior:smooth;}
 body{font-family:var(--sans);background:var(--ground);color:var(--ink-body);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.5;letter-spacing:-.01em;}
 a{color:inherit;text-decoration:none;} img{display:block;max-width:100%;}
 ::selection{background:var(--accent);color:var(--dark);}
-.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter);}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter);width:100%;min-width:0;}
+/* width/min-width matter: inside flex (the nav), min-width:auto refuses to shrink and causes
+   silent mobile overflow once real copy lands (found by the Sonnet cold build, 2026-07-01) */
 section{position:relative;}
 .pad{padding:clamp(80px,9vw,120px) 0;} .pad-sm{padding:clamp(56px,7vw,88px) 0;}
 
@@ -181,11 +186,13 @@ section{position:relative;}
 /* nav — 64px, transparent over hero, solid on scroll */
 nav{position:fixed;inset:0 0 auto;z-index:60;height:64px;display:flex;align-items:center;transition:background var(--dur),box-shadow var(--dur);}
 nav.scrolled{background:color-mix(in srgb,var(--dark) 92%,transparent);backdrop-filter:blur(16px) saturate(1.3);-webkit-backdrop-filter:blur(16px) saturate(1.3);}
-.nav-in{width:100%;display:flex;align-items:center;justify-content:space-between;gap:24px;}
+.nav-in{width:100%;min-width:0;display:flex;align-items:center;justify-content:space-between;gap:24px;}
 .nav-links{display:flex;gap:34px;align-items:center;}
 .nav-links a{font:600 16px var(--sans);color:var(--on-dark);opacity:.92;transition:opacity .2s,color .2s;}
 .nav-links a:hover{opacity:1;color:var(--accent-soft);}
 @media(max-width:940px){.nav-links{display:none;}}
+/* the nav CTA survives on mobile — shrink it, don't let it overflow */
+@media(max-width:420px){.nav-in .btn{font-size:13.5px;padding:7px 14px;letter-spacing:-.2px;}}
 
 /* section head — display H2 = light SANS 300 + serif-italic <em> accent */
 .sec-head{max-width:760px;margin-bottom:clamp(44px,5vw,68px);}
@@ -298,17 +305,22 @@ Pain / ICP-self-sort / Fit-form — those recipes are marked ⚑ (build in-langu
   Each card: accent-ink tag + sans-600 h3 + serif-italic pain-line + body.
 - **PROCESS** (`bg-ground-alt`) — 4-col flow. **Numeral-pop (v1.2):** big light-weight numeral
   (`clamp(44px,4.6vw,60px)/300`) in `color-mix(in srgb, var(--accent) 55%, var(--accent-ink))` —
-  brighter than accent-ink for pop, still ≥3:1 large-text on `--ground-alt` (verify on retint) — plus a
-  9px `--accent` dot sitting on each step's top hairline. 1.5px hairline top-border per step, sans-600 h3,
-  body, serif-italic "when" note.
+  brighter than accent-ink for pop. **VERIFY ≥3:1 large-text on `--ground-alt` per retint; if the
+  client's accent is bright, LOWER the accent share until it passes** (AWP's #c9a24b needed 40%;
+  Kindred's #b8894a passed at 55%). Plus a 9px `--accent` dot sitting on each step's top hairline.
+  1.5px hairline top-border per step, sans-600 h3, body, serif-italic "when" note.
 - **PROOF** (`bg-accent-deep` — THE one saturated moment, v1.1) — centered display heading (sans-300 white +
   serif-italic accent), a **pale `--card-pale` testimonial card** (radius 8, big accent quote glyph,
   serif-italic quote in `--dark`, note), then a row of big light-weight numeral stats — numerals in
-  `--on-dark` (300 weight), captions `rgba(on-dark, .9)` (NOT the .74 mute — it fails AA on the
-  gradient's light stop), above a `rgba(on-dark,.25)` hairline.
+  `--on-dark` (300 weight), captions `rgba(on-dark, .9)` **ONLY if it still clears 4.5:1 blended on the
+  gradient's LIGHTEST stop — otherwise solid `--on-dark`** (AWP's brighter gold needed solid; Kindred's
+  passed at .9). Never the .74 mute. Above a `rgba(on-dark,.25)` hairline.
   **Stat spin (v1.2):** numeric stats count up with a blur-to-sharp on scroll-reveal (rAF count-up,
   1.5s, ease-out-cubic, `blur((1-p)*7px)`), **with the LED-011 `setTimeout` force-finish guard** —
   never ship a count-up that can stall mid-blur. Non-numeric stats stay static.
+  **UNVERIFIED numbers never animate:** a stat whose number is `[VERIFY]` renders as a VERIFY chip
+  with NO numeral and NO `data-count` — a placeholder `data-count="0"` animates into a fabricated
+  "0+" on screen (caught by the Sonnet cold build). Count-up targets = verified numbers only.
   **LIGHT text on the deep ground — never dark ink on raw accent** ("green on gold"). On this ground
   every text color is `--on-dark` at ≥.9 alpha. Verify §9.
 - **FINAL CTA** (`bg-ground` — a LIGHT close, not dark) — centered, a **soft radial accent glow** behind the
