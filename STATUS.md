@@ -37,8 +37,19 @@ Last updated: 2026-07-02 (FABLE SESSION, day 2 — the factory became a real PIP
   #10227529 + CC0 flower, all self-hosted in assets/; pumpjack-alt.mp4 spare). Fixed en route:
   D's loader only fetched clip 1. Plus Alex's Story video section · vertical reels row · review
   switcher + font toggle on the snapshot (`home-v3-review.html`, :8095 detached server).
-- **AWAITING CHRIS:** v3-vs-v2 verdict · hero pick · font pick (Alex brand vs Kindred feel —
-  Hanken/Newsreader are FREE; paid option = real brand fonts Proxima Nova/Adobe Garamond).
+- **2026-07-02 PM (Chris live round):** Hero A verdict "app UI, half-empty, improve or delete" →
+  improve pass SHIPPED (commit 7883bb6, Opus executor): docs re-printed as typeset plan pages —
+  **Pack v1.5 §8.5 DOCUMENT/ARTIFACT PROPS law** (no status pills/fake affordances; ≥80% occupancy;
+  redacted specifics, never fabricated numbers; ICP-vignette sequence). Plus **Hero E** (Chris ask):
+  light cream typographic split, no image — incl. nav-ink-on-light translation rule (executor-found
+  gap, now in brief). All gates 0P0 (v3/review/E-default); occupancy 100%×4; E AA 5.23–12.81:1.
+- **ALEX PACKAGE LIVE:** design preview https://caebaby.github.io/anchor-review/ (public repo
+  `caebaby/anchor-review`, review snapshot w/ switchers; re-push there after Chris's next verdicts)
+  + copy worksheet as Google Doc (Drive: "Anchor Wealth Planning — Website Copy & Facts Worksheet",
+  owner-only until Chris shares).
+- **AWAITING CHRIS:** v3-vs-v2 verdict · hero pick (now A/B/C/D/E) · font pick (Alex brand vs
+  Kindred feel — Hanken/Newsreader are FREE; paid option = real brand fonts Proxima Nova/Adobe
+  Garamond).
   Then: strip review toggles → Alex link → `/fit-results` + inner pages (SITE_ARCHITECTURE.md) →
   send COPY_DOC_FOR_ALEX.md → AGL (projects/agl/BRIEF.md) → GLM-via-Hermes executor test.
 - ✅ LED-013 checker SHIPPED (2026-07-02): `__opacityCensus()` in qa/visual-checks.js + run-checks.js
