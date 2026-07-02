@@ -324,7 +324,7 @@ body[data-hero="E"] nav:not(.scrolled) .nav-links a:hover{color:var(--accent-ink
 /* ============================================================
    ALEX'S STORY — light, 16:9 click-to-play video (§8.4.2)
    ============================================================ */
-.story-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(36px,5vw,72px);align-items:center;}
+.story-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:clamp(32px,4vw,60px);align-items:center;}
 @media(max-width:860px){.story-grid{grid-template-columns:1fr;}}
 .story-copy .eyebrow{margin-bottom:20px;}
 .story-copy h2{font:300 clamp(30px,4vw,52px)/1.05 var(--sans);letter-spacing:-.025em;color:var(--ink);margin-bottom:22px;}
@@ -873,6 +873,57 @@ body[data-hero="E"] nav:not(.scrolled) .nav-links a:hover{color:var(--accent-ink
   </div>
 </section>
 
+<!-- =========================== REELS =========================== -->
+<section class="bg-ground pad-sm" id="reels">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <span class="eyebrow">Sixty seconds with Alex</span>
+      <h2>Straight answers, <em>no appointment needed.</em></h2>
+    </div>
+    <div class="reels-row stagger">
+      <div class="reel" data-reel>
+        <div class="reel-media">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop" alt="Alex Miller speaking" loading="lazy">
+          <span class="reel-verify">[VERIFY]</span>
+          <span class="reel-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+          <span class="reel-dur">0:48</span>
+          <video class="reel-video" muted loop playsinline preload="none" poster="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop"><source data-src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4"></video>
+          <button class="reel-btn" aria-label="Play reel: Why your CPA and advisor should talk"></button>
+        </div>
+        <p class="reel-cap">Why your CPA and advisor should talk</p>
+      </div>
+      <div class="reel" data-reel>
+        <div class="reel-media">
+          <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=800&auto=format&fit=crop" alt="Alex Miller explaining equity comp" loading="lazy">
+          <span class="reel-verify">[VERIFY]</span>
+          <span class="reel-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+          <span class="reel-dur">0:55</span>
+          <video class="reel-video" muted loop playsinline preload="none" poster="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=800&auto=format&fit=crop"><source data-src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4"></video>
+          <button class="reel-btn" aria-label="Play reel: The RSU window"></button>
+        </div>
+        <p class="reel-cap">The RSU window — and why it closes early</p>
+      </div>
+      <div class="reel" data-reel>
+        <div class="reel-media">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop" alt="Alex Miller on coordinated planning" loading="lazy">
+          <span class="reel-verify">[VERIFY]</span>
+          <span class="reel-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+          <span class="reel-dur">0:52</span>
+          <video class="reel-video" muted loop playsinline preload="none" poster="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop"><source data-src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4"></video>
+          <button class="reel-btn" aria-label="Play reel: What one living plan means"></button>
+        </div>
+        <p class="reel-cap">What "one living plan" actually means</p>
+      </div>
+      <!-- CTA reel card (conversion law) -->
+      <div class="reel-cta">
+        <span class="rc-eye">Prefer to talk?</span>
+        <h3>Twenty minutes with Alex beats <em>sixty seconds.</em></h3>
+        <a href="#fit" class="btn btn-primary">Book a Call <span class="arw">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- =========================== WHO WE SERVE =========================== -->
 <section class="bg-ground-alt pad" id="serve">
   <div class="wrap">
@@ -1181,56 +1232,6 @@ body[data-hero="E"] nav:not(.scrolled) .nav-links a:hover{color:var(--accent-ink
   </div>
 </section>
 
-<!-- =========================== REELS =========================== -->
-<section class="bg-ground pad-sm" id="reels">
-  <div class="wrap">
-    <div class="sec-head rise">
-      <span class="eyebrow">Sixty seconds with Alex</span>
-      <h2>Straight answers, <em>no appointment needed.</em></h2>
-    </div>
-    <div class="reels-row stagger">
-      <div class="reel" data-reel>
-        <div class="reel-media">
-          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop" alt="Alex Miller speaking" loading="lazy">
-          <span class="reel-verify">[VERIFY]</span>
-          <span class="reel-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span>
-          <span class="reel-dur">0:48</span>
-          <video class="reel-video" muted loop playsinline preload="none" poster="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop"><source data-src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4"></video>
-          <button class="reel-btn" aria-label="Play reel: Why your CPA and advisor should talk"></button>
-        </div>
-        <p class="reel-cap">Why your CPA and advisor should talk</p>
-      </div>
-      <div class="reel" data-reel>
-        <div class="reel-media">
-          <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=800&auto=format&fit=crop" alt="Alex Miller explaining equity comp" loading="lazy">
-          <span class="reel-verify">[VERIFY]</span>
-          <span class="reel-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span>
-          <span class="reel-dur">0:55</span>
-          <video class="reel-video" muted loop playsinline preload="none" poster="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=800&auto=format&fit=crop"><source data-src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4"></video>
-          <button class="reel-btn" aria-label="Play reel: The RSU window"></button>
-        </div>
-        <p class="reel-cap">The RSU window — and why it closes early</p>
-      </div>
-      <div class="reel" data-reel>
-        <div class="reel-media">
-          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop" alt="Alex Miller on coordinated planning" loading="lazy">
-          <span class="reel-verify">[VERIFY]</span>
-          <span class="reel-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span>
-          <span class="reel-dur">0:52</span>
-          <video class="reel-video" muted loop playsinline preload="none" poster="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop"><source data-src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4"></video>
-          <button class="reel-btn" aria-label="Play reel: What one living plan means"></button>
-        </div>
-        <p class="reel-cap">What "one living plan" actually means</p>
-      </div>
-      <!-- CTA reel card (conversion law) -->
-      <div class="reel-cta">
-        <span class="rc-eye">Prefer to talk?</span>
-        <h3>Twenty minutes with Alex beats <em>sixty seconds.</em></h3>
-        <a href="#fit" class="btn btn-primary">Book a Call <span class="arw">→</span></a>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- =========================== FOOTER =========================== -->
 <footer class="bg-dark footer" id="footer">

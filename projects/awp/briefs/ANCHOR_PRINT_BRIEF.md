@@ -84,7 +84,8 @@ independent, Houston) · Built for complexity (equity comp, deferred income, bus
 multi-generational estates) · Houston, not a coastal afterthought (Permian Basin to Eagle Ford).
 NO fiduciary/fee/regulatory claims.
 **ALEX'S STORY** (light, after Why — 16:9 click-to-play §8.4.2, poster assets/hero-oilfield.jpg
-[VERIFY]) head `From Merrill Lynch to <em>your side of the table.</em>` + 2 short [VERIFY]-toned
+[VERIFY]; **video-dominant grid `.82fr/1.18fr`** — Chris 2026-07-02: story video reads BIGGER than
+the copy column) head `From Merrill Lynch to <em>your side of the table.</em>` + 2 short [VERIFY]-toned
 paragraphs (institutional discipline → founded Anchor to coordinate the whole picture; no
 regulatory claims) + `Read the full story →` (#about).
 **WHO WE SERVE** head `We specialize. <em>Generalists are everywhere.</em>` — 3 photo cards
@@ -119,7 +120,8 @@ I finally feel like someone sees the whole picture." + disclosure note [VERIFY r
 pitch sub + dual CTAs.
 **INSIGHTS** (featured split; featured = video-slot comment) — RSU Tax-Timing Trap (featured) ·
 Coordinated Planning podcast · Exit Conversation article + illustrative note.
-**REELS** (Pack §8.4.5, after Insights) head eyebrow `Sixty seconds with Alex` / `Straight answers,
+**REELS** (Pack §8.4.5; **directly after Alex's Story** — Chris 2026-07-02 moved it up from
+after-Insights: story + reels = one mid-page Alex authority cluster) head eyebrow `Sixty seconds with Alex` / `Straight answers,
 <em>no appointment needed.</em>` — 3 vertical cards (posters
 https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop ·
 https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=800&auto=format&fit=crop ·
