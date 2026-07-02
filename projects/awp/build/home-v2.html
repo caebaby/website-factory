@@ -1,0 +1,2298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anchor Wealth Planning — Coordinated Planning for Executives, Owners &amp; Families</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,400;1,500&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#F5F0E6;--ground-alt:#EDE7D9;--card:#ffffff;
+  --dark:#142840;--dark-2:#1e395a;--ink:#1b2a3c;--ink-body:#4b5b6e;
+  --on-dark:#F7F3EB;--on-dark-mute:rgba(247,243,235,.76);
+  --accent:#c9a24b;--accent-soft:#dcc07e;--accent-ink:#7d5f26;--accent-rgb:201,162,75;
+  --accent-deep:#6d5122;
+  --border:rgba(20,40,64,.14);
+  --maxw:1512px;--gutter:clamp(24px,5vw,96px);
+  --radius-btn:4px;--radius-card:8px;--radius-media:12px;
+  --dur:.4s;--ease:ease;--ease-soft:cubic-bezier(.16,1,.3,1);
+  --sans:'Nunito Sans','Helvetica Neue',Arial,sans-serif;
+  --serif:'EB Garamond',Georgia,serif;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;overflow-x:clip;}
+body{
+  font-family:var(--sans);
+  background:var(--ground);
+  color:var(--ink);
+  overflow-x:clip;
+  min-width:0;
+}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+button{font-family:inherit;}
+svg{display:block;}
+
+.wrap{
+  max-width:var(--maxw);
+  margin:0 auto;
+  padding-left:var(--gutter);
+  padding-right:var(--gutter);
+}
+
+/* ---------- shared section rhythm ---------- */
+.pad{padding:clamp(80px,9vw,120px) 0;}
+.pad-sm{padding:clamp(56px,7vw,88px) 0;}
+.on-ground{background:var(--ground);}
+.on-ground-alt{background:var(--ground-alt);}
+.on-dark-sec{background:var(--dark);color:var(--on-dark);}
+
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--accent-ink);
+  margin-bottom:18px;
+}
+.eyebrow::before{
+  content:"";
+  display:inline-block;
+  width:22px;
+  height:1px;
+  background:var(--accent-ink);
+}
+.eyebrow.on-dark{color:var(--accent-soft);}
+.eyebrow.on-dark::before{background:var(--accent-soft);}
+
+.h2{
+  font-family:var(--sans);
+  font-weight:300;
+  font-size:clamp(30px,4.4vw,60px);
+  line-height:1.05;
+  letter-spacing:-.015em;
+  color:var(--ink);
+  max-width:18ch;
+}
+.h2 em{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:400;
+}
+.h2.on-dark{color:var(--on-dark);}
+.sec-intro{
+  font-size:clamp(16px,1.3vw,18.5px);
+  line-height:1.55;
+  color:var(--ink-body);
+  max-width:60ch;
+  margin-top:18px;
+}
+.sec-intro.on-dark{color:var(--on-dark-mute);}
+.sec-head{margin-bottom:clamp(40px,5vw,64px);}
+
+/* ---------- reveal system ---------- */
+.rise{
+  opacity:0;
+  transform:translateY(22px);
+  transition:opacity .7s var(--ease-soft), transform .7s var(--ease-soft);
+}
+.rise.in{opacity:1;transform:translateY(0);}
+.no-js .rise{opacity:1;transform:none;}
+@media (prefers-reduced-motion:reduce){
+  .rise{opacity:1 !important;transform:none !important;transition:none !important;}
+}
+
+.stagger > *{
+  opacity:0;
+  animation:staggerRise .7s var(--ease-soft) backwards;
+}
+.stagger.in > *:nth-child(1){animation-delay:.03s;}
+.stagger.in > *:nth-child(2){animation-delay:.12s;}
+.stagger.in > *:nth-child(3){animation-delay:.21s;}
+.stagger.in > *:nth-child(4){animation-delay:.30s;}
+.stagger.in > *:nth-child(5){animation-delay:.39s;}
+.stagger.in > *:nth-child(6){animation-delay:.48s;}
+@keyframes staggerRise{
+  from{opacity:0;transform:translateY(22px);}
+  to{opacity:1;transform:translateY(0);}
+}
+.no-js .stagger > *{opacity:1;animation:none;}
+@media (prefers-reduced-motion:reduce){
+  .stagger > *{opacity:1 !important;animation:none !important;transform:none !important;}
+}
+
+/* ---------- buttons ---------- */
+.btn{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  font-family:var(--sans);
+  font-size:18px;
+  font-weight:600;
+  padding:10px 24px;
+  border-radius:var(--radius-btn);
+  border:none;
+  cursor:pointer;
+  overflow:hidden;
+  transition:background var(--dur) var(--ease), color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+  white-space:nowrap;
+}
+.btn-sm{font-size:15px;padding:9px 20px;}
+.btn-fill{
+  background:var(--accent);
+  color:var(--dark);
+}
+.btn-fill:hover{background:#fff;color:var(--dark);}
+.btn-fill::after{
+  content:"";
+  position:absolute;
+  top:0;left:-150%;
+  width:60%;
+  height:100%;
+  background:linear-gradient(115deg, transparent, rgba(255,255,255,.55), transparent);
+  transform:skewX(-20deg);
+  animation:sheen 5.5s ease-in-out infinite;
+}
+@keyframes sheen{
+  0%{left:-150%;}
+  12%{left:150%;}
+  100%{left:150%;}
+}
+.btn-outline{
+  background:transparent;
+  color:var(--accent-ink);
+  border:1.5px solid var(--accent-ink);
+}
+.btn-outline:hover{
+  background:var(--accent-ink);
+  color:var(--on-dark);
+}
+.btn-outline.on-dark-panel{color:var(--accent-soft);border-color:var(--accent-soft);}
+.btn-outline.on-dark-panel:hover{background:var(--accent-soft);color:var(--dark);}
+
+@media (prefers-reduced-motion:reduce){
+  .btn-fill::after{animation:none;display:none;}
+}
+
+/* ---------- NAV ---------- */
+.nav{
+  position:fixed;
+  top:0;left:0;right:0;
+  height:64px;
+  z-index:100;
+  display:flex;
+  align-items:center;
+  background:transparent;
+  transition:background var(--dur) var(--ease), backdrop-filter var(--dur) var(--ease), border-color var(--dur) var(--ease);
+  border-bottom:1px solid transparent;
+}
+.nav.is-scrolled{
+  background:rgba(20,40,64,.92);
+  -webkit-backdrop-filter:blur(10px);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(247,243,235,.08);
+}
+.nav-inner{
+  width:100%;
+  max-width:var(--maxw);
+  margin:0 auto;
+  padding:0 var(--gutter);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+}
+.brand{
+  display:flex;
+  flex-direction:column;
+  line-height:1;
+  gap:3px;
+}
+.brand-name{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:500;
+  font-size:23px;
+  color:var(--ink);
+  transition:color var(--dur) var(--ease);
+}
+.nav.is-scrolled .brand-name{color:var(--on-dark);}
+.brand-sub{
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent-ink);
+  transition:color var(--dur) var(--ease);
+}
+.nav.is-scrolled .brand-sub{color:var(--accent-soft);}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:36px;
+  list-style:none;
+}
+.nav-links a{
+  font-size:16px;
+  font-weight:600;
+  color:var(--ink);
+  transition:color var(--dur) var(--ease), opacity var(--dur) var(--ease);
+  opacity:.86;
+}
+.nav-links a:hover{opacity:1;}
+.nav.is-scrolled .nav-links a{color:var(--on-dark);}
+
+.nav-cta-wrap{display:flex;align-items:center;gap:28px;}
+
+@media (max-width:860px){
+  .nav-links{display:none;}
+}
+
+/* ---------- HERO ---------- */
+.hero{
+  background:var(--ground);
+  min-height:clamp(640px,90svh,920px);
+  display:flex;
+  align-items:center;
+  padding-top:96px;
+  padding-bottom:56px;
+  overflow-x:clip;
+}
+.hero-inner{
+  display:grid;
+  grid-template-columns:1fr 1.1fr;
+  gap:clamp(28px,4vw,56px);
+  align-items:center;
+  width:100%;
+}
+
+.hero-copy{max-width:640px;}
+
+.hero .eyebrow{margin-bottom:22px;}
+
+.h1{
+  font-family:var(--sans);
+  font-weight:300;
+  font-size:clamp(38px,4.8vw,68px);
+  line-height:1.03;
+  letter-spacing:-0.02em;
+  color:var(--ink);
+  margin-bottom:26px;
+}
+.h1 em{
+  display:block;
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:400;
+  font-size:1.08em;
+  position:relative;
+  margin-top:.12em;
+}
+.h1-underline{
+  position:relative;
+  display:inline-block;
+}
+.h1-underline::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:100%;
+  height:3px;
+  background:var(--accent);
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform .9s var(--ease-soft);
+}
+.h1-underline.draw::after{transform:scaleX(1);}
+
+.hero .sub{
+  font-size:clamp(17px,1.4vw,20px);
+  line-height:1.5;
+  color:var(--ink-body);
+  max-width:47ch;
+  margin-bottom:36px;
+}
+
+.cta-row{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:12px;
+}
+
+/* staggered rise-in, CSS-only, visible without JS */
+.hrise{animation:hrise .7s var(--ease-soft) forwards;opacity:0;transform:translateY(14px);}
+.hrise.d1{animation-delay:.05s;}
+.hrise.d2{animation-delay:.17s;}
+.hrise.d3{animation-delay:.29s;}
+.hrise.d4{animation-delay:.41s;}
+@keyframes hrise{
+  to{opacity:1;transform:translateY(0);}
+}
+.no-js .hrise{opacity:1;transform:none;animation:none;}
+@media (prefers-reduced-motion:reduce){
+  .hrise{opacity:1 !important;transform:none !important;animation:none !important;}
+  .h1-underline::after{transition:none;transform:scaleX(1) !important;}
+}
+
+/* ---------- ARTIFACT (document shuffle) ---------- */
+.artifact-stage{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px 0;
+  perspective:1400px;
+}
+.artifact-frame{
+  position:relative;
+  width:100%;
+  max-width:460px;
+  min-height:472px;
+}
+/* each card in the shuffle stack is a full document */
+.card{
+  position:absolute;
+  inset:0 28px 34px 0;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius-media);
+  box-shadow:0 24px 60px rgba(20,40,64,.10);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  will-change:transform,opacity;
+  transition:transform .55s var(--ease-soft), opacity .55s var(--ease-soft);
+}
+/* stack depth for the 3 non-top cards (peek order) */
+.card[data-pos="0"]{z-index:4;transform:translate(0,0) rotate(0deg) scale(1);opacity:1;}
+.card[data-pos="1"]{z-index:3;transform:translate(14px,16px) rotate(1.4deg) scale(.965);opacity:1;}
+.card[data-pos="2"]{z-index:2;transform:translate(22px,26px) rotate(2.2deg) scale(.94);opacity:.55;}
+.card[data-pos="3"]{z-index:1;transform:translate(28px,34px) rotate(2.8deg) scale(.92);opacity:0;}
+
+/* the shuffle-out state applied to the outgoing top card */
+.card.shuffle-out{
+  z-index:5 !important;
+  transform:translate(120px,-26px) rotate(11deg) scale(.98) !important;
+  opacity:0 !important;
+  transition:transform .55s var(--ease-soft), opacity .5s var(--ease-soft);
+}
+
+.artifact-stage.rise{opacity:0;transform:translateY(20px);}
+.artifact-stage.rise.hrise{animation:artifactRise .8s var(--ease-soft) forwards;animation-delay:.53s;}
+@keyframes artifactRise{
+  to{opacity:1;transform:translateY(0);}
+}
+.no-js .artifact-stage.rise{opacity:1;transform:none;animation:none;}
+@media (prefers-reduced-motion:reduce){
+  .artifact-stage.rise{opacity:1 !important;transform:none !important;animation:none !important;}
+}
+
+.doc-inner{
+  padding:clamp(22px,3vw,32px);
+  padding-bottom:64px;
+  display:flex;
+  flex-direction:column;
+  flex:1;
+  min-height:0;
+}
+.doc-head{
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+  padding-bottom:16px;
+  margin-bottom:16px;
+  border-bottom:1px solid var(--border);
+}
+.doc-title{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:500;
+  font-size:19px;
+  color:var(--ink);
+}
+.doc-meta{
+  font-size:12px;
+  color:var(--ink-body);
+}
+
+.doc-rows{
+  display:flex;
+  flex-direction:column;
+  flex:1;
+  justify-content:center;
+}
+.arow{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:11px 0;
+  border-bottom:1px solid rgba(20,40,64,.08);
+}
+.doc-rows .arow:last-child{border-bottom:none;}
+.arow-label{
+  font-size:14px;
+  font-weight:600;
+  color:var(--ink);
+}
+.arow-sub{
+  font-size:12px;
+  color:var(--ink-body);
+  margin-top:1px;
+}
+.chip{
+  flex:0 0 auto;
+  font-size:10.5px;
+  font-weight:700;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  padding:4px 10px;
+  border-radius:20px;
+  white-space:nowrap;
+}
+.chip-done{
+  background:rgba(var(--accent-rgb),.14);
+  color:var(--accent-ink);
+}
+.chip-progress{
+  background:rgba(20,40,64,.07);
+  color:var(--ink-body);
+}
+
+.doc-foot{
+  margin-top:auto;
+  padding-top:14px;
+  border-top:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+.doc-foot-label{
+  font-size:11px;
+  color:var(--ink-body);
+}
+
+.card[data-doc="3"] .arow{padding:15px 0;}
+.card[data-doc="3"] .arow-label{font-size:15px;}
+.card[data-doc="3"] .doc-foot{border-top:none;padding-top:20px;justify-content:flex-start;}
+
+/* progress hairline on top card only */
+.prog{
+  position:absolute;
+  top:0;left:0;
+  height:2px;
+  width:100%;
+  background:rgba(var(--accent-rgb),.18);
+  z-index:6;
+}
+.prog-fill{
+  display:block;
+  height:100%;
+  width:100%;
+  background:var(--accent);
+  transform:scaleX(0);
+  transform-origin:left;
+}
+.prog-fill.run{
+  animation-name:progFill;
+  animation-timing-function:linear;
+  animation-fill-mode:forwards;
+}
+@keyframes progFill{to{transform:scaleX(1);}}
+.artifact-frame.paused .prog-fill{animation-play-state:paused;}
+
+/* tab/dot rail */
+.rail{
+  position:absolute;
+  bottom:16px;
+  left:0;right:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  z-index:7;
+  opacity:.35;
+  transition:opacity var(--dur) var(--ease);
+}
+.artifact-frame:hover .rail,
+.artifact-frame:focus-within .rail{opacity:1;}
+.rail-btn{
+  appearance:none;
+  border:none;
+  background:transparent;
+  padding:6px 4px;
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+}
+.rail-btn i{
+  display:block;
+  width:8px;
+  height:8px;
+  border-radius:8px;
+  background:transparent;
+  border:1.5px solid var(--accent-ink);
+  transition:width var(--dur) var(--ease-soft), background var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.rail-btn[aria-current="true"] i{
+  width:24px;
+  background:var(--accent);
+  border-color:var(--accent-ink);
+}
+.rail-btn:focus-visible{outline:2px solid var(--accent-ink);outline-offset:2px;border-radius:4px;}
+
+/* no-JS: only doc 1 (data-doc 0) visible/static, rest hidden entirely, no rail/progress */
+.no-js .card[data-doc="0"]{position:relative;transform:none;opacity:1;box-shadow:0 24px 60px rgba(20,40,64,.10);}
+.no-js .card:not([data-doc="0"]){display:none;}
+.no-js .rail,.no-js .prog{display:none;}
+
+@media (prefers-reduced-motion:reduce){
+  .card{transition:opacity .5s ease !important;}
+  .card[data-pos="0"]{transform:none !important;opacity:1 !important;}
+  .card[data-pos]:not([data-pos="0"]){transform:none !important;opacity:0 !important;pointer-events:none;}
+  .card.shuffle-out{transform:none !important;}
+  .prog{display:none !important;}
+  .rail{opacity:1 !important;}
+}
+
+/* wide desktop: CTAs side by side, artifact pinned right */
+@media (min-width:1260px){
+  .cta-row{flex-wrap:nowrap;width:max-content;}
+  .artifact-stage{justify-content:flex-end;}
+  .artifact-frame{max-width:450px;}
+}
+
+@media (max-width:860px){
+  .hero-inner{grid-template-columns:1fr;}
+  .artifact-stage{order:2;margin-top:8px;}
+  .hero-copy{order:1;max-width:100%;}
+  .artifact-frame{max-width:520px;}
+}
+
+@media (max-width:480px){
+  .cta-row .btn{width:100%;justify-content:center;font-size:16px;}
+}
+
+/* ---------- CRED BAR ---------- */
+.credbar{
+  background:var(--ground-alt);
+  min-height:44px;
+  display:flex;
+  align-items:center;
+}
+.credbar-inner{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:clamp(20px,4vw,48px);
+  padding:12px 0;
+  width:100%;
+}
+.cred-item{
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--ink-body);
+  display:inline-flex;
+  align-items:center;
+  white-space:nowrap;
+}
+.verify-chip{
+  display:inline-flex;
+  align-items:center;
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--accent-ink);
+  border:1px solid var(--accent-ink);
+  border-radius:20px;
+  padding:2px 7px;
+  margin-left:8px;
+}
+
+@media (max-width:640px){
+  .credbar-inner{gap:14px 28px;}
+  .cred-item{white-space:normal;}
+}
+
+/* ============================================================
+   PAIN
+   ============================================================ */
+.pain-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+.pain-card{
+  position:relative;
+  background:var(--ground-alt);
+  border-radius:var(--radius-card);
+  padding:clamp(24px,2.6vw,32px);
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  transition:transform .4s var(--ease-soft), background .4s var(--ease);
+}
+.pain-card:hover{transform:translateY(-4px);background:color-mix(in srgb, var(--ground-alt) 88%, #fff);}
+.pain-dot{
+  position:absolute;
+  top:20px;right:20px;
+  width:10px;height:10px;
+  border-radius:50%;
+  background:var(--accent);
+}
+.pain-num{
+  font-family:var(--sans);
+  font-weight:300;
+  font-size:clamp(40px,4.4vw,58px);
+  color:var(--accent-ink);
+  line-height:1;
+}
+.pain-quote{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:400;
+  font-size:clamp(18px,1.6vw,21px);
+  line-height:1.42;
+  color:var(--dark);
+}
+.pain-caption{
+  font-size:14.5px;
+  line-height:1.55;
+  color:var(--ink-body);
+  max-width:52ch;
+}
+@media (max-width:760px){
+  .pain-grid{grid-template-columns:1fr;}
+}
+
+/* ============================================================
+   WHY ANCHOR
+   ============================================================ */
+.why-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+.why-card{
+  background:var(--dark-2);
+  border-radius:var(--radius-card);
+  padding:clamp(26px,2.4vw,32px) clamp(22px,2vw,26px);
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  transition:transform .4s var(--ease-soft), background .4s var(--ease);
+}
+.why-card:hover{transform:translateY(-4px);background:color-mix(in srgb, var(--dark-2) 85%, #fff);}
+.why-icon{width:34px;height:34px;color:var(--accent-soft);}
+.why-h3{font-size:18.5px;font-weight:600;color:var(--on-dark);}
+.why-body{font-size:14.5px;line-height:1.6;color:var(--on-dark-mute);}
+@media (max-width:960px){
+  .why-grid{grid-template-columns:1fr 1fr;}
+}
+@media (max-width:560px){
+  .why-grid{grid-template-columns:1fr;}
+}
+
+/* ============================================================
+   WHO WE SERVE
+   ============================================================ */
+.serve-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+.serve-card{
+  position:relative;
+  border-radius:var(--radius-card);
+  min-height:clamp(400px,42vw,480px);
+  overflow:hidden;
+  display:flex;
+  align-items:flex-end;
+  transition:transform .4s var(--ease-soft);
+  isolation:isolate;
+}
+.serve-card:hover{transform:translateY(-5px);}
+.serve-card img{
+  position:absolute;
+  inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  z-index:-2;
+  transition:transform .6s var(--ease-soft);
+}
+.serve-card:hover img{transform:scale(1.045);}
+.serve-card::before{
+  content:"";
+  position:absolute;inset:0;
+  background:linear-gradient(to top, rgba(10,18,30,.92) 0%, rgba(10,18,30,.55) 42%, rgba(10,18,30,.05) 75%);
+  z-index:-1;
+}
+.serve-badge{
+  position:absolute;
+  top:20px;left:20px;
+  width:34px;height:34px;
+  border-radius:50%;
+  background:rgba(var(--accent-rgb),.22);
+  border:1px solid rgba(var(--accent-rgb),.55);
+  display:flex;align-items:center;justify-content:center;
+}
+.serve-badge i{width:8px;height:8px;border-radius:50%;background:var(--accent-soft);}
+.serve-content{
+  padding:clamp(22px,2.4vw,28px);
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.serve-h3{font-size:21px;font-weight:600;color:#fff;}
+.serve-caption{font-size:14px;line-height:1.55;color:rgba(255,255,255,.82);max-width:34ch;}
+.serve-link{
+  margin-top:8px;
+  font-size:13.5px;
+  font-weight:600;
+  color:var(--accent-soft);
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  width:max-content;
+  transition:gap var(--dur) var(--ease);
+}
+.serve-card:hover .serve-link{gap:10px;}
+@media (max-width:960px){
+  .serve-grid{grid-template-columns:1fr;}
+}
+
+/* ============================================================
+   FIT CHECK — mini hero
+   ============================================================ */
+.fit-panel{
+  position:relative;
+  background:var(--dark);
+  border-radius:12px;
+  overflow:hidden;
+  padding:clamp(32px,4vw,56px);
+}
+.fit-panel::before{
+  content:"";
+  position:absolute;
+  top:-10%;right:-8%;
+  width:56%;height:120%;
+  background:radial-gradient(circle, rgba(var(--accent-rgb),.16) 0%, rgba(var(--accent-rgb),0) 68%);
+  pointer-events:none;
+}
+.fit-grid{
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:clamp(32px,4vw,64px);
+  align-items:center;
+}
+.fit-sub{
+  font-size:16.5px;
+  line-height:1.6;
+  color:var(--on-dark-mute);
+  max-width:46ch;
+  margin-top:16px;
+}
+.fit-reassure{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin-top:28px;
+}
+.fit-reassure-item{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-size:15px;
+  font-weight:500;
+  color:var(--on-dark);
+}
+.fit-reassure-item svg{width:20px;height:20px;flex:0 0 auto;color:var(--accent-soft);}
+
+/* signature diagram */
+.diagram-wrap{margin-top:36px;max-width:420px;}
+.diagram-label{
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  fill:var(--on-dark-mute);
+}
+.diagram-node-label{
+  font-size:10.5px;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  fill:var(--dark);
+}
+.strand{
+  fill:none;
+  stroke:rgba(var(--accent-rgb),.5);
+  stroke-width:1.5;
+  stroke-linecap:round;
+  stroke-dasharray:1;
+  stroke-dashoffset:1;
+  pathLength:1;
+  transition:stroke-dashoffset 1.6s var(--ease-soft);
+}
+.fit-panel.in .strand{stroke-dashoffset:0;}
+.fit-panel.in .strand-1{transition-delay:.2s;}
+.fit-panel.in .strand-2{transition-delay:.4s;}
+.fit-panel.in .strand-3{transition-delay:.6s;}
+.node-ring{
+  fill:none;
+  stroke:var(--accent);
+  stroke-width:1.5;
+  opacity:.6;
+  transform-origin:center;
+  animation:ringBreathe 4.5s ease-in-out infinite;
+}
+@keyframes ringBreathe{
+  0%,100%{opacity:.35;stroke-width:1.5;}
+  50%{opacity:.75;stroke-width:2.5;}
+}
+.strand-dot{fill:var(--accent-soft);}
+.no-js .strand{stroke-dashoffset:0;}
+.no-js .fit-panel.in .strand{transition:none;}
+@media (prefers-reduced-motion:reduce){
+  .strand{stroke-dashoffset:0 !important;transition:none !important;}
+  .node-ring{animation:none;opacity:.5;}
+  .strand-dot{display:none;}
+}
+
+/* fit form card */
+.fit-card{
+  background:var(--card);
+  border-radius:var(--radius-card);
+  padding:clamp(26px,2.8vw,36px);
+  position:relative;
+}
+.fit-card.pulse{animation:pulseRing 1s ease-out 2;}
+@keyframes pulseRing{
+  0%{box-shadow:0 0 0 0 rgba(var(--accent-rgb),.5);}
+  100%{box-shadow:0 0 0 18px rgba(var(--accent-rgb),0);}
+}
+@media (prefers-reduced-motion:reduce){
+  .fit-card.pulse{animation:none;}
+}
+.fit-step-head{
+  display:flex;
+  align-items:baseline;
+  gap:10px;
+  margin-bottom:6px;
+}
+.fit-step-num{
+  font-family:var(--sans);
+  font-weight:300;
+  font-size:clamp(34px,3vw,44px);
+  color:var(--accent-ink);
+  line-height:1;
+}
+.fit-step-of{
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.08em;
+  color:var(--ink-body);
+  text-transform:uppercase;
+}
+.fit-progress{
+  display:flex;
+  gap:6px;
+  margin-bottom:22px;
+}
+.fit-progress-seg{
+  flex:1;
+  height:3px;
+  border-radius:3px;
+  background:rgba(20,40,64,.1);
+  overflow:hidden;
+}
+.fit-progress-seg i{
+  display:block;
+  height:100%;
+  width:0%;
+  background:var(--accent);
+  transition:width .45s var(--ease-soft);
+}
+.fit-progress-seg.filled i{width:100%;}
+.fit-legend{
+  font-family:var(--sans);
+  font-weight:300;
+  font-size:clamp(21px,2.2vw,28px);
+  line-height:1.2;
+  color:var(--ink);
+  margin-bottom:22px;
+}
+.fit-options{display:flex;flex-direction:column;gap:10px;}
+.fit-opt{
+  display:block;
+  width:100%;
+  text-align:left;
+  background:var(--ground);
+  border:1.5px solid var(--border);
+  border-radius:4px;
+  padding:13px 16px;
+  font-size:15.5px;
+  font-weight:600;
+  color:var(--ink);
+  cursor:pointer;
+  transition:background var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.fit-opt:hover{background:rgba(var(--accent-rgb),.1);border-color:var(--accent-ink);}
+.fit-opt.selected{background:rgba(var(--accent-rgb),.16);border-color:var(--accent-ink);}
+.fit-email-input{
+  width:100%;
+  padding:13px 16px;
+  font-size:15.5px;
+  font-family:var(--sans);
+  border:1.5px solid var(--border);
+  border-radius:4px;
+  background:var(--ground);
+  color:var(--ink);
+  margin-bottom:14px;
+}
+.fit-email-input:focus{outline:none;border-color:var(--accent-ink);}
+.fit-nav-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-top:20px;
+  gap:12px;
+}
+.fit-back{
+  font-size:14px;
+  font-weight:600;
+  color:var(--ink-body);
+  background:none;
+  border:none;
+  cursor:pointer;
+  padding:8px 4px;
+}
+.fit-back:hover{color:var(--ink);}
+.fit-micro{
+  font-size:12px;
+  color:var(--ink-body);
+  margin-top:14px;
+  line-height:1.5;
+}
+.fit-thankyou{display:none;text-align:center;padding:24px 0;}
+.fit-thankyou.active{display:block;}
+.fit-thankyou h3{font-family:var(--serif);font-style:italic;font-weight:500;font-size:24px;color:var(--ink);margin-bottom:10px;}
+.fit-thankyou p{font-size:14.5px;color:var(--ink-body);line-height:1.6;}
+
+.fit-step{display:none;}
+.fit-step.active{display:block;}
+
+/* no-JS: all steps visible stacked as one form, wizard chrome hidden */
+.no-js .fit-step{display:block !important;}
+.no-js .fit-progress,.no-js .fit-step-head{display:none;}
+.no-js .fit-back{display:none;}
+.no-js .fit-opt{cursor:default;}
+
+@media (max-width:900px){
+  .fit-grid{grid-template-columns:1fr;}
+}
+
+/* ============================================================
+   SERVICES bento
+   ============================================================ */
+.bento{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:20px;
+}
+.bento-cell{
+  border-radius:var(--radius-card);
+  padding:clamp(24px,2.4vw,30px);
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  transition:transform .4s var(--ease-soft), background .4s var(--ease);
+  background:var(--ground-alt);
+}
+.bento-cell:hover{transform:translateY(-4px);}
+.bento-cell.span-3{grid-column:span 3;}
+.bento-cell.span-2{grid-column:span 2;}
+.bento-cell.span-6{grid-column:span 6;}
+.bento-cell.is-dark{background:var(--dark);}
+.bento-tag{
+  font-size:11.5px;
+  font-weight:600;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--accent-ink);
+}
+.bento-cell.is-dark .bento-tag{color:var(--accent-soft);}
+.bento-h3{font-size:20px;font-weight:600;color:var(--ink);}
+.bento-cell.is-dark .bento-h3{color:var(--on-dark);}
+.bento-pain{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:400;
+  font-size:16.5px;
+  color:var(--dark);
+}
+.bento-cell.is-dark .bento-pain{color:var(--accent-soft);}
+.bento-body{font-size:14.5px;line-height:1.6;color:var(--ink-body);}
+.bento-cell.is-dark .bento-body{color:var(--on-dark-mute);}
+.bento-cell.is-dark:hover{background:color-mix(in srgb, var(--dark) 85%, #fff);}
+.bento-cell.span-6.is-dark{
+  flex-direction:row;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:24px;
+}
+.bento-closer-copy{max-width:60ch;}
+@media (max-width:960px){
+  .bento{grid-template-columns:repeat(2,1fr);}
+  .bento-cell.span-3,.bento-cell.span-2,.bento-cell.span-6{grid-column:span 2;}
+}
+@media (max-width:560px){
+  .bento{grid-template-columns:1fr;}
+  .bento-cell.span-3,.bento-cell.span-2,.bento-cell.span-6{grid-column:span 1;}
+  .bento-cell.span-6.is-dark{flex-direction:column;align-items:flex-start;}
+}
+
+/* ============================================================
+   PROCESS
+   ============================================================ */
+.process-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:28px;
+}
+.process-step{
+  padding-top:22px;
+  position:relative;
+}
+.process-step::before{
+  content:"";
+  position:absolute;
+  top:0;left:0;
+  width:100%;
+  height:1px;
+  background:var(--border);
+}
+.process-step::after{
+  content:"";
+  position:absolute;
+  top:-4.5px;left:0;
+  width:9px;height:9px;
+  border-radius:50%;
+  background:var(--accent);
+}
+.process-num{
+  font-family:var(--sans);
+  font-weight:300;
+  font-size:clamp(44px,4.6vw,60px);
+  line-height:1;
+  color:color-mix(in srgb, var(--accent) 40%, var(--accent-ink));
+  margin-bottom:14px;
+}
+.process-h3{font-size:19px;font-weight:600;color:var(--ink);margin-bottom:8px;}
+.process-body{font-size:14.5px;line-height:1.6;color:var(--ink-body);margin-bottom:12px;}
+.process-when{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:400;
+  font-size:14px;
+  color:var(--accent-ink);
+}
+@media (max-width:900px){
+  .process-grid{grid-template-columns:1fr 1fr;row-gap:36px;}
+}
+@media (max-width:560px){
+  .process-grid{grid-template-columns:1fr;}
+}
+
+/* ============================================================
+   PROOF — accent-deep gradient
+   ============================================================ */
+.proof-sec{
+  background:linear-gradient(155deg, color-mix(in srgb,var(--accent-deep) 78%,var(--accent)) 0%, var(--accent-deep) 52%, color-mix(in srgb,var(--accent-deep) 82%,#000) 100%);
+  color:var(--on-dark);
+}
+.proof-sec .eyebrow{color:var(--on-dark);}
+.proof-sec .eyebrow::before{background:var(--on-dark);}
+.proof-sec .h2{color:var(--on-dark);}
+.proof-card{
+  background:var(--card);
+  border-radius:var(--radius-card);
+  padding:clamp(28px,3vw,40px);
+  max-width:720px;
+  margin-top:clamp(32px,4vw,48px);
+}
+.proof-quote{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:400;
+  font-size:clamp(19px,2vw,24px);
+  line-height:1.5;
+  color:var(--dark);
+  margin-bottom:16px;
+}
+.proof-note{font-size:13px;color:var(--ink-body);line-height:1.5;}
+.proof-stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:24px;
+  margin-top:clamp(40px,4.4vw,56px);
+  padding-top:clamp(28px,3vw,36px);
+  border-top:1px solid rgba(247,243,235,.25);
+}
+.proof-stat-val{
+  font-family:var(--sans);
+  font-weight:300;
+  font-size:clamp(32px,3.2vw,44px);
+  color:var(--on-dark);
+  line-height:1;
+  margin-bottom:8px;
+}
+.proof-stat-label{font-size:13.5px;color:var(--on-dark);line-height:1.4;}
+@media (max-width:760px){
+  .proof-stats{grid-template-columns:1fr 1fr;row-gap:28px;}
+}
+
+/* ============================================================
+   FINAL CTA
+   ============================================================ */
+.final-cta{
+  position:relative;
+  text-align:center;
+  overflow:hidden;
+}
+.final-cta::before{
+  content:"";
+  position:absolute;
+  top:50%;left:50%;
+  width:900px;height:900px;
+  transform:translate(-50%,-50%);
+  background:radial-gradient(circle, rgba(var(--accent-rgb),.14) 0%, rgba(var(--accent-rgb),0) 65%);
+  pointer-events:none;
+}
+.final-inner{position:relative;z-index:1;max-width:680px;margin:0 auto;}
+.final-cta .eyebrow{justify-content:center;}
+.final-cta .h2{max-width:none;margin:0 auto;}
+.final-sub{
+  font-size:17px;
+  line-height:1.6;
+  color:var(--ink-body);
+  max-width:52ch;
+  margin:20px auto 32px;
+}
+.final-cta .cta-row{justify-content:center;}
+
+/* ============================================================
+   INSIGHTS
+   ============================================================ */
+.insights-grid{
+  display:grid;
+  grid-template-columns:1.55fr 1fr;
+  gap:24px;
+}
+.insight-featured{
+  background:var(--card);
+  border-radius:var(--radius-card);
+  border-top:3px solid var(--accent);
+  padding:clamp(26px,2.6vw,34px);
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  transition:transform .4s var(--ease-soft);
+  position:relative;
+}
+.insight-featured:hover{transform:translateY(-4px);}
+.insight-tag{
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--accent-ink);
+}
+.insight-title-featured{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:400;
+  font-size:clamp(24px,2.4vw,32px);
+  line-height:1.2;
+  color:var(--ink);
+  max-width:24ch;
+}
+.insight-excerpt{font-size:14.5px;line-height:1.6;color:var(--ink-body);}
+.insight-stack{display:flex;flex-direction:column;gap:20px;}
+.insight-compact{
+  background:var(--card);
+  border-radius:var(--radius-card);
+  padding:clamp(20px,2vw,24px);
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  transition:transform .4s var(--ease-soft);
+}
+.insight-compact:hover{transform:translateY(-4px);}
+.insight-title-compact{font-size:16.5px;font-weight:600;color:var(--ink);line-height:1.35;}
+.insight-compact .insight-excerpt{font-size:13.5px;}
+.insights-footnote{
+  max-width:70ch;
+  font-size:12.5px;
+  color:var(--ink-body);
+  margin-top:24px;
+  font-style:italic;
+}
+@media (max-width:860px){
+  .insights-grid{grid-template-columns:1fr;}
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer{
+  background:#0d1c2e;
+  color:var(--on-dark-mute);
+  padding:clamp(56px,6vw,80px) 0 32px;
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr 1fr;
+  gap:40px;
+  padding-bottom:44px;
+  border-bottom:1px solid rgba(247,243,235,.12);
+}
+.footer-brand-name{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:500;
+  font-size:26px;
+  color:var(--on-dark);
+  margin-bottom:10px;
+  display:block;
+}
+.footer-tagline{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:14.5px;
+  color:var(--on-dark-mute);
+  margin-bottom:14px;
+  max-width:32ch;
+  line-height:1.5;
+}
+.footer-loc{font-size:13.5px;color:var(--on-dark-mute);}
+.footer-col-h{
+  font-size:11.5px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--accent-soft);
+  margin-bottom:16px;
+}
+.footer-col a,.footer-col span{
+  display:block;
+  font-size:14.5px;
+  color:var(--on-dark-mute);
+  margin-bottom:11px;
+  transition:color var(--dur) var(--ease);
+}
+.footer-col a:hover{color:var(--on-dark);}
+.footer-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--accent-soft);
+  border:1px solid var(--accent-soft);
+  border-radius:20px;
+  padding:2px 7px;
+  margin-left:6px;
+}
+.footer-legal{
+  padding-top:28px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+.footer-legal p{font-size:12px;line-height:1.6;color:rgba(247,243,235,.55);max-width:72ch;}
+.footer-copyright{font-size:12px;color:rgba(247,243,235,.45);}
+@media (max-width:860px){
+  .footer-grid{grid-template-columns:1fr 1fr;row-gap:32px;}
+}
+@media (max-width:560px){
+  .footer-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body class="no-js">
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="brand" aria-label="Anchor Wealth Planning home">
+      <span class="brand-name">Anchor</span>
+      <span class="brand-sub">Wealth Planning</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#who-we-serve">Who We Serve</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#fit-check">Fit Check</a></li>
+    </ul>
+    <div class="nav-cta-wrap">
+      <a href="#book" class="btn btn-fill btn-sm">Book a Call</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <p class="eyebrow hrise d1">For Houston Executives, Owners &amp; Families</p>
+      <h1 class="h1 hrise d2">You&rsquo;ve become the project manager of<br><em class="h1-underline" id="h1em">your own wealth.</em></h1>
+      <p class="sub hrise d3">Anchor coordinates your investments, taxes, and estate with your CPA and attorney into one living plan &mdash; so you can stop being the glue.</p>
+      <div class="cta-row hrise d4">
+        <a href="#book" class="btn btn-fill">Schedule a 30-Minute Conversation &rarr;</a>
+        <a href="#fit-check" class="btn btn-outline">Take the 4-Question Fit Check</a>
+      </div>
+    </div>
+
+    <div class="artifact-stage rise hrise" id="artifactStage">
+      <div class="artifact-frame" id="artifact" role="region" aria-roledescription="carousel" aria-label="Anchor Living Plan documents">
+
+        <div class="prog" aria-hidden="true"><span class="prog-fill" id="progFill"></span></div>
+
+        <!-- CARD 0 — coordination overview (top, doc index 0) -->
+        <article class="card" data-doc="0" data-pos="0">
+          <div class="doc-inner">
+            <div class="doc-head">
+              <span class="doc-title">Anchor Living Plan &mdash; Q3 Review</span>
+              <span class="doc-meta">Prepared with your CPA &amp; estate attorney</span>
+            </div>
+            <div class="doc-rows">
+              <div class="arow">
+                <div>
+                  <div class="arow-label">Portfolio rebalance</div>
+                  <div class="arow-sub">Target allocation drift review</div>
+                </div>
+                <span class="chip chip-done">Done</span>
+              </div>
+              <div class="arow">
+                <div>
+                  <div class="arow-label">Tax coordination</div>
+                  <div class="arow-sub">CPA sync &mdash; Q3 estimated payments</div>
+                </div>
+                <span class="chip chip-progress">In review</span>
+              </div>
+              <div class="arow">
+                <div>
+                  <div class="arow-label">Estate documents</div>
+                  <div class="arow-sub">Attorney review &mdash; trust update</div>
+                </div>
+                <span class="chip chip-progress">In review</span>
+              </div>
+              <div class="arow">
+                <div>
+                  <div class="arow-label">RMD schedule</div>
+                  <div class="arow-sub">Distribution timing check</div>
+                </div>
+                <span class="chip chip-done">Done</span>
+              </div>
+              <div class="arow">
+                <div>
+                  <div class="arow-label">Insurance audit</div>
+                  <div class="arow-sub">Coverage gap analysis</div>
+                </div>
+                <span class="chip chip-progress">Scheduled</span>
+              </div>
+            </div>
+            <div class="doc-foot">
+              <span class="doc-foot-label">Next sync: CPA + attorney &mdash; Oct 14</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 1 — tax detail (doc index 1) -->
+        <article class="card" data-doc="1" data-pos="1">
+          <div class="doc-inner">
+            <div class="doc-head">
+              <span class="doc-title">Tax Coordination &mdash; CPA Sync</span>
+              <span class="doc-meta">Detail view &mdash; from your living plan</span>
+            </div>
+            <div class="doc-rows">
+              <div class="arow">
+                <div>
+                  <div class="arow-label">Quarterly estimates</div>
+                  <div class="arow-sub">Q3 payment scheduled with your CPA</div>
+                </div>
+                <span class="chip chip-done">Scheduled</span>
+              </div>
+              <div class="arow">
+                <div>
+                  <div class="arow-label">RSU vesting window</div>
+                  <div class="arow-sub">Sale timing coordinated before vest date</div>
+                </div>
+                <span class="chip chip-progress">In review</span>
+              </div>
+              <div class="arow">
+                <div>
+                  <div class="arow-label">Withholding review</div>
+                  <div class="arow-sub">W-2 and K-1 alignment check</div>
+                </div>
+                <span class="chip chip-done">Done</span>
+              </div>
+            </div>
+            <div class="doc-foot">
+              <span class="doc-foot-label">Reviewed with your CPA &mdash; Oct 14</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 2 — estate detail (doc index 2) -->
+        <article class="card" data-doc="2" data-pos="2">
+          <div class="doc-inner">
+            <div class="doc-head">
+              <span class="doc-title">Estate &mdash; Attorney Review</span>
+              <span class="doc-meta">Detail view &mdash; from your living plan</span>
+            </div>
+            <div class="doc-rows">
+              <div class="arow">
+                <div>
+                  <div class="arow-label">Trust update</div>
+                  <div class="arow-sub">Attorney redline in progress</div>
+                </div>
+                <span class="chip chip-progress">In review</span>
+              </div>
+              <div class="arow">
+                <div>
+                  <div class="arow-label">Beneficiary check</div>
+                  <div class="arow-sub">Retirement accounts aligned to the plan</div>
+                </div>
+                <span class="chip chip-done">Done</span>
+              </div>
+              <div class="arow">
+                <div>
+                  <div class="arow-label">Document dates</div>
+                  <div class="arow-sub">Will, POA, directives reviewed</div>
+                </div>
+                <span class="chip chip-done">Current</span>
+              </div>
+            </div>
+            <div class="doc-foot">
+              <span class="doc-foot-label">Coordinated with your estate attorney</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 3 — conversion doc (doc index 3) -->
+        <article class="card" data-doc="3" data-pos="3">
+          <div class="doc-inner">
+            <div class="doc-head">
+              <span class="doc-title">Where does your plan stand?</span>
+              <span class="doc-meta">Four questions, two minutes</span>
+            </div>
+            <div class="doc-rows">
+              <div class="arow">
+                <div class="arow-label">Does your CPA see your portfolio?</div>
+              </div>
+              <div class="arow">
+                <div class="arow-label">Is your trust funded correctly?</div>
+              </div>
+              <div class="arow">
+                <div class="arow-label">Who coordinates it all?</div>
+              </div>
+            </div>
+            <div class="doc-foot">
+              <a href="#fit-check" class="btn btn-fill btn-sm" id="doc4cta">Take the 4-Question Fit Check &rarr;</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- tab/dot rail -->
+        <div class="rail" role="tablist" aria-label="Plan documents">
+          <button class="rail-btn" type="button" role="tab" data-goto="0" aria-current="true" aria-label="Living Plan overview"><i></i></button>
+          <button class="rail-btn" type="button" role="tab" data-goto="1" aria-current="false" aria-label="Tax coordination detail"><i></i></button>
+          <button class="rail-btn" type="button" role="tab" data-goto="2" aria-current="false" aria-label="Estate review detail"><i></i></button>
+          <button class="rail-btn" type="button" role="tab" data-goto="3" aria-current="false" aria-label="Where does your plan stand?"><i></i></button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="credbar">
+  <div class="wrap credbar-inner">
+    <span class="cred-item">10+ Years at Merrill Lynch <span class="verify-chip">Verify</span></span>
+    <span class="cred-item">Houston, TX</span>
+    <span class="cred-item">Coordinated Planning for Executives, Owners &amp; Families</span>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAIN
+     ============================================================ -->
+<section class="pad on-ground" id="pain">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <h2 class="h2">You&rsquo;re holding it all together. <em>That&rsquo;s the problem.</em></h2>
+      <p class="sec-intro">Four professionals, zero coordination, and you&rsquo;re the one closing the gaps.</p>
+    </div>
+    <div class="pain-grid stagger">
+      <div class="pain-card">
+        <span class="pain-dot" aria-hidden="true"></span>
+        <span class="pain-num">01</span>
+        <p class="pain-quote">&ldquo;My CPA, my advisor, and my attorney never talk to each other. I&rsquo;m the one playing phone tag between all of them.&rdquo;</p>
+        <p class="pain-caption">Your financial life has outgrown the siloed model. Three excellent professionals, none aware of the others &mdash; and you&rsquo;re paying for the gaps in between.</p>
+      </div>
+      <div class="pain-card">
+        <span class="pain-dot" aria-hidden="true"></span>
+        <span class="pain-num">02</span>
+        <p class="pain-quote">&ldquo;My RSUs vest, I take a tax hit I didn&rsquo;t plan for, and the window to act closes before I do.&rdquo;</p>
+        <p class="pain-caption">Equity compensation is how the energy industry pays its leaders. Vesting, deferred comp, and blackout periods create a tax-timing problem generalist advisors don&rsquo;t understand.</p>
+      </div>
+      <div class="pain-card">
+        <span class="pain-dot" aria-hidden="true"></span>
+        <span class="pain-num">03</span>
+        <p class="pain-quote">&ldquo;We have a trust from years ago. I&rsquo;m honestly not sure it&rsquo;s funded right, or that it still fits what we own.&rdquo;</p>
+        <p class="pain-caption">Your net worth has grown. Your estate documents haven&rsquo;t. The gap widens every year no one is watching the whole.</p>
+      </div>
+      <div class="pain-card">
+        <span class="pain-dot" aria-hidden="true"></span>
+        <span class="pain-num">04</span>
+        <p class="pain-quote">&ldquo;I know my business inside and out &mdash; but I don&rsquo;t know what I&rsquo;d actually walk away with after taxes if I sold.&rdquo;</p>
+        <p class="pain-caption">Your net worth is locked inside an illiquid entity. If an offer arrived tomorrow, you wouldn&rsquo;t have a team ready.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHY ANCHOR
+     ============================================================ -->
+<section class="pad on-dark-sec">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <p class="eyebrow on-dark">Why Anchor</p>
+      <h2 class="h2 on-dark">One advisor who sees <em>the whole picture.</em></h2>
+    </div>
+    <div class="why-grid stagger">
+      <div class="why-card">
+        <svg class="why-icon" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="4.2"/><circle cx="25" cy="9" r="4.2"/><circle cx="17" cy="25" r="4.2"/><path d="M12.6 11.4 14.6 21.6M21.4 11.4 19.4 21.6M12.6 9H21.4"/></svg>
+        <h3 class="why-h3">Coordinated, not siloed</h3>
+        <p class="why-body">Joint planning meetings with your CPA and estate attorney &mdash; one living document all three work from, not three separate files.</p>
+      </div>
+      <div class="why-card">
+        <svg class="why-icon" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 6v22M9 12l8-6 8 6M9 12v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V12"/></svg>
+        <h3 class="why-h3">A decade of institutional training</h3>
+        <p class="why-body">Alex Miller, 10+ years at Merrill Lynch <span class="footer-chip" style="margin-left:4px;">Verify</span>, now independent &mdash; serving Houston families directly.</p>
+      </div>
+      <div class="why-card">
+        <svg class="why-icon" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="20" height="20" rx="2"/><path d="M7 14h20M14 7v20"/></svg>
+        <h3 class="why-h3">Built for complexity</h3>
+        <p class="why-body">Equity compensation, deferred income, business transitions, multi-generational estates &mdash; the planning problems that don&rsquo;t fit a generalist template.</p>
+      </div>
+      <div class="why-card">
+        <svg class="why-icon" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 4 6 10v14l11 6 11-6V10z"/><path d="M17 17v10M6 10l11 7 11-7"/></svg>
+        <h3 class="why-h3">Houston, not a coastal afterthought</h3>
+        <p class="why-body">This is the energy capital &mdash; Permian Basin to Eagle Ford. Planning built around how Houston families actually earn.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHO WE SERVE
+     ============================================================ -->
+<section class="pad on-ground" id="who-we-serve">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <h2 class="h2">We specialize. <em>Generalists are everywhere.</em></h2>
+    </div>
+    <div class="serve-grid stagger">
+      <article class="serve-card">
+        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&amp;w=1100&amp;auto=format&amp;fit=crop" alt="" loading="lazy">
+        <!-- [VERIFY] licensed imagery -->
+        <span class="serve-badge" aria-hidden="true"><i></i></span>
+        <div class="serve-content">
+          <h3 class="serve-h3">Oil &amp; Gas Executives</h3>
+          <p class="serve-caption">RSUs, NQDC elections, blackout periods, 10b5-1 plans, commodity-cycle exposure.</p>
+          <a href="#fit-check" class="serve-link">See how we work with you &rarr;</a>
+        </div>
+      </article>
+      <article class="serve-card">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&amp;fit=crop&amp;w=1100&amp;q=80" alt="" loading="lazy">
+        <!-- [VERIFY] licensed imagery -->
+        <span class="serve-badge" aria-hidden="true"><i></i></span>
+        <div class="serve-content">
+          <h3 class="serve-h3">Business Owners</h3>
+          <p class="serve-caption">Exit-readiness years before the LOI &mdash; valuation, entity structure, earnout, personal/business separation.</p>
+          <a href="#fit-check" class="serve-link">See how we work with you &rarr;</a>
+        </div>
+      </article>
+      <article class="serve-card">
+        <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&amp;fit=crop&amp;w=1100&amp;q=80" alt="" loading="lazy">
+        <!-- [VERIFY] licensed imagery -->
+        <span class="serve-badge" aria-hidden="true"><i></i></span>
+        <div class="serve-content">
+          <h3 class="serve-h3">High-Net-Worth Families</h3>
+          <p class="serve-caption">Multi-generational wealth, trust funding, stepped-up basis, beneficiaries kept current.</p>
+          <a href="#fit-check" class="serve-link">See how we work with you &rarr;</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FIT CHECK — MINI HERO
+     ============================================================ -->
+<section class="pad-sm on-ground" id="fit-check">
+  <div class="wrap">
+    <div class="fit-panel rise" id="fitPanel">
+      <div class="fit-grid">
+        <div class="fit-left">
+          <p class="eyebrow on-dark">Fit Check</p>
+          <h2 class="h2 on-dark">Are we the right fit <em>for you?</em></h2>
+          <p class="fit-sub">Four questions. Two minutes. We&rsquo;ll tell you honestly whether we can help &mdash; and if we can&rsquo;t, we&rsquo;ll point you to someone who can.</p>
+          <div class="fit-reassure">
+            <div class="fit-reassure-item">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7.5"/><path d="M10 6v4l2.6 2.6"/></svg>
+              Two minutes, nothing to prepare
+            </div>
+            <div class="fit-reassure-item">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 8 14.5 16 5.5"/></svg>
+              No pitch, no pressure, no spam
+            </div>
+            <div class="fit-reassure-item">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3 3 6.5v4c0 4 3 6.7 7 8 4-1.3 7-4 7-8v-4z"/></svg>
+              An honest answer either way
+            </div>
+          </div>
+
+          <div class="diagram-wrap">
+            <svg viewBox="0 0 420 160" width="100%" aria-hidden="true">
+              <text x="8" y="16" class="diagram-label">YOUR CPA</text>
+              <path class="strand strand-1" d="M14 24 C 130 24, 190 70, 250 78" pathLength="1"/>
+              <text x="8" y="78" class="diagram-label">YOUR ATTORNEY</text>
+              <path class="strand strand-2" d="M14 78 C 120 78, 190 78, 250 80" pathLength="1"/>
+              <text x="8" y="140" class="diagram-label">YOUR PORTFOLIO</text>
+              <path class="strand strand-3" d="M14 132 C 130 132, 190 90, 250 82" pathLength="1"/>
+
+              <circle class="node-ring" cx="270" cy="80" r="16"/>
+              <circle cx="270" cy="80" r="10" fill="var(--accent)"/>
+              <text x="270" y="84" text-anchor="middle" font-size="8" font-weight="700" fill="var(--dark)">1</text>
+              <text x="270" y="112" text-anchor="middle" class="diagram-label">ONE LIVING PLAN</text>
+
+              <circle class="strand-dot" r="2.6">
+                <animateMotion dur="7s" repeatCount="indefinite" path="M14 24 C 130 24, 190 70, 250 78"/>
+              </circle>
+              <circle class="strand-dot" r="2.6">
+                <animateMotion dur="9.5s" repeatCount="indefinite" path="M14 78 C 120 78, 190 78, 250 80"/>
+              </circle>
+              <circle class="strand-dot" r="2.6">
+                <animateMotion dur="12s" repeatCount="indefinite" path="M14 132 C 130 132, 190 90, 250 82"/>
+              </circle>
+            </svg>
+          </div>
+        </div>
+
+        <div class="fit-card" id="fitCard">
+          <form id="fitForm">
+            <!-- STEP 1 -->
+            <div class="fit-step active" data-step="1">
+              <div class="fit-step-head"><span class="fit-step-num">01</span><span class="fit-step-of">of 04</span></div>
+              <div class="fit-progress">
+                <div class="fit-progress-seg filled"><i></i></div>
+                <div class="fit-progress-seg"><i></i></div>
+                <div class="fit-progress-seg"><i></i></div>
+                <div class="fit-progress-seg"><i></i></div>
+              </div>
+              <p class="fit-legend">What best describes your situation?</p>
+              <div class="fit-options" role="radiogroup" aria-label="What best describes your situation?">
+                <button type="button" class="fit-opt" data-group="1">Oil &amp; gas executive with equity comp</button>
+                <button type="button" class="fit-opt" data-group="1">Business owner thinking about a transition</button>
+                <button type="button" class="fit-opt" data-group="1">Coordinating wealth across multiple professionals</button>
+                <button type="button" class="fit-opt" data-group="1">Something else</button>
+              </div>
+            </div>
+
+            <!-- STEP 2 -->
+            <div class="fit-step" data-step="2">
+              <div class="fit-step-head"><span class="fit-step-num">02</span><span class="fit-step-of">of 04</span></div>
+              <div class="fit-progress">
+                <div class="fit-progress-seg filled"><i></i></div>
+                <div class="fit-progress-seg filled"><i></i></div>
+                <div class="fit-progress-seg"><i></i></div>
+                <div class="fit-progress-seg"><i></i></div>
+              </div>
+              <p class="fit-legend">Your approximate investable assets?</p>
+              <div class="fit-options" role="radiogroup" aria-label="Your approximate investable assets?">
+                <button type="button" class="fit-opt" data-group="2">$500K&ndash;$2M</button>
+                <button type="button" class="fit-opt" data-group="2">$2M&ndash;$5M</button>
+                <button type="button" class="fit-opt" data-group="2">$5M&ndash;$10M</button>
+                <button type="button" class="fit-opt" data-group="2">$10M+</button>
+              </div>
+              <div class="fit-nav-row"><button type="button" class="fit-back" data-back="1">&larr; Back</button></div>
+            </div>
+
+            <!-- STEP 3 -->
+            <div class="fit-step" data-step="3">
+              <div class="fit-step-head"><span class="fit-step-num">03</span><span class="fit-step-of">of 04</span></div>
+              <div class="fit-progress">
+                <div class="fit-progress-seg filled"><i></i></div>
+                <div class="fit-progress-seg filled"><i></i></div>
+                <div class="fit-progress-seg filled"><i></i></div>
+                <div class="fit-progress-seg"><i></i></div>
+              </div>
+              <p class="fit-legend">Your biggest concern right now?</p>
+              <div class="fit-options" role="radiogroup" aria-label="Your biggest concern right now?">
+                <button type="button" class="fit-opt" data-group="3">Tax coordination &mdash; CPA and advisor aren&rsquo;t aligned</button>
+                <button type="button" class="fit-opt" data-group="3">Equity comp &mdash; RSUs, deferred comp, concentration</button>
+                <button type="button" class="fit-opt" data-group="3">Estate &amp; legacy</button>
+                <button type="button" class="fit-opt" data-group="3">Business transition</button>
+              </div>
+              <div class="fit-nav-row"><button type="button" class="fit-back" data-back="2">&larr; Back</button></div>
+            </div>
+
+            <!-- STEP 4 -->
+            <div class="fit-step" data-step="4">
+              <div class="fit-step-head"><span class="fit-step-num">04</span><span class="fit-step-of">of 04</span></div>
+              <div class="fit-progress">
+                <div class="fit-progress-seg filled"><i></i></div>
+                <div class="fit-progress-seg filled"><i></i></div>
+                <div class="fit-progress-seg filled"><i></i></div>
+                <div class="fit-progress-seg filled"><i></i></div>
+              </div>
+              <p class="fit-legend">Where should we send your fit assessment?</p>
+              <label for="fitEmail" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);">Email address</label>
+              <input type="email" id="fitEmail" class="fit-email-input" placeholder="you@email.com" required>
+              <button type="submit" class="btn btn-fill" style="width:100%;">Get My Fit Assessment &rarr;</button>
+              <p class="fit-micro">No spam. No sales pitch. Just an honest answer about whether we&rsquo;re a match.</p>
+              <div class="fit-nav-row"><button type="button" class="fit-back" data-back="3">&larr; Back</button></div>
+            </div>
+          </form>
+
+          <div class="fit-thankyou" id="fitThankYou">
+            <h3>Thank you &mdash; we&rsquo;re reviewing it now.</h3>
+            <p>(Demo state.) In production, this triggers a real fit-assessment email within one business day &mdash; and if we&rsquo;re not the right match, we&rsquo;ll tell you that too.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SERVICES
+     ============================================================ -->
+<section class="pad on-ground" id="services">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <h2 class="h2">One plan. <em>Your CPA and attorney both work from it.</em></h2>
+    </div>
+    <div class="bento stagger">
+      <div class="bento-cell span-3 is-dark">
+        <span class="bento-tag">Coordinated Planning</span>
+        <h3 class="bento-h3">The flagship of everything we do</h3>
+        <p class="bento-pain">&ldquo;No one sees the full picture.&rdquo;</p>
+        <p class="bento-body">Joint meetings, one living document &mdash; you stop being the translator between three professionals who&rsquo;ve never spoken.</p>
+      </div>
+      <div class="bento-cell span-3">
+        <span class="bento-tag">Investment Management</span>
+        <h3 class="bento-h3">Portfolio built around your life</h3>
+        <p class="bento-pain">&ldquo;My portfolio doesn&rsquo;t fit my actual life.&rdquo;</p>
+        <p class="bento-body">Built around vesting schedules, blackout periods, and concentration &mdash; managed with your tax strategy, not apart from it.</p>
+      </div>
+      <div class="bento-cell span-2">
+        <span class="bento-tag">Tax Strategy &amp; Coordination</span>
+        <h3 class="bento-h3">Ahead of the bonus season, not behind it</h3>
+        <p class="bento-pain">&ldquo;Every bonus season feels like a tax trap.&rdquo;</p>
+        <p class="bento-body">We sit with your CPA before year-end &mdash; not after.</p>
+      </div>
+      <div class="bento-cell span-2">
+        <span class="bento-tag">Equity Compensation</span>
+        <h3 class="bento-h3">Vesting, mapped and modeled</h3>
+        <p class="bento-pain">&ldquo;My RSUs feel like a trap.&rdquo;</p>
+        <p class="bento-body">Vesting modeling, NQDC elections, 10b5-1 plans, blackout strategy.</p>
+      </div>
+      <div class="bento-cell span-2">
+        <span class="bento-tag">Estate &amp; Legacy</span>
+        <h3 class="bento-h3">Documents that match your net worth</h3>
+        <p class="bento-pain">&ldquo;Real wealth, no plan for after.&rdquo;</p>
+        <p class="bento-body">Trusts reviewed against current net worth and funded correctly.</p>
+      </div>
+      <div class="bento-cell span-6 is-dark">
+        <div class="bento-closer-copy">
+          <span class="bento-tag">Business Owner Planning</span>
+          <h3 class="bento-h3">The exit conversation starts years early</h3>
+          <p class="bento-pain">&ldquo;I don&rsquo;t know what I&rsquo;d walk away with.&rdquo;</p>
+          <p class="bento-body">The exit conversation starts 3&ndash;5 years before the LOI &mdash; not the week an offer lands.</p>
+        </div>
+        <a href="#fit-check" class="btn btn-fill">Start with the Fit Check &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROCESS
+     ============================================================ -->
+<section class="pad on-ground-alt" id="process">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <h2 class="h2">Here&rsquo;s what working with us <em>actually looks like.</em></h2>
+    </div>
+    <div class="process-grid stagger">
+      <div class="process-step">
+        <div class="process-num">01</div>
+        <h3 class="process-h3">Discovery</h3>
+        <p class="process-body">A 30-minute conversation. We listen, and tell you honestly whether we can help.</p>
+        <p class="process-when">30 minutes &middot; no obligation</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">02</div>
+        <h3 class="process-h3">Assessment</h3>
+        <p class="process-body">A full picture review &mdash; investments, returns, equity docs, estate, business. You get a written assessment either way.</p>
+        <p class="process-when">usually 1&ndash;2 weeks</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">03</div>
+        <h3 class="process-h3">The Plan</h3>
+        <p class="process-body">The living document. We walk your CPA and attorney through it together.</p>
+        <p class="process-when">you keep this document</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">04</div>
+        <h3 class="process-h3">Partnership</h3>
+        <p class="process-body">Quarterly reviews, with vesting and cycles already modeled in.</p>
+        <p class="process-when">proactive, not reactive</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROOF
+     ============================================================ -->
+<section class="pad proof-sec" id="proof">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <p class="eyebrow">Proof</p>
+      <h2 class="h2">What it sounds like when <em>the pieces finally fit.</em></h2>
+    </div>
+
+    <div class="proof-card rise">
+      <p class="proof-quote">&ldquo;For the first time, my CPA and my advisor are actually talking to each other &mdash; I finally feel like someone sees the whole picture.&rdquo;</p>
+      <p class="proof-note">Illustrative &mdash; real, disclosure-compliant client testimonials added before launch.</p>
+      <!-- [VERIFY] SEC Marketing Rule vs FINRA 2210 per Alex's registration -->
+    </div>
+
+    <div class="proof-stats stagger">
+      <div class="proof-stat">
+        <div class="proof-stat-val" data-count="10" data-suffix="+">0</div>
+        <div class="proof-stat-label">Years at Merrill Lynch <span style="opacity:.7;">[Verify]</span></div>
+      </div>
+      <div class="proof-stat">
+        <div class="proof-stat-val">3&rarr;1</div>
+        <div class="proof-stat-label">Professionals coordinated</div>
+      </div>
+      <div class="proof-stat">
+        <div class="proof-stat-val" data-count="1">0</div>
+        <div class="proof-stat-label">Living document</div>
+      </div>
+      <div class="proof-stat">
+        <div class="proof-stat-val">Quarterly</div>
+        <div class="proof-stat-label">Reviews</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FINAL CTA
+     ============================================================ -->
+<section class="pad on-ground final-cta" id="book">
+  <div class="wrap final-inner">
+    <p class="eyebrow rise">The first call is just a conversation</p>
+    <h2 class="h2 rise">You&rsquo;ve been the project manager <em>long enough.</em></h2>
+    <p class="final-sub rise">If your CPA and your advisor aren&rsquo;t reading from the same plan, you&rsquo;re doing the work your wealth manager should be doing. Thirty minutes. No pitch.</p>
+    <div class="cta-row rise">
+      <a href="#book" class="btn btn-fill">Schedule a 30-Minute Conversation &rarr;</a>
+      <a href="#fit-check" class="btn btn-outline">Take the 4-Question Fit Check</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     INSIGHTS
+     ============================================================ -->
+<section class="pad-sm on-ground-alt" id="insights">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <h2 class="h2" style="font-size:clamp(26px,3.4vw,42px);">Not ready to talk yet? <em>Start here.</em></h2>
+    </div>
+    <div class="insights-grid stagger">
+      <!-- video episode slot: poster+play per §video when real footage exists [VERIFY] -->
+      <article class="insight-featured">
+        <span class="insight-tag">Featured &middot; Article</span>
+        <h3 class="insight-title-featured">How RSU Vesting Creates a Tax-Timing Trap</h3>
+        <p class="insight-excerpt">Equity compensation is how the energy industry pays its leaders &mdash; and how generalist advisors miss the timing. The window most executives discover after it has already closed.</p>
+      </article>
+      <div class="insight-stack">
+        <article class="insight-compact">
+          <span class="insight-tag">Podcast</span>
+          <h3 class="insight-title-compact">What &ldquo;Coordinated Planning&rdquo; Actually Looks Like</h3>
+        </article>
+        <article class="insight-compact">
+          <span class="insight-tag">Article</span>
+          <h3 class="insight-title-compact">The Exit Conversation Should Start Years Before the LOI</h3>
+        </article>
+      </div>
+    </div>
+    <p class="insights-footnote">Illustrative topics &mdash; Anchor&rsquo;s content library launches with real articles and episodes before the site goes live.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <span class="footer-brand-name">Anchor</span>
+        <p class="footer-tagline">&ldquo;Charting the course toward your financial legacy.&rdquo;</p>
+        <p class="footer-loc">Houston, TX</p>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-h">Explore</p>
+        <a href="#who-we-serve">Who We Serve</a>
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#fit-check">Fit Check</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-h">Specialties</p>
+        <span>Oil &amp; Gas Executives</span>
+        <span>Business Owners</span>
+        <span>High-Net-Worth Families</span>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-h">Contact</p>
+        <span>(xxx) xxx-xxxx <span class="footer-chip">Verify</span></span>
+        <span>hello@anchorwealthplanning.com <span class="footer-chip">Verify</span></span>
+        <span>Houston, TX</span>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <p><span>[Entity name] &mdash; VERIFY registration &amp; required disclosures.</span> Information presented is for educational purposes only and does not constitute an offer or solicitation to buy or sell any security or investment strategy. Investments involve risk and are not guaranteed. Past performance is not a guarantee of future results.</p>
+      <p class="footer-copyright">&copy; 2026 Anchor Wealth Planning. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  document.body.classList.remove('no-js');
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ----- nav scroll state ----- */
+  var nav = document.getElementById('nav');
+  function onScroll(){
+    if(window.scrollY > 40){ nav.classList.add('is-scrolled'); }
+    else{ nav.classList.remove('is-scrolled'); }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  /* ----- underline draw ~0.8s after H1 reveal ----- */
+  var h1em = document.getElementById('h1em');
+  if(h1em){
+    setTimeout(function(){ h1em.classList.add('draw'); }, reduceMotion ? 0 : 980);
+  }
+
+  /* ----- generic IntersectionObserver reveal for .rise / .stagger ----- */
+  var revealTargets = Array.prototype.slice.call(document.querySelectorAll('.rise, .stagger'));
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold:.16, rootMargin:'0px 0px -8% 0px'});
+    revealTargets.forEach(function(el){ io.observe(el); });
+  } else {
+    revealTargets.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ----- document shuffle carousel (timers + class swaps only; no rAF-gated visibility) ----- */
+  var artifact = document.getElementById('artifact');
+  var cards = Array.prototype.slice.call(artifact.querySelectorAll('.card'));
+  var railBtns = Array.prototype.slice.call(artifact.querySelectorAll('.rail-btn'));
+  var progFill = document.getElementById('progFill');
+  var N = cards.length;
+  var DUR = [4500, 4500, 4500, 7000];
+  var order = [0,1,2,3]; /* order[0] = doc index currently on top (pos 0) */
+  var timer = null;
+
+  function cardByDoc(docIdx){
+    return cards.filter(function(c){ return c.getAttribute('data-doc') === String(docIdx); })[0];
+  }
+
+  function applyPositions(){
+    order.forEach(function(docIdx, pos){
+      var c = cardByDoc(docIdx);
+      c.setAttribute('data-pos', pos);
+      c.classList.remove('shuffle-out');
+      if(pos === 0){ c.removeAttribute('aria-hidden'); }
+      else { c.setAttribute('aria-hidden','true'); }
+    });
+    railBtns.forEach(function(b){
+      var goto = b.getAttribute('data-goto');
+      b.setAttribute('aria-current', goto === String(order[0]) ? 'true' : 'false');
+    });
+  }
+  applyPositions();
+
+  function restartProgress(ms){
+    if(reduceMotion) return;
+    progFill.classList.remove('run');
+    void progFill.offsetWidth;
+    progFill.style.animationDuration = ms + 'ms';
+    progFill.classList.add('run');
+  }
+
+  /* physical shuffle: top card slides off (x+rotate), the card behind rises to front.
+     back-card peek always shows the NEXT real document (order array rotates). */
+  function shuffleTo(targetDocIdx){
+    if(targetDocIdx === order[0]) return;
+    var outgoing = cardByDoc(order[0]);
+
+    if(reduceMotion){
+      /* simple crossfade swap, no physical shuffle */
+      var newOrder = order.slice();
+      var ti = newOrder.indexOf(targetDocIdx);
+      newOrder.splice(ti,1);
+      newOrder.unshift(targetDocIdx);
+      order = newOrder;
+      applyPositions();
+      return;
+    }
+
+    outgoing.classList.add('shuffle-out');
+
+    /* rotate the order array so targetDocIdx becomes pos 0,
+       preserving relative order of the rest for the peek stack */
+    var newOrder = order.slice();
+    var ti = newOrder.indexOf(targetDocIdx);
+    newOrder.splice(ti,1);
+    newOrder.unshift(targetDocIdx);
+    /* put the outgoing doc at the back of the stack */
+    var oi = newOrder.indexOf(order[0]);
+    if(oi !== -1){
+      newOrder.splice(oi,1);
+      newOrder.push(order[0]);
+    }
+    order = newOrder;
+
+    /* apply new stack positions to everything except the outgoing card immediately,
+       so the back cards visibly rise forward while outgoing flies off */
+    order.forEach(function(docIdx, pos){
+      var c = cardByDoc(docIdx);
+      if(c === outgoing) return;
+      c.setAttribute('data-pos', pos);
+      if(pos === 0){ c.removeAttribute('aria-hidden'); }
+      else { c.setAttribute('aria-hidden','true'); }
+    });
+    railBtns.forEach(function(b){
+      var goto = b.getAttribute('data-goto');
+      b.setAttribute('aria-current', goto === String(order[0]) ? 'true' : 'false');
+    });
+
+    setTimeout(function(){
+      outgoing.classList.remove('shuffle-out');
+      outgoing.setAttribute('data-pos', order.indexOf(parseInt(outgoing.getAttribute('data-doc'),10)));
+    }, 560);
+  }
+
+  function advance(){
+    var nextDoc = (order[0] + 1) % N;
+    shuffleTo(nextDoc);
+  }
+
+  function arm(){
+    if(reduceMotion) return;
+    clearTimeout(timer);
+    var currentDur = DUR[order[0]];
+    restartProgress(currentDur);
+    timer = setTimeout(function(){
+      advance();
+      arm();
+    }, currentDur);
+  }
+
+  function pause(){
+    clearTimeout(timer);
+    artifact.classList.add('paused');
+  }
+  function resume(){
+    artifact.classList.remove('paused');
+    arm();
+  }
+
+  artifact.addEventListener('mouseenter', pause);
+  artifact.addEventListener('mouseleave', resume);
+  artifact.addEventListener('focusin', pause);
+  artifact.addEventListener('focusout', function(e){
+    if(!artifact.contains(e.relatedTarget)) resume();
+  });
+
+  railBtns.forEach(function(b){
+    b.addEventListener('click', function(){
+      var target = parseInt(b.getAttribute('data-goto'), 10);
+      shuffleTo(target);
+      if(!artifact.matches(':hover') && !reduceMotion){ arm(); }
+      else { clearTimeout(timer); }
+    });
+  });
+
+  if(!reduceMotion){ arm(); }
+
+  /* ----- Fit Check panel reveal: draw diagram + pulse form card once in view ----- */
+  var fitPanel = document.getElementById('fitPanel');
+  var fitCard = document.getElementById('fitCard');
+  if('IntersectionObserver' in window && fitPanel){
+    var fitIO = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          fitPanel.classList.add('in');
+          if(!reduceMotion){
+            setTimeout(function(){
+              fitCard.classList.add('pulse');
+              setTimeout(function(){ fitCard.classList.remove('pulse'); }, 2200);
+            }, 900);
+          }
+          fitIO.unobserve(fitPanel);
+        }
+      });
+    }, {threshold:.3});
+    fitIO.observe(fitPanel);
+  } else if(fitPanel){
+    fitPanel.classList.add('in');
+  }
+
+  /* ----- Fit Check wizard ----- */
+  var fitForm = document.getElementById('fitForm');
+  var fitSteps = Array.prototype.slice.call(document.querySelectorAll('.fit-step'));
+  var fitThankYou = document.getElementById('fitThankYou');
+  var currentStep = 1;
+
+  function goToStep(n){
+    fitSteps.forEach(function(s){
+      s.classList.toggle('active', parseInt(s.getAttribute('data-step'),10) === n);
+    });
+    currentStep = n;
+  }
+
+  document.querySelectorAll('.fit-opt').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var group = btn.getAttribute('data-group');
+      document.querySelectorAll('.fit-opt[data-group="'+group+'"]').forEach(function(b){
+        b.classList.remove('selected');
+      });
+      btn.classList.add('selected');
+      setTimeout(function(){
+        if(currentStep < 4){ goToStep(currentStep + 1); }
+      }, 220);
+    });
+  });
+
+  document.querySelectorAll('.fit-back').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var back = parseInt(btn.getAttribute('data-back'),10);
+      goToStep(back);
+    });
+  });
+
+  if(fitForm){
+    fitForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      fitForm.style.display = 'none';
+      fitThankYou.classList.add('active');
+    });
+  }
+
+  /* ----- PROOF count-up: rAF + blur-to-sharp, mandatory force-finish guard ----- */
+  var countEls = Array.prototype.slice.call(document.querySelectorAll('[data-count]'));
+  function runCount(el){
+    var target = parseFloat(el.getAttribute('data-count'));
+    var suffix = el.getAttribute('data-suffix') || '';
+    if(reduceMotion){
+      el.textContent = target + suffix;
+      return;
+    }
+    var start = null;
+    var duration = 1400;
+    el.style.filter = 'blur(4px)';
+    el.style.transition = 'filter .6s ease';
+
+    function frame(ts){
+      if(start === null) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      var val = Math.round(progress * target);
+      el.textContent = val + suffix;
+      if(progress < 1){
+        window.requestAnimationFrame(frame);
+      } else {
+        el.textContent = target + suffix;
+        el.style.filter = 'blur(0)';
+      }
+    }
+    window.requestAnimationFrame(frame);
+
+    /* mandatory force-finish guard: whatever rAF is doing, land on the true value */
+    setTimeout(function(){
+      el.textContent = target + suffix;
+      el.style.filter = 'blur(0)';
+    }, duration + 400);
+  }
+
+  if(countEls.length){
+    if('IntersectionObserver' in window){
+      var countIO = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            runCount(entry.target);
+            countIO.unobserve(entry.target);
+          }
+        });
+      }, {threshold:.5});
+      countEls.forEach(function(el){ countIO.observe(el); });
+    } else {
+      countEls.forEach(runCount);
+    }
+  }
+})();
+</script>
+
+</body>
+</html>
