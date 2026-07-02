@@ -63,12 +63,27 @@ The hero shows THE DELIVERABLE, not a photo: copy left, a rendered "living plan"
   120ms cadence — NEVER rAF/JS-gated visibility; content must be visible with JS disabled), the
   underline draw, the button sheen, plus ONE quiet artifact moment (see EXECUTION LATITUDE).
   `prefers-reduced-motion` collapses everything to static-visible.
-**EXECUTION LATITUDE (yours):** the artifact's internal design — a one-page "Anchor Living Plan"
-document: its header, row structure, status chips, typography (use the token fonts; chips in
-accent tints with AA-checked text), how many rows (4–6), and one subtle living detail (e.g. one
-status chip transitions "In review → Done" once, 2s after load, or a thin progress hairline that
-fills — pick ONE). Angle/offset of the frame (straight, or ≤1.5° tilt), whether a second smaller
-card peeks behind it, margins within invariants.
+**THE ARTIFACT IS A DOCUMENT CAROUSEL (v2.1 — Chris's direction; this is the page's signature
+interaction and it must read like a $50K team's flagship, not a subtle detail):**
+- FOUR documents cycle inside the floating frame, same document design language, different content:
+  1. **"Anchor Living Plan — Q3 Review"** — the coordination overview (5 rows, status chips — as v2).
+  2. **"Tax Coordination — CPA Sync"** — detail doc: quarterly estimates line, RSU vesting window
+     note, "reviewed with your CPA — Oct 14" footer. Generic role content, zero fabricated numbers.
+  3. **"Estate — Attorney Review"** — trust update status, beneficiary check, document dates current.
+  4. **CONVERSION DOC — "Where does your plan stand?"** — styled EXACTLY like the other documents
+     (same header/rows language) but its rows are the visitor's questions ("Does your CPA see your
+     portfolio? · Is your trust funded correctly? · Who coordinates it all?") and its footer is a
+     REAL gold CTA button inside the document: `Take the 4-Question Fit Check →` (same .btn styles,
+     btn-sm scale). The carousel's endpoint IS the conversion.
+- **Behavior:** auto-advance every ~4.5s with a soft crossfade+8px slide (.5s ease-soft); doc 4
+  holds ~7s, then loops. **Hover over the artifact = pause** + reveal a tab/dot rail (4 affordances,
+  accent for active); click = jump to that doc. Progress indication always subtly visible.
+- **Guards:** JS interval + class swaps only (no rAF-gated visibility — LED-011); no-JS = doc 1
+  visible, others `hidden`, no rail; reduced-motion = no auto-advance, rail visible + clickable,
+  crossfade only. Console clean.
+**EXECUTION LATITUDE (yours):** each document's internal typography/rows within the token fonts;
+chip design (AA-checked); the tab-rail design; frame angle (straight or ≤1.5° tilt); the back-card
+peek; timing polish within the stated ranges.
 **FORBIDDEN:** photography anywhere in this hero; decorative overlay graphics (waves/strands over
 media — banned register-wide); lorem or fake client names in the artifact (use role labels:
 "Tax coordination — CPA sync"); gradient text; icon-chip rows; any drop shadow beyond the one
@@ -90,6 +105,7 @@ document. Its rows must read as real coordination (CPA / attorney / portfolio to
 - H1: `You've become the project manager of` + (own line, serif-italic) `your own wealth.`
 - Sub: `Anchor coordinates your investments, taxes, and estate with your CPA and attorney into one living plan — so you can stop being the glue.`
 - Primary: `Schedule a 30-Minute Conversation →`  · Outline: `Take the 4-Question Fit Check`
+  (buttons SIDE BY SIDE with 12px gap at desktop, wrap on mobile — not stacked)
 - Artifact header: `Anchor Living Plan — Q3 Review` + small `Prepared with your CPA & estate attorney`
 - Nav links: `Who We Serve · Services · Process · Fit Check` · Nav CTA: `Book a Call`
 

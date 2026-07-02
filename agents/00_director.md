@@ -19,6 +19,12 @@ optional register adjectives · the client's REAL assets (photos/video or none)
    REAL assets only.
 3. **Signature:** specify the client's bespoke signature moment — derived from their MECHANISM
    (what they actually do), never decorative. One sentence of intent + placement.
+   **AMBITION FLOOR (Chris, 2026-07-02, hero-v2 lesson):** the signature spec must demand a
+   $50K-team flagship interaction — never "one subtle detail." A timid brief produces timid
+   executors (LED-007 class, brief edition). Spec the interaction design fully.
+   **CONVERSION LAW:** every interactive/signature element RESOLVES TOWARD THE CONVERSION EVENT —
+   its final state, last frame, or endpoint is a conversion affordance. Nothing interactive is
+   ever purely decorative.
 4. **Retint:** derive the full token set from the brand palette, solving every AA rule in the
    pattern invariants (alpha-blend math; gradient lightest-stop rule; numeral-mix shares).
 5. **Emit the BUILD BRIEF** (template below) to `projects/<client>/briefs/<scope>_BRIEF.md` and

@@ -48,6 +48,9 @@ Positive tells the system must hit (the inverse of the anti-slop list):
 2. **Real deliverable/artifact shown** (C-26 class) — the plan document, the actual output, not stock.
 3. **Motion with intent:** staggered reveals, drawn diagrams, count-ups with guards, one signature
    motion — never ambient decoration, never particles.
+   **3b. Conversion-oriented interaction:** every interactive element resolves toward the
+   conversion event — a cycling artifact ends on the CTA state, a diagram points at the fit check,
+   hover states advance the story. Interaction = a path to conversion, never a toy.
 4. **Editorial detail:** measured type scales, own-line accent phrases, hairline systems, numeral
    treatments, real rag/measure discipline.
 5. **Photography/video direction** consistent with §6 imagery rules — warm-documentary, the client's
