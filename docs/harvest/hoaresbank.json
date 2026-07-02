@@ -1,0 +1,168 @@
+{
+ "url": "https://www.hoaresbank.co.uk/",
+ "title": "C. Hoare & Co. | private bank",
+ "measured": "2026-07-02T12:03:45.683Z",
+ "viewport": "1440x813",
+ "typeCensus": [
+  [
+   "span|12px|400|Lato|lh:14.4px|tr:0.8px|tt:uppercase",
+   7
+  ],
+  [
+   "h2|26px|700|Lato|lh:33.8px|tr:normal|tt:none",
+   6
+  ],
+  [
+   "h1|59.904px|400|Trirong|lh:65.9952px|tr:normal|tt:uppercase",
+   3
+  ],
+  [
+   "h1|28px|700|Lato|lh:37.8px|tr:normal|tt:none",
+   1
+  ],
+  [
+   "h3|16px|600|Lato|lh:22.4px|tr:normal|tt:none",
+   1
+  ],
+  [
+   "p|18px|400|Lato|lh:34px|tr:normal|tt:none",
+   1
+  ],
+  [
+   "p|18px|400|Lato|lh:32px|tr:normal|tt:none",
+   1
+  ],
+  [
+   "p|14px|400|Lato|lh:22px|tr:normal|tt:none",
+   1
+  ],
+  [
+   "p|13.12px|400|Lato|lh:19.68px|tr:normal|tt:none",
+   1
+  ],
+  [
+   "a|13px|700|Lato|lh:22px|tr:1px|tt:uppercase",
+   1
+  ],
+  [
+   "span|13px|700|Lato|lh:16px|tr:2px|tt:uppercase",
+   1
+  ]
+ ],
+ "buttons": [
+  [
+   "rgb(255, 255, 255) | rgb(29, 71, 65) | 2px | 12px 10px | 13.12px | 600 | none | 0.656px | 1px solid rgb(204, 214, 212) | none",
+   {
+    "count": 2,
+    "example": "Accept All",
+    "transition": "all"
+   }
+  ],
+  [
+   "rgba(0, 0, 0, 0) | rgb(255, 255, 255) | 0px | 14px 21px | 13px | 700 | uppercase | 1px | 1px solid rgb(255, 255, 255) | none",
+   {
+    "count": 1,
+    "example": "LOGIN",
+    "transition": "0.3s ease-in-out"
+   }
+  ],
+  [
+   "rgb(255, 255, 255) | rgb(29, 71, 65) | 100px | 12.5px 14px | 12px | 700 | uppercase | 2px | 0px none rgb(29, 71, 65) | rgba(29, 71, 65, 0.13) 0px 2px",
+   {
+    "count": 1,
+    "example": "Personal",
+    "transition": "0.3s ease-in-out"
+   }
+  ],
+  [
+   "rgba(0, 0, 0, 0) | rgb(255, 255, 255) | 0px | 20px | 13.5px | 700 | none | normal | 1px solid rgba(255, 255, 255, 0.5) | none",
+   {
+    "count": 1,
+    "example": "Contact Us",
+    "transition": "0.3s ease-in-out"
+   }
+  ],
+  [
+   "rgb(255, 255, 255) | rgb(137, 111, 17) | 2px | 12px 10px | 13.12px | 600 | none | 0.656px | 0px none rgb(137, 111, 17) | none",
+   {
+    "count": 1,
+    "example": "Cookie Preferences",
+    "transition": "all"
+   }
+  ]
+ ],
+ "cards": [
+  [
+   "bg:rgb(0, 51, 46) | r:0px | bd:none | sh:none | pad:0px 0px 130px 108px",
+   {
+    "count": 1,
+    "w": 628,
+    "h": 813,
+    "hasImg": false,
+    "sample": "Expertise, empathy and exceptional flexi"
+   }
+  ],
+  [
+   "bg:rgb(255, 255, 255) | r:2.5px | bd:none | sh:rgba(0, 0, 0, 0.2) 0px 0px 18px 0px | pad:0px",
+   {
+    "count": 1,
+    "w": 375,
+    "h": 292,
+    "hasImg": false,
+    "sample": "Your choice regarding cookies on this si"
+   }
+  ]
+ ],
+ "sectionFlow": [],
+ "grounds": [
+  [
+   "rgb(255, 255, 255)",
+   3
+  ],
+  [
+   "rgb(0, 51, 46)",
+   2
+  ],
+  [
+   "rgb(249, 247, 242)",
+   1
+  ],
+  [
+   "rgb(29, 71, 65)",
+   1
+  ]
+ ],
+ "accents": [
+  [
+   "rgb(163, 135, 71)",
+   20
+  ],
+  [
+   "rgb(0, 0, 238)",
+   8
+  ],
+  [
+   "rgb(137, 111, 17)",
+   5
+  ],
+  [
+   "rgb(0, 51, 46)",
+   2
+  ],
+  [
+   "rgba(92, 158, 158, 0.1)",
+   1
+  ]
+ ],
+ "transitions": [
+  [
+   "0.3s ease-in-out",
+   120
+  ],
+  [
+   "all",
+   56
+  ]
+ ],
+ "animationsRunning": 1
+}

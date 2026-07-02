@@ -1,0 +1,263 @@
+{
+ "url": "https://www.instrument.com/",
+ "title": "Instrument | A technology-led brand, product, & marketing agency | Instrument",
+ "measured": "2026-07-02T12:04:05.690Z",
+ "viewport": "1440x813",
+ "typeCensus": [
+  [
+   "span|12px|400|Instrument-Sans|lh:16px|tr:1.32px|tt:uppercase",
+   34
+  ],
+  [
+   "li|15px|400|Instrument-Sans|lh:24px|tr:0.45px|tt:none",
+   14
+  ],
+  [
+   "a|12px|400|Instrument-Sans|lh:16px|tr:1.32px|tt:uppercase",
+   11
+  ],
+  [
+   "li|16px|400|Instrument-Sans|lh:16px|tr:normal|tt:none",
+   11
+  ],
+  [
+   "h2|12px|400|Instrument-Sans|lh:16px|tr:1.32px|tt:uppercase",
+   9
+  ],
+  [
+   "a|16px|400|Instrument-Sans|lh:16px|tr:normal|tt:none",
+   5
+  ],
+  [
+   "p|19px|400|Instrument-Sans|lh:24px|tr:0.095px|tt:none",
+   4
+  ],
+  [
+   "li|16px|400|Instrument-Sans|lh:16px|tr:normal|tt:uppercase",
+   4
+  ],
+  [
+   "li|11px|400|Instrument-Sans|lh:16px|tr:0.55px|tt:none",
+   3
+  ],
+  [
+   "p|15px|400|Instrument-Sans|lh:24px|tr:0.45px|tt:none",
+   2
+  ],
+  [
+   "p|64px|400|Instrument-Serif|lh:72px|tr:-1.28px|tt:none",
+   2
+  ],
+  [
+   "p|18px|400|Instrument-Sans|lh:28px|tr:0.36px|tt:none",
+   2
+  ],
+  [
+   "span|64px|400|Instrument-Serif|lh:72px|tr:-1.28px|tt:none",
+   2
+  ],
+  [
+   "span|18px|400|Instrument-Sans|lh:28px|tr:0.36px|tt:none",
+   2
+  ],
+  [
+   "h2|23px|400|Instrument-Sans|lh:28px|tr:-0.115px|tt:none",
+   1
+  ],
+  [
+   "h3|28px|400|Instrument-Sans|lh:32px|tr:-0.28px|tt:none",
+   1
+  ],
+  [
+   "p|14px|400|Instrument-Sans|lh:20px|tr:1.12px|tt:uppercase",
+   1
+  ],
+  [
+   "p|36px|400|Instrument-Sans|lh:40px|tr:-0.9px|tt:none",
+   1
+  ],
+  [
+   "a|15px|400|Instrument-Sans|lh:24px|tr:0.45px|tt:none",
+   1
+  ],
+  [
+   "a|14px|400|Instrument-Sans|lh:20px|tr:1.12px|tt:uppercase",
+   1
+  ],
+  [
+   "a|18px|400|Instrument-Sans|lh:28px|tr:0.36px|tt:none",
+   1
+  ],
+  [
+   "span|15px|400|Instrument-Sans|lh:24px|tr:0.45px|tt:none",
+   1
+  ],
+  [
+   "span|14px|400|Instrument-Sans|lh:20px|tr:1.12px|tt:uppercase",
+   1
+  ]
+ ],
+ "buttons": [
+  [
+   "rgb(232, 232, 233) | rgb(7, 7, 8) | 0px | 0px 20px | 16px | 400 | none | normal | 0px none rgb(7, 7, 8) | none",
+   {
+    "count": 1,
+    "example": "Skip Navigation",
+    "transition": "transform 0.15s cubic-bezier(0.73, 0.24, 0.68, 0.82)"
+   }
+  ]
+ ],
+ "cards": [],
+ "sectionFlow": [
+  {
+   "i": 0,
+   "h": 811,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "block kids:3",
+   "media": {
+    "imgs": 0,
+    "videos": 2
+   },
+   "head": null
+  },
+  {
+   "i": 1,
+   "h": 230,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "grid(12col) kids:1",
+   "media": {
+    "imgs": 0,
+    "videos": 0
+   },
+   "head": null
+  },
+  {
+   "i": 2,
+   "h": 510,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "flex(row) kids:2",
+   "media": {
+    "imgs": 16,
+    "videos": 0
+   },
+   "head": "Recent work"
+  },
+  {
+   "i": 3,
+   "h": 217,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "flex(row) kids:6",
+   "media": {
+    "imgs": 0,
+    "videos": 0
+   },
+   "head": null
+  },
+  {
+   "i": 4,
+   "h": 668,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "block kids:2",
+   "media": {
+    "imgs": 6,
+    "videos": 0
+   },
+   "head": "We make brands, products, websites, and campaigns."
+  },
+  {
+   "i": 5,
+   "h": 217,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "flex(row) kids:6",
+   "media": {
+    "imgs": 0,
+    "videos": 0
+   },
+   "head": null
+  },
+  {
+   "i": 6,
+   "h": 900,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "block kids:5",
+   "media": {
+    "imgs": 0,
+    "videos": 0
+   },
+   "head": "Shape a better future."
+  },
+  {
+   "i": 7,
+   "h": 158,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "grid(12col) kids:1",
+   "media": {
+    "imgs": 0,
+    "videos": 0
+   },
+   "head": null
+  },
+  {
+   "i": 8,
+   "h": 498,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "grid(4col) kids:1",
+   "media": {
+    "imgs": 4,
+    "videos": 0
+   },
+   "head": null
+  },
+  {
+   "i": 9,
+   "h": 272,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "block kids:1",
+   "media": {
+    "imgs": 0,
+    "videos": 0
+   },
+   "head": null
+  }
+ ],
+ "grounds": [
+  [
+   "rgb(232, 232, 233)",
+   35
+  ],
+  [
+   "rgb(7, 7, 8)",
+   2
+  ],
+  [
+   "rgb(0, 0, 0)",
+   1
+  ]
+ ],
+ "accents": [],
+ "transitions": [
+  [
+   "all",
+   183
+  ],
+  [
+   "opacity 0.25s",
+   16
+  ],
+  [
+   "transform 0.15s cubic-bezier(0.73, 0.24, 0.68, 0.82)",
+   1
+  ]
+ ],
+ "animationsRunning": 37
+}

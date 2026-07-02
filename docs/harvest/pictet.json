@@ -1,0 +1,233 @@
+{
+ "url": "https://www.pictet.com/us/en",
+ "title": "Pictet US | Leading European independent investment firm",
+ "measured": "2026-07-02T12:03:36.758Z",
+ "viewport": "1440x813",
+ "typeCensus": [
+  [
+   "a|13.2683px|400|Lardy Sans|lh:16.5854px|tr:normal|tt:none",
+   45
+  ],
+  [
+   "li|16px|400|Times|lh:16px|tr:normal|tt:none",
+   41
+  ],
+  [
+   "li|13.2683px|400|Lardy Sans|lh:16.5854px|tr:normal|tt:none",
+   39
+  ],
+  [
+   "a|13.2686px|400|Lardy Sans|lh:16.5857px|tr:normal|tt:none",
+   33
+  ],
+  [
+   "p|17.5372px|400|Lardy Serif|lh:24.5521px|tr:normal|tt:none",
+   14
+  ],
+  [
+   "h4|20.8043px|400|Lardy Serif|lh:24.9652px|tr:normal|tt:none",
+   7
+  ],
+  [
+   "span|16.5372px|400|Lardy Sans|lh:22.3252px|tr:normal|tt:none",
+   6
+  ],
+  [
+   "h2|28.708px|400|Lardy Serif|lh:34.4496px|tr:-0.28708px|tt:none",
+   4
+  ],
+  [
+   "p|16.5372px|400|Lardy Sans|lh:22.3252px|tr:normal|tt:none",
+   3
+  ],
+  [
+   "p|20.8043px|400|Lardy Serif|lh:29.1261px|tr:normal|tt:none",
+   2
+  ],
+  [
+   "h1|13.2686px|400|Lardy Sans|lh:16.5857px|tr:normal|tt:none",
+   1
+  ],
+  [
+   "h2|46.8773px|400|Lardy Serif|lh:56.2528px|tr:-0.52px|tt:none",
+   1
+  ],
+  [
+   "h2|23px|400|Lardy Serif|lh:32.2px|tr:normal|tt:none",
+   1
+  ],
+  [
+   "h3|28.708px|400|Lardy Serif|lh:34.4496px|tr:-0.28708px|tt:none",
+   1
+  ],
+  [
+   "h3|25.073px|400|Lardy Serif|lh:30.0876px|tr:normal|tt:none",
+   1
+  ],
+  [
+   "p|15.5372px|400|Lardy Sans|lh:20.9752px|tr:normal|tt:none",
+   1
+  ],
+  [
+   "a|13.2683px|400|Lardy Sans|lh:18px|tr:normal|tt:none",
+   1
+  ],
+  [
+   "span|13.2683px|400|Lardy Sans|lh:16.5854px|tr:normal|tt:lowercase",
+   1
+  ],
+  [
+   "span|13.2683px|400|Lardy Sans|lh:16.5854px|tr:normal|tt:none",
+   1
+  ]
+ ],
+ "buttons": [
+  [
+   "rgba(0, 0, 0, 0) | rgb(62, 62, 62) | 0px | 26.3416px 0px | 16px | 400 | none | normal |  | none",
+   {
+    "count": 2,
+    "example": "US Offshore",
+    "transition": "all"
+   }
+  ],
+  [
+   "rgb(255, 255, 255) | rgb(62, 62, 62) | 3px | 8px 16px | 13.2683px | 400 | none | normal | 1px solid rgb(207, 207, 207) | none",
+   {
+    "count": 1,
+    "example": "Skip to content",
+    "transition": "all"
+   }
+  ],
+  [
+   "rgba(0, 0, 0, 0) | rgb(62, 62, 62) | 3px | 12px 30px 11px | 13.2683px | 400 | none | normal | 1px solid rgb(207, 207, 207) | none",
+   {
+    "count": 1,
+    "example": "Client login",
+    "transition": "0.2s ease-in-out"
+   }
+  ],
+  [
+   "rgb(255, 255, 255) | rgb(62, 62, 62) | 3px | 15px 0px | 14px | 400 | none | normal | 0px none rgb(62, 62, 62) | none",
+   {
+    "count": 1,
+    "example": "Manage cookies preferences",
+    "transition": "all"
+   }
+  ],
+  [
+   "rgb(209, 209, 209) | rgb(62, 62, 62) | 3px | 15px 8px | 14px | 400 | none | normal | 1px solid rgb(209, 209, 209) | none",
+   {
+    "count": 1,
+    "example": "Reject",
+    "transition": "all"
+   }
+  ],
+  [
+   "rgb(128, 73, 64) | rgb(255, 255, 255) | 3px | 15px 8px | 14px | 400 | none | normal | 1px solid rgb(128, 73, 64) | none",
+   {
+    "count": 1,
+    "example": "Accept cookies and continue",
+    "transition": "all"
+   }
+  ]
+ ],
+ "cards": [
+  [
+   "bg:rgba(0, 0, 0, 0.05) | r:0px | bd:none | sh:none | pad:0px",
+   {
+    "count": 3,
+    "w": 425,
+    "h": 283,
+    "hasImg": true,
+    "sample": ""
+   }
+  ],
+  [
+   "bg:rgb(255, 255, 255) | r:2.5px | bd:none | sh:rgba(0, 0, 0, 0.2) 0px 0px 18px 0px | pad:0px",
+   {
+    "count": 1,
+    "w": 800,
+    "h": 308,
+    "hasImg": false,
+    "sample": "Learn more about our cookies policy"
+   }
+  ]
+ ],
+ "sectionFlow": [
+  {
+   "i": 0,
+   "h": 5541,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "block kids:1",
+   "media": {
+    "imgs": 13,
+    "videos": 2
+   },
+   "head": "Pictet US | Leading independent investment firm"
+  }
+ ],
+ "grounds": [
+  [
+   "rgb(255, 255, 255)",
+   3
+  ],
+  [
+   "oklch(1 0 none)",
+   2
+  ],
+  [
+   "oklch(0.3639 0 none)",
+   1
+  ],
+  [
+   "rgb(247, 247, 247)",
+   1
+  ]
+ ],
+ "accents": [
+  [
+   "oklch(0.3639 0 none)",
+   113
+  ],
+  [
+   "rgb(128, 73, 64)",
+   6
+  ],
+  [
+   "oklch(0.5727 0 none)",
+   1
+  ],
+  [
+   "rgb(121, 76, 66)",
+   1
+  ]
+ ],
+ "transitions": [
+  [
+   "color 0.3s cubic-bezier(0.22, 1, 0.36, 1)",
+   89
+  ],
+  [
+   "all",
+   87
+  ],
+  [
+   "color 0.15s cubic-bezier(0.22, 1, 0.36, 1)",
+   7
+  ],
+  [
+   "opacity 0.3s ease-out",
+   2
+  ],
+  [
+   "0.2s ease-in-out",
+   1
+  ],
+  [
+   "opacity 0.15s",
+   1
+  ]
+ ],
+ "animationsRunning": 4
+}

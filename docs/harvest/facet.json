@@ -1,0 +1,280 @@
+{
+ "url": "https://facet.com/",
+ "title": "Financial planning for every facet of your life | Facet",
+ "measured": "2026-07-02T12:04:24.125Z",
+ "viewport": "1440x813",
+ "typeCensus": [
+  [
+   "span|18px|500|euclid_square|lh:21px|tr:normal|tt:none",
+   12
+  ],
+  [
+   "h4|24px|500|euclid_square|lh:28px|tr:normal|tt:none",
+   10
+  ],
+  [
+   "p|12px|400|euclid_square|lh:18px|tr:normal|tt:none",
+   9
+  ],
+  [
+   "span|16px|400|euclid_square|lh:24px|tr:normal|tt:capitalize",
+   8
+  ],
+  [
+   "h5|24px|500|euclid_square|lh:20px|tr:normal|tt:none",
+   5
+  ],
+  [
+   "p|16px|400|euclid_square|lh:24px|tr:normal|tt:none",
+   5
+  ],
+  [
+   "p|16px|100|euclid_square|lh:24px|tr:normal|tt:none",
+   5
+  ],
+  [
+   "li|16px|400|euclid_square|lh:24px|tr:normal|tt:none",
+   5
+  ],
+  [
+   "p|18px|600|euclid_square|lh:27px|tr:normal|tt:none",
+   4
+  ],
+  [
+   "h2|48px|600|euclid_square|lh:52.8px|tr:-1.5%|tt:none",
+   3
+  ],
+  [
+   "h3|32px|500|euclid_square|lh:40px|tr:normal|tt:none",
+   3
+  ],
+  [
+   "a|16px|400|euclid_square|lh:24px|tr:normal|tt:capitalize",
+   3
+  ],
+  [
+   "span|48px|600|euclid_square|lh:58px|tr:normal|tt:none",
+   3
+  ],
+  [
+   "span|16px|400|euclid_square|lh:22px|tr:normal|tt:none",
+   3
+  ],
+  [
+   "h4|17.6px|400|euclid_square|lh:17.6px|tr:normal|tt:none",
+   2
+  ],
+  [
+   "h4|24px|500|euclid_square|lh:24px|tr:normal|tt:none",
+   2
+  ],
+  [
+   "h4|24px|500|euclid_square|lh:32px|tr:normal|tt:none",
+   2
+  ],
+  [
+   "h5|16px|500|euclid_square|lh:16px|tr:normal|tt:none",
+   2
+  ],
+  [
+   "p|14px|400|euclid_square|lh:14px|tr:normal|tt:none",
+   2
+  ],
+  [
+   "p|18px|400|euclid_square|lh:27px|tr:normal|tt:none",
+   2
+  ],
+  [
+   "p|16px|600|euclid_square|lh:16px|tr:normal|tt:none",
+   2
+  ],
+  [
+   "a|17.6px|700|euclid_square|lh:17.6px|tr:normal|tt:none",
+   2
+  ],
+  [
+   "a|14px|400|euclid_square|lh:14px|tr:normal|tt:none",
+   2
+  ],
+  [
+   "a|18px|500|euclid_square|lh:21px|tr:normal|tt:none",
+   2
+  ]
+ ],
+ "buttons": [
+  [
+   "rgb(255, 255, 255) | rgb(0, 62, 84) | 50% | 0px | 18px | 500 | none | normal | 0px none rgb(0, 62, 84) | none",
+   {
+    "count": 10,
+    "example": "Learn more",
+    "transition": "0.4s"
+   }
+  ],
+  [
+   "rgb(255, 145, 0) | rgb(0, 0, 0) | 64px | 16px 40px | 18px | 500 | none | normal | 0px none rgb(0, 0, 0) | none",
+   {
+    "count": 4,
+    "example": "See the difference Facet can m",
+    "transition": "0.3s"
+   }
+  ],
+  [
+   "rgb(0, 62, 84) | rgb(246, 245, 240) | 99px | 14px 24px | 18px | 500 | none | normal | 0px none rgb(246, 245, 240) | none",
+   {
+    "count": 2,
+    "example": "Get started",
+    "transition": "0.3s"
+   }
+  ],
+  [
+   "rgb(0, 62, 84) | rgb(246, 245, 240) | 64px | 16px 40px | 18px | 500 | none | normal | 0px none rgb(246, 245, 240) | none",
+   {
+    "count": 2,
+    "example": "How it works",
+    "transition": "0.3s"
+   }
+  ],
+  [
+   "rgb(255, 145, 0) | rgb(0, 0, 0) | 64px | 16px 40px | 18px | 500 | none | normal | 2px solid rgb(255, 255, 255) | none",
+   {
+    "count": 1,
+    "example": "Get started",
+    "transition": "0.3s"
+   }
+  ],
+  [
+   "rgb(0, 62, 84) | rgb(246, 245, 240) | 64px | 16px 40px | 18px | 500 | none | normal | 2px solid rgb(255, 255, 255) | none",
+   {
+    "count": 1,
+    "example": "Why Facet",
+    "transition": "0.3s"
+   }
+  ],
+  [
+   "rgb(0, 62, 84) | rgb(246, 245, 240) | 64px | 16px 80px | 18px | 500 | none | normal | 0px none rgb(246, 245, 240) | none",
+   {
+    "count": 1,
+    "example": "Why Facet",
+    "transition": "0.3s"
+   }
+  ]
+ ],
+ "cards": [
+  [
+   "bg:rgb(0, 62, 84) | r:16px | bd:none | sh:none | pad:32px 24px 24px",
+   {
+    "count": 10,
+    "w": 288,
+    "h": 405,
+    "hasImg": false,
+    "sample": "Tax filing*"
+   }
+  ],
+  [
+   "bg:rgb(0, 62, 84) | r:16px | bd:none | sh:none | pad:16px 24px 24px",
+   {
+    "count": 5,
+    "w": 410,
+    "h": 279,
+    "hasImg": false,
+    "sample": ""
+   }
+  ],
+  [
+   "bg:rgba(0, 0, 0, 0) | r:16px | bd:1px solid rgb(176, 211, 223) | sh:none | pad:0px",
+   {
+    "count": 4,
+    "w": 676,
+    "h": 388,
+    "hasImg": true,
+    "sample": "Colby"
+   }
+  ],
+  [
+   "bg:rgb(254, 254, 254) | r:0px 0px 16px 16px | bd:none | sh:none | pad:0px 46px 36px",
+   {
+    "count": 1,
+    "w": 630,
+    "h": 234,
+    "hasImg": false,
+    "sample": "Guidance from a CFP® professional at a s"
+   }
+  ]
+ ],
+ "sectionFlow": [],
+ "grounds": [
+  [
+   "rgb(0, 62, 84)",
+   12
+  ],
+  [
+   "rgb(254, 254, 254)",
+   4
+  ],
+  [
+   "rgb(0, 0, 0)",
+   4
+  ],
+  [
+   "rgb(246, 245, 240)",
+   3
+  ],
+  [
+   "rgb(0, 112, 152)",
+   1
+  ]
+ ],
+ "accents": [
+  [
+   "rgb(0, 62, 84)",
+   788
+  ],
+  [
+   "rgb(30, 115, 190)",
+   32
+  ],
+  [
+   "rgb(0, 112, 153)",
+   10
+  ],
+  [
+   "rgb(0, 112, 152)",
+   10
+  ],
+  [
+   "rgb(255, 145, 0)",
+   5
+  ],
+  [
+   "rgb(255, 166, 59)",
+   2
+  ]
+ ],
+ "transitions": [
+  [
+   "linear",
+   74
+  ],
+  [
+   "all",
+   43
+  ],
+  [
+   "0.4s",
+   26
+  ],
+  [
+   "background 0.3s, border 0.3s, box-shadow 0.3s, transform 0.4s",
+   25
+  ],
+  [
+   "0.3s",
+   16
+  ],
+  [
+   "opacity 0.4s ease-in-out",
+   9
+  ]
+ ],
+ "animationsRunning": 19
+}

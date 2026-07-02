@@ -1,0 +1,437 @@
+{
+ "url": "https://pitch.com/",
+ "title": "The AI presentation workspace",
+ "measured": "2026-07-02T12:03:56.397Z",
+ "viewport": "1440x813",
+ "typeCensus": [
+  [
+   "li|12px|400|sans-serif|lh:normal|tr:normal|tt:none",
+   67
+  ],
+  [
+   "a|16px|400|Eina 03 Regular|lh:25.6px|tr:normal|tt:none",
+   38
+  ],
+  [
+   "span|180px|700|Mark Pro Bold|lh:144px|tr:-7.2px|tt:none",
+   24
+  ],
+  [
+   "span|48px|700|Mark Pro Bold|lh:57.6px|tr:normal|tt:none",
+   21
+  ],
+  [
+   "p|32px|700|Mark Pro Bold|lh:38.4px|tr:-1.28px|tt:none",
+   18
+  ],
+  [
+   "p|16px|400|Eina 03 Regular|lh:25.6px|tr:normal|tt:none",
+   15
+  ],
+  [
+   "p|20px|700|Mark Pro Bold|lh:24px|tr:-0.4px|tt:none",
+   15
+  ],
+  [
+   "p|14px|400|Eina 03 Regular|lh:22.4px|tr:normal|tt:none",
+   15
+  ],
+  [
+   "a|12px|400|sans-serif|lh:normal|tr:normal|tt:none",
+   14
+  ],
+  [
+   "h3|64px|400|Mark Pro Regular|lh:57.6px|tr:-2.56px|tt:none",
+   8
+  ],
+  [
+   "h3|28px|700|Mark Pro Bold|lh:33.6px|tr:-0.56px|tt:none",
+   7
+  ],
+  [
+   "h2|48px|700|Mark Pro Bold|lh:57.6px|tr:-1.92px|tt:none",
+   6
+  ],
+  [
+   "span|60px|700|Mark Pro Bold|lh:60px|tr:normal|tt:none",
+   6
+  ],
+  [
+   "h3|32px|700|Mark Pro Bold|lh:38.4px|tr:-1.28px|tt:none",
+   5
+  ],
+  [
+   "p|16px|400|Eina 03 Regular|lh:25.6px|tr:-0.32px|tt:none",
+   5
+  ],
+  [
+   "a|16px|400|Eina 03 Regular|lh:25.6px|tr:-0.32px|tt:none",
+   4
+  ],
+  [
+   "p|16px|700|Eina 03 Bold|lh:19.2px|tr:-0.32px|tt:none",
+   3
+  ],
+  [
+   "p|20px|400|Space Mono|lh:32px|tr:-0.4px|tt:uppercase",
+   3
+  ],
+  [
+   "p|20px|400|Eina 03 Regular|lh:32px|tr:-0.4px|tt:none",
+   3
+  ],
+  [
+   "p|28px|700|Mark Pro Bold|lh:33.6px|tr:-0.56px|tt:none",
+   3
+  ],
+  [
+   "span|14px|400|Eina 03 Regular|lh:19.6px|tr:normal|tt:none",
+   2
+  ],
+  [
+   "h1|180px|700|Mark Pro Bold|lh:144px|tr:-7.2px|tt:none",
+   1
+  ],
+  [
+   "h2|20px|400|Eina 03 Regular|lh:32px|tr:-0.4px|tt:none",
+   1
+  ],
+  [
+   "h2|20px|400|Space Mono|lh:32px|tr:-0.4px|tt:uppercase",
+   1
+  ]
+ ],
+ "buttons": [
+  [
+   "rgb(255, 255, 255) | rgb(0, 0, 238) | 30px | 12px | 12px | 400 | none | normal | 0px none rgb(0, 0, 238) | none",
+   {
+    "count": 3,
+    "example": "Log in",
+    "transition": "all"
+   }
+  ],
+  [
+   "rgb(196, 238, 135) | rgb(0, 0, 238) | 4px | 10px 12px | 12px | 400 | none | normal | 0px none rgb(0, 0, 238) | none",
+   {
+    "count": 3,
+    "example": "Sign up",
+    "transition": "all"
+   }
+  ],
+  [
+   "rgb(83, 24, 235) | rgb(255, 255, 255) | 4px | 8px 12px 8px 16px | 14px | 400 | none | normal | 0px none rgb(255, 255, 255) | none",
+   {
+    "count": 1,
+    "example": "Generate",
+    "transition": "opacity 0.15s"
+   }
+  ],
+  [
+   "rgb(40, 15, 98) | rgb(0, 0, 238) | 30px | 16px | 12px | 400 | none | normal | 0px none rgb(0, 0, 238) | none",
+   {
+    "count": 1,
+    "example": "Start creating",
+    "transition": "all"
+   }
+  ],
+  [
+   "rgb(196, 238, 135) | rgb(0, 0, 238) | 30px | 16px | 12px | 400 | none | normal | 0px none rgb(0, 0, 238) | none",
+   {
+    "count": 1,
+    "example": "Browse templates",
+    "transition": "all"
+   }
+  ]
+ ],
+ "cards": [
+  [
+   "bg:rgb(83, 24, 235) | r:20px | bd:none | sh:none | pad:24px",
+   {
+    "count": 3,
+    "w": 312,
+    "h": 410,
+    "hasImg": true,
+    "sample": ""
+   }
+  ],
+  [
+   "bg:rgb(196, 238, 135) | r:20px | bd:none | sh:none | pad:24px",
+   {
+    "count": 2,
+    "w": 312,
+    "h": 410,
+    "hasImg": true,
+    "sample": ""
+   }
+  ],
+  [
+   "bg:rgb(255, 255, 255) | r:24px | bd:none | sh:none | pad:32px",
+   {
+    "count": 2,
+    "w": 707,
+    "h": 380,
+    "hasImg": true,
+    "sample": "AI Agent"
+   }
+  ],
+  [
+   "bg:rgb(235, 227, 254) | r:24px | bd:none | sh:none | pad:32px",
+   {
+    "count": 2,
+    "w": 493,
+    "h": 380,
+    "hasImg": true,
+    "sample": "Slide editor"
+   }
+  ],
+  [
+   "bg:rgb(198, 165, 255) | r:20px | bd:none | sh:none | pad:24px",
+   {
+    "count": 1,
+    "w": 312,
+    "h": 410,
+    "hasImg": true,
+    "sample": ""
+   }
+  ],
+  [
+   "bg:rgb(40, 15, 98) | r:24px | bd:none | sh:none | pad:0px",
+   {
+    "count": 1,
+    "w": 480,
+    "h": 380,
+    "hasImg": true,
+    "sample": "Viewer analytics"
+   }
+  ],
+  [
+   "bg:rgb(255, 255, 255) | r:24px | bd:none | sh:none | pad:0px",
+   {
+    "count": 1,
+    "w": 720,
+    "h": 380,
+    "hasImg": true,
+    "sample": "Pitch rooms"
+   }
+  ],
+  [
+   "bg:rgb(40, 15, 98) | r:24px | bd:none | sh:none | pad:32px",
+   {
+    "count": 1,
+    "w": 392,
+    "h": 380,
+    "hasImg": true,
+    "sample": "Unrivaled visuals"
+   }
+  ]
+ ],
+ "sectionFlow": [
+  {
+   "i": 0,
+   "h": 1228,
+   "bg": "rgb(40, 15, 98)",
+   "pad": "0px/0px",
+   "skeleton": "flex(column) kids:3",
+   "media": {
+    "imgs": 22,
+    "videos": 0
+   },
+   "head": "Create slides that win."
+  },
+  {
+   "i": 1,
+   "h": 3251,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "80px/0px",
+   "skeleton": "flex(column) kids:1",
+   "media": {
+    "imgs": 8,
+    "videos": 0
+   },
+   "head": "Pitch is your presentation workspace"
+  },
+  {
+   "i": 2,
+   "h": 671,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "flex(row) kids:1",
+   "media": {
+    "imgs": 0,
+    "videos": 0
+   },
+   "head": "THE PAYOFF"
+  },
+  {
+   "i": 3,
+   "h": 1319,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "flex(column) kids:1",
+   "media": {
+    "imgs": 4,
+    "videos": 0
+   },
+   "head": "From first draft to closed deal, and beyond"
+  },
+  {
+   "i": 4,
+   "h": 1092,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "120px/120px",
+   "skeleton": "flex(column) kids:1",
+   "media": {
+    "imgs": 32,
+    "videos": 0
+   },
+   "head": null
+  },
+  {
+   "i": 5,
+   "h": 1826,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "block kids:2",
+   "media": {
+    "imgs": 8,
+    "videos": 0
+   },
+   "head": "A complete presentation toolkit"
+  },
+  {
+   "i": 6,
+   "h": 727,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "flex(column) kids:1",
+   "media": {
+    "imgs": 11,
+    "videos": 0
+   },
+   "head": "Weave Pitch into your existing workflow"
+  },
+  {
+   "i": 7,
+   "h": 325,
+   "bg": "rgb(255, 255, 255)",
+   "pad": "0px/0px",
+   "skeleton": "flex(row) kids:1",
+   "media": {
+    "imgs": 0,
+    "videos": 0
+   },
+   "head": null
+  },
+  {
+   "i": 8,
+   "h": 1057,
+   "bg": "rgb(40, 15, 98)",
+   "pad": "0px/0px",
+   "skeleton": "block kids:2",
+   "media": {
+    "imgs": 5,
+    "videos": 0
+   },
+   "head": "Pitch is for people who mean business"
+  },
+  {
+   "i": 9,
+   "h": 1154,
+   "bg": "rgb(40, 15, 98)",
+   "pad": "0px/0px",
+   "skeleton": "flex(row) kids:1",
+   "media": {
+    "imgs": 10,
+    "videos": 0
+   },
+   "head": "Templates"
+  },
+  {
+   "i": 10,
+   "h": 879,
+   "bg": "rgb(40, 15, 98)",
+   "pad": "0px/0px",
+   "skeleton": "flex(column) kids:1",
+   "media": {
+    "imgs": 0,
+    "videos": 0
+   },
+   "head": "Not just another slide tool"
+  }
+ ],
+ "grounds": [
+  [
+   "rgb(255, 255, 255)",
+   11
+  ],
+  [
+   "rgb(40, 15, 98)",
+   11
+  ],
+  [
+   "rgb(246, 246, 246)",
+   6
+  ],
+  [
+   "rgb(83, 24, 235)",
+   5
+  ],
+  [
+   "rgba(255, 255, 255, 0.2)",
+   4
+  ],
+  [
+   "rgb(196, 238, 135)",
+   2
+  ],
+  [
+   "rgb(235, 227, 254)",
+   2
+  ],
+  [
+   "rgba(255, 255, 255, 0.16)",
+   1
+  ]
+ ],
+ "accents": [
+  [
+   "rgb(0, 0, 238)",
+   103
+  ],
+  [
+   "rgb(83, 24, 235)",
+   88
+  ],
+  [
+   "rgb(40, 15, 98)",
+   15
+  ],
+  [
+   "rgb(198, 165, 255)",
+   14
+  ],
+  [
+   "rgb(196, 238, 135)",
+   6
+  ]
+ ],
+ "transitions": [
+  [
+   "all",
+   95
+  ],
+  [
+   "opacity 0.15s",
+   2
+  ],
+  [
+   "background-color 0.15s",
+   1
+  ],
+  [
+   "color 0.12s",
+   1
+  ]
+ ],
+ "animationsRunning": 1
+}

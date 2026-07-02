@@ -1,0 +1,292 @@
+{
+ "url": "https://www.stashwealth.com/",
+ "title": "Stash Wealth | Financial Advisors for 30-Somethings",
+ "measured": "2026-07-02T12:03:27.552Z",
+ "viewport": "1440x813",
+ "typeCensus": [
+  [
+   "p|16px|400|Poppins|lh:27.2px|tr:normal|tt:none",
+   23
+  ],
+  [
+   "a|16px|400|Poppins|lh:27.2px|tr:normal|tt:none",
+   15
+  ],
+  [
+   "p|14.272px|400|Poppins|lh:24.2624px|tr:normal|tt:none",
+   10
+  ],
+  [
+   "li|16px|400|Poppins|lh:27.2px|tr:normal|tt:none",
+   10
+  ],
+  [
+   "h2|40.192px|400|Oswald|lh:45.5295px|tr:-0.80384px|tt:none",
+   7
+  ],
+  [
+   "a|14.272px|600|Poppins|lh:normal|tr:0.7136px|tt:uppercase",
+   5
+  ],
+  [
+   "a|16px|500|Poppins|lh:27.2px|tr:normal|tt:none",
+   4
+  ],
+  [
+   "a|48.78px|500|Poppins|lh:48.78px|tr:normal|tt:none",
+   4
+  ],
+  [
+   "span|40.192px|400|Oswald|lh:45.5295px|tr:-0.80384px|tt:none",
+   3
+  ],
+  [
+   "a|12.544px|600|Poppins|lh:normal|tr:1.00352px|tt:uppercase",
+   2
+  ],
+  [
+   "h1|67.84px|400|Oswald|lh:71.639px|tr:-1.3568px|tt:none",
+   1
+  ],
+  [
+   "h3|33.28px|400|Oswald|lh:38.3386px|tr:-0.6656px|tt:none",
+   1
+  ],
+  [
+   "h4|18.592px|400|Oswald|lh:22.1765px|tr:-0.37184px|tt:none",
+   1
+  ],
+  [
+   "p|25.3px|400|Poppins|lh:25.3px|tr:normal|tt:none",
+   1
+  ],
+  [
+   "p|12px|400|Poppins|lh:20.4px|tr:normal|tt:none",
+   1
+  ],
+  [
+   "a|19.2px|600|Poppins|lh:normal|tr:1.536px|tt:uppercase",
+   1
+  ],
+  [
+   "span|25.3px|400|Poppins|lh:27.2px|tr:normal|tt:none",
+   1
+  ]
+ ],
+ "buttons": [
+  [
+   "rgb(224, 215, 206) | rgb(41, 41, 41) | 0px | 0px 28.544px | 14.272px | 600 | uppercase | 0.7136px | 0px solid rgb(41, 41, 41) | none",
+   {
+    "count": 3,
+    "example": "HOW IT WORKS",
+    "transition": "opacity 0.1s linear"
+   }
+  ],
+  [
+   "rgba(224, 215, 206, 0.99) | rgb(0, 0, 0) | 0px | 18.816px 25.088px | 12.544px | 600 | uppercase | 1.00352px | 0px solid rgba(224, 215, 206, 0.99 | none",
+   {
+    "count": 1,
+    "example": "Skip to Content",
+    "transition": "opacity 0.1s linear"
+   }
+  ],
+  [
+   "rgba(224, 215, 206, 0.99) | rgb(0, 0, 0) | 0px | 18.816px 25.088px | 12.544px | 600 | uppercase | 1.00352px | 0px solid rgb(0, 0, 0) | none",
+   {
+    "count": 1,
+    "example": "SCHEDULE A CALL",
+    "transition": "opacity 0.1s linear"
+   }
+  ],
+  [
+   "rgb(224, 215, 206) | rgb(0, 0, 0) | 0px | 28.8px 38.4px | 19.2px | 600 | uppercase | 1.536px | 0px solid rgb(224, 215, 206) | none",
+   {
+    "count": 1,
+    "example": "SCHEDULE A CALL",
+    "transition": "opacity 0.1s linear"
+   }
+  ],
+  [
+   "rgb(224, 215, 206) | rgb(41, 41, 41) | 0px | 21.408px 28.544px | 14.272px | 600 | uppercase | 0.7136px | 0px solid rgb(41, 41, 41) | none",
+   {
+    "count": 1,
+    "example": "LEARN MORE",
+    "transition": "opacity 0.1s linear"
+   }
+  ],
+  [
+   "rgba(224, 215, 206, 0.99) | rgb(0, 0, 0) | 0px | 0px 28.544px | 14.272px | 600 | uppercase | 0.7136px | 0px solid rgb(0, 0, 0) | none",
+   {
+    "count": 1,
+    "example": "Instant Access",
+    "transition": "opacity 0.1s linear"
+   }
+  ]
+ ],
+ "cards": [],
+ "sectionFlow": [
+  {
+   "i": 0,
+   "h": 1016,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "130.172px/0px",
+   "skeleton": "block kids:2",
+   "media": {
+    "imgs": 1,
+    "videos": 0
+   },
+   "head": "Get Your Financial Sh*t Together"
+  },
+  {
+   "i": 1,
+   "h": 445,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "block kids:2",
+   "media": {
+    "imgs": 0,
+    "videos": 0
+   },
+   "head": "Home Of The HENRYs"
+  },
+  {
+   "i": 2,
+   "h": 915,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "block kids:2",
+   "media": {
+    "imgs": 1,
+    "videos": 0
+   },
+   "head": "You’re thriving in your career and living life on yo"
+  },
+  {
+   "i": 3,
+   "h": 308,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "block kids:3",
+   "media": {
+    "imgs": 10,
+    "videos": 0
+   },
+   "head": null
+  },
+  {
+   "i": 4,
+   "h": 911,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "block kids:2",
+   "media": {
+    "imgs": 1,
+    "videos": 0
+   },
+   "head": "We specialize in the challenges, and goals of people"
+  },
+  {
+   "i": 5,
+   "h": 791,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "block kids:2",
+   "media": {
+    "imgs": 1,
+    "videos": 0
+   },
+   "head": "Yes, really."
+  },
+  {
+   "i": 6,
+   "h": 338,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "block kids:2",
+   "media": {
+    "imgs": 0,
+    "videos": 0
+   },
+   "head": "In your 30s making six-figures?"
+  },
+  {
+   "i": 7,
+   "h": 855,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "block kids:2",
+   "media": {
+    "imgs": 1,
+    "videos": 0
+   },
+   "head": "It all begins with The Stash Plan:"
+  },
+  {
+   "i": 8,
+   "h": 944,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "block kids:2",
+   "media": {
+    "imgs": 1,
+    "videos": 0
+   },
+   "head": "The Only Money Move To Make In Your 30s"
+  }
+ ],
+ "grounds": [
+  [
+   "rgb(0, 0, 0)",
+   10
+  ],
+  [
+   "rgb(255, 255, 255)",
+   8
+  ],
+  [
+   "rgb(224, 215, 206)",
+   5
+  ],
+  [
+   "rgb(245, 245, 245)",
+   2
+  ],
+  [
+   "rgba(0, 0, 0, 0.5)",
+   2
+  ],
+  [
+   "rgba(224, 215, 206, 0.12)",
+   1
+  ],
+  [
+   "rgba(255, 255, 255, 0.18)",
+   1
+  ],
+  [
+   "rgba(41, 41, 41, 0.03)",
+   1
+  ]
+ ],
+ "accents": [
+  [
+   "rgb(210, 76, 55)",
+   1
+  ]
+ ],
+ "transitions": [
+  [
+   "all",
+   31
+  ],
+  [
+   "opacity 0.1s linear",
+   9
+  ],
+  [
+   "opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1)",
+   4
+  ]
+ ],
+ "animationsRunning": 1
+}

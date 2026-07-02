@@ -1,0 +1,146 @@
+{
+ "url": "https://work.co/",
+ "title": "Work & Co | Digital Product Agency",
+ "measured": "2026-07-02T12:04:14.559Z",
+ "viewport": "1440x813",
+ "typeCensus": [
+  [
+   "a|16px|400|adobe-garamond-pro|lh:18.4px|tr:normal|tt:none",
+   23
+  ],
+  [
+   "p|16px|400|HelveticaNowDisplay|lh:28px|tr:-0.25px|tt:none",
+   20
+  ],
+  [
+   "span|16px|400|adobe-garamond-pro|lh:18.4px|tr:normal|tt:none",
+   19
+  ],
+  [
+   "a|36px|500|HelveticaNowDisplay|lh:40px|tr:-0.72px|tt:none",
+   7
+  ],
+  [
+   "p|20px|400|adobe-garamond-pro|lh:30px|tr:-0.2px|tt:none",
+   6
+  ],
+  [
+   "a|20px|400|adobe-garamond-pro|lh:30px|tr:-0.2px|tt:none",
+   6
+  ],
+  [
+   "span|20px|400|adobe-garamond-pro|lh:30px|tr:-0.2px|tt:none",
+   6
+  ],
+  [
+   "h3|21px|500|HelveticaNowDisplay|lh:28px|tr:-0.21px|tt:none",
+   5
+  ],
+  [
+   "h2|21px|500|HelveticaNowDisplay|lh:28px|tr:-0.21px|tt:none",
+   4
+  ],
+  [
+   "a|13.008px|700|HelveticaNowDisplay|lh:19.512px|tr:normal|tt:none",
+   2
+  ],
+  [
+   "h1|56px|500|HelveticaNowDisplay|lh:56px|tr:-1.12px|tt:none",
+   1
+  ],
+  [
+   "span|21px|500|HelveticaNowDisplay|lh:28px|tr:-0.5px|tt:none",
+   1
+  ],
+  [
+   "span|16px|400|HelveticaNowDisplay|lh:28px|tr:-0.25px|tt:none",
+   1
+  ]
+ ],
+ "buttons": [
+  [
+   "rgb(0, 0, 0) | rgb(255, 255, 255) | 50px | 10px 25px | 18px | 500 | none | -0.18px | 0px none rgb(255, 255, 255) | none",
+   {
+    "count": 1,
+    "example": "Subscribe",
+    "transition": "opacity 0.5s ease-in-out"
+   }
+  ],
+  [
+   "rgb(242, 242, 242) | rgb(0, 77, 255) | 2px | 12px 0px | 13.008px | 600 | none | 0.13008px | 0px none rgb(0, 77, 255) | none",
+   {
+    "count": 1,
+    "example": "Cookies Settings",
+    "transition": "all"
+   }
+  ]
+ ],
+ "cards": [
+  [
+   "bg:rgb(221, 221, 221) | r:0px | bd:none | sh:none | pad:191.234px 0px 0px",
+   {
+    "count": 4,
+    "w": 340,
+    "h": 191,
+    "hasImg": true,
+    "sample": ""
+   }
+  ]
+ ],
+ "sectionFlow": [],
+ "grounds": [
+  [
+   "rgb(255, 255, 255)",
+   5
+  ],
+  [
+   "rgb(221, 221, 221)",
+   4
+  ],
+  [
+   "rgb(242, 242, 242)",
+   1
+  ]
+ ],
+ "accents": [
+  [
+   "rgb(0, 0, 238)",
+   31
+  ],
+  [
+   "rgb(219, 34, 35)",
+   11
+  ],
+  [
+   "rgb(0, 77, 255)",
+   3
+  ]
+ ],
+ "transitions": [
+  [
+   "all",
+   25
+  ],
+  [
+   "none",
+   23
+  ],
+  [
+   "color 0.25s, text-decoration-color 0.25s, border-bottom-color 0.25s",
+   7
+  ],
+  [
+   "color 0.25s",
+   7
+  ],
+  [
+   "background-color 0.3s, color 0.3s",
+   1
+  ],
+  [
+   "opacity 0.25s",
+   1
+  ]
+ ],
+ "animationsRunning": 0
+}

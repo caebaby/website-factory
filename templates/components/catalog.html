@@ -26,6 +26,20 @@ html.theme-b{
   --accent:#b8894a;--accent-soft:#d8b483;--accent-ink:#6f4e22;--accent-deep:#684b1f;--accent-rgb:184,137,74;
   --border:rgba(22,48,42,.14);
 }
+/* cool slate + electric blue (the AGL family) — proof the system isn't warm-locked */
+html.theme-c{
+  --ground:#F4F6FB;--ground-alt:#E7EBF4;--dark:#0C1A35;--dark-2:#16294e;
+  --ink:#0F172A;--ink-body:#475569;--on-dark:#EFF3FB;--on-dark-mute:rgba(239,243,251,.78);
+  --accent:#2563EB;--accent-soft:#93b4f8;--accent-ink:#1d4ed8;--accent-deep:#173a9e;--accent-rgb:37,99,235;
+  --border:rgba(15,23,42,.14);
+}
+/* warm paper + committed vermillion (the Field register) */
+html.theme-d{
+  --ground:#FAF7F2;--ground-alt:#F1EBE1;--dark:#1C1917;--dark-2:#2b2724;
+  --ink:#1C1917;--ink-body:#57534E;--on-dark:#FAF7F2;--on-dark-mute:rgba(250,247,242,.78);
+  --accent:#DC3C20;--accent-soft:#f0937f;--accent-ink:#b02b12;--accent-deep:#7e2210;--accent-rgb:220,60,32;
+  --border:rgba(28,25,23,.14);
+}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:var(--sans);background:var(--ground);color:var(--ink-body);line-height:1.5;-webkit-font-smoothing:antialiased;}
 img{display:block;max-width:100%;}
@@ -84,9 +98,12 @@ img{display:block;max-width:100%;}
 /* ─── C-06 photo hero ─── */
 .h-photo{position:relative;min-height:420px;display:flex;align-items:center;overflow:hidden;color:var(--on-dark);}
 .h-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
-.h-photo .scrim{position:absolute;inset:0;background:linear-gradient(96deg,rgba(0,0,0,.62) 0%,rgba(0,0,0,.4) 30%,rgba(0,0,0,.12) 58%,transparent 80%);}
-html:not(.theme-b) .h-photo .scrim{background:linear-gradient(96deg,rgba(20,40,64,.88) 0%,rgba(20,40,64,.64) 30%,rgba(20,40,64,.26) 58%,rgba(20,40,64,0) 80%);}
-html.theme-b .h-photo .scrim{background:linear-gradient(96deg,rgba(22,48,42,.88) 0%,rgba(22,48,42,.64) 30%,rgba(22,48,42,.26) 58%,rgba(22,48,42,0) 80%);}
+/* token-driven scrim — retints with any theme */
+.h-photo .scrim{position:absolute;inset:0;background:linear-gradient(96deg,
+  color-mix(in srgb,var(--dark) 88%,transparent) 0%,
+  color-mix(in srgb,var(--dark) 64%,transparent) 30%,
+  color-mix(in srgb,var(--dark) 26%,transparent) 58%,
+  transparent 80%);}
 .h-photo .inner{position:relative;z-index:1;padding:40px clamp(24px,4vw,48px);max-width:640px;}
 .h-photo h3{font:300 clamp(28px,3.8vw,52px)/1.04 var(--sans);letter-spacing:-.02em;color:#fff;text-shadow:0 2px 26px rgba(0,0,0,.34);}
 .h-photo h3 em{font-family:var(--serif);font-style:italic;font-weight:400;font-size:1.08em;position:relative;display:inline-block;}
@@ -286,8 +303,10 @@ html.theme-b .h-photo .scrim{background:linear-gradient(96deg,rgba(22,48,42,.88)
 <body>
 <div class="toggle" role="group" aria-label="Palette">
   RETINT DEMO:
-  <button id="ta" class="on">Anchor navy·gold</button>
-  <button id="tb">Kindred forest·brass</button>
+  <button data-theme="" class="on">Anchor navy·gold</button>
+  <button data-theme="theme-b">Kindred forest·brass</button>
+  <button data-theme="theme-c">AGL slate·blue</button>
+  <button data-theme="theme-d">Field ink·vermillion</button>
 </div>
 
 <div class="page">
@@ -540,9 +559,12 @@ html.theme-b .h-photo .scrim{background:linear-gradient(96deg,rgba(22,48,42,.88)
 <script>
 document.documentElement.classList.add('js');document.documentElement.classList.remove('no-js');
 // palette toggle
-var ta=document.getElementById('ta'),tb=document.getElementById('tb');
-ta.onclick=function(){document.documentElement.classList.remove('theme-b');ta.classList.add('on');tb.classList.remove('on');};
-tb.onclick=function(){document.documentElement.classList.add('theme-b');tb.classList.add('on');ta.classList.remove('on');};
+var tbtns=document.querySelectorAll('.toggle button');
+tbtns.forEach(function(b){b.onclick=function(){
+  document.documentElement.classList.remove('theme-b','theme-c','theme-d');
+  if(b.dataset.theme)document.documentElement.classList.add(b.dataset.theme);
+  tbtns.forEach(function(x){x.classList.remove('on');});b.classList.add('on');
+};});
 // C-07 rotator
 (function(){var slot=document.getElementById('rot');if(!slot)return;var ws=slot.querySelectorAll('span'),i=0;
   if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;

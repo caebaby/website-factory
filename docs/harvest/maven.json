@@ -1,0 +1,375 @@
+{
+ "url": "https://www.mavenclinic.com/",
+ "title": "Maven Clinic - The next generation of care for women and families",
+ "measured": "2026-07-02T12:01:41.790Z",
+ "viewport": "1440x813",
+ "typeCensus": [
+  [
+   "li|15.8848px|400|Helveticanowdisplay|lh:23.8272px|tr:normal|tt:none",
+   48
+  ],
+  [
+   "a|15.8848px|400|Helveticanowdisplay|lh:23.8272px|tr:-0.317696px|tt:none",
+   27
+  ],
+  [
+   "h3|23.6544px|300|Helveticanowdisplay|lh:28.3853px|tr:normal|tt:none",
+   18
+  ],
+  [
+   "a|17.7696px|500|Helveticanowdisplay|lh:26.6544px|tr:normal|tt:none",
+   13
+  ],
+  [
+   "h2|59.944px|300|Helveticanowdisplay|lh:59.944px|tr:normal|tt:none",
+   8
+  ],
+  [
+   "p|15.8848px|400|Helveticanowdisplay|lh:23.8272px|tr:normal|tt:none",
+   8
+  ],
+  [
+   "a|15.8848px|400|Helveticanowdisplay|lh:23.8272px|tr:normal|tt:none",
+   6
+  ],
+  [
+   "h3|15.8848px|300|Helveticanowdisplay|lh:23.8272px|tr:normal|tt:none",
+   4
+  ],
+  [
+   "p|54.856px|300|Helveticanowdisplay|lh:54.856px|tr:normal|tt:none",
+   4
+  ],
+  [
+   "p|17.8848px|400|Helveticanowdisplay|lh:26.8272px|tr:-0.357696px|tt:none",
+   3
+  ],
+  [
+   "a|15.8848px|600|Helveticanowdisplay|lh:23.8272px|tr:normal|tt:none",
+   3
+  ],
+  [
+   "h2|54.856px|300|Helveticanowdisplay|lh:54.856px|tr:normal|tt:none",
+   2
+  ],
+  [
+   "p|23.6544px|300|Helveticanowdisplay|lh:35.4816px|tr:-0.473088px|tt:none",
+   2
+  ],
+  [
+   "p|17.8848px|400|Helveticanowdisplay|lh:23.2502px|tr:-0.357696px|tt:none",
+   2
+  ],
+  [
+   "a|15px|400|Helveticanowdisplay|lh:36px|tr:normal|tt:none",
+   2
+  ],
+  [
+   "h1|73.7136px|300|Helveticanowdisplay|lh:73.7136px|tr:normal|tt:none",
+   1
+  ],
+  [
+   "h3|20px|700|Arial|lh:30px|tr:-0.2px|tt:none",
+   1
+  ],
+  [
+   "p|14px|400|Arial|lh:21px|tr:-0.13px|tt:none",
+   1
+  ],
+  [
+   "p|23.6544px|400|Helveticanowdisplay|lh:35.4816px|tr:-0.473088px|tt:none",
+   1
+  ],
+  [
+   "p|23.6544px|400|Helveticanowdisplay|lh:30.7507px|tr:-0.473088px|tt:none",
+   1
+  ],
+  [
+   "a|14px|400|Arial|lh:21px|tr:-0.13px|tt:none",
+   1
+  ],
+  [
+   "a|36px|400|Helveticanowdisplay|lh:54px|tr:normal|tt:none",
+   1
+  ],
+  [
+   "span|14px|400|Arial|lh:21px|tr:-0.13px|tt:none",
+   1
+  ],
+  [
+   "span|13.8848px|400|Helveticanowdisplay|lh:20.8272px|tr:-0.277696px|tt:none",
+   1
+  ]
+ ],
+ "buttons": [
+  [
+   "rgb(2, 132, 109) | rgb(255, 255, 255) | 5px | 0px 16px | 14px | 600 | none | normal | 0px none rgb(255, 255, 255) | rgba(0, 0, 0, 0) 0px 0px 0px 0",
+   {
+    "count": 2,
+    "example": "Accept All",
+    "transition": "color 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s cubic-bezier(0.4,"
+   }
+  ],
+  [
+   "rgba(255, 255, 255, 0) | rgb(0, 133, 111) | 4px | 0px 20px | 15px | 400 | none | normal | 0px none rgb(0, 133, 111) | none",
+   {
+    "count": 1,
+    "example": "Login",
+    "transition": "0.3s"
+   }
+  ],
+  [
+   "rgb(0, 133, 111) | rgb(255, 255, 255) | 4px | 0px 20px | 15px | 400 | none | normal | 0px none rgb(255, 255, 255) | none",
+   {
+    "count": 1,
+    "example": "Book a demo",
+    "transition": "0.3s"
+   }
+  ]
+ ],
+ "cards": [
+  [
+   "bg:rgb(1, 49, 38) | r:8px | bd:none | sh:none | pad:31.4336px",
+   {
+    "count": 3,
+    "w": 548,
+    "h": 400,
+    "hasImg": true,
+    "sample": "The largest virtual care network, suppor"
+   }
+  ],
+  [
+   "bg:rgb(248, 245, 241) | r:15px | bd:none | sh:rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, | pad:0px",
+   {
+    "count": 1,
+    "w": 328,
+    "h": 385,
+    "hasImg": true,
+    "sample": "Your Privacy Choices"
+   }
+  ],
+  [
+   "bg:rgba(0, 0, 0, 0) | r:0px | bd:none | sh:rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, | pad:0px",
+   {
+    "count": 1,
+    "w": 288,
+    "h": 147,
+    "hasImg": false,
+    "sample": ""
+   }
+  ],
+  [
+   "bg:rgb(1, 49, 38) | r:8px | bd:none | sh:none | pad:23.7696px",
+   {
+    "count": 1,
+    "w": 434,
+    "h": 326,
+    "hasImg": true,
+    "sample": "Backed by 40+ peer-reviewed studies on o"
+   }
+  ],
+  [
+   "bg:rgb(1, 49, 38) | r:8px | bd:none | sh:none | pad:31.4336px 23.7696px",
+   {
+    "count": 1,
+    "w": 320,
+    "h": 400,
+    "hasImg": true,
+    "sample": "Milliman-validated outcomes, proven by e"
+   }
+  ]
+ ],
+ "sectionFlow": [
+  {
+   "i": 0,
+   "h": 1582,
+   "bg": "rgb(1, 49, 38)",
+   "pad": "0px/0px",
+   "skeleton": "block kids:6",
+   "media": {
+    "imgs": 7,
+    "videos": 0
+   },
+   "head": "Fertility & Family Building"
+  },
+  {
+   "i": 1,
+   "h": 1275,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "24px/24px",
+   "skeleton": "block kids:3",
+   "media": {
+    "imgs": 11,
+    "videos": 0
+   },
+   "head": "24/7 virtual care, predictive"
+  },
+  {
+   "i": 2,
+   "h": 4526,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "block kids:2",
+   "media": {
+    "imgs": 33,
+    "videos": 0
+   },
+   "head": "Lowering costs by improving care"
+  },
+  {
+   "i": 3,
+   "h": 911,
+   "bg": "rgb(237, 233, 227)",
+   "pad": "0px/0px",
+   "skeleton": "block kids:1",
+   "media": {
+    "imgs": 0,
+    "videos": 0
+   },
+   "head": "Lowering costs by improving care"
+  },
+  {
+   "i": 4,
+   "h": 881,
+   "bg": "rgb(1, 49, 38)",
+   "pad": "0px/0px",
+   "skeleton": "block kids:3",
+   "media": {
+    "imgs": 5,
+    "videos": 0
+   },
+   "head": "Making healthcare"
+  },
+  {
+   "i": 5,
+   "h": 352,
+   "bg": "rgb(1, 49, 38)",
+   "pad": "0px/0px",
+   "skeleton": "block kids:5",
+   "media": {
+    "imgs": 21,
+    "videos": 0
+   },
+   "head": null
+  },
+  {
+   "i": 6,
+   "h": 990,
+   "bg": "rgb(1, 49, 38)",
+   "pad": "0px/0px",
+   "skeleton": "block kids:2",
+   "media": {
+    "imgs": 6,
+    "videos": 0
+   },
+   "head": "Real stories from"
+  },
+  {
+   "i": 7,
+   "h": 728,
+   "bg": "rgb(237, 233, 227)",
+   "pad": "0px/0px",
+   "skeleton": "block kids:6",
+   "media": {
+    "imgs": 0,
+    "videos": 0
+   },
+   "head": "Bring your benefits"
+  }
+ ],
+ "grounds": [
+  [
+   "rgb(1, 49, 38)",
+   17
+  ],
+  [
+   "rgb(237, 233, 227)",
+   6
+  ],
+  [
+   "rgba(34, 34, 34, 0.1)",
+   3
+  ],
+  [
+   "rgb(231, 224, 215)",
+   2
+  ],
+  [
+   "rgb(248, 245, 241)",
+   1
+  ],
+  [
+   "rgb(255, 255, 255)",
+   1
+  ],
+  [
+   "rgb(245, 255, 249)",
+   1
+  ],
+  [
+   "rgb(3, 87, 72)",
+   1
+  ]
+ ],
+ "accents": [
+  [
+   "rgb(88, 237, 162)",
+   27
+  ],
+  [
+   "rgb(0, 133, 111)",
+   23
+  ],
+  [
+   "rgb(3, 87, 72)",
+   4
+  ],
+  [
+   "rgb(113, 209, 181)",
+   4
+  ],
+  [
+   "rgb(2, 140, 116)",
+   3
+  ],
+  [
+   "rgb(2, 132, 109)",
+   2
+  ],
+  [
+   "rgb(38, 201, 223)",
+   1
+  ],
+  [
+   "rgb(113, 118, 255)",
+   1
+  ]
+ ],
+ "transitions": [
+  [
+   "all",
+   153
+  ],
+  [
+   "0.3s",
+   12
+  ],
+  [
+   "border-color 0.4s, color 0.4s, background-color 0.4s",
+   9
+  ],
+  [
+   "transform 0.4s ease-in, grid-template-rows 0.6s ease-out 0.1s",
+   7
+  ],
+  [
+   "opacity 0.6s ease-in",
+   7
+  ],
+  [
+   "width 0.4s ease-in, grid-template-rows 0.6s ease-out 0.1s",
+   7
+  ]
+ ],
+ "animationsRunning": 6
+}

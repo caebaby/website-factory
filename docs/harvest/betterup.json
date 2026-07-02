@@ -1,0 +1,307 @@
+{
+ "url": "https://www.betterup.com/",
+ "title": "Powering performance-ready workforces in the AI era | BetterUp®",
+ "measured": "2026-07-02T12:03:18.283Z",
+ "viewport": "1440x813",
+ "typeCensus": [
+  [
+   "li|20px|400|Sohne-Buch|lh:26px|tr:normal|tt:none",
+   34
+  ],
+  [
+   "a|16px|400|Sohne-Buch|lh:20px|tr:normal|tt:none",
+   25
+  ],
+  [
+   "p|18px|400|Sohne-Buch|lh:23.4px|tr:normal|tt:none",
+   12
+  ],
+  [
+   "span|57.6px|300|IvarDisplay-Italic|lh:66.24px|tr:normal|tt:none",
+   10
+  ],
+  [
+   "a|15px|400|Sohne-Buch|lh:15px|tr:normal|tt:none",
+   8
+  ],
+  [
+   "p|16px|400|Sohne-Buch|lh:20.8px|tr:normal|tt:none",
+   7
+  ],
+  [
+   "h3|26px|400|Sohne-Buch|lh:29.12px|tr:normal|tt:none",
+   5
+  ],
+  [
+   "a|12px|400|SohneMono-Buch|lh:18px|tr:0.6px|tt:uppercase",
+   5
+  ],
+  [
+   "a|20px|400|Sohne-Buch|lh:26px|tr:normal|tt:none",
+   4
+  ],
+  [
+   "span|13px|400|SohneMono-Buch|lh:26px|tr:1.17px|tt:uppercase",
+   4
+  ],
+  [
+   "span|119.52px|300|Sohne-Buch|lh:83.664px|tr:-2.3904px|tt:none",
+   4
+  ],
+  [
+   "span|13px|400|SohneMono-Buch|lh:16.9px|tr:1.17px|tt:uppercase",
+   4
+  ],
+  [
+   "span|14px|400|Sohne-Buch|lh:26px|tr:0.12px|tt:none",
+   4
+  ],
+  [
+   "h2|50px|400|Sohne-Buch|lh:55px|tr:normal|tt:none",
+   3
+  ],
+  [
+   "p|20px|500|Sohne-Buch|lh:26px|tr:normal|tt:none",
+   3
+  ],
+  [
+   "span|40px|400|Sohne-Buch|lh:48px|tr:normal|tt:none",
+   3
+  ],
+  [
+   "p|14px|400|Lato|lh:24.5px|tr:normal|tt:none",
+   2
+  ],
+  [
+   "p|14px|400|Sohne-Buch|lh:21px|tr:normal|tt:none",
+   2
+  ],
+  [
+   "span|57.6px|300|IvarDisplay-Regular|lh:66.24px|tr:normal|tt:none",
+   2
+  ],
+  [
+   "h3|64px|400|IvarDisplay-Regular|lh:70.4px|tr:normal|tt:none",
+   1
+  ],
+  [
+   "p|15px|400|SohneMono-Buch|lh:19.5px|tr:1.35px|tt:uppercase",
+   1
+  ],
+  [
+   "p|14px|400|Sohne-Buch|lh:18.2px|tr:0.12px|tt:none",
+   1
+  ],
+  [
+   "p|20px|400|Sohne-Buch|lh:26px|tr:normal|tt:none",
+   1
+  ],
+  [
+   "a|14px|400|Lato|lh:24.5px|tr:normal|tt:none",
+   1
+  ]
+ ],
+ "buttons": [
+  [
+   "rgb(206, 0, 88) | rgb(255, 255, 255) | 32px | 10px 20px | 15px | 400 | none | normal | 1px solid rgba(0, 0, 0, 0) | none",
+   {
+    "count": 8,
+    "example": "Watch the demo",
+    "transition": "background-color 0.3s, background-position 0.6s cubic-bezier(0, 0.55, 0.45, 1), "
+   }
+  ],
+  [
+   "rgba(0, 0, 0, 0) | rgb(255, 255, 255) | 32px | 10px 20px | 15px | 400 | none | normal | 1px solid rgb(255, 255, 255) | none",
+   {
+    "count": 2,
+    "example": "Request a demo",
+    "transition": "background-color 0.2s, border-color 0.2s, color 0.2s"
+   }
+  ],
+  [
+   "rgb(206, 0, 88) | rgb(255, 255, 255) | 42px | 0px | 14px | 400 | none | normal | 1px solid rgb(206, 0, 88) | none",
+   {
+    "count": 1,
+    "example": "Accept all",
+    "transition": "all"
+   }
+  ],
+  [
+   "rgb(255, 255, 255) | rgb(206, 0, 88) | 42px | 0px | 14px | 400 | none | normal | 1px solid rgb(206, 0, 88) | none",
+   {
+    "count": 1,
+    "example": "Reject all",
+    "transition": "all"
+   }
+  ],
+  [
+   "rgb(221, 255, 14) | rgb(0, 0, 0) | 32px | 10px 20px | 15px | 400 | none | normal | 1px solid rgb(221, 255, 14) | none",
+   {
+    "count": 1,
+    "example": "Request a personalized demo",
+    "transition": "background-color 0.3s, background-position 0.6s cubic-bezier(0, 0.55, 0.45, 1), "
+   }
+  ]
+ ],
+ "cards": [
+  [
+   "bg:rgba(0, 0, 0, 0.1) | r:0px | bd:none | sh:none | pad:0px",
+   {
+    "count": 1,
+    "w": 400,
+    "h": 756,
+    "hasImg": true,
+    "sample": ""
+   }
+  ]
+ ],
+ "sectionFlow": [
+  {
+   "i": 0,
+   "h": 756,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "block kids:4",
+   "media": {
+    "imgs": 5,
+    "videos": 0
+   },
+   "head": "Better productivity across the board."
+  },
+  {
+   "i": 1,
+   "h": 1799,
+   "bg": "rgb(244, 243, 233)",
+   "pad": "0px/0px",
+   "skeleton": "flex(column) kids:1",
+   "media": {
+    "imgs": 8,
+    "videos": 0
+   },
+   "head": "Growth, minus the guesswork."
+  },
+  {
+   "i": 2,
+   "h": 652,
+   "bg": "rgb(244, 243, 233)",
+   "pad": "112px/112px",
+   "skeleton": "grid(2col) kids:1",
+   "media": {
+    "imgs": 3,
+    "videos": 0
+   },
+   "head": "Turn strategy into reality — more efficiently than e"
+  },
+  {
+   "i": 3,
+   "h": 748,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "0px/0px",
+   "skeleton": "block kids:2",
+   "media": {
+    "imgs": 1,
+    "videos": 0
+   },
+   "head": "What transformation looks like"
+  },
+  {
+   "i": 4,
+   "h": 1559,
+   "bg": "rgb(244, 243, 233)",
+   "pad": "112px/112px",
+   "skeleton": "grid(2col) kids:1",
+   "media": {
+    "imgs": 10,
+    "videos": 0
+   },
+   "head": "One platform, four ways in."
+  },
+  {
+   "i": 5,
+   "h": 429,
+   "bg": "rgba(0, 0, 0, 0)",
+   "pad": "112px/112px",
+   "skeleton": "flex(column) kids:2",
+   "media": {
+    "imgs": 1,
+    "videos": 0
+   },
+   "head": "See better in action."
+  }
+ ],
+ "grounds": [
+  [
+   "rgba(255, 255, 255, 0.2)",
+   8
+  ],
+  [
+   "rgb(244, 243, 233)",
+   7
+  ],
+  [
+   "rgba(204, 204, 204, 0.01)",
+   5
+  ],
+  [
+   "rgb(0, 0, 0)",
+   2
+  ],
+  [
+   "rgb(255, 255, 255)",
+   1
+  ],
+  [
+   "rgba(0, 0, 0, 0.1)",
+   1
+  ],
+  [
+   "rgba(4, 4, 4, 0.51)",
+   1
+  ],
+  [
+   "rgba(0, 0, 0, 0.7)",
+   1
+  ]
+ ],
+ "accents": [
+  [
+   "rgb(221, 255, 14)",
+   33
+  ],
+  [
+   "rgb(21, 41, 90)",
+   11
+  ],
+  [
+   "rgb(206, 0, 88)",
+   11
+  ]
+ ],
+ "transitions": [
+  [
+   "all",
+   78
+  ],
+  [
+   "background-color 0.3s, background-position 0.6s cubic-bezier(0, 0.55, ",
+   11
+  ],
+  [
+   "color 0.15s, background 0.15s",
+   8
+  ],
+  [
+   "0.15s cubic-bezier(0.4, 0, 0.2, 1)",
+   4
+  ],
+  [
+   "color 0.2s",
+   2
+  ],
+  [
+   "background-color 0.2s, border-color 0.2s, color 0.2s",
+   1
+  ]
+ ],
+ "animationsRunning": 6
+}
