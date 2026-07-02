@@ -32,11 +32,11 @@ Last updated: 2026-07-02 (FABLE SESSION, day 2 — the factory became a real PIP
   Opus pass from Pack v1.4 + `briefs/ANCHOR_PRINT_BRIEF.md` — built because home-v2 degraded
   through 3 in-place edit rounds (Chris caught it). **LAW: clean re-prints from the Pack, never
   elevation passes on finished pages** (LED-013 came from one).
-- home-v3 has: 4 hero variants (A shuffle-doc carousel · B photo · C **real Permian pumpjack
-  drone ambient** · D pumpjack↔second-angle rotation — Pexels #10227529/#10227587, royalty-free,
-  self-hosted `assets/pumpjack*.mp4`) + review switcher · Alex's Story video section · vertical
-  reels row · font toggle on the snapshot (`home-v3-review.html`, served :8095 via detached
-  `nohup npx serve website-factory/projects -p 8095`).
+- home-v3 hero lineup FINAL (commit 2da543d, Chris confirmed working): **A** shuffle-doc carousel ·
+  **B** photo · **C** expanding flower ambient · **D** pumpjack↔flower rotation (Pexels pumpjack
+  #10227529 + CC0 flower, all self-hosted in assets/; pumpjack-alt.mp4 spare). Fixed en route:
+  D's loader only fetched clip 1. Plus Alex's Story video section · vertical reels row · review
+  switcher + font toggle on the snapshot (`home-v3-review.html`, :8095 detached server).
 - **AWAITING CHRIS:** v3-vs-v2 verdict · hero pick · font pick (Alex brand vs Kindred feel —
   Hanken/Newsreader are FREE; paid option = real brand fonts Proxima Nova/Adobe Garamond).
   Then: strip review toggles → Alex link → `/fit-results` + inner pages (SITE_ARCHITECTURE.md) →
