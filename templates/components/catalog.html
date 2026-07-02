@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website Factory — Blessed Component Library</title>
+<!--
+  THE COMPONENT LIBRARY — every entry measured from a Chris-approved reference or proven in a
+  reviewed build. Each card: ID (react by ID: "kill C-16", "love C-07") · provenance · live demo ·
+  the measured numbers. The PALETTE TOGGLE re-skins everything: retint the colors, keep the numbers.
+-->
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;0,400;0,600;0,700&family=EB+Garamond:ital,wght@1,400;1,500&family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&family=Oswald:wght@400;500&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* ═══ CATALOG TOKENS — the toggle swaps these; every component reads them ═══ */
+:root{
+  --ground:#F5F0E6;--ground-alt:#EDE7D9;--card:#fff;--dark:#142840;--dark-2:#1e395a;
+  --ink:#1b2a3c;--ink-body:#4b5b6e;--on-dark:#F7F3EB;--on-dark-mute:rgba(247,243,235,.76);
+  --accent:#c9a24b;--accent-soft:#dcc07e;--accent-ink:#7d5f26;--accent-deep:#6d5122;--accent-rgb:201,162,75;
+  --border:rgba(20,40,64,.14);
+  --sans:'Nunito Sans',sans-serif;--serif:'EB Garamond',serif;
+  --dur:.4s;--ease:ease;--ease-soft:cubic-bezier(.16,1,.3,1);
+}
+html.theme-b{
+  --ground:#F4F1E9;--ground-alt:#E8E3D5;--dark:#16302a;--dark-2:#264d42;
+  --ink:#1b2a25;--ink-body:#4c5a54;--on-dark:#F3EFE4;--on-dark-mute:rgba(243,239,228,.76);
+  --accent:#b8894a;--accent-soft:#d8b483;--accent-ink:#6f4e22;--accent-deep:#684b1f;--accent-rgb:184,137,74;
+  --border:rgba(22,48,42,.14);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--sans);background:var(--ground);color:var(--ink-body);line-height:1.5;-webkit-font-smoothing:antialiased;}
+img{display:block;max-width:100%;}
+.page{max-width:1200px;margin:0 auto;padding:48px clamp(20px,4vw,56px) 120px;}
+
+/* catalog chrome */
+.cat-head h1{font:300 clamp(30px,4.5vw,52px)/1.05 var(--sans);letter-spacing:-.02em;color:var(--ink);}
+.cat-head h1 em{font-family:var(--serif);font-style:italic;font-weight:400;}
+.cat-head p{margin-top:12px;max-width:72ch;font-size:16px;}
+.toggle{position:fixed;top:16px;right:16px;z-index:99;display:flex;gap:8px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:8px 10px;font:600 12px var(--sans);align-items:center;box-shadow:0 4px 18px rgba(0,0,0,.08);}
+.toggle button{border:1.5px solid var(--border);background:var(--ground);border-radius:4px;padding:6px 12px;font:600 12px var(--sans);cursor:pointer;color:var(--ink);}
+.toggle button.on{background:var(--accent);border-color:var(--accent);color:var(--dark);}
+.grp{margin-top:64px;}
+.grp>h2{font:300 clamp(24px,3vw,36px)/1.1 var(--sans);letter-spacing:-.02em;color:var(--ink);border-bottom:1.5px solid var(--border);padding-bottom:12px;}
+.grp>h2 em{font-family:var(--serif);font-style:italic;font-weight:400;}
+.comp{margin-top:36px;background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.comp-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:14px 20px;border-bottom:1px solid var(--border);}
+.cid{font:700 13px var(--sans);letter-spacing:.5px;background:var(--dark);color:var(--on-dark);border-radius:5px;padding:5px 9px;}
+.cname{font:700 15px var(--sans);color:var(--ink);}
+.prov{font:600 10.5px var(--sans);letter-spacing:.8px;text-transform:uppercase;color:var(--accent-ink);border:1px solid rgba(var(--accent-rgb),.45);border-radius:4px;padding:4px 7px;}
+.spec{width:100%;font:400 12.5px/1.5 var(--sans);color:var(--ink-body);padding:10px 20px;border-top:1px dashed var(--border);background:var(--ground);}
+.demo{position:relative;}
+.demo.pad{padding:clamp(28px,4vw,48px);}
+.demo.on-ground{background:var(--ground);}
+.demo.on-alt{background:var(--ground-alt);}
+.demo.on-dark{background:var(--dark);color:var(--on-dark-mute);}
+
+/* shared bits */
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font:600 12px/1.3 var(--sans);letter-spacing:1px;text-transform:uppercase;color:var(--accent-ink);}
+.eyebrow::before{content:"";width:22px;height:1.5px;background:currentColor;}
+.on-dark .eyebrow,.demo.on-dark .eyebrow{color:var(--accent-soft);}
+
+/* ─── C-01..04 type systems ─── */
+.t1-h{font:300 clamp(34px,4.6vw,64px)/1.03 var(--sans);letter-spacing:-.02em;color:var(--ink);}
+.t1-h em{font-family:var(--serif);font-style:italic;font-weight:400;font-size:1.08em;}
+.t2-h{font:400 clamp(40px,6vw,84px)/1.05 'Fraunces',serif;color:var(--ink);}
+.t2-h em{font-style:italic;}
+.t3-h{font:400 clamp(30px,4.4vw,56px)/1.06 'Oswald',sans-serif;letter-spacing:-.02em;color:var(--ink);text-align:center;}
+.t4 p{font-family:var(--serif);color:var(--ink);font-style:normal;}
+.t4 .s1{font-size:44px;line-height:1.15;} .t4 .s2{font-size:29px;line-height:1.25;margin-top:14px;}
+.t4 .s3{font-size:21px;line-height:1.4;margin-top:14px;} .t4 .s4{font-size:17px;line-height:1.55;margin-top:14px;color:var(--ink-body);}
+
+/* ─── C-05 buttons ─── */
+.btnrow{display:flex;flex-wrap:wrap;gap:26px;align-items:center;}
+.b-flat{display:inline-flex;align-items:center;gap:8px;border-radius:4px;font:600 18px/1.2 var(--sans);letter-spacing:-.36px;padding:10px 24px;border:1.5px solid var(--accent);background:var(--accent);color:var(--dark);cursor:pointer;position:relative;overflow:hidden;transition:background-color var(--dur),border-color var(--dur),color var(--dur);}
+.b-flat:hover{background:var(--card);border-color:var(--card);}
+@media(prefers-reduced-motion:no-preference){
+  .b-flat::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-18deg);animation:sheen 5.5s ease-in-out infinite;}
+}
+@keyframes sheen{0%,74%{left:-60%;}90%,100%{left:130%;}}
+.b-pill{display:inline-flex;align-items:center;border-radius:32px;font:500 15px/1.2 var(--sans);padding:10px 20px;border:1px solid transparent;color:#fff;cursor:pointer;background-image:linear-gradient(100deg,var(--dark) 0 50%,var(--accent) 50% 100%);background-size:200% 100%;background-position:0% 0;transition:background-position .6s cubic-bezier(0,.55,.45,1);}
+.b-pill:hover{background-position:100% 0;}
+.b-sq{display:inline-flex;border-radius:0;font:600 11.9px/1.2 'Poppins',sans-serif;letter-spacing:.95px;text-transform:uppercase;padding:17.8px 23.7px;border:1px solid var(--accent);background:var(--accent);color:var(--dark);cursor:pointer;transition:background-color .12s linear,color .12s linear;}
+.b-sq:hover{background:transparent;color:var(--accent-ink);}
+
+/* ─── C-06 photo hero ─── */
+.h-photo{position:relative;min-height:420px;display:flex;align-items:center;overflow:hidden;color:var(--on-dark);}
+.h-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.h-photo .scrim{position:absolute;inset:0;background:linear-gradient(96deg,rgba(0,0,0,.62) 0%,rgba(0,0,0,.4) 30%,rgba(0,0,0,.12) 58%,transparent 80%);}
+html:not(.theme-b) .h-photo .scrim{background:linear-gradient(96deg,rgba(20,40,64,.88) 0%,rgba(20,40,64,.64) 30%,rgba(20,40,64,.26) 58%,rgba(20,40,64,0) 80%);}
+html.theme-b .h-photo .scrim{background:linear-gradient(96deg,rgba(22,48,42,.88) 0%,rgba(22,48,42,.64) 30%,rgba(22,48,42,.26) 58%,rgba(22,48,42,0) 80%);}
+.h-photo .inner{position:relative;z-index:1;padding:40px clamp(24px,4vw,48px);max-width:640px;}
+.h-photo h3{font:300 clamp(28px,3.8vw,52px)/1.04 var(--sans);letter-spacing:-.02em;color:#fff;text-shadow:0 2px 26px rgba(0,0,0,.34);}
+.h-photo h3 em{font-family:var(--serif);font-style:italic;font-weight:400;font-size:1.08em;position:relative;display:inline-block;}
+.h-photo h3 em::after{content:"";position:absolute;left:.02em;right:.06em;bottom:-6px;height:3px;background:var(--accent);transform:scaleX(1);transform-origin:left;animation:udraw 1.2s var(--ease-soft);}
+@keyframes udraw{from{transform:scaleX(0);}to{transform:scaleX(1);}}
+.h-photo p{margin-top:14px;color:var(--on-dark);max-width:44ch;}
+
+/* ─── C-07 word rotator ─── */
+.h-rot{text-align:center;}
+.h-rot h3{font:300 clamp(30px,4.2vw,58px)/1.06 var(--sans);letter-spacing:-.02em;color:var(--ink);}
+.rot-slot{display:inline-grid;text-align:left;vertical-align:baseline;color:var(--accent-ink);font-weight:400;font-family:var(--serif);font-style:italic;}
+.rot-slot span{grid-area:1/1;opacity:0;transform:translateY(8px);transition:opacity .45s var(--ease-soft),transform .45s var(--ease-soft);white-space:nowrap;}
+.rot-slot span.on{opacity:1;transform:none;}
+
+/* ─── C-08 mesh hero ─── */
+.h-mesh{position:relative;min-height:340px;overflow:hidden;display:flex;align-items:center;background:var(--ground);}
+.blob{position:absolute;border-radius:50%;filter:blur(58px);opacity:.74;}
+.blob.b1{width:420px;height:420px;background:rgba(var(--accent-rgb),.85);left:-80px;top:-120px;animation:drift1 13s ease-in-out infinite alternate;}
+.blob.b2{width:360px;height:360px;background:var(--dark-2);right:-60px;top:-40px;opacity:.35;animation:drift2 17s ease-in-out infinite alternate;}
+.blob.b3{width:300px;height:300px;background:rgba(var(--accent-rgb),.5);left:38%;bottom:-140px;animation:drift1 21s ease-in-out infinite alternate-reverse;}
+@keyframes drift1{from{transform:translate(0,0);}to{transform:translate(46px,28px);}}
+@keyframes drift2{from{transform:translate(0,0);}to{transform:translate(-38px,22px);}}
+.h-mesh .inner{position:relative;z-index:1;padding:40px clamp(24px,4vw,48px);}
+.h-mesh h3{font:300 clamp(28px,3.6vw,48px)/1.06 var(--sans);letter-spacing:-.02em;color:var(--ink);max-width:20ch;}
+@media(prefers-reduced-motion:reduce){.blob{animation:none;}}
+
+/* ─── C-09 video hero ─── */
+.h-vid{position:relative;min-height:380px;display:flex;align-items:center;overflow:hidden;color:#fff;background:#0c0c0c;}
+.h-vid video,.h-vid img.poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.h-vid .scrim{position:absolute;inset:0;background:linear-gradient(105deg,rgba(8,8,8,.8) 0%,rgba(8,8,8,.55) 34%,rgba(8,8,8,0) 70%);}
+.h-vid .inner{position:relative;z-index:1;padding:40px clamp(24px,4vw,48px);max-width:560px;}
+.h-vid h3{font:300 clamp(26px,3.4vw,44px)/1.06 var(--sans);color:#fff;}
+
+/* ─── C-10 dark typographic hero ─── */
+.h-dark{background:#0C0F14;text-align:center;padding:clamp(48px,7vw,84px) clamp(24px,4vw,48px);}
+.h-dark .eyebrow{color:var(--accent-soft);justify-content:center;}
+.h-dark h3{margin-top:18px;font:400 clamp(30px,4.4vw,56px)/1.06 'Oswald',sans-serif;letter-spacing:-.02em;color:#fff;}
+.h-dark p{margin:14px auto 24px;max-width:52ch;color:rgba(245,241,234,.78);font-family:'Poppins',sans-serif;font-size:15px;}
+.h-dark .b-sq{margin:0 6px;}
+
+/* ─── C-11 cred bar ─── */
+.credbar{display:flex;flex-wrap:wrap;gap:14px 34px;align-items:center;justify-content:center;padding:22px clamp(20px,3vw,40px);background:var(--ground-alt);font:600 12px var(--sans);letter-spacing:1px;text-transform:uppercase;color:var(--ink-body);}
+.credbar .vf{font:600 9px var(--sans);letter-spacing:.5px;color:var(--accent-ink);border:1px solid rgba(var(--accent-rgb),.5);border-radius:3px;padding:2px 5px;}
+
+/* ─── C-12 metric cards ─── */
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+@media(max-width:760px){.metrics{grid-template-columns:1fr;}}
+.metric{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px;transition:transform var(--dur) var(--ease-soft);}
+.metric:hover{transform:translateY(-4px);}
+.metric .tag{font:600 11px var(--sans);letter-spacing:1px;text-transform:uppercase;color:var(--accent-ink);}
+.metric b{display:block;margin-top:14px;font:300 clamp(40px,5vw,64px)/1 var(--sans);letter-spacing:-.03em;color:var(--ink);}
+.metric p{margin-top:10px;font-size:14.5px;}
+.metric a{display:inline-block;margin-top:12px;font:600 13.5px var(--sans);color:var(--accent-ink);text-decoration:none;}
+
+/* ─── C-13 photo-stat band ─── */
+.pband{position:relative;min-height:320px;display:flex;align-items:center;overflow:hidden;}
+.pband img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.pband .scrim{position:absolute;inset:0;background:rgba(0,0,0,.45);}
+.pband .inner{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;width:100%;padding:40px clamp(24px,4vw,48px);}
+@media(max-width:640px){.pband .inner{grid-template-columns:1fr;}}
+.pband b{display:block;font:300 clamp(38px,5vw,64px)/1 var(--sans);color:#fff;letter-spacing:-.03em;}
+.pband span{display:block;margin-top:8px;font:600 13px var(--sans);color:rgba(255,255,255,.92);}
+
+/* ─── C-14 deep drench proof ─── */
+.drench{background:linear-gradient(155deg,color-mix(in srgb,var(--accent-deep) 78%,var(--accent)) 0%,var(--accent-deep) 52%,color-mix(in srgb,var(--accent-deep) 82%,#000) 100%);color:var(--on-dark);padding:clamp(36px,5vw,60px) clamp(24px,4vw,48px);}
+.drench h3{font:300 clamp(24px,3vw,40px)/1.1 var(--sans);color:#fff;text-align:center;}
+.drench h3 em{font-family:var(--serif);font-style:italic;font-weight:400;}
+.drench .qcard{max-width:640px;margin:26px auto 0;background:var(--card);border-radius:8px;padding:28px 32px;}
+.drench .qcard blockquote{font:400 19px/1.45 var(--serif);font-style:italic;color:var(--dark);}
+.drench .stats{max-width:720px;margin:28px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;text-align:center;border-top:1px solid rgba(255,255,255,.25);padding-top:24px;}
+.drench .stats b{display:block;font:300 clamp(30px,3.6vw,46px)/1 var(--sans);color:var(--on-dark);}
+.drench .stats span{display:block;margin-top:6px;font:600 12.5px var(--sans);color:var(--on-dark);}
+
+/* ─── C-15 video testimonial ─── */
+.vt{position:relative;aspect-ratio:16/9;max-width:640px;background:var(--dark);border-radius:8px;overflow:hidden;}
+.vt button.poster{position:absolute;inset:0;border:0;padding:0;cursor:pointer;background:none;width:100%;}
+.vt .poster img{width:100%;height:100%;object-fit:cover;}
+.vt .poster::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.45));}
+.vt .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:74px;height:74px;border-radius:50%;background:var(--accent);color:var(--dark);display:grid;place-items:center;z-index:1;transition:transform var(--dur) var(--ease-soft),background-color var(--dur);}
+.vt .play svg{width:30px;height:30px;margin-left:3px;}
+.vt .poster:hover .play{transform:translate(-50%,-50%) scale(1.08);background:var(--card);}
+.vt .dur{position:absolute;right:14px;bottom:12px;z-index:1;font:600 12px/1 var(--sans);color:#fff;background:rgba(0,0,0,.55);padding:5px 9px;border-radius:4px;}
+.vt video{position:absolute;inset:0;width:100%;height:100%;}
+
+/* ─── C-16 pain cards ─── */
+.pains{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+@media(max-width:700px){.pains{grid-template-columns:1fr;}}
+.pain{background:var(--ground-alt);border-radius:8px;padding:26px;position:relative;transition:transform var(--dur) var(--ease-soft),background-color var(--dur);}
+.pain:hover{transform:translateY(-4px);}
+.pain .dot{position:absolute;top:20px;right:22px;width:10px;height:10px;border-radius:50%;background:var(--accent);}
+.pain .num{font:300 clamp(34px,4vw,50px)/1 var(--sans);letter-spacing:-.03em;color:var(--accent-ink);}
+.pain .q{margin-top:12px;font:400 18px/1.35 var(--serif);font-style:italic;color:var(--ink);}
+.pain .c{margin-top:10px;font-size:14px;}
+
+/* ─── C-17 ICP photo cards ─── */
+.icps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+@media(max-width:760px){.icps{grid-template-columns:1fr;}}
+.icp{position:relative;min-height:300px;border-radius:8px;overflow:hidden;background:var(--dark);display:flex;flex-direction:column;justify-content:flex-end;transition:transform var(--dur) var(--ease-soft);}
+.icp:hover{transform:translateY(-5px);}
+.icp img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.icp::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.86) 8%,rgba(0,0,0,.4) 46%,rgba(0,0,0,.05) 78%);}
+.icp .dot{position:absolute;top:16px;left:16px;width:13px;height:13px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px rgba(var(--accent-rgb),.25);z-index:1;}
+.icp .body{position:relative;z-index:1;padding:20px;color:#fff;}
+.icp h4{font:600 19px var(--sans);}
+.icp p{margin-top:6px;font-size:13.5px;color:rgba(255,255,255,.85);}
+
+/* ─── C-18 bento ─── */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;}
+.bx{border-radius:8px;padding:24px;background:var(--card);border:1px solid var(--border);transition:transform var(--dur) var(--ease-soft);}
+.bx:hover{transform:translateY(-4px);}
+.bx.c3{grid-column:span 3;} .bx.c2{grid-column:span 2;} .bx.c6{grid-column:span 6;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;}
+.bx.dark{background:var(--dark);border-color:transparent;color:var(--on-dark-mute);}
+.bx .tag{font:600 11px var(--sans);letter-spacing:1px;text-transform:uppercase;color:var(--accent-ink);}
+.bx.dark .tag{color:var(--accent-soft);}
+.bx h4{margin-top:10px;font:600 18px var(--sans);color:var(--ink);}
+.bx.dark h4{color:#fff;}
+.bx .pl{margin-top:8px;font:400 14.5px var(--serif);font-style:italic;color:var(--accent-ink);}
+.bx.dark .pl{color:var(--accent-soft);}
+@media(max-width:760px){.bx.c3,.bx.c2,.bx.c6{grid-column:span 6;}}
+
+/* ─── C-19 featured insights ─── */
+.ins{display:grid;grid-template-columns:1.55fr 1fr;gap:18px;}
+@media(max-width:760px){.ins{grid-template-columns:1fr;}}
+.insf{position:relative;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:30px;overflow:hidden;transition:transform var(--dur) var(--ease-soft);}
+.insf:hover{transform:translateY(-4px);}
+.insf::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);}
+.insf h4{margin-top:12px;font:400 24px/1.25 var(--serif);font-style:italic;color:var(--ink);max-width:24ch;}
+.insf p{margin-top:10px;font-size:14.5px;max-width:52ch;}
+.insc{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:20px 24px;transition:transform var(--dur) var(--ease-soft);}
+.insc:hover{transform:translateY(-4px);}
+.insc h4{margin-top:8px;font:400 17px/1.3 var(--serif);font-style:italic;color:var(--ink);}
+.ins .stack{display:grid;gap:18px;}
+.instag{font:600 11px var(--sans);letter-spacing:1px;text-transform:uppercase;color:var(--accent-ink);}
+
+/* ─── C-20 process ─── */
+.proc{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+@media(max-width:760px){.proc{grid-template-columns:1fr 1fr;}}
+.step{position:relative;border-top:1.5px solid var(--border);padding-top:20px;}
+.step::before{content:"";position:absolute;top:-5px;left:0;width:9px;height:9px;border-radius:50%;background:var(--accent);}
+.step .n{font:300 clamp(36px,4vw,52px)/1 var(--sans);letter-spacing:-.03em;color:color-mix(in srgb,var(--accent) 40%,var(--accent-ink));}
+.step h4{margin-top:12px;font:600 17px var(--sans);color:var(--ink);}
+.step p{margin-top:8px;font-size:13.5px;}
+
+/* ─── C-21 fit mini-hero ─── */
+.fitp{position:relative;background:var(--dark);color:var(--on-dark);border-radius:12px;overflow:hidden;padding:clamp(28px,4vw,52px);}
+.fitp::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 82% 0%,rgba(var(--accent-rgb),.16),transparent 55%);pointer-events:none;}
+.fitp .grid{position:relative;display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(24px,4vw,48px);align-items:center;}
+@media(max-width:820px){.fitp .grid{grid-template-columns:1fr;}}
+.fitp h3{font:300 clamp(24px,3vw,40px)/1.06 var(--sans);letter-spacing:-.02em;color:#fff;}
+.fitp h3 em{font-family:var(--serif);font-style:italic;font-weight:400;}
+.fitp .sub{margin-top:12px;color:var(--on-dark-mute);max-width:40ch;font-size:15px;}
+.fit-diag{margin-top:26px;}
+.fit-diag svg{width:min(360px,100%);height:auto;overflow:visible;}
+.fit-diag .lbl{font:600 10px var(--sans);letter-spacing:1.2px;fill:var(--on-dark-mute);}
+.fit-diag .lbl-node{fill:var(--accent-soft);}
+.fit-diag path{fill:none;stroke-linecap:round;}
+.fit-diag .s1{stroke:var(--accent);stroke-width:1.6;}
+.fit-diag .s2{stroke:var(--accent-soft);stroke-width:1.4;}
+.fit-diag .s3{stroke:rgba(255,255,255,.5);stroke-width:1.2;}
+.fit-diag .f1{fill:var(--accent);} .fit-diag .f2{fill:var(--accent-soft);} .fit-diag .f3{fill:rgba(255,255,255,.75);}
+.fit-diag .node{fill:var(--accent);}
+.fit-diag .ring{fill:none;stroke:var(--accent-soft);stroke-width:1.2;transform-box:fill-box;transform-origin:center;}
+@media(prefers-reduced-motion:no-preference){.fit-diag .ring{animation:ringp 4.5s ease-in-out infinite;}}
+@keyframes ringp{0%,100%{transform:scale(1);opacity:.55;}50%{transform:scale(1.4);opacity:.12;}}
+.fcard{background:var(--card);border-radius:8px;padding:clamp(22px,3vw,34px);color:var(--ink-body);}
+.fcard .whead{display:flex;align-items:flex-end;justify-content:space-between;}
+.fcard .wnum{font:300 36px/1 var(--sans);letter-spacing:-.03em;color:var(--accent-ink);}
+.fcard .wlab{font:600 11px var(--sans);letter-spacing:1px;text-transform:uppercase;color:var(--ink-body);}
+.fcard .segs{margin:12px 0 20px;display:grid;grid-template-columns:repeat(4,1fr);gap:6px;}
+.fcard .segs i{height:3px;border-radius:3px;background:var(--ground-alt);}
+.fcard .segs i.on{background:var(--accent);}
+.fcard legend,.fcard .leg{font:300 22px/1.15 var(--sans);letter-spacing:-.02em;color:var(--ink);}
+.fcard .opt{display:block;width:100%;text-align:left;background:var(--ground);border:1.5px solid var(--border);border-radius:4px;padding:13px 16px;margin-top:10px;font:600 14.5px var(--sans);color:var(--ink);cursor:pointer;transition:border-color var(--dur),background-color var(--dur);}
+.fcard .opt:hover{border-color:var(--accent);background:rgba(var(--accent-rgb),.08);}
+
+/* ─── C-22 stagger demo ─── */
+.stagdemo{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+@media(max-width:640px){.stagdemo{grid-template-columns:1fr 1fr;}}
+.stagdemo .cell{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:20px;font:600 13px var(--sans);color:var(--ink);transition:transform var(--dur) var(--ease-soft);}
+.stagdemo .cell:hover{transform:translateY(-4px);}
+@media(prefers-reduced-motion:no-preference){
+  .stagdemo.play .cell{opacity:1;animation:riseIn .7s var(--ease-soft) backwards;}
+  .stagdemo.play .cell:nth-child(2){animation-delay:.09s;}
+  .stagdemo.play .cell:nth-child(3){animation-delay:.18s;}
+  .stagdemo.play .cell:nth-child(4){animation-delay:.27s;}
+}
+@keyframes riseIn{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:none;}}
+.replay{margin-bottom:14px;font:600 12px var(--sans);border:1.5px solid var(--border);background:var(--card);border-radius:4px;padding:7px 12px;cursor:pointer;color:var(--ink);}
+
+/* ─── C-23 theme swap ─── */
+.tswap{border-radius:10px;overflow:hidden;border:1px solid var(--border);}
+.tswap .pane{padding:34px;transition:background-color .8s var(--ease-soft),color .8s var(--ease-soft);}
+.tswap .pane h4{font:300 26px/1.1 var(--sans);letter-spacing:-.02em;transition:color .8s var(--ease-soft);}
+.tswap .pane p{margin-top:8px;font-size:14px;max-width:56ch;}
+</style>
+</head>
+<body>
+<div class="toggle" role="group" aria-label="Palette">
+  RETINT DEMO:
+  <button id="ta" class="on">Anchor navy·gold</button>
+  <button id="tb">Kindred forest·brass</button>
+</div>
+
+<div class="page">
+  <header class="cat-head">
+    <h1>The Component Library — <em>react by ID.</em></h1>
+    <p>Every component below is <b>measured from a reference you approved or proven in a build you reviewed</b> — code with exact numbers, not inspiration. The toggle (top right) re-skins everything live: <b>retint the colors, keep the numbers</b>. Tell me by ID what to keep, kill, or change — one sentence each is plenty.</p>
+  </header>
+
+  <!-- ═══════════ TYPE SYSTEMS ═══════════ -->
+  <section class="grp"><h2>Type systems — <em>the voice of each register</em></h2>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-01</span><span class="cname">Light-sans display + serif-italic accent</span><span class="prov">Maven · measured 76px/300</span></div>
+      <div class="demo pad on-ground"><div class="t1-h">Your income arrived.<br><em>The plan didn't.</em></div></div>
+      <div class="spec">Sans 300 · lh 1.03 · tracking -0.02em · ONE serif-italic phrase (1.08×) carries emphasis, never color · accent phrase on its own line.</div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-02</span><span class="cname">Oversized editorial serif</span><span class="prov">BetterUp · measured 110px/400 Ivar</span></div>
+      <div class="demo pad on-ground"><div class="t2-h">Better decisions <em>across the board.</em></div></div>
+      <div class="spec">Serif display 400 at 84–110px · lh 1.05 · the scale IS the confidence. Body/UI in a clean grotesk.</div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-03</span><span class="cname">Condensed-confident display</span><span class="prov">Stashwealth · measured 67.8px/400 Oswald −1.36px</span></div>
+      <div class="demo pad on-ground"><div class="t3-h">Get your financial house in order</div></div>
+      <div class="spec">Condensed sans 400 · lh 1.06 · tracking -0.02em · centered · pairs with uppercase Poppins labels.</div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-04</span><span class="cname">Four-sizes-only discipline</span><span class="prov">Pictet · measured 52.8 / 32.2 / 23.2 / 19.2, all 400</span></div>
+      <div class="demo pad on-ground t4">
+        <p class="s1">Size one carries the page.</p>
+        <p class="s2">Size two organizes sections.</p>
+        <p class="s3">Size three leads paragraphs.</p>
+        <p class="s4">Size four is everything else. No color hierarchy, no weight tricks — scale and nothing but scale. Restraint as the credential.</p>
+      </div>
+      <div class="spec">Exactly four serif sizes, everything weight 400, one ink color — hierarchy from scale alone. The private-bank register.</div>
+    </div>
+  </section>
+
+  <!-- ═══════════ BUTTONS ═══════════ -->
+  <section class="grp"><h2>Buttons — <em>three measured systems</em></h2>
+    <div class="comp"><div class="comp-bar"><span class="cid">C-05</span><span class="cname">Button triptych + attention cues</span><span class="prov">Maven 4px/10×24 · BetterUp pill 32px + sweep · Stash square 0px/17.8×23.7</span></div>
+      <div class="demo pad on-ground"><div class="btnrow">
+        <button class="b-flat">Schedule a Call <span>→</span></button>
+        <button class="b-pill">Request a demo</button>
+        <button class="b-sq">Schedule a Call</button>
+      </div></div>
+      <div class="spec">Left: flat radius-4, 0.4s ease, idle SHEEN every 5.5s (the v1.2 conversion cue). Middle: pill radius-32, measured gradient-SWEEP hover (0.6s cubic-bezier(0,.55,.45,1)) — hover it. Right: square radius-0, Poppins 600 caps 0.95px tracking, .12s snap inversion.</div>
+    </div>
+  </section>
+
+  <!-- ═══════════ HEROES ═══════════ -->
+  <section class="grp"><h2>Hero treatments — <em>five languages</em></h2>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-06</span><span class="cname">Photo hero · directional scrim · underline-draw</span><span class="prov">Maven + v1.2 hardening</span></div>
+      <div class="demo"><div class="h-photo">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1600&auto=format&fit=crop" alt="">
+        <div class="scrim"></div>
+        <div class="inner"><span class="eyebrow" style="color:var(--accent-soft)">For the right visitor</span>
+          <h3 style="margin-top:12px">The copy side is quiet.<br><em>The photo stays alive.</em></h3>
+          <p>Scrim deep on the left (.88→0 at 80%), photo open on the right. Accent phrase owns its line; gold rule draws beneath it.</p>
+        </div>
+      </div></div>
+      <div class="spec">Scrim stops measured; H1 text-shadow 0 2px 26px; never a decorative overlay on the photo (v1.2 law).</div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-07</span><span class="cname">Word-rotator typographic hero</span><span class="prov">BetterUp (confirmed live) + Primitive 1</span></div>
+      <div class="demo pad on-ground h-rot"><h3>Better <span class="rot-slot" id="rot"><span class="on">planning</span><span>timing</span><span>coordination</span><span>outcomes</span></span><br>across the board.</h3></div>
+      <div class="spec">Grid-stack slot (can't collapse — LED-001); cycling word at line position, serif-italic accent color; 2.6s cycle.</div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-08</span><span class="cname">Animated mesh-gradient hero</span><span class="prov">Stripe + Zoom · Primitive 4</span></div>
+      <div class="demo"><div class="h-mesh">
+        <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+        <div class="inner"><h3>The motion IS the brand, not decoration on top.</h3></div>
+      </div></div>
+      <div class="spec">3 brand-tint blobs, blur 58px, opacity .74 (LED-007: too faint = timid), desync 13/17/21s drift; static under reduced-motion.</div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-09</span><span class="cname">Video hero · directional scrim</span><span class="prov">Zoom · Primitive 5 · v1.3 §8.4</span></div>
+      <div class="demo"><div class="h-vid">
+        <img class="poster" src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=1600&auto=format&fit=crop" alt="">
+        <video muted loop playsinline preload="none"><source data-src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4"></video>
+        <div class="scrim"></div>
+        <div class="inner"><h3>Real footage behind the words.</h3><p style="margin-top:10px;color:rgba(255,255,255,.85)">Poster-first · zero bytes until near viewport · reduced-motion = poster · a failed video IS the photo hero.</p></div>
+      </div></div>
+      <div class="spec">105deg scrim anchored to the copy side (.8→0 at 70%); autoplay muted allowed here ONLY (ambient). Sample clip = CC0 stand-in.</div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-10</span><span class="cname">Dark typographic hero</span><span class="prov">Stashwealth · measured</span></div>
+      <div class="demo"><div class="h-dark">
+        <span class="eyebrow">For skeptical smart readers</span>
+        <h3>No photo. No apology.</h3>
+        <p>Condensed display on near-black, square buttons, uppercase labels. Full page obeys the ALTERNATION LAW — max two dark sections in a row.</p>
+        <button class="b-sq">Primary action</button><button class="b-sq" style="background:transparent;color:var(--accent-soft)">Secondary</button>
+      </div></div>
+      <div class="spec">#0C0F14-class tinted near-black (never #000); body text rgba(.78); elevation via lighter fills, zero shadows.</div>
+    </div>
+  </section>
+
+  <!-- ═══════════ PROOF & CREDIBILITY ═══════════ -->
+  <section class="grp"><h2>Proof &amp; credibility — <em>numbers, faces, voices</em></h2>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-11</span><span class="cname">Credibility bar (directly under hero)</span><span class="prov">BetterUp · measured placement</span></div>
+      <div class="demo"><div class="credbar"><span>10+ years at Merrill Lynch <span class="vf">VERIFY</span></span><span>Houston, TX</span><span>Coordinated planning for $2M–$30M households <span class="vf">VERIFY</span></span></div></div>
+      <div class="spec">~40px band, tracked caps or logo row — proof before pitch. Unverified claims wear visible VERIFY chips.</div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-12</span><span class="cname">Quantified metric-proof cards</span><span class="prov">BetterUp · measured 75px/300 numerals</span></div>
+      <div class="demo pad on-alt"><div class="metrics">
+        <div class="metric"><span class="tag">Outcome</span><b>21%</b><p>uptick in workforce efficiency — every card carries a NUMBER, never a vibe. <i>(illustrative)</i></p><a href="#">Read the story →</a></div>
+        <div class="metric"><span class="tag">Outcome</span><b>3→1</b><p>professionals coordinated into one living plan.</p><a href="#">How it works →</a></div>
+        <div class="metric"><span class="tag">Outcome</span><b>90+</b><p>advisors on the platform <span class="vf" style="font:600 9px var(--sans);color:var(--accent-ink);border:1px solid rgba(var(--accent-rgb),.5);border-radius:3px;padding:2px 4px;">VERIFY</span></p><a href="#">See the model →</a></div>
+      </div></div>
+      <div class="spec">White cards radius 16 · numeral 300-weight at 40–75px · one-line outcome · "Read story" link. Vague claims are off-register.</div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-13</span><span class="cname">Photo band with overlaid stat blocks</span><span class="prov">BetterUp · measured (white 75/300 over scrim .3–.7)</span></div>
+      <div class="demo"><div class="pband">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1600&auto=format&fit=crop" alt="">
+        <div class="scrim"></div>
+        <div class="inner">
+          <div><b class="cnt" data-count="10" data-suffix="+">10+</b><span>years institutional training <i>(VERIFY)</i></span></div>
+          <div><b>3→1</b><span>professionals, one plan</span></div>
+          <div><b class="cnt" data-count="4">4</b><span>step process, quarterly rhythm</span></div>
+        </div>
+      </div></div>
+      <div class="spec">Human photo + dark scrim + white 300-weight stats; count-up + blur-to-sharp on reveal with the LED-011 stall guard. Unverified numbers never animate.</div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-14</span><span class="cname">Deep-accent proof drench</span><span class="prov">warm-premium v1.2 · your "deepen it + light text" note</span></div>
+      <div class="demo"><div class="drench">
+        <h3>The one saturated moment <em>on the whole page.</em></h3>
+        <div class="qcard"><blockquote>"Light text on the deep ground — never dark ink on raw gold. AA-checked against the gradient's lightest stop."</blockquote></div>
+        <div class="stats"><div><b>5.6:1</b><span>headline contrast</span></div><div><b>1</b><span>drench per page</span></div><div><b>0</b><span>green-on-gold ever again</span></div></div>
+      </div></div>
+      <div class="spec">155deg gradient derived from --accent-deep via color-mix; all text solid on-dark; the pale testimonial card pops against it.</div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-15</span><span class="cname">Video testimonial · click-to-play</span><span class="prov">v1.3 §8.4 · built for Memphis footage</span></div>
+      <div class="demo pad on-ground"><div class="vt">
+        <button class="poster" aria-label="Play story"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1200&auto=format&fit=crop" alt=""><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span><span class="dur">0:29</span></button>
+        <video controls playsinline preload="none" hidden><source data-src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4"></video>
+      </div></div>
+      <div class="spec">NEVER autoplays — pressing play is the intent signal. Zero video bytes before click; accent play button doubles as an accent surface; native controls after.</div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SECTION COMPONENTS ═══════════ -->
+  <section class="grp"><h2>Section components — <em>the conversion skeleton's parts</em></h2>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-16</span><span class="cname">Pain cards (flat, numbered)</span><span class="prov">Maven language · proven in 4 builds</span></div>
+      <div class="demo pad on-ground"><div class="pains">
+        <div class="pain"><span class="dot"></span><div class="num">01</div><p class="q">"My CPA, my advisor, and my attorney never talk to each other."</p><p class="c">Their exact words, serif-italic; the numeral gives it weight.</p></div>
+        <div class="pain"><span class="dot"></span><div class="num">02</div><p class="q">"Every bonus season feels like a tax trap."</p><p class="c">Flat fill, no shadow, hover lift — the register's card DNA.</p></div>
+      </div></div>
+      <div class="spec">2-col, ground-alt fill, radius 8, accent dot, 300-weight accent-ink numeral, hover translateY(-4px) + fill step.</div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-17</span><span class="cname">ICP photo cards (self-sort)</span><span class="prov">Maven · the cards you called better than hand-built</span></div>
+      <div class="demo pad on-ground"><div class="icps">
+        <div class="icp"><img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=900&auto=format&fit=crop" alt=""><span class="dot"></span><div class="body"><h4>Segment one</h4><p>Their world, their photo, their pains — bottom-anchored over the scrim.</p></div></div>
+        <div class="icp"><img src="https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=900&auto=format&fit=crop" alt=""><span class="dot"></span><div class="body"><h4>Segment two</h4><p>Card bg is dark so a failed image still reads.</p></div></div>
+        <div class="icp"><img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?q=80&w=900&auto=format&fit=crop" alt=""><span class="dot"></span><div class="body"><h4>Segment three</h4><p>Dot badge w/ soft ring, hover lift -5px.</p></div></div>
+      </div></div>
+      <div class="spec">min-height clamp(400,42vw,480) in production; bottom→up scrim; warm-documentary imagery only (§6 rules).</div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-18</span><span class="cname">Mixed bento + dark placement + CTA closer</span><span class="prov">Maven · §8.2 placement law</span></div>
+      <div class="demo pad on-ground"><div class="bento">
+        <div class="bx c3 dark"><span class="tag">Flagship</span><h4>The core offer goes dark, top-left</h4><p class="pl">"Exactly 1–2 dark cells, never adjacent."</p></div>
+        <div class="bx c3"><span class="tag">Support</span><h4>Light cell</h4><p class="pl">"Tag + head + serif pain-line."</p></div>
+        <div class="bx c2"><span class="tag">Support</span><h4>Light</h4></div>
+        <div class="bx c2"><span class="tag">Support</span><h4>Light</h4></div>
+        <div class="bx c2"><span class="tag">Support</span><h4>Light</h4></div>
+        <div class="bx c6 dark"><div><span class="tag">Closer</span><h4>The full-width closer hosts the section CTA</h4></div><button class="b-flat" style="font-size:15px;padding:8px 20px">Start the Fit Check →</button></div>
+      </div></div>
+      <div class="spec">6-col grid: 3+3 / 2+2+2 / 6. Gold-on-dark closer button = strongest contrast on the page.</div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-19</span><span class="cname">Featured-split insights (+ video slot)</span><span class="prov">v1.2 · your "elevate insights" note</span></div>
+      <div class="demo pad on-alt"><div class="ins">
+        <article class="insf"><span class="instag">Featured · Article</span><h4>One lead item earns the accent bar and the big serif title</h4><p>Longer excerpt, real hierarchy. Can be a video episode (C-15 block on top).</p></article>
+        <div class="stack">
+          <article class="insc"><span class="instag">Podcast</span><h4>Compact card</h4></article>
+          <article class="insc"><span class="instag">Article</span><h4>Compact card</h4></article>
+        </div>
+      </div></div>
+      <div class="spec">1.55fr/1fr grid; 3px accent top-bar marks the lead; one video card max per section.</div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-20</span><span class="cname">Process stepper · numeral-pop</span><span class="prov">Maven + v1.2 "color pop" note</span></div>
+      <div class="demo pad on-alt"><div class="proc">
+        <div class="step"><div class="n">01</div><h4>Discovery</h4><p>Accent dot on the hairline.</p></div>
+        <div class="step"><div class="n">02</div><h4>Assessment</h4><p>Numeral mix AA-checked per palette.</p></div>
+        <div class="step"><div class="n">03</div><h4>The Plan</h4><p>Serif-italic "when" note in production.</p></div>
+        <div class="step"><div class="n">04</div><h4>Partnership</h4><p>Hairline-top rhythm.</p></div>
+      </div></div>
+      <div class="spec">Numeral = color-mix(accent 40–55%, accent-ink) — share tuned per palette until ≥3:1 large-text.</div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-21</span><span class="cname">Fit mini-hero · convergence diagram · wizard</span><span class="prov">v1.2 · the section you called "perhaps the most important"</span></div>
+      <div class="demo pad on-ground"><div class="fitp"><div class="grid">
+        <div>
+          <span class="eyebrow">The fit check</span>
+          <h3 style="margin-top:10px">Four questions. <em>Two minutes.</em></h3>
+          <p class="sub">The #1 conversion event gets the page's signature moment.</p>
+          <div class="fit-diag" aria-hidden="true"><svg viewBox="0 0 420 168" preserveAspectRatio="xMinYMid meet">
+            <text class="lbl" x="8" y="12">YOUR CPA</text><text class="lbl" x="8" y="72">YOUR ATTORNEY</text><text class="lbl" x="8" y="132">YOUR PORTFOLIO</text>
+            <text class="lbl lbl-node" x="348" y="58" text-anchor="middle">ONE LIVING PLAN</text>
+            <path class="s1" d="M8,24 C 130,16 250,52 348,84"/><path class="s2" d="M8,84 C 130,80 250,84 348,84"/><path class="s3" d="M8,144 C 130,152 250,116 348,84"/>
+            <circle class="f1" r="2.6"><animateMotion dur="7s" repeatCount="indefinite" path="M8,24 C 130,16 250,52 348,84"/></circle>
+            <circle class="f2" r="2.4"><animateMotion dur="9.5s" repeatCount="indefinite" path="M8,84 C 130,80 250,84 348,84"/></circle>
+            <circle class="f3" r="2.2"><animateMotion dur="12s" repeatCount="indefinite" path="M8,144 C 130,152 250,116 348,84"/></circle>
+            <circle class="node" cx="348" cy="84" r="5"/><circle class="ring" cx="348" cy="84" r="12"/>
+          </svg></div>
+        </div>
+        <div class="fcard">
+          <div class="whead"><span class="wnum">01</span><span class="wlab">of 04</span></div>
+          <div class="segs"><i class="on"></i><i></i><i></i><i></i></div>
+          <p class="leg">Which best describes you?</p>
+          <button class="opt">Option one</button><button class="opt">Option two</button><button class="opt">Option three</button>
+        </div>
+      </div></div></div>
+      <div class="spec">Dark panel radius 12 in a light section (contained darkness) · labeled strands → node · step numeral + 4 segments · 2-cycle ring pulse on reveal · no-JS falls back to a plain single form.</div>
+    </div>
+  </section>
+
+  <!-- ═══════════ MOTION SYSTEMS ═══════════ -->
+  <section class="grp"><h2>Motion systems — <em>quiet, and they sell</em></h2>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-22</span><span class="cname">Staggered reveal + hover lifts</span><span class="prov">v1.2 · BetterUp/Maven reveal rhythm</span></div>
+      <div class="demo pad on-alt">
+        <button class="replay" id="replay">↻ Replay the stagger</button>
+        <div class="stagdemo play" id="stag"><div class="cell">1st · 0ms</div><div class="cell">2nd · +90ms</div><div class="cell">3rd · +180ms</div><div class="cell">4th · +270ms</div></div>
+      </div>
+      <div class="spec">.stagger on the GRID, 90ms steps, backwards-fill (hover transitions survive); reduced-motion + no-JS = simply visible.</div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-23</span><span class="cname">Scroll-driven section recolor</span><span class="prov">Instrument · Primitive 6 (click demo — scroll-driven in production)</span></div>
+      <div class="demo"><div class="tswap"><div class="pane" id="tpane" style="background:var(--dark);color:var(--on-dark-mute)">
+        <h4 id="tph" style="color:#fff">The whole ground recolors as you scroll.</h4>
+        <p>Text inverts to stay legible; floor = solid readable sections with no JS. <button class="replay" id="tsw" style="margin:12px 0 0">Swap theme</button></p>
+      </div></div></div>
+      <div class="spec">Paired theme sections, fixed-layer crossfade, text inversion; verified fixture exists (qa/fixtures/scroll-color-theming.html).</div>
+    </div>
+  </section>
+
+  <p style="margin-top:56px;font-size:13px;max-width:76ch">Not in this page (exist as verified fixtures, hard to demo in a card): the full video-hero lazy-load behavior (<code>qa/fixtures/video-blocks.html</code>) and full-page scroll recoloring (<code>qa/fixtures/scroll-color-theming.html</code>). Candidates NOT yet harvested — say the word: Pitch's animation pacing, Linear's product-scroll transitions, Mercury's product-visual hero, Hoare's no-imagery restraint page.</p>
+</div>
+
+<script>
+document.documentElement.classList.add('js');document.documentElement.classList.remove('no-js');
+// palette toggle
+var ta=document.getElementById('ta'),tb=document.getElementById('tb');
+ta.onclick=function(){document.documentElement.classList.remove('theme-b');ta.classList.add('on');tb.classList.remove('on');};
+tb.onclick=function(){document.documentElement.classList.add('theme-b');tb.classList.add('on');ta.classList.remove('on');};
+// C-07 rotator
+(function(){var slot=document.getElementById('rot');if(!slot)return;var ws=slot.querySelectorAll('span'),i=0;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  setInterval(function(){ws[i].classList.remove('on');i=(i+1)%ws.length;ws[i].classList.add('on');},2600);})();
+// C-09 video hero lazy
+(function(){var v=document.querySelector('.h-vid video');if(!v)return;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var s=v.querySelector('source[data-src]');
+  new IntersectionObserver(function(es,o){es.forEach(function(e){if(!e.isIntersecting)return;s.src=s.dataset.src;v.load();var p=v.play();if(p&&p.catch)p.catch(function(){});o.disconnect();});},{rootMargin:'150px'}).observe(v);})();
+// C-13 count-up
+(function(){var band=document.querySelector('.pband');if(!band)return;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;var ran=false;
+  new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting||ran)return;ran=true;
+    band.querySelectorAll('.cnt[data-count]').forEach(function(el){var t=+el.dataset.count,suf=el.dataset.suffix||'',t0=null;
+      function tick(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/1500,1),e2=1-Math.pow(1-p,3);el.textContent=Math.round(t*e2)+suf;el.style.filter='blur('+((1-e2)*7).toFixed(1)+'px)';if(p<1)requestAnimationFrame(tick);else{el.textContent=t+suf;el.style.filter='none';}}
+      requestAnimationFrame(tick);});
+    setTimeout(function(){band.querySelectorAll('.cnt[data-count]').forEach(function(el){el.textContent=el.dataset.count+(el.dataset.suffix||'');el.style.filter='none';});},2200);
+  });},{threshold:.4}).observe(band);})();
+// C-15 click-to-play
+document.querySelectorAll('.vt').forEach(function(vt){var btn=vt.querySelector('.poster'),vid=vt.querySelector('video');if(!btn||!vid)return;
+  var s=vid.querySelector('source[data-src]');
+  btn.addEventListener('click',function(){if(s&&!s.src){s.src=s.dataset.src;vid.load();}btn.hidden=true;vid.hidden=false;vid.play();});});
+// C-22 replay
+document.getElementById('replay').onclick=function(){var g=document.getElementById('stag');g.classList.remove('play');void g.offsetWidth;g.classList.add('play');};
+// C-23 theme swap
+(function(){var b=document.getElementById('tsw'),p=document.getElementById('tpane'),h=document.getElementById('tph'),dark=true;
+  b.onclick=function(){dark=!dark;
+    p.style.background=dark?'var(--dark)':'var(--ground)';p.style.color=dark?'var(--on-dark-mute)':'var(--ink-body)';
+    h.style.color=dark?'#fff':'var(--ink)';};})();
+</script>
+</body>
+</html>
