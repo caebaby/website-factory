@@ -39,7 +39,11 @@ rail `Hero A·B·C·D·E`, `body[data-hero]`, hash persistence, `<!-- REVIEW-ONL
   (funding status vs. current assets; re-title after the ranch purchase class) → 4 CONVERSION DOC
   "Where does your plan stand?" (3 visitor questions + gold `Take the 4-Question Fit Check →`
   btn in the doc footer — the ONE real button allowed). Auto 4.5s, doc-4 holds 7s, hover=pause +
-  dot rail, LED-011 guards, no-JS = doc 1 static.
+  dot rail **CENTERED under the doc frame** (Chris, 2026-07-02 — never bottom-left orphaned),
+  LED-011 guards, no-JS = doc 1 static.
+  **[VERIFY — compliance]:** the sample-plan artifact itself (even fully redacted) needs Alex's
+  compliance sign-off before launch; approved as CONCEPT only for now (Chris, 2026-07-02). Ship
+  question rides in COPY_DOC Part 1 disclosures.
 - **B — Photo hero:** full-bleed `assets/hero-family.jpg`, Pack scrim numbers + veil-if-needed.
 - **C — Video hero:** B's composition, Primitive-5 video (poster=hero-family.jpg, demo
   `data-src` https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4
@@ -53,7 +57,10 @@ rail `Hero A·B·C·D·E`, `body[data-hero]`, hash persistence, `<!-- REVIEW-ONL
   (`--ink`) + serif-italic accent phrase in `--accent-ink` (AA on ground), underline-draw stays
   `--accent`; the white doc frame needs a defined edge on cream (hairline `--border` + the
   floating shadow, verify it doesn't wash out); dot rail recolors for light ground; eyebrow =
-  `--accent-ink` not `--accent-soft` (LED-003 class). Cred bar unchanged below. A timid retint
+  `--accent-ink` not `--accent-soft` (LED-003 class). **NAV translation (executor-found gap,
+  2026-07-02): any light hero variant must recolor the fixed nav's unscrolled ink**
+  (`nav:not(.scrolled)` brand + links → `--ink`) — the global nav assumes a dark hero; scrolled
+  state keeps the dark glass bg + on-dark text. Cred bar unchanged below. A timid retint
   fails the ambition floor — this must read as its own deliberate light direction, not A minus
   the navy.
 All variants: eyebrow `For Houston Executives, Owners & Families` · H1 `You've become the project
