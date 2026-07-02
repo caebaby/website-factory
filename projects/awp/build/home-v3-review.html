@@ -575,19 +575,20 @@ body[data-hero="A"] .hero-copy{max-width:560px;}
   </div>
   <!-- Variant C: video (Primitive 5, poster=family) -->
   <div class="hero-media hv hv-c">
-    <video class="hero-video-c" muted loop playsinline preload="none" poster="assets/hero-family.jpg" aria-hidden="true">
-      <!-- [VERIFY real footage] demo clip -->
-      <source data-src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+    <video class="hero-video-c" muted loop playsinline preload="none" poster="assets/hero-oilfield.jpg" aria-hidden="true">
+      <!-- Pexels #10227529 (royalty-free, Pexels license) — Permian pumpjack drone. Alex b-roll may replace. -->
+      <source data-src="assets/pumpjack.mp4" type="video/mp4">
     </video>
   </div>
   <!-- Variant D: two crossfading ambient clips -->
   <div class="hero-media hv hv-d">
-    <video class="hero-video-d hvd-1" style="opacity:1;transition:opacity 1.2s ease" muted loop playsinline preload="none" poster="assets/hero-family.jpg" aria-hidden="true">
-      <source data-src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+    <video class="hero-video-d hvd-1" style="opacity:1;transition:opacity 1.2s ease" muted loop playsinline preload="none" poster="assets/hero-oilfield.jpg" aria-hidden="true">
+      <!-- Pexels #10227529 — Permian pumpjack drone (royalty-free) -->
+      <source data-src="assets/pumpjack.mp4" type="video/mp4">
     </video>
-    <video class="hero-video-d hvd-2" style="opacity:0;transition:opacity 1.2s ease" muted loop playsinline preload="none" poster="assets/hero-oilfield.jpg" aria-hidden="true">
-      <!-- [VERIFY — oil pumpjack in a Texas field, Alex b-roll] -->
-      <source data-src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+    <video class="hero-video-d hvd-2" style="opacity:0;transition:opacity 1.2s ease" muted loop playsinline preload="none" poster="assets/hero-family.jpg" aria-hidden="true">
+      <!-- Pexels #10227587 — pumpjacks in desert, second angle (royalty-free). [VERIFY] Alex b-roll replaces. -->
+      <source data-src="assets/pumpjack-alt.mp4" type="video/mp4">
     </video>
   </div>
 
@@ -1419,7 +1420,7 @@ function activateHero(v){
 })();
 </script>
 
-<!-- REVIEW-ONLY: font A/B toggle -->
+<!-- REVIEW-ONLY: font toggle -->
 <div id="fontToggle" style="position:fixed;left:14px;bottom:64px;z-index:999;background:#fff;border:1px solid rgba(20,40,64,.18);border-radius:6px;padding:8px 10px;font:600 10px/1 'Nunito Sans',sans-serif;letter-spacing:.8px;text-transform:uppercase;color:#4b5b6e;box-shadow:0 4px 18px rgba(0,0,0,.08);display:flex;gap:6px;align-items:center;">FONTS:
 <button data-f="brand" style="border:1.5px solid rgba(20,40,64,.18);background:#c9a24b;color:#142840;border-radius:4px;padding:5px 9px;font:inherit;cursor:pointer;">Alex brand</button>
 <button data-f="kindred" style="border:1.5px solid rgba(20,40,64,.18);background:#F5F0E6;color:#1b2a3c;border-radius:4px;padding:5px 9px;font:inherit;cursor:pointer;">Kindred feel</button></div>
