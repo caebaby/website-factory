@@ -1,0 +1,53 @@
+<!doctype html>
+<!-- LED-013 fixture: MUST FAIL the gate (exit 1) with `opacity-invisible` P0s.
+     Card grid reproduces the exact home-v2 defect: base opacity:0 + `backwards`-fill
+     animation with only the DELAY gated on `.in` — animation runs once at load,
+     backwards-fill reverts children to base opacity:0 = permanently invisible.
+     Also carries: a CORRECT Kindred-pattern grid (must NOT fire) and a
+     forwards-fill hero (must fire P1 `opacity-anim-dependent`, not P0). -->
+<html lang="en"><head><meta charset="utf-8"><title>LED-013 fixture</title>
+<style>
+  body{font-family:Georgia,serif;margin:0}
+  section{padding:80px 24px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:960px;margin:0 auto}
+  .card{border:1px solid #ddd;border-radius:8px;padding:32px}
+
+  /* BROKEN (home-v2 defect): base hidden, animation ungated — backwards-fill
+     reverts to opacity:0 after the load-time run */
+  @keyframes staggerRise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  .stagger-broken>*{opacity:0;animation:staggerRise .7s ease backwards}
+  .stagger-broken.in>*:nth-child(1){animation-delay:.0s}
+  .stagger-broken.in>*:nth-child(2){animation-delay:.09s}
+  .stagger-broken.in>*:nth-child(3){animation-delay:.18s}
+
+  /* CORRECT (Kindred-proven): base hidden; opacity:1 AND animation live under .in */
+  .stagger-ok>*{opacity:0}
+  .stagger-ok.in>*{opacity:1;animation:staggerRise .7s ease backwards}
+  .stagger-ok.in>*:nth-child(2){animation-delay:.09s}
+  .stagger-ok.in>*:nth-child(3){animation-delay:.18s}
+
+  /* ANIM-DEPENDENT: visible only if the load animation actually runs (LED-011 risk) */
+  @keyframes heroIn{from{opacity:0}to{opacity:1}}
+  .hero-h{opacity:0;animation:heroIn .8s ease .2s forwards}
+</style></head><body>
+
+<section><h1 class="hero-h">Forwards-fill hero headline</h1></section>
+
+<section><div class="grid stagger-broken">
+  <div class="card"><h3>Broken card one</h3><p>Base rule opacity:0, reveal ungated.</p></div>
+  <div class="card"><h3>Broken card two</h3><p>Backwards-fill reverts after load run.</p></div>
+  <div class="card"><h3>Broken card three</h3><p>Invisible in a real focused browser.</p></div>
+</div></section>
+
+<section><div class="grid stagger-ok">
+  <div class="card"><h3>Correct card one</h3><p>End-state gated under .in — visible.</p></div>
+  <div class="card"><h3>Correct card two</h3><p>Backwards-fill reverts to the .in base.</p></div>
+  <div class="card"><h3>Correct card three</h3><p>Must not fire the census.</p></div>
+</div></section>
+
+<script>
+  // standard reveal trigger — adds .in on intersection (jsdom-free, plain IO)
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+  document.querySelectorAll('.stagger-broken,.stagger-ok').forEach(el=>io.observe(el));
+</script>
+</body></html>

@@ -277,6 +277,85 @@
     }
   }
 
+  /* ==========================================================================
+     __opacityCensus — LED-013 check. Run AFTER __visualChecks (it MUTATES the
+     page: kills all animations, forces `.in` everywhere). Catches the class
+     that escaped BOTH gates: reveal systems whose BASE rule leaves content at
+     opacity:0 (e.g. `backwards`-fill stagger ungated from `.in`) — invisible
+     in a real focused browser, invisible to geometry checks (full height),
+     and indistinguishable in a throttled tab. Technique per LED-013: neutralize
+     animations entirely (`animation:none` — not duration:0, fill-mode states
+     must die too), force `.in`, then census computed opacity < 0.05. What
+     survives neutralization IS the base-rule truth.
+     P0 `opacity-invisible`: no animation was ever attached — nothing can ever
+       reveal it. Broken.
+     P1 `opacity-anim-dependent`: a forwards/both-fill animation was attached —
+       visible ONLY if that animation actually runs (LED-011 rAF-starvation
+       risk). Correct pattern: base visible, animation gated under `.in`.
+     Skips position:fixed/absolute (menus, overlays, carousel decks are
+     legitimately opacity:0 at rest). ========================================= */
+  function opacityCensus() {
+    const defects = [];
+    const cs = el => getComputedStyle(el);
+    const sel = el => {
+      if (el.id) return '#' + el.id;
+      const c = (el.className && String(el.className).trim().split(/\s+/)[0]) || '';
+      return el.tagName.toLowerCase() + (c ? '.' + c : '');
+    };
+    const hasContent = el =>
+      (el.textContent && el.textContent.trim().length > 0) ||
+      el.querySelector('img,svg,canvas,video,input,button,picture');
+
+    // 1. record pre-neutralize animation attachment (fill-mode decides severity)
+    const pre = new Map();
+    document.querySelectorAll('body *').forEach(el => {
+      const c = cs(el);
+      if (c.animationName && c.animationName !== 'none')
+        pre.set(el, { name: c.animationName.split(',')[0].trim(), fill: c.animationFillMode });
+    });
+
+    // 2. neutralize: animation:none (duration:0 keeps fill states alive — LED-013)
+    const style = document.createElement('style');
+    style.id = '__qa-opacity-census';
+    style.textContent = '*,*::before,*::after{animation:none!important;transition:none!important}';
+    document.head.appendChild(style);
+
+    // 3. force `.in` everywhere — any reveal system gated on it must now show
+    document.querySelectorAll('body *').forEach(el => el.classList.add('in'));
+    void document.body.offsetHeight; // force style recalc
+
+    // 4. census: base-rule invisible content in normal flow
+    document.querySelectorAll('body *').forEach(el => {
+      const c = cs(el);
+      if (c.display === 'none' || c.visibility === 'hidden') return; // intentionally hidden
+      if (+c.opacity >= 0.05) return;
+      if (c.position === 'fixed' || c.position === 'absolute') return; // overlays/decks: opacity:0 at rest is legit
+      if (!hasContent(el)) return;
+      const r = el.getBoundingClientRect();
+      if (r.width < 4 || r.height < 4) return;
+      const anim = pre.get(el);
+      if (anim && /forwards|both/.test(anim.fill)) {
+        add1('P1', 'opacity-anim-dependent', sel(el),
+          'Content visible ONLY if animation "' + anim.name + '" (' + anim.fill + '-fill) actually runs — rAF starvation leaves it invisible (LED-011). Base rule should be visible; gate the animation under `.in` instead.',
+          { animation: anim.name, fill: anim.fill });
+      } else {
+        add1('P0', 'opacity-invisible', sel(el),
+          'Element holds content but its BASE rule is opacity:' + c.opacity + ' with animations neutralized and `.in` forced — permanently invisible in a real browser (LED-013 class: reveal end-state not gated under `.in`).',
+          { opacity: +c.opacity });
+      }
+    });
+
+    function add1(severity, code, s, msg, data) {
+      defects.push({ severity, code, selector: s, message: msg, data: data || null });
+    }
+    return {
+      blockers: defects.filter(d => d.severity === 'P0').length,
+      warnings: defects.filter(d => d.severity === 'P1').length,
+      defects,
+    };
+  }
+
   window.__visualChecks = run;
+  window.__opacityCensus = opacityCensus;
   return run;
 })();

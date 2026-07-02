@@ -99,6 +99,21 @@ function cdpSender(ws) {
       returnByValue: true
     });
     const report = JSON.parse(run.result.value);
+
+    // LED-013 census — runs LAST (it mutates the page: kills animations, forces .in)
+    const censusRun = await send('Runtime.evaluate', {
+      expression: "JSON.stringify(window.__opacityCensus())",
+      returnByValue: true
+    });
+    const census = JSON.parse(censusRun.result.value);
+    report.defects.push(...census.defects);
+    report.blockers += census.blockers;
+    report.warnings += census.warnings;
+    report.pass = report.blockers === 0;
+    report.summary = report.pass
+      ? ('No blockers. ' + report.warnings + ' warnings, ' + report.polish + ' polish.')
+      : (report.blockers + ' BLOCKER(S) — do not ship.');
+
     console.log(JSON.stringify(report, null, 2));
     ws.close(); chrome.kill();
     process.exit(report.blockers === 0 ? 0 : 1);

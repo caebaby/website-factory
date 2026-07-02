@@ -41,7 +41,10 @@ Last updated: 2026-07-02 (FABLE SESSION, day 2 — the factory became a real PIP
   Hanken/Newsreader are FREE; paid option = real brand fonts Proxima Nova/Adobe Garamond).
   Then: strip review toggles → Alex link → `/fit-results` + inner pages (SITE_ARCHITECTURE.md) →
   send COPY_DOC_FOR_ALEX.md → AGL (projects/agl/BRIEF.md) → GLM-via-Hermes executor test.
-- Open checker item: LED-013 `opacity-invisible` check into qa/visual-checks.js.
+- ✅ LED-013 checker SHIPPED (2026-07-02): `__opacityCensus()` in qa/visual-checks.js + run-checks.js
+  (neutralize animations → force `.in` → census opacity<0.05). P0 `opacity-invisible` + P1
+  `opacity-anim-dependent` (forwards-fill = LED-011 risk, now surfaced). Fixture
+  `qa/fixtures/led013-broken.html` proves it (exit 1); home-v3 re-gated clean (exit 0).
 - Chris runs **caveman mode** (/caveman full) — keep responses terse.
 
 ### Anchor (superseded by the block above — `projects/awp/build/home-v2.html` history)
