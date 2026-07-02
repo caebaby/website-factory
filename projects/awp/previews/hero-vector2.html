@@ -32,6 +32,7 @@ body{
 }
 a{color:inherit;text-decoration:none;}
 img{max-width:100%;display:block;}
+button{font-family:inherit;}
 
 .wrap{
   max-width:var(--maxw);
@@ -260,7 +261,7 @@ img{max-width:100%;display:block;}
   display:flex;
   flex-wrap:wrap;
   align-items:center;
-  gap:18px;
+  gap:12px;
   opacity:0;
   transform:translateY(14px);
 }
@@ -283,7 +284,7 @@ img{max-width:100%;display:block;}
   .h1-underline::after{transition:none;transform:scaleX(1) !important;}
 }
 
-/* ---------- ARTIFACT ---------- */
+/* ---------- ARTIFACT (document carousel) ---------- */
 .artifact-stage{
   position:relative;
   display:flex;
@@ -310,23 +311,53 @@ img{max-width:100%;display:block;}
   max-width:460px;
   background:var(--card);
   border:1px solid var(--border);
-  border-radius:var(--radius-card);
+  border-radius:var(--radius-media);
   box-shadow:0 24px 60px rgba(20,40,64,.10);
-  padding:clamp(22px,3vw,32px);
   opacity:0;
-  transform:translateY(20px) rotate(0deg);
+  transform:translateY(20px);
+  overflow:hidden;
 }
 .artifact.rise{animation:artifactRise .8s var(--ease-soft) forwards;animation-delay:.53s;}
 @keyframes artifactRise{
-  to{opacity:1;transform:translateY(0) rotate(0deg);}
+  to{opacity:1;transform:translateY(0);}
 }
 .no-js .artifact{opacity:1;transform:none;animation:none;}
 @media (prefers-reduced-motion:reduce){
   .artifact{opacity:1 !important;transform:none !important;animation:none !important;}
-  .artifact-back{transform:rotate(-2deg) translate(18px,22px) !important;}
 }
 
-.artifact-head{
+/* --- documents --- */
+.doc{
+  padding:clamp(22px,3vw,32px);
+  padding-bottom:64px;               /* rail band */
+  display:flex;
+  flex-direction:column;
+  opacity:0;
+  transform:translateX(8px);
+  transition:opacity .5s var(--ease-soft), transform .5s var(--ease-soft);
+  pointer-events:none;
+}
+.doc-1{position:relative;}           /* doc 1 sizes the frame at every width */
+.doc-2,.doc-3,.doc-4{position:absolute;inset:0;}
+.doc.active{
+  opacity:1;
+  transform:translateX(0);
+  pointer-events:auto;
+}
+.doc.exit{transform:translateX(-8px);}
+
+/* no-JS: doc 1 static-visible, others hidden, no rail, no progress */
+.no-js .doc-1{opacity:1;transform:none;pointer-events:auto;}
+.no-js .doc-2,.no-js .doc-3,.no-js .doc-4{display:none;}
+.no-js .rail,.no-js .prog{display:none;}
+
+@media (prefers-reduced-motion:reduce){
+  .doc{transform:none !important;transition:opacity .5s ease;}  /* crossfade only */
+  .prog{display:none !important;}
+  .rail{opacity:1 !important;}
+}
+
+.doc-head{
   display:flex;
   flex-direction:column;
   gap:3px;
@@ -334,22 +365,23 @@ img{max-width:100%;display:block;}
   margin-bottom:16px;
   border-bottom:1px solid var(--border);
 }
-.artifact-title{
+.doc-title{
   font-family:var(--serif);
   font-style:italic;
   font-weight:500;
   font-size:19px;
   color:var(--ink);
 }
-.artifact-meta{
+.doc-meta{
   font-size:12px;
   color:var(--ink-body);
 }
 
-.artifact-rows{
+.doc-rows{
   display:flex;
   flex-direction:column;
-  gap:2px;
+  flex:1;
+  justify-content:center;   /* shorter docs breathe instead of leaving a void */
 }
 .arow{
   display:flex;
@@ -359,7 +391,7 @@ img{max-width:100%;display:block;}
   padding:11px 0;
   border-bottom:1px solid rgba(20,40,64,.08);
 }
-.arow:last-child{border-bottom:none;}
+.doc-rows .arow:last-child{border-bottom:none;}
 .arow-label{
   font-size:14px;
   font-weight:600;
@@ -388,39 +420,97 @@ img{max-width:100%;display:block;}
   background:rgba(20,40,64,.07);
   color:var(--ink-body);
 }
-.chip-live{position:relative;}
 
-/* the one quiet living detail: chip flips state 2s after load */
-.chip-live .chip-state-a{display:inline;}
-.chip-live .chip-state-b{display:none;}
-.chip-live.flip .chip-state-a{display:none;}
-.chip-live.flip .chip-state-b{display:inline;}
-
-.artifact-foot{
-  margin-top:18px;
+.doc-foot{
+  margin-top:auto;
   padding-top:14px;
   border-top:1px solid var(--border);
   display:flex;
   align-items:center;
   justify-content:space-between;
+  gap:12px;
 }
-.verify-chip{
-  display:inline-flex;
-  align-items:center;
-  font-size:9px;
-  font-weight:700;
-  letter-spacing:.06em;
-  text-transform:uppercase;
-  color:var(--accent-ink);
-  border:1px solid var(--accent-ink);
-  border-radius:20px;
-  padding:2px 7px;
-  margin-left:6px;
-  transform:translateY(-1px);
-}
-.artifact-foot-label{
+.doc-foot-label{
   font-size:11px;
   color:var(--ink-body);
+}
+
+/* conversion doc: the questions get more air; footer is the CTA */
+.doc-4 .arow{padding:15px 0;}
+.doc-4 .arow-label{font-size:15px;}
+.doc-4 .doc-foot{border-top:none;padding-top:20px;justify-content:flex-start;}
+
+/* --- progress hairline (always subtly visible while cycling) --- */
+.prog{
+  position:absolute;
+  top:0;left:0;
+  height:2px;
+  width:100%;
+  background:rgba(var(--accent-rgb),.18);
+  z-index:5;
+}
+.prog-fill{
+  display:block;
+  height:100%;
+  width:100%;
+  background:var(--accent);
+  transform:scaleX(0);
+  transform-origin:left;
+}
+.prog-fill.run{
+  animation-name:progFill;
+  animation-timing-function:linear;
+  animation-fill-mode:forwards;
+}
+@keyframes progFill{to{transform:scaleX(1);}}
+.artifact.paused .prog-fill{animation-play-state:paused;}
+
+/* --- tab/dot rail --- */
+.rail{
+  position:absolute;
+  bottom:16px;
+  left:0;right:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  z-index:6;
+  opacity:.35;
+  transition:opacity var(--dur) var(--ease);
+}
+.artifact:hover .rail,
+.artifact:focus-within .rail{opacity:1;}
+.rail-btn{
+  appearance:none;
+  border:none;
+  background:transparent;
+  padding:6px 4px;              /* generous hit area */
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+}
+.rail-btn i{
+  display:block;
+  width:8px;
+  height:8px;
+  border-radius:8px;
+  background:transparent;
+  border:1.5px solid var(--accent-ink);
+  transition:width var(--dur) var(--ease-soft), background var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.rail-btn[aria-current="true"] i{
+  width:24px;
+  background:var(--accent);
+  border-color:var(--accent-ink);
+}
+.rail-btn:focus-visible{outline:2px solid var(--accent-ink);outline-offset:2px;border-radius:4px;}
+
+/* wide desktop: CTAs side by side (12px gap), artifact pinned right with clearance */
+@media (min-width:1260px){
+  .cta-row{flex-wrap:nowrap;width:max-content;}
+  .artifact-stage{justify-content:flex-end;}
+  .artifact{max-width:450px;}
+  .artifact-back{transform:rotate(-2deg) translate(-18px,22px);}
 }
 
 @media (max-width:860px){
@@ -428,6 +518,11 @@ img{max-width:100%;display:block;}
   .artifact-stage{order:2;margin-top:8px;}
   .hero-copy{order:1;max-width:100%;}
   .artifact{max-width:520px;}
+}
+
+/* small mobile: full-width CTAs, slightly smaller type so the gutter survives */
+@media (max-width:480px){
+  .cta-row .btn{width:100%;justify-content:center;font-size:16px;}
 }
 
 /* ---------- CRED BAR ---------- */
@@ -455,7 +550,19 @@ img{max-width:100%;display:block;}
   align-items:center;
   white-space:nowrap;
 }
-.cred-item .verify-chip{transform:translateY(0);margin-left:8px;}
+.verify-chip{
+  display:inline-flex;
+  align-items:center;
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--accent-ink);
+  border:1px solid var(--accent-ink);
+  border-radius:20px;
+  padding:2px 7px;
+  margin-left:8px;
+}
 
 @media (max-width:640px){
   .credbar-inner{gap:14px 28px;}
@@ -497,54 +604,156 @@ img{max-width:100%;display:block;}
 
     <div class="artifact-stage">
       <div class="artifact-back" aria-hidden="true"></div>
-      <div class="artifact rise" id="artifact">
-        <div class="artifact-head">
-          <span class="artifact-title">Anchor Living Plan &mdash; Q3 Review</span>
-          <span class="artifact-meta">Prepared with your CPA &amp; estate attorney</span>
+      <div class="artifact rise" id="artifact" role="region" aria-roledescription="carousel" aria-label="Anchor Living Plan documents">
+
+        <div class="prog" aria-hidden="true"><span class="prog-fill" id="progFill"></span></div>
+
+        <!-- DOC 1 — coordination overview -->
+        <article class="doc doc-1 active" data-doc="0">
+          <div class="doc-head">
+            <span class="doc-title">Anchor Living Plan &mdash; Q3 Review</span>
+            <span class="doc-meta">Prepared with your CPA &amp; estate attorney</span>
+          </div>
+          <div class="doc-rows">
+            <div class="arow">
+              <div>
+                <div class="arow-label">Portfolio rebalance</div>
+                <div class="arow-sub">Target allocation drift review</div>
+              </div>
+              <span class="chip chip-done">Done</span>
+            </div>
+            <div class="arow">
+              <div>
+                <div class="arow-label">Tax coordination</div>
+                <div class="arow-sub">CPA sync &mdash; Q3 estimated payments</div>
+              </div>
+              <span class="chip chip-progress">In review</span>
+            </div>
+            <div class="arow">
+              <div>
+                <div class="arow-label">Estate documents</div>
+                <div class="arow-sub">Attorney review &mdash; trust update</div>
+              </div>
+              <span class="chip chip-progress">In review</span>
+            </div>
+            <div class="arow">
+              <div>
+                <div class="arow-label">RMD schedule</div>
+                <div class="arow-sub">Distribution timing check</div>
+              </div>
+              <span class="chip chip-done">Done</span>
+            </div>
+            <div class="arow">
+              <div>
+                <div class="arow-label">Insurance audit</div>
+                <div class="arow-sub">Coverage gap analysis</div>
+              </div>
+              <span class="chip chip-progress">Scheduled</span>
+            </div>
+          </div>
+          <div class="doc-foot">
+            <span class="doc-foot-label">Next sync: CPA + attorney &mdash; Oct 14</span>
+          </div>
+        </article>
+
+        <!-- DOC 2 — tax detail -->
+        <article class="doc doc-2" data-doc="1" aria-hidden="true">
+          <div class="doc-head">
+            <span class="doc-title">Tax Coordination &mdash; CPA Sync</span>
+            <span class="doc-meta">Detail view &mdash; from your living plan</span>
+          </div>
+          <div class="doc-rows">
+            <div class="arow">
+              <div>
+                <div class="arow-label">Quarterly estimates</div>
+                <div class="arow-sub">Q3 payment scheduled with your CPA</div>
+              </div>
+              <span class="chip chip-done">Scheduled</span>
+            </div>
+            <div class="arow">
+              <div>
+                <div class="arow-label">RSU vesting window</div>
+                <div class="arow-sub">Sale timing coordinated before vest date</div>
+              </div>
+              <span class="chip chip-progress">In review</span>
+            </div>
+            <div class="arow">
+              <div>
+                <div class="arow-label">Withholding review</div>
+                <div class="arow-sub">W-2 and K-1 alignment check</div>
+              </div>
+              <span class="chip chip-done">Done</span>
+            </div>
+          </div>
+          <div class="doc-foot">
+            <span class="doc-foot-label">Reviewed with your CPA &mdash; Oct 14</span>
+          </div>
+        </article>
+
+        <!-- DOC 3 — estate detail -->
+        <article class="doc doc-3" data-doc="2" aria-hidden="true">
+          <div class="doc-head">
+            <span class="doc-title">Estate &mdash; Attorney Review</span>
+            <span class="doc-meta">Detail view &mdash; from your living plan</span>
+          </div>
+          <div class="doc-rows">
+            <div class="arow">
+              <div>
+                <div class="arow-label">Trust update</div>
+                <div class="arow-sub">Attorney redline in progress</div>
+              </div>
+              <span class="chip chip-progress">In review</span>
+            </div>
+            <div class="arow">
+              <div>
+                <div class="arow-label">Beneficiary check</div>
+                <div class="arow-sub">Retirement accounts aligned to the plan</div>
+              </div>
+              <span class="chip chip-done">Done</span>
+            </div>
+            <div class="arow">
+              <div>
+                <div class="arow-label">Document dates</div>
+                <div class="arow-sub">Will, POA, directives reviewed</div>
+              </div>
+              <span class="chip chip-done">Current</span>
+            </div>
+          </div>
+          <div class="doc-foot">
+            <span class="doc-foot-label">Coordinated with your estate attorney</span>
+          </div>
+        </article>
+
+        <!-- DOC 4 — conversion -->
+        <article class="doc doc-4" data-doc="3" aria-hidden="true">
+          <div class="doc-head">
+            <span class="doc-title">Where does your plan stand?</span>
+            <span class="doc-meta">Four questions, two minutes</span>
+          </div>
+          <div class="doc-rows">
+            <div class="arow">
+              <div class="arow-label">Does your CPA see your portfolio?</div>
+            </div>
+            <div class="arow">
+              <div class="arow-label">Is your trust funded correctly?</div>
+            </div>
+            <div class="arow">
+              <div class="arow-label">Who coordinates it all?</div>
+            </div>
+          </div>
+          <div class="doc-foot">
+            <a href="#fit-check" class="btn btn-fill btn-sm" id="doc4cta">Take the 4-Question Fit Check &rarr;</a>
+          </div>
+        </article>
+
+        <!-- tab/dot rail -->
+        <div class="rail" role="tablist" aria-label="Plan documents">
+          <button class="rail-btn" type="button" role="tab" data-goto="0" aria-current="true" aria-label="Living Plan overview"><i></i></button>
+          <button class="rail-btn" type="button" role="tab" data-goto="1" aria-current="false" aria-label="Tax coordination detail"><i></i></button>
+          <button class="rail-btn" type="button" role="tab" data-goto="2" aria-current="false" aria-label="Estate review detail"><i></i></button>
+          <button class="rail-btn" type="button" role="tab" data-goto="3" aria-current="false" aria-label="Where does your plan stand?"><i></i></button>
         </div>
-        <div class="artifact-rows">
-          <div class="arow">
-            <div>
-              <div class="arow-label">Portfolio rebalance</div>
-              <div class="arow-sub">Target allocation drift review</div>
-            </div>
-            <span class="chip chip-done">Done</span>
-          </div>
-          <div class="arow">
-            <div>
-              <div class="arow-label">Tax coordination</div>
-              <div class="arow-sub">CPA sync &mdash; Q3 estimated payments</div>
-            </div>
-            <span class="chip chip-progress chip-live" id="liveChip">
-              <span class="chip-state-a">In review</span>
-              <span class="chip-state-b">Done</span>
-            </span>
-          </div>
-          <div class="arow">
-            <div>
-              <div class="arow-label">Estate documents</div>
-              <div class="arow-sub">Attorney review &mdash; trust update</div>
-            </div>
-            <span class="chip chip-progress">In review</span>
-          </div>
-          <div class="arow">
-            <div>
-              <div class="arow-label">RMD schedule</div>
-              <div class="arow-sub">Distribution timing check</div>
-            </div>
-            <span class="chip chip-done">Done</span>
-          </div>
-          <div class="arow">
-            <div>
-              <div class="arow-label">Insurance audit</div>
-              <div class="arow-sub">Coverage gap analysis</div>
-            </div>
-            <span class="chip chip-progress">Scheduled</span>
-          </div>
-        </div>
-        <div class="artifact-foot">
-          <span class="artifact-foot-label">Next sync: CPA + attorney &mdash; Oct 14</span>
-        </div>
+
       </div>
     </div>
   </div>
@@ -562,7 +771,7 @@ img{max-width:100%;display:block;}
 (function(){
   document.body.classList.remove('no-js');
 
-  // nav scroll state
+  /* ----- nav scroll state ----- */
   var nav = document.getElementById('nav');
   function onScroll(){
     if(window.scrollY > 40){ nav.classList.add('is-scrolled'); }
@@ -573,23 +782,86 @@ img{max-width:100%;display:block;}
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // underline draw ~0.8s after H1 reveal
+  /* ----- underline draw ~0.8s after H1 reveal ----- */
   var h1em = document.getElementById('h1em');
   if(h1em){
     setTimeout(function(){ h1em.classList.add('draw'); }, reduceMotion ? 0 : 980);
   }
 
-  // one quiet living artifact moment: chip flips 2s after load
-  var liveChip = document.getElementById('liveChip');
-  if(liveChip && !reduceMotion){
-    setTimeout(function(){
-      liveChip.classList.add('flip');
-      liveChip.classList.remove('chip-progress');
-      liveChip.classList.add('chip-done');
-    }, 2000);
-  } else if(liveChip && reduceMotion){
-    // static state, no flip
+  /* ----- document carousel (timers + class swaps only; no rAF — LED-011) ----- */
+  var artifact = document.getElementById('artifact');
+  var docs = Array.prototype.slice.call(artifact.querySelectorAll('.doc'));
+  var railBtns = Array.prototype.slice.call(artifact.querySelectorAll('.rail-btn'));
+  var progFill = document.getElementById('progFill');
+  var DUR = [4500, 4500, 4500, 7000];   /* doc 4 (conversion) holds longer */
+  var idx = 0;
+  var timer = null;
+
+  function restartProgress(ms){
+    if(reduceMotion) return;
+    progFill.classList.remove('run');
+    void progFill.offsetWidth;          /* reflow so the animation restarts from 0 */
+    progFill.style.animationDuration = ms + 'ms';
+    progFill.classList.add('run');
   }
+
+  function show(next){
+    if(next === idx) return;
+    var oldDoc = docs[idx];
+    var newDoc = docs[next];
+
+    oldDoc.classList.add('exit');
+    oldDoc.classList.remove('active');
+    oldDoc.setAttribute('aria-hidden','true');
+    setTimeout(function(){ oldDoc.classList.remove('exit'); }, 520);
+
+    newDoc.classList.add('active');
+    newDoc.removeAttribute('aria-hidden');
+
+    railBtns.forEach(function(b,i){
+      b.setAttribute('aria-current', i === next ? 'true' : 'false');
+    });
+
+    idx = next;
+  }
+
+  function arm(){
+    if(reduceMotion) return;            /* no auto-advance under reduced motion */
+    clearTimeout(timer);
+    restartProgress(DUR[idx]);
+    timer = setTimeout(function(){
+      show((idx + 1) % docs.length);
+      arm();
+    }, DUR[idx]);
+  }
+
+  function pause(){
+    clearTimeout(timer);
+    artifact.classList.add('paused');   /* freezes the hairline */
+  }
+  function resume(){
+    artifact.classList.remove('paused');
+    arm();                              /* fresh cycle for the current doc */
+  }
+
+  artifact.addEventListener('mouseenter', pause);
+  artifact.addEventListener('mouseleave', resume);
+  artifact.addEventListener('focusin', pause);
+  artifact.addEventListener('focusout', function(e){
+    if(!artifact.contains(e.relatedTarget)) resume();
+  });
+
+  railBtns.forEach(function(b){
+    b.addEventListener('click', function(){
+      var target = parseInt(b.getAttribute('data-goto'), 10);
+      show(target);
+      /* keyboard / programmatic jump keeps cycling; hovered pointer stays paused */
+      if(!artifact.matches(':hover') && !reduceMotion){ arm(); }
+      else { clearTimeout(timer); }
+    });
+  });
+
+  if(!reduceMotion){ arm(); }
 })();
 </script>
 
