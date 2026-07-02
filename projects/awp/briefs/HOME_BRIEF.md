@@ -156,6 +156,56 @@ Information presented is for educational purposes only and does not constitute a
 solicitation to buy or sell any security or investment strategy. Investments involve risk and are
 not guaranteed. Past performance is not a guarantee of future results.` + © 2026.
 
+## 4b. ADDENDUM v2.2 (Chris, 2026-07-02 — Alex will review multiple versions)
+
+### THREE HERO VARIANTS + review switcher
+Same page, same body — three hero treatments, switchable:
+- **Hero A — Artifact shuffle carousel** (as built; unchanged).
+- **Hero B — Kindred-style photo hero:** full-bleed photo (`assets/hero-family.jpg`, exists in the
+  output folder), deep copy-side scrim `linear-gradient(96deg, rgba(20,40,64,.88) 0%, .64 30%,
+  .26 58%, 0 80%)` + soft top/bottom bands, same H1/sub/CTAs (accent phrase own line + underline
+  draw, `text-shadow:0 2px 26px rgba(8,16,28,.34)`), on-dark text, eyebrow `--accent-soft`,
+  tracked-caps image label bottom-right `ONE LIVING PLAN`. NO overlay graphics.
+- **Hero C — Video hero:** identical composition to B but the media is `<video muted loop
+  playsinline preload="none" poster="assets/hero-family.jpg">` with source
+  `data-src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"`
+  `<!-- [VERIFY] demo clip — Alex's real footage replaces this -->`; IO lazy-load near viewport,
+  autoplay muted; reduced-motion/no-JS = poster only. A failed video IS Hero B.
+**Switcher (review-only):** small fixed bottom-left chip rail `Hero: A · B · C` (10px caps,
+`--card` pill, subtle) — click swaps `<body data-hero="a|b|c">`; CSS shows exactly one hero.
+Default = A. Persist choice in the URL hash (`#hero-b`) so links are shareable. Mark the switcher
+`<!-- REVIEW-ONLY: strip for production -->`. Nav CTA row unaffected.
+
+### NEW SECTION — "ALEX'S STORY" (place directly AFTER Why Anchor, ground `--ground`, `.pad`)
+2-col `1.1fr .9fr`, centered: LEFT = 16:9 click-to-play video card (§ video-testimonial pattern:
+poster `assets/hero-oilfield.jpg` `<!-- [VERIFY] real Alex intro footage -->`, 74px accent circle
+play button, duration chip `[VERIFY]`, native controls after click, zero bytes before click,
+demo source = the CC0 clip). RIGHT = eyebrow `Alex's Story` · H2 `From Merrill Lynch to
+<em>your side of the table.</em>` · 2 short paragraphs: a decade+ at Merrill Lynch [VERIFY exact]
+learning institutional discipline; founded Anchor to coordinate the whole picture for Houston
+families — no product quotas, no siloes [VERIFY tone w/ Alex — zero regulatory/fee claims] ·
+text link `Read the full story →` (dead `#about` for now).
+Adjacency check: Why Anchor (dark) → Story (light, split w/ media) → Who We Serve (photo cards) —
+three different skeletons ✓.
+
+### NEW SECTION — VERTICAL REELS (place AFTER Insights, before footer; ground `--ground`, `.pad-sm`)
+Head: eyebrow `Sixty seconds with Alex` + H2 (smaller scale, `clamp(24px,3vw,38px)`):
+`Straight answers, <em>no appointment needed.</em>`
+Row of FOUR 9:16 cards (radius 8): three video cards + one CTA closer card:
+1. `Why your CPA and advisor should talk` · 2. `The RSU window most executives miss` ·
+3. `What "one living plan" actually means` — each: vertical poster (use
+https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop ,
+https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=800&auto=format&fit=crop ,
+https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop
+`<!-- [VERIFY] Alex's real vertical clips -->`), duration chip `0:xx [VERIFY]`, caption line under
+card (14px), demo `data-src` = the CC0 clip.
+**Behavior:** desktop hover/focus = autoplay MUTED + scale(1.02); leave = pause+reset. No-hover
+devices: tap toggles, visible play glyph idle. Poster-first, zero bytes till interaction.
+Reduced-motion/no-JS: static posters. Row = grid at ≥1024px, horizontal scroll-snap below.
+4. CTA card: `--dark` fill 9:16, centered: sans-300 `Twenty minutes with Alex beats sixty seconds.`
++ gold `btn-sm` `Book a Call →` (#fit). (Conversion law: the row ends at the conversion.)
+Adjacency: Insights (featured split) → Reels (vertical row) → footer ✓.
+
 ## 5. FORBIDDEN (site-wide)
 Photography in the hero · decorative overlay graphics on media · gradient text · shadowed cards
 (except the hero artifact frame) · pure #000 · Inter/Arial display · fabricated stats, names,

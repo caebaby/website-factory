@@ -539,9 +539,22 @@ corners), play glyph 56px + duration chip (same `.vt__*` pieces, scaled), tag "V
 serif-italic title below. Compact stack cards stay text. One video card per Insights section.
 
 ### 8.4.4 Placement budget
-Max THREE video moments per page: hero loop (ambient) + one video testimonial (Proof) + one video
-insight (featured). More reads as a media site, not an advisory. Autoplay is allowed ONLY for the
-ambient hero loop (muted). Everything else is click-to-play.
+Max THREE video moments per page: hero loop (ambient) + one video testimonial/story (16:9,
+click-to-play) + ONE of {featured video insight | vertical reels row}. More reads as a media site,
+not an advisory. Autoplay allowed ONLY muted-ambient (hero loop, reels on hover). Everything else
+click-to-play.
+
+### 8.4.5 Vertical reels row (v1.4 — Chris, 2026-07-02)
+A horizontal row of 3–5 **vertical 9:16 video cards** (real short statements from the advisor —
+reels-class content) + the row's LAST card is a CTA card in the same 9:16 frame (conversion law).
+- Card: 9:16 `aspect-ratio`, radius 8, overflow hidden, poster-first (`preload="none"`, no bytes
+  until interaction), duration chip, one-line caption under the card.
+- **Desktop: hover = autoplay muted** (play on `mouseenter`/`focusin`, pause+reset on leave);
+  subtle scale(1.02) lift. **Mobile (no hover): tap toggles play**, visible play glyph.
+- Reduced-motion + no-JS: static posters, tap/click opens the file. Never sound without a tap on
+  the video's own unmute.
+- Row scrolls horizontally on narrow viewports (`overflow-x:auto`, scroll-snap), grid on wide.
+- Real footage ONLY — placeholder posters carry `[VERIFY]` until the advisor's clips exist.
 
 ## 9. Ship gate (verify before done)
 
