@@ -5,7 +5,46 @@ Last updated: 2026-07-01 (FABLE SESSION — **Pack hardened to v1.1** against Ch
 
 ---
 
-## ▶ PACK v1.1 HARDENING — DONE, AWAITING CHRIS (2026-07-01, Fable session)
+## ▶ PACK v1.2 — CHRIS'S ROUND-2 FEEDBACK ENCODED (2026-07-01, Fable session, same day)
+
+Chris reviewed v1.1 live ("really solid, some flaws") and asked that feedback LOCK INTO the system,
+not just patch the build. Contract established + honored: **no fix ships to a build unless the
+Pack/gate/ledger change ships in the same commit.** Every item below is a Pack diff first.
+
+**His feedback → what it became (all in `warm-premium.pack.md` v1.2 + applied to Kindred):**
+1. "Image distracts from copy/CTA" → deeper copy-side scrim numbers (§4 HERO) + §6 hard rule: nothing
+   high-contrast crosses the left ~55%; if the photo is busy, the scrim wins.
+2. "Headline isn't evenly placed" → rule: the serif-italic accent phrase gets its OWN line (`<br>`
+   before the `<em>`), never wraps mid-phrase.
+3. "Converging lines pointless [hero]… want motion that serves the CTA" → **hero overlay BANNED**
+   (register invariant §1.6). Replaced by two conversion cues: primary-button SHEEN (every ~5.5s, §3)
+   + accent-phrase UNDERLINE-DRAW after the headline reveals.
+4. "Sections look good but no animation" → **staggered grid reveal system** (.stagger on the grid,
+   90ms steps, pure CSS `backwards`-fill so hover transitions survive) + **mandatory card hover lifts**
+   (were in the exemplar; v1.0/1.1 never codified them — same gap-class as the hero eyebrow).
+5. "Fit check = THE CTA — improve as a rule" → the signature moment MOVED there: **labeled convergence
+   diagram** (YOUR CPA · YOUR ATTORNEY · YOUR PRACTICE → ONE LIVING PLAN) draws on reveal
+   (pathLength=1 trick, no JS gate), flow-dots fade in after; **2-cycle gold ring pulse** on the form
+   card (transient box-shadow — rest state stays flat).
+6. "Dark text on the dark button doesn't catch the eye [services]" → §8.2: the full-width closer IS
+   the second dark card and HOSTS the section CTA (gold button on dark = strongest contrast on page).
+7. "Process needs color pop" → numeral-pop recipe: `color-mix(accent 55%, accent-ink)` (verified
+   3.54:1 large-text on ground-alt) + 9px accent dot markers on the step hairlines.
+8. "Proof numbers should spin" → count-up + blur-to-sharp on reveal, LED-011 force-finish guard
+   mandatory (§4 PROOF).
+
+**Verified (Kindred v1.2):** gate 0/0/0 · console clean · no overflow 390/1280 · wizard + no-JS intact ·
+underline/diagram/pulse/sheen/stagger/count-up all confirmed via getAnimations + scrubbing (the
+verification tab is throttled — `visibilityState:hidden` freezes transitions at t=0; scrub with
+`currentTime`, don't trust wall-clock — LED-004/011 pattern, again).
+
+**Tooling note:** `window.scrollTo(0,y)` silently no-ops in the throttled tab because
+`html{scroll-behavior:smooth}` makes it rAF-driven — use `behavior:'instant'` in evals.
+Screenshot still blanks at nonzero scrollY on this page; the hide-sections-above + scroll-0 workaround works.
+
+---
+
+## ▶ PACK v1.1 HARDENING — DONE (superseded by v1.2 above; 2026-07-01, Fable session)
 
 **What changed (all in `templates/packs/warm-premium.pack.md` v1.1 AND applied live to
 `projects/_coldtest/kindred/index.html` so Chris can react section-by-section at `:8096`):**

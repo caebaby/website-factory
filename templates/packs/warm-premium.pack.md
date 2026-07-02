@@ -1,9 +1,28 @@
-# Design Language Pack — `warm-premium` · v1.1
+# Design Language Pack — `warm-premium` · v1.2
 
 > **Provenance:** measured live from **mavenclinic.com** (computed styles, 2026-07-01) and proven in
 > `projects/awp/build/maven-home.html` (the gold-standard exemplar). Every number below is a
 > *measured* value, not an approximation. **This is the "how it looks" layer.** It is orthogonal to
 > the conversion skeleton (the "what it says" layer).
+>
+> **v1.2 (2026-07-01) — Chris's live review of v1.1 (round 2). The conversion-motion release:**
+> 1. **NO decorative overlay graphic on the hero photo — ever.** The convergence strands over a busy
+>    photo read as noise ("pointless"). Hero motion now SERVES conversion: the accent-phrase
+>    underline-draw + the primary-button sheen (§5).
+> 2. **The signature moment MOVED to the Fit mini-hero** — a labeled convergence diagram
+>    (YOUR CPA · YOUR ATTORNEY · YOUR PORTFOLIO → ONE PLAN) that draws itself on scroll-reveal,
+>    plus a 2-cycle gold ring pulse on the form card. The #1 conversion event gets the page's
+>    best moment (§5).
+> 3. **Staggered card reveals** (90ms, pure CSS) — grids animate in sequence, not as one block (§3).
+> 4. **Card hover lifts are mandatory** on every interactive card (they were in the exemplar, v1.0/1.1
+>    never codified them — same class of gap as the hero eyebrow).
+> 5. **Headline placement rule:** the serif-italic accent phrase starts its own line (`<br>` before it);
+>    it must never wrap mid-phrase (§4 HERO).
+> 6. **Hero scrim deepened on the copy side** + §6 rule: the photo must be visually QUIET behind the
+>    copy column — legibility beats photo fidelity on the left 55%.
+> 7. **Services closer = the second dark card and hosts the section CTA** (gold-on-dark pop, §8.2).
+> 8. **Process numeral-pop** recipe (brighter accent mix, ≥3:1 large-text checked) + accent dot markers.
+> 9. **Proof stats count up with blur-to-sharp** on reveal (LED-011 stall guard mandatory) (§4).
 >
 > **v1.1 (2026-07-01) — hardened against the Kindred cold-build review (Chris):**
 > 1. Signature motif: abstract sine-waves → the **CONVERGENCE MARK** (three strands → one node =
@@ -44,9 +63,10 @@
    + the dark footer. (This is the antidote to "too dark.")
 5. **Generous geometry:** 1512px max container, 96px side gutters, 80–120px section rhythm that *varies*
    (density alternation), tight display line-height (~1.0–1.05), slightly negative tracking.
-6. **Motion is quiet and MEANS something:** 0.4s ease transitions; ONE signature motion moment — the
-   convergence mark's flow-dots drifting into the node (§5). Photography stays static. No particles,
-   no bounce, no glow-everywhere.
+6. **Motion is quiet and SELLS:** 0.4s ease transitions; staggered 90ms card reveals; card hover lifts;
+   TWO standing conversion cues — the primary-button sheen and the hero underline-draw; ONE signature
+   moment — the labeled convergence diagram in the Fit mini-hero (§5). Photography stays static.
+   **Never a decorative overlay graphic on the hero photo.** No particles, no bounce, no glow-everywhere.
 7. **Imagery is warm-documentary-human** (§6). Never clinical, never boardroom-stock, never empty
    real-estate photography.
 
@@ -145,11 +165,18 @@ section{position:relative;}
 /* buttons — Maven .n4-btn_main_wrap: radius 4, pad 10x24, border 1.5, hover fill->pale, 0.4s ease */
 .btn{display:inline-flex;align-items:center;gap:8px;border-radius:var(--radius-btn);font:600 18px/1.2 var(--sans);letter-spacing:-.36px;padding:10px 24px;border:var(--btn-border) solid transparent;cursor:pointer;transition:background-color var(--dur) var(--ease),border-color var(--dur) var(--ease),color var(--dur) var(--ease),transform var(--dur) var(--ease-soft);}
 .btn .arw{transition:transform var(--dur) var(--ease-soft);} .btn:hover .arw{transform:translateX(4px);}
-.btn-primary{background:var(--accent);border-color:var(--accent);color:var(--dark);}
+.btn-primary{background:var(--accent);border-color:var(--accent);color:var(--dark);position:relative;overflow:hidden;}
 .btn-primary:hover{background:var(--card-pale);border-color:var(--card-pale);color:var(--dark);}
 .btn-outline{background:transparent;border-color:var(--accent);color:var(--accent);}
 .btn-outline:hover{background:var(--accent);border-color:var(--accent);color:var(--dark);}
 .btn-sm{font-size:15px;padding:8px 20px;}
+/* v1.2 conversion cue: a quiet sheen sweeps every primary button ~every 5.5s */
+@media (prefers-reduced-motion:no-preference){
+  .btn-primary::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;
+    background:linear-gradient(105deg,transparent,rgba(255,255,255,.45),transparent);
+    transform:skewX(-18deg);animation:sheen 5.5s ease-in-out infinite;pointer-events:none;}
+}
+@keyframes sheen{0%,74%{left:-60%;}90%,100%{left:130%;}}
 
 /* nav — 64px, transparent over hero, solid on scroll */
 nav{position:fixed;inset:0 0 auto;z-index:60;height:64px;display:flex;align-items:center;transition:background var(--dur),box-shadow var(--dur);}
@@ -182,11 +209,32 @@ nav.scrolled{background:color-mix(in srgb,var(--dark) 92%,transparent);backdrop-
   html.js .rise{opacity:0;transform:translateY(22px);}
   html.js .rise.in{opacity:1;transform:none;transition:opacity .7s var(--ease-soft),transform .7s var(--ease-soft);}
 }
+
+/* v1.2 staggered grid reveal: put .stagger on the GRID (not .rise on each card).
+   `backwards` fill = after animating, children return to natural styles, so card
+   hover transitions are untouched. No-JS/reduced-motion: everything just visible. */
+@media (prefers-reduced-motion:no-preference){
+  html.js .stagger>*{opacity:0;}
+  html.js .stagger.in>*{opacity:1;animation:riseIn .7s var(--ease-soft) backwards;}
+  html.js .stagger.in>*:nth-child(2){animation-delay:.09s;}
+  html.js .stagger.in>*:nth-child(3){animation-delay:.18s;}
+  html.js .stagger.in>*:nth-child(4){animation-delay:.27s;}
+  html.js .stagger.in>*:nth-child(5){animation-delay:.36s;}
+  html.js .stagger.in>*:nth-child(6){animation-delay:.45s;}
+  html.js .stagger.in>*:nth-child(7){animation-delay:.54s;}
+  html.js .stagger.in>*:nth-child(8){animation-delay:.63s;}
+}
+@keyframes riseIn{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:none;}}
 ```
 
 Reveal + nav JS (paste): `<html class="no-js">`; JS swaps to `html.js`; IntersectionObserver adds `.in`
-to `.rise`; hero `.rise` fire on load via `setTimeout` (NOT gsap.from — LED-011); `nav.scrolled` on
-`scrollY>40`. The `no-js` class also drives the form fallback (§8.1).
+to **`.rise` AND `.stagger`**; hero `.rise` fire on load via `setTimeout` (NOT gsap.from — LED-011);
+`nav.scrolled` on `scrollY>40`. The `no-js` class also drives the form fallback (§8.1).
+
+**Card hover lifts (v1.2 — mandatory on interactive cards: pain/why/ICP/services/insights):**
+`transition:transform var(--dur) var(--ease-soft),background-color var(--dur) var(--ease);`
+hover = `transform:translateY(-4px)` (ICP photo cards: `-5px`) + one background step
+(light cards → a slightly deeper neutral; dark cards → one step lighter). Flat — no shadow appears.
 
 ---
 
@@ -197,11 +245,16 @@ Final CTA, Footer, + Insights). Below is HOW each is built in this language. Ref
 Pain / ICP-self-sort / Fit-form — those recipes are marked ⚑ (build in-language, never generic).
 
 - **HERO** — full-bleed photo (§6 imagery rules), `min-height:clamp(660px,93svh,960px)`, content
-  vertically centered, 96px gutter. **Subtle LEFT scrim only** (a left→right dark gradient that clears at
-  ~80% so the photo stays visible; do NOT darken the whole image). H1 = display-sans 300 with the
-  **last phrase in serif-italic**. Sub 24/400/1.5. Eyebrow = ICP-named tracked caps. Primary(fill)+outline
-  buttons, 12px gap. **Signature:** the CONVERGENCE MARK bottom-left (§5). Small tracked-caps image
-  label bottom-right, echoing the mark's meaning (e.g. "One living plan"). Photo static.
+  vertically centered, 96px gutter. **Directional scrim, DEEP on the copy side** (v1.2 — legibility beats
+  photo fidelity where the copy sits): left→right `rgba(dark,.88) 0% → .64 30% → .26 58% → 0 80%`,
+  PLUS a vertical band `rgba(dark,.35) 0% → 0 22%` (nav zone) and `0 70% → .45 100%` (CTA/label zone).
+  The photo stays open on the right half only. H1 = display-sans 300, `text-shadow:0 2px 26px rgba(8,16,28,.34)`,
+  with the **accent phrase in serif-italic ON ITS OWN LINE** — put a `<br>` before the `<em>`; the phrase
+  must never wrap mid-phrase (v1.2 headline-placement rule). Sub 24/400/1.5. Eyebrow = ICP-named tracked
+  caps in `--accent-soft`. Primary(fill)+outline buttons, 12px gap.
+  **Hero motion (v1.2):** the accent-phrase UNDERLINE-DRAW (a 3px `--accent` rule under the `<em>`,
+  `scaleX(0→1)` over .9s after the headline reveals) + the button sheen (§3). **NO decorative overlay
+  graphic on the photo — ever.** Small tracked-caps image label bottom-right. Photo static.
 - ⚑ **PAIN** (`bg-ground`) — 2-col grid of **flat `--ground-alt` cards**, radius 8, **no shadow**, pad ~32px,
   accent dot 10px top-right, big light-weight `--accent-ink` numeral (`clamp(40px,4.4vw,58px)/300`), serif-italic
   quote (`--ink`), sans caption (`--ink-body`). Section head H2 with serif-italic accent.
@@ -223,7 +276,13 @@ Pain / ICP-self-sort / Fit-form — those recipes are marked ⚑ (build in-langu
     the darkness is *contained*, which is exactly what makes the moment pop.
   - Panel grid: 2-col `.9fr 1.1fr`, gap `clamp(36px,5vw,72px)`, items centered. LEFT = on-dark copy:
     accent-soft eyebrow → display H2 (sec-head scale, white + serif-italic em) → sub (on-dark-mute) →
-    a 3-item reassurance row (small icon-set checks + short phrases: time cost / no pitch / honest answer).
+    a 3-item reassurance row (small icon-set checks + short phrases: time cost / no pitch / honest answer)
+    → **the SIGNATURE CONVERGENCE DIAGRAM (§5)** below the reassurances: labeled strands
+    (YOUR CPA · YOUR ATTORNEY · YOUR PORTFOLIO) converging to a labeled ONE-PLAN node, drawn on
+    scroll-reveal. This is the page's one signature moment, placed AT the conversion event.
+  - **Attention pulse (v1.2):** when the panel reveals, the form card fires a 2-cycle expanding gold
+    ring (`box-shadow: 0 0 0 0 rgba(accent,.5) → 0 0 0 26px transparent`, 1.6s ×2, then settles flat).
+    Transient only — the rest state stays shadowless.
   - RIGHT = the form card: `--card-pale`, radius 8, no shadow, padding `clamp(30px,3.4vw,46px)`.
     **One consistent type scale inside the card (this was the cold-build miss):**
     step NUMERAL `01–04` sans-**300** `clamp(34px,3vw,44px)` in `--accent-ink` + a 4-segment progress row
@@ -233,15 +292,23 @@ Pain / ICP-self-sort / Fit-form — those recipes are marked ⚑ (build in-langu
     micro-reassurance line 12.5px `--ink-body`. **Reuse the tested multi-step mechanism — restyle only.**
     No-JS fallback per §8.1.
 - **SERVICES** (`bg-ground`) — **mixed-size BENTO** on a 6-col grid: two `span 3` cards, three `span 2`,
-  one `span 6` full-width closer. Flat cards radius 8 no shadow. Dark-card placement per §8.2.
-  Each: accent-ink tag + sans-600 h3 + serif-italic pain-line + body.
-- **PROCESS** (`bg-ground-alt`) — 4-col flow. Big light-weight `--accent-ink` numeral (`clamp(44px,4.6vw,60px)/300`),
-  1.5px hairline top-border per step, sans-600 h3, body, serif-italic "when" note.
+  one `span 6` full-width closer. Flat cards radius 8 no shadow, hover lifts (§3). Dark-card placement
+  per §8.2 — **the full-width closer IS the second dark card and hosts the section CTA** (v1.2): a
+  primary gold button on the dark ground is the strongest button contrast on the page.
+  Each card: accent-ink tag + sans-600 h3 + serif-italic pain-line + body.
+- **PROCESS** (`bg-ground-alt`) — 4-col flow. **Numeral-pop (v1.2):** big light-weight numeral
+  (`clamp(44px,4.6vw,60px)/300`) in `color-mix(in srgb, var(--accent) 55%, var(--accent-ink))` —
+  brighter than accent-ink for pop, still ≥3:1 large-text on `--ground-alt` (verify on retint) — plus a
+  9px `--accent` dot sitting on each step's top hairline. 1.5px hairline top-border per step, sans-600 h3,
+  body, serif-italic "when" note.
 - **PROOF** (`bg-accent-deep` — THE one saturated moment, v1.1) — centered display heading (sans-300 white +
   serif-italic accent), a **pale `--card-pale` testimonial card** (radius 8, big accent quote glyph,
   serif-italic quote in `--dark`, note), then a row of big light-weight numeral stats — numerals in
   `--on-dark` (300 weight), captions `rgba(on-dark, .9)` (NOT the .74 mute — it fails AA on the
   gradient's light stop), above a `rgba(on-dark,.25)` hairline.
+  **Stat spin (v1.2):** numeric stats count up with a blur-to-sharp on scroll-reveal (rAF count-up,
+  1.5s, ease-out-cubic, `blur((1-p)*7px)`), **with the LED-011 `setTimeout` force-finish guard** —
+  never ship a count-up that can stall mid-blur. Non-numeric stats stay static.
   **LIGHT text on the deep ground — never dark ink on raw accent** ("green on gold"). On this ground
   every text color is `--on-dark` at ≥.9 alpha. Verify §9.
 - **FINAL CTA** (`bg-ground` — a LIGHT close, not dark) — centered, a **soft radial accent glow** behind the
@@ -265,46 +332,69 @@ mass) and **Insights = `.pad-sm`** (a lighter coda). Uniform padding on all sect
 
 ---
 
-## 5. Signature moment — the CONVERGENCE MARK (v1.1; replaces the waves)
+## 5. Signature moment — the CONVERGENCE DIAGRAM in the Fit mini-hero (v1.2)
 
-**Meaning:** three strands (your CPA · your attorney · your portfolio — the client's siloed pieces)
-converge into ONE node: *one living plan*. It literalizes the mechanism instead of decorating. Keep the
-strand aesthetic thin and quiet — this is the waves' craft with a reason to exist.
+**v1.2 placement decision (Chris, round 2):** unlabeled strands floating over the hero photo read as
+noise — REMOVED from the hero entirely. The signature lives at the **Fit mini-hero**, where it earns
+its place: a small labeled diagram that literalizes the promise at the exact moment of conversion.
+Hero motion is instead the underline-draw + button sheen (§4 HERO).
 
-Hero placement: bottom-left, `width:min(620px,58vw)`, `opacity:.9`, `aria-hidden`, `pointer-events:none`.
+**Meaning:** three labeled strands (YOUR CPA · YOUR ATTORNEY · YOUR PORTFOLIO) converge into one
+labeled node: ONE PLAN. Strands draw themselves on scroll-reveal; flow-dots then ride them into the node.
+
+Placement: bottom of the panel's copy column, `margin-top:~36px`, `width:min(400px,100%)`, `aria-hidden`.
+(Retint the strand labels to the client's actual three silos — e.g. comp/practice/estate.)
 
 ```html
-<svg class="mark" viewBox="0 0 640 200" aria-hidden="true" preserveAspectRatio="xMinYMid meet">
-  <path class="s1" d="M-20,30 C 160,10 340,60 556,100"/>
-  <path class="s2" d="M-20,106 C 180,96 380,104 556,100"/>
-  <path class="s3" d="M-20,178 C 160,196 340,142 556,100"/>
-  <circle class="f1" r="3.2"><animateMotion dur="9s"  repeatCount="indefinite" path="M-20,30 C 160,10 340,60 556,100"/></circle>
-  <circle class="f2" r="2.8"><animateMotion dur="12s" repeatCount="indefinite" path="M-20,106 C 180,96 380,104 556,100"/></circle>
-  <circle class="f3" r="2.4"><animateMotion dur="15s" repeatCount="indefinite" path="M-20,178 C 160,196 340,142 556,100"/></circle>
-  <circle class="node" cx="556" cy="100" r="5.5"/>
-  <circle class="ring" cx="556" cy="100" r="13"/>
-</svg>
+<div class="fit-diag" aria-hidden="true">
+  <svg viewBox="0 0 420 168" preserveAspectRatio="xMinYMid meet">
+    <text class="lbl" x="8" y="12">YOUR CPA</text>
+    <text class="lbl" x="8" y="72">YOUR ATTORNEY</text>
+    <text class="lbl" x="8" y="132">YOUR PORTFOLIO</text>
+    <text class="lbl lbl-node" x="348" y="58" text-anchor="middle">ONE PLAN</text>
+    <path class="s1" pathLength="1" d="M8,24 C 130,16 250,52 348,84"/>
+    <path class="s2" pathLength="1" d="M8,84 C 130,80 250,84 348,84"/>
+    <path class="s3" pathLength="1" d="M8,144 C 130,152 250,116 348,84"/>
+    <circle class="f1" r="2.6"><animateMotion dur="7s"   repeatCount="indefinite" path="M8,24 C 130,16 250,52 348,84"/></circle>
+    <circle class="f2" r="2.4"><animateMotion dur="9.5s" repeatCount="indefinite" path="M8,84 C 130,80 250,84 348,84"/></circle>
+    <circle class="f3" r="2.2"><animateMotion dur="12s"  repeatCount="indefinite" path="M8,144 C 130,152 250,116 348,84"/></circle>
+    <circle class="node" cx="348" cy="84" r="5"/>
+    <circle class="ring" cx="348" cy="84" r="12"/>
+  </svg>
+</div>
 ```
 ```css
-.mark path{fill:none;stroke-linecap:round;}
-.mark .s1{stroke:var(--accent);stroke-width:1.6;}
-.mark .s2{stroke:var(--accent-soft);stroke-width:1.4;}
-.mark .s3{stroke:rgba(247,243,235,.5);stroke-width:1.2;}   /* retint: rgba(on-dark, .5) */
-.mark .f1{fill:var(--accent);} .mark .f2{fill:var(--accent-soft);} .mark .f3{fill:rgba(247,243,235,.75);}
-.mark .node{fill:var(--accent);}
-.mark .ring{fill:none;stroke:var(--accent-soft);stroke-width:1.2;transform-box:fill-box;transform-origin:center;}
+.fit-diag{margin-top:36px;}
+.fit-diag svg{width:min(400px,100%);height:auto;overflow:visible;}
+.fit-diag .lbl{font:600 10px var(--sans);letter-spacing:1.2px;fill:var(--on-dark-mute);}
+.fit-diag .lbl-node{fill:var(--accent-soft);}
+.fit-diag path{fill:none;stroke-linecap:round;}
+.fit-diag .s1{stroke:var(--accent);stroke-width:1.6;}
+.fit-diag .s2{stroke:var(--accent-soft);stroke-width:1.4;}
+.fit-diag .s3{stroke:rgba(247,243,235,.5);stroke-width:1.2;}   /* retint: rgba(on-dark,.5) */
+.fit-diag .f1{fill:var(--accent);} .fit-diag .f2{fill:var(--accent-soft);} .fit-diag .f3{fill:rgba(247,243,235,.75);}
+.fit-diag .node{fill:var(--accent);}
+.fit-diag .ring{fill:none;stroke:var(--accent-soft);stroke-width:1.2;transform-box:fill-box;transform-origin:center;}
 @media (prefers-reduced-motion:no-preference){
-  .mark .ring{animation:ringpulse 4.5s ease-in-out infinite;}
+  /* strands draw when the panel reveals (pathLength=1 trick; pure CSS, no JS gate) */
+  html.js .fit-diag path{stroke-dasharray:1;stroke-dashoffset:1;}
+  html.js .fit-panel.in .fit-diag path{animation:diagdraw 1.3s var(--ease-soft) forwards;}
+  html.js .fit-panel.in .fit-diag .s2{animation-delay:.15s;}
+  html.js .fit-panel.in .fit-diag .s3{animation-delay:.3s;}
+  /* flow-dots fade in after the draw completes */
+  html.js .fit-diag .f1,html.js .fit-diag .f2,html.js .fit-diag .f3{opacity:0;}
+  html.js .fit-panel.in .fit-diag .f1,html.js .fit-panel.in .fit-diag .f2,html.js .fit-panel.in .fit-diag .f3{animation:diagdots .6s ease 1.5s forwards;}
+  .fit-diag .ring{animation:ringpulse 4.5s ease-in-out infinite;}
 }
+@keyframes diagdraw{to{stroke-dashoffset:0;}}
+@keyframes diagdots{to{opacity:1;}}
 @keyframes ringpulse{0%,100%{transform:scale(1);opacity:.55;}50%{transform:scale(1.4);opacity:.12;}}
-@media (prefers-reduced-motion:reduce){.mark .f1,.mark .f2,.mark .f3{display:none;}.mark .ring{opacity:.4;}}
+@media (prefers-reduced-motion:reduce){.fit-diag .f1,.fit-diag .f2,.fit-diag .f3{display:none;}.fit-diag .ring{opacity:.4;}}
 ```
-- Flow-dots ride `<animateMotion>` (native SMIL — no JS, can't strand content invisible) on
-  desynchronized 9/12/15s loops, always TOWARD the node. The ring breathes once per ~4.5s. That is the
-  page's single signature motion.
-- **Echo variant** (allowed ONLY inside the Fit mini-hero panel): same SVG minus the flow-dots,
-  `width:min(420px,46%)`, `opacity:.35`, absolute bottom-left of the panel, clipped by the panel's
-  `overflow:hidden`. Nowhere else — twice is a system, three times is wallpaper.
+- No-JS: the `html.js` gating means the diagram is simply fully visible, static. LED-011-proof (CSS
+  animation off a class, plus SMIL — no rAF-gated hidden state).
+- The diagram appears ONCE, at the Fit panel. Not in the hero, not in the footer — once is a signature,
+  twice is wallpaper.
 
 ## 6. Imagery direction (bake this into image selection — v1.1)
 
@@ -313,6 +403,9 @@ Hero placement: bottom-left, `width:min(620px,58vw)`, `opacity:.9`, `aria-hidden
   found, not staged.)
 - **Hero photo:** ONE person (or one human moment) in their world, with visual quiet on the copy side —
   choose images whose subject sits right-of-center so the left scrim + copy have room.
+  **v1.2 hard rule:** no high-contrast objects, patterns, or bright edges crossing the left ~55% of the
+  frame — the copy and CTA must never compete with the photo. If the only good photo is busy on the left,
+  the scrim wins (deepen it), not the photo.
 - **NEVER:** clinical/exam-room settings, white-coat-with-clipboard stock, boardroom-handshake stock,
   gray-haired-couple-on-beach, empty offices/skylines with no human presence, obviously-composited
   smiling-at-camera groups.
@@ -320,14 +413,17 @@ Hero placement: bottom-left, `width:min(620px,58vw)`, `opacity:.9`, `aria-hidden
   human traces in all three; warm grade consistent across the set.
 - All placeholder imagery is marked `[VERIFY]` for licensed replacement before launch.
 
-## 7. Motion + timing
+## 7. Motion + timing (v1.2 — the full motion budget)
 
 - All hover/state transitions `0.4s ease` (buttons animate border-color/color/background-color).
-- Reveals via the `.rise` CSS-class system (IntersectionObserver adds `.in`). Hero `.rise` fire on load via
-  `setTimeout` stagger. **Never gate visibility with `gsap.from()`** (rAF-starvation can strand it invisible —
-  LED-011). Any must-not-hide GSAP tween needs a `setTimeout` force-complete fallback.
-- One signature motion moment only (the convergence mark). Photography static. `prefers-reduced-motion`
-  respected everywhere (mark rules in §5).
+- Reveals via the `.rise` CSS-class system (IntersectionObserver adds `.in`); **grids use `.stagger`**
+  (90ms sequence, §3). Hero `.rise` fire on load via `setTimeout` stagger. **Never gate visibility with
+  `gsap.from()`** (rAF-starvation can strand it invisible — LED-011). Any must-not-hide GSAP tween or
+  rAF count-up needs a `setTimeout` force-complete fallback.
+- **The motion budget (all of it, nothing more):** ① staggered grid reveals · ② card hover lifts ·
+  ③ primary-button sheen · ④ hero underline-draw · ⑤ the Fit convergence diagram (draw + flow-dots +
+  ring — the signature) · ⑥ the Fit card's 2-cycle ring pulse on reveal · ⑦ Proof stat count-up
+  (blur-to-sharp). Photography static. `prefers-reduced-motion` collapses ALL of these to static-visible.
 
 ## 8. Tested recipes (v1.1 — assemble, don't re-derive)
 
@@ -346,8 +442,9 @@ progressive enhancement, never a gate.
 
 ### 8.2 Bento dark-card placement
 - **1–2 dark (`--dark`) cards per bento, never more.** One = the flagship offer, in the FIRST `span 3`
-  slot (top-left). Two = add one at the diagonally opposite corner (e.g. a later `span 2`, or the
-  full-width closer). **Never two dark cards orthogonally adjacent** (side-by-side or stacked touching).
+  slot (top-left). Two (the v1.2 default) = the second is the **full-width closer, which hosts the
+  section's primary CTA** — a gold button on the dark ground is the strongest button contrast on the
+  page. **Never two dark cards orthogonally adjacent** (side-by-side or stacked touching).
 - Dark cards: tags/links flip to `--accent-soft`, h3 to `#fff`, body to `--on-dark-mute`. Hover fill
   steps toward `--dark-2`.
 
@@ -377,12 +474,18 @@ never emoji, never 2010s flat-icon packs. Base set (reuse; add new icons only in
       `--accent-ink` ≥4.5:1 on `--ground` AND `--ground-alt`; `--on-dark` ≥4.5:1 on the **lightest stop**
       of the `bg-accent-deep` gradient AND on `--dark`/`--dark-2`; `--on-dark-mute` ≥4.5:1 (blended) on
       `--dark` and on the panel; dark text ≥4.5:1 on `--accent` (buttons). (Retint until these pass.)
-- [ ] **Mini-hero:** the Fit panel reads as a designed moment (dark panel, radius 12, glow + mark echo);
-      form card uses ONE type scale (numeral 300 / legend 300 / options 600 per §4); no-JS fallback works
-      (§8.1); wizard advances + backs.
+- [ ] **Mini-hero:** the Fit panel reads as a designed moment (dark panel, radius 12, glow + the labeled
+      convergence DIAGRAM per §5); form card uses ONE type scale (numeral 300 / legend 300 / options 600
+      per §4) and fires the 2-cycle ring pulse on reveal; no-JS fallback works (§8.1); wizard advances + backs.
+- [ ] **Hero (v1.2):** NO overlay graphic on the photo; accent phrase on its own line (never wrapped
+      mid-phrase); underline-draw fires after headline reveal; copy-side scrim deep enough that H1/sub/CTA
+      read effortlessly; primary CTA sheen present.
+- [ ] **Motion (v1.2):** grids stagger (90ms); interactive cards lift on hover; Proof numeric stats count
+      up with the LED-011 force-finish guard; everything static-visible under `prefers-reduced-motion`
+      and with JS disabled.
 - [ ] **Proof:** LIGHT text on `--accent-deep` — no dark ink on raw accent anywhere as a ground.
-- [ ] **Signature:** convergence mark present in hero (+ optional panel echo only); flow-dots hidden under
-      reduced-motion; NO wave motif anywhere.
+- [ ] **Signature:** the convergence diagram appears ONCE (Fit panel only — never the hero); labels
+      retinted to the client's silos; flow-dots hidden under reduced-motion; NO wave motif anywhere.
 - [ ] **Insights:** featured split (lead item + 2 compact), not equal cards.
 - [ ] **Numbers intact:** radii 4/8/12, gutter 96, section rhythm 80–120px varying, button pad 10×24,
       type scale ratios from §2 — all as measured, only colors retinted.
