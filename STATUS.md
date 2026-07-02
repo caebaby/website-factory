@@ -60,6 +60,12 @@ Last updated: 2026-07-02 (FABLE SESSION, day 2 — the factory became a real PIP
   (neutralize animations → force `.in` → census opacity<0.05). P0 `opacity-invisible` + P1
   `opacity-anim-dependent` (forwards-fill = LED-011 risk, now surfaced). Fixture
   `qa/fixtures/led013-broken.html` proves it (exit 1); home-v3 re-gated clean (exit 0).
+- **SESSION SPLIT (2026-07-02):** AGL data-company brand + wireframe runs in its OWN session
+  (launch prompt given to Chris; strategy = clients/agl/ playbook + PLATFORM_STRATEGY Destination
+  Strategy; projects/agl/BRIEF.md is SUPERSEDED by the data direction). THIS session keeps: Anchor
+  (awaiting Alex) + GLM cold test (package at projects/_coldtest/anchor-glm/GLM_PROMPT.md —
+  Anchor on confident-b2b pack; Chris pastes into Hermes, output back here for the gauntlet;
+  kindred-glm/ = spare apples-to-apples baseline package).
 - Chris runs **caveman mode** (/caveman full) — keep responses terse.
 
 ### Anchor (superseded by the block above — `projects/awp/build/home-v2.html` history)
