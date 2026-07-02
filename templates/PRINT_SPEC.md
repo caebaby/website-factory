@@ -7,10 +7,15 @@ incredibly amazing website that looks like a $25–50K team built it." This doc 
 1. **The structure.** The conversion skeleton: Hero → Pain → ICP self-sort → Fit/Capture (the MQL
    gate) → Services → Process → Proof → Final CTA → Insights/Content (incl. video) → Footer.
    (`docs/REFERENCES.md` RULE #1 + the CRO rules in RULE #2. Agent 05 blocks ship on violations.)
-2. **Component quality.** Every visual element comes from the blessed library
-   (`templates/components/catalog.html` + `docs/harvest/`) — measured from the reference sites,
-   gate-tested, Chris-approved by ID. Builders ASSEMBLE; they never re-derive. New components enter
-   only through the harvest→curate→Chris loop.
+2. **Component QUALITY — not component instances.** (Chris, 2026-07-02: "not an exact stamp of the
+   components — the QUALITY of the components should be a ten out of ten.") The library is a
+   **pattern pool + quality benchmark**, not a parts bin: what's locked is each pattern's
+   INVARIANTS (measured type scales, spacing discipline, contrast floors, motion guards, the craft
+   numbers). What VARIES per site is the instance: which pattern per section job, its geometry,
+   its dressing, its details. Builders generate FRESH EXECUTIONS inside a pattern's invariants —
+   never from a blank page (that's proven slop), never a verbatim stamp (that's a template).
+   Every site also gets ≥1 fully bespoke signature moment. New patterns enter through
+   harvest→curate→Chris; every fresh execution passes the gauntlet.
 3. **Copy quality.** RMBC-grounded, ICP-resonant: exact-words pain language, named mechanism,
    insider fluency, kill-list enforced, zero fabricated claims (`[VERIFY]` discipline; compliance
    overlay per the client's regulatory regime).

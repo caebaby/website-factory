@@ -6,7 +6,7 @@ format/style — I need a library of the entirety of these sites and how to mash
 
 | Layer | Carries | Lives in |
 |---|---|---|
-| **Components** | QUALITY — measured code, exact numbers, tested once, frozen | `templates/components/catalog.html` + `docs/harvest/*.json` |
+| **Patterns** | QUALITY — measured invariants (the craft numbers, contrast floors, motion guards); instances VARY per site within them — never stamped verbatim, never blank-page generated | `templates/components/catalog.html` + `docs/harvest/*.json` |
 | **Packs / registers** | CHARACTER — type voice, tonal map, motion temperament, card DNA | `templates/packs/*.pack.md` |
 | **Assembly rules** (this doc) | DIVERSITY + UNIQUENESS — which components, in which composition, for THIS client | build registry + the rules below |
 
