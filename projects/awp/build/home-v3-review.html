@@ -6,6 +6,7 @@
 <title>Anchor Wealth Planning — One living plan for your investments, taxes & estate</title>
 <meta name="description" content="Anchor coordinates your investments, taxes, and estate with your CPA and attorney into one living plan — for Houston executives, business owners, and families.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
 <style>
@@ -179,6 +180,42 @@ body[data-hero="A"] .hero-inner{display:grid;grid-template-columns:1.02fr .98fr;
 body[data-hero="A"] .hero-copy{max-width:560px;}
 @media(max-width:900px){body[data-hero="A"] .hero-inner{grid-template-columns:1fr;}body[data-hero="A"] .hero-artifact{display:none;}}
 
+/* ---- Variant E: light typographic split (non-image, warm cream ground) ---- */
+body[data-hero="E"] .hv-e{display:block;}
+body[data-hero="E"] .hero{
+  background:
+    radial-gradient(120% 90% at 82% 30%, rgba(201,162,75,.10) 0%, transparent 55%),
+    radial-gradient(90% 80% at 0% 100%, rgba(201,162,75,.05) 0%, transparent 46%),
+    linear-gradient(120deg, var(--ground) 0%, var(--ground) 52%, var(--ground-alt) 100%);}
+/* faint hairline geometry behind the artifact side only (never crosses the copy's left ~55%) */
+body[data-hero="E"] .hero::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background:
+    linear-gradient(rgba(20,40,64,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(20,40,64,.035) 1px,transparent 1px);
+  background-size:46px 46px;
+  -webkit-mask-image:linear-gradient(90deg,transparent 56%,#000 82%);
+  mask-image:linear-gradient(90deg,transparent 56%,#000 82%);}
+body[data-hero="E"] .hero-scrim,body[data-hero="E"] .hero-veil,body[data-hero="E"] .hero-imglabel{display:none;}
+body[data-hero="E"] .hero-inner{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(32px,4vw,64px);align-items:center;}
+body[data-hero="E"] .hero-copy{max-width:560px;}
+/* light-ground type translation (AA-verified — see gauntlet) */
+body[data-hero="E"] .hero .eyebrow{color:var(--accent-ink);}
+body[data-hero="E"] .hero h1{color:var(--ink);text-shadow:none;}
+body[data-hero="E"] .hero h1 .accent{color:var(--accent-ink);}
+body[data-hero="E"] .hero-sub{color:var(--ink-body);text-shadow:none;opacity:1;}
+body[data-hero="E"] .hero-cta .btn-outline{color:var(--ink);border-color:var(--accent-ink);}
+body[data-hero="E"] .hero-cta .btn-outline:hover{background:var(--accent);border-color:var(--accent);color:var(--dark);}
+/* white doc frame needs a defined edge on cream */
+body[data-hero="E"] .doc{border:1px solid var(--border);}
+/* dot rail recolors for light ground */
+body[data-hero="E"] .doc-rail button{background:rgba(20,40,64,.25);}
+body[data-hero="E"] .doc-rail button.on{background:var(--accent);}
+/* nav ink on light ground until scrolled (scrolled nav gets the dark glass bg) */
+body[data-hero="E"] nav:not(.scrolled) .nav-brand,
+body[data-hero="E"] nav:not(.scrolled) .nav-links a{color:var(--ink);}
+body[data-hero="E"] nav:not(.scrolled) .nav-links a:hover{color:var(--accent-ink);}
+@media(max-width:900px){body[data-hero="E"] .hero-inner{grid-template-columns:1fr;}body[data-hero="E"] .hero-artifact{display:none;}}
+
 /* ---- Variant A: living-plan document shuffle carousel ---- */
 .hero-artifact{position:relative;height:clamp(400px,44vw,520px);perspective:1400px;}
 .doc-stack{position:absolute;inset:0;}
@@ -187,29 +224,63 @@ body[data-hero="A"] .hero-copy{max-width:560px;}
   display:flex;flex-direction:column;color:var(--ink);
   transition:transform .8s var(--ease-soft),opacity .8s var(--ease-soft);
   transform:translate3d(0,0,0);will-change:transform;}
-.doc-top{padding:20px clamp(20px,2.4vw,30px) 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:12px;flex:none;}
+/* ---- typeset DOCUMENT register (Pack §8.5) — reads as a plan page, never app UI ---- */
+.doc-top{padding:18px clamp(20px,2.4vw,30px) 14px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex:none;}
 .doc-kicker{font:600 10px/1.2 var(--sans);letter-spacing:1.3px;text-transform:uppercase;color:var(--accent-ink);}
-.doc-title{font:400 clamp(17px,1.5vw,21px)/1.15 var(--serif);font-style:italic;color:var(--ink);margin-top:5px;}
-.doc-chip{font:600 10px/1 var(--sans);letter-spacing:.6px;text-transform:uppercase;padding:5px 9px;border-radius:20px;background:var(--ground-alt);color:var(--accent-ink);flex:none;}
-.doc-body{padding:clamp(14px,1.8vw,22px) clamp(20px,2.4vw,30px);flex:1;display:flex;flex-direction:column;gap:11px;overflow:hidden;}
-.doc-row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-bottom:10px;border-bottom:1px dashed rgba(20,40,64,.12);}
-.doc-row:last-child{border-bottom:0;}
-.doc-row .r-l{display:flex;align-items:center;gap:11px;min-width:0;}
-.doc-row .r-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex:none;}
-.doc-row .r-label{font:600 13.5px/1.3 var(--sans);color:var(--ink);letter-spacing:-.01em;}
-.doc-row .r-sub{font:400 12px/1.3 var(--sans);color:var(--ink-body);}
-.doc-status{font:600 11px/1 var(--sans);letter-spacing:.4px;padding:5px 10px;border-radius:20px;flex:none;}
-.st-done{background:rgba(109,81,34,.12);color:var(--accent-ink);}
-.st-sync{background:rgba(30,57,90,.1);color:var(--dark-2);}
-.st-open{background:rgba(20,40,64,.07);color:var(--ink-body);}
-.doc-detail{font:400 13.5px/1.55 var(--sans);color:var(--ink-body);}
-.doc-detail strong{color:var(--ink);font-weight:600;}
-.doc-note{margin-top:auto;font:400 12px/1.4 var(--sans);color:var(--ink-body);opacity:.8;}
-/* conversion doc (doc 4) */
-.doc-conv{justify-content:space-between;}
-.doc-q{display:flex;gap:11px;align-items:flex-start;font:400 14.5px/1.4 var(--sans);color:var(--ink);}
-.doc-q .q-n{font:300 20px/1 var(--sans);color:var(--accent);flex:none;min-width:22px;}
-.doc-foot{padding:16px clamp(20px,2.4vw,30px) 22px;border-top:1px solid var(--border);flex:none;}
+.doc-title{font:500 clamp(17px,1.5vw,21px)/1.15 var(--serif);font-style:italic;color:var(--ink);margin-top:5px;}
+/* doc-chip → bordered document stamp (small-caps), NOT a filled pill */
+.doc-chip{font:600 9px/1 var(--sans);letter-spacing:1.1px;text-transform:uppercase;padding:5px 8px;border-radius:3px;background:transparent;
+  border:1px solid rgba(125,95,38,.42);color:var(--accent-ink);flex:none;white-space:nowrap;}
+.doc-body{padding:clamp(13px,1.6vw,20px) clamp(20px,2.4vw,30px);flex:1;display:flex;flex-direction:column;gap:clamp(8px,1vw,12px);overflow:hidden;}
+
+/* memo prose — typeset paragraph */
+.doc-lede{font:400 13px/1.5 var(--sans);color:var(--ink-body);}
+.doc-lede b{color:var(--ink);font-weight:600;}
+.doc-lede .ins{font-style:italic;color:var(--accent-ink);}
+
+/* section caption above a ruled table */
+.doc-sec{font:600 9.5px/1 var(--sans);letter-spacing:1.2px;text-transform:uppercase;color:var(--accent-ink);
+  padding-bottom:6px;border-bottom:1px solid rgba(20,40,64,.16);display:flex;justify-content:space-between;gap:10px;align-items:baseline;}
+.doc-sec .doc-sec-note{font:400 10px/1 var(--serif);font-style:italic;letter-spacing:0;text-transform:none;color:var(--ink-body);}
+
+/* ruled hairline ledger table — serif figures column */
+.doc-tbl{display:flex;flex-direction:column;}
+.doc-tr{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:baseline;padding:7px 0;border-bottom:1px solid rgba(20,40,64,.12);}
+.doc-tr:last-child{border-bottom:0;}
+.doc-tr.sub{grid-template-columns:1fr auto;}
+.doc-th{font:600 12.5px/1.25 var(--sans);color:var(--ink);letter-spacing:-.01em;}
+.doc-th .doc-th-sub{display:block;font:400 10.5px/1.3 var(--sans);color:var(--ink-body);letter-spacing:0;margin-top:2px;}
+/* serif figures — redacted, real-shaped, never a readable fabricated number */
+.doc-fig{font:500 14px/1 var(--serif);color:var(--ink);text-align:right;white-space:nowrap;letter-spacing:.02em;}
+.doc-fig.red{color:rgba(27,42,60,.9);}
+.doc-fig .blur{filter:blur(5px);display:inline-block;color:var(--ink);}
+/* document ink marks (non-interactive typeset glyphs in figures column) */
+.doc-mark{font:500 14px/1 var(--serif);color:var(--accent-ink);text-align:right;white-space:nowrap;}
+.doc-mark.q{color:var(--ink-body);font-style:italic;}
+
+/* margin annotation — small-caps note hanging off a row */
+.doc-anno{font:400 10.5px/1.35 var(--serif);font-style:italic;color:var(--ink-body);padding-left:14px;
+  border-left:2px solid rgba(201,162,75,.5);margin:1px 0 4px;}
+
+/* dated / attributed footer line inside the body */
+.doc-foot-line{margin-top:auto;padding-top:9px;border-top:1px solid var(--border);
+  display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 14px;align-items:baseline;}
+.doc-attrib{font:400 11px/1.35 var(--sans);color:var(--ink-body);}
+.doc-attrib b{color:var(--ink);font-weight:600;}
+.doc-initials{display:flex;gap:6px;}
+.doc-initials span{font:500 11px/1 var(--serif);font-style:italic;color:var(--accent-ink);
+  border:1px solid rgba(125,95,38,.32);border-radius:3px;padding:4px 6px;letter-spacing:.03em;}
+.doc-note{font:400 10px/1.3 var(--serif);font-style:italic;color:var(--ink-body);opacity:.78;letter-spacing:0;}
+
+/* conversion doc (doc 4) — typeset, keeps the real CTA button */
+.doc-conv{justify-content:flex-start;}
+.doc-conv .doc-lede{margin-bottom:2px;}
+.doc-q{display:grid;grid-template-columns:auto 1fr;gap:11px;align-items:baseline;
+  font:400 13.5px/1.4 var(--sans);color:var(--ink);padding:8px 0;border-bottom:1px solid rgba(20,40,64,.12);}
+.doc-q:last-of-type{border-bottom:0;}
+.doc-q .q-n{font:400 17px/1 var(--serif);font-style:italic;color:var(--accent-ink);flex:none;min-width:20px;}
+.doc-foot{padding:14px clamp(20px,2.4vw,30px) 20px;border-top:1px solid var(--border);flex:none;}
+.doc-foot .doc-foot-anno{font:400 10.5px/1.4 var(--serif);font-style:italic;color:var(--ink-body);margin-bottom:11px;}
 .doc-foot .btn{width:100%;justify-content:center;}
 /* dot rail */
 .doc-rail{position:absolute;bottom:-30px;left:0;display:flex;gap:8px;z-index:5;}
@@ -543,7 +614,6 @@ body[data-hero="A"] .hero-copy{max-width:560px;}
 .hero-switch button.on{background:var(--accent);border-color:var(--accent);color:var(--dark);}
 @media(max-width:480px){.hero-switch{left:10px;bottom:10px;padding:5px 7px;}.hero-switch button{width:26px;height:26px;font-size:12px;}}
 </style>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -607,63 +677,89 @@ body[data-hero="A"] .hero-copy{max-width:560px;}
     </div>
 
     <!-- Variant A: living-plan document shuffle carousel -->
-    <div class="hero-artifact hv hv-a" aria-label="A living financial plan document" role="img">
+    <div class="hero-artifact hv hv-a hv-e" aria-label="A living financial plan document" role="img">
       <div class="doc-stack" id="docStack">
-        <!-- Doc 1 — Living Plan Q3 overview -->
+        <!-- Doc 1 — Living Plan cover / coordination overview -->
         <article class="doc" data-doc="0">
           <div class="doc-top">
-            <div><div class="doc-kicker">Living Plan · Q3 2026</div><div class="doc-title">Coordination Overview</div></div>
-            <span class="doc-chip">Active</span>
+            <div><div class="doc-kicker">Living Plan · Coordination Summary</div><div class="doc-title">Prepared for the Miller Family</div></div>
+            <span class="doc-chip">Sample — Q3 2026</span>
           </div>
           <div class="doc-body">
-            <div class="doc-row"><div class="r-l"><span class="r-dot"></span><div><div class="r-label">Investment Portfolio</div><div class="r-sub">Rebalanced &amp; tax-aware</div></div></div><span class="doc-status st-done">On track</span></div>
-            <div class="doc-row"><div class="r-l"><span class="r-dot"></span><div><div class="r-label">Tax Coordination</div><div class="r-sub">Synced with your CPA</div></div></div><span class="doc-status st-sync">In sync</span></div>
-            <div class="doc-row"><div class="r-l"><span class="r-dot"></span><div><div class="r-label">Equity Compensation</div><div class="r-sub">10b5-1 window mapped</div></div></div><span class="doc-status st-done">Planned</span></div>
-            <div class="doc-row"><div class="r-l"><span class="r-dot"></span><div><div class="r-label">Estate &amp; Legacy</div><div class="r-sub">Attorney review scheduled</div></div></div><span class="doc-status st-open">Review</span></div>
-            <div class="doc-row"><div class="r-l"><span class="r-dot"></span><div><div class="r-label">Business Transition</div><div class="r-sub">Exit-readiness runway</div></div></div><span class="doc-status st-open">Monitoring</span></div>
+            <p class="doc-lede">One document. <b>Your CPA, your attorney, and your advisor</b> each work from the same page — figures below are <span class="ins">redacted for this sample</span>.</p>
+            <div class="doc-sec">Position &amp; Coordination<span class="doc-sec-note">figures redacted</span></div>
+            <div class="doc-tbl">
+              <div class="doc-tr"><div class="doc-th">Investment Portfolio<span class="doc-th-sub">Rebalanced, tax-aware lots</span></div><div class="doc-fig red">$<span class="blur" aria-hidden="true">0,000,000</span></div></div>
+              <div class="doc-tr"><div class="doc-th">Tax Coordination<span class="doc-th-sub">Reviewed with CPA</span></div><div class="doc-fig red">$ ——,———</div></div>
+              <div class="doc-tr"><div class="doc-th">Equity Compensation<span class="doc-th-sub">10b5-1 window mapped</span></div><div class="doc-fig red">▓▓▓ RSU</div></div>
+              <div class="doc-tr"><div class="doc-th">Estate &amp; Legacy<span class="doc-th-sub">Trust funding under review</span></div><div class="doc-fig red">$ ——,———</div></div>
+              <div class="doc-tr"><div class="doc-th">Business Transition<span class="doc-th-sub">Exit-readiness runway</span></div><div class="doc-fig red">▓▓ yrs</div></div>
+            </div>
+            <div class="doc-anno">Last reviewed with all three professionals — Oct 14 · Next joint review — Q1 [illustrative]</div>
+            <div class="doc-foot-line">
+              <span class="doc-attrib">Coordinated &amp; initialed by <b>all three</b></span>
+              <span class="doc-initials"><span>AM</span><span>CPA</span><span>ESQ</span></span>
+            </div>
           </div>
-          <div class="doc-note">One document. Every professional works from the same page.</div>
         </article>
-        <!-- Doc 2 — Tax Coordination CPA-sync detail -->
+        <!-- Doc 2 — CPA year-end memo -->
         <article class="doc" data-doc="1">
           <div class="doc-top">
-            <div><div class="doc-kicker">Detail · Tax Coordination</div><div class="doc-title">CPA Sync — Year-End</div></div>
-            <span class="doc-chip">Synced</span>
+            <div><div class="doc-kicker">Memorandum · Tax Coordination</div><div class="doc-title">CPA Year-End — Sample Plan</div></div>
+            <span class="doc-chip">Sample — Q3 2026</span>
           </div>
           <div class="doc-body">
-            <p class="doc-detail"><strong>Objective:</strong> harvest losses and time the RSU sale before the December blackout — reviewed <em>with</em> your CPA, not after the return is filed.</p>
-            <div class="doc-row"><div class="r-l"><span class="r-dot"></span><div><div class="r-label">Realized gains YTD</div></div></div><span class="doc-status st-sync">Shared w/ CPA</span></div>
-            <div class="doc-row"><div class="r-l"><span class="r-dot"></span><div><div class="r-label">Loss-harvest candidates</div></div></div><span class="doc-status st-done">Identified</span></div>
-            <div class="doc-row"><div class="r-l"><span class="r-dot"></span><div><div class="r-label">Estimated-payment schedule</div></div></div><span class="doc-status st-sync">Aligned</span></div>
+            <p class="doc-lede"><b>Re: RSU sale &amp; loss harvest.</b> Time the vest sale <i>before</i> the December blackout window; harvest offsetting losses and align estimated payments — <span class="ins">reviewed with the CPA, not after the return is filed.</span></p>
+            <div class="doc-sec">Year-End Schedule<span class="doc-sec-note">amounts redacted</span></div>
+            <div class="doc-tbl">
+              <div class="doc-tr"><div class="doc-th">Realized gains, YTD<span class="doc-th-sub">Shared with CPA</span></div><div class="doc-fig red">$<span class="blur" aria-hidden="true">000,000</span></div></div>
+              <div class="doc-tr"><div class="doc-th">RSU vest — sell before blackout<span class="doc-th-sub">Window closes early Dec</span></div><div class="doc-fig red">▓▓▓ sh</div></div>
+              <div class="doc-tr"><div class="doc-th">Loss-harvest candidates<span class="doc-th-sub">Identified across lots</span></div><div class="doc-fig red">($ ——,———)</div></div>
+              <div class="doc-tr"><div class="doc-th">Estimated payment — Q4<span class="doc-th-sub">Aligned to revised income</span></div><div class="doc-fig red">$ ——,———</div></div>
+            </div>
+            <div class="doc-anno">Blackout opens ~Dec 8; sale instruction to be confirmed the prior week [illustrative].</div>
+            <div class="doc-foot-line">
+              <span class="doc-attrib">Reviewed with your CPA — <b>Oct 14</b> [illustrative]</span>
+              <span class="doc-note">Sample memo</span>
+            </div>
           </div>
-          <div class="doc-note">Your advisor and your CPA, working the same numbers — before year-end.</div>
         </article>
-        <!-- Doc 3 — Estate attorney-review detail -->
+        <!-- Doc 3 — Attorney trust-review memo -->
         <article class="doc" data-doc="2">
           <div class="doc-top">
-            <div><div class="doc-kicker">Detail · Estate &amp; Legacy</div><div class="doc-title">Attorney Review</div></div>
-            <span class="doc-chip">Scheduled</span>
+            <div><div class="doc-kicker">Memorandum · Estate &amp; Legacy</div><div class="doc-title">Attorney Trust Review — Sample</div></div>
+            <span class="doc-chip">Sample — Q3 2026</span>
           </div>
           <div class="doc-body">
-            <p class="doc-detail"><strong>Question on the table:</strong> is the trust funded correctly, and does it still fit what you actually own today?</p>
-            <div class="doc-row"><div class="r-l"><span class="r-dot"></span><div><div class="r-label">Trust funding status</div></div></div><span class="doc-status st-open">Verify</span></div>
-            <div class="doc-row"><div class="r-l"><span class="r-dot"></span><div><div class="r-label">Beneficiary designations</div></div></div><span class="doc-status st-open">Update</span></div>
-            <div class="doc-row"><div class="r-l"><span class="r-dot"></span><div><div class="r-label">Titling vs. current assets</div></div></div><span class="doc-status st-sync">Attorney review</span></div>
+            <p class="doc-lede"><b>Re: Is the trust funded correctly</b>, and does it still fit the assets owned today? Re-title after the recent property purchase; confirm beneficiary designations are current. <span class="ins">Marks below are the attorney's, not app status.</span></p>
+            <div class="doc-sec">Review Checklist<span class="doc-sec-note">attorney's marks</span></div>
+            <div class="doc-tbl">
+              <div class="doc-tr"><div class="doc-th">Trust funded to current assets<span class="doc-th-sub">Verify against holdings</span></div><div class="doc-mark q">— open</div></div>
+              <div class="doc-tr"><div class="doc-th">Re-title after property purchase<span class="doc-th-sub">New asset class added</span></div><div class="doc-mark q">— action</div></div>
+              <div class="doc-tr"><div class="doc-th">Beneficiary designations current<span class="doc-th-sub">Retirement &amp; insurance</span></div><div class="doc-mark">✓ confirmed</div></div>
+              <div class="doc-tr"><div class="doc-th">Titling vs. what you own now<span class="doc-th-sub">Reconciled to plan</span></div><div class="doc-mark">✓ reconciled</div></div>
+            </div>
+            <div class="doc-anno">So the documents match the life you have now — not the one you had when they were drafted.</div>
+            <div class="doc-foot-line">
+              <span class="doc-attrib">Reviewed with your attorney — <b>Oct 21</b> [illustrative]</span>
+              <span class="doc-note">Sample memo</span>
+            </div>
           </div>
-          <div class="doc-note">Coordinated with your attorney — so the documents match the life you have now.</div>
         </article>
-        <!-- Doc 4 — CONVERSION doc -->
+        <!-- Doc 4 — CONVERSION doc (typeset; keeps the real CTA button) -->
         <article class="doc doc-conv" data-doc="3">
           <div class="doc-top">
-            <div><div class="doc-kicker">Your Plan</div><div class="doc-title">Where does your plan stand?</div></div>
+            <div><div class="doc-kicker">Your Plan · Not a Sample</div><div class="doc-title">Where does your plan stand?</div></div>
             <span class="doc-chip">2 min</span>
           </div>
           <div class="doc-body">
-            <div class="doc-q"><span class="q-n">1</span><span>Do your CPA, attorney, and advisor ever actually talk to each other?</span></div>
-            <div class="doc-q"><span class="q-n">2</span><span>Is your equity comp being planned around — or reacted to?</span></div>
-            <div class="doc-q"><span class="q-n">3</span><span>Are you confident your estate documents still fit what you own?</span></div>
+            <p class="doc-lede">The plan on the previous pages is a sample. <b>Yours is the one that matters.</b> Three questions to see how coordinated it really is:</p>
+            <div class="doc-q"><span class="q-n">i</span><span>Do your CPA, attorney, and advisor ever actually talk to each other?</span></div>
+            <div class="doc-q"><span class="q-n">ii</span><span>Is your equity comp being planned around — or reacted to?</span></div>
+            <div class="doc-q"><span class="q-n">iii</span><span>Are you confident your estate documents still fit what you own?</span></div>
           </div>
           <div class="doc-foot">
+            <div class="doc-foot-anno">Reviewed personally — usually an honest answer within one business day.</div>
             <a href="#fit" class="btn btn-primary">Take the 4-Question Fit Check <span class="arw">→</span></a>
           </div>
         </article>
@@ -1187,6 +1283,7 @@ body[data-hero="A"] .hero-copy{max-width:560px;}
   <button data-v="B">B</button>
   <button data-v="C">C</button>
   <button data-v="D">D</button>
+  <button data-v="E">E</button>
 </div>
 <!-- /REVIEW-ONLY -->
 
@@ -1359,14 +1456,14 @@ function activateHero(v){
   var sw = document.getElementById('heroSwitch');
   var btns = sw.querySelectorAll('button');
   function setHero(v){
-    if(['A','B','C','D'].indexOf(v)<0) v='A';
+    if(['A','B','C','D','E'].indexOf(v)<0) v='A';
     document.body.setAttribute('data-hero', v);
     btns.forEach(function(b){ b.classList.toggle('on', b.dataset.v===v); });
     try{ history.replaceState(null,'','#hero-'+v); }catch(e){}
     activateHero(v);
   }
   btns.forEach(function(b){ b.addEventListener('click', function(){ setHero(b.dataset.v); }); });
-  var m = (location.hash.match(/hero-([ABCD])/)||[])[1];
+  var m = (location.hash.match(/hero-([ABCDE])/)||[])[1];
   setHero(m || document.body.getAttribute('data-hero') || 'A');
 })();
 

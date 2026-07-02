@@ -1,5 +1,9 @@
-# Design Language Pack — `warm-premium` · v1.3
+# Design Language Pack — `warm-premium` · v1.5
 
+> **v1.5 (2026-07-02):** DOCUMENT/ARTIFACT PROPS law (§8.5) — deliverable-as-prop must read as a
+> typeset document, never app UI (no status pills/fake affordances; ≥80% visual occupancy;
+> redacted-specifics, never fabricated numbers). From Chris's hero-A live verdict.
+> **v1.4 (2026-07-02):** vertical reels row (§8.4.5).
 > **v1.3 (2026-07-02, overnight):** VIDEO CONTENT SYSTEM added (§8.4) — hero video variant
 > (Primitive 5), click-to-play video-testimonial proof block, video insight card, 3-moment
 > placement budget. Plus v1.2→v1.3 hardening from the Sonnet cold build (see changelog notes
@@ -555,6 +559,24 @@ reels-class content) + the row's LAST card is a CTA card in the same 9:16 frame 
   the video's own unmute.
 - Row scrolls horizontally on narrow viewports (`overflow-x:auto`, scroll-snap), grid on wide.
 - Real footage ONLY — placeholder posters carry `[VERIFY]` until the advisor's clips exist.
+
+## 8.5 DOCUMENT/ARTIFACT PROPS (v1.5 — Chris, 2026-07-02, hero-A verdict)
+When a build shows the client's DELIVERABLE as a visual prop (the living-plan carousel class —
+PRINT_SPEC team-built signal #2), the prop must read as a **TYPESET DOCUMENT, never app UI**:
+- **BANNED inside a document prop:** status pills/chips ("Verify", "Update", "In sync"), button- or
+  toggle-shaped elements that aren't interactive, dashboard task-rows, progress bars. Fake
+  affordances read as a software mockup AND break trust (looks clickable, isn't). ONE exception:
+  the conversion card's real CTA button (conversion law).
+- **Document register:** letterhead-class top (kicker + serif title + hairline rule), body set like
+  a typeset page — ruled hairline tables, serif figures column, margin annotations, a dated/initialed
+  footer line. **Dense: the page reads ≥80% visually occupied** — a half-empty card kills the
+  $50K-team signal instantly (Chris caught this live).
+- **Specificity carries desire; compliance stays clean:** REDACTED-specifics treatment — real-shaped
+  figures visibly redacted (`▓▓▓▓`, `$ ——,———`, or a `filter:blur()` span) beside REAL labels
+  ("Deferred comp election — filed before window close"). Never a fabricated readable number
+  (same class as the `data-count` fabrication ban).
+- Each page = ONE ICP vignette told as document content; the sequence narrates the mechanism
+  (CPA page → attorney page → portfolio page); the final page is the conversion doc.
 
 ## 9. Ship gate (verify before done)
 

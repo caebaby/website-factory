@@ -21,15 +21,25 @@ Fonts (Pack roles): `--sans:'Nunito Sans'` (300;400;600;700 — 300 is display) 
 
 ## HERO-VARIANTS (the one addendum to the Pack hero — Alex reviews options)
 Pack §4 HERO composition + §6 imagery + scrim/veil law (scrim = minimum; AA over ACTUAL photo
-pixels wins — add a copy-side veil if needed). FOUR variants, review switcher (bottom-left chip
-rail `Hero A·B·C·D`, `body[data-hero]`, hash persistence, `<!-- REVIEW-ONLY -->`):
+pixels wins — add a copy-side veil if needed). FIVE variants, review switcher (bottom-left chip
+rail `Hero A·B·C·D·E`, `body[data-hero]`, hash persistence, `<!-- REVIEW-ONLY -->`):
 - **A — Living-plan document shuffle carousel** (typographic split hero, no photo): the artifact
   frame (radius 12, the ONE floating-frame shadow) cycles 4 documents via physical SHUFFLE (top
-  card slides off x+rotate, next rises; back-peek = always the next doc's REAL content). Docs:
-  Living Plan Q3 overview (5 coordination rows + status chips) → Tax Coordination CPA-sync detail →
-  Estate attorney-review detail → CONVERSION DOC "Where does your plan stand?" (3 visitor questions
-  + gold `Take the 4-Question Fit Check →` btn in the doc footer). Auto 4.5s, doc-4 holds 7s,
-  hover=pause + dot rail, LED-011 guards, no-JS = doc 1 static.
+  card slides off x+rotate, next rises; back-peek = always the next doc's REAL content).
+  **DOC CONTENT (v2, Chris verdict 2026-07-02 — Pack §8.5 governs; mechanism/timing unchanged):**
+  each doc = a TYPESET PLAN PAGE, never app UI. NO status pills/chips, NO button-shaped
+  non-interactive elements, NO dashboard rows. Letterhead top (kicker + serif title + hairline),
+  ruled hairline tables with a serif figures column, margin annotations, dated/initialed footer
+  line ("Reviewed with your CPA — Oct 14" class). **Every figure REDACTED** (`$ ——,———` /
+  `▓▓▓▓` / blur span) beside a REAL specific label — never a fabricated readable number.
+  **Each page ≥80% visually occupied** — dense like a real document, zero dead whitespace.
+  Sequence narrates the mechanism as ICP vignettes: 1 Living Plan cover/overview (the one
+  document, all three professionals initialed) → 2 CPA year-end memo (RSU sale timed before the
+  December blackout; loss-harvest schedule — redacted figures) → 3 attorney trust-review memo
+  (funding status vs. current assets; re-title after the ranch purchase class) → 4 CONVERSION DOC
+  "Where does your plan stand?" (3 visitor questions + gold `Take the 4-Question Fit Check →`
+  btn in the doc footer — the ONE real button allowed). Auto 4.5s, doc-4 holds 7s, hover=pause +
+  dot rail, LED-011 guards, no-JS = doc 1 static.
 - **B — Photo hero:** full-bleed `assets/hero-family.jpg`, Pack scrim numbers + veil-if-needed.
 - **C — Video hero:** B's composition, Primitive-5 video (poster=hero-family.jpg, demo
   `data-src` https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4
@@ -37,6 +47,15 @@ rail `Hero A·B·C·D`, `body[data-hero]`, hash persistence, `<!-- REVIEW-ONLY -
 - **D — Rotating ambient videos:** 2 clips crossfading 1.2s every ~8s (demo clip 1 = the flower;
   clip 2 slot labeled `[VERIFY — oil pumpjack in a Texas field, Alex b-roll]` shipping as poster
   `assets/hero-oilfield.jpg` until real). Per-clip lazy; Primitive-5 contracts.
+- **E — Light typographic (Chris ask, 2026-07-02: "non-image, lighter alternative to the blue"):**
+  variant A's split composition on the LIGHT register — `--ground` hero (no photo, no video, no
+  navy), same copy/CTAs/artifact carousel. Solve the light-ground translation properly: ink display
+  (`--ink`) + serif-italic accent phrase in `--accent-ink` (AA on ground), underline-draw stays
+  `--accent`; the white doc frame needs a defined edge on cream (hairline `--border` + the
+  floating shadow, verify it doesn't wash out); dot rail recolors for light ground; eyebrow =
+  `--accent-ink` not `--accent-soft` (LED-003 class). Cred bar unchanged below. A timid retint
+  fails the ambition floor — this must read as its own deliberate light direction, not A minus
+  the navy.
 All variants: eyebrow `For Houston Executives, Owners & Families` · H1 `You've become the project
 manager of` + own-line em `your own wealth.` (underline-draw) · sub `Anchor coordinates your
 investments, taxes, and estate with your CPA and attorney into one living plan — so you can stop
