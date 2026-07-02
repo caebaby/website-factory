@@ -53,19 +53,19 @@ svg{display:block;}
 .eyebrow{
   display:inline-flex;
   align-items:center;
-  gap:12px;
+  gap:10px;
   font-size:12px;
   font-weight:600;
   letter-spacing:.1em;
   text-transform:uppercase;
   color:var(--accent-ink);
-  margin-bottom:18px;
+  margin-bottom:22px;
 }
 .eyebrow::before{
   content:"";
   display:inline-block;
   width:22px;
-  height:1px;
+  height:1.5px;
   background:var(--accent-ink);
 }
 .eyebrow.on-dark{color:var(--accent-soft);}
@@ -76,9 +76,9 @@ svg{display:block;}
   font-weight:300;
   font-size:clamp(30px,4.4vw,60px);
   line-height:1.05;
-  letter-spacing:-.015em;
+  letter-spacing:-.025em;
   color:var(--ink);
-  max-width:18ch;
+  max-width:20ch;
 }
 .h2 em{
   font-family:var(--serif);
@@ -87,14 +87,14 @@ svg{display:block;}
 }
 .h2.on-dark{color:var(--on-dark);}
 .sec-intro{
-  font-size:clamp(16px,1.3vw,18.5px);
+  font-size:clamp(17px,1.4vw,20px);
   line-height:1.55;
   color:var(--ink-body);
   max-width:60ch;
-  margin-top:18px;
+  margin-top:20px;
 }
 .sec-intro.on-dark{color:var(--on-dark-mute);}
-.sec-head{margin-bottom:clamp(40px,5vw,64px);}
+.sec-head{margin-bottom:clamp(44px,5vw,68px);}
 
 /* ---------- reveal system ---------- */
 .rise{
@@ -146,6 +146,9 @@ svg{display:block;}
   white-space:nowrap;
 }
 .btn-sm{font-size:15px;padding:9px 20px;}
+.btn .arw{display:inline-block;transition:transform var(--dur) var(--ease-soft);}
+.btn:hover .arw{transform:translateX(4px);}
+@media (prefers-reduced-motion:reduce){.btn .arw{transition:none;}}
 .btn-fill{
   background:var(--accent);
   color:var(--dark);
@@ -635,19 +638,19 @@ svg{display:block;}
 .pain-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:20px;
+  gap:24px;
 }
 .pain-card{
   position:relative;
   background:var(--ground-alt);
   border-radius:var(--radius-card);
-  padding:clamp(24px,2.6vw,32px);
+  padding:clamp(28px,2.8vw,32px);
   display:flex;
   flex-direction:column;
   gap:16px;
   transition:transform .4s var(--ease-soft), background .4s var(--ease);
 }
-.pain-card:hover{transform:translateY(-4px);background:color-mix(in srgb, var(--ground-alt) 88%, #fff);}
+.pain-card:hover{transform:translateY(-4px);background:color-mix(in srgb, var(--ground-alt) 90%, var(--ink) 10%);}
 .pain-dot{
   position:absolute;
   top:20px;right:20px;
@@ -661,6 +664,7 @@ svg{display:block;}
   font-size:clamp(40px,4.4vw,58px);
   color:var(--accent-ink);
   line-height:1;
+  letter-spacing:-.03em;
 }
 .pain-quote{
   font-family:var(--serif);
@@ -686,20 +690,20 @@ svg{display:block;}
 .why-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:20px;
+  gap:24px;
 }
 .why-card{
   background:var(--dark-2);
   border-radius:var(--radius-card);
-  padding:clamp(26px,2.4vw,32px) clamp(22px,2vw,26px);
+  padding:clamp(30px,2.6vw,34px) clamp(26px,2.2vw,30px);
   display:flex;
   flex-direction:column;
   gap:18px;
   transition:transform .4s var(--ease-soft), background .4s var(--ease);
 }
-.why-card:hover{transform:translateY(-4px);background:color-mix(in srgb, var(--dark-2) 85%, #fff);}
+.why-card:hover{transform:translateY(-4px);background:color-mix(in srgb, var(--dark-2) 84%, var(--accent-soft) 16%);}
 .why-icon{width:34px;height:34px;color:var(--accent-soft);}
-.why-h3{font-size:18.5px;font-weight:600;color:var(--on-dark);}
+.why-h3{font-size:clamp(19px,1.5vw,23px);font-weight:600;letter-spacing:-.015em;line-height:1.25;color:var(--on-dark);}
 .why-body{font-size:14.5px;line-height:1.6;color:var(--on-dark-mute);}
 @media (max-width:960px){
   .why-grid{grid-template-columns:1fr 1fr;}
@@ -714,7 +718,7 @@ svg{display:block;}
 .serve-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:20px;
+  gap:24px;
 }
 .serve-card{
   position:relative;
@@ -758,7 +762,7 @@ svg{display:block;}
   flex-direction:column;
   gap:8px;
 }
-.serve-h3{font-size:21px;font-weight:600;color:#fff;}
+.serve-h3{font-size:clamp(21px,1.7vw,25px);font-weight:600;letter-spacing:-.015em;line-height:1.2;color:#fff;}
 .serve-caption{font-size:14px;line-height:1.55;color:rgba(255,255,255,.82);max-width:34ch;}
 .serve-link{
   margin-top:8px;
@@ -784,7 +788,7 @@ svg{display:block;}
   background:var(--dark);
   border-radius:12px;
   overflow:hidden;
-  padding:clamp(32px,4vw,56px);
+  padding:clamp(40px,5.5vw,84px);
 }
 .fit-panel::before{
   content:"";
@@ -799,15 +803,15 @@ svg{display:block;}
   z-index:1;
   display:grid;
   grid-template-columns:.9fr 1.1fr;
-  gap:clamp(32px,4vw,64px);
+  gap:clamp(36px,5vw,72px);
   align-items:center;
 }
 .fit-sub{
-  font-size:16.5px;
-  line-height:1.6;
+  font-size:clamp(17px,1.4vw,20px);
+  line-height:1.55;
   color:var(--on-dark-mute);
   max-width:46ch;
-  margin-top:16px;
+  margin-top:20px;
 }
 .fit-reassure{
   display:flex;
@@ -880,7 +884,7 @@ svg{display:block;}
 .fit-card{
   background:var(--card);
   border-radius:var(--radius-card);
-  padding:clamp(26px,2.8vw,36px);
+  padding:clamp(30px,3.4vw,46px);
   position:relative;
 }
 .fit-card.pulse{animation:pulseRing 1s ease-out 2;}
@@ -903,6 +907,7 @@ svg{display:block;}
   font-size:clamp(34px,3vw,44px);
   color:var(--accent-ink);
   line-height:1;
+  letter-spacing:-.03em;
 }
 .fit-step-of{
   font-size:11px;
@@ -935,7 +940,8 @@ svg{display:block;}
   font-family:var(--sans);
   font-weight:300;
   font-size:clamp(21px,2.2vw,28px);
-  line-height:1.2;
+  line-height:1.1;
+  letter-spacing:-.02em;
   color:var(--ink);
   margin-bottom:22px;
 }
@@ -1015,11 +1021,11 @@ svg{display:block;}
 .bento{
   display:grid;
   grid-template-columns:repeat(6,1fr);
-  gap:20px;
+  gap:24px;
 }
 .bento-cell{
   border-radius:var(--radius-card);
-  padding:clamp(24px,2.4vw,30px);
+  padding:clamp(28px,2.6vw,34px);
   display:flex;
   flex-direction:column;
   gap:12px;
@@ -1039,7 +1045,7 @@ svg{display:block;}
   color:var(--accent-ink);
 }
 .bento-cell.is-dark .bento-tag{color:var(--accent-soft);}
-.bento-h3{font-size:20px;font-weight:600;color:var(--ink);}
+.bento-h3{font-size:clamp(20px,1.7vw,25px);font-weight:600;letter-spacing:-.015em;line-height:1.2;color:var(--ink);}
 .bento-cell.is-dark .bento-h3{color:var(--on-dark);}
 .bento-pain{
   font-family:var(--serif);
@@ -1051,7 +1057,8 @@ svg{display:block;}
 .bento-cell.is-dark .bento-pain{color:var(--accent-soft);}
 .bento-body{font-size:14.5px;line-height:1.6;color:var(--ink-body);}
 .bento-cell.is-dark .bento-body{color:var(--on-dark-mute);}
-.bento-cell.is-dark:hover{background:color-mix(in srgb, var(--dark) 85%, #fff);}
+.bento-cell.is-dark:hover{background:color-mix(in srgb, var(--dark) 84%, var(--accent-soft) 16%);}
+.bento-cell:not(.is-dark):hover{background:color-mix(in srgb, var(--ground-alt) 90%, var(--ink) 10%);}
 .bento-cell.span-6.is-dark{
   flex-direction:row;
   align-items:center;
@@ -1087,13 +1094,13 @@ svg{display:block;}
   position:absolute;
   top:0;left:0;
   width:100%;
-  height:1px;
+  height:1.5px;
   background:var(--border);
 }
 .process-step::after{
   content:"";
   position:absolute;
-  top:-4.5px;left:0;
+  top:-4px;left:0;
   width:9px;height:9px;
   border-radius:50%;
   background:var(--accent);
@@ -1103,10 +1110,11 @@ svg{display:block;}
   font-weight:300;
   font-size:clamp(44px,4.6vw,60px);
   line-height:1;
-  color:color-mix(in srgb, var(--accent) 40%, var(--accent-ink));
-  margin-bottom:14px;
+  color:color-mix(in srgb, var(--accent) 46%, var(--accent-ink));
+  margin-bottom:16px;
+  letter-spacing:-.03em;
 }
-.process-h3{font-size:19px;font-weight:600;color:var(--ink);margin-bottom:8px;}
+.process-h3{font-size:clamp(18px,1.4vw,21px);font-weight:600;letter-spacing:-.015em;line-height:1.25;color:var(--ink);margin-bottom:8px;}
 .process-body{font-size:14.5px;line-height:1.6;color:var(--ink-body);margin-bottom:12px;}
 .process-when{
   font-family:var(--serif);
@@ -1160,12 +1168,13 @@ svg{display:block;}
 .proof-stat-val{
   font-family:var(--sans);
   font-weight:300;
-  font-size:clamp(32px,3.2vw,44px);
+  font-size:clamp(36px,3.6vw,52px);
   color:var(--on-dark);
   line-height:1;
-  margin-bottom:8px;
+  margin-bottom:10px;
+  letter-spacing:-.03em;
 }
-.proof-stat-label{font-size:13.5px;color:var(--on-dark);line-height:1.4;}
+.proof-stat-label{font-size:14px;color:var(--on-dark);line-height:1.4;}
 @media (max-width:760px){
   .proof-stats{grid-template-columns:1fr 1fr;row-gap:28px;}
 }
@@ -1210,13 +1219,21 @@ svg{display:block;}
 .insight-featured{
   background:var(--card);
   border-radius:var(--radius-card);
-  border-top:3px solid var(--accent);
-  padding:clamp(26px,2.6vw,34px);
+  border:1px solid var(--border);
+  padding:clamp(28px,2.8vw,40px);
   display:flex;
   flex-direction:column;
   gap:14px;
-  transition:transform .4s var(--ease-soft);
+  transition:transform .4s var(--ease-soft), background .4s var(--ease);
   position:relative;
+  overflow:hidden;
+}
+.insight-featured::before{
+  content:"";
+  position:absolute;
+  top:0;left:0;right:0;
+  height:3px;
+  background:var(--accent);
 }
 .insight-featured:hover{transform:translateY(-4px);}
 .insight-tag{
@@ -1240,11 +1257,12 @@ svg{display:block;}
 .insight-compact{
   background:var(--card);
   border-radius:var(--radius-card);
-  padding:clamp(20px,2vw,24px);
+  border:1px solid var(--border);
+  padding:clamp(24px,2.2vw,28px);
   display:flex;
   flex-direction:column;
   gap:8px;
-  transition:transform .4s var(--ease-soft);
+  transition:transform .4s var(--ease-soft), background .4s var(--ease);
 }
 .insight-compact:hover{transform:translateY(-4px);}
 .insight-title-compact{font-size:16.5px;font-weight:600;color:var(--ink);line-height:1.35;}
@@ -1491,7 +1509,7 @@ body[data-hero="c"] .nav:not(.is-scrolled) .brand-sub{color:var(--accent-soft);}
 .reels-row{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:20px;
+  gap:24px;
 }
 .reel-media{
   position:relative;
@@ -1549,6 +1567,7 @@ body[data-hero="c"] .nav:not(.is-scrolled) .brand-sub{color:var(--accent-soft);}
   .reel-cta:hover{transform:none;}
 }
 </style>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
 </head>
 <body class="no-js" data-hero="a">
 
@@ -1577,7 +1596,7 @@ body[data-hero="c"] .nav:not(.is-scrolled) .brand-sub{color:var(--accent-soft);}
       <h1 class="h1 hrise d2">You&rsquo;ve become the project manager of<br><em class="h1-underline" id="h1em">your own wealth.</em></h1>
       <p class="sub hrise d3">Anchor coordinates your investments, taxes, and estate with your CPA and attorney into one living plan &mdash; so you can stop being the glue.</p>
       <div class="cta-row hrise d4">
-        <a href="#book" class="btn btn-fill">Schedule a 30-Minute Conversation &rarr;</a>
+        <a href="#book" class="btn btn-fill">Schedule a 30-Minute Conversation <span class="arw">&rarr;</span></a>
         <a href="#fit-check" class="btn btn-outline">Take the 4-Question Fit Check</a>
       </div>
     </div>
@@ -1728,7 +1747,7 @@ body[data-hero="c"] .nav:not(.is-scrolled) .brand-sub{color:var(--accent-soft);}
               </div>
             </div>
             <div class="doc-foot">
-              <a href="#fit-check" class="btn btn-fill btn-sm" id="doc4cta">Take the 4-Question Fit Check &rarr;</a>
+              <a href="#fit-check" class="btn btn-fill btn-sm" id="doc4cta">Take the 4-Question Fit Check <span class="arw">&rarr;</span></a>
             </div>
           </div>
         </article>
@@ -1758,7 +1777,7 @@ body[data-hero="c"] .nav:not(.is-scrolled) .brand-sub{color:var(--accent-soft);}
       <h1 class="h1 hrise d2">You&rsquo;ve become the project manager of<br><em class="h1-underline">your own wealth.</em></h1>
       <p class="sub hrise d3">Anchor coordinates your investments, taxes, and estate with your CPA and attorney into one living plan &mdash; so you can stop being the glue.</p>
       <div class="cta-row hrise d4">
-        <a href="#book" class="btn btn-fill">Schedule a 30-Minute Conversation &rarr;</a>
+        <a href="#book" class="btn btn-fill">Schedule a 30-Minute Conversation <span class="arw">&rarr;</span></a>
         <a href="#fit-check" class="btn btn-outline">Take the 4-Question Fit Check</a>
       </div>
     </div>
@@ -1780,7 +1799,7 @@ body[data-hero="c"] .nav:not(.is-scrolled) .brand-sub{color:var(--accent-soft);}
       <h1 class="h1 hrise d2">You&rsquo;ve become the project manager of<br><em class="h1-underline">your own wealth.</em></h1>
       <p class="sub hrise d3">Anchor coordinates your investments, taxes, and estate with your CPA and attorney into one living plan &mdash; so you can stop being the glue.</p>
       <div class="cta-row hrise d4">
-        <a href="#book" class="btn btn-fill">Schedule a 30-Minute Conversation &rarr;</a>
+        <a href="#book" class="btn btn-fill">Schedule a 30-Minute Conversation <span class="arw">&rarr;</span></a>
         <a href="#fit-check" class="btn btn-outline">Take the 4-Question Fit Check</a>
       </div>
     </div>
@@ -2062,7 +2081,7 @@ body[data-hero="c"] .nav:not(.is-scrolled) .brand-sub{color:var(--accent-soft);}
               <p class="fit-legend">Where should we send your fit assessment?</p>
               <label for="fitEmail" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);">Email address</label>
               <input type="email" id="fitEmail" class="fit-email-input" placeholder="you@email.com" required>
-              <button type="submit" class="btn btn-fill" style="width:100%;">Get My Fit Assessment &rarr;</button>
+              <button type="submit" class="btn btn-fill" style="width:100%;">Get My Fit Assessment <span class="arw">&rarr;</span></button>
               <p class="fit-micro">No spam. No sales pitch. Just an honest answer about whether we&rsquo;re a match.</p>
               <div class="fit-nav-row"><button type="button" class="fit-back" data-back="3">&larr; Back</button></div>
             </div>
@@ -2124,7 +2143,7 @@ body[data-hero="c"] .nav:not(.is-scrolled) .brand-sub{color:var(--accent-soft);}
           <p class="bento-pain">&ldquo;I don&rsquo;t know what I&rsquo;d walk away with.&rdquo;</p>
           <p class="bento-body">The exit conversation starts 3&ndash;5 years before the LOI &mdash; not the week an offer lands.</p>
         </div>
-        <a href="#fit-check" class="btn btn-fill">Start with the Fit Check &rarr;</a>
+        <a href="#fit-check" class="btn btn-fill">Start with the Fit Check <span class="arw">&rarr;</span></a>
       </div>
     </div>
   </div>
@@ -2213,7 +2232,7 @@ body[data-hero="c"] .nav:not(.is-scrolled) .brand-sub{color:var(--accent-soft);}
     <h2 class="h2 rise">You&rsquo;ve been the project manager <em>long enough.</em></h2>
     <p class="final-sub rise">If your CPA and your advisor aren&rsquo;t reading from the same plan, you&rsquo;re doing the work your wealth manager should be doing. Thirty minutes. No pitch.</p>
     <div class="cta-row rise">
-      <a href="#book" class="btn btn-fill">Schedule a 30-Minute Conversation &rarr;</a>
+      <a href="#book" class="btn btn-fill">Schedule a 30-Minute Conversation <span class="arw">&rarr;</span></a>
       <a href="#fit-check" class="btn btn-outline">Take the 4-Question Fit Check</a>
     </div>
   </div>
@@ -2295,7 +2314,7 @@ body[data-hero="c"] .nav:not(.is-scrolled) .brand-sub{color:var(--accent-soft);}
       <div class="reel">
         <div class="reel-cta">
           <p class="reel-cta-line">Twenty minutes with Alex beats sixty seconds.</p>
-          <a href="#fit-check" class="btn btn-fill btn-sm">Book a Call &rarr;</a>
+          <a href="#fit-check" class="btn btn-fill btn-sm">Book a Call <span class="arw">&rarr;</span></a>
         </div>
       </div>
     </div>
@@ -2756,5 +2775,22 @@ body[data-hero="c"] .nav:not(.is-scrolled) .brand-sub{color:var(--accent-soft);}
 })();
 </script>
 
+
+<!-- REVIEW-ONLY: font A/B toggle — strip for production -->
+<div id="fontToggle" style="position:fixed;left:14px;bottom:64px;z-index:999;background:#fff;border:1px solid rgba(20,40,64,.18);border-radius:6px;padding:8px 10px;font:600 10px/1 'Nunito Sans',sans-serif;letter-spacing:.8px;text-transform:uppercase;color:#4b5b6e;box-shadow:0 4px 18px rgba(0,0,0,.08);display:flex;gap:6px;align-items:center;">
+  FONTS:
+  <button data-f="brand" class="on" style="border:1.5px solid rgba(20,40,64,.18);background:#c9a24b;color:#142840;border-radius:4px;padding:5px 9px;font:inherit;cursor:pointer;">Alex brand</button>
+  <button data-f="kindred" style="border:1.5px solid rgba(20,40,64,.18);background:#F5F0E6;color:#1b2a3c;border-radius:4px;padding:5px 9px;font:inherit;cursor:pointer;">Kindred feel</button>
+</div>
+<script>
+(function(){var bs=document.querySelectorAll('#fontToggle button');
+bs.forEach(function(b){b.onclick=function(){
+  var k=b.dataset.f==='kindred';
+  document.documentElement.style.setProperty('--sans',k?"'Hanken Grotesk','Helvetica Neue',Arial,sans-serif":"'Nunito Sans','Helvetica Neue',Arial,sans-serif");
+  document.documentElement.style.setProperty('--serif',k?"'Newsreader',Georgia,serif":"'EB Garamond',Georgia,serif");
+  bs.forEach(function(x){x.style.background='#F5F0E6';x.style.color='#1b2a3c';x.classList.remove('on');});
+  b.style.background='#c9a24b';b.style.color='#142840';b.classList.add('on');
+};});})();
+</script>
 </body>
 </html>
