@@ -75,9 +75,12 @@ interaction and it must read like a $50K team's flagship, not a subtle detail):*
      portfolio? · Is your trust funded correctly? · Who coordinates it all?") and its footer is a
      REAL gold CTA button inside the document: `Take the 4-Question Fit Check →` (same .btn styles,
      btn-sm scale). The carousel's endpoint IS the conversion.
-- **Behavior:** auto-advance every ~4.5s with a soft crossfade+8px slide (.5s ease-soft); doc 4
-  holds ~7s, then loops. **Hover over the artifact = pause** + reveal a tab/dot rail (4 affordances,
-  accent for active); click = jump to that doc. Progress indication always subtly visible.
+- **Behavior (v2.2 — Chris):** transition = a physical SHUFFLE, not a crossfade: the top document
+  slides off (x+rotate, ~.55s ease-soft) while the card behind scales/rises forward to become the
+  new top; the back-card peek is always the NEXT document (never a blank page — every visible
+  surface is real content). Auto-advance every ~4.5s; doc 4 holds ~7s, then loops. **Hover over
+  the artifact = pause** + reveal a tab/dot rail (4 affordances, accent for active); click = jump.
+  Progress indication always subtly visible. Reduced-motion: no shuffle, simple swap.
 - **Guards:** JS interval + class swaps only (no rAF-gated visibility — LED-011); no-JS = doc 1
   visible, others `hidden`, no rail; reduced-motion = no auto-advance, rail visible + clickable,
   crossfade only. Console clean.
