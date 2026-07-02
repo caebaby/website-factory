@@ -33,6 +33,10 @@ optional register adjectives · the client's REAL assets (photos/video or none)
 ## Delivery cadence (token protection — Chris, 2026-07-02)
 Brief and build ONE SCOPE at a time: hero first → Chris reacts (the direction gate) → then the
 next sections. A wrong direction costs one section, never a site.
+**REVIEW SNAPSHOTS (2026-07-02, learned the hard way):** Chris reviews FROZEN COPIES cut from the
+last clean commit (`git show <sha>:file > file-review.html`), never the working file — an executor
+editing in place while he refreshes = "elements missing" confusion. Open the snapshot URL for him;
+executors keep working the live file.
 
 ## BUILD BRIEF template (must be fully self-contained — the executor reads NOTHING else)
 ```

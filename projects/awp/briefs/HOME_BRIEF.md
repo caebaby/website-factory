@@ -171,7 +171,16 @@ Same page, same body — three hero treatments, switchable:
   `data-src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"`
   `<!-- [VERIFY] demo clip — Alex's real footage replaces this -->`; IO lazy-load near viewport,
   autoplay muted; reduced-motion/no-JS = poster only. A failed video IS Hero B.
-**Switcher (review-only):** small fixed bottom-left chip rail `Hero: A · B · C` (10px caps,
+- **Hero D — Rotating ambient videos (Chris, 2026-07-02):** same composition as B/C, but the media
+  layer ROTATES through 2–3 full-bleed ambient clips (each ~8s on screen, 1.2s crossfade — the
+  video analog of the approved Ken Burns photo rotation): demo clips = the CC0 flower opening +
+  `<!-- [VERIFY] second clip: an oil pumpjack working — Alex's real b-roll replaces both -->`
+  (until a second CC0 clip is sourced, rotate flower ↔ the same clip's reversed poster crossfade
+  is NOT acceptable — use two distinct sources or ship D with one clip + a labeled second slot).
+  All Primitive-5 contracts hold per clip: poster-first, IO lazy, muted, reduced-motion = poster,
+  zero bytes for inactive variants AND for not-yet-rotated clips (fetch clip 2 only when its first
+  rotation approaches). Scrim + veil identical to B/C.
+**Switcher (review-only):** small fixed bottom-left chip rail `Hero: A · B · C · D` (10px caps,
 `--card` pill, subtle) — click swaps `<body data-hero="a|b|c">`; CSS shows exactly one hero.
 Default = A. Persist choice in the URL hash (`#hero-b`) so links are shareable. Mark the switcher
 `<!-- REVIEW-ONLY: strip for production -->`. Nav CTA row unaffected.
