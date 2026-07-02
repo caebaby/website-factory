@@ -574,9 +574,9 @@ body[data-hero="A"] .hero-copy{max-width:560px;}
   </div>
   <!-- Variant C: video (Primitive 5, poster=family) -->
   <div class="hero-media hv hv-c">
-    <video class="hero-video-c" muted loop playsinline preload="none" poster="assets/hero-oilfield.jpg" aria-hidden="true">
-      <!-- Pexels #10227529 (royalty-free, Pexels license) — Permian pumpjack drone. Alex b-roll may replace. -->
-      <source data-src="assets/pumpjack.mp4" type="video/mp4">
+    <video class="hero-video-c" muted loop playsinline preload="none" poster="assets/hero-family.jpg" aria-hidden="true">
+      <!-- CC0 flower-opening (self-hosted). Alex b-roll may replace. -->
+      <source data-src="assets/flower.mp4" type="video/mp4">
     </video>
   </div>
   <!-- Variant D: two crossfading ambient clips -->
@@ -1340,7 +1340,8 @@ function activateHero(v){
   stopHeroMedia();
   if(v==='C') loadHeroVideo('.hero-video-c');
   if(v==='D'){
-    loadHeroVideo('.hero-video-d');
+    loadHeroVideo('.hvd-1');
+    loadHeroVideo('.hvd-2');
     if(!RM){
       var v1 = document.querySelector('.hvd-1'), v2 = document.querySelector('.hvd-2'), showing = 1;
       dRotateTimer = setInterval(function(){
