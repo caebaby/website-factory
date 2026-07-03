@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AGL Data Company — Homepage Wireframe</title>
+<!--
+  GRAYSCALE WIREFRAME — IA ARGUMENT ONLY
+  No design decisions. No fonts, no colors, no motion.
+  Every box = a content job. Every annotation = an IA decision.
+  Read this as a blueprint, not a design.
+
+  PRIORITY HIERARCHY (locked, from transition-data-traffic-playbook.md):
+  1. Advisor lead-gen → human consult CTA
+  2. Data authority → Movement Index, Breakaway Report, Move Tracker, firm pages
+  3. Platform feeds → pixel + identity gates (invisible to user)
+
+  "Data attracts. Conversation converts."
+  Consult CTA routes to a human, first-class. Never a footer link.
+  Exec paths separate behind work-email gates.
+  Descriptive data public. Predictive NEVER appears publicly.
+-->
+<style>
+  /* WIREFRAME ONLY — structural, not aesthetic. Grayscale. No design language. */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --wf-bg: #ffffff;
+    --wf-ink: #333333;
+    --wf-box: #f0f0f0;
+    --wf-box-alt: #e8e8e8;
+    --wf-border: #ccc;
+    --wf-border-strong: #999;
+    --wf-annot: #666;
+    --wf-gate: #555;
+    --wf-signal: #444;
+    --wf-hero: #e0e0e0;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--wf-ink);
+    background: var(--wf-bg);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  /* Annotation tags — the IA argument */
+  .annot {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--wf-annot);
+    display: inline-block;
+    padding: 2px 6px;
+    background: #fff;
+    border: 1px solid var(--wf-border);
+    border-radius: 2px;
+    margin-bottom: 4px;
+  }
+
+  .annot-gate {
+    color: var(--wf-gate);
+    border-color: var(--wf-border-strong);
+    background: #fff;
+  }
+
+  .annot-pixel {
+    color: #fff;
+    background: var(--wf-signal);
+    border-color: var(--wf-signal);
+  }
+
+  .annot-cta {
+    color: #fff;
+    background: #333;
+    border-color: #333;
+  }
+
+  .annot-path-advisor {
+    color: var(--wf-ink);
+    background: #ddd;
+    border-color: #999;
+  }
+
+  .annot-path-exec {
+    color: #fff;
+    background: #777;
+    border-color: #777;
+  }
+
+  /* Wireframe boxes */
+  .wf-section {
+    border: 2px dashed var(--wf-border-strong);
+    margin: 16px;
+    padding: 20px;
+    position: relative;
+  }
+
+  .wf-section-label {
+    position: absolute;
+    top: -10px;
+    left: 16px;
+    background: #fff;
+    padding: 0 8px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--wf-border-strong);
+  }
+
+  .wf-section-note {
+    font-size: 12px;
+    color: var(--wf-annot);
+    font-style: italic;
+    margin-top: 4px;
+    margin-bottom: 12px;
+    line-height: 1.6;
+  }
+
+  .wf-box {
+    background: var(--wf-box);
+    border: 1px solid var(--wf-border);
+    padding: 16px;
+    min-height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 6px;
+  }
+
+  .wf-box-alt { background: var(--wf-box-alt); }
+  .wf-box-hero { background: var(--wf-hero); min-height: 120px; }
+  .wf-box-tall { min-height: 100px; }
+
+  .wf-placeholder {
+    font-size: 13px;
+    color: var(--wf-annot);
+    text-align: center;
+  }
+
+  .wf-placeholder strong {
+    color: var(--wf-ink);
+    font-weight: 600;
+  }
+
+  .wf-cta {
+    border: 2px solid #333;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+    display: inline-block;
+    background: #fff;
+  }
+
+  .wf-cta-primary {
+    background: #333;
+    color: #fff;
+  }
+
+  .wf-gate-indicator {
+    border: 1.5px dashed var(--wf-border-strong);
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--wf-gate);
+    background: repeating-linear-gradient(135deg, #f8f8f8, #f8f8f8 4px, #fff 4px, #fff 8px);
+    display: inline-block;
+  }
+
+  .wf-input {
+    border: 1px solid var(--wf-border-strong);
+    padding: 8px 12px;
+    background: #fff;
+    font-size: 13px;
+    color: var(--wf-annot);
+    width: 100%;
+  }
+
+  .wf-divider {
+    border: none;
+    border-top: 1px solid var(--wf-border);
+    margin: 24px 0;
+  }
+
+  /* Layout helpers (structure only) */
+  .wf-row {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .wf-col { flex: 1; }
+  .wf-col-2 { flex: 2; }
+  .wf-col-narrow { flex: 0 0 200px; }
+  .wf-col-wide { flex: 3; }
+
+  .wf-stack { display: flex; flex-direction: column; gap: 12px; }
+
+  /* Cover */
+  .wf-cover {
+    background: #333;
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+    margin-bottom: 0;
+  }
+
+  .wf-cover h1 {
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+  }
+
+  .wf-cover p {
+    font-size: 14px;
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .wf-legend {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 16px;
+    font-size: 11px;
+  }
+
+  /* Priority marker on sections */
+  .priority-mark {
+    position: absolute;
+    top: -10px;
+    right: 16px;
+    background: #fff;
+    padding: 0 8px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+  }
+
+  .p1 { color: #c00; }
+  .p2 { color: #777; }
+  .p3 { color: #999; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- COVER / LEGEND -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<div class="wf-cover">
+  <h1>AGL — DATA COMPANY HOMEPAGE</h1>
+  <p>Grayscale wireframe. Structure argument only — no design, no typography, no color, no motion. Every box = a content job. Every annotation = an IA decision. React to the STRUCTURE, then we measure a design pass through the factory.</p>
+  <div class="wf-legend">
+    <span class="annot annot-cta">CTA</span>
+    <span class="annot annot-gate">GATE</span>
+    <span class="annot annot-pixel">PIXEL/IDENTITY</span>
+    <span class="annot annot-path-advisor">ADVISOR PATH</span>
+    <span class="annot annot-path-exec">EXEC PATH</span>
+    <span class="p1">■ PRIORITY 1</span>
+    <span class="p2">■ PRIORITY 2</span>
+    <span class="p3">■ PRIORITY 3</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- SECTION 1: NAV -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<div class="wf-section">
+  <span class="wf-section-label">§01 · NAVIGATION BAR</span>
+  <span class="priority-mark p2">PRIORITY 2 — DATA NAV</span>
+
+  <div class="wf-section-note">
+    Sticky. Routes to the two audiences without blurring. Data products are primary nav
+    (they ARE the authority surface). Advisor consult is always reachable. Exec path
+    is deliberately less prominent (work-email gate starts here).
+  </div>
+
+  <div class="wf-row" style="align-items: center; flex-wrap: wrap; gap: 12px;">
+    <div class="wf-box wf-col-narrow" style="min-height: 40px;">
+      <span class="annot">LOGO</span>
+      <span class="wf-placeholder"><strong>AGL</strong> · Advisor Growth Lab</span>
+    </div>
+
+    <div class="wf-box wf-col" style="min-height: 40px; gap: 8px;">
+      <span class="annot">DATA NAV — LEFT ALIGNED (PRIMARY)</span>
+      <div class="wf-row" style="gap: 8px; justify-content: center;">
+        <span class="wf-placeholder">Movement Index</span>
+        <span class="wf-placeholder">|</span>
+        <span class="wf-placeholder">Breakaway Report</span>
+        <span class="wf-placeholder">|</span>
+        <span class="wf-placeholder">Move Tracker</span>
+        <span class="wf-placeholder">|</span>
+        <span class="wf-placeholder">Firm Pages</span>
+      </div>
+    </div>
+
+    <div class="wf-box wf-col-narrow" style="min-height: 40px;">
+      <span class="annot annot-path-exec">EXEC PATH</span>
+      <span class="wf-placeholder">Industry Data →</span>
+    </div>
+
+    <div class="wf-cta wf-cta-primary" style="min-width: 140px; text-align: center;">
+      Talk to an Advisor
+    </div>
+  </div>
+
+  <div class="annot annot-pixel" style="margin-top: 12px;">
+    PIXEL: nav click → UTM + topic signal logged on every link
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- SECTION 2: HERO — AUTHORITY STATEMENT + CONSULT CTA (FIRST-CLASS) -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<div class="wf-section">
+  <span class="wf-section-label">§02 · HERO — AUTHORITY + CONSULT (BOTH FIRST-CLASS)</span>
+  <span class="priority-mark p1">PRIORITY 1 + 2 — BOTH FIRST-CLASS</span>
+
+  <div class="wf-section-note">
+    Carries BOTH: the authority statement (what AGL IS — the data authority) AND the
+    human consult CTA (the conversion event). Neither is secondary. The directive:
+    "Hero carries BOTH: authority statement + 'Thinking about a move? Talk to someone
+    who's guided it' as a first-class CTA." Data attracts to this point; conversation
+    converts here. A live data headline hooks the data-curious immediately.
+  </div>
+
+  <div class="wf-row" style="gap: 20px;">
+    <!-- LEFT: Authority statement + consult CTA -->
+    <div class="wf-col wf-col-2">
+      <div class="wf-stack">
+        <span class="annot">AUTHORITY STATEMENT (P2 — DATA)</span>
+
+        <div class="wf-box wf-box-hero wf-box-tall" style="align-items: flex-start; text-align: left;">
+          <span class="wf-placeholder" style="font-size: 11px; color: #999;">[ H1 — AUTHORITY ]</span>
+          <span class="wf-placeholder"><strong style="font-size: 18px;">The authoritative source for advisor movement data.</strong></span>
+          <span class="wf-placeholder" style="font-size: 12px; margin-top: 8px;">
+            [ SUBHEAD ] We track every transition in the industry — back decades, refreshed continuously —
+            so you can see where advisors are going and why.
+          </span>
+        </div>
+
+        <span class="annot annot-cta" style="margin-top: 4px;">CONSULT CTA (P1 — FIRST-CLASS, CO-EQUAL)</span>
+        <div class="wf-row" style="gap: 12px;">
+          <div class="wf-cta wf-cta-primary" style="flex: 1; text-align: center; min-height: 48px; display: flex; align-items: center; justify-content: center;">
+            Thinking about a move?<br>Talk to someone who's guided it.
+          </div>
+          <div class="wf-cta" style="flex: 1; text-align: center; min-height: 48px; display: flex; align-items: center; justify-content: center;">
+            Take the 2-min assessment
+          </div>
+        </div>
+        <span class="annot annot-pixel">PIXEL: both CTAs fire identity + intent signals. Consult = highest-weight conversion path.</span>
+      </div>
+    </div>
+
+    <!-- RIGHT: Live data hook -->
+    <div class="wf-col">
+      <div class="wf-stack">
+        <span class="annot">LIVE DATA HOOK (P2 — "DATA ATTRACTS")</span>
+        <div class="wf-box wf-box-tall" style="text-align: left; align-items: flex-start;">
+          <span class="wf-placeholder" style="font-size: 11px; color: #999;">[ LIVE MOVEMENT INDEX — DESCRIPTIVE, PUBLIC ]</span>
+          <span class="wf-placeholder"><strong>Q3 2026 Advisor Movement Index</strong></span>
+          <span class="wf-placeholder" style="font-size: 12px; margin-top: 8px; color: #555;">
+            [Latest quarterly figure — descriptive only]
+            <br>e.g. "+1,247 net advisor transitions tracked"
+          </span>
+          <span class="annot annot-gate" style="margin-top: 12px;">GATE: full index breakdown → email</span>
+        </div>
+        <div class="wf-box wf-box-alt" style="text-align: left; align-items: flex-start; min-height: 50px;">
+          <span class="wf-placeholder" style="font-size: 11px;">Latest Breakaway Report → [download]</span>
+          <span class="annot annot-gate">GATE: report PDF → email opt-in</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="wf-divider">
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- SECTION 3: DATA PRODUCTS — THE AUTHORITY SURFACE -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<div class="wf-section">
+  <span class="wf-section-label">§03 · DATA PRODUCTS — THE AUTHORITY SURFACE</span>
+  <span class="priority-mark p2">PRIORITY 2 — DATA AUTHORITY</span>
+
+  <div class="wf-section-note">
+    The product surface from DATA_SOURCE_CATALOG.md, ordered by build priority. Each
+    product is a distinct destination page with its own URL (SEO + citation targets).
+    Every data page has an advisor-facing next step in-line — reading "who's leaving
+    your firm" IS the moment of highest intent (playbook directive).
+  </div>
+
+  <!-- Row 1: the three flagship data products -->
+  <div class="wf-row">
+    <div class="wf-col">
+      <div class="wf-box wf-box-tall">
+        <span class="annot">MOVEMENT INDEX</span>
+        <span class="wf-placeholder"><strong>Advisor Movement Index</strong></span>
+        <span class="wf-placeholder" style="font-size: 12px;">Monthly index of industry-wide advisor transitions</span>
+        <span class="wf-placeholder" style="font-size: 11px; color: #999; margin-top: 4px;">[ descriptive, public ]</span>
+        <span class="annot annot-gate">GATE: full breakdown → email</span>
+      </div>
+    </div>
+
+    <div class="wf-col">
+      <div class="wf-box wf-box-tall">
+        <span class="annot">BREAKAWAY REPORT</span>
+        <span class="wf-placeholder"><strong>Quarterly Breakaway Report</strong></span>
+        <span class="wf-placeholder" style="font-size: 12px;">Flagship quarterly: moves by channel, destinations, tenure trends</span>
+        <span class="annot annot-gate">GATE: PDF download → email opt-in → [VERIFY data licensing before live]</span>
+      </div>
+    </div>
+
+    <div class="wf-col">
+      <div class="wf-box wf-box-tall">
+        <span class="annot">MOVE TRACKER</span>
+        <span class="wf-placeholder"><strong>Move Tracker</strong></span>
+        <span class="wf-placeholder" style="font-size: 12px;">Weekly-updated transition database</span>
+        <span class="wf-placeholder" style="font-size: 11px; color: #999; margin-top: 4px;">[ headlines free, full access gated ]</span>
+        <span class="annot annot-gate">GATE: full tracker → email opt-in</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 2: firm pages (programmatic SEO engine) -->
+  <div class="wf-row" style="margin-top: 16px;">
+    <div class="wf-col wf-col-2">
+      <div class="wf-box wf-box-alt" style="text-align: left; align-items: flex-start;">
+        <span class="annot">FIRM PAGES — PROGRAMMATIC SEO ENGINE</span>
+        <span class="wf-placeholder"><strong>[Firm] Transition Pages</strong></span>
+        <span class="wf-placeholder" style="font-size: 12px; margin-top: 4px;">
+          One auto-generated page per firm: "Advisors leaving [LPL]: trends, destinations, tenure patterns."
+          ~10K+ indexable pages. The Glassdoor play.
+        </span>
+        <span class="wf-placeholder" style="font-size: 11px; color: #999; margin-top: 4px;">
+          [ headlines + trends public · full history → email gate ]
+        </span>
+        <div class="wf-row" style="margin-top: 12px; gap: 8px;">
+          <div class="wf-box wf-box-alt" style="flex: 1; min-height: 40px; padding: 8px;">
+            <span class="wf-placeholder" style="font-size: 11px;">/firms/lpl</span>
+          </div>
+          <div class="wf-box wf-box-alt" style="flex: 1; min-height: 40px; padding: 8px;">
+            <span class="wf-placeholder" style="font-size: 11px;">/firms/ameriprise</span>
+          </div>
+          <div class="wf-box wf-box-alt" style="flex: 1; min-height: 40px; padding: 8px;">
+            <span class="wf-placeholder" style="font-size: 11px;">/firms/morgan-stanley</span>
+          </div>
+          <div class="wf-box wf-box-alt" style="flex: 1; min-height: 40px; padding: 8px;">
+            <span class="wf-placeholder" style="font-size: 11px;">/firms/…</span>
+          </div>
+        </div>
+        <span class="annot annot-pixel" style="margin-top: 8px;">PIXEL: firm page visited = topic signal ("why they'd move"). UTM closes the loop on which data-story converts.</span>
+      </div>
+    </div>
+
+    <!-- Inline advisor CTA right after data products — intent peak -->
+    <div class="wf-col">
+      <div class="wf-box wf-box-tall" style="border: 2px solid #333;">
+        <span class="annot annot-cta">INLINE ADVISOR CTA — AT INTENT PEAK</span>
+        <span class="wf-placeholder"><strong>Reading the data?</strong></span>
+        <span class="wf-placeholder" style="font-size: 12px;">
+          If you're watching where advisors are going, you might be thinking about your own move.
+        </span>
+        <div class="wf-cta wf-cta-primary" style="margin-top: 8px;">
+          Talk to someone about yours
+        </div>
+        <span class="annot annot-pixel" style="margin-top: 4px;">PIXEL: click = highest-intent signal. Routes to human (Chris/closer).</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="wf-divider">
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- SECTION 4: ADVISOR PATH — CONVERSION ENGINE (PRIORITY 1) -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<div class="wf-section">
+  <span class="wf-section-label">§04 · ADVISOR PATH — "THINKING ABOUT A MOVE?"</span>
+  <span class="priority-mark p1">PRIORITY 1 — CONVERSION ENGINE</span>
+
+  <div class="wf-section-note">
+    The lead-gen engine. "Data attracts; conversation converts." The consult CTA routes
+    to a HUMAN (Chris/closer), not just a form — the wise-guide positioning IS the brand.
+    The assessment is the secondary gate (MQL capture). This is where pixel + identity
+    capture compounds: every data page the advisor visited before arriving here is
+    already in their profile via topic signals.
+  </div>
+
+  <div class="wf-row" style="gap: 20px;">
+    <!-- Left: Consult CTA (primary) -->
+    <div class="wf-col">
+      <span class="annot annot-path-advisor">ADVISOR PATH — CONSULT (PRIMARY)</span>
+      <div class="wf-box wf-box-tall" style="border: 2px solid #333; min-height: 140px; text-align: left; align-items: flex-start;">
+        <span class="wf-placeholder"><strong>Talk to someone who's guided it.</strong></span>
+        <span class="wf-placeholder" style="font-size: 12px; margin-top: 8px;">
+          Not a form that disappears into a CRM. A real conversation with an advisor
+          who works with advisors in and after transition — a peer, not a recruiter.
+        </span>
+        <div class="wf-cta wf-cta-primary" style="margin-top: 12px;">
+          Book a confidential call
+        </div>
+        <span class="annot annot-pixel" style="margin-top: 8px;">
+          PIXEL: fires conversion event. Routes to human closer (Chris). Lane = peer advisor, never recruiter.
+        </span>
+      </div>
+    </div>
+
+    <!-- Right: Assessment (secondary gate / MQL) -->
+    <div class="wf-col">
+      <span class="annot annot-path-advisor">ADVISOR PATH — ASSESSMENT (MQL GATE)</span>
+      <div class="wf-box wf-box-tall" style="min-height: 140px; text-align: left; align-items: flex-start;">
+        <span class="wf-placeholder"><strong>2-Minute Transition Readiness Assessment</strong></span>
+        <span class="wf-placeholder" style="font-size: 12px; margin-top: 8px;">
+          Already live (GHL). Keep as the secondary gate. Captures identity → profile →
+          nurture sequence. Lower-commitment than the call.
+        </span>
+        <div class="wf-cta" style="margin-top: 12px;">
+          Start the assessment →
+        </div>
+        <span class="annot annot-gate" style="margin-top: 8px;">GATE: identity capture → GHL profile → nurture</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="wf-divider">
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- SECTION 5: RECENT MOVES — PROOF THE DATA IS LIVE -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<div class="wf-section">
+  <span class="wf-section-label">§05 · RECENT MOVES — PROOF THE DATA IS LIVE</span>
+  <span class="priority-mark p2">PRIORITY 2 — DATA PROOF</span>
+
+  <div class="wf-section-note">
+    Pulled from the Move Tracker. Shows the data is real, current, and comprehensive.
+    Headlines are PUBLIC (descriptive only — what happened, never what will happen).
+    This is the "On the Move" column but automated and complete. Every entry = a
+    potential SEO page (firm page, metro page). Confirms the data authority claim
+    without revealing the pipeline.
+  </div>
+
+  <div class="wf-row" style="gap: 12px;">
+    <div class="wf-col">
+      <div class="wf-box" style="min-height: 100px; text-align: left; align-items: flex-start;">
+        <span class="annot">MOVE #1</span>
+        <span class="wf-placeholder" style="font-size: 12px;"><strong>[Firm A] → [Firm B]</strong></span>
+        <span class="wf-placeholder" style="font-size: 11px; color: #999;">Channel · Metro · Date [VERIFY]</span>
+        <span class="annot annot-pixel">PIXEL: click → firm page</span>
+      </div>
+    </div>
+    <div class="wf-col">
+      <div class="wf-box" style="min-height: 100px; text-align: left; align-items: flex-start;">
+        <span class="annot">MOVE #2</span>
+        <span class="wf-placeholder" style="font-size: 12px;"><strong>[Firm C] → Independent RIA</strong></span>
+        <span class="wf-placeholder" style="font-size: 11px; color: #999;">Breakaway · Metro · Date [VERIFY]</span>
+        <span class="annot annot-pixel">PIXEL: click → firm page</span>
+      </div>
+    </div>
+    <div class="wf-col">
+      <div class="wf-box" style="min-height: 100px; text-align: left; align-items: flex-start;">
+        <span class="annot">MOVE #3</span>
+        <span class="wf-placeholder" style="font-size: 12px;"><strong>[Firm D] → [Firm E]</strong></span>
+        <span class="wf-placeholder" style="font-size: 11px; color: #999;">Team move · Metro · Date [VERIFY]</span>
+        <span class="annot annot-pixel">PIXEL: click → firm page</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="wf-row" style="margin-top: 12px; align-items: center;">
+    <div class="wf-box wf-box-alt" style="flex: 1; min-height: 40px; padding: 8px;">
+      <span class="wf-placeholder" style="font-size: 12px;">
+        [+N more this week] →
+      </span>
+      <span class="annot annot-gate">GATE: full Move Tracker → email opt-in</span>
+    </div>
+  </div>
+
+  <div class="annot annot-pixel" style="margin-top: 8px;">
+    [VERIFY] No fabricated data-product screenshots with real firm names until data licensing cleared.
+    These are PLACEHOLDERS — real data populates from the sweep pipeline.
+  </div>
+</div>
+
+<hr class="wf-divider">
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- SECTION 6: EXECUTIVE PATH — SEPARATE, WORK-EMAIL GATED -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<div class="wf-section">
+  <span class="wf-section-label">§06 · EXECUTIVE PATH — SEPARATE, WORK-EMAIL GATED</span>
+  <span class="priority-mark p2">PRIORITY 2 — EXEC FUNNEL</span>
+
+  <div class="wf-section-note">
+    Two audiences, two gates (playbook directive). Executives → quarterly Industry Flow
+    Report, Executive Edition, gated on WORK EMAIL. The exec subscriber list = the
+    self-identified, pre-warmed eventual buyer list. This section is deliberately SEPARATE
+    from the advisor path so the two funnels never blur. Different language, different CTA,
+    different gate type.
+  </div>
+
+  <div class="wf-row" style="gap: 20px;">
+    <!-- Left: Exec product description -->
+    <div class="wf-col wf-col-2">
+      <span class="annot annot-path-exec">EXEC PATH — DIFFERENT AUDIENCE</span>
+      <div class="wf-box wf-box-alt" style="text-align: left; align-items: flex-start; min-height: 120px;">
+        <span class="wf-placeholder"><strong>Industry Flow Report, Executive Edition</strong></span>
+        <span class="wf-placeholder" style="font-size: 12px; margin-top: 8px;">
+          For firm leadership, boards, and PE: firm flow league tables, retention
+          benchmarks, channel migration maps. The pass-around asset.
+        </span>
+        <span class="wf-placeholder" style="font-size: 11px; color: #999; margin-top: 8px;">
+          [ full league tables, benchmarks, custom cuts — gated ]
+        </span>
+        <div class="wf-row" style="margin-top: 12px; gap: 8px;">
+          <div class="wf-box wf-box-alt" style="flex: 1; min-height: 40px; padding: 8px;">
+            <span class="wf-placeholder" style="font-size: 11px;">Firm Flow League Tables</span>
+          </div>
+          <div class="wf-box wf-box-alt" style="flex: 1; min-height: 40px; padding: 8px;">
+            <span class="wf-placeholder" style="font-size: 11px;">Retention Benchmarks</span>
+          </div>
+          <div class="wf-box wf-box-alt" style="flex: 1; min-height: 40px; padding: 8px;">
+            <span class="wf-placeholder" style="font-size: 11px;">Channel Migration Map</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Work-email gate -->
+    <div class="wf-col">
+      <span class="annot annot-path-exec">EXEC GATE — WORK EMAIL</span>
+      <div class="wf-box" style="border: 2px solid #777; min-height: 120px;">
+        <span class="wf-placeholder"><strong>Access the Executive Edition</strong></span>
+        <span class="wf-placeholder" style="font-size: 12px; margin-top: 8px;">
+          Quarterly report + benchmark library.
+        </span>
+        <div class="wf-input" style="margin-top: 12px;">
+          Work email address...
+        </div>
+        <div class="wf-cta" style="margin-top: 8px; background: #777; color: #fff; border-color: #777;">
+          Subscribe →
+        </div>
+        <span class="annot annot-gate" style="margin-top: 8px;">GATE: work email only → exec subscriber list → private benchmarks</span>
+        <span class="annot annot-pixel">PIXEL: exec identity capture → separate funnel scoring</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="annot annot-gate" style="margin-top: 12px;">
+    The two funnels NEVER blur: advisor path (personal email OK, consult CTA) vs exec path (work email required, report access).
+    IA separation enforced by section position, language, and gate type.
+  </div>
+</div>
+
+<hr class="wf-divider">
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- SECTION 7: METHODOLOGY / AUTHORITY CREDIBILITY -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<div class="wf-section">
+  <span class="wf-section-label">§07 · METHODOLOGY — AUTHORITY CREDIBILITY</span>
+  <span class="priority-mark p2">PRIORITY 2 — AUTHORITY SIGNAL</span>
+
+  <div class="wf-section-note">
+    The opacity strategy (playbook): "Brand an index, not a dataset." Methodology
+    disclosure = one sentence. Credible, honest, reveals nothing actionable. The
+    secret isn't the ingredients (public records), it's the kitchen (entity resolution,
+    historical depth, fusion). Shows rigor without revealing the pipeline.
+    This section says "we're serious about data" without explaining how we do it.
+  </div>
+
+  <div class="wf-row" style="gap: 16px;">
+    <div class="wf-col">
+      <div class="wf-box" style="min-height: 80px;">
+        <span class="annot">METHODOLOGY</span>
+        <span class="wf-placeholder"><strong>How we track</strong></span>
+        <span class="wf-placeholder" style="font-size: 12px; margin-top: 4px;">
+          Proprietary analysis of industry registration and movement data. [ONE SENTENCE — reveals nothing]
+        </span>
+      </div>
+    </div>
+    <div class="wf-col">
+      <div class="wf-box" style="min-height: 80px;">
+        <span class="annot">COVERAGE</span>
+        <span class="wf-placeholder"><strong>731,699 advisors tracked</strong></span>
+        <span class="wf-placeholder" style="font-size: 12px; margin-top: 4px;">
+          Full national coverage. Continuous refresh.
+        </span>
+      </div>
+    </div>
+    <div class="wf-col">
+      <div class="wf-box" style="min-height: 80px;">
+        <span class="annot">DATA SOURCES</span>
+        <span class="wf-placeholder"><strong>SEC-sourced public records</strong></span>
+        <span class="wf-placeholder" style="font-size: 12px; margin-top: 4px;">
+          [VERIFY FINRA republication position]
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="annot annot-gate" style="margin-top: 12px;">
+    NOTE: "Descriptive public, predictive private" — this section shows WHAT happened (flows, rankings, trends).
+    NEVER what WILL happen. Flag lists, movement scores, and the predictor never appear publicly.
+  </div>
+</div>
+
+<hr class="wf-divider">
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- SECTION 8: FINAL CTA — DUAL PATH -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<div class="wf-section">
+  <span class="wf-section-label">§08 · FINAL CTA — DUAL PATH CLOSE</span>
+  <span class="priority-mark p1">PRIORITY 1 — CONVERSION CLOSE</span>
+
+  <div class="wf-section-note">
+    The closing moment. Both paths reachable, but advisor consult is dominant (P1).
+    The page ends on "talk to a human" — conversation converts.
+  </div>
+
+  <div class="wf-row" style="gap: 20px;">
+    <div class="wf-col wf-col-2">
+      <span class="annot annot-path-advisor">ADVISOR (DOMINANT)</span>
+      <div class="wf-box" style="border: 2px solid #333; min-height: 100px;">
+        <span class="wf-placeholder"><strong>Thinking about a move? Talk to someone who's guided it.</strong></span>
+        <div class="wf-cta wf-cta-primary" style="margin-top: 12px;">
+          Book a confidential call
+        </div>
+      </div>
+    </div>
+    <div class="wf-col">
+      <span class="annot annot-path-exec">EXEC (SECONDARY)</span>
+      <div class="wf-box wf-box-alt" style="min-height: 100px;">
+        <span class="wf-placeholder"><strong>Get the Executive Edition</strong></span>
+        <div class="wf-cta" style="margin-top: 12px; background: #777; color: #fff; border-color: #777;">
+          Subscribe →
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="wf-divider">
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- SECTION 9: FOOTER -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<div class="wf-section">
+  <span class="wf-section-label">§09 · FOOTER</span>
+  <span class="priority-mark p3">PRIORITY 3 — STANDARD</span>
+
+  <div class="wf-section-note">
+    Standard footer. AGL-branded. Newsletter capture (light identity gate). Links to
+    data products + advisor path. Disclosures/compliance link. No primary CTA here —
+    the consult is always in the hero and inline, never buried.
+  </div>
+
+  <div class="wf-row" style="gap: 20px;">
+    <div class="wf-col">
+      <div class="wf-box" style="min-height: 80px;">
+        <span class="annot">BRAND</span>
+        <span class="wf-placeholder">AGL · Advisor Growth Lab</span>
+        <span class="wf-placeholder" style="font-size: 11px; color: #999;">"the Lab" — AGL Data Lab, Lab Index</span>
+      </div>
+    </div>
+    <div class="wf-col">
+      <div class="wf-box" style="min-height: 80px;">
+        <span class="annot">DATA PRODUCTS</span>
+        <span class="wf-placeholder" style="font-size: 12px;">Movement Index · Breakaway Report · Move Tracker · Firm Pages</span>
+      </div>
+    </div>
+    <div class="wf-col">
+      <div class="wf-box" style="min-height: 80px;">
+        <span class="annot">ADVISOR</span>
+        <span class="wf-placeholder" style="font-size: 12px;">Assessment · Talk to an Advisor</span>
+      </div>
+    </div>
+    <div class="wf-col">
+      <div class="wf-box" style="min-height: 80px;">
+        <span class="annot annot-gate">NEWSLETTER (LIGHT GATE)</span>
+        <div class="wf-input" style="font-size: 11px;">Email for weekly moves...</div>
+        <span class="annot annot-pixel">PIXEL: identity → newsletter profile</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="wf-divider">
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- IA SUMMARY -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<div class="wf-section">
+  <span class="wf-section-label">IA SUMMARY — CAPTURE POINT MAP</span>
+
+  <div class="wf-section-note">
+    Every identity/pixel capture point on the page, ordered by funnel position.
+    This is how the homepage feeds the platform (Priority 3) while serving
+    lead-gen (P1) and data authority (P2).
+  </div>
+
+  <table style="width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 12px;">
+    <thead>
+      <tr style="border-bottom: 2px solid #999;">
+        <th style="text-align: left; padding: 8px;">#</th>
+        <th style="text-align: left; padding: 8px;">Location</th>
+        <th style="text-align: left; padding: 8px;">Capture Type</th>
+        <th style="text-align: left; padding: 8px;">Audience</th>
+        <th style="text-align: left; padding: 8px;">Platform Feed</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom: 1px solid #ddd;">
+        <td style="padding: 8px;">1</td>
+        <td style="padding: 8px;">Nav links</td>
+        <td style="padding: 8px;">Pixel (topic)</td>
+        <td style="padding: 8px;">All</td>
+        <td style="padding: 8px;">Topic signal — which data product interests them</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #ddd;">
+        <td style="padding: 8px;">2</td>
+        <td style="padding: 8px;">Hero consult CTA</td>
+        <td style="padding: 8px;">Conversion (human)</td>
+        <td style="padding: 8px;">Advisor</td>
+        <td style="padding: 8px;">Highest-intent signal → routes to closer</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #ddd;">
+        <td style="padding: 8px;">3</td>
+        <td style="padding: 8px;">Hero assessment CTA</td>
+        <td style="padding: 8px;">Identity (MQL)</td>
+        <td style="padding: 8px;">Advisor</td>
+        <td style="padding: 8px;">Profile created → GHL nurture</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #ddd;">
+        <td style="padding: 8px;">4</td>
+        <td style="padding: 8px;">Movement Index gate</td>
+        <td style="padding: 8px;">Email opt-in</td>
+        <td style="padding: 8px;">All</td>
+        <td style="padding: 8px;">Identity + topic (index interest)</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #ddd;">
+        <td style="padding: 8px;">5</td>
+        <td style="padding: 8px;">Breakaway Report download</td>
+        <td style="padding: 8px;">Email opt-in</td>
+        <td style="padding: 8px;">All</td>
+        <td style="padding: 8px;">Identity + topic (report interest)</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #ddd;">
+        <td style="padding: 8px;">6</td>
+        <td style="padding: 8px;">Move Tracker access</td>
+        <td style="padding: 8px;">Email opt-in</td>
+        <td style="padding: 8px;">All</td>
+        <td style="padding: 8px;">Identity + topic (live moves)</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #ddd;">
+        <td style="padding: 8px;">7</td>
+        <td style="padding: 8px;">Firm page visit</td>
+        <td style="padding: 8px;">Pixel (topic)</td>
+        <td style="padding: 8px;">All</td>
+        <td style="padding: 8px;">"Why they'd move" — firm-specific intent</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #ddd;">
+        <td style="padding: 8px;">8</td>
+        <td style="padding: 8px;">Firm page history gate</td>
+        <td style="padding: 8px;">Email opt-in</td>
+        <td style="padding: 8px;">All</td>
+        <td style="padding: 8px;">Identity + deep topic</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #ddd;">
+        <td style="padding: 8px;">9</td>
+        <td style="padding: 8px;">§03 inline advisor CTA</td>
+        <td style="padding: 8px;">Conversion (human)</td>
+        <td style="padding: 8px;">Advisor</td>
+        <td style="padding: 8px;">Intent-peak conversion after data consumption</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #ddd;">
+        <td style="padding: 8px;">10</td>
+        <td style="padding: 8px;">§04 consult CTA</td>
+        <td style="padding: 8px;">Conversion (human)</td>
+        <td style="padding: 8px;">Advisor</td>
+        <td style="padding: 8px;">Primary consult path</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #ddd;">
+        <td style="padding: 8px;">11</td>
+        <td style="padding: 8px;">§04 assessment</td>
+        <td style="padding: 8px;">Identity (MQL)</td>
+        <td style="padding: 8px;">Advisor</td>
+        <td style="padding: 8px;">Secondary gate → GHL</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #ddd;">
+        <td style="padding: 8px;">12</td>
+        <td style="padding: 8px;">§06 exec work-email gate</td>
+        <td style="padding: 8px;">Email (work)</td>
+        <td style="padding: 8px;">Executive</td>
+        <td style="padding: 8px;">Exec list → separate funnel scoring</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #ddd;">
+        <td style="padding: 8px;">13</td>
+        <td style="padding: 8px;">§08 final CTA (both)</td>
+        <td style="padding: 8px;">Conversion / email</td>
+        <td style="padding: 8px;">Both</td>
+        <td style="padding: 8px;">Last-chance capture</td>
+      </tr>
+      <tr>
+        <td style="padding: 8px;">14</td>
+        <td style="padding: 8px;">§09 newsletter</td>
+        <td style="padding: 8px;">Email (light)</td>
+        <td style="padding: 8px;">All</td>
+        <td style="padding: 8px;">Lowest-commitment identity capture</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top: 20px; padding: 16px; background: #f5f5f5; border-left: 4px solid #333;">
+    <strong style="font-size: 13px;">ACCURACY RULES (locked):</strong>
+    <ul style="margin-top: 8px; font-size: 12px; line-height: 1.8; padding-left: 20px;">
+      <li><strong>AGL-branded, never Axiom-branded.</strong> Sell the MODEL not Axiom.</li>
+      <li><strong>Lane = peer advisor, never recruiter.</strong></li>
+      <li><strong>No inflated advisor counts.</strong> "90+ advisors" [VERIFY with Jerry] only.</li>
+      <li><strong>Descriptive data public, predictive private.</strong> Flag lists/scores/predictor NEVER appear in public-facing copy.</li>
+      <li><strong>Data licensing [VERIFY]:</strong> SEC-sourced records only. FINRA republication position unverified — no fabricated data-product screenshots with real firm names until cleared.</li>
+      <li><strong>[VERIFY] flags inline</strong> on all unconfirmed claims. Never fabricate.</li>
+    </ul>
+  </div>
+
+  <div style="margin-top: 16px; padding: 12px; background: #eee; font-size: 11px; color: #666;">
+    <strong>WIREFRAME STATUS:</strong> Structure argument — reacts to IA, CTA placement, gate design, path separation, and capture-point density.
+    Chris reacts → direction picked (A/B/C from brand concept) → THEN measured design pass through the factory pipeline.
+    Brand concept doc: <code>clients/agl/2026-07-02-agl-data-brand-concept.md</code>
+  </div>
+</div>
+
+</body>
+</html>
