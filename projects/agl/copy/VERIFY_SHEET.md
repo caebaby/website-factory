@@ -15,6 +15,8 @@ One page. Each item: what's blocked, where it lives, what to send back. Updated 
 | 10 | **Memphis testimonial videos** | Future proof section | Final edits + compliance sign-off | No testimonials anywhere (per no-fabrication rule) |
 | 11 | **Brand-default og:image** | Hub + episode posts (social share cards) | A 1200×630 share image (or "make one from the brand mark") | Pages ship without og:image; twitter:card=summary |
 | 12 | **Subscribe endpoint** (GHL form for the daily briefing) | Hub hero CTA (`data-verify="subscribe-endpoint"`) | The GHL form/landing URL | Declared pending; P1 non-blocking |
+| 13 | **Compliance review: naming Commonwealth→LPL** | Home intelligence section ("When Commonwealth sold to LPL, the movement was visible in the filings…") | Becky/compliance OK per the STRATEGY_MAP review path — it's a publicly reported acquisition, framed as public-record fact, but it names firms | Line ships; swap to a no-names version on objection: "When a national BD gets acquired, the movement is visible in the filings within weeks." |
+| 14 | **"List the firms people have left"** (Chris's ask, 2026-07-08) | Wants real firm-level departure data on the home page | Decision: this needs the live Track B data feed to be honest (real counts, real firms, refreshed). Until then the movement wire stays illustrative-labeled | Parked — revisit when Track B ships |
 
 **Standing accuracy rules honored on every page:** ~725K universe = public-filings-footed;
 9,400/18,000 = starred illustrative; deal economics = illustrative ranges + not-an-offer;

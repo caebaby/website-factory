@@ -106,14 +106,7 @@ h1,h2,h3,h4{font-weight:650}
 .hero__cta{display:flex;gap:13px;justify-content:center;margin-top:34px;flex-wrap:wrap}
 .hero__scroll{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);z-index:2;color:rgba(255,255,255,.6);font-size:11px;font-weight:620;letter-spacing:.14em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:8px}
 .hero__scroll svg{width:16px;height:16px}
-/* audience toggle: sliding glass thumb */
-.aud{position:relative;display:inline-flex;padding:5px;border-radius:999px;margin-bottom:26px}
-.aud__thumb{position:absolute;top:5px;left:0;height:calc(100% - 10px);background:#fff;border-radius:999px;box-shadow:0 4px 14px -6px rgba(0,0,0,.45);transition:transform .42s var(--ease),width .42s var(--ease);will-change:transform}
-.aud button{position:relative;z-index:1;background:transparent;border:none;color:rgba(255,255,255,.82);font-family:inherit;font-weight:620;font-size:14px;padding:10px 20px;border-radius:999px;transition:color .28s}
-.aud button.on{color:#181c34}
-.hvar{transition:opacity .45s var(--ease),transform .45s var(--ease),filter .45s var(--ease)}
-.hvar.out{opacity:0;transform:translateY(10px);filter:blur(5px)}
-.hvar[hidden]{display:none}
+/* (audience toggle removed — advisor-only) */
 @media (prefers-reduced-motion:no-preference){
   .hero__img{animation:ken 32s ease-in-out infinite alternate}
   @keyframes ken{0%{transform:scale(1.06)}100%{transform:scale(1.15) translate(-1.5%,-1%)}}
@@ -460,11 +453,6 @@ h2.h-sec .serif-i{color:var(--acc)}
   <div class="hero__scrim"></div>
   <div class="hero__grain"></div>
   <div class="hero__in" id="heroIn">
-    <div class="aud glass hload hd1" role="tablist" id="aud">
-      <span class="aud__thumb" id="audThumb"></span>
-      <button class="on" data-a="adv" role="tab" aria-selected="true">I&rsquo;m an advisor</button>
-      <button data-a="exec" role="tab" aria-selected="false">I lead a firm</button>
-    </div>
     <div class="hvar" data-a="adv">
       <span class="hchip glass hload hd2"><svg viewBox="0 0 12 12" fill="none"><rect x="2" y="5.5" width="8" height="5" rx="1.1" stroke="currentColor" stroke-width="1.1"/><path d="M3.8 5.5V4a2.2 2.2 0 014.4 0v1.5" stroke="currentColor" stroke-width="1.1"/></svg>Confidential &middot; for advisors weighing a move</span>
       <h1 class="hload hd2">Think clearly about your <span class="serif-i">next move.</span></h1>
@@ -472,15 +460,6 @@ h2.h-sec .serif-i{color:var(--acc)}
       <div class="hero__cta hload hd4">
         <a href="#talk" class="btn btn--acc btn--lg">Book a private call <svg class="arr" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         <a href="#assess" class="btn btn--glass glass btn--lg">See where you stand &middot; 3 min</a>
-      </div>
-    </div>
-    <div class="hvar" data-a="exec" hidden>
-      <span class="hchip glass"><svg viewBox="0 0 12 12" fill="none"><path d="M2 10V6l4-3 4 3v4M4.5 10V7.5h3V10" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/></svg>For firm leaders &amp; executives</span>
-      <h1>Know who&rsquo;s moving, <span class="serif-i">before they go.</span></h1>
-      <p class="hero__sub">Firm-level movement intelligence: the departures forming inside your network and the talent worth recruiting &mdash; grounded in public registration data, not rumor.</p>
-      <div class="hero__cta">
-        <a href="#talk" class="btn btn--acc btn--lg">Book a briefing <svg class="arr" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <a href="#intel" class="btn btn--glass glass btn--lg">See the intelligence</a>
       </div>
     </div>
   </div>
@@ -536,9 +515,12 @@ h2.h-sec .serif-i{color:var(--acc)}
       <div class="intel__grid">
         <div class="io">
           <span class="eyebrow">The intelligence</span>
-          <h2 class="h-sec">We watch the whole board, so your move is <span class="serif-i">not a guess.</span></h2>
-          <p class="lede">Our platform continuously reads the public record on roughly 725,000 U.S.-registered advisors. We see moves forming &mdash; firm shake-ups, team departures, quiet accelerations &mdash; before they reach the trade press. When you sit down with a guide, that is what&rsquo;s behind the advice.</p>
-          <div class="chips"><span class="chip">Every U.S. registration</span><span class="chip">SEC &middot; FINRA &middot; BrokerCheck</span><span class="chip">Firm &amp; team events</span></div>
+          <h2 class="h-sec">Moving is normal. <span class="serif-i">Moving blind isn&rsquo;t.</span></h2>
+          <p class="lede">In 2025, 11,172 experienced advisors changed firms &mdash; up 16% in a year, a four-year high, per Diamond Consultants&rsquo; movement data. Fidelity&rsquo;s Advisor Movement Study found over half of advisors have weighed a move in the past five years; one in four followed through. The itch you&rsquo;re feeling isn&rsquo;t disloyalty. It&rsquo;s the industry reshaping itself.</p>
+          <p class="lede">Every one of those moves lands in the public record &mdash; SEC, FINRA, BrokerCheck, roughly 725,000 registrations &mdash; and we read it continuously: the acquisitions, the comp-grid changes, the departures that come in clusters. When Commonwealth sold to LPL, the movement was visible in the filings while the retention offers were still on desks.</p>
+          <p class="lede">The readiness assessment points that record at <em>you</em>: your registration history, matched against advisors who stood exactly where you stand &mdash; how portable your book looks, what they did next, whether your window is opening. Not a recruiter&rsquo;s read. The record&rsquo;s.</p>
+          <div class="chips"><span class="chip">Acquisitions &amp; their fallout</span><span class="chip">Comp-grid changes</span><span class="chip">Clustered departures</span></div>
+          <div style="margin-top:26px"><a href="#assess" class="btn btn--glass glass">See where you stand &middot; 3 min</a></div>
         </div>
         <div class="flow io" style="--d:.1s" data-anim>
           <div class="flow__top"><span class="flow__ttl">Net advisor flow &middot; by channel &middot; 12 mo</span><span class="dlive"><i></i>Updated continuously</span></div>
@@ -870,7 +852,11 @@ if(location.hash === '#report') show('report');
 
 /* ---------- hero load-in: reveal gated on .in (LED-013 pattern) ---------- */
 var heroInEl = document.getElementById('heroIn');
-if(heroInEl){ requestAnimationFrame(function(){ requestAnimationFrame(function(){ heroInEl.classList.add('in'); }); }); }
+if(heroInEl){
+  var heroReveal = function(){ heroInEl.classList.add('in'); };
+  requestAnimationFrame(function(){ requestAnimationFrame(heroReveal); });
+  setTimeout(heroReveal, 700); /* rAF-starvation safety net (LED-011) */
+}
 
 /* ---------- nav ---------- */
 var nav = document.getElementById('nav');
@@ -885,38 +871,7 @@ if(mbtn){ mbtn.addEventListener('click', function(){
 });}
 if(mnav){ mnav.addEventListener('click', function(e){ if(e.target.closest('a')){ mnav.classList.remove('open'); mbtn.setAttribute('aria-expanded','false'); } }); }
 
-/* ---------- audience toggle (sliding thumb) ---------- */
-var aud = document.getElementById('aud'), thumb = document.getElementById('audThumb');
-function layoutThumb(){
-  if(!aud) return;
-  var on = aud.querySelector('button.on');
-  if(!on) return;
-  thumb.style.width = on.offsetWidth + 'px';
-  thumb.style.transform = 'translateX(' + on.offsetLeft + 'px)';
-}
-if(aud){
-  aud.querySelectorAll('button').forEach(function(b){
-    b.addEventListener('click', function(){
-      if(b.classList.contains('on')) return;
-      aud.querySelectorAll('button').forEach(function(y){
-        y.classList.toggle('on', y===b);
-        y.setAttribute('aria-selected', y===b);
-      });
-      layoutThumb();
-      var a = b.getAttribute('data-a');
-      document.querySelectorAll('.hvar').forEach(function(w){
-        var match = w.getAttribute('data-a') === a;
-        if(match){
-          w.hidden = false; w.classList.add('out');
-          requestAnimationFrame(function(){ requestAnimationFrame(function(){ w.classList.remove('out'); }); });
-        } else { w.hidden = true; }
-      });
-    });
-  });
-  layoutThumb();
-  window.addEventListener('resize', layoutThumb);
-  if(document.fonts && document.fonts.ready) document.fonts.ready.then(layoutThumb);
-}
+/* (audience toggle removed 2026-07-08 — advisor-only page per Chris) */
 
 /* ---------- quiz options (demo) ---------- */
 document.querySelectorAll('[data-opt]').forEach(function(o){
