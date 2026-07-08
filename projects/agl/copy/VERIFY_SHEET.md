@@ -13,6 +13,8 @@ One page. Each item: what's blocked, where it lives, what to send back. Updated 
 | 8 | **Pixel snippet** (i.advisorgrowthlab.com) | All pages `<head>` if wanted at launch | The snippet, or "skip for v1" | Not embedded |
 | 9 | **"90+ advisors"** (network size) | NOT on any page currently — held per accuracy rule | Jerry's confirmation if we ever want it | Never used |
 | 10 | **Memphis testimonial videos** | Future proof section | Final edits + compliance sign-off | No testimonials anywhere (per no-fabrication rule) |
+| 11 | **Brand-default og:image** | Hub + episode posts (social share cards) | A 1200×630 share image (or "make one from the brand mark") | Pages ship without og:image; twitter:card=summary |
+| 12 | **Subscribe endpoint** (GHL form for the daily briefing) | Hub hero CTA (`data-verify="subscribe-endpoint"`) | The GHL form/landing URL | Declared pending; P1 non-blocking |
 
 **Standing accuracy rules honored on every page:** ~725K universe = public-filings-footed;
 9,400/18,000 = starred illustrative; deal economics = illustrative ranges + not-an-offer;
