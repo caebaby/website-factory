@@ -57,3 +57,40 @@ previews → full-build the pick. Never 5 full sites.
 Design-director curates harvest JSON → catalog entries (numbered C-xx, live demo, provenance,
 measured spec) → Chris keep/kill by ID → survivors are blessed. Prose never enters the library —
 only measured code. A reference with no harvest JSON is just a bookmark.
+
+---
+
+## 6. INSTANCES ARE EXHIBITS, NOT TEMPLATES (Chris directive, 2026-07-08)
+
+Chris, reviewing the catalog: "I don't want it to be the exact same thing over and over…
+I want elements of it — the important number highlighted, motion on the number — but not the
+same layout on every site." This section makes PRINT_SPEC #2 physical.
+
+**Every catalog entry is now read as three layers:**
+
+1. **INVARIANT (the craft numbers — what makes it 10/10, always kept):**
+   e.g. C-12: one numeral owns the moment · display-scale/300-weight · count-up on scroll ·
+   tabular nums · label discipline. e.g. C-14: exactly one full-saturation brand moment per
+   page. e.g. C-21: a self-qualification moment whose visual converges on "you belong here"
+   and resolves to the conversion event.
+2. **VARY (mandatory freshness axes — geometry, count, ground, arrangement, medium):**
+   a build may not reuse the same (pattern × layout-skeleton × ground) combination as the
+   catalog exhibit OR any registry build for the same vertical. Similar class, never same layout.
+3. **NEVER PORT (instance artifacts):** content metaphors, diagrams, imagery, and copy born
+   from one client's mechanism (Maven's blinds/CPA/attorney convergence artifact is the
+   canonical example). These are re-derived from THIS client's mechanism + research, every time.
+
+**Enforcement (three hooks):**
+- **Director:** the DESIGN_BRIEF's per-section spec must state the fresh execution — pattern ID
+  + this-client geometry + this-client content artifact. A brief that says only "use C-21" is
+  incomplete and gets bounced.
+- **Registry:** `docs/BUILD_REGISTRY.md` logs each build's per-section (pattern, skeleton,
+  artifact) triple; the Director's ≤40% same-vertical overlap rule now applies at this level,
+  not just the vector level.
+- **Critic:** stamp-detection item — compare each section against the catalog exhibit and
+  registry entries; flag any near-identical layout skeleton or any ported content artifact
+  as MAJOR.
+
+**Catalog retrofit (queued):** each C-entry gets its INVARIANT / VARY / NEVER-PORT block and
+the exhibit watermarked "one execution — never rebuild this instance." Until the retrofit
+lands, executors receive the invariant blocks from the brief, not raw catalog HTML.

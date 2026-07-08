@@ -17,7 +17,11 @@ Humans compress to two 1-minute gates: direction-brief approve + pre-ship.
    bench candidates (runs/candidate-sonnet.html, runs/candidate-fugu.html) through it → PASS.
 3. Claims-verification agent pass ([VERIFY] discipline enforced — every factual claim traces
    to intake/research or flags). The accuracy gate Chris asked for.
-4. Pattern pool depth + MENU CURATION: harvest AGL v9's 18 components into the catalog +
+4. Pattern pool depth + MENU CURATION + **INVARIANT RETROFIT (Chris, 2026-07-08: "I don't
+   want the exact same thing over and over — keep the core elements, bring customization")**:
+   every catalog entry gets INVARIANT / VARY / NEVER-PORT blocks (ASSEMBLY §6); exhibits are
+   worked examples, never templates; content artifacts (Maven's blinds/CPA/attorney class)
+   never port between clients; stamp-detection added to critic + registry. Then: harvest AGL v9's 18 components into the catalog +
    Chris's pending keep/kill pass on the 31 patterns → 4–6 options per section job. NEW
    (2026-07-08): stage 2.5 is now a SELECTOR not a generator (PROCESS law 8) — palettes from
    `templates/PALETTES.md` (P-01..P-04 seeded, awaiting Chris bless/kill), heroes from named
