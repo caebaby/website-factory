@@ -17,8 +17,13 @@ Humans compress to two 1-minute gates: direction-brief approve + pre-ship.
    bench candidates (runs/candidate-sonnet.html, runs/candidate-fugu.html) through it → PASS.
 3. Claims-verification agent pass ([VERIFY] discipline enforced — every factual claim traces
    to intake/research or flags). The accuracy gate Chris asked for.
-4. Pattern pool depth: harvest AGL v9's 18 components into the catalog + Chris's pending
-   keep/kill pass on the 31 patterns → 4–6 options per section job.
+4. Pattern pool depth + MENU CURATION: harvest AGL v9's 18 components into the catalog +
+   Chris's pending keep/kill pass on the 31 patterns → 4–6 options per section job. NEW
+   (2026-07-08): stage 2.5 is now a SELECTOR not a generator (PROCESS law 8) — palettes from
+   `templates/PALETTES.md` (P-01..P-04 seeded, awaiting Chris bless/kill), heroes from named
+   catalog variants, motion tier mandatory per build (motion is an elevation requirement, not
+   garnish). Client-ops layer specced at `docs/CLIENT-OPS.md` (Linear spine + 4 client emails,
+   two-gate copy flow) — builds AFTER run-pipeline.
 5. **AGL = pilot client #1 through the full pipeline.** Chris's v9 change list becomes
    INTAKE.md; the live data-backed assessment (spec in agent-flows, Track B) is AGL's
    signature moment. Finishing the system and finishing the AGL site are the same workstream.

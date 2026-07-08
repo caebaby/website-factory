@@ -50,6 +50,15 @@ world), signature-motif seed, assets manifest, proof inventory with legal footin
 6. **Every human correction compounds.** Rule, check, or pattern — or it will be paid for twice.
 7. **Real proof only.** No invented testimonials/stats; illustrative numbers labeled; compliance
    overlay per regime.
+8. **Selection over generation, at every layer.** Sections come from the pattern pool, palettes
+   from `templates/PALETTES.md`, heroes/components from the catalog's named variants, motion
+   from MOTION_TIERS — the Director ROUTES client adjectives to blessed inventory and retints
+   within solved math; it never invents tokens from vibes (that's brand-level blank-page slop —
+   the 2.5 failure mode Chris flagged). Generation happens only when a new entry earns its way
+   into a library through harvest → curate → Chris.
+9. **Copy runs two gates.** Facts gate blocks build (claims-verification; [VERIFY]s go to the
+   client). Voice gate runs in parallel with build (client wording edits land as scoped
+   repairs). See `docs/CLIENT-OPS.md` for the full client-facing flow.
 
 ## Where things are
 
@@ -58,6 +67,8 @@ world), signature-motif seed, assets manifest, proof inventory with legal footin
 | Product contract (locked/flexible) | `templates/PRINT_SPEC.md` |
 | Conversion skeleton + CRO rules | `docs/REFERENCES.md` |
 | Pattern pool + mash-up rules | `templates/components/catalog.html` + `templates/ASSEMBLY.md` |
+| Palette library (selector) | `templates/PALETTES.md` |
+| Client service layer (Linear + emails) | `docs/CLIENT-OPS.md` |
 | Agent prompts | `agents/00–05` |
 | QA gate + defect memory | `qa/` (`run-checks.js`, `LEDGER.md`) |
 | Quality gold exemplar | `projects/agl/v9/agl-site.html` (+ its `DESIGN_SYSTEM.md` rulebook) |
