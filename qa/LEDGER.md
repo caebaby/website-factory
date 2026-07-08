@@ -241,3 +241,19 @@ Append-only. Each entry: what broke, why, how it was caught, and what permanent 
   3. **Separate taste budget** — gate repairs converge deterministically (budget 3); taste rounds don't (budget 2, then escalate to a human eye). Critics are also forbidden from prescribing removal of functional elements — that's an escalate, not a fix.
 - **Proof:** re-run after the fix: bench-sonnet PASS in 2 iterations (critic ship 0.86, MAJORs cited R3/R2/R34), bench-fugu PASS in 1 (MINORs only). Both registry rows — including the failed run — kept in `docs/BUILD_REGISTRY.md` as the instrumentation record.
 - **Status:** ✅ fixed + episode logs (`<work>.episode.json`) now persist every round's critic reasoning, so this failure class is diagnosable from artifacts instead of vibes.
+
+### LED-020 — Gold shipped with no doctype/charset/viewport (quirks mode + broken mobile scaling; escaped every gate)
+- **Build:** `projects/agl/v9/agl-site.html` (gold), found during the AGL pilot handoff prep (2026-07-08)
+- **Symptom:** the file starts at `<title>` — no `<!doctype html>`, no `<meta charset>`, no `<meta name="viewport">`. Browsers render it in quirks mode, and on real phones the page renders at ~980px virtual width and scales down (every mobile breakpoint effectively dead in production).
+- **Why every gate missed it:** headless Chrome inspections run desktop-sized on file:// URLs; the geometry checks measure the rendered result, which looks fine in that context. Nothing asserts document-mode or head hygiene.
+- **Fix (handoff only):** `projects/agl/handoff/index.html` + all /resources pages carry the full head (doctype, charset, viewport, title/description, canonical, OG). GOLD IS UNCHANGED — it is replay-pinned; re-pin is a conscious decision for Chris.
+- **Permanent artifact — OPEN:** a `head-hygiene` check (P0 if viewport missing, P1 if doctype/charset missing) belongs in `qa/run-checks.js`. NOT added this session — qa/ is frozen under the pilot's scope fence. Next factory session should add it + fixture.
+- **Status:** 🟡 handoff fixed; check + gold re-pin open.
+
+### LED-021 — Pipeline repair agent DUPLICATED the reveal rule instead of replacing it (stall→escalate worked as designed)
+- **Build:** AGL pilot, `run-pipeline` on the handoff home page (2026-07-08). Gate input: 5× `opacity-anim-dependent` P1 on the v9 hero load-in (`.hload` forwards-fill — the LED-013/LED-011 class, present in pinned gold).
+- **Symptom:** the scoped repair agent reported success ("moved animation under `#heroIn.in`; base now visible") but actually ADDED the new `#heroIn.in .hload` rule while leaving the original bare `.hload{opacity:0;…;animation:…forwards}` in place — net effect zero; re-gate showed the same 5 P1s; the loop correctly detected STALL and ESCALATED after 1 iteration.
+- **The system worked:** repair self-report ≠ evidence (the standing law, now proven for repairs too); the deterministic re-gate caught the no-op and the stall rule stopped the burn.
+- **Human-touch fix (counted per Cherny instrumentation):** applied the LED-013 pattern properly in `handoff/index.html` — base `.hload` hidden w/o animation, ALL of `{opacity:1; animation:hrise backwards}` under `#heroIn.in .hload`, explicit from/to keyframes, double-rAF `.in` add. Re-gate: the 5 P1s gone; handoff home is now CLEANER than pinned gold (which still carries them).
+- **Lesson for the repair prompt (open):** scoped repairs that modify a CSS rule must be instructed to show the rule being REMOVED as well as the rule being added — "replace" edits that only add are invisible to the agent's own diff sense. Candidate hardening for the repair prompt template next session (prompt file untouched this session — scope fence).
+- **Status:** ✅ defect fixed by hand; two hardening items open (repair-prompt wording; gold re-pin with the same hero fix).
