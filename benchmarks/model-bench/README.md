@@ -33,4 +33,19 @@ AGL site from v8 to a v9-quality build.
 
 | Date | Model | Harness | P0s | Critic scores | Verdict |
 |---|---|---|---|---|---|
-| 2026-07-08 | claude-fable-5 (reference) | Claude Code, self-verifying | — | — | GOLD |
+| 2026-07-08 | claude-fable-5 (reference) | Claude Code, self-verifying | 0 (5×P1 anim-robustness warnings — fix queued) | — | GOLD |
+| 2026-07-08 | claude-sonnet-5 | claude.ai chat, one-shot blind | 0 P0 · 0 P1 · 3 P2 | craft 8 · distinct 7.5 · motion 6.5 · copy 8.5 · compliance 9 | FIX — 4 findings (see below) |
+
+**Sonnet findings (2026-07-08):** (1) BLOCKER: primary CTA "Start the assessment" links to `#assess`
+(itself) — dead conversion path; report only reachable by URL hash. (2) BLOCKER: on hash entry the
+"we found you" match-confidence counter never runs — headline stat renders **0%**. (3) MAJOR: scroll
+reveals take 2–4s to land — sections sit ghosted; hero italic accent spans 7 words (rulebook says 1–3);
+feature icons drift toward generic line icons. (4) MINOR: copy says "seven questions," quiz card says
+"1 of 4"; "guides get paid the same" claim needs [VERIFY]. Notable strengths: independently converged
+on the system look (16% line overlap with gold — convergence, not copying), strong original copy
+("Everyone's recruiting you. Almost no one's telling you the truth."), cleaner deterministic-gate
+result than the gold build, sticky fictional-sample banner on the report was its own idea.
+**System verdict:** the docs successfully carried a mid-tier model to ~85% of gold in one blind shot;
+failures cluster in interaction wiring + motion timing — exactly what the agentic QA repair loop exists
+to catch. Bench-harness lesson: verify the served file is the asset-injected one (a stale `serve` on
+the same port reviewed the token-raw file first).
