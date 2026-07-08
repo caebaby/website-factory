@@ -25,9 +25,14 @@ the contract: what's LOCKED vs what a client supplies.)
                    elevation passes on finished pages (LED-013). One scope at a time; hero first.
                    Heavy assets via token contract: [[TOKEN]] placeholders + inject script
                    (benchmarks/model-bench/build.py pattern) — keeps builds reproducible.
-5. GAUNTLET        agents/05 + FRESH agents (builder never grades its own work):
-                   node qa/run-checks.js (0 P0s) → taste critic on frozen screenshots →
-                   scoped repair ≤3 → re-verify. Stall/regression → escalate.
+5. GAUNTLET        ONE COMMAND: node qa/run-pipeline.js <build.html> [--accent HEX]
+                   = RENDER → INSPECT (run-checks.js, multi-entry-state, click-probes)
+                   → CRITIQUE (fresh critic on frozen screenshots) → scoped REPAIR
+                   (fresh agent) → RE-VERIFY, loop ≤3, stall/regression → escalate.
+                   Builder never grades its own work — every role is a fresh spawn.
+                   PASS = 0 P0 + 0 unwaived P1 + critic ship. Metrics (iterations,
+                   tokens, cost, wall-clock, human touches) auto-log to
+                   docs/BUILD_REGISTRY.md "Pipeline runs".
 6. HUMAN GATE      Chris/Johnny on the review link. Every correction becomes a rule, a check,
                    or a pattern — logged in qa/LEDGER.md. Nothing merges without this gate.
 7. SHIP            GitHub → Pages/Vercel. Register the build vector in docs/BUILD_REGISTRY.md.
@@ -73,6 +78,8 @@ world), signature-motif seed, assets manifest, proof inventory with legal footin
 | QA gate + defect memory | `qa/` (`run-checks.js`, `LEDGER.md`) |
 | Quality gold exemplar | `projects/agl/v9/agl-site.html` (+ its `DESIGN_SYSTEM.md` rulebook) |
 | Cross-model benchmark | `benchmarks/model-bench/` (packet.txt = one-paste test) |
+| Headless repair loop (one command) | `qa/run-pipeline.js` |
+| Regression gate (replay corpus) | `qa/replay.js` + `qa/replay-manifest.json` — pre-commit hook: `git config core.hooksPath .githooks` |
 | Current state / open loops | `STATUS.md` |
 
 ## Open folds (deltas not yet merged into the core docs)

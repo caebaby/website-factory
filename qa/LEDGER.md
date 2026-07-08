@@ -230,3 +230,14 @@ Append-only. Each entry: what broke, why, how it was caught, and what permanent 
 - **⚠️ OPEN ACTION (Chris):** (1) supply the real booking URL (Calendly/SavvyCal/mailto) for the guide-card CTA; (2) the LIVE deployed copy in `caebaby/agl-site-preview` still has all three dead CTAs — redeploy from this repaired gold when the booking URL lands.
 - **The lesson:** the gold exemplar is not exempt from the gate. Every new check runs against gold immediately — "gold" means gate-clean TODAY, not blessed forever.
 - **Status:** ✅ fixed in repo gold; live redeploy blocked on the booking URL.
+
+### LED-019 — Critic goalpost-moving stalls the repair loop (system defect, caught on run-pipeline's first acceptance run)
+- **Build:** run-pipeline acceptance run 1, bench-sonnet (2026-07-08)
+- **Symptom:** the deterministic gate went clean after repair #1, but each FRESH critic round returned a *different* set of MAJOR findings at overall ≈0.81 — the loop burned all 3 iterations on taste and ESCALATED a build that was fine. One taste "repair" even hid a functional element (the hero audience toggle) to satisfy an unanchored "hierarchy" nit.
+- **Root cause:** unanchored critic. The prompt asked for judgment without requiring rule citations, and each fresh spawn had no knowledge of what the previous round demanded — so goalposts moved every round. (Reflection research predicted exactly this: compounding noise past ~3 iterations.)
+- **Permanent fix (all three in `qa/run-pipeline.js`):**
+  1. **Rule-cited MAJORs only** — a MAJOR must cite the rulebook (R-id); uncited MAJORs are downgraded to MINOR *mechanically* by the orchestrator, not just by prompt. MINORs never block; they're harvest material.
+  2. **Convergence contract** — each critic receives the previous round's MAJORs + the repairs claimed against them, with an explicit no-goalpost-moving clause: prior MAJORs addressed + nothing new rule-violating ⇒ ship.
+  3. **Separate taste budget** — gate repairs converge deterministically (budget 3); taste rounds don't (budget 2, then escalate to a human eye). Critics are also forbidden from prescribing removal of functional elements — that's an escalate, not a fix.
+- **Proof:** re-run after the fix: bench-sonnet PASS in 2 iterations (critic ship 0.86, MAJORs cited R3/R2/R34), bench-fugu PASS in 1 (MINORs only). Both registry rows — including the failed run — kept in `docs/BUILD_REGISTRY.md` as the instrumentation record.
+- **Status:** ✅ fixed + episode logs (`<work>.episode.json`) now persist every round's critic reasoning, so this failure class is diagnosable from artifacts instead of vibes.
