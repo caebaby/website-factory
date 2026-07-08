@@ -123,9 +123,10 @@ h1,h2,h3,h4{font-weight:650}
   @keyframes drift{0%{transform:translateX(0)}100%{transform:translateX(8%)}}
   .hero__scroll svg{animation:bob 2.3s ease-in-out infinite}
   @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
-  .hload{opacity:0;transform:translateY(16px);filter:blur(6px);animation:hrise .9s var(--ease) forwards}
+  .hload{opacity:0;transform:translateY(16px);filter:blur(6px)}
+  #heroIn.in .hload{opacity:1;transform:none;filter:none;animation:hrise .9s var(--ease) backwards}
   .hd1{animation-delay:.08s}.hd2{animation-delay:.2s}.hd3{animation-delay:.34s}.hd4{animation-delay:.5s}
-  @keyframes hrise{to{opacity:1;transform:none;filter:blur(0)}}
+  @keyframes hrise{from{opacity:0;transform:translateY(16px);filter:blur(6px)}to{opacity:1;transform:none;filter:blur(0)}}
 }
 
 /* ================= MOVEMENT WIRE (ticker) ================= */
@@ -866,6 +867,10 @@ document.addEventListener('click', function(e){
   }
 });
 if(location.hash === '#report') show('report');
+
+/* ---------- hero load-in: reveal gated on .in (LED-013 pattern) ---------- */
+var heroInEl = document.getElementById('heroIn');
+if(heroInEl){ requestAnimationFrame(function(){ requestAnimationFrame(function(){ heroInEl.classList.add('in'); }); }); }
 
 /* ---------- nav ---------- */
 var nav = document.getElementById('nav');

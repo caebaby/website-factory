@@ -1,7 +1,45 @@
 # Website Factory — Status
-Last updated: 2026-07-08 (FABLE SESSION, night — **finish-line items 1–3 SHIPPED on branch `feature/qa-checks-and-run-pipeline`**: LED-014/015/016 checks live, `run-pipeline` acceptance test PASSED on both bench candidates with zero human edits, replay-corpus regression gate wired as pre-commit hook. Read: FINISH LINE → CHERNY AUDIT → the "FACTORY BUILD SESSION" block below. Next: AGL pilot (item 5) + claims-verification pass (item 3).)
+Last updated: 2026-07-08 (FABLE SESSION, late night — **AGL PILOT SHIPPED on branch `feature/agl-pilot`**: full pipeline run intake→research→strategy→copy→build→gauntlet, all 5 pages PASS, handoff folder ready for Johnny. See the "AGL PILOT SESSION" block below.)
 
 ---
+
+## ▶ 2026-07-08 (late night) — AGL PILOT SESSION: first real client through the whole pipeline (branch `feature/agl-pilot`)
+
+**Deliverable, met:** `projects/agl/handoff/` — 5 static pages Johnny can drag into Replit tonight
+(home + /resources hub + 3 full episode posts), every page **PASS** through
+`run-pipeline --critic-doc DESIGN_SYSTEM.md` (critic ship 0.86–0.88, $0.19–0.21/page, ~90s/page —
+registry rows `agl-pilot-*`). One [VERIFY] sheet for Chris: `projects/agl/copy/VERIFY_SHEET.md` (12 items;
+the two launch-blockers are the booking URL and, for social cards, an og:image).
+
+**The pipeline ran as designed (PROCESS steps 0–5, fresh agent per role):**
+- INTAKE (`projects/agl/INTAKE.md`) drafted from repo accuracy rules — sell the MODEL, Lane = peer,
+  no inflated counts, proof inventory with legal footing.
+- Agent 01 research (`research/ICP_BRIEF.md`): r/CFP verbatim pain/desire quotes (via pullpush archive,
+  permalinked), competitor map (Diamond/3xEquity/FA Match/FP Transitions/ATS), 4 competitive gaps.
+  Headline finding: **nobody in the category can honestly return "stay put" — the disinterested answer
+  is unclaimed ground.** Gold's hero sub already carries the #1 power line verbatim.
+- Agent 02 strategy (`strategy/COPY_STRATEGY.md`): gold arc validated (do-not-touch verdict on the spine),
+  3 copy refinements, nav label **"The Lab"** (URL stays /resources), 10-episode topic map ranked by
+  conversion proximity, stakes-headline formula.
+- Agent 03 copy (`copy/COPY_ALL.md`): home deltas + hub + 3 full posts, compliance ledger
+  (all economics labeled illustrative; r/CFP material paraphrased, zero unverified verbatim quotes).
+- BUILD: home = gold + deltas (never redesigned); hub + posts skinned entirely in v9's language
+  (tokens/buttons/glass/bhero/constellation/io verbatim from gold). All self-contained (R30), proper
+  heads (doctype/viewport/canonical/OG/JSON-LD — gold lacked these, see LED-020).
+- GAUNTLET: 4/5 CLEAN-first-run; home escalated once (repair agent duplicated the reveal rule —
+  LED-021, stall→escalate held), human-touch fix applied the LED-013 pattern → **home is now cleaner
+  than pinned gold** (0 anim-dependent P1s vs gold's 5). Human touches this session: 1.
+
+**New factory asset harvested:** `templates/PAGE_SYSTEM.md` v1 — the SEO/blog page system
+(3-tier linking, per-post SEO contract, hook→payload→conversion anatomy, production contract).
+First worked example = the 3 AGL posts.
+
+**Open after this session:**
+- [ ] Chris: the 12-item VERIFY sheet (booking URL + subscribe endpoint unblock the two pending CTAs).
+- [ ] Chris: pick home H2 — shipped "The briefing recruiters wish you weren't getting." (quieter alt in comment).
+- [ ] Gold re-pin decision: port the hero-reveal fix + head hygiene from handoff back into v9 gold (re-pin replay consciously, LEDGER entry).
+- [ ] Next factory session: `head-hygiene` check (LED-020) + repair-prompt hardening (LED-021) — qa/ was frozen this session.
+- [ ] Track B (live data assessment) still separate — assessment CTAs route to the sample-report experience meanwhile.
 
 ## ▶ THE FINISH LINE (Chris, 2026-07-08): "custom bangers, one after another, minimal HITL"
 

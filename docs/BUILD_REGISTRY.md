@@ -18,3 +18,9 @@ human edits in the session that makes them.*
 | 2026-07-08 | bench-sonnet | FIX(1P0/4P1) | ESCALATE · critic repair (0.81) | 3 | repair#1:sonnet critic:opus repair#2:sonnet critic:opus repair#3:sonnet critic:opus | 1095k/19.7k | $1.17 | 596s | 0 |
 | 2026-07-08 | bench-sonnet | FIX(1P0/4P1) | PASS · critic ship (0.86) | 2 | repair#1:sonnet critic:opus repair#2:sonnet critic:opus | 643k/12.2k | $0.78 | 372s | 0 |
 | 2026-07-08 | bench-fugu | FIX(0P0/5P1) | PASS · critic repair (0.84) | 1 | repair#1:sonnet critic:opus | 233k/6.8k | $0.39 | 228s | 0 |
+| 2026-07-08 | agl-pilot-handoff-index | FIX(0P0/5P1) | ESCALATE | 1 | repair#1:sonnet | 233k/2.7k | $0.19 | 103s | 0 |
+| 2026-07-08 | agl-pilot-resources-index | CLEAN | PASS · critic ship (0.87) | 0 | critic:opus | 50k/3.2k | $0.20 | 94s | 0 |
+| 2026-07-08 | agl-pilot-resources-am-i-ready-to-leave-my-firm | CLEAN | PASS · critic ship (0.88) | 0 | critic:opus | 49k/2.8k | $0.19 | 85s | 0 |
+| 2026-07-08 | agl-pilot-resources-retention-offer-after-acquisition | CLEAN | PASS · critic ship (0.86) | 0 | critic:opus | 49k/2.7k | $0.18 | 82s | 0 |
+| 2026-07-08 | agl-pilot-resources-forgivable-note-clawback | CLEAN | PASS · critic ship (0.87) | 0 | critic:opus | 49k/2.6k | $0.18 | 85s | 0 |
+| 2026-07-08 | agl-pilot-handoff-index-v2 | CLEAN | PASS · critic ship (0.87) | 0 | critic:opus | 49k/3.7k | $0.21 | 123s | 0 |
