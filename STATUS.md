@@ -34,6 +34,16 @@ Humans compress to two 1-minute gates: direction-brief approve + pre-ship.
 5. **AGL = pilot client #1 through the full pipeline.** Chris's v9 change list becomes
    INTAKE.md; the live data-backed assessment (spec in agent-flows, Track B) is AGL's
    signature moment. Finishing the system and finishing the AGL site are the same workstream.
+   **SCOPE EXPANDED (Chris, 2026-07-08 night):** deliverable = the finished AGL site WITH
+   final copy, packaged for Johnny to spin up on Replit. Plus: (a) a content section on the
+   home page that routes to a new **/resources** page; (b) a direct-response-oriented
+   resources page + blog/episode layout — AGL is launching a **daily 100%-AI-produced
+   podcast**, and the resources/blog surface is the SEO/organic-traffic engine (each episode
+   = a post; every post drives to the assessment/booking conversion event, per CONVERSION
+   LAW). The factory has no SEO/blog blueprint yet — that page system (semantic HTML, meta,
+   schema.org, internal linking, post template) gets designed in the pilot session and
+   harvested back into `templates/PAGE_SYSTEM.md`. Dependency: Chris's real booking URL
+   (LED-018) — until supplied, CTAs stay `data-verify="booking-url"`.
 
 Why we believe the low-HITL claim: bench round 1 — two models one-shot to ~85% of gold with
 near-disjoint failure modes; the gate+critic+repair loop covers the space no single model does.
