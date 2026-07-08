@@ -215,6 +215,49 @@
       }
     }
 
+    /* ---- P1: LED-016 build-note phrases — internal dev-notes leaked into public
+       copy. Scans VISIBLE TEXT NODES only (comments, scripts, base64 CSS immune).
+       Reader-facing compliance labels ("Illustrative", "Sample report") are fine;
+       this catches the dev-register: instructions to a future developer. R32. ---- */
+    (function buildNotes() {
+      const PHRASES = [
+        /replace with (a |the )?(live|real|actual|verified|production)/i,
+        /must be wired/i,
+        /\bfor this demo\b/i,
+        /\bthis (screen|page|section|interface) (demonstrates|is a (demo|mock|mockup|placeholder))/i,
+        /\bbefore launch\b/i,
+        /\blorem ipsum\b/i,
+        /\bTKTK\b/i,
+        /\bTODO:|\bFIXME\b/,
+      ];
+      // NOTE: deliberately no visibility filter beyond script/style — a dev-note
+      // sitting in a currently-hidden VIEW (report screens etc.) is still shipped
+      // copy; some entry path will show it to a reader.
+      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+        acceptNode: n => {
+          const p = n.parentElement;
+          if (!p || /^(SCRIPT|STYLE|NOSCRIPT|TEMPLATE)$/.test(p.tagName)) return NodeFilter.FILTER_REJECT;
+          if (!n.textContent.trim()) return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      });
+      const seen = new Set();
+      let node;
+      while ((node = walker.nextNode())) {
+        const text = node.textContent;
+        for (const re of PHRASES) {
+          const m = text.match(re);
+          if (m && !seen.has(sel(node.parentElement) + m[0])) {
+            seen.add(sel(node.parentElement) + m[0]);
+            add('P1', 'build-note-phrase', sel(node.parentElement),
+              'Internal build-note register in PUBLIC copy: "…' + text.trim().slice(0, 110) + '…" (matched "' + m[0] + '"). ' +
+              'Compliance labels must be reader-facing words ("Illustrative — from public filings"), never dev-notes or demo-speak (LED-016 / R32).',
+              { matched: m[0], text: text.trim().slice(0, 160) });
+          }
+        }
+      }
+    })();
+
     /* ---- P1/P2: AI-SLOP TELLS (ported from the impeccable/avoid-ai-design 44-rule
        detector + slop research — deterministic, run free every build) ---- */
     (function slop() {
@@ -355,7 +398,212 @@
     };
   }
 
+  /* ==========================================================================
+     __ctaAudit — LED-014 check (cta-dead-anchor). The conversion event is the
+     page's whole job; a dead primary CTA is the worst possible defect and it
+     escaped the geometry gate entirely (bench round 1: "Start the assessment"
+     linked to its own containing section).
+
+     Only ONE static verdict:
+       P1 cta-pending-endpoint — href="#" EXPLICITLY declared as an awaiting-
+         client-detail endpoint via a data-verify attribute (factory [VERIFY]
+         discipline: declared placeholders warn until wired; they never block).
+
+     EVERYTHING else suspicious is returned as a CANDIDATE for the runner's
+     behavioral click-probe (__ctaClickProbe) — never condemned statically.
+     Bench round 1 proved both failure directions: sonnet's dead CTAs LOOK
+     wired (href="#assess" — its own section), and fugu's live CTAs LOOK dead
+     (href="#report" with no such id, but a data-open-report click handler +
+     hashchange router make it flawless). Dispatch a real click; watch the
+     page. Aliveness is reason-scoped: for a SELF-ANCHOR, scrolling to your
+     own section is the defect, so only a DOM mutation or focus move counts.
+     ========================================================================== */
+  function ctaCandidateList() {
+    const anchors = Array.from(document.querySelectorAll('a.btn,a[class*="btn-"],a[class*="btn_"],a[class*="--btn"],a[class*="cta"],a[role="button"]'))
+      .concat(Array.from(document.querySelectorAll('a[class~="btn"]')))
+      .filter((a, i, arr) => arr.indexOf(a) === i)
+      .filter(a => {
+        const c = getComputedStyle(a);
+        if (c.display === 'none' || c.visibility === 'hidden') return false;
+        const r = a.getBoundingClientRect();
+        return r.width > 1 && r.height > 1;
+      });
+    return anchors.filter(a => (a.getAttribute('href') || '').charAt(0) === '#');
+  }
+  function ctaAudit() {
+    const defects = [];
+    const candidates = [];
+    // selector carries the candidate index — three dead "Book a private call"
+    // buttons are three defects, not one (dedupe collapsed them on first run)
+    const sel = (el, idx) => {
+      if (el.id) return '#' + el.id;
+      const c = (el.className && String(el.className).trim().split(/\s+/)[0]) || '';
+      return el.tagName.toLowerCase() + (c ? '.' + c : '') + '[' + (el.textContent || '').trim().slice(0, 28) + ']@' + idx;
+    };
+    ctaCandidateList().forEach((a, idx) => {
+      const href = a.getAttribute('href');
+      const label = (a.textContent || '').trim().slice(0, 40);
+      if (href === '#' || href === '#!') {
+        const verify = a.getAttribute('data-verify');
+        if (verify) {
+          defects.push({ severity: 'P1', code: 'cta-pending-endpoint', selector: sel(a, idx),
+            message: 'CTA "' + label + '" is a DECLARED pending endpoint (data-verify="' + verify + '"). Non-blocking, but it must be wired with the client-supplied detail before ship — it stays on the [VERIFY] list until then.',
+            data: { href, verify } });
+        } else {
+          candidates.push({ idx, selector: sel(a, idx), href, label, reason: 'bare-hash' });
+        }
+        return;
+      }
+      const id = href.slice(1);
+      const tgt = document.getElementById(id) || document.querySelector('[name="' + id + '"]');
+      if (!tgt) { candidates.push({ idx, selector: sel(a, idx), href, label, reason: 'missing-target' }); return; }
+      if (tgt.contains(a)) { candidates.push({ idx, selector: sel(a, idx), href, label, reason: 'self-anchor' }); return; }
+      // checkVisibility sees ancestor display:none (inline style or [hidden] —
+      // getComputedStyle on the element itself does NOT; that gap hid the whole
+      // report-view candidate class on first run)
+      const hidden = tgt.checkVisibility ? !tgt.checkVisibility()
+        : (getComputedStyle(tgt).display === 'none' || tgt.getBoundingClientRect().width === 0);
+      if (hidden) candidates.push({ idx, selector: sel(a, idx), href, label, reason: 'hidden-target' });
+    });
+    return { defects, candidates };
+  }
+
+  /* __ctaClickProbe(idx) — behavioral leg of LED-014, driven by run-checks.js
+     on a FRESH page load per probe (clicks mutate state; isolation keeps
+     verdicts honest). Dispatches a real click on candidate #idx and watches
+     for ANY meaningful response: DOM mutation (view switch, menu, class
+     toggle), a hash move whose target is actually visible, a scroll to a real
+     (non-top) position, or a focus move. A click that produces none of those
+     is a dead conversion path. Scroll-to-top alone does NOT count — that is
+     exactly what a dead href="#" produces by default. */
+  async function ctaClickProbe(idx) {
+    const list = ctaCandidateList();
+    const cands = ctaAudit().candidates;
+    const cand = cands.find(c => c.idx === idx);
+    if (!cand) return { skipped: true };
+    const a = list[idx];
+    const beforeHash = location.hash, beforeScroll = window.scrollY,
+      beforeFocus = document.activeElement;
+    let mutations = 0;
+    const mo = new MutationObserver(ms => { mutations += ms.length; });
+    mo.observe(document.documentElement, { subtree: true, childList: true, attributes: true });
+    a.click();
+    await new Promise(r => setTimeout(r, 450));
+    await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+    mo.disconnect();
+    let hashMovedToVisible = false;
+    if (location.hash && location.hash !== beforeHash) {
+      const t = document.getElementById(location.hash.slice(1));
+      if (t) {
+        const c = getComputedStyle(t);
+        hashMovedToVisible = c.display !== 'none' && c.visibility !== 'hidden' && !t.closest('[hidden]');
+      }
+    }
+    const scrolledSomewhereReal = window.scrollY !== beforeScroll && window.scrollY > 2;
+    const focusMoved = document.activeElement !== beforeFocus &&
+      document.activeElement && document.activeElement !== document.body;
+    // Self-anchor: scrolling/hash-moving to the section you are already in IS
+    // the defect — only real work (DOM mutation, focus into a form) clears it.
+    const alive = cand.reason === 'self-anchor'
+      ? (mutations > 0 || focusMoved)
+      : (mutations > 0 || hashMovedToVisible || scrolledSomewhereReal || focusMoved);
+    return { skipped: false, dead: !alive, selector: cand.selector, label: cand.label,
+      href: cand.href, reason: cand.reason,
+      evidence: { mutations, hashMovedToVisible, scrolledSomewhereReal, focusMoved } };
+  }
+
+  /* ==========================================================================
+     __counterCensus — LED-015 check (counter-stuck-at-zero, P0). A stat that
+     renders 0 is a trust defect ("Advisors tracked: 0"). Exercise every
+     VISIBLE counter (scroll it into view so IntersectionObserver triggers
+     fire for real), poll until the numbers stop moving, then census: any
+     counter whose target is nonzero but whose rendered text still reads
+     0/empty is broken wiring. Counters hidden in this state are NOT judged
+     here — run-checks.js re-runs this census in every reachable entry state
+     (hash entries), so a hidden view's counters are judged when their view
+     is actually open. The base-markup sibling (P1 counter-anim-dependent,
+     initial text "0") is a SOURCE-level scan in run-checks.js — by the time
+     this runs, JS has already overwritten the markup.
+     ========================================================================== */
+  const COUNTER_SEL = '[data-count-to],[data-to],[data-target],[data-count],[data-count-up]';
+  function counterTarget(el) {
+    for (const attr of ['data-count-to', 'data-to', 'data-target', 'data-count', 'data-count-up']) {
+      const v = el.getAttribute(attr);
+      if (v != null && /^[\d,.\s]+$/.test(v.trim()) && v.trim() !== '') {
+        return parseFloat(v.replace(/[,\s]/g, ''));
+      }
+    }
+    return null;
+  }
+  async function counterCensus() {
+    const defects = [];
+    const sel = el => {
+      if (el.id) return '#' + el.id;
+      const c = (el.className && String(el.className).trim().split(/\s+/)[0]) || '';
+      return el.tagName.toLowerCase() + (c ? '.' + c : '');
+    };
+    const visible = el => {
+      if (el.checkVisibility && !el.checkVisibility()) return false;
+      const r = el.getBoundingClientRect();
+      return r.width > 0 && r.height > 0;
+    };
+    const els = Array.from(document.querySelectorAll(COUNTER_SEL))
+      .filter(el => counterTarget(el) != null && visible(el));
+    if (!els.length) { window.scrollTo(0, 0); return { defects, counted: 0 }; }
+    // exercise: bring each into view so IO-gated triggers actually fire
+    for (const el of els) {
+      el.scrollIntoView({ block: 'center', behavior: 'instant' });
+      await new Promise(r => setTimeout(r, 140));
+    }
+    // settle: poll until the numbers stop moving (any animation duration),
+    // capped so a perpetual ticker can't hang the gate
+    let last = '', t0 = Date.now();
+    while (Date.now() - t0 < 5200) {
+      await new Promise(r => setTimeout(r, 420));
+      const snap = els.map(e => e.textContent).join('|');
+      if (snap === last) break;
+      last = snap;
+    }
+    els.forEach(el => {
+      const target = counterTarget(el);
+      if (!target) return;
+      const digits = (el.textContent || '').replace(/[,\s]/g, '').match(/\d+(\.\d+)?/);
+      const shown = digits ? parseFloat(digits[0]) : NaN;
+      if (!digits || shown === 0) {
+        defects.push({ severity: 'P0', code: 'counter-stuck-at-zero', selector: sel(el),
+          message: 'Counter targets ' + target.toLocaleString('en-US') + ' but renders "' + (el.textContent || '').trim() + '" after being scrolled into view and given ' + Math.round((Date.now() - t0) / 100) / 10 + 's to settle — the count-up never wired in this entry state (LED-015: a stat reading 0 is a trust defect).',
+          data: { target, rendered: (el.textContent || '').trim() } });
+      }
+    });
+    window.scrollTo(0, 0);
+    return { defects, counted: els.length };
+  }
+
+  /* __hashStates — entry-state discovery for the runner: fragments worth
+     loading the page at, because content hidden in the default state may only
+     be judgeable there (LED-015: "wired to one entry path"). DOM leg: anchor
+     hrefs whose target exists but is hidden right now. (run-checks.js adds a
+     source-scan leg for hash comparisons in script, e.g. `hash === '#report'`,
+     which never appear as DOM hrefs when the link is built by JS.) */
+  function hashStates() {
+    const out = new Set();
+    Array.from(document.querySelectorAll('a[href^="#"]')).forEach(a => {
+      const id = (a.getAttribute('href') || '').slice(1);
+      if (!id || id === '!') return;
+      const t = document.getElementById(id);
+      if (!t) return;
+      const hidden = t.checkVisibility ? !t.checkVisibility()
+        : (getComputedStyle(t).display === 'none' || t.getBoundingClientRect().width === 0);
+      if (hidden) out.add(id);
+    });
+    return Array.from(out);
+  }
+
   window.__visualChecks = run;
   window.__opacityCensus = opacityCensus;
+  window.__ctaAudit = ctaAudit;
+  window.__ctaClickProbe = ctaClickProbe;
+  window.__counterCensus = counterCensus;
+  window.__hashStates = hashStates;
   return run;
 })();

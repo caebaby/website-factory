@@ -185,27 +185,35 @@ Append-only. Each entry: what broke, why, how it was caught, and what permanent 
 - **Symptom:** "Start the assessment" (the page's MQL event) linked to `#assess` — the section it sits in. The report screen was reachable only by hand-typing the URL hash; the view-switch never scrolled to top.
 - **Root cause:** one-shot builder wired visuals, not interactions; nothing in the gate exercises clicks.
 - **Caught by:** rendered review + JS probe (bench). Escaped the deterministic gate entirely — it checks geometry, not wiring.
-- **Permanent artifact (pending implementation):**
-  - Check → `qa/visual-checks.js` `cta-dead-anchor` (P0): any `.btn`/primary CTA whose href resolves to its own containing section, a missing id, or `#`.
-  - Check → `conversion-path-smoke` (P0): programmatically invoke each primary CTA; assert a state change (navigation, view switch, or form focus).
+- **Permanent artifact:**
+  - ✅ SHIPPED (2026-07-08 factory session): `cta-dead-anchor` (P0) in `qa/visual-checks.js` + `run-checks.js`. Design finding while implementing: **static condemnation is wrong in BOTH directions.** Sonnet's `#assessCta` (href = its own section) is actually JS-wired (preventDefault → render quiz → scroll) — the original bench review over-condemned it from a static read. Fugu's `href="#report"` has no such id but is flawlessly wired (data-open-report handler + hashchange router). So the check works behaviorally: every suspicious CTA (`#`, missing id, self-anchor, hidden target) gets a REAL dispatched click on an isolated fresh load; aliveness = DOM mutation / visible-hash move / real scroll / focus move, and for self-anchors only mutation/focus count (scrolling to yourself IS the defect). Audits + probes run per entry state (default + every discoverable hash entry), because report-view CTAs are only judgeable with the report open.
+  - ✅ `cta-pending-endpoint` (P1): an `href="#"` CTA carrying `data-verify="<detail>"` is a DECLARED awaiting-client-detail endpoint — warns until wired, never blocks (factory [VERIFY] discipline).
   - Rule → DESIGN_SYSTEM R34 (interaction wiring is part of "done").
-- **Status:** ⏳ checks not yet written; rule added 2026-07-08.
+  - Fixture → `qa/fixtures/led014-broken.html` (3 dead reasons fire; wired bare-`#` and declared-pending stay clean).
+  - `conversion-path-smoke` (drive the full quiz flow) remains open — the click probe covers CTAs present in the rendered DOM, not buttons that only exist after multi-step interactions.
+- **Status:** ✅ check shipped + proven on bench candidates (sonnet: 1 real P0; fugu: 0 — its wiring really is flawless). See LED-018 for what it immediately caught in the gold build.
 
 ### LED-015 — Animated stat renders 0 on an entry path (P0-class, trust)
 - **Build:** model-bench claude-sonnet-5 (2026-07-08)
 - **Symptom:** report's "match confidence" stat (data-count-to=93) rendered **0%** when the report was opened via URL hash — the counter only ran on the button-driven view switch.
 - **Root cause:** count-up wired to one entry path; hash entry skipped it.
 - **Caught by:** rendered review (bench).
-- **Permanent artifact (pending):** check → `counter-stuck-at-zero` (P0): after freezing animations to end-state, any `[data-count-to]`-style element whose rendered text is still 0/empty. Note: the gold build's 5×P1 `opacity-anim-dependent` warnings are the same class (state depends on an animation actually running) — fix queued for gold.
-- **Status:** ⏳ check not yet written; rule R34 covers.
+- **Permanent artifact:**
+  - ✅ SHIPPED (2026-07-08 factory session), as a two-tier check mirroring LED-013's severity split:
+    - **P0 `counter-stuck-at-zero`** (`__counterCensus` in visual-checks.js): every visible counter-attr element (`data-count-to/-to/-target/-count/-count-up`) is scrolled into view (so IO triggers really fire), the page polls until numbers stop moving, then any counter whose target ≠ 0 but renders 0/empty is broken wiring. Re-run in every hash entry state — a hidden view's counters are judged when the view is open (the "wired to one entry path" class).
+    - **P1 `counter-anim-dependent`** (source scan in run-checks.js): counter whose INITIAL markup is 0/empty — the value exists only if the count-up actually runs (rAF starvation / skipped entry path shows 0). The robust pattern ships the final value in markup and lets JS zero + animate on top — fugu independently ships this pattern; sonnet (4 counters) and the gold build (3 counters) did not.
+  - Empirical correction to the entry above: in the archived sonnet artifact, hash entry DOES run the counter (showReport → animateReportOnce). The reproducible defect class is the anim-dependent markup, which is what the P1 catches; the P0 catches true never-wired counters (fixture-proven).
+  - Fixture → `qa/fixtures/led015-broken.html` (dead / fragile / robust counter triplet).
+- **Status:** ✅ checks shipped; gold's 3 counters fixed to robust markup (LED-018).
 
 ### LED-016 — Internal build-notes leaked into public copy (P1-class, taste/trust)
 - **Build:** model-bench fugu-ultra one-shot (2026-07-08)
 - **Symptom:** marketing page showed implementation caveats as visible copy: "*Fictional interface value for this demo; replace with live public-filing query before launch*", "Ticker … public page must be wired to verified aggregate queries", report sub-head "This screen demonstrates the assessment result experience."
 - **Root cause:** the model's compliance instinct expressed itself as dev-notes instead of reader-facing labels; the packet never distinguished the two registers.
 - **Caught by:** rendered review (bench).
-- **Permanent artifact:** Rule → DESIGN_SYSTEM R32 (compliance labels are reader-facing words like "Illustrative — from public filings"; never dev-notes, never self-describing demo-speak). Critic checklist item added. A cheap check is possible (`grep` for "replace with|must be wired|this demo|this screen demonstrates" class of phrases) — pending.
-- **Status:** rule added 2026-07-08; check pending.
+- **Permanent artifact:** Rule → DESIGN_SYSTEM R32 (compliance labels are reader-facing words like "Illustrative — from public filings"; never dev-notes, never self-describing demo-speak). Critic checklist item added.
+  - ✅ SHIPPED (2026-07-08 factory session): **P1 `build-note-phrase`** in `qa/visual-checks.js` — scans all text nodes (script/style excluded; hidden views INCLUDED, since some entry path will show them) for the dev-note register: "replace with live/real/verified…", "must be wired", "for this demo", "this screen/page demonstrates", "before launch", lorem ipsum, TODO:/FIXME/TKTK. Reader-facing labels ("Illustrative…", "Sample report") stay clean. Fires on all 3 fugu leak sites (5 phrase hits); fixture `qa/fixtures/led016-broken.html`.
+- **Status:** ✅ rule + check shipped.
 
 ### LED-017 — Charts with zero information content (P1-class, craft)
 - **Build:** model-bench fugu-ultra (2026-07-08)
@@ -213,3 +221,12 @@ Append-only. Each entry: what broke, why, how it was caught, and what permanent 
 - **Root cause:** over-compliance + no minimum-information standard for data viz.
 - **Permanent artifact:** Rule → DESIGN_SYSTEM R33 (every chart encodes ≥1 comparative, labeled fact; range charts show numeric endpoints; if the honest content is one word, use a sentence, not a chart).
 - **Status:** rule added 2026-07-08.
+
+### LED-018 — The GOLD build shipped 3 dead booking CTAs + 3 fragile counters (P0-class, conversion — caught by the LED-014/015 checks on their first run)
+- **Build:** `projects/agl/v9/agl-site.html` (the quality gold exemplar, Chris-approved, LIVE at https://caebaby.github.io/agl-site-preview/)
+- **Symptom:** all three "Book a private call" CTAs — the page's PRIMARY conversion event — were `href="#"` with no JS wiring (home guide card + report nav + report close). Clicking did nothing. Both prior gates and human review missed it: the geometry gate doesn't click, and humans assume a styled button works. Plus the 3 proof counters shipped `0` in markup (anim-dependent — LED-015 class).
+- **How it was caught:** the new `cta-dead-anchor` behavioral probe fired 3× on its first gold run — the checks earned their keep before the session ended.
+- **Fix (applied 2026-07-08):** report-view CTAs → `href="#talk" data-open-home` + the delegated handler now scrolls to the link's hash target after the view switch; guide-card CTA → declared `data-verify="booking-url"` pending endpoint (the real booking URL is a client detail Chris must supply — P1 until wired, per [VERIFY] discipline); counters ship final values in markup (`725,000` / `9,400` / `18,000`), JS zeroes + animates on top.
+- **⚠️ OPEN ACTION (Chris):** (1) supply the real booking URL (Calendly/SavvyCal/mailto) for the guide-card CTA; (2) the LIVE deployed copy in `caebaby/agl-site-preview` still has all three dead CTAs — redeploy from this repaired gold when the booking URL lands.
+- **The lesson:** the gold exemplar is not exempt from the gate. Every new check runs against gold immediately — "gold" means gate-clean TODAY, not blessed forever.
+- **Status:** ✅ fixed in repo gold; live redeploy blocked on the booking URL.
