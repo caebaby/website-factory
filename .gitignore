@@ -1,0 +1,6 @@
+# run-pipeline work artifacts (the repaired work file is promoted to a real
+# name deliberately when it becomes a deliverable; raw work files stay local)
+*.pipeline.html
+*.pipeline-shots/
+.DS_Store
+*.episode.json

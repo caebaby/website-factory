@@ -1,0 +1,67 @@
+{
+  "comment": "The replay corpus (qa/replay.js). Pins the golden build's scores and every known defect the fixtures + bench candidates exist to prove. Re-pin ONLY consciously, in the same commit as the change that moves a pin, with a LEDGER entry. Pinned 2026-07-08 after LED-014/015/016 checks + LED-018 gold repair.",
+  "cases": [
+    {
+      "name": "gold-agl-v9",
+      "file": "projects/agl/v9/agl-site.html",
+      "expect": {
+        "maxP0": 0,
+        "maxP1": 6,
+        "maxP2": 0,
+        "mustFire": ["cta-pending-endpoint"],
+        "mustNotFire": ["cta-dead-anchor", "counter-stuck-at-zero", "counter-anim-dependent", "build-note-phrase", "opacity-invisible", "viewport-overflow", "collapsed-height"]
+      },
+      "commentP1": "6 = 5x opacity-anim-dependent (hero reveal class, fix queued since LED-015) + 1x declared booking-url pending endpoint (LED-018, waiting on Chris)"
+    },
+    {
+      "name": "bench-sonnet-oneshot",
+      "file": "benchmarks/model-bench/runs/candidate-sonnet-final.html",
+      "expect": {
+        "exactP0": 1,
+        "mustFire": ["cta-dead-anchor:bare-hash", "counter-anim-dependent"],
+        "mustNotFire": ["build-note-phrase"]
+      }
+    },
+    {
+      "name": "bench-fugu-oneshot",
+      "file": "benchmarks/model-bench/runs/candidate-fugu-final.html",
+      "expect": {
+        "exactP0": 0,
+        "mustFire": ["build-note-phrase"],
+        "mustNotFire": ["cta-dead-anchor", "counter-anim-dependent", "counter-stuck-at-zero"]
+      }
+    },
+    {
+      "name": "fixture-led013",
+      "file": "qa/fixtures/led013-broken.html",
+      "expect": {
+        "minP0": 1,
+        "mustFire": ["opacity-invisible", "opacity-anim-dependent"]
+      }
+    },
+    {
+      "name": "fixture-led014",
+      "file": "qa/fixtures/led014-broken.html",
+      "expect": {
+        "exactP0": 3,
+        "mustFire": ["cta-dead-anchor:bare-hash", "cta-dead-anchor:missing-target", "cta-dead-anchor:self-anchor", "cta-pending-endpoint"]
+      }
+    },
+    {
+      "name": "fixture-led015",
+      "file": "qa/fixtures/led015-broken.html",
+      "expect": {
+        "exactP0": 1,
+        "mustFire": ["counter-stuck-at-zero", "counter-anim-dependent"]
+      }
+    },
+    {
+      "name": "fixture-led016",
+      "file": "qa/fixtures/led016-broken.html",
+      "expect": {
+        "exactP0": 0,
+        "mustFire": ["build-note-phrase"]
+      }
+    }
+  ]
+}
