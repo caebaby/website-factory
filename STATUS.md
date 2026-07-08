@@ -1,5 +1,27 @@
 # Website Factory — Status
-Last updated: 2026-07-02 (FABLE SESSION, day 2 — the factory became a real PIPELINE and Anchor's homepage is mid-flight through it. Read "WHERE WE ARE NOW" below first; everything under it is history.)
+Last updated: 2026-07-08 (FABLE SESSION — AGL v9 gold build landed + cross-model benchmark added. See the 2026-07-08 block, then "WHERE WE ARE NOW (2026-07-02)".)
+
+---
+
+## ▶ 2026-07-08 — AGL v9 + Model Bench (branch `feature/agl-v9-and-model-bench`)
+
+- **`projects/agl/v9/agl-site.html` = shipped AGL marketing site** (built in an agent-flows
+  session before rediscovering this repo; live at https://caebaby.github.io/agl-site-preview/,
+  public repo `agl-site-preview`). Single self-contained file, two screens (home + Transition
+  Readiness Report), full motion system (parallax hero, IO reveals, counters, flow bars,
+  constellation canvas, reduced-motion gated). Chris-approved. This is the current quality gold.
+- **`projects/agl/v9/DESIGN_SYSTEM.md`** = AGL's design language as a rule-ID rulebook (R1–R30),
+  incl. the three-brand-language split (AGL web v9 / AGL print packet / Axiom docs).
+- **`benchmarks/model-bench/`** = the model-agnostic claim, made testable: one-paste `packet.txt`
+  (brief + rulebook + v8 source + asset-token contract) → run any model → `build.py` injects
+  assets → score with `CRITIC-PORTABLE.md` + `qa/run-checks.js`. First candidates queued:
+  fugu-ultra, GLM. Results table in its README.
+- **Duplication note:** that agent-flows session also drafted PIPELINE/BRAND-KIT/BLUEPRINTS/
+  COMPONENTS docs (`agent-flows:docs/web-factory/`, branch `feature/agl-site-v9`) which largely
+  parallel this repo's existing system (intake, SECTION_MANIFEST skeleton, catalog, ASSEMBLY).
+  Deltas worth folding in later: brand-kit "visual world + signature motif + assets manifest"
+  schema; v9 component harvest (18 named variants). Canonical home = THIS repo; agent-flows
+  copies are historical.
 
 ---
 
