@@ -1,5 +1,5 @@
 # Website Factory — Status
-Last updated: 2026-07-08 (FABLE SESSION — AGL v9 gold build landed + cross-model benchmark added. See the 2026-07-08 block, then "WHERE WE ARE NOW (2026-07-02)".)
+Last updated: 2026-07-08 (FABLE SESSION, evening — catalog v3 merged: 71 entries, anti-stamp architecture, palettes blessed. Read: FINISH LINE → CHERNY AUDIT → the 07-08 blocks. Factory build session queued: QA checks + run-pipeline w/ metrics + bench regression gate.)
 
 ---
 
@@ -34,6 +34,32 @@ Humans compress to two 1-minute gates: direction-brief approve + pre-ship.
 
 Why we believe the low-HITL claim: bench round 1 — two models one-shot to ~85% of gold with
 near-disjoint failure modes; the gate+critic+repair loop covers the space no single model does.
+
+## ▶ THE CHERNY AUDIT (2026-07-08) — build it like the Claude Code team would
+
+Scorecard of the five principles against this system, and the adoption order:
+
+| Principle | Status |
+|---|---|
+| Bench as regression suite (doc/prompt changes must not lower golden-build scores) | QUEUED — factory-session step 3 |
+| One command + brutal dogfood (`run-pipeline`, then real clients immediately) | QUEUED — factory-session steps 1–2, then AGL pilot |
+| Cut the doc surface in half (~14 process/spec docs is sprawl; sprawl caused LED-003) | OPEN |
+| Instrument the metric: human-minutes per shipped banger (+ repair iterations, tokens, wall-clock) | OPEN — must land WITH run-pipeline |
+| Durable vs disposable scaffolding (moats appreciate: ledger/registry/catalog/palettes/gold builds/evals; choreography sheds each model generation) | OPEN — falls out of the usage audit |
+
+**Adoption sequence:**
+1. `run-pipeline` ships WITH metrics from day one: log per-build to BUILD_REGISTRY — repair
+   iterations, tokens spent, wall-clock, human touches (approvals + corrections). Retrofitting
+   instrumentation after ten builds = ten builds of lost data.
+2. Doc consolidation happens AFTER the AGL pilot, empirically: log which docs each agent
+   actually reads/cites during a real build, then merge or delete everything untouched.
+   Consolidate with evidence, not taste. Prediction: PROCESS + PRINT_SPEC + ASSEMBLY survive
+   as the trunk; half the rest folds in.
+3. The durable/disposable sort falls out of the same usage audit; re-run it each model
+   generation and shed more scaffolding. The system should get SIMPLER as it gets better —
+   that's the tell it's built right.
+
+---
 
 ## ▶ 2026-07-08 — AGL v9 + Model Bench (branch `feature/agl-v9-and-model-bench`)
 
