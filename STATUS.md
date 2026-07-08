@@ -3,6 +3,29 @@ Last updated: 2026-07-08 (FABLE SESSION — AGL v9 gold build landed + cross-mod
 
 ---
 
+## ▶ THE FINISH LINE (Chris, 2026-07-08): "custom bangers, one after another, minimal HITL"
+
+Business context: outbound is scaling and getting replies — the factory + AGL site are the
+conversion surface. Telegram trigger PARKED (build the pipeline, the trigger is trivial after).
+Humans compress to two 1-minute gates: direction-brief approve + pre-ship.
+
+**The 5 remaining builds, in order:**
+1. Implement bench round-1 checks in `qa/visual-checks.js`: `cta-dead-anchor` (P0),
+   `counter-stuck-at-zero` (P0), build-note-phrase scan (P1). (LED-014/015/016)
+2. **`run-pipeline <slug>` — the headless repair loop as one command** (highest leverage:
+   converts one-shot FIX verdicts into PASS with zero humans). Acceptance test: feed the two
+   bench candidates (runs/candidate-sonnet.html, runs/candidate-fugu.html) through it → PASS.
+3. Claims-verification agent pass ([VERIFY] discipline enforced — every factual claim traces
+   to intake/research or flags). The accuracy gate Chris asked for.
+4. Pattern pool depth: harvest AGL v9's 18 components into the catalog + Chris's pending
+   keep/kill pass on the 31 patterns → 4–6 options per section job.
+5. **AGL = pilot client #1 through the full pipeline.** Chris's v9 change list becomes
+   INTAKE.md; the live data-backed assessment (spec in agent-flows, Track B) is AGL's
+   signature moment. Finishing the system and finishing the AGL site are the same workstream.
+
+Why we believe the low-HITL claim: bench round 1 — two models one-shot to ~85% of gold with
+near-disjoint failure modes; the gate+critic+repair loop covers the space no single model does.
+
 ## ▶ 2026-07-08 — AGL v9 + Model Bench (branch `feature/agl-v9-and-model-bench`)
 
 - **`projects/agl/v9/agl-site.html` = shipped AGL marketing site** (built in an agent-flows
