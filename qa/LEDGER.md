@@ -179,3 +179,37 @@ Append-only. Each entry: what broke, why, how it was caught, and what permanent 
 - **Fix:** correct pattern (Kindred-proven): base = `.stagger>*{opacity:0}`; ALL of `{opacity:1; animation}` lives under `.stagger.in>*`. After animation ends, backwards-fill reverts to the `.in` base = visible.
 - **Permanent artifacts:** (a) the pattern rule → packs already carry the correct snippet; briefs must forbid restructuring the reveal-gating (elevation passes included). (b) ✅ DONE (2026-07-02): `window.__opacityCensus()` in `qa/visual-checks.js`, wired into `run-checks.js` as the LAST step (it mutates the page: `animation:none!important` — NOT duration:0, fill states must die — then `.in` forced on every element, then census computed `opacity<0.05` on content-holding, ≥4px, normal-flow elements; `position:fixed/absolute` skipped — overlays/carousel decks are legitimately hidden at rest). Two codes: **P0 `opacity-invisible`** (no animation attached — nothing can ever reveal it) and **P1 `opacity-anim-dependent`** (forwards/both-fill load animation — visible only if it runs, LED-011 rAF risk; the "48th element" class below, now surfaced instead of hand-waved). Proven on `qa/fixtures/led013-broken.html`: broken stagger = 3 P0 + exit 1; correct Kindred-pattern grid clean; forwards hero = P1. `home-v3.html` re-gated clean (exit 0). (c) Throttled-tab verification CANNOT validate reveal systems — use the neutralize-and-census technique (now automated).
 - **Status:** ✅ fixed + checker shipped. Fully closed.
+
+### LED-014 — Dead primary CTA / unreachable second screen (P0-class, conversion)
+- **Build:** model-bench claude-sonnet-5 one-shot (2026-07-08)
+- **Symptom:** "Start the assessment" (the page's MQL event) linked to `#assess` — the section it sits in. The report screen was reachable only by hand-typing the URL hash; the view-switch never scrolled to top.
+- **Root cause:** one-shot builder wired visuals, not interactions; nothing in the gate exercises clicks.
+- **Caught by:** rendered review + JS probe (bench). Escaped the deterministic gate entirely — it checks geometry, not wiring.
+- **Permanent artifact (pending implementation):**
+  - Check → `qa/visual-checks.js` `cta-dead-anchor` (P0): any `.btn`/primary CTA whose href resolves to its own containing section, a missing id, or `#`.
+  - Check → `conversion-path-smoke` (P0): programmatically invoke each primary CTA; assert a state change (navigation, view switch, or form focus).
+  - Rule → DESIGN_SYSTEM R34 (interaction wiring is part of "done").
+- **Status:** ⏳ checks not yet written; rule added 2026-07-08.
+
+### LED-015 — Animated stat renders 0 on an entry path (P0-class, trust)
+- **Build:** model-bench claude-sonnet-5 (2026-07-08)
+- **Symptom:** report's "match confidence" stat (data-count-to=93) rendered **0%** when the report was opened via URL hash — the counter only ran on the button-driven view switch.
+- **Root cause:** count-up wired to one entry path; hash entry skipped it.
+- **Caught by:** rendered review (bench).
+- **Permanent artifact (pending):** check → `counter-stuck-at-zero` (P0): after freezing animations to end-state, any `[data-count-to]`-style element whose rendered text is still 0/empty. Note: the gold build's 5×P1 `opacity-anim-dependent` warnings are the same class (state depends on an animation actually running) — fix queued for gold.
+- **Status:** ⏳ check not yet written; rule R34 covers.
+
+### LED-016 — Internal build-notes leaked into public copy (P1-class, taste/trust)
+- **Build:** model-bench fugu-ultra one-shot (2026-07-08)
+- **Symptom:** marketing page showed implementation caveats as visible copy: "*Fictional interface value for this demo; replace with live public-filing query before launch*", "Ticker … public page must be wired to verified aggregate queries", report sub-head "This screen demonstrates the assessment result experience."
+- **Root cause:** the model's compliance instinct expressed itself as dev-notes instead of reader-facing labels; the packet never distinguished the two registers.
+- **Caught by:** rendered review (bench).
+- **Permanent artifact:** Rule → DESIGN_SYSTEM R32 (compliance labels are reader-facing words like "Illustrative — from public filings"; never dev-notes, never self-describing demo-speak). Critic checklist item added. A cheap check is possible (`grep` for "replace with|must be wired|this demo|this screen demonstrates" class of phrases) — pending.
+- **Status:** rule added 2026-07-08; check pending.
+
+### LED-017 — Charts with zero information content (P1-class, craft)
+- **Build:** model-bench fugu-ultra (2026-07-08)
+- **Symptom:** "What you may be worth" range bars rendered as EMPTY grey tracks labeled only "Illustrative" ×3 — no endpoints, no fill, no comparative fact. Net-flow card: three thin bars labeled Inflow/Mixed/Selective — a chart-shaped object carrying one word of information.
+- **Root cause:** over-compliance + no minimum-information standard for data viz.
+- **Permanent artifact:** Rule → DESIGN_SYSTEM R33 (every chart encodes ≥1 comparative, labeled fact; range charts show numeric endpoints; if the honest content is one word, use a sentence, not a chart).
+- **Status:** rule added 2026-07-08.

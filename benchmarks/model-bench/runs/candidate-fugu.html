@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data:; font-src data:; style-src 'unsafe-inline'; script-src 'unsafe-inline'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; object-src 'none'">
+<title>Advisor Growth Lab — Private Transition Intelligence</title>
+<style>
+@font-face{font-family:'Schibsted Grotesk';font-style:normal;font-weight:400 900;font-display:swap;src:url(data:font/woff2;base64,[[FONT_SCHIBSTED]]) format('woff2');}
+@font-face{font-family:'Newsreader';font-style:italic;font-weight:400;font-display:swap;src:url(data:font/woff2;base64,[[FONT_NEWSREADER]]) format('woff2');}
+.herobg{background-image:url(data:image/jpeg;base64,[[IMG_HERO]])}
+:root{
+  color-scheme:light;
+  --acc:#4338CA;--acc-hover:#3730A3;--acc-soft:rgba(67,56,202,.09);--acc-line:rgba(67,56,202,.26);
+  --ink:#0F172A;--body:#334155;--muted:#69768C;--faint:#8A96A8;
+  --white:#FFFFFF;--grey:#F1F4F9;--grey-2:#E4E9F1;--line:rgba(15,23,42,.10);--line-soft:rgba(15,23,42,.06);
+  --deep-1:#0B0F28;--deep-2:#171E48;--deep-3:#202A67;--on-deep:#E9ECF9;--on-deep-soft:rgba(233,236,249,.72);--peri:#A5B4FC;--gold:#F2C782;
+  --shadow-sm:0 1px 2px rgba(15,23,42,.05),0 8px 18px -18px rgba(15,23,42,.22);
+  --shadow-md:0 1px 2px rgba(15,23,42,.05),0 14px 32px -24px rgba(15,23,42,.28),0 28px 72px -48px rgba(15,23,42,.20);
+  --shadow-lg:0 1px 2px rgba(15,23,42,.06),0 22px 44px -26px rgba(15,23,42,.30),0 54px 110px -70px rgba(15,23,42,.36);
+  --curve:cubic-bezier(.21,.86,.36,1);--curve-soft:cubic-bezier(.45,0,.55,1);
+  --sans:'Schibsted Grotesk',ui-sans-serif,system-ui,sans-serif;--serif:'Newsreader',Georgia,serif;--maxw:1180px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;background:var(--grey)}
+body{margin:0;background:var(--grey);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.56;font-weight:430;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+body.no-scroll{overflow:hidden}
+::selection{background:var(--acc);color:#fff}
+a{color:inherit;text-decoration:none}button,input{font:inherit}button{cursor:pointer}svg{display:block}img{max-width:100%}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:8px}
+[hidden]{display:none!important}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}.narrow{max-width:760px}.measure{max-width:65ch}.serif-i{font-family:var(--serif);font-style:italic;font-weight:400}.num{font-variant-numeric:tabular-nums}.accent{color:var(--acc)}
+.eyebrow{display:block;font-size:11.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--acc);margin-bottom:14px}.eyebrow--deep{color:var(--peri)}
+h1,h2,h3,p{margin-top:0}h1,h2,h3{font-weight:650;letter-spacing:-.03em;line-height:1.05;text-wrap:balance}h2{font-size:clamp(32px,4vw,48px)}h3{font-size:clamp(22px,2vw,28px)}p{color:var(--body)}
+.btn{--btn-bg:var(--white);--btn-fg:var(--ink);--btn-bd:transparent;position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:.55em;min-height:46px;padding:14px 22px;border-radius:10px;border:1px solid var(--btn-bd);background:var(--btn-bg);color:var(--btn-fg);font-weight:680;font-size:15px;line-height:1;letter-spacing:-.01em;box-shadow:var(--shadow-sm);transition:transform .28s var(--curve),box-shadow .28s var(--curve),background-color .28s var(--curve),border-color .28s var(--curve),color .28s var(--curve)}
+.btn::after{content:"";position:absolute;inset:-45% -80%;background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.34) 49%,transparent 60%);transform:translate3d(-46%,0,0) rotate(8deg);transition:transform .58s var(--curve);pointer-events:none}.btn:hover{transform:translate3d(0,-2px,0);box-shadow:var(--shadow-md)}.btn:hover::after{transform:translate3d(46%,0,0) rotate(8deg)}.btn svg{width:16px;height:16px;transition:transform .28s var(--curve)}.btn:hover svg.arr{transform:translate3d(4px,0,0)}
+.btn--primary{--btn-bg:var(--acc);--btn-fg:#fff;box-shadow:0 1px 2px rgba(15,23,42,.08),0 16px 34px -18px rgba(67,56,202,.58),0 32px 82px -54px rgba(67,56,202,.55)}.btn--primary:hover{--btn-bg:var(--acc-hover)}
+.btn--line{--btn-bg:var(--white);--btn-fg:var(--ink);--btn-bd:var(--line)}.btn--line:hover{--btn-fg:var(--acc);--btn-bd:var(--acc-line)}.btn--lg{min-height:52px;padding:16px 26px;font-size:16px}.btn--sm{min-height:40px;padding:11px 16px;font-size:14px}
+.glass{position:relative;overflow:hidden;background:rgba(255,255,255,.12);backdrop-filter:blur(14px) saturate(1.32);-webkit-backdrop-filter:blur(14px) saturate(1.32);border:1px solid rgba(255,255,255,.26);box-shadow:inset 0 1px 0 rgba(255,255,255,.34),inset 0 -1px 0 rgba(255,255,255,.08),0 24px 58px -42px rgba(0,0,0,.48)}.glass::after{content:"";position:absolute;inset:-30% -70%;background:linear-gradient(102deg,transparent 36%,rgba(255,255,255,.20) 50%,transparent 64%);transform:translate3d(-52%,0,0) rotate(7deg);transition:transform .62s var(--curve);pointer-events:none}.glass:hover::after,.glass:focus-within::after{transform:translate3d(52%,0,0) rotate(7deg)}
+.btn--glass{--btn-bg:rgba(255,255,255,.12);--btn-fg:#fff;--btn-bd:rgba(255,255,255,.30);backdrop-filter:blur(14px) saturate(1.32);-webkit-backdrop-filter:blur(14px) saturate(1.32);box-shadow:inset 0 1px 0 rgba(255,255,255,.34),0 20px 50px -38px rgba(0,0,0,.48)}.btn--glass:hover{--btn-bg:rgba(255,255,255,.19)}
+.reveal{opacity:1;transform:none;filter:none}.js .reveal{opacity:0;transform:translate3d(0,18px,0);filter:blur(7px);transition:opacity .82s var(--curve),transform .82s var(--curve),filter .82s var(--curve)}.js .reveal.is-in{opacity:1;transform:none;filter:blur(0)}.stagger > *{transition-delay:calc(var(--i,0) * 105ms)}
+/* Navigation */
+.nav{position:sticky;top:0;z-index:80;border-bottom:1px solid transparent;background:transparent;transition:background-color .28s var(--curve),border-color .28s var(--curve),box-shadow .28s var(--curve),backdrop-filter .28s var(--curve)}
+.nav.is-scrolled,.report-nav{background:rgba(255,255,255,.84);backdrop-filter:blur(18px) saturate(1.24);-webkit-backdrop-filter:blur(18px) saturate(1.24);border-color:var(--line-soft);box-shadow:0 1px 2px rgba(15,23,42,.04),0 16px 44px -34px rgba(15,23,42,.28)}
+.nav__in{max-width:var(--maxw);margin:0 auto;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;gap:22px}.brand{display:inline-flex;align-items:center;gap:10px;font-weight:720;letter-spacing:-.025em}.brand__mark{width:31px;height:31px;border-radius:9px;display:grid;place-items:center;background:linear-gradient(150deg,var(--acc),var(--acc-hover));box-shadow:0 10px 24px -14px rgba(67,56,202,.66)}.brand__name{font-size:15.5px;color:#fff;text-shadow:0 1px 18px rgba(0,0,0,.22)}.nav.is-scrolled .brand__name,.report-nav .brand__name{color:var(--ink);text-shadow:none}.navlinks{display:flex;align-items:center;gap:28px}.navlinks a{font-size:14px;font-weight:620;color:rgba(255,255,255,.84);transition:color .22s var(--curve),transform .22s var(--curve)}.navlinks a:hover{color:#fff;transform:translate3d(0,-1px,0)}.nav.is-scrolled .navlinks a{color:var(--body)}.nav.is-scrolled .navlinks a:hover{color:var(--ink)}.mobile-menu{display:none;color:#fff;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.26);border-radius:10px;min-width:44px;min-height:44px;place-items:center}.nav.is-scrolled .mobile-menu{color:var(--ink);background:#fff;border-color:var(--line)}
+/* Hero */
+.hero{position:relative;margin-top:-73px;min-height:96vh;display:grid;place-items:center;text-align:center;overflow:hidden;background:var(--deep-1);isolation:isolate}.hero__bg{position:absolute;inset:-3%;background-size:cover;background-position:center 53%;transform:translate3d(0,var(--hero-y,0px),0) scale(1.06);will-change:transform}.hero__scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,15,40,.70) 0%,rgba(11,15,40,.30) 30%,rgba(11,15,40,.24) 53%,rgba(11,15,40,.82) 100%),radial-gradient(70% 46% at 50% 52%,rgba(255,255,255,.10),transparent 62%)}.hero__grain{position:absolute;inset:0;opacity:.36;background-image:radial-gradient(rgba(255,255,255,.08) .7px,transparent .9px);background-size:4px 4px;mix-blend-mode:overlay}.hero__sun{position:absolute;left:48%;top:53%;width:min(760px,70vw);height:min(760px,70vw);transform:translate3d(-50%,-50%,0) scale(1);background:radial-gradient(circle,rgba(242,199,130,.44),rgba(242,199,130,.15) 35%,transparent 64%);mix-blend-mode:screen;pointer-events:none}.hero__drift{position:absolute;inset:-18% -28%;background:radial-gradient(34% 40% at 18% 40%,rgba(255,255,255,.12),transparent 64%),radial-gradient(30% 42% at 82% 34%,rgba(165,180,252,.12),transparent 62%),radial-gradient(34% 38% at 49% 67%,rgba(242,199,130,.12),transparent 64%);mix-blend-mode:screen;pointer-events:none;transform:translate3d(var(--drift-x,0px),0,0)}.hero__canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.62;mix-blend-mode:screen;pointer-events:none}.hero__in{position:relative;z-index:2;width:100%;max-width:920px;padding:136px 24px 84px}.audience{display:inline-grid;grid-template-columns:1fr 1fr;gap:5px;padding:5px;border-radius:16px;margin-bottom:28px}.audience button{position:relative;z-index:1;border:0;border-radius:11px;background:transparent;color:rgba(255,255,255,.76);font-weight:720;font-size:14px;min-height:42px;padding:0 18px;transition:color .28s var(--curve),background-color .28s var(--curve),transform .28s var(--curve),box-shadow .28s var(--curve)}.audience button:hover{transform:translate3d(0,-1px,0);color:#fff}.audience button[aria-selected="true"]{background:rgba(255,255,255,.92);color:var(--ink);box-shadow:inset 0 1px 0 rgba(255,255,255,.70),0 10px 22px -16px rgba(0,0,0,.55)}.hvar{transition:opacity .42s var(--curve),transform .42s var(--curve),filter .42s var(--curve)}.hchip{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:8px 14px;color:#fff;font-size:12.5px;font-weight:720;letter-spacing:.01em}.hchip svg{width:13px;height:13px}.hero h1{margin:22px auto 0;color:#fff;font-size:clamp(44px,6.5vw,76px);max-width:12ch;text-shadow:0 2px 44px rgba(4,7,24,.46)}.hero h1 .serif-i{color:#CED6FF}.hero__sub{max-width:49ch;margin:20px auto 0;color:rgba(255,255,255,.89);font-size:clamp(18px,2vw,21px);line-height:1.5;text-shadow:0 1px 22px rgba(4,7,24,.48)}.hero__cta{display:flex;justify-content:center;gap:13px;flex-wrap:wrap;margin-top:34px}.hero__proof{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:42px auto 0;max-width:820px;text-align:left}.proof-tile{padding:16px 17px;border-radius:14px;color:#fff}.proof-tile b{display:block;font-size:20px;letter-spacing:-.025em;font-weight:720;font-variant-numeric:tabular-nums}.proof-tile span{display:block;margin-top:4px;color:rgba(255,255,255,.76);font-size:12px;font-weight:650;line-height:1.35;text-transform:uppercase;letter-spacing:.08em}.hero__scroll{position:absolute;left:50%;bottom:24px;z-index:3;transform:translate3d(-50%,0,0);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,.62);font-size:11px;font-weight:720;letter-spacing:.14em;text-transform:uppercase}.hero__scroll svg{width:16px;height:16px}
+/* Sections */
+.sec{position:relative;padding:104px 0}.sec--white{background:radial-gradient(80% 70% at 86% 0%,rgba(67,56,202,.04),transparent 58%),var(--white)}.sec--grey{background:radial-gradient(68% 60% at 12% 10%,rgba(67,56,202,.045),transparent 58%),var(--grey)}.split{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}.lead p{font-size:17px;line-height:1.62;max-width:50ch}.ruled{border-top:1px solid var(--line)}.rule-row{display:grid;grid-template-columns:auto 1fr;gap:22px;padding:26px 0;border-bottom:1px solid var(--line)}.rule-row h3{margin:0 0 8px;font-size:21px}.rule-row p{margin:0;font-size:15.8px;line-height:1.58;max-width:58ch}.duo-icon{width:48px;height:48px;flex:none}.duo-icon svg{width:48px;height:48px}.quote-panel{border-left:2px solid var(--acc);padding:2px 0 2px 22px;margin-top:28px}.quote-panel p{font-size:20px;line-height:1.42;letter-spacing:-.02em;color:var(--ink);max-width:35ch}.quote-panel span{display:block;margin-top:10px;color:var(--muted);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.10em}
+/* Intelligence */
+.intel{position:relative;overflow:hidden;color:var(--on-deep);background:radial-gradient(64% 82% at 12% 5%,rgba(67,56,202,.42),transparent 58%),radial-gradient(55% 60% at 86% 92%,rgba(242,199,130,.12),transparent 64%),linear-gradient(155deg,var(--deep-1),var(--deep-2));isolation:isolate}.intel::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(110% 90% at 80% 10%,#000,transparent 65%);opacity:.78;pointer-events:none}.intel__canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.9;pointer-events:none}.intel__in{position:relative;z-index:1;display:grid;grid-template-columns:.78fr 1.22fr;gap:44px;align-items:center;padding:110px 0}.intel h2{color:#F5F6FF}.intel h2 .serif-i{color:var(--peri)}.intel p{color:var(--on-deep-soft)}.intel .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}.chip{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(165,180,252,.28);background:rgba(165,180,252,.07);border-radius:999px;color:#C8D0FF;font-size:13px;font-weight:700;padding:9px 14px}.chip i{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(242,199,130,.12)}.intel-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.intel-card{border-radius:16px;border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.065);backdrop-filter:blur(20px) saturate(1.18);-webkit-backdrop-filter:blur(20px) saturate(1.18);box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 36px 82px -58px rgba(0,0,0,.68);padding:18px}.intel-card--wide{grid-column:1/-1}.statline{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.statline b{display:block;color:#fff;font-size:clamp(28px,4vw,42px);line-height:1;letter-spacing:-.04em;font-weight:720;font-variant-numeric:tabular-nums}.statline span{display:block;margin-top:6px;color:rgba(233,236,249,.67);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.10em}.source-note{margin-top:12px!important;color:rgba(233,236,249,.60)!important;font-size:12px!important;line-height:1.45!important}.ticker{position:relative;overflow:hidden;margin-top:16px;border-radius:11px;border:1px solid rgba(255,255,255,.10);background:rgba(0,0,0,.12);white-space:nowrap}.ticker__track{display:inline-flex;gap:14px;padding:11px 14px;will-change:transform}.tick{display:inline-flex;align-items:center;gap:8px;color:rgba(233,236,249,.84);font-size:12.5px;font-weight:650}.tick::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold);opacity:.9}.bar-list{display:grid;gap:12px;margin-top:12px}.bar-row{display:grid;grid-template-columns:98px 1fr 48px;gap:10px;align-items:center;font-size:12.5px;color:rgba(233,236,249,.78);font-weight:650}.bar-track{height:9px;border-radius:999px;background:rgba(255,255,255,.10);overflow:hidden}.bar-fill{display:block;width:100%;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--peri),rgba(242,199,130,.82));transform:scaleX(0);transform-origin:left center;transition:transform 1s var(--curve)}.is-in .bar-fill,.drawn .bar-fill{transform:scaleX(var(--scale,.7))}.chart-card svg{width:100%;height:160px;overflow:visible}.axis{font-size:10px;fill:rgba(233,236,249,.50);font-weight:650;letter-spacing:.02em}.chart-line{fill:none;stroke:var(--peri);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:700;stroke-dashoffset:700;transition:stroke-dashoffset 1.2s var(--curve)}.chart-area{fill:url(#dealGlow);opacity:.8}.is-in .chart-line,.drawn .chart-line{stroke-dashoffset:0}.chart-caption{display:flex;justify-content:space-between;gap:16px;margin-top:8px;color:rgba(233,236,249,.70);font-size:12px}.chart-caption b{color:#fff;font-weight:700}
+/* Help / process */
+.path-list{background:var(--white);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-lg);overflow:hidden}.path-row{display:grid;grid-template-columns:76px 1fr;gap:0;border-bottom:1px solid var(--line-soft)}.path-row:last-child{border-bottom:0}.path-num{display:flex;align-items:flex-start;justify-content:center;padding-top:26px;color:var(--acc);font-size:13px;font-weight:800;letter-spacing:.12em}.path-copy{padding:24px 28px 24px 0}.path-copy h3{font-size:20px;margin:0 0 8px}.path-copy p{margin:0;font-size:15.8px;line-height:1.58}.soft-callout{margin-top:26px;border:1px solid var(--acc-line);background:var(--acc-soft);border-radius:14px;padding:18px 20px;color:var(--body);font-size:15px;line-height:1.55}.soft-callout b{color:var(--ink)}
+/* Assessment */
+.assessment-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:58px;align-items:center}.assessment-points{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:28px 0}.mini-stat{border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.68);padding:14px 15px;box-shadow:var(--shadow-sm)}.mini-stat b{display:block;color:var(--acc);font-size:22px;font-weight:720;letter-spacing:-.03em}.mini-stat span{display:block;margin-top:2px;color:var(--muted);font-size:11px;font-weight:750;letter-spacing:.09em;text-transform:uppercase}.report-preview{position:relative;background:var(--white);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-lg);overflow:hidden}.preview-top{padding:22px 24px;border-bottom:1px solid var(--line-soft);background:radial-gradient(80% 90% at 100% 0%,rgba(67,56,202,.10),transparent 60%),#fff;display:flex;align-items:center;justify-content:space-between;gap:14px}.preview-top b{font-size:13px;font-weight:800;letter-spacing:.10em;text-transform:uppercase;color:var(--muted)}.match-pill{display:inline-flex;align-items:center;gap:7px;border-radius:999px;background:rgba(67,56,202,.08);color:var(--acc);font-size:12px;font-weight:760;padding:8px 11px}.match-pill i{width:7px;height:7px;border-radius:50%;background:var(--acc)}.prefill{padding:22px 24px 4px}.prefill h3{font-size:24px;margin:0 0 6px}.prefill p{margin:0;color:var(--body);font-size:15.5px}.record-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:18px 24px}.record-field{border:1px solid var(--line-soft);border-radius:12px;background:var(--grey);padding:13px 14px}.record-field span{display:block;color:var(--muted);font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.10em}.record-field b{display:block;margin-top:4px;font-size:15px;letter-spacing:-.01em}.report-sections{padding:0 24px 24px}.report-line{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;padding:13px 0;border-top:1px solid var(--line-soft)}.report-line i{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:rgba(67,56,202,.08);color:var(--acc);font-size:12px;font-weight:800;font-style:normal}.report-line span{font-size:14.5px;font-weight:650}.report-line em{font-style:normal;color:var(--muted);font-size:12px;font-weight:650}.privacy-row{display:flex;align-items:center;gap:8px;margin-top:16px;color:var(--muted);font-size:13px;font-weight:650}.privacy-row svg{width:14px;height:14px;color:var(--acc)}
+/* Who */
+.who-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:start}.guide-card{background:var(--grey);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-md);padding:28px}.guide-head{display:flex;gap:16px;align-items:center}.guide-avatar{width:66px;height:66px;border-radius:16px;background:radial-gradient(circle at 34% 24%,rgba(242,199,130,.7),transparent 28%),linear-gradient(145deg,var(--acc),var(--acc-hover));display:grid;place-items:center;box-shadow:0 20px 38px -24px rgba(67,56,202,.56)}.guide-avatar svg{width:44px;height:44px}.guide-head b{display:block;font-size:18px;font-weight:720;letter-spacing:-.02em}.guide-head span{display:block;margin-top:3px;color:var(--acc);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.10em}.guide-quote{margin:24px 0 0;color:var(--ink);font-size:22px;line-height:1.38;letter-spacing:-.025em}.guide-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}.disclosure{margin-top:24px;padding:20px 22px;border:1px solid var(--acc-line);border-radius:14px;background:rgba(67,56,202,.055);color:var(--body);font-size:15px;line-height:1.58}.disclosure b{color:var(--ink)}
+/* Close + footer */
+.close{text-align:center}.close .wrap{max-width:760px}.close h2{font-size:clamp(34px,5vw,56px)}.close p{font-size:18px;max-width:48ch;margin:20px auto 34px}.foot{background:#fff;border-top:1px solid var(--line);padding:44px 0 38px}.foot__top{display:flex;justify-content:space-between;gap:38px;flex-wrap:wrap;padding-bottom:26px;border-bottom:1px solid var(--line-soft)}.foot__method{margin:14px 0 0;max-width:48ch;color:var(--muted);font-size:13.5px;line-height:1.5}.foot__links{display:flex;gap:24px;flex-wrap:wrap;align-items:center}.foot__links a{color:var(--body);font-size:14px;font-weight:650}.foot__links a:hover{color:var(--acc)}.foot__bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:22px}.foot__disc{max-width:76ch;color:var(--muted);font-size:12.5px;line-height:1.55}.foot__disc b{color:var(--body)}.foot__meta{color:var(--muted);font-size:12px}
+/* Report screen */
+.report-screen{background:var(--grey);min-height:100vh}.report-nav{position:sticky;top:0;z-index:70}.report-hero{padding:72px 0 38px;background:radial-gradient(80% 90% at 86% 0%,rgba(67,56,202,.10),transparent 60%),var(--grey)}.report-kicker{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(67,56,202,.20);border-radius:999px;background:#fff;color:var(--acc);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:8px 12px}.report-kicker i{width:7px;height:7px;border-radius:50%;background:var(--gold)}.report-hero h1{font-size:clamp(38px,5.4vw,66px);max-width:12ch;margin:18px 0 12px}.report-hero p{font-size:18px;max-width:61ch}.report-layout{display:grid;grid-template-columns:330px 1fr;gap:24px;align-items:start;padding:34px 0 90px}.profile-card,.result-card{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-md)}.profile-card{position:sticky;top:92px;padding:22px}.sample-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(242,199,130,.18);border:1px solid rgba(242,199,130,.42);border-radius:999px;color:#73521A;font-size:11px;font-weight:850;letter-spacing:.10em;text-transform:uppercase;padding:7px 10px}.profile-card h2{font-size:28px;margin:20px 0 8px}.profile-card p{font-size:14.5px;line-height:1.55}.identity-list{display:grid;gap:10px;margin:20px 0}.identity-list div{border-top:1px solid var(--line-soft);padding-top:10px}.identity-list span{display:block;color:var(--muted);font-size:10.5px;font-weight:850;letter-spacing:.10em;text-transform:uppercase}.identity-list b{display:block;margin-top:3px;font-size:14.5px}.gauge{position:relative;width:168px;height:168px;margin:20px auto;border-radius:50%;background:conic-gradient(var(--acc) calc(var(--score,82)*1%),var(--grey-2) 0);display:grid;place-items:center}.gauge::before{content:"";position:absolute;inset:13px;background:#fff;border-radius:50%;box-shadow:inset 0 1px 0 rgba(15,23,42,.08)}.gauge__in{position:relative;text-align:center}.gauge__in b{display:block;font-size:44px;line-height:1;letter-spacing:-.05em;font-weight:760;font-variant-numeric:tabular-nums}.gauge__in span{display:block;margin-top:5px;color:var(--muted);font-size:10.5px;font-weight:850;text-transform:uppercase;letter-spacing:.10em}.profile-card .btn{width:100%;margin-top:12px}.result-stack{display:grid;gap:18px}.result-card{padding:26px}.result-card h2{font-size:30px;margin:0 0 10px}.result-card>p{margin-bottom:20px;font-size:15.8px}.decoded-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.decode-box{border:1px solid var(--line);border-radius:14px;background:var(--grey);padding:16px}.decode-box span{display:block;color:var(--muted);font-size:11px;font-weight:850;letter-spacing:.10em;text-transform:uppercase}.decode-box b{display:block;margin-top:6px;font-size:20px;letter-spacing:-.025em}.range-chart{display:grid;gap:12px;margin-top:18px}.range-row{display:grid;grid-template-columns:150px 1fr 108px;gap:14px;align-items:center;font-size:13px;font-weight:700}.range-track{height:10px;border-radius:999px;background:var(--grey-2);overflow:hidden}.range-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--acc),rgba(67,56,202,.42));transform:scaleX(0);transform-origin:left center;transition:transform .95s var(--curve)}.is-in .range-fill,.drawn .range-fill{transform:scaleX(var(--scale,.75))}.peer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}.peer-tile{border:1px solid var(--line);border-radius:14px;padding:16px;background:#fff}.peer-tile b{display:block;color:var(--acc);font-size:28px;font-weight:760;letter-spacing:-.04em;font-variant-numeric:tabular-nums}.peer-tile span{display:block;color:var(--body);font-size:13.5px;line-height:1.38}.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.flow-step{position:relative;border:1px solid var(--line);border-radius:14px;background:var(--grey);padding:16px}.flow-step b{display:block;font-size:18px}.flow-step span{display:block;margin-top:6px;color:var(--body);font-size:13.5px;line-height:1.4}.readiness-list{display:grid;gap:12px}.readiness-item{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start}.readiness-item i{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:rgba(67,56,202,.09);color:var(--acc);font-style:normal;font-size:12px;font-weight:850}.readiness-item b{display:block}.readiness-item span{display:block;color:var(--body);font-size:14.5px;margin-top:3px}.fine-print{margin-top:18px;color:var(--muted)!important;font-size:12.5px!important;line-height:1.5!important}.report-cta{background:radial-gradient(80% 120% at 100% 0%,rgba(242,199,130,.15),transparent 60%),linear-gradient(155deg,var(--deep-1),var(--deep-2));color:var(--on-deep);border-color:rgba(255,255,255,.10)}.report-cta h2,.report-cta p{color:var(--on-deep)}.report-cta p{color:var(--on-deep-soft)}.report-cta .btn--line{--btn-bg:rgba(255,255,255,.10);--btn-fg:#fff;--btn-bd:rgba(255,255,255,.22);backdrop-filter:blur(12px) saturate(1.2);-webkit-backdrop-filter:blur(12px) saturate(1.2)}
+@media (prefers-reduced-motion:no-preference){
+  .hero__bg{animation:ken 34s var(--curve-soft) infinite alternate}.hero__sun{animation:sunGlow 8s var(--curve-soft) infinite}.hero__drift{animation:lightDrift 44s var(--curve-soft) infinite alternate}.hero__scroll svg{animation:scrollCue 2.8s var(--curve-soft) infinite}.ticker__track{animation:tickerMove 28s var(--curve-soft) infinite}.js .hero .reveal{transition-duration:.92s}.js .hero .r1{transition-delay:.05s}.js .hero .r2{transition-delay:.17s}.js .hero .r3{transition-delay:.29s}.js .hero .r4{transition-delay:.41s}.js .hero .r5{transition-delay:.53s}
+  @keyframes ken{0%{transform:translate3d(0,var(--hero-y,0px),0) scale(1.06)}100%{transform:translate3d(-1.4%,calc(var(--hero-y,0px) - 1%),0) scale(1.15)}}
+  @keyframes sunGlow{0%,100%{opacity:.58;filter:blur(0);transform:translate3d(-50%,-50%,0) scale(1)}50%{opacity:.92;filter:blur(2px);transform:translate3d(-50%,-50%,0) scale(1.13)}}
+  @keyframes lightDrift{0%{transform:translate3d(var(--drift-x,0px),0,0)}100%{transform:translate3d(calc(var(--drift-x,0px) + 8%),1.4%,0)}}
+  @keyframes scrollCue{0%,100%{transform:translate3d(0,0,0);opacity:.62}50%{transform:translate3d(0,5px,0);opacity:.9}}
+  @keyframes tickerMove{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(-50%,0,0)}}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition-duration:.01ms!important}.js .reveal{opacity:1!important;transform:none!important;filter:none!important}.bar-fill,.range-fill{transform:scaleX(var(--scale,.7))}.chart-line{stroke-dashoffset:0!important}.hero__bg{transform:scale(1.08)!important}.hero__canvas,.intel__canvas{opacity:.44}
+}
+@media (max-width:980px){.navlinks{display:none}.mobile-menu{display:grid}.nav__cta{display:none}.split,.intel__in,.assessment-grid,.who-grid,.report-layout{grid-template-columns:1fr;gap:34px}.intel-grid{grid-template-columns:1fr}.profile-card{position:relative;top:auto}.hero__proof{grid-template-columns:1fr}.decoded-grid,.peer-grid,.flow{grid-template-columns:1fr}}
+@media (max-width:680px){body{font-size:16px}.wrap,.nav__in{padding-left:20px;padding-right:20px}.sec{padding:72px 0}.hero{min-height:100svh}.hero__in{padding-top:118px}.hero__cta{flex-direction:column}.hero__cta .btn{width:100%}.audience{width:100%;max-width:360px}.audience button{padding:0 10px;font-size:13px}.rule-row{grid-template-columns:1fr;gap:12px}.path-row{grid-template-columns:52px 1fr}.path-copy{padding-right:18px}.assessment-points{grid-template-columns:1fr}.record-grid{grid-template-columns:1fr}.bar-row,.range-row{grid-template-columns:1fr;gap:7px}.chart-caption{display:block}.report-hero{padding-top:50px}.report-layout{padding-bottom:64px}.foot__top,.foot__bottom{display:block}.foot__links{margin-top:24px}.foot__meta{display:block;margin-top:16px}}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js');</script>
+<div id="homeScreen">
+  <header class="nav" id="nav">
+    <div class="nav__in">
+      <a class="brand" href="#top" aria-label="Advisor Growth Lab home">
+        <span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 18 18" fill="none"><path d="M3.2 12.6l4.2-5.1 3 3 4.4-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14.8" cy="4.5" r="1.7" fill="#fff"/></svg></span>
+        <span class="brand__name">Advisor Growth Lab</span>
+      </a>
+      <nav class="navlinks" aria-label="Primary navigation">
+        <a href="#problem">The problem</a><a href="#intelligence">Intelligence</a><a href="#assessment">Assessment</a><a href="#who">Who we are</a>
+      </nav>
+      <a class="btn btn--primary btn--sm nav__cta" href="#talk">Book a private call</a>
+      <button class="mobile-menu" type="button" aria-label="Open menu"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2.5 5h13M2.5 9h13M2.5 13h13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+    </div>
+  </header>
+  <span id="top"></span>
+  <main>
+    <section class="hero" aria-label="Advisor Growth Lab">
+      <div class="hero__bg herobg" aria-hidden="true"></div>
+      <canvas class="hero__canvas" id="heroConstellation" aria-hidden="true"></canvas>
+      <div class="hero__drift" aria-hidden="true"></div><div class="hero__sun" aria-hidden="true"></div><div class="hero__scrim" aria-hidden="true"></div><div class="hero__grain" aria-hidden="true"></div>
+      <div class="hero__in">
+        <div class="audience glass reveal r1" role="tablist" aria-label="Choose audience">
+          <button type="button" role="tab" aria-selected="true" data-audience="advisor">I&rsquo;m an advisor</button>
+          <button type="button" role="tab" aria-selected="false" data-audience="firm">I lead a firm</button>
+        </div>
+        <div class="hvar" data-variant="advisor">
+          <span class="hchip glass reveal r2"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><rect x="2.4" y="6.3" width="9.2" height="5.2" rx="1.2" stroke="currentColor" stroke-width="1.2"/><path d="M4.2 6.3V4.7a2.8 2.8 0 015.6 0v1.6" stroke="currentColor" stroke-width="1.2"/></svg>Private transition intelligence for advisors</span>
+          <h1 class="reveal r3">The whole board behind your <span class="serif-i">next move.</span></h1>
+          <p class="hero__sub reveal r4">Everyone wants to recruit you. AGL gives you a private, data-backed room to understand your options first — with an honest guide beside you and zero pressure to move.</p>
+          <div class="hero__cta reveal r5">
+            <a href="#talk" class="btn btn--primary btn--lg">Book a private call <svg class="arr" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a href="#assessment" class="btn btn--glass btn--lg">Take the assessment</a>
+          </div>
+        </div>
+        <div class="hvar" data-variant="firm" hidden>
+          <span class="hchip glass"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 11V6.4L7 3.2l4.5 3.2V11M5.1 11V7.8h3.8V11" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>Movement intelligence for firm leaders</span>
+          <h1>Know who is moving, <span class="serif-i">before they go.</span></h1>
+          <p class="hero__sub">AGL helps firms understand advisor movement patterns, retention risk, and recruiting fit from public registration data — with advisor-first disclosure built in.</p>
+          <div class="hero__cta">
+            <a href="#intelligence" class="btn btn--primary btn--lg">See the intelligence layer <svg class="arr" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a href="#who" class="btn btn--glass btn--lg">Request a briefing</a>
+          </div>
+        </div>
+        <div class="hero__proof stagger reveal r5" aria-label="Proof points">
+          <div class="proof-tile glass" style="--i:0"><b class="num count" data-target="725000" data-suffix="+">725,000+</b><span>U.S. advisor universe from public filings</span></div>
+          <div class="proof-tile glass" style="--i:1"><b>SEC / FINRA</b><span>Public registration and disclosure sources</span></div>
+          <div class="proof-tile glass" style="--i:2"><b>Private</b><span>Your assessment is not shared without consent</span></div>
+        </div>
+      </div>
+      <div class="hero__scroll" aria-hidden="true"><span>Scroll</span><svg viewBox="0 0 16 16" fill="none"><path d="M8 3v9M4 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </section>
+    <section class="sec sec--white" id="problem">
+      <div class="wrap split">
+        <div class="lead reveal">
+          <span class="eyebrow">The decision</span>
+          <h2>Recruiting calls create noise. Moving firms creates <span class="serif-i accent">risk.</span></h2>
+          <p>You are being told the grass is greener by people paid to say it. The hard part is not finding someone who wants your book. It is knowing whether a move improves your life, your economics, and your clients&rsquo; experience after the excitement wears off.</p>
+          <div class="quote-panel"><p>&ldquo;Before you take another recruiter call, know what your current position is actually worth.&rdquo;</p><span>AGL operating principle</span></div>
+        </div>
+        <div class="ruled stagger reveal">
+          <article class="rule-row" style="--i:0">
+            <span class="duo-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><path d="M10 15c5-6 14-6 19 0s5 18 13 18" stroke="#4338CA" stroke-width="2.2" stroke-linecap="round"/><path d="M9 34c8-9 16-9 25 0" stroke="#4338CA" stroke-width="2.2" stroke-linecap="round"/><circle cx="13" cy="15" r="5" fill="rgba(67,56,202,.16)"/><circle cx="35" cy="33" r="6" fill="rgba(67,56,202,.16)"/></svg></span>
+            <div><h3>The pitches blur together</h3><p>Wirehouse breakaway, independent broker-dealer, RIA platform, tuck-in, succession partner — every option is sold as freedom. The terms hide the tradeoffs.</p></div>
+          </article>
+          <article class="rule-row" style="--i:1">
+            <span class="duo-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><rect x="9" y="10" width="30" height="28" rx="5" fill="rgba(67,56,202,.16)"/><path d="M15 18h18M15 24h12M15 30h16" stroke="#4338CA" stroke-width="2.2" stroke-linecap="round"/><path d="M34 11l5 5" stroke="#4338CA" stroke-width="2.2" stroke-linecap="round"/></svg></span>
+            <div><h3>The numbers are hard to trust</h3><p>Deal grids, payout math, transition notes, custodian costs, staffing, compliance burden — one missed assumption can make a good-looking move fragile.</p></div>
+          </article>
+          <article class="rule-row" style="--i:2">
+            <span class="duo-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><path d="M24 8v32M9 24h30" stroke="#4338CA" stroke-width="2" stroke-linecap="round"/><circle cx="24" cy="24" r="13" fill="rgba(67,56,202,.16)" stroke="#4338CA" stroke-width="2"/><path d="M24 15v10l7 4" stroke="#4338CA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div><h3>Timing matters</h3><p>Advisors tend to move around recognizable career, firm, and market signals. If you only look when a recruiter calls, you are already late to the analysis.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="intel" id="intelligence">
+      <canvas class="intel__canvas" id="intelConstellation" aria-hidden="true"></canvas>
+      <div class="wrap intel__in">
+        <div class="lead reveal">
+          <span class="eyebrow eyebrow--deep">The intelligence</span>
+          <h2>We see the industry&rsquo;s movement patterns before they become your inbox.</h2>
+          <p>Behind AGL is a platform that tracks the public advisor universe: registrations, firm changes, disclosures, tenure, credentials, and movement history. The public page shows aggregate authority. The private assessment turns it into your own transition context.</p>
+          <div class="chips"><span class="chip"><i></i>Aggregate, anonymized</span><span class="chip"><i></i>Public filings-backed</span><span class="chip"><i></i>No individual exposure</span></div>
+        </div>
+        <div class="intel-grid reveal stagger" aria-label="Aggregate movement intelligence demonstration">
+          <article class="intel-card" style="--i:0">
+            <div class="statline"><div><b class="num count" data-target="725000" data-suffix="+">725,000+</b><span>Advisor records monitored</span></div></div>
+            <p class="source-note">Universe claim based on U.S. public advisor filings and registration sources.</p>
+          </article>
+          <article class="intel-card" style="--i:1">
+            <div class="statline"><div><b class="num count" data-target="3842" data-suffix="*">3,842*</b><span>QTD moves in sample view</span></div></div>
+            <p class="source-note">*Fictional interface value for this demo; replace with live public-filing query before launch.</p>
+          </article>
+          <article class="intel-card intel-card--wide" style="--i:2">
+            <div class="statline"><div><b>Move tracker</b><span>Aggregate feed, anonymized</span></div></div>
+            <div class="ticker" aria-label="Fictional sample move tracker">
+              <div class="ticker__track"><span class="tick">Sample: regional wirehouse departures increasing in the Southeast</span><span class="tick">Sample: RIA platform joins skewing longer-tenured this quarter</span><span class="tick">Sample: teams with clean disclosure history moving faster through diligence</span><span class="tick">Sample: regional wirehouse departures increasing in the Southeast</span><span class="tick">Sample: RIA platform joins skewing longer-tenured this quarter</span><span class="tick">Sample: teams with clean disclosure history moving faster through diligence</span></div>
+            </div>
+            <p class="source-note">Ticker is a fictional sample of the product surface; public page must be wired to verified aggregate queries.</p>
+          </article>
+          <article class="intel-card" style="--i:3">
+            <div class="statline"><div><b>Firm net-flow</b><span>Sample directional bars</span></div></div>
+            <div class="bar-list" role="img" aria-label="Fictional sample net-flow bars by firm type">
+              <div class="bar-row"><span>RIA platforms</span><div class="bar-track"><i class="bar-fill" style="--scale:.86"></i></div><b>Inflow</b></div>
+              <div class="bar-row"><span>Wirehouses</span><div class="bar-track"><i class="bar-fill" style="--scale:.48"></i></div><b>Mixed</b></div>
+              <div class="bar-row"><span>IBDs</span><div class="bar-track"><i class="bar-fill" style="--scale:.64"></i></div><b>Selective</b></div>
+            </div>
+            <p class="source-note">Illustrative visualization only; no firm-specific claim made here.</p>
+          </article>
+          <article class="intel-card chart-card" style="--i:4">
+            <div class="statline"><div><b>Deal range</b><span>Illustrative economics</span></div></div>
+            <svg role="img" aria-label="Illustrative transition deal range chart, not an offer or guarantee" viewBox="0 0 420 160" preserveAspectRatio="none">
+              <defs><linearGradient id="dealGlow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#A5B4FC" stop-opacity=".25"/><stop offset="1" stop-color="#A5B4FC" stop-opacity="0"/></linearGradient></defs>
+              <path class="chart-area" d="M20 130 L20 112 C75 116 95 92 134 94 C178 96 188 62 230 68 C270 74 290 42 338 44 C370 46 388 32 402 24 L402 130 Z"/>
+              <path class="chart-line" d="M20 112 C75 116 95 92 134 94 C178 96 188 62 230 68 C270 74 290 42 338 44 C370 46 388 32 402 24"/>
+              <text class="axis" x="20" y="150">lower</text><text class="axis" x="190" y="150">median</text><text class="axis" x="360" y="150">upper</text><text class="axis" x="20" y="18">sample range</text>
+            </svg>
+            <div class="chart-caption"><span><b>Not an offer.</b> Not an estimate or guarantee.</span><span>Ranges require advisor-specific diligence.</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="sec sec--grey" id="help">
+      <div class="wrap split">
+        <div class="lead reveal">
+          <span class="eyebrow">How AGL helps</span>
+          <h2>Data tells you the board. A guide helps you decide.</h2>
+          <p>The experience is built for an analytical, risk-aware advisor: inspect the facts, pressure-test the economics, understand the peer pattern, then decide whether a conversation with Axiom — or anyone else — deserves your time.</p>
+          <div class="soft-callout"><b>Positioning choice:</b> AGL is advisor-first intelligence. We disclose the Axiom relationship, then earn the right to introduce you only when fit is real.</div>
+        </div>
+        <div class="path-list reveal stagger">
+          <article class="path-row" style="--i:0"><div class="path-num">01</div><div class="path-copy"><h3>Decode your current firm</h3><p>Tenure, channel, credentials, disclosures, and movement history become a starting profile — not a dossier for recruiters.</p></div></article>
+          <article class="path-row" style="--i:1"><div class="path-num">02</div><div class="path-copy"><h3>Model the economics without the sales math</h3><p>We separate payout, transition support, ownership, staffing costs, and client disruption so you can see tradeoffs plainly.</p></div></article>
+          <article class="path-row" style="--i:2"><div class="path-num">03</div><div class="path-copy"><h3>Benchmark against advisors like you</h3><p>Aggregate movement patterns show what similar advisors tended to do next — and where their paths diverged.</p></div></article>
+          <article class="path-row" style="--i:3"><div class="path-num">04</div><div class="path-copy"><h3>Introduce Axiom only if it fits</h3><p>Axiom is our partner RIA platform. If your goals point elsewhere, the honest answer is still the product.</p></div></article>
+        </div>
+      </div>
+    </section>
+    <section class="sec sec--white" id="assessment">
+      <div class="wrap assessment-grid">
+        <div class="lead reveal">
+          <span class="eyebrow">Transition Readiness Assessment</span>
+          <h2>A private report built around the record we can already match.</h2>
+          <p>Opt in, answer a short set of questions, and AGL matches you to your public registration record: firm, tenure, credentials, disclosures, movement history, and a pre-computed fit profile. The output is designed to lead to a useful call, not a drip campaign.</p>
+          <div class="assessment-points">
+            <div class="mini-stat"><b>5</b><span>Report sections</span></div><div class="mini-stat"><b>3 min</b><span>To complete</span></div><div class="mini-stat"><b>Private</b><span>Opt-in first</span></div>
+          </div>
+          <div class="hero__cta" style="justify-content:flex-start;margin-top:0">
+            <a href="#report" class="btn btn--primary btn--lg" data-open-report>View fictional sample report <svg class="arr" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a href="#talk" class="btn btn--line btn--lg">Book the guide call</a>
+          </div>
+          <div class="privacy-row"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><rect x="2.3" y="6.2" width="9.4" height="5.5" rx="1.3" stroke="currentColor" stroke-width="1.25"/><path d="M4.2 6.2V4.7a2.8 2.8 0 015.6 0v1.5" stroke="currentColor" stroke-width="1.25"/></svg>No firm or recruiter sees your answers unless you choose to share them.</div>
+        </div>
+        <div class="report-preview reveal" aria-label="Sample assessment preview">
+          <div class="preview-top"><b>Public record match</b><span class="match-pill"><i></i>We found you</span></div>
+          <div class="prefill"><h3>Transition Readiness Report</h3><p>Fictional sample view showing the kind of personal context an opted-in advisor would receive.</p></div>
+          <div class="record-grid">
+            <div class="record-field"><span>Current firm</span><b>Matched from public record</b></div><div class="record-field"><span>Tenure</span><b>Estimated from filings</b></div><div class="record-field"><span>Credentials</span><b>Series / adviser status</b></div><div class="record-field"><span>Movement history</span><b>Registration timeline</b></div>
+          </div>
+          <div class="report-sections">
+            <div class="report-line"><i>1</i><span>Your firm decoded</span><em>context</em></div><div class="report-line"><i>2</i><span>What you may be worth</span><em>range</em></div><div class="report-line"><i>3</i><span>You vs peers</span><em>benchmark</em></div><div class="report-line"><i>4</i><span>What advisors like you did next</span><em>paths</em></div><div class="report-line"><i>5</i><span>Your readiness</span><em>next step</em></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="sec sec--white" id="who">
+      <div class="wrap who-grid">
+        <div class="lead reveal">
+          <span class="eyebrow">Who we are</span>
+          <h2>Advisor-first, with the relationship disclosed.</h2>
+          <p>AGL is an AI-powered transition intelligence firm. We help advisors understand whether and how to move firms; when the facts point toward our partner RIA platform, Axiom, we can make that introduction.</p>
+          <p>That disclosure is not fine print. It is the trust model: you know our relationship, you see our data posture, and you decide whether the next conversation is useful.</p>
+          <div class="disclosure"><b>Plain-language Axiom disclosure:</b> Advisor Growth Lab provides growth and recruiting services to firms, including Axiom. AGL may introduce advisors to Axiom when there appears to be a fit. AGL is not your legal, tax, compliance, or investment adviser.</div>
+        </div>
+        <aside class="guide-card reveal" id="talk" aria-label="Talk to a guide">
+          <div class="guide-head"><div class="guide-avatar" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="18" r="8" stroke="#fff" stroke-width="2.4"/><path d="M10 42c2-11 10-16 14-16s12 5 14 16" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/><path d="M34 13l4-4" stroke="#F2C782" stroke-width="2.4" stroke-linecap="round"/></svg></div><div><b>Private transition guide</b><span>AGL advisor desk</span></div></div>
+          <p class="guide-quote">&ldquo;The goal is not to move you. The goal is to make sure that if you do move, it is the right one.&rdquo;</p>
+          <div class="guide-actions"><a href="mailto:hello@advisorgrowthlab.com" class="btn btn--primary">Book a private call <svg class="arr" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="#report" class="btn btn--line" data-open-report>See sample report</a></div>
+        </aside>
+      </div>
+    </section>
+    <section class="sec sec--grey close">
+      <div class="wrap reveal">
+        <h2>The safest first step is not a move. It is a clearer room.</h2>
+        <p>Bring the data, your questions, and your skepticism. We will tell you what we see — including when staying put is the wiser answer.</p>
+        <a href="#talk" class="btn btn--primary btn--lg">Talk to a guide <svg class="arr" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </section>
+  </main>
+  <footer class="foot">
+    <div class="wrap">
+      <div class="foot__top"><div><a class="brand" href="#top" aria-label="Advisor Growth Lab home"><span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 18 18" fill="none"><path d="M3.2 12.6l4.2-5.1 3 3 4.4-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14.8" cy="4.5" r="1.7" fill="#fff"/></svg></span><span class="brand__name" style="color:var(--ink);text-shadow:none">Advisor Growth Lab</span></a><p class="foot__method">Private advisor transition intelligence from public registration and movement data.</p></div><nav class="foot__links" aria-label="Footer navigation"><a href="#problem">Problem</a><a href="#intelligence">Intelligence</a><a href="#assessment">Assessment</a><a href="#who">Disclosure</a></nav></div>
+      <div class="foot__bottom"><span class="foot__disc"><b>Compliance:</b> Content is educational and for discussion purposes only. No information on this site is an offer, solicitation, guarantee, investment advice, legal advice, tax advice, or compliance advice. Transition economics are illustrative only and depend on verified advisor-specific facts, firm terms, client portability, and diligence. Public-record analysis may be incomplete or delayed. AGL provides growth and recruiting services to firms, including Axiom.</span><span class="foot__meta">&copy; 2026 Advisor Growth Lab</span></div>
+    </div>
+  </footer>
+</div>
+<div id="reportScreen" class="report-screen" hidden>
+  <header class="report-nav">
+    <div class="nav__in">
+      <a class="brand" href="#top" data-home aria-label="Advisor Growth Lab home"><span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 18 18" fill="none"><path d="M3.2 12.6l4.2-5.1 3 3 4.4-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14.8" cy="4.5" r="1.7" fill="#fff"/></svg></span><span class="brand__name">Advisor Growth Lab</span></a>
+      <a class="btn btn--line btn--sm" href="#top" data-home>Back to site</a>
+    </div>
+  </header>
+  <main>
+    <section class="report-hero">
+      <div class="wrap">
+        <span class="report-kicker"><i></i>Fictional sample result</span>
+        <h1>Transition Readiness Report</h1>
+        <p>This screen demonstrates the assessment result experience. The advisor profile, score, ranges, and peer outcomes below are fictional sample data; real reports require opt-in and verified public-record matching.</p>
+      </div>
+    </section>
+    <div class="wrap report-layout">
+      <aside class="profile-card reveal">
+        <span class="sample-badge">Sample only</span>
+        <h2>Jordan Lee</h2>
+        <p>Fictional advisor profile used to show the report format and the &ldquo;we already found you&rdquo; moment.</p>
+        <div class="identity-list">
+          <div><span>Public record match</span><b>Firm, tenure, registrations</b></div>
+          <div><span>Current channel</span><b>Regional broker-dealer</b></div>
+          <div><span>Tenure signal</span><b>Long-tenured / review window</b></div>
+          <div><span>Disclosure posture</span><b>Clean sample record</b></div>
+        </div>
+        <div class="gauge" style="--score:82" role="img" aria-label="Fictional readiness score 82 out of 100"><div class="gauge__in"><b class="num count" data-target="82">82</b><span>Readiness</span></div></div>
+        <a href="mailto:hello@advisorgrowthlab.com" class="btn btn--primary">Discuss privately</a>
+      </aside>
+      <section class="result-stack">
+        <article class="result-card reveal">
+          <h2>1. Your firm decoded</h2>
+          <p>Your current setup appears stable, but the fictional sample shows the kind of friction signals AGL would discuss: payout ceiling, platform constraints, client ownership clarity, and succession optionality.</p>
+          <div class="decoded-grid">
+            <div class="decode-box"><span>Likely pressure</span><b>Autonomy</b></div><div class="decode-box"><span>Timing signal</span><b>Strong review window</b></div><div class="decode-box"><span>Client portability</span><b>Needs diligence</b></div><div class="decode-box"><span>Axiom fit</span><b>Worth a call</b></div>
+          </div>
+          <p class="fine-print">Fictional sample interpretation. Real firm analysis depends on verified records, agreements, and advisor-provided context.</p>
+        </article>
+        <article class="result-card reveal">
+          <h2>2. What you may be worth</h2>
+          <p>AGL would model economics as ranges, not promises. The point is to pressure-test the shape of a move before anyone sells you a deal.</p>
+          <div class="range-chart" role="img" aria-label="Fictional illustrative economics range chart">
+            <div class="range-row"><span>Transition support</span><div class="range-track"><i class="range-fill" style="--scale:.72"></i></div><b>Illustrative</b></div>
+            <div class="range-row"><span>Ownership upside</span><div class="range-track"><i class="range-fill" style="--scale:.58"></i></div><b>Illustrative</b></div>
+            <div class="range-row"><span>Platform cost</span><div class="range-track"><i class="range-fill" style="--scale:.46"></i></div><b>Illustrative</b></div>
+          </div>
+          <p class="fine-print">Illustrative ranges only. Not an offer, estimate, recommendation, or guarantee; actual economics require diligence and firm-specific terms.</p>
+        </article>
+        <article class="result-card reveal">
+          <h2>3. You vs peers</h2>
+          <p>The private version benchmarks you against advisors with similar channel, tenure, credential, disclosure, and movement patterns.</p>
+          <div class="peer-grid">
+            <div class="peer-tile"><b class="num count" data-target="76" data-suffix="th">76th</b><span>Sample readiness percentile</span></div>
+            <div class="peer-tile"><b>Higher</b><span>Sample autonomy pressure than peer median</span></div>
+            <div class="peer-tile"><b>Moderate</b><span>Sample client-transition complexity</span></div>
+          </div>
+          <p class="fine-print">Peer comparisons shown here are fictional and anonymized for demonstration.</p>
+        </article>
+        <article class="result-card reveal">
+          <h2>4. What advisors like you did next</h2>
+          <p>AGL does not expose individual advisors. It uses aggregate, anonymized movement paths to show what similar advisors tended to evaluate next.</p>
+          <div class="flow">
+            <div class="flow-step"><b>Stayed, renegotiated</b><span>Some advisors used market data to improve current-firm economics.</span></div>
+            <div class="flow-step"><b>Explored RIA platform</b><span>Some tested independence with operational support before committing.</span></div>
+            <div class="flow-step"><b>Delayed move</b><span>Some waited for client, team, or contract timing to improve.</span></div>
+          </div>
+          <p class="fine-print">Fictional sample paths. No outcome shown implies suitability for any real advisor.</p>
+        </article>
+        <article class="result-card reveal">
+          <h2>5. Your readiness</h2>
+          <p>The sample result points to a private guide call: not because a move is certain, but because the questions are specific enough to deserve a human conversation.</p>
+          <div class="readiness-list">
+            <div class="readiness-item"><i>1</i><div><b>Confirm the client portability facts</b><span>Review agreements, service model, and communication risk before discussing any platform.</span></div></div>
+            <div class="readiness-item"><i>2</i><div><b>Pressure-test the economics</b><span>Separate transition support from long-term take-home, ownership, and operating costs.</span></div></div>
+            <div class="readiness-item"><i>3</i><div><b>Discuss Axiom fit plainly</b><span>If Axiom is not the right fit, the useful answer may be another path or no move.</span></div></div>
+          </div>
+        </article>
+        <article class="result-card report-cta reveal">
+          <h2>Bring the report to a private guide.</h2>
+          <p>Thirty minutes. No recruiter pressure. We will walk through the data, the tradeoffs, and whether Axiom deserves a place on your shortlist.</p>
+          <div class="hero__cta" style="justify-content:flex-start;margin-top:24px"><a href="mailto:hello@advisorgrowthlab.com" class="btn btn--primary btn--lg">Book the private call <svg class="arr" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="#top" data-home class="btn btn--line btn--lg">Return to home</a></div>
+          <p class="fine-print">AGL provides growth and recruiting services to firms, including Axiom. Any introduction is subject to mutual fit and further diligence.</p>
+        </article>
+      </section>
+    </div>
+  </main>
+  <footer class="foot"><div class="wrap"><div class="foot__bottom"><span class="foot__disc"><b>Compliance:</b> This sample report is fictional and for demonstration only. It is not an offer, estimate, guarantee, investment advice, legal advice, tax advice, or compliance advice. Real public-record matching may be incomplete or delayed, and transition decisions require advisor-specific diligence.</span><span class="foot__meta">&copy; 2026 Advisor Growth Lab</span></div></div></footer>
+</div>
+<script>
+(function(){
+  'use strict';
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var curve=function(t){return 1-Math.pow(1-t,3)};
+  var $=function(s,r){return (r||document).querySelector(s)};
+  var $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));};
+  var home=$('#homeScreen'), report=$('#reportScreen'), nav=$('#nav');
+  function route(){var showReport=location.hash==='#report';home.hidden=showReport;report.hidden=!showReport;document.body.classList.remove('no-scroll');if(showReport){requestAnimationFrame(function(){window.scrollTo(0,0);markVisible(report);});}else{requestAnimationFrame(function(){markVisible(home);});}}
+  $$('[data-open-report]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();location.hash='report';});});
+  $$('[data-home]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();history.pushState('',document.title,location.pathname+location.search+'#top');route();});});
+  window.addEventListener('hashchange',route);
+  function onScroll(){if(nav){nav.classList.toggle('is-scrolled',window.scrollY>window.innerHeight*.72);}if(!reduce){scheduleParallax();}}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  var parallaxTick=false;function scheduleParallax(){if(parallaxTick)return;parallaxTick=true;requestAnimationFrame(function(){parallaxTick=false;var y=Math.min(window.scrollY,window.innerHeight);document.documentElement.style.setProperty('--hero-y',(y*.10).toFixed(1)+'px');document.documentElement.style.setProperty('--drift-x',(y*.018).toFixed(1)+'px');});}
+  var aud=$$('.audience button'), variants=$$('.hvar');aud.forEach(function(btn){btn.addEventListener('click',function(){var key=btn.getAttribute('data-audience');aud.forEach(function(b){b.setAttribute('aria-selected',String(b===btn));});variants.forEach(function(v){var active=v.getAttribute('data-variant')===key;if(active){v.hidden=false;if(!reduce){v.style.opacity='0';v.style.transform='translate3d(0,10px,0)';v.style.filter='blur(4px)';requestAnimationFrame(function(){v.style.opacity='1';v.style.transform='none';v.style.filter='blur(0)';});}}else{v.hidden=true;}});});});
+  function format(n,suffix){return Math.round(n).toLocaleString('en-US')+(suffix||'');}
+  function animateCount(el){if(el.dataset.done)return;el.dataset.done='1';var target=Number(el.dataset.target||0), suffix=el.dataset.suffix||'';if(reduce){el.textContent=format(target,suffix);return;}var start=performance.now(), dur=1500;function step(now){var p=Math.min(1,(now-start)/dur), v=target*curve(p);el.textContent=format(v,suffix);if(p<1)requestAnimationFrame(step);}requestAnimationFrame(step);}
+  function drawWithin(root){$$('.count',root).forEach(animateCount);$$('.bar-list,.range-chart,.chart-card',root).forEach(function(x){x.classList.add('drawn');});}
+  function markVisible(root){$$('.reveal',root).forEach(function(el){el.classList.add('is-in');drawWithin(el);});}
+  if('IntersectionObserver' in window&&!reduce){
+    var io=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('is-in');drawWithin(entry.target);io.unobserve(entry.target);}});},{threshold:.20,rootMargin:'0px 0px -8% 0px'});
+    $$('.reveal').forEach(function(el){io.observe(el);});
+  }else{markVisible(document);}
+  function setupCanvas(id,variant){var canvas=document.getElementById(id);if(!canvas)return;var ctx=canvas.getContext('2d'), w=0,h=0,dpr=1,active=true,raf=0;var nodes=[];function resize(){var rect=canvas.getBoundingClientRect();dpr=Math.min(2,window.devicePixelRatio||1);w=Math.max(1,Math.floor(rect.width));h=Math.max(1,Math.floor(rect.height));canvas.width=Math.floor(w*dpr);canvas.height=Math.floor(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);nodes=[];var count=variant==='hero'?38:54;for(var i=0;i<count;i++){nodes.push({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.12,vy:(Math.random()-.5)*.10,r:1+Math.random()*1.6,p:Math.random()*Math.PI*2});}}function frame(t){ctx.clearRect(0,0,w,h);for(var i=0;i<nodes.length;i++){var a=nodes[i];if(!reduce){a.x+=a.vx;a.y+=a.vy;if(a.x<0||a.x>w)a.vx*=-1;if(a.y<0||a.y>h)a.vy*=-1;}for(var j=i+1;j<nodes.length;j++){var b=nodes[j],dx=a.x-b.x,dy=a.y-b.y,dist=Math.sqrt(dx*dx+dy*dy),max=variant==='hero'?150:118;if(dist<max){ctx.strokeStyle='rgba(165,180,252,'+(0.16*(1-dist/max)).toFixed(3)+')';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}}var pulse=(Math.sin((t||0)/900+a.p)+1)/2;ctx.fillStyle='rgba(233,236,249,.55)';ctx.beginPath();ctx.arc(a.x,a.y,a.r,0,Math.PI*2);ctx.fill();if(pulse>.92){ctx.fillStyle='rgba(242,199,130,'+(0.22*pulse).toFixed(3)+')';ctx.beginPath();ctx.arc(a.x,a.y,a.r+5*pulse,0,Math.PI*2);ctx.fill();}}if(!reduce&&active){raf=requestAnimationFrame(frame);}}resize();window.addEventListener('resize',resize,{passive:true});if('IntersectionObserver' in window){var cio=new IntersectionObserver(function(entries){entries.forEach(function(e){active=e.isIntersecting;if(active&&!raf)raf=requestAnimationFrame(frame);if(!active&&raf){cancelAnimationFrame(raf);raf=0;}});},{threshold:.05});cio.observe(canvas);}frame(0);}
+  setupCanvas('heroConstellation','hero');setupCanvas('intelConstellation','intel');
+  route();
+})();
+</script>
+</body>
+</html>

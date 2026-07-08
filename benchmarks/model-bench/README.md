@@ -35,6 +35,7 @@ AGL site from v8 to a v9-quality build.
 |---|---|---|---|---|---|
 | 2026-07-08 | claude-fable-5 (reference) | Claude Code, self-verifying | 0 (5×P1 anim-robustness warnings — fix queued) | — | GOLD |
 | 2026-07-08 | claude-sonnet-5 | claude.ai chat, one-shot blind | 0 P0 · 0 P1 · 3 P2 | craft 8 · distinct 7.5 · motion 6.5 · copy 8.5 · compliance 9 | FIX — 4 findings (see below) |
+| 2026-07-08 | fugu-ultra | sakana chat, one-shot blind | 0 P0 · 0 P1 · 2 P2 | craft 7 · distinct 7 · motion 6 · copy 7.5 · compliance 9 | FIX — 3 findings (see below) |
 
 **Sonnet findings (2026-07-08):** (1) BLOCKER: primary CTA "Start the assessment" links to `#assess`
 (itself) — dead conversion path; report only reachable by URL hash. (2) BLOCKER: on hash entry the
@@ -45,7 +46,18 @@ feature icons drift toward generic line icons. (4) MINOR: copy says "seven quest
 on the system look (16% line overlap with gold — convergence, not copying), strong original copy
 ("Everyone's recruiting you. Almost no one's telling you the truth."), cleaner deterministic-gate
 result than the gold build, sticky fictional-sample banner on the report was its own idea.
+**Fugu findings (2026-07-08):** (1) MAJOR: internal build-notes leaked into public copy ("replace
+with live public-filing query before launch," "must be wired to verified aggregate queries," report
+head describing itself as a demo) → LED-016 / new rule R32. (2) MAJOR: charts with zero information —
+deal-range bars rendered as empty grey tracks labeled "Illustrative"×3; net-flow reduced to three
+one-word bars → LED-017 / R33. (3) MINOR: narrow headline measures (3-line hero break, 1-word-per-line
+report title), counter digit-spacing ("725 , 000+"), sparse card interiors. Notable strengths:
+FLAWLESS interaction wiring (every CTA resolves; added mailto endpoints unprompted — exactly where
+Sonnet failed), italic budget respected, sticky sample-profile sidebar on the report, strongest
+compliance instincts of the three, good lines ("ranges, not promises — pressure-test the shape of a
+move before anyone sells you a deal").
+
 **System verdict:** the docs successfully carried a mid-tier model to ~85% of gold in one blind shot;
-failures cluster in interaction wiring + motion timing — exactly what the agentic QA repair loop exists
+Sonnet's failures cluster in interaction wiring + motion timing; Fugu's in copy register + data-viz information content — near-disjoint failure modes, which is the strongest possible argument for the deterministic-gate + critic + repair loop over any single model's judgment — exactly what the agentic QA repair loop exists
 to catch. Bench-harness lesson: verify the served file is the asset-injected one (a stale `serve` on
 the same port reviewed the token-raw file first).

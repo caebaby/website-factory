@@ -120,3 +120,23 @@ The AI look is generic STRUCTURE + placeholder CONTENT + stock ICONS — not col
 
 - 2026-07-08 — v1 seeded from: v8→v9 slop autopsy (Chris), v9 build system (Fable), Brand
   Packet v1.0, motion-craft standards. Author: Claude Fable 5, approved pending Chris review.
+
+## 8. Amendments from model-bench round 1 (2026-07-08)
+
+- **R31** Reveal timing budget: scroll-reveal transitions ≤0.9s with ≤0.5s stagger delay; any
+  section fully settled <1.5s after entering the viewport. Sections that sit ghosted for
+  seconds read as broken (bench: sonnet build took 2–4s to land).
+- **R32** Compliance language is reader-facing, never dev-facing. Say "Illustrative — from
+  public filings." NEVER "replace with live query before launch," "must be wired to…," or any
+  copy describing the page as a demo/screen/experience. The single sanctioned self-reference
+  is the fictional-sample labeling on the report.
+- **R33** Minimum information content for charts: every chart encodes at least one comparative,
+  labeled fact (illustrative-footed as needed); range charts show numeric endpoints. A chart
+  that honestly contains one word of information must be a sentence instead.
+- **R34** Interaction wiring is part of "done": every CTA resolves to a real, different target;
+  every screen is reachable through visible UI (not only URL hashes); every entry path fires
+  the same animations/counters; view switches reset scroll. Content must survive
+  animations-never-running (no forward-fill-dependent visibility — the gold build's own
+  bench finding).
+
+Amendment log: 2026-07-08 — R31–R34 added from model-bench round 1 (sonnet + fugu-ultra runs).
