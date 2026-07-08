@@ -59,6 +59,14 @@ world), signature-motif seed, assets manifest, proof inventory with legal footin
 9. **Copy runs two gates.** Facts gate blocks build (claims-verification; [VERIFY]s go to the
    client). Voice gate runs in parallel with build (client wording edits land as scoped
    repairs). See `docs/CLIENT-OPS.md` for the full client-facing flow.
+10. **Tokens are a design constraint, not a cleanup task.** The product is top-1% quality at
+   the LOWEST token cost that clears the gates — both matter, in that order. In practice:
+   deterministic checks run before any LLM spends a token; executors read ONE self-contained
+   brief, never the repo; repairs are scoped patches (~2–5KB), never re-prints; heavy assets
+   travel as [[TOKEN]] placeholders; every stage runs the cheapest model tier that passes the
+   gauntlet. Metric of record: **tokens per shipped PASS build**, logged per stage in
+   BUILD_REGISTRY. The bench regression gate is what makes cost-cutting safe: efficiency
+   changes that lower golden-build scores get reverted.
 
 ## Where things are
 

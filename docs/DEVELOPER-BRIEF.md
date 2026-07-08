@@ -30,9 +30,11 @@ The remaining 15% is what the QA repair loop closes mechanically.
 
 ## Where YOU come in: tokens
 
-The system works; nobody has optimized what it costs. Your mission: **drive tokens-per-shipped-
-PASS-build down without moving bench scores.** The regression gate makes this safe — any
-efficiency change that drops a golden build's scores gets reverted, so you can be aggressive.
+This is not post-hoc optimization — it's PROCESS.md **law 10**, a founding constraint: the
+product is top-1% quality at the lowest token cost that clears the gates. Chris's directive.
+You co-own that law. Your mission: **drive tokens-per-shipped-PASS-build down without moving
+bench scores.** The regression gate makes this safe — any efficiency change that drops a
+golden build's scores gets reverted, so you can be aggressive.
 
 Known hotspots, in expected order of yield:
 
