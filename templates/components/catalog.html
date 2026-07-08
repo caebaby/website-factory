@@ -379,6 +379,210 @@ img{display:block;max-width:100%;}
 .ivp .k{font:700 9.5px/1.4 var(--sans);letter-spacing:1.1px;text-transform:uppercase;padding-top:3px;}
 .ivp .k.i{color:var(--accent-ink);}.ivp .k.v{color:var(--ink);}.ivp .k.n{color:#9c2019;}
 .wm{padding:9px 20px;border-top:1px solid var(--border);background:var(--ground);font:700 9.5px var(--sans);letter-spacing:1.3px;text-transform:uppercase;color:var(--ink-body);opacity:.7;}
+
+/* ═══ CATALOG v3 — AGL v9 harvest + candidate tier + coverage (2026-07-08) ═══ */
+:root{--ease-v9:cubic-bezier(.21,.86,.36,1);--gold9:#F2C782;}
+
+/* coverage table */
+.cov{margin-top:30px;border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--card);}
+.cov table{width:100%;border-collapse:collapse;font:400 13px/1.45 var(--sans);}
+.cov caption{text-align:left;padding:14px 20px;font:700 13px var(--sans);color:var(--ink);border-bottom:1px solid var(--border);}
+.cov caption small{display:block;margin-top:4px;font:400 12px var(--sans);color:var(--ink-body);}
+.cov th,.cov td{padding:8px 14px;border-top:1px solid rgba(0,0,0,.05);text-align:left;color:var(--ink-body);vertical-align:top;}
+.cov th{font:700 10.5px var(--sans);letter-spacing:.9px;text-transform:uppercase;color:var(--ink);background:var(--ground);}
+.cov td b{color:var(--ink);}
+.cov .low{color:#9c2019;font-weight:700;}
+.cov .ok{color:var(--accent-ink);font-weight:700;}
+
+/* candidate tier */
+.badge.cand{background:transparent;color:var(--accent-ink);border:1.5px dashed rgba(var(--accent-rgb),.6);}
+.candspec{padding:14px 20px;font:400 13px/1.6 var(--sans);color:var(--ink-body);}
+.candspec b{color:var(--ink);}
+
+/* duotone icon tokens (R2 class) */
+.dico-f{fill:rgba(var(--accent-rgb),.16);}
+.dico-s{stroke:var(--accent);fill:none;}
+.dico-sf{fill:var(--accent);}
+
+/* ─── C-32 constellation canvas ─── */
+.v9net-demo{position:relative;height:230px;border-radius:12px;overflow:hidden;background:radial-gradient(80% 90% at 12% 6%,var(--dark-2),transparent 58%),linear-gradient(158deg,var(--dark),var(--dark-2));}
+.v9net-demo canvas{position:absolute;inset:0;}
+.v9net-demo .cap{position:absolute;left:18px;bottom:14px;font:600 11px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55);}
+
+/* ─── C-33 movement wire ─── */
+.v9wire{background:linear-gradient(90deg,var(--dark),var(--dark-2) 60%,var(--dark));border-top:1px solid rgba(255,255,255,.14);border-bottom:1px solid rgba(255,255,255,.1);overflow:hidden;}
+.v9wire .in9{display:flex;align-items:center;}
+.v9wire .lab{flex:none;display:flex;align-items:center;gap:8px;padding:13px 18px 13px 22px;font:600 11px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--accent-soft);white-space:nowrap;position:relative;z-index:2;background:linear-gradient(90deg,var(--dark) 78%,transparent);}
+.v9wire .dot{width:6px;height:6px;border-radius:50%;background:var(--gold9);box-shadow:0 0 10px 1px rgba(242,199,130,.7);}
+.v9wire .view{overflow:hidden;flex:1;mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);}
+.v9wire .track{display:flex;width:max-content;}
+.v9wire .it{display:inline-flex;align-items:center;gap:9px;padding:13px 26px;font-size:13px;color:var(--on-dark-mute);white-space:nowrap;font-variant-numeric:tabular-nums;}
+.v9wire .it b{color:var(--on-dark);font-weight:600;}
+.v9wire .it .to{color:var(--gold9);}
+.v9wire .sep{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.3);flex:none;align-self:center;}
+@media(prefers-reduced-motion:no-preference){
+  html.js .v9wire .track{animation:v9wiremove 42s linear infinite;}
+  html.js .v9wire:hover .track{animation-play-state:paused;}
+  @keyframes v9wiremove{to{transform:translateX(-50%);}}
+}
+
+/* ─── C-34 count-up stat grid (dark) ─── */
+.v9cnts{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+@media(max-width:760px){.v9cnts{grid-template-columns:1fr 1fr;}}
+.v9cnts .cc{border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.04);border-radius:14px;padding:22px 20px;}
+.v9cnts .cc b{display:block;font:700 clamp(24px,2.6vw,32px)/1 var(--sans);letter-spacing:-.025em;color:#fff;font-variant-numeric:tabular-nums;}
+.v9cnts .cc b .au{color:var(--gold9);}
+.v9cnts .cc span{display:block;margin-top:8px;font-size:12.5px;color:rgba(255,255,255,.68);line-height:1.45;}
+.v9note{margin-top:12px;font-size:11.5px;color:rgba(255,255,255,.45);}
+
+/* ─── C-35 diverging net-flow bars ─── */
+.v9flow{max-width:560px;background:rgba(255,255,255,.055);backdrop-filter:blur(22px) saturate(1.2);-webkit-backdrop-filter:blur(22px) saturate(1.2);border:1px solid rgba(255,255,255,.13);border-radius:16px;padding:24px;box-shadow:inset 0 1px 0 rgba(255,255,255,.09);}
+.v9flow .top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:18px;font:600 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--accent-soft);}
+.v9flow .live{display:inline-flex;align-items:center;gap:6px;font:600 11px var(--sans);letter-spacing:0;text-transform:none;color:var(--accent-soft);}
+.v9flow .live i{width:6px;height:6px;border-radius:50%;background:var(--accent-soft);}
+.v9frow{display:grid;grid-template-columns:110px 1fr 62px;align-items:center;gap:12px;padding:8px 0;font-size:13.5px;}
+.v9frow>span{color:rgba(255,255,255,.72);text-align:right;}
+.v9frow>b{font-weight:600;font-variant-numeric:tabular-nums;color:#fff;}
+.v9frow>b.neg{color:rgba(255,255,255,.55);}
+.v9ftrack{position:relative;height:12px;}
+.v9ftrack::before{content:"";position:absolute;left:50%;top:-5px;bottom:-5px;width:1px;background:rgba(255,255,255,.3);}
+.v9fbar{position:absolute;top:1px;height:10px;border-radius:6px;}
+.v9fbar.pos{left:50%;background:linear-gradient(90deg,rgba(var(--accent-rgb),.95),rgba(var(--accent-rgb),.45));transform-origin:left center;}
+.v9fbar.neg{right:50%;background:linear-gradient(270deg,rgba(255,255,255,.4),rgba(255,255,255,.16));transform-origin:right center;}
+@media(prefers-reduced-motion:no-preference){
+  html.js .v9fbar{transform:scaleX(0);transition:transform 1.15s var(--ease-v9);transition-delay:var(--d,0s);}
+  html.js .in .v9fbar{transform:scaleX(1);}
+}
+.v9flow .fnote{margin-top:12px;font-size:11.5px;color:rgba(255,255,255,.45);line-height:1.5;}
+
+/* ─── C-36 range-band chart · C-37 gauge shared panel ─── */
+.v9panel{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;max-width:640px;}
+.v9panel .ttl{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font:600 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--ink-body);margin-bottom:16px;}
+.v9panel .ttl em{font-style:normal;color:var(--accent-ink);}
+.v9deal .row{display:grid;grid-template-columns:170px 1fr;gap:16px;align-items:center;padding:12px 0;border-top:1px solid rgba(0,0,0,.05);}
+.v9deal .row:first-child{border-top:none;}
+.v9deal .row>span{font:600 13px var(--sans);color:var(--ink-body);text-align:right;line-height:1.3;}
+.v9deal .track{position:relative;height:26px;background:rgba(15,23,42,.05);border-radius:7px;}
+.v9deal .band{position:absolute;top:5px;height:16px;border-radius:5px;background:linear-gradient(90deg,rgba(var(--accent-rgb),.32),rgba(var(--accent-rgb),.8));transform-origin:left center;}
+@media(prefers-reduced-motion:no-preference){
+  html.js .v9deal .band{transform:scaleX(0);transition:transform 1.1s var(--ease-v9);transition-delay:var(--d,0s);}
+  html.js .in .v9deal .band{transform:scaleX(1);}
+}
+.v9deal .band b{position:absolute;right:-6px;top:50%;transform:translate(100%,-50%);font:700 11px var(--sans);color:var(--accent-ink);white-space:nowrap;font-variant-numeric:tabular-nums;}
+.v9deal .axis{display:flex;justify-content:space-between;margin-top:10px;font-size:11px;color:var(--ink-body);font-variant-numeric:tabular-nums;}
+@media(max-width:620px){.v9deal .row{grid-template-columns:1fr;gap:7px;}.v9deal .row>span{text-align:left;}.v9deal .band b{display:none;}}
+
+/* ─── C-37 readiness gauge ─── */
+.v9ready{display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center;}
+@media(max-width:700px){.v9ready{grid-template-columns:1fr;}}
+.v9gauge{width:210px;max-width:100%;}
+.v9gauge svg{width:100%;overflow:visible;}
+.v9gauge .bg{fill:none;stroke:rgba(15,23,42,.08);stroke-width:14;stroke-linecap:round;}
+.v9gauge .fg{fill:none;stroke:var(--accent);stroke-width:14;stroke-linecap:round;stroke-dasharray:339.3;stroke-dashoffset:132.4;}
+@media(prefers-reduced-motion:no-preference){
+  html.js .v9gauge .fg{stroke-dashoffset:339.3;transition:stroke-dashoffset 1.6s var(--ease-v9) .2s;}
+}
+.v9gauge .n{font:700 46px var(--sans);letter-spacing:-.03em;fill:var(--ink);}
+.v9gauge .l{font:600 10px var(--sans);letter-spacing:.1em;text-transform:uppercase;fill:var(--ink-body);}
+.v9verdict{display:inline-flex;align-items:center;gap:8px;font:600 13px var(--sans);color:var(--accent-ink);background:rgba(var(--accent-rgb),.08);border:1px solid rgba(var(--accent-rgb),.25);border-radius:999px;padding:8px 15px;margin-bottom:12px;}
+.v9verdict i{width:7px;height:7px;border-radius:50%;background:var(--accent);}
+.v9steps{margin:14px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;}
+.v9steps li{display:flex;gap:11px;font-size:14px;color:var(--ink-body);line-height:1.5;}
+.v9steps li svg{width:17px;height:17px;flex:none;margin-top:2px;color:var(--accent-ink);}
+.v9steps li b{color:var(--ink);font-weight:600;}
+
+/* ─── C-38 record match-card ─── */
+.v9match{display:inline-flex;align-items:center;gap:11px;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--border);border-radius:13px;padding:12px 16px;box-shadow:0 12px 32px -16px rgba(15,23,42,.28);transform:rotate(1.6deg);}
+.v9match .pulse{width:34px;height:34px;border-radius:10px;background:rgba(var(--accent-rgb),.1);display:grid;place-items:center;flex:none;color:var(--accent-ink);}
+.v9match .pulse svg{width:18px;height:18px;}
+.v9match b{display:block;font:700 13.5px var(--sans);letter-spacing:-.01em;color:var(--ink);}
+.v9match span{display:block;font-size:12px;color:var(--ink-body);font-variant-numeric:tabular-nums;}
+
+/* ─── C-39 quiz preview card ─── */
+.v9quiz{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:26px;max-width:440px;box-shadow:0 24px 60px -30px rgba(15,23,42,.3);}
+.v9quiz .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;}
+.v9quiz .step{font:600 11px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-body);}
+.v9quiz .bar{width:110px;height:6px;border-radius:99px;background:var(--ground-alt);overflow:hidden;}
+.v9quiz .bar i{display:block;height:100%;width:57%;background:var(--accent);border-radius:99px;transform-origin:left;}
+@media(prefers-reduced-motion:no-preference){
+  html.js .v9quiz .bar i{transform:scaleX(0);transition:transform 1s var(--ease-v9) .25s;}
+  html.js .in .v9quiz .bar i{transform:scaleX(1);}
+}
+.v9quiz h4{font:700 19px/1.25 var(--sans);letter-spacing:-.015em;color:var(--ink);margin:0 0 16px;}
+.v9opt{display:flex;align-items:center;gap:12px;padding:13px 15px;border:1px solid var(--border);border-radius:12px;margin-bottom:9px;font:600 14px var(--sans);color:var(--ink);cursor:pointer;transition:border-color .2s,background-color .2s,transform .25s var(--ease-v9);}
+.v9opt:hover{border-color:var(--accent);transform:translateX(3px);}
+.v9opt.sel{border-color:var(--accent);background:rgba(var(--accent-rgb),.07);}
+.v9opt .rd{width:18px;height:18px;border-radius:50%;border:1.5px solid rgba(15,23,42,.25);flex:none;position:relative;}
+.v9opt.sel .rd{border-color:var(--accent);}
+.v9opt.sel .rd::after{content:"";position:absolute;inset:3.5px;border-radius:50%;background:var(--accent);}
+.v9quiz .fine{margin-top:8px;font-size:12px;color:var(--ink-body);display:flex;align-items:center;gap:7px;}
+.v9quiz .fine svg{width:13px;height:13px;color:var(--accent-ink);flex:none;}
+
+/* ─── C-40 audience toggle ─── */
+.v9aud{position:relative;display:inline-flex;padding:5px;border-radius:999px;}
+.v9aud .thumb{position:absolute;top:5px;left:0;height:calc(100% - 10px);background:#fff;border-radius:999px;box-shadow:0 4px 14px -6px rgba(0,0,0,.45);transition:transform .42s var(--ease-v9),width .42s var(--ease-v9);}
+.v9aud button{position:relative;z-index:1;background:transparent;border:none;color:rgba(255,255,255,.82);font:600 14px var(--sans);padding:10px 20px;border-radius:999px;transition:color .28s;cursor:pointer;}
+.v9aud button.on{color:var(--dark);}
+.v9hvar{margin-top:18px;transition:opacity .45s var(--ease-v9),transform .45s var(--ease-v9),filter .45s var(--ease-v9);font:400 clamp(20px,2.4vw,29px)/1.2 var(--sans);letter-spacing:-.02em;color:#fff;}
+.v9hvar .serif9{font-family:var(--serif);font-style:italic;color:var(--accent-soft);}
+.v9hvar.out{opacity:0;transform:translateY(10px);filter:blur(5px);}
+.v9hvar[hidden]{display:none;}
+
+/* ─── C-41 glass system ─── */
+.v9glass-demo{position:relative;border-radius:12px;overflow:hidden;padding:34px;background:linear-gradient(120deg,var(--dark) 0%,var(--dark-2) 48%,color-mix(in srgb,var(--accent) 28%,var(--dark-2)) 100%);}
+.g9{background:rgba(255,255,255,.13);backdrop-filter:blur(14px) saturate(1.35);-webkit-backdrop-filter:blur(14px) saturate(1.35);border:1px solid rgba(255,255,255,.28);box-shadow:inset 0 1px 0 rgba(255,255,255,.34),inset 0 -1px 0 rgba(255,255,255,.06),0 8px 28px -12px rgba(8,12,36,.35);}
+.g9chip{display:inline-flex;align-items:center;gap:7px;border-radius:999px;padding:8px 15px;font:600 12.5px var(--sans);color:#fff;}
+.g9btn{display:inline-flex;align-items:center;border:none;border-radius:10px;padding:13px 22px;font:600 15px var(--sans);color:#fff;cursor:pointer;position:relative;overflow:hidden;transition:background-color .2s,transform .28s var(--ease-v9);}
+.g9btn:hover{background:rgba(255,255,255,.21);transform:translateY(-2px);}
+.g9btn::before{content:"";position:absolute;top:-40%;bottom:-40%;left:-30%;width:36%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.38),transparent);transform:translateX(-140%) skewX(-16deg);pointer-events:none;}
+@media(prefers-reduced-motion:no-preference){
+  .g9btn:hover::before{animation:g9sheen .8s var(--ease-v9) forwards;}
+  @keyframes g9sheen{to{transform:translateX(460%) skewX(-16deg);}}
+}
+.g9row{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
+
+/* ─── C-42 editorial ruled feature rows ─── */
+.v9help{display:grid;grid-template-columns:.86fr 1.14fr;gap:44px;}
+@media(max-width:760px){.v9help{grid-template-columns:1fr;gap:28px;}}
+.v9help h3{font:600 clamp(22px,2.8vw,32px)/1.1 var(--sans);letter-spacing:-.025em;color:var(--ink);margin:10px 0 0;}
+.v9help h3 .serif9{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--accent-ink);}
+.v9help .lead p{color:var(--ink-body);font-size:15px;margin-top:14px;max-width:36ch;}
+.v9frows .row{display:grid;grid-template-columns:auto 1fr;gap:20px;padding:24px 0;border-top:1px solid var(--border);}
+.v9frows .row:first-child{border-top:none;padding-top:0;}
+.v9frows .ico{width:44px;height:44px;flex:none;}
+.v9frows .ico svg{width:44px;height:44px;}
+.v9frows h4{font:700 17px var(--sans);letter-spacing:-.015em;color:var(--ink);margin:2px 0 0;}
+.v9frows p{color:var(--ink-body);font-size:14px;margin:7px 0 0;line-height:1.5;max-width:54ch;}
+
+/* ─── C-43 emotional close ─── */
+.v9close{text-align:center;max-width:620px;margin:0 auto;}
+.v9close h3{font:600 clamp(28px,3.6vw,44px)/1.06 var(--sans);letter-spacing:-.03em;color:var(--ink);margin:0;text-wrap:balance;}
+.v9close h3 .serif9{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--accent-ink);}
+.v9close p{color:var(--ink-body);font-size:16px;margin:16px auto 26px;max-width:46ch;}
+.v9cta{display:inline-flex;align-items:center;gap:8px;border:none;border-radius:10px;padding:15px 26px;font:600 15.5px var(--sans);background:var(--accent);color:var(--dark);cursor:pointer;box-shadow:0 10px 26px -10px rgba(var(--accent-rgb),.55);transition:transform .28s var(--ease-v9),box-shadow .28s var(--ease-v9);}
+.v9cta:hover{transform:translateY(-2px);box-shadow:0 18px 34px -12px rgba(var(--accent-rgb),.6);}
+
+/* ─── C-44 compliance footer ─── */
+.v9foot .top{display:flex;justify-content:space-between;gap:28px;flex-wrap:wrap;padding-bottom:22px;border-bottom:1px solid rgba(0,0,0,.05);}
+.v9foot .method{font-size:13px;color:var(--ink-body);max-width:44ch;line-height:1.5;margin-top:12px;}
+.v9foot .links{display:flex;gap:22px;flex-wrap:wrap;align-items:center;font:600 13.5px var(--sans);color:var(--ink);}
+.v9foot .disc{margin-top:20px;font-size:12px;color:var(--ink-body);max-width:100ch;line-height:1.6;}
+.v9foot .disc b{color:var(--ink);}
+.v9foot .meta{margin-top:10px;font-size:11.5px;color:var(--ink-body);opacity:.75;}
+.v9brand{display:inline-flex;align-items:center;gap:9px;font:700 15px var(--sans);color:var(--ink);}
+.v9brand .mk{width:26px;height:26px;border-radius:7px;background:linear-gradient(150deg,color-mix(in srgb,var(--accent) 78%,#fff),var(--accent));display:grid;place-items:center;}
+.v9brand .mk svg{width:15px;height:15px;}
+
+/* ─── C-45 transparent→glass sticky nav ─── */
+.v9navdemo{height:210px;overflow-y:auto;border-radius:10px;position:relative;background:var(--ground);}
+.v9navdemo .navbar{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:13px 20px;background:transparent;border-bottom:1px solid transparent;transition:background-color .34s,border-color .34s;}
+.v9navdemo .navbar.scrolled{background:rgba(255,255,255,.84);backdrop-filter:blur(16px) saturate(1.2);-webkit-backdrop-filter:blur(16px) saturate(1.2);border-color:var(--border);}
+.v9navdemo .navbar .nm{font:700 14px var(--sans);color:#fff;transition:color .3s;}
+.v9navdemo .navbar.scrolled .nm{color:var(--ink);}
+.v9navdemo .navbar .lk{display:flex;gap:16px;font:600 12.5px var(--sans);color:rgba(255,255,255,.85);transition:color .3s;}
+.v9navdemo .navbar.scrolled .lk{color:var(--ink-body);}
+.v9navdemo .fakehero{margin-top:-49px;height:250px;background:linear-gradient(160deg,var(--dark),var(--dark-2) 55%,color-mix(in srgb,var(--accent) 24%,var(--dark-2)));display:flex;align-items:center;justify-content:center;color:#fff;font:600 17px var(--sans);}
+.v9navdemo .fakebody{height:320px;background:var(--ground);padding:26px 20px;color:var(--ink-body);font-size:13.5px;}
 </style>
 </head>
 <body>
@@ -395,6 +599,31 @@ img{display:block;max-width:100%;}
     <h1>The Component Library — <em>react by ID.</em></h1>
     <p>Every entry below is a <b>worked example — an exhibit, not a template</b>. Each carries three layers: <b>INVARIANT</b> (the measured craft numbers, always kept) · <b>VARY</b> (the mandatory freshness axes every new build must move on) · <b>NEVER PORT</b> (instance artifacts born from one client's mechanism — re-derived from THIS client's research, every time). Executors receive the INVARIANT/VARY/NEVER-PORT block from the Director's brief, not this raw HTML — and a verbatim rebuild of any exhibit is a critic-flagged defect (stamp detection). The toggle (top right) re-skins everything live: retint the colors, keep the numbers. React by ID — keep, kill, or change.</p>
   </header>
+
+  <!-- ═══════════ COVERAGE — section job → options (sprint 2026-07-08) ═══════════ -->
+  <div class="cov">
+    <table>
+      <caption>Coverage — section job → pattern options after the 2026-07-08 sprint (AGL v9 harvest C-32…C-45 + candidate tier C-46…C-71)
+        <small>PROVEN = live exhibit (killed entries excluded) · CANDIDATE = text-spec card, exhibit pending. Target per ASSEMBLY §1: 4–6 proven options per job. <b class="low">FLAG</b> = under 4 proven.</small></caption>
+      <tr><th>Section job</th><th>Proven</th><th>Candidates</th><th>Status</th></tr>
+      <tr><td><b>Hero</b></td><td>6 — C-06 · C-07 · C-09 · C-10 · C-26 · C-27</td><td>2 — C-50 · C-59</td><td><span class="ok">OK</span></td></tr>
+      <tr><td><b>Credibility band</b></td><td>2 — C-11 · C-33</td><td>1 — C-58</td><td><span class="low">FLAG (2)</span></td></tr>
+      <tr><td><b>Pain validation</b></td><td>1 — C-16</td><td>1 — C-65</td><td><span class="low">FLAG (1)</span></td></tr>
+      <tr><td><b>ICP self-sort</b></td><td>2 — C-17 · C-40</td><td>1 — C-64</td><td><span class="low">FLAG (2)</span></td></tr>
+      <tr><td><b>Fit / MQL capture</b></td><td>3 — C-21 · C-38 · C-39</td><td>0</td><td><span class="low">FLAG (3)</span></td></tr>
+      <tr><td><b>Services / solution</b></td><td>5 — C-18 · C-28 · C-30 · C-31 · C-42</td><td>5 — C-46 · C-48 · C-53 · C-66 · C-71</td><td><span class="ok">OK</span></td></tr>
+      <tr><td><b>Process</b></td><td>1 — C-20</td><td>1 — C-62</td><td><span class="low">FLAG (1)</span></td></tr>
+      <tr><td><b>Proof</b></td><td>8 — C-12 · C-13 · C-14 · C-15 · C-34 · C-35 · C-36 · C-37</td><td>2 — C-49 · C-69</td><td><span class="ok">OK</span></td></tr>
+      <tr><td><b>Final CTA / close</b></td><td>1 — C-43</td><td>3 — C-47 · C-57 · C-70</td><td><span class="low">FLAG (1)</span></td></tr>
+      <tr><td><b>Insights / content</b></td><td>1 — C-19</td><td>2 — C-52 · C-63</td><td><span class="low">FLAG (1)</span></td></tr>
+      <tr><td><b>Footer</b></td><td>1 — C-44</td><td>0</td><td><span class="low">FLAG (1)</span></td></tr>
+      <tr><td><b>Nav &amp; page chrome</b></td><td>1 — C-45</td><td>1 — C-51</td><td><span class="low">FLAG (1)</span></td></tr>
+      <tr><td>Type systems <i>(support)</i></td><td>5 — C-01 · C-02 · C-04 · C-24 · C-25</td><td>0</td><td><span class="ok">OK</span></td></tr>
+      <tr><td>Buttons &amp; control surfaces <i>(support)</i></td><td>2 — C-05 · C-41</td><td>0</td><td><span class="low">thin (2)</span></td></tr>
+      <tr><td>Motion systems <i>(support)</i></td><td>3 — C-22 · C-23 · C-32</td><td>3 — C-54 · C-60 · C-67</td><td><span class="ok">OK</span></td></tr>
+      <tr><td>Composition / tonal maps <i>(new axis)</i></td><td>0</td><td>4 — C-55 · C-56 · C-61 · C-68</td><td><span class="low">candidates only</span></td></tr>
+    </table>
+  </div>
 
   <!-- ═══════════ TYPE SYSTEMS ═══════════ -->
   <section class="grp"><h2>Type systems — <em>the voice of each register</em></h2>
@@ -469,7 +698,7 @@ img{display:block;max-width:100%;}
   </section>
 
   <!-- ═══════════ BUTTONS ═══════════ -->
-  <section class="grp"><h2>Buttons — <em>three measured systems</em></h2>
+  <section class="grp"><h2>Buttons &amp; control surfaces — <em>measured systems</em></h2>
     <div class="comp"><div class="comp-bar"><span class="cid">C-05</span><span class="cname">Button systems + attention cues</span><span class="prov">Maven 4px/10×24 · BetterUp pill 32px + sweep · Stash square 0px/17.8×23.7</span></div>
       <div class="demo pad on-ground"><div class="btnrow">
         <button class="b-flat">Schedule a Call <span>→</span></button>
@@ -481,6 +710,20 @@ img{display:block;max-width:100%;}
         <div class="row"><span class="k i">Invariant</span><span>Flat: r4, 0.4s ease, idle sheen 5.5s. Square: r0, 600 caps .95px tracking, .12s snap. Sharp radii only — pills are dead.</span></div>
         <div class="row"><span class="k v">Vary</span><span>Which surviving system (route by register) · label copy · size · ground · arrow or none.</span></div>
         <div class="row"><span class="k n">Never port</span><span>The CTA labels — “Schedule a Call” is one client’s conversion event. Label = this client’s actual event.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
+    </div>
+    <div class="comp"><div class="comp-bar"><span class="cid">C-41</span><span class="cname">Glass system — chip · button · panel over photography</span><span class="prov">AGL v9 · shipped 2026-07</span></div>
+      <div class="demo pad on-ground"><div class="v9glass-demo"><div class="g9row">
+        <span class="g9chip g9"><svg viewBox="0 0 12 12" fill="none" width="12" height="12"><rect x="2" y="5.5" width="8" height="5" rx="1.1" stroke="currentColor" stroke-width="1.1"/><path d="M3.8 5.5V4a2.2 2.2 0 014.4 0v1.5" stroke="currentColor" stroke-width="1.1"/></svg>Confidential &middot; glass chip</span>
+        <button class="g9btn g9">Glass secondary button</button>
+      </div>
+      <p style="margin-top:20px;max-width:52ch;font-size:13.5px;color:rgba(255,255,255,.8)">Glass is PHYSICAL, not just transparent: white 13% fill &middot; blur(14px) saturate(1.35) &middot; 1px white/28 border &middot; inset top edge-light &middot; hover sheen sweep (.8s, once, hover-triggered — not looping).</p></div></div>
+      <div class="spec">R14 measured: translucent white 8–14% + backdrop blur 12–14px + saturate(1.3) + 1px white/25 border + inset edge-light. Glass lives ONLY over photography/deep grounds. Sheen animates on hover only (R17: no looping attention-seekers).</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Fill white 8–14% · blur 12–14px + saturate(1.3) · 1px white/25 border · inset top edge-light · hover sheen sweep fires once per hover · only over photography or deep grounds — never on flat light sections.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Which controls go glass (chip / secondary CTA / toggle / data pill) · blur + fill values within range · corner radius per register (chips may pill; CTAs obey the register's button radius).</span></div>
+        <div class="row"><span class="k n">Never port</span><span>The chip's label copy — "Confidential · for advisors weighing a move" is AGL's trust promise. This client's chips carry this client's promise.</span></div>
       </div>
       <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
     </div>
@@ -674,6 +917,119 @@ img{display:block;max-width:100%;}
       </div>
       <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
     </div>
+    <div class="comp"><div class="comp-bar"><span class="cid">C-33</span><span class="cname">Movement-wire ticker (live-proof band under hero)</span><span class="prov">AGL v9 · shipped 2026-07</span></div>
+      <div class="demo"><div class="v9wire" aria-label="Movement wire, illustrative examples">
+        <div class="in9">
+          <span class="lab"><span class="dot"></span>Movement wire &middot; illustrative</span>
+          <div class="view"><div class="track" id="v9wireTrack">
+            <span class="it"><b>$210M team</b> &middot; wirehouse <span class="to">&rarr; independent RIA</span> &middot; Southeast</span><span class="sep"></span>
+            <span class="it"><b>$85M solo</b> &middot; insurance BD <span class="to">&rarr; hybrid RIA</span> &middot; Midwest</span><span class="sep"></span>
+            <span class="it"><b>4-advisor group</b> &middot; regional BD <span class="to">&rarr; national RIA platform</span> &middot; Texas</span><span class="sep"></span>
+            <span class="it"><b>$140M partner</b> &middot; wirehouse <span class="to">&rarr; boutique RIA</span> &middot; Northeast</span><span class="sep"></span>
+          </div></div>
+        </div>
+      </div></div>
+      <div class="spec">The cred-band job done as a LIVE FEED: labeled marquee of real-world movement directly under the hero. Track duplicated in JS for a seamless −50% loop (42–52s linear) · pauses on hover · edge fade via mask · warm dot signals "live" · tabular numerals · "illustrative" label carried IN the band (R32).</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Sits directly under the hero (proof before pitch) · seamless duplicate-track loop, 42–52s linear, pause on hover · flex-none label with its own ground so items slide under it · mask-fade edges · tabular nums · honesty label ("illustrative") rides inside the band · reduced-motion/no-JS = static row.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>What flows through the wire (moves / placements / filings / market events) · item anatomy · speed per motion temperament · label position · band ground (dark band vs light hairline band).</span></div>
+        <div class="row"><span class="k n">Never port</span><span>The ticker items — "$210M team · wirehouse → independent RIA" is AGL's advisor-movement world. The feed's content class is re-derived from this client's actual signal domain.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-34</span><span class="cname">Count-up stat grid on dark (+ the zero-stat trust card)</span><span class="prov">AGL v9 · shipped 2026-07</span></div>
+      <div class="demo pad on-dark" data-v9io>
+        <div class="v9cnts">
+          <div class="cc"><b><span class="cnt9 num" data-to="725000">725,000</span><span class="au">+</span></b><span>Advisor records tracked, from public SEC, FINRA &amp; BrokerCheck filings</span></div>
+          <div class="cc"><b><span class="cnt9 num" data-to="9400">9,400</span></b><span>Moves detected this quarter*</span></div>
+          <div class="cc"><b><span class="cnt9 num" data-to="18000">18,000</span><span class="au">+</span></b><span>Firms monitored for events that push advisors to move*</span></div>
+          <div class="cc"><b>0</b><span>Advisor profiles sold or shared with recruiters. Ever.</span></div>
+        </div>
+        <p class="v9note">*Illustrative operating figures. Registration counts reflect public filings data.</p>
+      </div>
+      <div class="spec">Kin of C-12 (light metric cards) and C-13 (photo band) — different skeleton: ghost cards on dark (white/.04 fill, white/.16 border, r14), 700-weight tabular numerals counting up (easeOutCubic 1.5s), warm accent on the "+" only, footnote discipline on every unverifiable number. The FOURTH card is a "0" — a negative-proof trust stat that never animates.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Ghost-card grid on dark · tabular numerals count up 1.5s easeOutCubic on scroll, once · warm accent restricted to the suffix glyph · asterisk footnote for every operating figure (R25/R32) · one zero-stat trust card that states what you DON'T do and never animates · reduced-motion = final values.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Card count (3–4) · which stats earn cards · grid vs row · ground depth · suffix treatment · where the zero-stat sits.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>The numbers and the zero-promise — 725K/9,400/18K and "profiles never sold" are AGL's inventory and AGL's ethic. Re-source every figure from this client's verified world.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-35</span><span class="cname">Diverging net-flow bars (center-axis data panel)</span><span class="prov">AGL v9 · shipped 2026-07</span></div>
+      <div class="demo pad on-dark" data-v9io>
+        <div class="v9flow">
+          <div class="top"><span>Net advisor flow &middot; by channel &middot; 12 mo</span><span class="live"><i></i>Updated continuously</span></div>
+          <div class="v9frow"><span>Independent RIA</span><span class="v9ftrack"><i class="v9fbar pos" style="width:44%;--d:.15s"></i></span><b class="num">+2,340</b></div>
+          <div class="v9frow"><span>Hybrid RIA</span><span class="v9ftrack"><i class="v9fbar pos" style="width:27%;--d:.28s"></i></span><b class="num">+1,120</b></div>
+          <div class="v9frow"><span>Regional BD</span><span class="v9ftrack"><i class="v9fbar pos" style="width:8%;--d:.41s"></i></span><b class="num">+310</b></div>
+          <div class="v9frow"><span>Insurance BD</span><span class="v9ftrack"><i class="v9fbar neg" style="width:21%;--d:.54s"></i></span><b class="num neg">&minus;890</b></div>
+          <div class="v9frow"><span>Wirehouse</span><span class="v9ftrack"><i class="v9fbar neg" style="width:38%;--d:.67s"></i></span><b class="num neg">&minus;1,760</b></div>
+          <p class="fnote">Directional and illustrative &mdash; compiled from public registration filings. Not a claim about any specific firm.</p>
+        </div>
+      </div>
+      <div class="spec">Zero-axis comparative chart as a glass panel: 1px center axis, positive bars grow right (accent gradient), negative grow left (desaturated) — winners and losers in one glance (R33: every chart encodes a labeled comparative fact). Bars scale from the axis with 130ms stagger; numbers are text, not animation-dependent.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Visible center zero-axis · positive = accent gradient growing right, negative = desaturated growing left · scaleX from the axis, ~1.15s, staggered · signed tabular numerals as real text · source/illustrative note inside the panel · no-JS/reduced-motion = bars visible at full width.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>What flows diverge (channels / segments / destinations) · row count · panel chrome (glass on dark vs card on light) · horizontal vs vertical axis · label column width.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>The channel rows and figures — advisor-channel net flow is AGL's dataset. This client's diverging story comes from this client's data.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-36</span><span class="cname">Range-band chart (honest ranges, numeric endpoints)</span><span class="prov">AGL v9 · shipped 2026-07 (report view §02)</span></div>
+      <div class="demo pad on-ground" data-v9io>
+        <div class="v9panel">
+          <div class="ttl"><span>Reported package ranges &middot; % of trailing-12 production</span><em>Illustrative</em></div>
+          <div class="v9deal">
+            <div class="row"><span>Wirehouse &rarr; wirehouse</span><span class="track"><i class="band" style="left:42.8%;width:51.4%;--d:.1s"><b>150&ndash;330%</b></i></span></div>
+            <div class="row"><span>&rarr; Regional / national BD</span><span class="track"><i class="band" style="left:28.5%;width:42.9%;--d:.22s"><b>100&ndash;250%</b></i></span></div>
+            <div class="row"><span>&rarr; RIA with equity partner</span><span class="track"><i class="band" style="left:11.4%;width:22.9%;--d:.34s"><b>40&ndash;120%</b></i></span></div>
+            <div class="row"><span>&rarr; Independent RIA</span><span class="track"><i class="band" style="left:7.1%;width:21.4%;--d:.46s"><b>25&ndash;100%</b></i></span></div>
+          </div>
+          <div class="axis num" style="display:flex;justify-content:space-between;margin-top:10px;font-size:11px;color:var(--ink-body)"><span>0%</span><span>100%</span><span>200%</span><span>300%</span><span>350%</span></div>
+        </div>
+      </div>
+      <div class="spec">The compliance-safe economics chart: bands (not points) positioned on a real labeled axis, numeric endpoints on every band (R33), left-anchored scaleX reveal with stagger. Built for claims that are honest as RANGES only — "not an offer, estimate, or guarantee" note rides with it in production (R25).</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Ranges as positioned bands on a labeled numeric axis · numeric endpoints printed on each band · bands scale from their left edge, ~1.1s staggered · "Illustrative" flag in the panel title · compliance note adjacent in production · no-JS = bands visible.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>What the ranges describe (deal economics / timelines / outcomes) · row count · axis scale + units · band gradient depth · panel ground.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>The transition-package rows and percentages — AGL's compiled advisor-deal data. This client's bands are compiled from this client's domain sources.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-37</span><span class="cname">Readiness gauge + verdict + next steps</span><span class="prov">AGL v9 · shipped 2026-07 (report view §05)</span></div>
+      <div class="demo pad on-ground" data-v9io>
+        <div class="v9panel" style="max-width:720px">
+          <div class="v9ready">
+            <div class="v9gauge">
+              <svg viewBox="0 0 240 150" role="img" aria-label="Readiness gauge showing 61 out of 100">
+                <path class="bg" d="M12,130 A108,108 0 0 1 228,130"/>
+                <path class="fg" d="M12,130 A108,108 0 0 1 228,130"/>
+                <text class="n num" x="120" y="116" text-anchor="middle">61</text>
+                <text class="l" x="120" y="144" text-anchor="middle">Readiness &middot; 0&ndash;100</text>
+              </svg>
+            </div>
+            <div>
+              <span class="v9verdict"><i></i>Window opening &middot; re-scored as signals change</span>
+              <ul class="v9steps">
+                <li><svg viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7.2" stroke="currentColor" stroke-width="1.6"/><path d="M6 9.2 8.2 11.4 12.2 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Pressure-test the math.</b> The score never stands alone — it resolves into named next moves.</span></li>
+                <li><svg viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7.2" stroke="currentColor" stroke-width="1.6"/><path d="M6 9.2 8.2 11.4 12.2 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Each step points at the conversion event</b> (PRINT_SPEC signal 3b).</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spec">Score-as-authority instrument: half-circle SVG arc (dasharray 339.3) sweeps to value over 1.6s while the numeral counts in sync; verdict pill translates the number into plain language; checklist converts the verdict into next moves. Reduced-motion/no-JS = final arc + final number (defaults in markup/CSS).</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Arc sweep + numeral count run IN SYNC (same duration, same easing), once, on scroll · verdict pill translates the score to words · steps list resolves toward the conversion event · static-final fallback for reduced-motion and no-JS · never gauge an unverifiable number (C-13 law extends here).</span></div>
+        <div class="row"><span class="k v">Vary</span><span>What the score measures · gauge geometry (half-arc is ONE execution — ring / bar-dial are siblings) · verdict vocabulary · step count · panel vs full-band placement.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>The "61 · window opening" score and the three moves — AGL's readiness mechanism. This client's instrument scores this client's mechanism.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
+    </div>
   </section>
 
   <!-- ═══════════ SECTION COMPONENTS ═══════════ -->
@@ -842,6 +1198,107 @@ img{display:block;max-width:100%;}
       </div>
       <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
     </div>
+    <div class="comp"><div class="comp-bar"><span class="cid">C-38</span><span class="cname">Record match-card ("we found you")</span><span class="prov">AGL v9 · shipped 2026-07</span></div>
+      <div class="demo pad on-alt">
+        <div class="v9match">
+          <span class="pulse"><svg viewBox="0 0 18 18" fill="none"><circle cx="8" cy="8" r="5" stroke="currentColor" stroke-width="1.7"/><path d="M12 12l3.4 3.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="8" cy="8" r="1.6" fill="currentColor"/></svg></span>
+          <span><b>Record matched from public filings</b><span class="num">CRD &bull;&bull;&bull;4821 &middot; 12 yrs &middot; dually registered</span></span>
+        </div>
+        <p style="margin-top:18px;max-width:56ch;font-size:13px">Floats over the capture artifact (C-39) at a slight rotate(1.6deg) — the "we already know your world" authority moment. Redacted identifiers (&bull;&bull;&bull;4821) prove capability without exposure.</p>
+      </div>
+      <div class="spec">Glass-white chip (white/.92 + blur 12) · r13 · icon well in accent-soft · bold claim line + redacted tabular detail line · deliberate 1.6deg tilt marks it as a live artifact, not layout. On mobile it docks static above the card.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Public-data authority stated BEFORE the ask · redacted identifier pattern (prove the match, protect the person) · slight rotation + overlap marks it as evidence, not chrome · bold claim + tabular-nums detail anatomy · docks static on mobile.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>What record is matched (filing / registration / portfolio / property) · tilt angle + docking corner · icon metaphor · chip ground (white-glass vs dark-glass).</span></div>
+        <div class="row"><span class="k n">Never port</span><span>CRD numbers, tenure, registration language — the SEC/FINRA world is AGL's. The matched-record proof is rebuilt from this client's public-data domain.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-39</span><span class="cname">Quiz preview card (assessment shown as artifact)</span><span class="prov">AGL v9 · shipped 2026-07 · sibling of C-21 (different job: preview, not the wizard itself)</span></div>
+      <div class="demo pad on-ground" data-v9io>
+        <div class="v9quiz" aria-hidden="true">
+          <div class="top"><span class="step">Question 4 of 7</span><span class="bar"><i></i></span></div>
+          <h4>What&rsquo;s really driving the itch?</h4>
+          <div class="v9opt sel"><span class="rd"></span>Payout and economics</div>
+          <div class="v9opt"><span class="rd"></span>Autonomy and ownership</div>
+          <div class="v9opt"><span class="rd"></span>Technology and platform</div>
+          <div class="fine"><svg viewBox="0 0 13 13" fill="none"><rect x="2" y="6" width="9" height="5.5" rx="1.2" stroke="currentColor" stroke-width="1.2"/><path d="M4 6V4.3a2.5 2.5 0 015 0V6" stroke="currentColor" stroke-width="1.2"/></svg>Answers stay private until you ask us to look.</div>
+        </div>
+      </div>
+      <div class="spec">The C-26 principle applied to the MQL gate: show the actual assessment mid-flight (question 4 of 7, one answer selected) instead of describing it. Progress bar scaleX-reveals on scroll; options are live (hover translateX(3px), select state); privacy line under the options answers the fear at the exact moment it forms.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Preview shows the instrument MID-FLIGHT (a real question, visible progress, one selection made) · options are interactive even in preview · privacy/trust line sits inside the card, under the options · step counter + progress bar anatomy · pairs with a C-38-class evidence chip.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Which question is previewed · option count · progress treatment (bar / segments / fraction) · card tilt + stacking · ground. Distinct from C-21: this SELLS the assessment; C-21 IS the assessment moment.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>The question and options — "what's driving the itch / payout / autonomy" is AGL's advisor psychology. Re-derive the previewed question from this client's qualifying logic.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-40</span><span class="cname">Audience toggle — sliding glass thumb (ICP self-sort in the hero)</span><span class="prov">AGL v9 · shipped 2026-07</span></div>
+      <div class="demo pad on-dark">
+        <div class="v9aud g9" role="tablist" id="v9aud" aria-label="Audience">
+          <span class="thumb"></span>
+          <button class="on" data-a="adv" role="tab" aria-selected="true">I&rsquo;m an advisor</button>
+          <button data-a="exec" role="tab" aria-selected="false">I lead a firm</button>
+        </div>
+        <div class="v9hvar" data-a="adv">Think clearly about your <span class="serif9">next move.</span></div>
+        <div class="v9hvar" data-a="exec" hidden>Know who&rsquo;s moving, <span class="serif9">before they go.</span></div>
+      </div>
+      <div class="spec">ICP self-sort collapsed INTO the hero: a two-tab glass control whose white thumb slides (measured offsetWidth/offsetLeft, .42s) while headline + sub + CTAs swap per audience (blur-out .45s, double-rAF re-entry). No-JS floor = first audience static. Beats a whole ICP section when there are exactly two audiences.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Self-sort happens in the first viewport · thumb geometry measured in JS (re-laid on resize + font load — the LED-001 class of guard) · full variant swap (headline, sub, CTAs), not just copy tint · role=tablist semantics · no-JS = first variant visible.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>The two (max three) audiences · control placement (above headline vs under nav) · glass vs solid control per ground · what swaps (full hero vs headline only).</span></div>
+        <div class="row"><span class="k n">Never port</span><span>"I'm an advisor / I lead a firm" and both headline variants — AGL's dual ICP. This client's toggle names this client's audiences.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-42</span><span class="cname">Editorial ruled feature rows + duotone icons (anti-icon-grid)</span><span class="prov">AGL v9 · shipped 2026-07 · the R1/R2 answer to 3-icon-card grids</span></div>
+      <div class="demo pad on-ground">
+        <div class="v9help">
+          <div class="lead">
+            <span class="eyebrow">Why we exist</span>
+            <h3>Every pitch sounds perfect. That&rsquo;s <span class="serif9">the problem.</span></h3>
+            <p>Asymmetric split: short lead column states the pain; the wide column answers it in ruled rows.</p>
+          </div>
+          <div class="v9frows">
+            <div class="row">
+              <span class="ico"><svg viewBox="0 0 44 44"><rect class="dico-f" x="7" y="24" width="7" height="13" rx="2"/><rect class="dico-f" x="18.5" y="17" width="7" height="20" rx="2"/><rect class="dico-f" x="30" y="10" width="7" height="27" rx="2"/><path class="dico-s" d="M9 21 L16 15 L25 19 L36 7" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><circle class="dico-sf" cx="36" cy="7" r="2.6"/></svg></span>
+              <div><h4>See the whole board</h4><p>Row anatomy: 44px duotone icon (tinted fill ~16% accent + accent stroke, drawn for THIS concept) · 1px hairline rule between rows, none above the first.</p></div>
+            </div>
+            <div class="row">
+              <span class="ico"><svg viewBox="0 0 44 44"><path class="dico-f" d="M22 6 L35 11 V21 C35 30 29 35 22 38 C15 35 9 30 9 21 V11 Z"/><path class="dico-s" d="M22 6 L35 11 V21 C35 30 29 35 22 38 C15 35 9 30 9 21 V11 Z" stroke-width="1.8" stroke-linejoin="round"/><path class="dico-s" d="M16 22 l4 4 8-8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <div><h4>Decide in a private room</h4><p>Rows reveal with staggered delays (--d custom property per row) — an editorial list, never a card grid.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spec">Grid .86fr/1.14fr · lead column: eyebrow + pain headline (serif-italic accent phrase) + short para + CTA · feature rows ruled by 1px hairlines, 24–30px vertical padding, custom duotone icons only (R2: no generic line icons, ever). This is the measured replacement for the #2 slop tell (3-icon-card feature grid, R1).</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Asymmetric two-column (narrow pain lead / wide answer rows) · hairline-ruled rows, no cards, no shadows · icons custom duotone (tinted fill ~16% accent + accent stroke) drawn per concept · staggered row reveal · 2–4 rows max.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Column ratio + which side leads · row count · icon set (re-drawn per client concept) · with/without lead CTA · ground.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>The pain headline, the row copy, and the icons themselves — "every pitch sounds perfect" and the whole-board chart icon are AGL's mechanism. Icons are re-drawn for this client's concepts, never reused as a pack.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-43</span><span class="cname">Emotional close (the human final-CTA)</span><span class="prov">AGL v9 · shipped 2026-07</span></div>
+      <div class="demo pad on-alt">
+        <div class="v9close">
+          <h3>A move is a career decision, <span class="serif9">not a data point.</span></h3>
+          <p>The data tells you what&rsquo;s happening. A guide helps you decide what&rsquo;s wise. When you&rsquo;re ready, the room is open.</p>
+          <button class="v9cta">Talk to a guide <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+      </div>
+      <div class="spec">The final CTA drops all instrumentation: centered, max-width 620–660px, one big balanced headline whose serif-italic phrase REFRAMES the whole page (data → human decision), one short para, ONE button. After a page of charts, the close is deliberately quiet — the contrast IS the persuasion.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Single centered column ≤660px · headline reframes the page's mechanism in human terms, serif-italic carrying the turn · exactly one CTA (or high/low pair per RULE #2.8 dual-path) · no charts, no cards, no proof devices — quiet after loud · text-wrap:balance.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Ground (light / alt / soft radial wash) · single vs dual-path CTA · headline length + break geometry · para presence.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>"A move is a career decision, not a data point" — AGL's reframe. This client's close states this client's human truth, derived from their research.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
+    </div>
   </section>
 
   <!-- ═══════════ MOTION SYSTEMS ═══════════ -->
@@ -874,9 +1331,304 @@ img{display:block;max-width:100%;}
       </div>
       <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
     </div>
+    <div class="comp"><div class="comp-bar"><span class="cid">C-32</span><span class="cname">Constellation canvas motif (generative brand graphic)</span><span class="prov">AGL v9 · shipped 2026-07</span><span class="badge sig">Signature-tier · max one motif per site</span></div>
+      <div class="demo pad on-ground">
+        <div class="v9net-demo"><canvas id="v9net" aria-hidden="true"></canvas><span class="cap">One advisor "moves" every ~2.6s — the warm pulse</span></div>
+      </div>
+      <div class="spec">R23 measured: DPR-aware canvas (cap 2×) · node count derived from area, clamped · link alpha ≤ .17, node alpha ≤ .55 (elegant, not busy) · drift ±.16px/frame · every ~2.6s ONE warm pulse travels an edge — the motif literally animates the client's mechanism (an advisor moving firms). Paused offscreen via IntersectionObserver; reduced-motion renders one static frame.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Generative motif LITERALIZES the mechanism (the pulse = the thing the business detects) · quiet floor: link alpha ≤ ~.2, sparse warm event beats · DPR-aware, paused offscreen, static frame under reduced-motion · lives behind dark authority sections, never light body sections.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>What the nodes and the pulse MEAN (re-derived per mechanism) · density + link radius · event cadence · which section hosts it. Signature-tier: one generative motif per site, max.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>Nodes-as-advisors, pulse-as-transition — AGL's metaphor. A new client gets a new literalization or none; reusing the constellation verbatim is the stamp-detection case.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
+    </div>
   </section>
 
-  <p style="margin-top:56px;font-size:13px;max-width:76ch">Not in this page (exist as verified fixtures, hard to demo in a card): the full video-hero lazy-load behavior (<code>qa/fixtures/video-blocks.html</code>) and full-page scroll recoloring (<code>qa/fixtures/scroll-color-theming.html</code>). Candidates NOT yet harvested — say the word: Pitch's animation pacing, Linear's product-scroll transitions, Mercury's product-visual hero, Hoare's no-imagery restraint page.</p>
+  <!-- ═══════════ NAVIGATION & PAGE CHROME ═══════════ -->
+  <section class="grp"><h2>Navigation &amp; page chrome — <em>the frame around the page</em></h2>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-45</span><span class="cname">Transparent&rarr;glass sticky nav</span><span class="prov">AGL v9 · shipped 2026-07</span></div>
+      <div class="demo pad on-ground">
+        <div class="v9navdemo" id="v9navbox" tabindex="0" aria-label="Scroll to see the nav transition">
+          <div class="navbar"><span class="nm">Advisor Growth Lab</span><span class="lk"><span>How we help</span><span>Intelligence</span><span>Assessment</span></span></div>
+          <div class="fakehero">Scroll this frame &darr;</div>
+          <div class="fakebody">Past the hero threshold the nav gains a white-glass ground (white/.84 + blur 16 + saturate 1.2), a hairline border, and its text inverts from white to ink. Two states, one component — the nav belongs to the hero until the page begins.</div>
+        </div>
+      </div>
+      <div class="spec">Sticky, starts fully transparent over the hero (white text), toggles .scrolled past a threshold (v9: 0.7&times;viewport) — background/border transition .34s, text color .3s. Mobile: menu button opens a floating glass sheet. Passive scroll listener; no-JS floor = transparent nav stays legible on the hero scrim.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Transparent over the hero, glass after the threshold · text inverts with the ground (both directions) · .3–.34s transition, passive scroll listener · threshold tied to hero height, not a magic px · mobile menu = floating glass sheet, not a full-screen takeover.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Threshold point · scrolled ground (white-glass vs dark-glass per tonal map) · link count · CTA presence in the bar · brand-mark treatment.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>Nav labels and the brand mark — structure ships, wordmark and IA are this client's.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-44</span><span class="cname">Compliance footer (disclosure as craft)</span><span class="prov">AGL v9 · shipped 2026-07</span></div>
+      <div class="demo pad on-ground">
+        <div class="v9foot">
+          <div class="top">
+            <div>
+              <span class="v9brand"><span class="mk"><svg viewBox="0 0 17 17" fill="none"><path d="M3 12 L7 7 L9.5 9.5 L14 4" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="4" r="1.7" fill="#fff"/></svg></span>Advisor Growth Lab</span>
+              <p class="method">Intelligence built from public SEC, FINRA and BrokerCheck registration data covering roughly 725,000 U.S. advisors.</p>
+            </div>
+            <nav class="links" aria-label="Footer"><span>How we help</span><span>Intelligence</span><span>Assessment</span><span>Contact</span></nav>
+          </div>
+          <p class="disc"><b>Disclosure:</b> Advisor Growth Lab provides growth and recruiting services to partner firms, including Axiom. Industry figures shown are illustrative, derived from public registration filings, and are not claims about any specific firm. Nothing on this page is an offer, a compensation estimate, or a guarantee of any economic outcome. Sample report data is fictional.</p>
+          <p class="meta">&copy; 2026 Advisor Growth Lab</p>
+        </div>
+      </div>
+      <div class="spec">The PRINT_SPEC "team-built" signal #7 as a component: brand + one-line method statement (where the data comes from) · nav links · a REAL disclosure block in plain language (relationship disclosed, figures qualified, samples labeled fictional) · copyright meta. 12–12.5px, line-height 1.6, max 100ch — legible, not fine-print camouflage.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Method statement (data provenance in one line) beside the brand · disclosure in plain reader-facing language (R32), 12px+/1.6/≤100ch — visible, not camouflaged · relationship + figure-qualification + sample-labeling all present per the client's regulatory regime · hairline-separated tiers.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Tier arrangement (single band vs stacked) · link columns · ground (white vs dark) · what the regime requires (FINRA/SEC vs FTC vs none).</span></div>
+        <div class="row"><span class="k n">Never port</span><span>The disclosure text itself — the Axiom relationship and 725K figure are AGL's facts. This client's footer discloses this client's relationships, verified.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
+    </div>
+  </section>
+
+  <p style="margin-top:56px;font-size:13px;max-width:76ch">Not in this page (exist as verified fixtures, hard to demo in a card): the full video-hero lazy-load behavior (<code>qa/fixtures/video-blocks.html</code>) and full-page scroll recoloring (<code>qa/fixtures/scroll-color-theming.html</code>). The AGL v9 hero itself (Ken Burns photo + sun glow + drift + grain + parallax + load-in orchestration) is a C-06-class fresh execution — study it in <code>projects/agl/v9/agl-site.html</code>, don't stamp it. Harvest-mined candidates now live in the CANDIDATE tier below — promote by building the exhibit.</p>
+
+  <!-- ═══════════ CANDIDATE TIER — mined from docs/harvest/*.json (2026-07-08) ═══════════ -->
+  <section class="grp"><h2>Candidates — <em>measured, exhibit pending</em></h2>
+    <p style="margin-top:14px;font-size:13.5px;max-width:78ch">Machine-measured patterns from the 15 harvested reference sites that fill catalog gaps. Text-spec only — a candidate becomes PROVEN when a design-director builds its exhibit and Chris blesses it by ID. Ordered by section job, scarcest first.</p>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-58</span><span class="cname">Oversized-count cred band — CREDIBILITY</span><span class="prov">Mercury · docs/harvest/mercury.json</span><span class="badge cand">Candidate — exhibit pending</span></div>
+      <div class="candspec"><b>Measured:</b> section i=2 · h≈393px · grid(16col) · headline "Loved by 300K+ of the most ambitious entrepreneurs…" · followed by a logo band (i=3, h≈668, 6 imgs) · display arcadiaDisplay 42px/480 lh 48.3. <b>Pattern:</b> the cred job done as a HEADLINE — one oversized customer-count claim carries the band; logos are the supporting cast below, not the lead. Distinct skeleton from C-11 (fact strip) and C-33 (ticker): statement-first credibility.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>One quantified adoption claim at display scale IS the band · logos/support proof subordinate beneath · number verified or VERIFY-chipped · short band (≤400px class), directly after hero or first feature.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>The count's subject (clients / assets / placements) · with/without logo row · ground · type register carrying the claim.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>"300K+ entrepreneurs" — the claim is re-sourced from this client's verified adoption numbers.</span></div>
+      </div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-65</span><span class="cname">Conversational objection mirror — PAIN</span><span class="prov">Stashwealth · docs/harvest/stashwealth.json</span><span class="badge cand">Candidate — exhibit pending</span></div>
+      <div class="candspec"><b>Measured:</b> i=2 · h≈915px · "You're thriving in your career and living life on your own terms…" + i=5 · h≈791px · "Yes, really." — second-person narrative blocks alternating black/white grounds (rgb(0,0,0)×10 / #fff×8 / warm beige rgb(224,215,206)×5). <b>Pattern:</b> pain validation as a CONVERSATION — full-width second-person copy that mirrors the reader's self-image, then answers the forming objection ("Yes, really.") in its own short section. No cards, no numbers — voice does the work.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Second-person voice mirroring the ICP's self-image before any pitch · the objection gets answered in its own beat · typographic sections, no proof devices · tonal alternation marks the turn.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Beat count · ground pairing · type register (works serif or sans) · where the objection-answer lands.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>The HENRY-world copy — the mirror is written from this client's ICP research verbatims, every time.</span></div>
+      </div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-64</span><span class="cname">Tribe-naming ICP band — ICP SELF-SORT</span><span class="prov">Stashwealth · docs/harvest/stashwealth.json</span><span class="badge cand">Candidate — exhibit pending</span></div>
+      <div class="candspec"><b>Measured:</b> i=1 · h≈445px · "Home Of The HENRYs" · and i=6 · h≈338px · "In your 30s making six-figures?" · display Oswald 40.2px/400, H1 67.8px. <b>Pattern:</b> self-sort by NAMING THE TRIBE — a short band that gives the ICP an identity label (or asks the qualifying question directly), so right-fit readers claim it and wrong-fit readers exit. The opposite skeleton of C-17 (photo cards): one line, no imagery.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>The ICP is named or asked directly in one display-scale line · band is short (≤450px) and sits in the first three sections (RULE #2.6) · insider term used fluently, defined only after it's claimed.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Tribe label vs qualifying question · band ground · supporting sub-line or none · pairing with a C-17-class sort below.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>"HENRYs" — the tribe name comes from this client's ICP's own vocabulary, discovered in research, never invented.</span></div>
+      </div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-62</span><span class="cname">Lifecycle journey strip — PROCESS</span><span class="prov">Pitch · docs/harvest/pitch.json</span><span class="badge cand">Candidate — exhibit pending</span></div>
+      <div class="candspec"><b>Measured:</b> i=3 · h≈1319px · flex(column) · 4 imgs · head "From first draft to closed deal, and beyond". <b>Pattern:</b> process told as the CLIENT'S lifecycle, not the firm's steps — stages named by what the customer is doing (draft → deal → beyond), each stage carrying a real artifact image. Different skeleton from C-20 (numbered stepper): narrative stages with artifacts, vertical rhythm.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Stages named from the customer's journey, not internal jargon · each stage shows a real artifact of that stage · explicit "and beyond" continuation beat (removes the what-happens-after fear, RULE #1 job 6).</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Stage count (3–5) · vertical strip vs horizontal rail · artifact type per stage · ground.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>Pitch's draft→deal stages and screenshots — stages and artifacts are this client's actual engagement lifecycle.</span></div>
+      </div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-47</span><span class="cname">Full-bleed team-photo CTA band — FINAL CTA</span><span class="prov">BetterUp · docs/harvest/betterup.json</span><span class="badge cand">Candidate — exhibit pending</span></div>
+      <div class="candspec"><b>Measured:</b> i=5 · h≈429px · flex(column) · 1 img · pad 112px · head "See better in action." <b>Pattern:</b> the final CTA over a full-bleed human photo (the team, the real people) — warm counterweight to a data-heavy page. Sibling of C-43 (quiet typographic close): this one closes on FACES. Scrim + white text per C-06 scrim law.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Real people (the client's actual team/clients — §6 imagery law), never stock · directional scrim keeps AA on the copy side · one short imperative headline + CTA pair · band height 400–500px class.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Photo (always this client's) · scrim side · single vs dual-path CTA · headline scale.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>The photo and the line — a client with no real team photography gets C-43, not faked warmth.</span></div>
+      </div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-57</span><span class="cname">Manifesto interlude — FINAL CTA / statement</span><span class="prov">Mercury · docs/harvest/mercury.json</span><span class="badge cand">Candidate — exhibit pending</span></div>
+      <div class="candspec"><b>Measured:</b> i=9 · h≈449px · grid(16col) · 0 imgs · text-only: "You're creating something to stand the test of time." <b>Pattern:</b> a pure-typography second-person conviction statement placed BETWEEN feature sections (not at the end) — the page pauses, addresses the reader's ambition, then resumes. Emotional pacing device; also viable as the pre-close beat feeding C-43.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Text only, no proof devices, no imagery · second person, present tense, about THEIR ambition · short band, generous whitespace · max one per page — it's a pause, not a pattern.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Placement (mid-page vs pre-close) · ground shift or none · type register · with/without a follow-on CTA.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>Mercury's founder-ambition line — the statement is written from this client's ICP's deepest motivation, per research.</span></div>
+      </div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-70</span><span class="cname">Conviction-validation close band — FINAL CTA</span><span class="prov">Xapo Bank · docs/harvest/xapobank.json</span><span class="badge cand">Candidate — exhibit pending</span></div>
+      <div class="candspec"><b>Measured:</b> i=7 · h≈732px · bg rgb(9,4,2) · head "You Were Right About Bitcoin" · glass card 432×328 (rgba(255,255,255,.2) fill, 1px white border) hosting the CTA. <b>Pattern:</b> the close VALIDATES the reader's past conviction instead of pitching the future — "you were right" — then offers the reward. Dark band + one glass CTA card. Emotionally inverse of C-47/C-43: pride, not warmth or calm.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Close affirms a belief the ICP already holds ("you were right about X") · dark ground, single glass CTA card · no new information introduced — the close spends earned trust, it doesn't argue.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>The validated conviction · band depth · card treatment (glass vs pale) · CTA pair or single.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>"You were right about Bitcoin" — the conviction must be REAL for this ICP (from research) or the device reads as flattery.</span></div>
+      </div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-52</span><span class="cname">Editorial work-gallery row — INSIGHTS</span><span class="prov">Instrument · docs/harvest/instrument.json</span><span class="badge cand">Candidate — exhibit pending</span></div>
+      <div class="candspec"><b>Measured:</b> i=2 · h≈510px · flex(row) kids:2 · 16 imgs · head "Recent work" · display Instrument-Serif 64px/400 tr −1.28px · single ground rgb(232,232,233)×35 page-wide. <b>Pattern:</b> insights/portfolio as a dense horizontal editorial row — many small artifacts in a scannable strip beside a serif section title, not a 3-card grid. Monolight ground makes the artifacts carry all the color.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Title column + dense artifact strip in one row · artifacts uniform-cropped so the SET reads as one object · neutral ground, artifacts carry the color · overflow scrolls in-container (R29).</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Artifact count + crop ratio · title side · strip scroll vs wrap · what the artifacts are (work / articles / episodes).</span></div>
+        <div class="row"><span class="k n">Never port</span><span>The work shown — the strip holds this client's real output only.</span></div>
+      </div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-63</span><span class="cname">Resource gallery on brand-dark — INSIGHTS</span><span class="prov">Pitch · docs/harvest/pitch.json</span><span class="badge cand">Candidate — exhibit pending</span></div>
+      <div class="candspec"><b>Measured:</b> i=9 · h≈1154px · flex(row) · 10 imgs · head "Templates" · on brand-dark rgb(40,15,98). <b>Pattern:</b> the insights/resources job hosted on the brand's dark ground as a browsable gallery of USABLE things (templates, guides, tools) — resources as product, not blog. Cards r20–24 with saturated fills in the source; factory version obeys the register's card DNA.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Resources are usable artifacts, not articles-about · gallery browses horizontally on dark · each card previews the actual resource · one CTA class across the gallery (RULE #2.5).</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Card count + radius per register · dark vs deep-brand ground · preview treatment · gallery vs grid.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>Pitch's template art and violet/lime chrome (C-29 kill applies) — resources and card skins are this client's.</span></div>
+      </div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-51</span><span class="cname">Index-strip section dividers — NAV &amp; CHROME</span><span class="prov">Instrument · docs/harvest/instrument.json</span><span class="badge cand">Candidate — exhibit pending</span></div>
+      <div class="candspec"><b>Measured:</b> repeated flex(row) kids:6 strips (h≈217px, h≈158px) between content sections. <b>Pattern:</b> slim full-width index strips — numbered/labelled rows acting as a visible table-of-contents rhythm between sections, doubling as in-page nav. Encodes true structure (R6: a real sequence), gives long pages a spine.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Strips encode the page's REAL section sequence (numbers match actual order) · slim (≤220px) · consistent anatomy every occurrence · click = anchor jump.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Item count · typographic vs numbered · hairline vs filled strip · appears every section vs at act-breaks.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>Labels — the index names this client's sections.</span></div>
+      </div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-50</span><span class="cname">Heritage split hero, solid deep ground — HERO</span><span class="prov">Hoare's Bank · docs/harvest/hoaresbank.json</span><span class="badge cand">Candidate — exhibit pending</span></div>
+      <div class="candspec"><b>Measured:</b> hero h≈715px · bg rgb(0,51,46) · copy panel 628×813 with inset pad 130px/108px · H1 Trirong 59.9px/400 uppercase (C-25's type) · gold accent rgb(163,135,71)×20 · motion norm 0.3s ease-in-out ×120. <b>Pattern:</b> split hero where the copy side is a SOLID deep-heritage panel with huge inset padding (no scrim needed — the panel IS the ground), photo confined to the other half. The 7th hero language: institutional split, imagery contained not full-bleed.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Copy panel is solid deep ground with ≥100px inset padding — restraint as the credential · photo contained to its own half, never bleeding under copy · metal accent in tiny doses · pairs with C-25 type. Niche: old-money/institutional verticals.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Panel side · ground hue (deep green/navy/burgundy per brand) · photo vs no-imagery half · panel proportion.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>Hoare's 1672 voice and green — the heritage claim must be this client's true history.</span></div>
+      </div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-59</span><span class="cname">Solid brand-field hero — HERO</span><span class="prov">Modern Health · docs/harvest/modernhealth.json</span><span class="badge cand">Candidate — exhibit pending</span></div>
+      <div class="candspec"><b>Measured:</b> i=0 · h≈813px · bg rgb(0,163,255) solid · flex(column) · 0 imgs · H1 Diagramm 80px/600 tr −3px. <b>Pattern:</b> hero as a full-viewport SOLID brand-color field — no photo, no video, no gradient mesh; committed color + big type carries the open. (Chris: steal Modern Health's structure, never their palette.) The confident-flat alternative to C-10's near-black.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>One solid saturated brand field, full-viewport class · display type ≥72px/600-class with hard negative tracking · text AA-checked on the raw brand color · zero decorative layers — the commitment IS the design.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>The brand color (client's own, at their saturation ceiling) · centered vs left · CTA treatment · sub-line presence.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>Modern Health's blue and copy — palette is the client's raw accent; only viable where the brand can carry saturation.</span></div>
+      </div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-46</span><span class="cname">Split narrative + staggered-angle screenshot carousel — SERVICES</span><span class="prov">BetterUp · docs/harvest/betterup.json</span><span class="badge cand">Candidate — exhibit pending</span></div>
+      <div class="candspec"><b>Measured:</b> i=4 · h≈1559px · grid(2col) · 10 imgs · pad 112px · ground rgb(244,243,233) · nearby display Sohne-Buch 119.5px/300 tr −2.39px. <b>Pattern:</b> copy column narrates while a carousel of product/deliverable screenshots rotates at slightly different angles (staggered-angle stack — depth without 3D). The services job with the deliverable as the moving proof; C-26's static frame, animated.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Real deliverable screens only (never lorem UI) · angle stagger small (±2–4deg) · carousel advances slowly or on interaction, never strobing (R17) · copy column leads, artifact supports.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Screen count · rotation vs fan geometry · auto vs click advance · which side narrates.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>The screenshots — this client's actual product/deliverable, per build.</span></div>
+      </div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-48</span><span class="cname">Brand-dark service card set — SERVICES</span><span class="prov">Facet · docs/harvest/facet.json</span><span class="badge cand">Candidate — exhibit pending</span></div>
+      <div class="candspec"><b>Measured:</b> 10 cards · bg rgb(0,62,84) (brand-dark, not near-black) · r16 · pad 32/24/24 · 288×405 · on grounds where rgb(0,62,84)×12 dominates · type euclid_square 48px/600 tr −1.5%. <b>Pattern:</b> service inventory as a uniform set of BRAND-dark cards (the brand's own deep hue, not neutral dark) — the set reads as one owned system. Third dark-card language beside C-18 (dark cells in light bento) and C-28 (ghosts on near-black).</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Card ground = the brand's own deep hue · uniform anatomy across the whole set · r16-class, flat fills, no shadows · text AA on the brand-dark.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Card count + grid arithmetic · the deep hue (client's) · icon/numeral anatomy · one highlighted card or none.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>Facet's teal and service names (Chris: not a fan of their branding) — hue and inventory are this client's.</span></div>
+      </div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-53</span><span class="cname">One saturated card in a dark grid — SERVICES accent device</span><span class="prov">Linear · docs/harvest/linear.json</span><span class="badge cand">Candidate — exhibit pending</span></div>
+      <div class="candspec"><b>Measured:</b> single card bg rgb(228,242,34) · r8 · 432×480 · pad 24/32 · amid ghost cards rgba(255,255,255,.01–.05) on grounds rgb(8,9,10)-class. <b>Pattern:</b> in a field of C-28-class ghost cards, exactly ONE card gets full saturation — the flagship offer physically glows out of the grid. The drench law (C-30) miniaturized to card scale.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Exactly one saturated card per grid · it hosts the flagship/CTA content, nothing decorative · dark text AA on the saturated fill · rest of the grid stays ghost-quiet.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Which position glows · the saturated hue (client accent) · grid size · card anatomy.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>Linear's chartreuse and card copy — the glow color is this client's accent at ceiling.</span></div>
+      </div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-66</span><span class="cname">Technical-authority dark band with real artifact — SERVICES / PROOF</span><span class="prov">Stripe · docs/harvest/stripe.json</span><span class="badge cand">Candidate — exhibit pending</span></div>
+      <div class="candspec"><b>Measured:</b> i=8 · h≈2341px · bg rgb(13,23,56) — the ONE dark band on an otherwise white page · head "Reliable, extensible infrastructure for every stack." <b>Pattern:</b> the page's single dark band (R9's law, independently confirmed by Stripe) hosts the TECHNICAL authority moment with a real working artifact (code, schema, live data) rendered in it. Depth = credibility; the artifact proves the machinery exists.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>One dark band per light page (existing R9/alternation law) · it carries the most technical, most verifiable content · a REAL artifact rendered inside (code/data/schema — never decorative pseudo-code) · tinted dark, not #000.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Artifact type · band depth + hue · placement in flow · artifact interactive or static.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>Stripe's code samples — the artifact is this client's real machinery (e.g., AGL: the movement-data feed).</span></div>
+      </div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-71</span><span class="cname">Tabbed platform showcase with short videos — SERVICES</span><span class="prov">Zoom · docs/harvest/zoom.json</span><span class="badge cand">Candidate — exhibit pending</span></div>
+      <div class="candspec"><b>Measured:</b> i=3 · h≈839px · grid(12col) · 10 imgs + 5 videos · head "One platform. Endless ways to work together." <b>Pattern:</b> one section, N surfaces — tabs (or segmented control) swap short muted product clips inside a single stable frame. Services breadth WITHOUT a card grid: the frame stays, the content proves each capability in motion.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>One stable media frame, tabs swap its content · clips short, muted, poster-first, lazy (C-09 video laws apply) · tab labels are capability outcomes, not feature names · no-JS = first tab static.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Tab count (3–5) · video vs annotated-still per asset reality · frame chrome · tabs top vs side.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>Zoom's clips and tab set — capabilities and footage are this client's; no real assets → different pattern, never faked clips.</span></div>
+      </div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-49</span><span class="cname">Hairline-framed portrait testimonial — PROOF</span><span class="prov">Facet · docs/harvest/facet.json</span><span class="badge cand">Candidate — exhibit pending</span></div>
+      <div class="candspec"><b>Measured:</b> 4 cards · r16 · bd 1px solid rgb(176,211,223) (tinted hairline, no fill, no shadow) · 676×388 · portrait photo + name ("Colby"). <b>Pattern:</b> testimonial as a wide framed object — real portrait one side, quote the other, held by a tinted 1px hairline frame on transparent ground. Quieter than C-14's drench and lighter than C-15's video: the mid-weight human-proof option.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Real person, real name, real portrait (§6) · 1px tinted hairline frame, transparent fill, zero shadow · wide 2-col anatomy (photo/quote) · specific quote, never vague praise (RULE #1 job 7).</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Frame tint (from client palette) · photo side · single wide vs pair · attribution anatomy.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>The person and the words — client-owned testimony only, or the pattern doesn't ship.</span></div>
+      </div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-69</span><span class="cname">Square-corner testimonial wall on dark — PROOF</span><span class="prov">Xapo Bank · docs/harvest/xapobank.json</span><span class="badge cand">Candidate — exhibit pending</span></div>
+      <div class="candspec"><b>Measured:</b> 8 cards 350×406 + 5 cards 350×306 · r0 (square) · pad 24–32 · fill white ~6% on near-black rgb(9,4,2) · type HelveticaNow 40px/400. <b>Pattern:</b> testimonial VOLUME as the proof — a dense wall of square-cornered quiet cards on dark. The r0 register reads engineered/institutional; mass says "everyone", each card stays legible. C-28's DNA at radius-0, applied to voices.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>≥6 real quotes (volume IS the claim) · square corners, faint fills, hairline discipline on true dark · uniform anatomy · attribution on every card.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Wall size + column count · masonry vs uniform rows · card fill value · pull-quote emphasis on 1–2 cards.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>The quotes — a client without testimonial volume uses C-49/C-15 instead; never pad a wall with invented voices.</span></div>
+      </div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-54</span><span class="cname">Snappy micro-motion system — MOTION</span><span class="prov">Linear · docs/harvest/linear.json</span><span class="badge cand">Candidate — exhibit pending</span></div>
+      <div class="candspec"><b>Measured:</b> color 0.1s ×39 · border/background/transform/filter 0.16s cubic-bezier(.25,.46,.45,.94) · 106 animations running · 128px section rhythm. <b>Pattern:</b> the snappy-confident motion temperament fully specified: every micro-interaction lands in ≤160ms on one shared easing curve; nothing floats, everything CLICKS. The measured counterpart to the catalog's quiet-premium 0.4s default — pick per register, never mix.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>One easing curve system-wide · micro-transitions 100–160ms · hover states change surface (color/border/filter), movement minimal · temperament chosen per register and NEVER mixed with 0.4s-class timing in one build.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Exact duration within 100–160ms · which properties respond · reveal travel distance (shorter than quiet-premium's).</span></div>
+        <div class="row"><span class="k n">Never port</span><span>Nothing content-bound — this is a timing system; values re-tuned per build's temperament dial.</span></div>
+      </div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-60</span><span class="cname">Quiet-luxury link-fade system — MOTION</span><span class="prov">Pictet · docs/harvest/pictet.json</span><span class="badge cand">Candidate — exhibit pending</span></div>
+      <div class="candspec"><b>Measured:</b> color 0.3s cubic-bezier(.22,1,.36,1) ×89 · near-monochrome ink (oklch greys) + single burgundy accent rgb(128,73,64)×6 · buttons r3, 1px rgb(207,207,207) borders · only 4 animations running. <b>Pattern:</b> the private-bank motion register: interaction = color fades only. No lifts, no scales, no reveals — 0.3s easeOut color shifts on links/buttons, everything else still. Restraint as motion language; pairs with C-04 type.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Color-only transitions (~0.3s, easeOut-class curve) · zero transform motion on hover · near-monochrome page with ONE muted accent · near-zero ambient animation.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>The single accent hue · fade duration 0.25–0.35s · underline draw allowed or not. Niche: institutional/private-wealth registers.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>Pictet's burgundy — the one accent is the client's own muted tone.</span></div>
+      </div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-67</span><span class="cname">Clip-path panel reveal system — MOTION</span><span class="prov">Stripe · docs/harvest/stripe.json</span><span class="badge cand">Candidate — exhibit pending</span></div>
+      <div class="candspec"><b>Measured:</b> clip-path 0.8s cubic-bezier(.165,.84,.44,1) ×12 + transform 0.8s same curve ×22 · 100 animations running. <b>Pattern:</b> panels/artifacts reveal by UNMASKING (clip-path inset animates open) paired with a small settle transform on the same 0.8s easeOutQuart-class curve — content is uncovered, not faded in. The cinematic reveal tier between C-22's stagger and C-23's recolor.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Clip-path + transform share one curve and duration (~0.8s easeOutQuart-class) · fires once on scroll (IO) · reserved for hero artifacts/feature panels, not list items · reduced-motion + no-JS = fully revealed (R31/R34: settle &lt;1.5s, content survives no-animation).</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Reveal direction · inset vs polygon mask · pairing travel distance · how many panels per page earn it (few).</span></div>
+        <div class="row"><span class="k n">Never port</span><span>Nothing content-bound — a reveal grammar, re-applied to this client's artifacts.</span></div>
+      </div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-55</span><span class="cname">Dense↔breathing density alternation — COMPOSITION</span><span class="prov">Maven · docs/harvest/maven.json</span><span class="badge cand">Candidate — exhibit pending</span></div>
+      <div class="candspec"><b>Measured:</b> section heights 4526 → 352 → 990 → 728 · grounds alternate deep green rgb(1,49,38)×17 / warm paper rgb(237,233,227)×6 · display HelveticaNow 59.9px/300. <b>Pattern:</b> page rhythm as breathing — a packed multi-artifact section is ALWAYS followed by an airy single-statement or single-stat section. Density contrast is the pacing device; tonal alternation reinforces it.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>No two dense sections adjacent (extends the no-two-alike law to DENSITY) · the airy beat holds exactly one idea · height ratio between beats ≥3:1 · tonal shift marks the exhale.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Which sections are dense · what the airy beat holds (stat / statement / photo) · tonal pairing.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>Maven's content — this is a pacing rule; the beats are this client's sections.</span></div>
+      </div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-56</span><span class="cname">16-column master grid — COMPOSITION</span><span class="prov">Mercury · docs/harvest/mercury.json</span><span class="badge cand">Candidate — exhibit pending</span></div>
+      <div class="candspec"><b>Measured:</b> 12 of 14 sections literally grid(16col) · type arcadiaDisplay 42px/480 lh 48.3 tr +0.42px. <b>Pattern:</b> every section composed on ONE shared 16-column grid — asymmetric layouts (7/9, 5/11, 6/4/6 splits) all resolve to the same underlying columns, so wildly different sections still feel like one engineered object. The invisible system behind "expensive-feeling" consistency.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>One master grid page-wide (12 or 16 col) · every section's splits resolve to its lines · asymmetry within the grid, never off it · gutters constant.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>12 vs 16 columns · which splits each section takes · max-width + gutter values per register.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>Nothing content-bound — pure structural discipline.</span></div>
+      </div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-61</span><span class="cname">Bookend tonal arc — COMPOSITION / TONAL MAP</span><span class="prov">Pitch · docs/harvest/pitch.json</span><span class="badge cand">Candidate — exhibit pending</span></div>
+      <div class="candspec"><b>Measured:</b> page opens on brand-dark rgb(40,15,98) (h≈1228) · closes with THREE consecutive brand-dark sections (h≈1057/1154/879) · light middle. <b>Pattern:</b> a named tonal map for ASSEMBLY dial #2: dark-open → light-middle → dark-close. The page starts and ends in the brand's deep ground; the working middle stays light. Symmetry reads intentional and frames the conversion sections in calm.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Open and close share the same deep ground (the bookends) · middle stays light for the working sections (fit/services/process) · close may run 2–3 dark sections; middle never goes dark.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>The deep hue · how many closing sections join the bookend · where exactly the light middle begins.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>Pitch's violet — the bookend ground is the client's deep brand tone.</span></div>
+      </div>
+    </div>
+
+    <div class="comp"><div class="comp-bar"><span class="cid">C-68</span><span class="cname">Committed-color statement register — COMPOSITION</span><span class="prov">Work.co · docs/harvest/workco.json</span><span class="badge cand">Candidate — exhibit pending</span></div>
+      <div class="candspec"><b>Measured:</b> neutral grounds (#fff / #ddd / #f2f2f2) · saturated bursts rgb(219,34,35)×11 + rgb(0,77,255)×3 · display HelveticaNow 56px/500 tr −1.12px · zero card chrome. <b>Pattern:</b> near-neutral page where ONE saturated color appears only in committed bursts (a word, a rule, a block) — clean ≠ timid when the accent punches. Chris: steal the color-contrast principle, NOT the sparse content density (fails the 9-section skeleton alone).</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Grounds stay neutral · the accent appears rarely and at full saturation when it does (burst, not tint) · no gradient softening of the accent · content density still satisfies the conversion skeleton (the work.co failure to avoid).</span></div>
+        <div class="row"><span class="k v">Vary</span><span>The burst color (client accent) · what receives bursts (words / rules / blocks) · burst frequency (low).</span></div>
+        <div class="row"><span class="k n">Never port</span><span>Work.co's orange/red and minimalism — the principle ships, the sparseness doesn't.</span></div>
+      </div>
+    </div>
+  </section>
 </div>
 
 <script>
@@ -917,6 +1669,128 @@ document.getElementById('replay').onclick=function(){var g=document.getElementBy
   b.onclick=function(){dark=!dark;
     p.style.background=dark?'var(--dark)':'var(--ground)';p.style.color=dark?'var(--on-dark-mute)':'var(--ink-body)';
     h.style.color=dark?'#fff':'var(--ink)';};})();
+
+/* ═══ v3 additions — AGL v9 exhibits (C-32..C-45) ═══ */
+var RM9=matchMedia('(prefers-reduced-motion: reduce)').matches;
+// shared reveal IO: [data-v9io] gets .in; counters + gauge run once
+(function(){
+  var els=document.querySelectorAll('[data-v9io]');if(!els.length)return;
+  function fmt9(n){return n.toLocaleString('en-US');}
+  function runCnt9(el){
+    if(el.__d)return;el.__d=true;
+    var to=parseInt(el.dataset.to,10);
+    if(RM9){el.textContent=fmt9(to);return;}
+    var t0=null,dur=1500;
+    function step(t){if(!t0)t0=t;var p=Math.min((t-t0)/dur,1),e=1-Math.pow(1-p,3);el.textContent=fmt9(Math.round(to*e));if(p<1)requestAnimationFrame(step);}
+    requestAnimationFrame(step);
+  }
+  function runGauge9(scope){
+    var fg=scope.querySelector('.v9gauge .fg'),num=scope.querySelector('.v9gauge .n');
+    if(!fg||fg.__d)return;fg.__d=true;
+    var val=61,circ=339.3;
+    fg.style.strokeDashoffset=(circ*(1-val/100)).toFixed(1);
+    if(RM9){num.textContent=val;return;}
+    var t0=null,dur=1600;
+    function step(t){if(!t0)t0=t;var p=Math.min((t-t0)/dur,1),e=1-Math.pow(1-p,3);num.textContent=Math.round(val*e);if(p<1)requestAnimationFrame(step);}
+    requestAnimationFrame(step);
+  }
+  function fire(el){el.classList.add('in');el.querySelectorAll('.cnt9[data-to]').forEach(runCnt9);if(el.querySelector('.v9gauge'))runGauge9(el);}
+  if(RM9){els.forEach(fire);return;}
+  var io9=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;fire(e.target);io9.unobserve(e.target);});},{threshold:.3});
+  els.forEach(function(el){io9.observe(el);});
+})();
+// C-33 movement wire: duplicate track for the seamless -50% loop
+(function(){var t=document.getElementById('v9wireTrack');if(t)t.innerHTML+=t.innerHTML;})();
+// C-39 quiz options
+document.querySelectorAll('.v9opt').forEach(function(o){
+  o.addEventListener('click',function(){
+    o.parentElement.querySelectorAll('.v9opt').forEach(function(x){x.classList.toggle('sel',x===o);});
+  });
+});
+// C-40 audience toggle: measured sliding thumb + variant swap
+(function(){
+  var aud=document.getElementById('v9aud');if(!aud)return;
+  var thumb=aud.querySelector('.thumb');
+  function layout(){var on=aud.querySelector('button.on');if(!on)return;
+    thumb.style.width=on.offsetWidth+'px';thumb.style.transform='translateX('+on.offsetLeft+'px)';}
+  aud.querySelectorAll('button').forEach(function(b){
+    b.addEventListener('click',function(){
+      if(b.classList.contains('on'))return;
+      aud.querySelectorAll('button').forEach(function(y){y.classList.toggle('on',y===b);y.setAttribute('aria-selected',y===b);});
+      layout();
+      var a=b.getAttribute('data-a');
+      document.querySelectorAll('.v9hvar').forEach(function(w){
+        var m=w.getAttribute('data-a')===a;
+        if(m){w.hidden=false;w.classList.add('out');
+          requestAnimationFrame(function(){requestAnimationFrame(function(){w.classList.remove('out');});});}
+        else{w.hidden=true;}
+      });
+    });
+  });
+  layout();window.addEventListener('resize',layout);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(layout);
+})();
+// C-45 sticky nav: transparent -> glass past the demo-hero threshold
+(function(){
+  var box=document.getElementById('v9navbox');if(!box)return;
+  var bar=box.querySelector('.navbar');
+  box.addEventListener('scroll',function(){bar.classList.toggle('scrolled',box.scrollTop>110);},{passive:true});
+})();
+// C-32 constellation: nodes + links + warm transition pulses (paused offscreen; static frame under RM)
+(function(){
+  var cv=document.getElementById('v9net');if(!cv||!cv.getContext)return;
+  var ctx=cv.getContext('2d'),W=0,H=0,dpr=Math.min(window.devicePixelRatio||1,2);
+  var nodes=[],pulses=[],running=false,lastPulse=0,LINK=110;
+  function resize(){
+    var r=cv.parentElement.getBoundingClientRect();W=r.width;H=r.height;
+    cv.width=W*dpr;cv.height=H*dpr;cv.style.width=W+'px';cv.style.height=H+'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    var count=Math.max(22,Math.min(50,Math.round(W*H/6200)));
+    nodes=[];
+    for(var i=0;i<count;i++)nodes.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.16,vy:(Math.random()-.5)*.16,r:1+Math.random()*1.6});
+  }
+  function frame(t){
+    ctx.clearRect(0,0,W,H);
+    var i,j,a,b;
+    for(i=0;i<nodes.length;i++){a=nodes[i];
+      if(!RM9){a.x+=a.vx;a.y+=a.vy;
+        if(a.x<-8)a.x=W+8;if(a.x>W+8)a.x=-8;if(a.y<-8)a.y=H+8;if(a.y>H+8)a.y=-8;}}
+    for(i=0;i<nodes.length;i++){a=nodes[i];
+      for(j=i+1;j<nodes.length;j++){b=nodes[j];
+        var dx=a.x-b.x,dy=a.y-b.y,d2=dx*dx+dy*dy;
+        if(d2<LINK*LINK){var al=(1-Math.sqrt(d2)/LINK)*.17;
+          ctx.strokeStyle='rgba(200,210,255,'+al.toFixed(3)+')';ctx.lineWidth=1;
+          ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}}}
+    for(i=0;i<nodes.length;i++){a=nodes[i];
+      ctx.fillStyle='rgba(205,215,255,.55)';
+      ctx.beginPath();ctx.arc(a.x,a.y,a.r,0,6.2832);ctx.fill();}
+    if(!RM9){
+      if(t-lastPulse>2600&&nodes.length>2){lastPulse=t;
+        var s=nodes[(Math.random()*nodes.length)|0],best=null,bd=1e9;
+        for(j=0;j<nodes.length;j++){b=nodes[j];if(b===s)continue;
+          var dd=(s.x-b.x)*(s.x-b.x)+(s.y-b.y)*(s.y-b.y);
+          if(dd<bd&&dd>900){bd=dd;best=b;}}
+        if(best)pulses.push({a:s,b:best,t0:t,dur:1400});}
+      for(i=pulses.length-1;i>=0;i--){var p=pulses[i],pp=(t-p.t0)/p.dur;
+        if(pp>=1){pulses.splice(i,1);continue;}
+        var ex=p.a.x+(p.b.x-p.a.x)*pp,ey=p.a.y+(p.b.y-p.a.y)*pp,fade=pp<.5?pp*2:(1-pp)*2;
+        ctx.strokeStyle='rgba(242,199,130,'+(fade*.35).toFixed(3)+')';ctx.lineWidth=1;
+        ctx.beginPath();ctx.moveTo(p.a.x,p.a.y);ctx.lineTo(p.b.x,p.b.y);ctx.stroke();
+        ctx.fillStyle='rgba(242,199,130,'+(fade*.95).toFixed(3)+')';
+        ctx.beginPath();ctx.arc(ex,ey,2.4,0,6.2832);ctx.fill();
+        ctx.fillStyle='rgba(242,199,130,'+(fade*.2).toFixed(3)+')';
+        ctx.beginPath();ctx.arc(ex,ey,6,0,6.2832);ctx.fill();}
+    }
+    if(running&&!RM9)requestAnimationFrame(frame);
+  }
+  resize();
+  window.addEventListener('resize',function(){resize();if(RM9)frame(0);});
+  if(RM9){frame(0);return;}
+  var vis=new IntersectionObserver(function(es){es.forEach(function(en){
+    if(en.isIntersecting&&!running){running=true;requestAnimationFrame(frame);}
+    else if(!en.isIntersecting){running=false;}});},{threshold:.05});
+  vis.observe(cv);
+})();
 </script>
 </body>
 </html>

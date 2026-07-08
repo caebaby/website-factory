@@ -94,3 +94,26 @@ same layout on every site." This section makes PRINT_SPEC #2 physical.
 **Catalog retrofit (queued):** each C-entry gets its INVARIANT / VARY / NEVER-PORT block and
 the exhibit watermarked "one execution — never rebuild this instance." Until the retrofit
 lands, executors receive the invariant blocks from the brief, not raw catalog HTML.
+
+---
+
+## 7. THE CANDIDATE TIER + COVERAGE TABLE (2026-07-08 sprint)
+
+The library now has two tiers:
+
+- **PROVEN** — live exhibit in the catalog, born three-layer. C-01…C-45 (killed IDs excluded).
+  The 2026-07-08 sprint harvested the shipped AGL v9 build into C-32…C-45 (constellation motif,
+  movement wire, count-up grid, diverging bars, range bands, gauge, match card, quiz preview,
+  audience toggle, glass system, ruled feature rows, emotional close, compliance footer,
+  transparent→glass nav).
+- **CANDIDATE** — machine-measured spec card (`CANDIDATE — exhibit pending` badge), no exhibit
+  yet. C-46…C-71, mined from the 15 `docs/harvest/*.json` sites, prioritized at the section
+  jobs with the fewest options. A candidate is promoted by building its exhibit through the
+  normal gauntlet; Directors may select a candidate only when its brief supplies the full
+  fresh-execution spec (the three-layer block is already in the card).
+
+**Coverage table lives at the top of `templates/components/catalog.html`** — section job →
+proven/candidate counts, FLAG on any job under 4 proven options. Update it whenever an entry
+is added, killed, or promoted. Jobs flagged after this sprint: cred (2), pain (1),
+icp-sort (2), fit/capture (3), process (1), final-CTA (1), insights (1), footer (1),
+nav/chrome (1) — the next harvest passes aim there.
