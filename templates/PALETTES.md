@@ -15,7 +15,7 @@ Chris's bless/kill pass) · CANDIDATE (harvested idea, not yet solved).
 
 ---
 
-## P-01 · "Indigo Dawn" — SEED (proven live on AGL v9)
+## P-01 · "Indigo Dawn" — BLESSED (proven live on AGL v9)
 Register: analytical · trustworthy · premium-calm. Verticals: fintech, advisory, intelligence.
 - Accent `#4338CA` (hover `#3730A3`) · warm counterpoint `#F2C782` (tiny doses only)
 - Ink `#0F172A` · body `#334155` · muted `#69768C` · greys `#F1F4F9` / `#E4E9F1` · white
@@ -24,7 +24,7 @@ Register: analytical · trustworthy · premium-calm. Verticals: fintech, advisor
 - Accent budget: CTAs, eyebrows, ≤14 text elements (gate-enforced). AA: solved (see v9 build).
 - Provenance: `projects/agl/v9/agl-site.html` + DESIGN_SYSTEM.md §2.
 
-## P-02 · "Ledger Navy & Gold" — SEED (from AGL Brand Packet v1.0, print-proven)
+## P-02 · "Ledger Navy & Gold" — BLESSED (from AGL Brand Packet v1.0, print-proven)
 Register: institutional · established · direct-response. Verticals: financial services, legal.
 - Navy `#0F1C3F` · navy-light `#1A2A52` · gold `#D4A853` (badges/emphasis) · orange `#E85A1B`
   (CTAs ONLY — never text/backgrounds) · off-white `#F8F9FC` · slate `#64748B`
@@ -33,7 +33,7 @@ Register: institutional · established · direct-response. Verticals: financial 
 - Caution: pair with a characterful type register (the packet's Inter is banned for web).
 - Provenance: `~/Downloads/Archive/AGL-Brand-Guidelines.pdf`.
 
-## P-03 · "Axiom Editorial" — SEED (client-proven in dossier system)
+## P-03 · "Axiom Editorial" — BLESSED (scoped to Axiom work) (client-proven in dossier system)
 Register: editorial-luxury · discreet · advisory. Verticals: RIA/wealth client documents & sites.
 - Values live in the Axiom dossier system (`agent-flows:docs/clients/axiom/`, Topic-7 template;
   Spectral + Archivo pairing). Port exact tokens here on first Axiom web build.
@@ -63,3 +63,5 @@ Register: minimal · engineered · high-trust. Verticals: B2B fintech, platforms
 Target: 8–12 BLESSED entries covering the register space — enough for genuine variety, few
 enough that every entry stays excellent. Chris's bless/kill pass on P-01…P-04 is the first
 curation act; harvest adds CANDIDATEs; nothing becomes selectable without blessing.
+
+- Amendment: P-01 + P-02 BLESSED, P-03 BLESSED (scoped to Axiom work), P-04 stays CANDIDATE — blessed 2026-07-08, curation delegated by Chris.

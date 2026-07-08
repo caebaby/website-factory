@@ -355,6 +355,30 @@ img{display:block;max-width:100%;}
 .tswap .pane{padding:34px;transition:background-color .8s var(--ease-soft),color .8s var(--ease-soft);}
 .tswap .pane h4{font:300 26px/1.1 var(--sans);letter-spacing:-.02em;transition:color .8s var(--ease-soft);}
 .tswap .pane p{margin-top:8px;font-size:14px;max-width:56ch;}
+
+/* ═══ CATALOG v2 — curation layer (2026-07-08): kill banners · tier badges · invariant blocks ═══ */
+.killbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:12px 20px;background:rgba(156,32,25,.09);border-bottom:1px solid rgba(156,32,25,.3);}
+.killbar b{font:700 11px var(--sans);letter-spacing:1px;background:#9c2019;color:#fff;border-radius:4px;padding:5px 9px;white-space:nowrap;}
+.killbar span{font:600 12.5px/1.4 var(--sans);color:#7c221c;}
+.comp.dead>.comp-bar{opacity:.62;}
+.comp.dead .cid{background:#6b7280;}
+.tomb{border-top:1px dashed var(--border);}
+.tomb>summary{cursor:pointer;padding:10px 20px;font:600 12px var(--sans);letter-spacing:.4px;color:var(--ink-body);}
+.tomb[open]>summary{border-bottom:1px dashed var(--border);}
+.badge{font:700 10px/1.3 var(--sans);letter-spacing:.8px;text-transform:uppercase;border-radius:4px;padding:4px 8px;}
+.badge.sig{background:var(--accent);color:var(--dark);}
+.badge.niche{background:transparent;color:var(--ink);border:1px solid var(--border);}
+.badge.risk{background:transparent;color:var(--accent-ink);border:1px dashed rgba(var(--accent-rgb),.55);text-transform:none;letter-spacing:.2px;font-weight:600;}
+.vkill{display:inline-flex;flex-direction:column;gap:6px;align-items:flex-start;}
+.vkill .vk-row{display:inline-flex;gap:26px;align-items:center;position:relative;opacity:.42;pointer-events:none;}
+.vkill .vk-row::after{content:"";position:absolute;left:-4px;right:-4px;top:50%;height:2px;background:#9c2019;transform:rotate(-1.4deg);}
+.vkill .vk-note{font:600 11px/1.4 var(--sans);color:#7c221c;max-width:44ch;}
+.ivp{border-top:1px dashed var(--border);background:var(--card);padding:10px 20px 8px;}
+.ivp .row{display:grid;grid-template-columns:86px 1fr;gap:12px;padding:5px 0;font:400 12.5px/1.5 var(--sans);color:var(--ink-body);}
+.ivp .row+.row{border-top:1px solid rgba(0,0,0,.05);}
+.ivp .k{font:700 9.5px/1.4 var(--sans);letter-spacing:1.1px;text-transform:uppercase;padding-top:3px;}
+.ivp .k.i{color:var(--accent-ink);}.ivp .k.v{color:var(--ink);}.ivp .k.n{color:#9c2019;}
+.wm{padding:9px 20px;border-top:1px solid var(--border);background:var(--ground);font:700 9.5px var(--sans);letter-spacing:1.3px;text-transform:uppercase;color:var(--ink-body);opacity:.7;}
 </style>
 </head>
 <body>
@@ -369,7 +393,7 @@ img{display:block;max-width:100%;}
 <div class="page">
   <header class="cat-head">
     <h1>The Component Library — <em>react by ID.</em></h1>
-    <p>Every component below is <b>measured from a reference you approved or proven in a build you reviewed</b> — code with exact numbers, not inspiration. The toggle (top right) re-skins everything live: <b>retint the colors, keep the numbers</b>. Tell me by ID what to keep, kill, or change — one sentence each is plenty.</p>
+    <p>Every entry below is a <b>worked example — an exhibit, not a template</b>. Each carries three layers: <b>INVARIANT</b> (the measured craft numbers, always kept) · <b>VARY</b> (the mandatory freshness axes every new build must move on) · <b>NEVER PORT</b> (instance artifacts born from one client's mechanism — re-derived from THIS client's research, every time). Executors receive the INVARIANT/VARY/NEVER-PORT block from the Director's brief, not this raw HTML — and a verbatim rebuild of any exhibit is a critic-flagged defect (stamp detection). The toggle (top right) re-skins everything live: retint the colors, keep the numbers. React by ID — keep, kill, or change.</p>
   </header>
 
   <!-- ═══════════ TYPE SYSTEMS ═══════════ -->
@@ -378,16 +402,31 @@ img{display:block;max-width:100%;}
     <div class="comp"><div class="comp-bar"><span class="cid">C-01</span><span class="cname">Light-sans display + serif-italic accent</span><span class="prov">Maven · measured 76px/300</span></div>
       <div class="demo pad on-ground"><div class="t1-h">Your income arrived.<br><em>The plan didn't.</em></div></div>
       <div class="spec">Sans 300 · lh 1.03 · tracking -0.02em · ONE serif-italic phrase (1.08×) carries emphasis, never color · accent phrase on its own line.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Sans 300 · lh 1.03 · tracking −.02em · exactly ONE serif-italic phrase at 1.08× carries all emphasis — never color, never weight.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Which phrase gets the italic · line-break geometry · scale (34–76px range) · ground (light/dark) · left vs centered.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>The headline itself — “Your income arrived. The plan didn’t.” is Maven’s ICP language. Re-derive the line from this client’s mechanism.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
     </div>
 
     <div class="comp"><div class="comp-bar"><span class="cid">C-02</span><span class="cname">Oversized editorial serif</span><span class="prov">BetterUp · measured 110px/400 Ivar</span></div>
       <div class="demo pad on-ground"><div class="t2-h">Better decisions <em>across the board.</em></div></div>
       <div class="spec">Serif display 400 at 84–110px · lh 1.05 · the scale IS the confidence. Body/UI in a clean grotesk.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Serif display 400 at 84–110px · lh 1.05 · the scale IS the confidence · body/UI in a clean grotesk.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Serif face within the class · headline length · ground · alignment · italic emphasis or none.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>BetterUp’s copy voice — the headline is written from this client’s positioning, not adapted from the exhibit.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
     </div>
 
-    <div class="comp"><div class="comp-bar"><span class="cid">C-03</span><span class="cname">Condensed-confident display</span><span class="prov">Stashwealth · measured 67.8px/400 Oswald −1.36px</span></div>
-      <div class="demo pad on-ground"><div class="t3-h">Get your financial house in order</div></div>
-      <div class="spec">Condensed sans 400 · lh 1.06 · tracking -0.02em · centered · pairs with uppercase Poppins labels.</div>
+    <div class="comp dead"><div class="comp-bar"><span class="cid">C-03</span><span class="cname">Condensed-confident display</span><span class="prov">Stashwealth · measured 67.8px/400 Oswald −1.36px</span></div>
+      <div class="killbar"><b>KILLED 2026-07-08</b><span>Condensed Oswald display reads dated — discount-DR register. Not selectable inventory.</span></div>
+      <details class="tomb"><summary>Archived exhibit — learning only, never select</summary>
+        <div class="demo pad on-ground"><div class="t3-h">Get your financial house in order</div></div>
+        <div class="spec">Condensed sans 400 · lh 1.06 · tracking -0.02em · centered · pairs with uppercase Poppins labels.</div>
+      </details>
     </div>
 
     <div class="comp"><div class="comp-bar"><span class="cid">C-04</span><span class="cname">Four-sizes-only discipline</span><span class="prov">Pictet · measured 52.8 / 32.2 / 23.2 / 19.2, all 400</span></div>
@@ -398,29 +437,52 @@ img{display:block;max-width:100%;}
         <p class="s4">Size four is everything else. No color hierarchy, no weight tricks — scale and nothing but scale. Restraint as the credential.</p>
       </div>
       <div class="spec">Exactly four serif sizes, everything weight 400, one ink color — hierarchy from scale alone. The private-bank register.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Exactly four sizes · everything weight 400 · one ink color · hierarchy from scale alone — restraint as the credential.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>The four values themselves (re-derive the ratio; 52.8/32.2/23.2/19.2 is the exhibit) · serif face · ground · measure/column layout.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>The demo copy. The register only fits private-bank-class clients — the four sentences come from their research.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
     </div>
 
     <div class="comp"><div class="comp-bar"><span class="cid">C-24</span><span class="cname">Massive-bold display</span><span class="prov">Pitch · measured 180px/700/-4% tracking, lh 0.8</span></div>
       <div class="demo pad on-ground"><div class="t5-h">Win the room.</div></div>
       <div class="spec">Heavy weight at extreme scale, sub-1.0 line-height, hard negative tracking. Two words max — this register spends confidence, not sentences.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Heavy weight at extreme scale (~180px/700-class) · line-height sub-1.0 · hard negative tracking (−4%) · two words max.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>The two words · scale relative to viewport · ground · alignment · static vs revealed.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>“Win the room” — Pitch’s voice. The two words come from this client’s positioning adjectives.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
     </div>
 
-    <div class="comp"><div class="comp-bar"><span class="cid">C-25</span><span class="cname">Institutional serif caps</span><span class="prov">Hoare's Bank (est. 1672) · measured Trirong 59.9px/400/uppercase</span></div>
+    <div class="comp"><div class="comp-bar"><span class="cid">C-25</span><span class="cname">Institutional serif caps</span><span class="prov">Hoare's Bank (est. 1672) · measured Trirong 59.9px/400/uppercase</span><span class="badge niche">Niche · old-money / institutional verticals only</span></div>
       <div class="demo pad on-ground"><div class="t6-h">Founded on trust</div></div>
       <div class="spec">Uppercase display serif at 400 weight on deep institutional grounds — the "we don't need to tell you we're premium" signal.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Uppercase display serif at 400 weight on deep institutional grounds — the “we don’t need to tell you we’re premium” signal.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Serif face · scale · ground depth · letterspacing tune · rule/ornament restraint. Niche: old-money / institutional verticals only.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>Hoare’s heritage voice — “Founded on trust” belongs to a 1672 bank. This client’s line comes from their own history.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
     </div>
   </section>
 
   <!-- ═══════════ BUTTONS ═══════════ -->
   <section class="grp"><h2>Buttons — <em>three measured systems</em></h2>
-    <div class="comp"><div class="comp-bar"><span class="cid">C-05</span><span class="cname">Button triptych + attention cues</span><span class="prov">Maven 4px/10×24 · BetterUp pill 32px + sweep · Stash square 0px/17.8×23.7</span></div>
+    <div class="comp"><div class="comp-bar"><span class="cid">C-05</span><span class="cname">Button systems + attention cues</span><span class="prov">Maven 4px/10×24 · BetterUp pill 32px + sweep · Stash square 0px/17.8×23.7</span></div>
       <div class="demo pad on-ground"><div class="btnrow">
         <button class="b-flat">Schedule a Call <span>→</span></button>
-        <button class="b-pill">Request a demo</button>
         <button class="b-sq">Schedule a Call</button>
-        <button class="b-pill100">Become a member</button>
+        <div class="vkill"><div class="vk-row"><button class="b-pill" tabindex="-1">Request a demo</button><button class="b-pill100" tabindex="-1">Become a member</button></div><span class="vk-note">KILLED 2026-07-08 — pills read consumer-wellness; sharp radii are the factory register.</span></div>
       </div></div>
-      <div class="spec">Left: flat radius-4, 0.4s ease, idle SHEEN every 5.5s (the v1.2 conversion cue). Second: pill radius-32, measured gradient-SWEEP hover (0.6s cubic-bezier(0,.55,.45,1)) — hover it. Third: square radius-0, Poppins 600 caps 0.95px tracking, .12s snap inversion. Right: full-pill radius-100 outline→fill inversion (Xapo/Modern Health — measured 100px/1000px radii).</div>
+      <div class="spec">SURVIVORS — Maven flat: radius-4, 0.4s ease, idle SHEEN every 5.5s (the v1.2 conversion cue). Stash square: radius-0, Poppins 600 caps 0.95px tracking, .12s snap inversion. KILLED — both pill variants (BetterUp sweep-pill r32; Xapo/Modern Health full-pill r100 inversion): struck above, kept for the record only.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Flat: r4, 0.4s ease, idle sheen 5.5s. Square: r0, 600 caps .95px tracking, .12s snap. Sharp radii only — pills are dead.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Which surviving system (route by register) · label copy · size · ground · arrow or none.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>The CTA labels — “Schedule a Call” is one client’s conversion event. Label = this client’s actual event.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
     </div>
   </section>
 
@@ -437,19 +499,34 @@ img{display:block;max-width:100%;}
         </div>
       </div></div>
       <div class="spec">Scrim stops measured; H1 text-shadow 0 2px 26px; never a decorative overlay on the photo (v1.2 law).</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Directional scrim .88→0 by 80% · H1 text-shadow 0 2px 26px · accent phrase owns its line with a drawn rule · never a decorative overlay on the photo.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>The photo (client’s own) · scrim side/direction · headline geometry + break points · eyebrow presence · draw treatment.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>Maven’s copy and the exhibit’s stock photo — imagery comes from this client’s imagery mode, copy from their mechanism.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
     </div>
 
     <div class="comp"><div class="comp-bar"><span class="cid">C-07</span><span class="cname">Word-rotator typographic hero</span><span class="prov">BetterUp (confirmed live) + Primitive 1</span></div>
       <div class="demo pad on-ground h-rot"><h3>Better <span class="rot-slot" id="rot"><span class="on">planning</span><span>timing</span><span>coordination</span><span>outcomes</span></span><br>across the board.</h3></div>
       <div class="spec">Grid-stack slot (can't collapse — LED-001); cycling word at line position, serif-italic accent color; 2.6s cycle.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Grid-stack slot that cannot collapse (LED-001) · ~2.6s cycle · serif-italic accent-color word · reduced-motion = static first word.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Word count + which words · the sentence frame around the slot · ground · slot position in the line · scale.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>The rotating words — they are one client’s value verbs. Re-derive the list from this client’s offer.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
     </div>
 
-    <div class="comp"><div class="comp-bar"><span class="cid">C-08</span><span class="cname">Animated mesh-gradient hero</span><span class="prov">Stripe + Zoom · Primitive 4</span></div>
-      <div class="demo"><div class="h-mesh">
-        <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
-        <div class="inner"><h3>The motion IS the brand, not decoration on top.</h3></div>
-      </div></div>
-      <div class="spec">3 brand-tint blobs, blur 58px, opacity .74 (LED-007: too faint = timid), desync 13/17/21s drift; static under reduced-motion.</div>
+    <div class="comp dead"><div class="comp-bar"><span class="cid">C-08</span><span class="cname">Animated mesh-gradient hero</span><span class="prov">Stripe + Zoom · Primitive 4</span></div>
+      <div class="killbar"><b>KILLED 2026-07-08</b><span>Mesh-gradient hero is the #1 AI-slop tell. Not selectable inventory.</span></div>
+      <details class="tomb"><summary>Archived exhibit — learning only, never select</summary>
+        <div class="demo"><div class="h-mesh">
+          <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+          <div class="inner"><h3>The motion IS the brand, not decoration on top.</h3></div>
+        </div></div>
+        <div class="spec">3 brand-tint blobs, blur 58px, opacity .74 (LED-007: too faint = timid), desync 13/17/21s drift; static under reduced-motion.</div>
+      </details>
     </div>
 
     <div class="comp"><div class="comp-bar"><span class="cid">C-09</span><span class="cname">Video hero · directional scrim</span><span class="prov">Zoom · Primitive 5 · v1.3 §8.4</span></div>
@@ -460,6 +537,12 @@ img{display:block;max-width:100%;}
         <div class="inner"><h3>Real footage behind the words.</h3><p style="margin-top:10px;color:rgba(255,255,255,.85)">Poster-first · zero bytes until near viewport · reduced-motion = poster · a failed video IS the photo hero.</p></div>
       </div></div>
       <div class="spec">105deg scrim anchored to the copy side (.8→0 at 70%); autoplay muted allowed here ONLY (ambient). Sample clip = CC0 stand-in.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Poster-first, zero video bytes until near viewport · reduced-motion = poster · failed video IS the photo hero · 105deg scrim .8→0 at 70% anchored to the copy side · ambient muted autoplay allowed here ONLY.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>The footage (client’s real video only — no video, no C-09) · copy side · scrim geometry · headline scale.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>The clip and the copy. Never fake footage for a client who has none — that flips the imagery dial instead.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
     </div>
 
     <div class="comp"><div class="comp-bar"><span class="cid">C-26</span><span class="cname">Product-visual split hero</span><span class="prov">Mercury + Linear · measured pattern (the "show the actual output" hero)</span></div>
@@ -473,6 +556,12 @@ img{display:block;max-width:100%;}
         </div>
       </div></div>
       <div class="spec">Copy left, artifact right in a soft-shadow r12 frame (the ONE allowed shadow class: floating product frames). The mock must show REAL deliverable structure — never lorem.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Copy one side, artifact the other · soft-shadow r12 floating product frame (the ONE allowed shadow class) · the mock shows REAL deliverable structure, never lorem.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Artifact type (plan doc / dashboard / report page) · grid ratio · which side · frame chrome · row anatomy.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>The mock’s rows — “Anchor Living Plan”, CPA sync, RSU vesting are one client’s deliverable. Rebuild the artifact from THIS client’s actual deliverable.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
     </div>
 
     <div class="comp"><div class="comp-bar"><span class="cid">C-27</span><span class="cname">Atmospheric dark hero + data chrome</span><span class="prov">Xapo Bank · measured (rgb(9,4,2), copper accent, live-data pill)</span></div>
@@ -484,6 +573,12 @@ img{display:block;max-width:100%;}
         </div>
       </div></div>
       <div class="spec">Full-bleed atmospheric photo (not lifestyle, not clinical — weather/landscape/city mood), bottom-anchored copy, one warm-metal accent, a live-data pill for real-world credibility. Photography-led dark, distinct from C-10's typographic dark.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Full-bleed atmospheric photo (weather/landscape/city mood — not lifestyle, not clinical) · bottom-anchored copy · one warm-metal accent · live-data pill carrying REAL data.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Photo mood · what real-world data feeds the pill · copy position · accent metal · scrim depth.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>The “HOUSTON CRUDE” pill and headline — Xapo-derived instance. The pill’s data source comes from this client’s world.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
     </div>
 
     <div class="comp"><div class="comp-bar"><span class="cid">C-10</span><span class="cname">Dark typographic hero</span><span class="prov">Stashwealth · measured</span></div>
@@ -494,6 +589,12 @@ img{display:block;max-width:100%;}
         <button class="b-sq">Primary action</button><button class="b-sq" style="background:transparent;color:var(--accent-soft)">Secondary</button>
       </div></div>
       <div class="spec">#0C0F14-class tinted near-black (never #000); body text rgba(.78); elevation via lighter fills, zero shadows.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Tinted near-black (#0C0F14-class, never #000) · body text rgba(.78) · elevation via lighter fills, zero shadows · alternation law: max two dark sections in a row.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Display face per register (need not be condensed) · centered vs left · button system · eyebrow · scale.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>Stashwealth’s condensed voice and copy — headline re-derived from this client’s mechanism.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
     </div>
   </section>
 
@@ -503,6 +604,12 @@ img{display:block;max-width:100%;}
     <div class="comp"><div class="comp-bar"><span class="cid">C-11</span><span class="cname">Credibility bar (directly under hero)</span><span class="prov">BetterUp · measured placement</span></div>
       <div class="demo"><div class="credbar"><span>10+ years at Merrill Lynch <span class="vf">VERIFY</span></span><span>Houston, TX</span><span>Coordinated planning for $2M–$30M households <span class="vf">VERIFY</span></span></div></div>
       <div class="spec">~40px band, tracked caps or logo row — proof before pitch. Unverified claims wear visible VERIFY chips.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>~40px band directly under the hero — proof before pitch · tracked caps or logo row · unverified claims wear visible VERIFY chips.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Item count (3–5) · text facts vs logo row · ground (alt band vs dark) · separators.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>The credentials themselves — only this client’s verified facts enter the band.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
     </div>
 
     <div class="comp"><div class="comp-bar"><span class="cid">C-12</span><span class="cname">Quantified metric-proof cards</span><span class="prov">BetterUp · measured 75px/300 numerals</span></div>
@@ -512,6 +619,12 @@ img{display:block;max-width:100%;}
         <div class="metric"><span class="tag">Outcome</span><b>90+</b><p>advisors on the platform <span class="vf" style="font:600 9px var(--sans);color:var(--accent-ink);border:1px solid rgba(var(--accent-rgb),.5);border-radius:3px;padding:2px 4px;">VERIFY</span></p><a href="#">See the model →</a></div>
       </div></div>
       <div class="spec">White cards radius 16 · numeral 300-weight at 40–75px · one-line outcome · "Read story" link. Vague claims are off-register.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Every card carries a NUMBER, never a vibe · numeral 300-weight at 40–75px · one-line outcome + story link · vague claims are off-register · unverified numbers wear VERIFY.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Number of stats · grid vs band vs inline-in-prose · ground · which number leads · card chrome vs bare.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>The metrics and their stories — client’s verified numbers only, re-sourced every build.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
     </div>
 
     <div class="comp"><div class="comp-bar"><span class="cid">C-13</span><span class="cname">Photo band with overlaid stat blocks</span><span class="prov">BetterUp · measured (white 75/300 over scrim .3–.7)</span></div>
@@ -525,6 +638,12 @@ img{display:block;max-width:100%;}
         </div>
       </div></div>
       <div class="spec">Human photo + dark scrim + white 300-weight stats; count-up + blur-to-sharp on reveal with the LED-011 stall guard. Unverified numbers never animate.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Human photo + scrim .3–.7 + white 300-weight stats · count-up + blur-to-sharp with the LED-011 stall guard · unverified numbers never animate.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Stat count · the photo · band height · row vs stacked arrangement · which stats earn the band.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>The photo and the stats — both re-derived from this client’s proof inventory.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
     </div>
 
     <div class="comp"><div class="comp-bar"><span class="cid">C-14</span><span class="cname">Deep-accent proof drench</span><span class="prov">warm-premium v1.2 · your "deepen it + light text" note</span></div>
@@ -534,6 +653,12 @@ img{display:block;max-width:100%;}
         <div class="stats"><div><b>5.6:1</b><span>headline contrast</span></div><div><b>1</b><span>drench per page</span></div><div><b>0</b><span>green-on-gold ever again</span></div></div>
       </div></div>
       <div class="spec">155deg gradient derived from --accent-deep via color-mix; all text solid on-dark; the pale testimonial card pops against it.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Exactly one full-saturation brand moment per page · gradient derived from --accent-deep via color-mix · all text solid on-dark, AA-checked against the lightest stop · pale card pops against the drench.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>What the drench hosts (quote / stats / CTA) · gradient angle · placement in the page flow · card or no card.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>The quote and the stats — one client’s proof. This client’s drench carries this client’s voice.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
     </div>
 
     <div class="comp"><div class="comp-bar"><span class="cid">C-15</span><span class="cname">Video testimonial · click-to-play</span><span class="prov">v1.3 §8.4 · built for Memphis footage</span></div>
@@ -542,6 +667,12 @@ img{display:block;max-width:100%;}
         <video controls playsinline preload="none" hidden><source data-src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4"></video>
       </div></div>
       <div class="spec">NEVER autoplays — pressing play is the intent signal. Zero video bytes before click; accent play button doubles as an accent surface; native controls after.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>NEVER autoplays — pressing play is the intent signal · zero video bytes before click · accent play button doubles as an accent surface · native controls after.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Aspect/size · poster treatment · placement (proof section, insights, inline) · count per page.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>The footage and the person — a real testimonial from THIS client, or the component doesn’t ship.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
     </div>
   </section>
 
@@ -554,6 +685,12 @@ img{display:block;max-width:100%;}
         <div class="pain"><span class="dot"></span><div class="num">02</div><p class="q">"Every bonus season feels like a tax trap."</p><p class="c">Flat fill, no shadow, hover lift — the register's card DNA.</p></div>
       </div></div>
       <div class="spec">2-col, ground-alt fill, radius 8, accent dot, 300-weight accent-ink numeral, hover translateY(-4px) + fill step.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Flat ground-alt fill, radius 8, no shadow · accent dot · 300-weight accent-ink numeral · pain in “their exact words” serif-italic · hover −4px + fill step.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Card count (2–4) · 2-col vs single row vs stacked list · numbered or not · ground.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>The pain quotes — “My CPA, my advisor, and my attorney never talk” is Maven’s ICP research. Re-derive verbatims from this client’s research.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
     </div>
 
     <div class="comp"><div class="comp-bar"><span class="cid">C-17</span><span class="cname">ICP photo cards (self-sort)</span><span class="prov">Maven · the cards you called better than hand-built</span></div>
@@ -563,9 +700,15 @@ img{display:block;max-width:100%;}
         <div class="icp"><img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?q=80&w=900&auto=format&fit=crop" alt=""><span class="dot"></span><div class="body"><h4>Segment three</h4><p>Dot badge w/ soft ring, hover lift -5px.</p></div></div>
       </div></div>
       <div class="spec">min-height clamp(400,42vw,480) in production; bottom→up scrim; warm-documentary imagery only (§6 rules).</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Bottom→up scrim over the photo · dark card bg so a failed image still reads · dot badge with soft ring · hover −5px · production min-height clamp(400,42vw,480) · warm-documentary imagery only.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Segment count · the photo set · grid vs carousel vs split · badge treatment · ground.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>Segment names, pains, and photos — this client’s ICP research, never another’s segments.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
     </div>
 
-    <div class="comp"><div class="comp-bar"><span class="cid">C-18</span><span class="cname">Mixed bento + dark placement + CTA closer</span><span class="prov">Maven · §8.2 placement law</span></div>
+    <div class="comp"><div class="comp-bar"><span class="cid">C-18</span><span class="cname">Mixed bento + dark placement + CTA closer</span><span class="prov">Maven · §8.2 placement law</span><span class="badge risk">Dating risk: bento is trendy — fine while it converts, review at next harvest</span></div>
       <div class="demo pad on-ground"><div class="bento">
         <div class="bx c3 dark"><span class="tag">Flagship</span><h4>The core offer goes dark, top-left</h4><p class="pl">"Exactly 1–2 dark cells, never adjacent."</p></div>
         <div class="bx c3"><span class="tag">Support</span><h4>Light cell</h4><p class="pl">"Tag + head + serif pain-line."</p></div>
@@ -575,6 +718,12 @@ img{display:block;max-width:100%;}
         <div class="bx c6 dark"><div><span class="tag">Closer</span><h4>The full-width closer hosts the section CTA</h4></div><button class="b-flat" style="font-size:15px;padding:8px 20px">Start the Fit Check →</button></div>
       </div></div>
       <div class="spec">6-col grid: 3+3 / 2+2+2 / 6. Gold-on-dark closer button = strongest contrast on the page.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Exactly 1–2 dark cells, never adjacent · core offer goes dark, top-left · full-width closer hosts the section CTA (strongest contrast on the page) · tag + head + serif pain-line cell anatomy.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>The grid arithmetic itself (6-col 3+3 / 2+2+2 / 6 is the exhibit — re-derive spans) · cell count · which cell is dark · ground.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>Cell content and offers — the cells are filled from this client’s service architecture.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
     </div>
 
     <div class="comp"><div class="comp-bar"><span class="cid">C-19</span><span class="cname">Featured-split insights (+ video slot)</span><span class="prov">v1.2 · your "elevate insights" note</span></div>
@@ -586,6 +735,12 @@ img{display:block;max-width:100%;}
         </div>
       </div></div>
       <div class="spec">1.55fr/1fr grid; 3px accent top-bar marks the lead; one video card max per section.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>One lead item earns the 3px accent top-bar and the big serif title · compact stack beside · one video card max per section.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Grid ratio (1.55fr/1fr is the exhibit) · lead left vs right · stack count · card chrome · media mix.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>Article titles and excerpts — this client’s actual insights, never placeholder editorial.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
     </div>
 
     <div class="comp"><div class="comp-bar"><span class="cid">C-20</span><span class="cname">Process stepper · numeral-pop</span><span class="prov">Maven + v1.2 "color pop" note</span></div>
@@ -596,6 +751,12 @@ img{display:block;max-width:100%;}
         <div class="step"><div class="n">04</div><h4>Partnership</h4><p>Hairline-top rhythm.</p></div>
       </div></div>
       <div class="spec">Numeral = color-mix(accent 40–55%, accent-ink) — share tuned per palette until ≥3:1 large-text.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Numeral = color-mix(accent 40–55%, accent-ink), tuned per palette until ≥3:1 large-text · hairline-top rhythm · accent dot on the hairline.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Step count · horizontal 4-col vs vertical rail vs alternating · numeral scale · ground · “when” note treatment.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>The step names and process — this client’s real engagement process, not Maven’s Discovery→Partnership.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
     </div>
 
     <div class="comp"><div class="comp-bar"><span class="cid">C-28</span><span class="cname">Hairline ghost cards on dark</span><span class="prov">Linear + Xapo · measured (rgba fills .04–.06, 1px rgba borders)</span></div>
@@ -605,20 +766,35 @@ img{display:block;max-width:100%;}
         <div class="ghost"><h4>Reads engineered</h4><p>The card language for product/tech-literate ICPs.</p></div>
       </div></div>
       <div class="spec">Ghost cards: near-invisible fills + hairline borders on true dark. Zero drop shadows (premium-dark law). Pairs with C-10/C-27 heroes.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>rgba fills .04–.06 + 1px rgba(.12) borders on true dark · hover: fill .07, border .22, nothing moves · zero drop shadows (premium-dark law).</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Card count and grid · ground darkness · card anatomy (icon/number/plain) · which dark hero it pairs with.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>Card copy — the cells are filled from this client’s capabilities.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
     </div>
 
-    <div class="comp"><div class="comp-bar"><span class="cid">C-29</span><span class="cname">Vivid color-block cards</span><span class="prov">Pitch · measured (r20, saturated fills: violet/lime family)</span></div>
-      <div class="demo pad on-ground"><div class="vivids">
-        <div class="vivid a"><span>Dark block</span><h4>Cards ARE the palette</h4></div>
-        <div class="vivid b"><span>Accent block</span><h4>Full-saturation fill</h4></div>
-        <div class="vivid c"><span>Neutral block</span><h4>Radius 20, big pads</h4></div>
-      </div></div>
-      <div class="spec">Committed color-block cards, radius 20 — the playful-confident end of the spectrum. Use where the brand can carry saturation (likely AGL-adjacent, not private-wealth).</div>
+    <div class="comp dead"><div class="comp-bar"><span class="cid">C-29</span><span class="cname">Vivid color-block cards</span><span class="prov">Pitch · measured (r20, saturated fills: violet/lime family)</span></div>
+      <div class="killbar"><b>KILLED 2026-07-08</b><span>Vivid violet/lime color-blocks — no fit for financial-services registers. Not selectable inventory.</span></div>
+      <details class="tomb"><summary>Archived exhibit — learning only, never select</summary>
+        <div class="demo pad on-ground"><div class="vivids">
+          <div class="vivid a"><span>Dark block</span><h4>Cards ARE the palette</h4></div>
+          <div class="vivid b"><span>Accent block</span><h4>Full-saturation fill</h4></div>
+          <div class="vivid c"><span>Neutral block</span><h4>Radius 20, big pads</h4></div>
+        </div></div>
+        <div class="spec">Committed color-block cards, radius 20 — the playful-confident end of the spectrum. Use where the brand can carry saturation (likely AGL-adjacent, not private-wealth).</div>
+      </details>
     </div>
 
     <div class="comp"><div class="comp-bar"><span class="cid">C-30</span><span class="cname">Brand-drench feature section</span><span class="prov">Modern Health + Pitch · measured (full-bleed saturated brand ground)</span></div>
       <div class="demo"><div class="brench"><span class="eyebrow" style="color:inherit">The difference</span><h3 style="margin-top:10px">One full-saturation brand moment per page.</h3><p>Generalizes the deep-drench (C-14): vivid brands drench in their RAW accent with dark/light text AA-checked; heritage brands drench DEEP. Same law, brand-appropriate volume.</p></div></div>
       <div class="spec">Exactly one drench per page (existing law). The drench VALUE comes from the brand's saturation ceiling — a dial, not a fixed treatment.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Exactly one drench per page (existing law) · drench VALUE = the brand’s saturation ceiling (vivid drenches raw, heritage drenches deep) · text AA-checked on the drench ground.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Raw vs deep value · what the drench hosts · placement in flow · band height · eyebrow treatment.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>The copy — the drench moment states this client’s difference in their words.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
     </div>
 
     <div class="comp"><div class="comp-bar"><span class="cid">C-31</span><span class="cname">Repeating 2-col feature rhythm</span><span class="prov">Linear · measured (5× grid(2col), 128px pad, alternating sides)</span></div>
@@ -627,6 +803,12 @@ img{display:block;max-width:100%;}
         <div class="ph"></div>
       </div></div>
       <div class="spec">Alternating 2-col at 128px rhythm — the inner-page workhorse (Services/Process deep pages). On the homepage it would violate the no-two-adjacent-alike law.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Alternating 2-col at ~128px rhythm · text one side, artifact the other, sides swap each row · inner pages only (homepage use violates the no-two-adjacent-alike law).</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Row count · artifact type per row (photo / product frame / diagram) · grid ratio · ground shifts between rows.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>Feature copy and artifacts — every row’s story is this client’s, re-derived per build.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
     </div>
 
     <div class="comp"><div class="comp-bar"><span class="cid">C-21</span><span class="cname">Fit mini-hero · convergence diagram · wizard</span><span class="prov">v1.2 · the section you called "perhaps the most important"</span></div>
@@ -653,6 +835,12 @@ img{display:block;max-width:100%;}
         </div>
       </div></div></div>
       <div class="spec">Dark panel radius 12 in a light section (contained darkness) · labeled strands → node · step numeral + 4 segments · 2-cycle ring pulse on reveal · no-JS falls back to a plain single form.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>A self-qualification moment whose visual converges on “you belong here” and resolves to the conversion event · contained darkness (dark panel r12 inside a light section) · step numeral + segment progress · 2-cycle ring pulse · no-JS falls back to a plain form.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>The convergence geometry itself (labeled strands→node is ONE execution) · panel vs full band · question count · wizard chrome · ground.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>The CPA / attorney / portfolio → “one living plan” convergence items — Maven’s mechanism, the canonical ban. Diagram nodes AND wizard questions are re-derived from this client’s mechanism, every time.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
     </div>
   </section>
 
@@ -665,14 +853,26 @@ img{display:block;max-width:100%;}
         <div class="stagdemo play" id="stag"><div class="cell">1st · 0ms</div><div class="cell">2nd · +90ms</div><div class="cell">3rd · +180ms</div><div class="cell">4th · +270ms</div></div>
       </div>
       <div class="spec">.stagger on the GRID, 90ms steps, backwards-fill (hover transitions survive); reduced-motion + no-JS = simply visible.</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>.stagger on the GRID, not the cells · 90ms steps · backwards-fill so hover transitions survive · reduced-motion + no-JS = simply visible.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Step delay per motion temperament (60–120ms) · what staggers (cards / rows / list items) · travel distance and duration.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>Nothing content-bound survives here — the demo cell labels are placeholders; never ship them.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
     </div>
 
-    <div class="comp"><div class="comp-bar"><span class="cid">C-23</span><span class="cname">Scroll-driven section recolor</span><span class="prov">Instrument · Primitive 6 (click demo — scroll-driven in production)</span></div>
+    <div class="comp"><div class="comp-bar"><span class="cid">C-23</span><span class="cname">Scroll-driven section recolor</span><span class="prov">Instrument · Primitive 6 (click demo — scroll-driven in production)</span><span class="badge sig">Signature-tier · max one per site</span></div>
       <div class="demo"><div class="tswap"><div class="pane" id="tpane" style="background:var(--dark);color:var(--on-dark-mute)">
         <h4 id="tph" style="color:#fff">The whole ground recolors as you scroll.</h4>
         <p>Text inverts to stay legible; floor = solid readable sections with no JS. <button class="replay" id="tsw" style="margin:12px 0 0">Swap theme</button></p>
       </div></div></div>
       <div class="spec">Paired theme sections, fixed-layer crossfade, text inversion; verified fixture exists (qa/fixtures/scroll-color-theming.html).</div>
+      <div class="ivp">
+        <div class="row"><span class="k i">Invariant</span><span>Paired theme sections · fixed-layer crossfade · text inverts to stay legible · floor = solid readable sections with no JS.</span></div>
+        <div class="row"><span class="k v">Vary</span><span>Which section pair recolors · trigger point · palette pair · direction of the swap. Signature-tier: max ONE per site — it’s a moment, not a pattern.</span></div>
+        <div class="row"><span class="k n">Never port</span><span>The demo copy — the recolor moment frames this client’s pivotal claim, in their words.</span></div>
+      </div>
+      <div class="wm">ONE EXECUTION of this pattern — never rebuild this instance.</div>
     </div>
   </section>
 
