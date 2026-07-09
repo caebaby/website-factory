@@ -102,6 +102,7 @@ h1,h2,h3,h4{font-weight:650}
 .hchip svg{width:12px;height:12px}
 .hero h1{font-weight:650;font-size:clamp(44px,6vw,74px);line-height:1.01;letter-spacing:-.035em;color:#fff;margin:22px 0 0;text-shadow:0 2px 40px rgba(8,12,36,.4);text-wrap:balance}
 .hero h1 .serif-i{color:#C9D1FF;font-weight:400}
+.hero h1 .h1-strong{font-weight:850;color:#fff;letter-spacing:-.03em}
 .hero__sub{color:rgba(255,255,255,.9);font-size:19.5px;line-height:1.52;margin:20px auto 0;max-width:52ch;text-shadow:0 1px 18px rgba(8,12,36,.45);text-wrap:pretty}
 .hero__cta{display:flex;gap:13px;justify-content:center;margin-top:34px;flex-wrap:wrap}
 .commit__q{flex-basis:100%;margin:0 0 14px;font-size:16.5px;font-weight:560;color:rgba(255,255,255,.92);text-shadow:0 1px 18px rgba(8,12,36,.45);max-width:46ch;margin-left:auto;margin-right:auto}
@@ -230,6 +231,8 @@ h2.h-sec .serif-i{color:var(--acc)}
 .mstat>b{font-size:24px;font-weight:680;letter-spacing:-.02em;color:#fff;text-align:right}
 .mstat>span{font-size:13.5px;color:var(--on-deep-soft);line-height:1.45}
 .mstat>span em{display:block;font-style:normal;font-size:11px;color:var(--on-deep-mute);margin-top:3px;letter-spacing:.04em}
+.mstat__cta{margin-top:18px;padding-top:18px;border-top:1px solid rgba(165,180,252,.18)}
+.mstat__cta p{margin:0 0 14px;font-size:14.5px;font-weight:560;color:#EDEFFA;line-height:1.5;text-wrap:pretty}
 .flow__note{margin-top:14px;font-size:11.5px;color:var(--on-deep-mute);line-height:1.5}
 
 /* ================= ASSESSMENT ================= */
@@ -506,7 +509,7 @@ html.gated .hero__scroll{display:none}
   <div class="hero__in" id="heroIn">
     <div class="hvar" data-a="adv">
       <span class="hchip glass hload hd2"><svg viewBox="0 0 12 12" fill="none"><rect x="2" y="5.5" width="8" height="5" rx="1.1" stroke="currentColor" stroke-width="1.1"/><path d="M3.8 5.5V4a2.2 2.2 0 014.4 0v1.5" stroke="currentColor" stroke-width="1.1"/></svg>Confidential &middot; for advisors weighing a move</span>
-      <h1 class="hload hd2">Are you a <span class="serif-i">financial advisor?</span></h1>
+      <h1 class="hload hd2">Are you a <b class="h1-strong">financial advisor?</b></h1>
       <p class="hero__sub hload hd3" id="heroSub">Because every recruiter who calls one has a stake in the answer. This is the other room &mdash; movement data on the whole industry, an honest guide, no pressure &mdash; built exclusively for advisors thinking clearly about their next move.</p>
       <div class="hero__cta hload hd4">
         <p class="commit__q" id="commitQ" hidden>No worries &mdash; this room is built specifically for practicing financial advisors. If that changes, the door&rsquo;s open.</p>
@@ -524,7 +527,7 @@ html.gated .hero__scroll{display:none}
     <span class="eyebrow reso__eyebrow">Why advisors move &middot; from the research</span>
     <h2 class="reso__h">Does this <span class="serif-i">resonate</span> with you?</h2>
   </div>
-  <div class="wire__view reso__view"><div class="wire__track" id="wireTrack"><span class="wire__item">The comp grid <b>changed again</b></span><span class="wire__sep"></span><span class="wire__item">The firm <b>sold overnight</b></span><span class="wire__sep"></span><span class="wire__item">The retention offer <b>didn&rsquo;t add up</b></span><span class="wire__sep"></span><span class="wire__item">Production hurdles up, <b>support cut</b></span><span class="wire__sep"></span><span class="wire__item">Watched a 30-year vet <b>get managed out</b></span><span class="wire__sep"></span><span class="wire__item">Wants to <b>own the book</b></span><span class="wire__sep"></span><span class="wire__item">Tired of the <b>payout ceiling</b></span><span class="wire__sep"></span><span class="wire__item">Equity <b>someone else</b> gets to sell</span><span class="wire__sep"></span><span class="wire__item">Compliance friction on <b>everything</b></span><span class="wire__sep"></span><span class="wire__item">Recruiter calls <b>every week</b></span><span class="wire__sep"></span><span class="wire__item">Tech stuck in <b>2012</b></span><span class="wire__sep"></span><span class="wire__item">Integration pain <b>after the merger</b></span></div></div>
+  <div class="wire__view reso__view"><div class="wire__track" id="wireTrack"><span class="wire__item">The grid changed. <b>Again.</b></span><span class="wire__sep"></span><span class="wire__item">Your firm <b>sold overnight</b></span><span class="wire__sep"></span><span class="wire__item">The retention offer <b>insulted the math</b></span><span class="wire__sep"></span><span class="wire__item">Hurdles up. <b>Support gone.</b></span><span class="wire__sep"></span><span class="wire__item">Watched a 30-year vet <b>walked out</b></span><span class="wire__sep"></span><span class="wire__item">It&rsquo;s your book. <b>They own it.</b></span><span class="wire__sep"></span><span class="wire__item">Half your production, <b>kept by the firm</b></span><span class="wire__sep"></span><span class="wire__item">7 more years of <b>clawback handcuffs</b></span><span class="wire__sep"></span><span class="wire__item">Compliance kills <b>every post you write</b></span><span class="wire__sep"></span><span class="wire__item">Another recruiter. <b>This week.</b></span><span class="wire__sep"></span><span class="wire__item">Tech stuck in <b>2012</b></span><span class="wire__sep"></span><span class="wire__item">The merger broke <b>what worked</b></span></div></div>
   <div class="wrap reso__more"><a href="#how">If any of these are yours, keep reading <svg viewBox="0 0 16 16" fill="none"><path d="M8 3v9M4 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
 </section>
 
@@ -576,12 +579,16 @@ html.gated .hero__scroll{display:none}
         </div>
         <div class="flow io" style="--d:.1s" data-anim>
           <div class="flow__top"><span class="flow__ttl">Advisor movement &middot; by the numbers</span><span class="dlive"><i></i>Public record &amp; named studies</span></div>
-          <div class="mstat"><b class="num">11,172</b><span>experienced advisors changed firms in 2025 &mdash; a new high, up 16.2% on 2024<em>Diamond Consultants 4th Annual Transition Report &middot; via WealthManagement.com</em></span></div>
-          <div class="mstat"><b class="num">56%</b><span>of advisors weighed a move within a five-year window &mdash; and 1 in 4 followed through<em>Fidelity Advisor Movement Study, 2018</em></span></div>
-          <div class="mstat"><b class="num">64%</b><span>of those movers chose independence &mdash; RIA or independent BD<em>Fidelity Advisor Movement Study, 2018</em></span></div>
-          <div class="mstat"><b class="num">&minus;1.9%/yr</b><span>projected wirehouse advisor headcount decline through 2028 &mdash; while independent RIAs grow about +4% a year<em>Cerulli Associates projections</em></span></div>
-          <div class="mstat"><b class="num">94%</b><span>of advisors who moved say they&rsquo;re happy with the decision; 85% cite more control over their future<em>Fidelity Advisor Movement Study, 2023</em></span></div>
-          <p class="flow__note">Real figures from the named public studies and reporting &mdash; not our estimates. Firm-level movement in your own channel is exactly what the record shows when the assessment reads your position.</p>
+          <div class="mstat"><b class="num">11,172</b><span>advisors moved last year &mdash; a record. Thinking about it doesn&rsquo;t make you restless; it makes you current.<em>Diamond Consultants 4th Annual Transition Report &middot; via WealthManagement.com</em></span></div>
+          <div class="mstat"><b class="num">56%</b><span>of advisors have seriously weighed a move &mdash; and 1 in 4 followed through. You&rsquo;re in the majority, not on the fringe.<em>Fidelity Advisor Movement Study, 2018</em></span></div>
+          <div class="mstat"><b class="num">64%</b><span>of movers chose independence. The traffic runs one direction.<em>Fidelity Advisor Movement Study, 2018</em></span></div>
+          <div class="mstat"><b class="num">&minus;1.9%/yr</b><span>wirehouse headcount shrinking through 2028 while independent RIAs grow +4% a year. The old model is emptying out.<em>Cerulli Associates projections</em></span></div>
+          <div class="mstat"><b class="num">94%</b><span>of movers say they&rsquo;re happy they did it; 85% cite more control. The regret rate is the real story.<em>Fidelity Advisor Movement Study, 2023</em></span></div>
+          <div class="mstat__cta">
+            <p>Those are the industry&rsquo;s numbers. The only ones that matter are yours &mdash; your book, your channel, your timing. That&rsquo;s the 30-minute call.</p>
+            <a href="#talk" class="btn btn--acc btn--sm">Book a private call <svg class="arr" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+          <p class="flow__note">Real figures from the named public studies and reporting &mdash; not our estimates.</p>
         </div>
       </div>
       <div class="cnts">
