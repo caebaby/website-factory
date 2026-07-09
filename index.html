@@ -239,12 +239,7 @@ h2.h-sec .serif-i{color:var(--acc)}
 .assess__meta div{display:flex;flex-direction:column;gap:2px}
 .assess__meta b{font-size:24px;font-weight:660;color:var(--acc);letter-spacing:-.02em}
 .assess__meta span{font-size:12px;font-weight:620;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
-.stack{position:relative;padding-top:44px}
-.match{position:absolute;top:0;right:8px;z-index:2;display:flex;align-items:center;gap:11px;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:13px;padding:12px 16px;box-shadow:var(--shadow-md);transform:rotate(1.6deg)}
-.match__pulse{width:34px;height:34px;border-radius:10px;background:var(--acc-soft);display:flex;align-items:center;justify-content:center;flex:none}
-.match__pulse svg{width:18px;height:18px}
-.match b{display:block;font-size:13.5px;font-weight:640;letter-spacing:-.01em}
-.match span{display:block;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.stack{position:relative}
 .qcard{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:28px;box-shadow:var(--shadow-lg)}
 .qcard__top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
 .qstep{font-size:11px;font-weight:640;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
@@ -477,8 +472,6 @@ html.gated .hero__scroll{display:none}
   .dist__row{grid-template-columns:1fr 54px}
   .dist__row>span{grid-column:1/-1}
   .deal__band b{display:none}
-  .match{position:static;transform:none;margin-bottom:14px;display:inline-flex}
-  .stack{padding-top:0}
   .cnts{grid-template-columns:1fr 1fr;gap:10px}
   .wire__label{padding-left:20px}
 }
@@ -653,15 +646,11 @@ html.gated .hero__scroll{display:none}
       <p class="lede">You&rsquo;re one of the 725,000. Opt in and we match you to your public record &mdash; firm, tenure, registrations, movement history &mdash; then read your position against advisors who stood exactly where you stand. Readiness is an evidence question, not a courage question &mdash; and the report is yours alone; no one is notified. If the honest read is &ldquo;stay put,&rdquo; that&rsquo;s the report you&rsquo;ll get. Three minutes tells you whether a longer conversation is even worth your time.</p>
       <div class="assess__meta"><div><b>7</b><span>Questions</span></div><div><b>3 min</b><span>To complete</span></div><div><b class="serif-i" style="font-size:22px">Private</b><span>Results are yours</span></div></div>
       <div style="display:flex;gap:12px;flex-wrap:wrap">
-        <button class="btn btn--acc btn--lg" data-open-report>Start the assessment <svg class="arr" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="btn btn--acc btn--lg" data-assess data-open-report>Start the assessment <svg class="arr" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <button class="btn btn--line btn--lg" data-open-report>See a sample report</button>
       </div>
     </div>
     <div class="stack io" style="--d:.12s" data-anim>
-      <div class="match">
-        <span class="match__pulse"><svg viewBox="0 0 18 18" fill="none"><circle cx="8" cy="8" r="5" stroke="#4338CA" stroke-width="1.7"/><path d="M12 12l3.4 3.4" stroke="#4338CA" stroke-width="1.7" stroke-linecap="round"/><circle cx="8" cy="8" r="1.6" fill="#4338CA"/></svg></span>
-        <span><b>Record matched from public filings</b><span class="num">CRD &bull;&bull;&bull;4821 &middot; 12 yrs &middot; dually registered</span></span>
-      </div>
       <div class="qcard" aria-hidden="true">
         <div class="qcard__top"><span class="qstep">Question 4 of 7</span><span class="qbar"><i></i></span></div>
         <h4>What&rsquo;s really driving the itch?</h4>
@@ -929,6 +918,17 @@ html.gated .hero__scroll{display:none}
 (function(){
 "use strict";
 var RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ================= PLUG IN THE REAL ASSESSMENT =================
+   Paste the live assessment URL between the quotes (GHL form / quiz link).
+   Every [data-assess] button then routes there. Empty = sample report. */
+var ASSESSMENT_URL = '';
+document.addEventListener('click', function(e){
+  var a = e.target.closest('[data-assess]');
+  if(!a || !ASSESSMENT_URL) return;
+  e.preventDefault(); e.stopPropagation();
+  window.location.href = ASSESSMENT_URL;
+}, true);
 
 /* ---------- view switching ---------- */
 var vHome = document.getElementById('view-home'), vReport = document.getElementById('view-report');

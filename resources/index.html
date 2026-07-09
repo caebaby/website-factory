@@ -239,7 +239,7 @@ h2.h-sec .serif-i{color:var(--acc)}
     <p class="bhero__pod">Every briefing is an episode of The Advisor Growth Lab Podcast.</p>
     <div class="bhero__cta">
       <a href="#" data-verify="subscribe-endpoint" class="btn btn--acc btn--lg">Get the daily briefing <svg class="arr" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      <a class="bhero__alt" href="../index.html#report">Start the assessment <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a class="bhero__alt" href="../index.html#report" data-assess>Start the assessment <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
   </div>
 </section>
@@ -286,7 +286,7 @@ h2.h-sec .serif-i{color:var(--acc)}
       <p class="lede">You&rsquo;re one of the 725,000. Opt in and we match you to your public record &mdash; firm, tenure, registrations, movement history &mdash; then read your position against advisors who stood exactly where you stand. The report is yours alone; no one is notified &mdash; and if the honest read is &ldquo;stay put,&rdquo; that&rsquo;s the report you&rsquo;ll get.</p>
       <div class="assess__meta"><div><b>7</b><span>Questions</span></div><div><b>3 min</b><span>To complete</span></div><div><b class="serif-i" style="font-size:22px">Private</b><span>Results are yours</span></div></div>
       <div style="display:flex;gap:12px;flex-wrap:wrap">
-        <a href="../index.html#report" class="btn btn--acc btn--lg">Start the assessment <svg class="arr" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="../index.html#report" data-assess class="btn btn--acc btn--lg">Start the assessment <svg class="arr" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         <a href="../index.html#report" class="btn btn--line btn--lg">See a sample report</a>
       </div>
     </div>
@@ -316,6 +316,13 @@ h2.h-sec .serif-i{color:var(--acc)}
 (function(){
 "use strict";
 var RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* PLUG IN THE REAL ASSESSMENT: paste the live URL; empty = sample report on the home page. */
+var ASSESSMENT_URL = '';
+document.addEventListener('click', function(e){
+  var a = e.target.closest('[data-assess]');
+  if(!a || !ASSESSMENT_URL) return;
+  e.preventDefault(); window.location.href = ASSESSMENT_URL;
+}, true);
 /* mobile nav */
 var mbtn = document.getElementById('navmenu'), mnav = document.getElementById('mnav');
 if(mbtn){ mbtn.addEventListener('click', function(){
