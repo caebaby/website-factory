@@ -24,3 +24,8 @@ human edits in the session that makes them.*
 | 2026-07-08 | agl-pilot-resources-retention-offer-after-acquisition | CLEAN | PASS · critic ship (0.86) | 0 | critic:opus | 49k/2.7k | $0.18 | 82s | 0 |
 | 2026-07-08 | agl-pilot-resources-forgivable-note-clawback | CLEAN | PASS · critic ship (0.87) | 0 | critic:opus | 49k/2.6k | $0.18 | 85s | 0 |
 | 2026-07-08 | agl-pilot-handoff-index-v2 | CLEAN | PASS · critic ship (0.87) | 0 | critic:opus | 49k/3.7k | $0.21 | 123s | 0 |
+| 2026-07-08 | agl-pilot-handoff-index-v3 | CLEAN | PASS · critic ship (0.87) | 0 | critic:opus | 49k/3.4k | $0.20 | 119s | 0 |
+| 2026-07-08 | agl-pilot-handoff-index-v4 | CLEAN | PASS · critic ship (0.87) | 1 | critic:opus repair#1:sonnet critic:opus | 296k/6.4k | $0.50 | 233s | 0 |
+| 2026-07-08 | agl-pilot-handoff-index-v5 | CLEAN | PASS · critic repair (0.87) | 0 | critic:opus | 49k/4.9k | $0.24 | 156s | 0 |
+| 2026-07-09 | agl-pilot-handoff-index-v6 | CLEAN | PASS · critic repair (0.87) | 0 | critic:opus | 49k/3.4k | $0.20 | 115s | 0 |
+| 2026-07-09 | agl-pilot-post1-v2 | CLEAN | ESCALATE · critic escalate (0.87) | 1 | critic:opus repair#1:sonnet critic:opus | 171k/6.2k | $0.45 | 183s | 0 |

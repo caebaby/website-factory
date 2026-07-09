@@ -257,3 +257,10 @@ Append-only. Each entry: what broke, why, how it was caught, and what permanent 
 - **Human-touch fix (counted per Cherny instrumentation):** applied the LED-013 pattern properly in `handoff/index.html` — base `.hload` hidden w/o animation, ALL of `{opacity:1; animation:hrise backwards}` under `#heroIn.in .hload`, explicit from/to keyframes, double-rAF `.in` add. Re-gate: the 5 P1s gone; handoff home is now CLEANER than pinned gold (which still carries them).
 - **Lesson for the repair prompt (open):** scoped repairs that modify a CSS rule must be instructed to show the rule being REMOVED as well as the rule being added — "replace" edits that only add are invisible to the agent's own diff sense. Candidate hardening for the repair prompt template next session (prompt file untouched this session — scope fence).
 - **Status:** ✅ defect fixed by hand; two hardening items open (repair-prompt wording; gold re-pin with the same hero fix).
+
+### LED-022 — Critic treats declared pending-endpoint CTAs inconsistently (variance, not a defect)
+- **Build:** AGL pilot, post `am-i-ready-to-leave-my-firm.html` re-run after a citation fix (2026-07-09)
+- **Symptom:** identical `href="#" data-verify="booking-url"` CTA state PASSED four pipeline runs (critics waived or ignored, per the cta-pending-endpoint non-blocking rule), then a fifth critic raised it as an R34 MAJOR and ESCALATED — "get the booking URL from Chris." Content was otherwise unchanged.
+- **Read:** the escalation's *disposition* is correct (it IS a client-fact dependency, already VERIFY item #1) but the *inconsistency* burns repair iterations and money on a known, declared TODO.
+- **Hardening (open, qa/ frozen this session):** run-pipeline's critic prompt should state that `data-verify` declared pending endpoints are client TODOs — reportable, never MAJOR/escalate. Mirrors the gate's own `cta-pending-endpoint` non-blocking rule.
+- **Status:** 🟡 page ships on its prior PASS + unchanged-content basis; critic-prompt hardening open.
