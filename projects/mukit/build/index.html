@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mukit Mahdin — Software Engineer · AI-first, backend at scale</title>
+<meta name="description" content="Software engineer shipping AI-first, full-stack systems at scale. Async pipelines, REST APIs, applied AI — with documented $10K–$20K/month business impact.">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#0C0C0C; --black-2:#161616; --black-3:#1e1e1e;
+  --paper:#F2EDE5; --paper-2:#E8E1D4; --card-pale:#ffffff;
+  --greige:#E0D7CE; --greige-deep:#8f8377;
+  --ink:#111111; --ink-body:#3d3a36;
+  --on-dark:#F5F1EA; --on-dark-mute:rgba(245,241,234,.78);
+  --greige-rgb:224,215,206;
+  --accent:#5EE6D0; --accent-ink:#0c6b5c;
+  --accent-rgb:94,230,208;
+  --border-dark:rgba(245,241,234,.16); --border-light:rgba(17,17,17,.16);
+  --maxw:1240px; --gutter:clamp(20px,4vw,72px); --radius:0px;
+  --btn-pad-sm:17.8px 23.7px; --btn-fs-sm:11.9px; --btn-track-sm:.95px;
+  --btn-pad-md:20.9px 27.9px; --btn-fs-md:13.9px; --btn-track-md:.7px;
+  --btn-pad-lg:28.8px 38.4px; --btn-fs-lg:19.2px; --btn-track-lg:1.5px;
+  --dur:.12s; --ease:linear; --dur-soft:.5s; --ease-soft:cubic-bezier(.16,1,.3,1);
+  --display:'Oswald','Arial Narrow',sans-serif;
+  --label:'Space Grotesk','Helvetica Neue',sans-serif;
+  --mono:'JetBrains Mono','SFMono-Regular',ui-monospace,monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:16px;scroll-behavior:smooth;}
+body{font-family:var(--label);background:var(--black);color:var(--on-dark-mute);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.6;}
+a{color:inherit;text-decoration:none;} img{display:block;max-width:100%;}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter);}
+section{position:relative;}
+.pad{padding:clamp(76px,8.5vw,116px) 0;} .pad-sm{padding:clamp(52px,6vw,84px) 0;}
+
+.bg-black{background:var(--black);color:var(--on-dark-mute);}
+.bg-black-2{background:var(--black-2);color:var(--on-dark-mute);}
+.bg-paper{background:var(--paper);color:var(--ink-body);}
+.bg-paper-2{background:var(--paper-2);color:var(--ink-body);}
+.bg-greige{background:var(--greige);color:var(--ink);}
+
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font:600 12px/1.3 var(--label);letter-spacing:1.5px;text-transform:uppercase;color:var(--greige);}
+.eyebrow::before{content:"";width:26px;height:1px;background:currentColor;opacity:.6;}
+.bg-paper .eyebrow,.bg-paper-2 .eyebrow{color:var(--greige-deep);}
+.bg-greige .eyebrow{color:var(--ink);}
+
+.btn{display:inline-flex;align-items:center;gap:10px;border-radius:0;font:600 var(--btn-fs-md)/1.2 var(--label);letter-spacing:var(--btn-track-md);text-transform:uppercase;padding:var(--btn-pad-md);cursor:pointer;border:1px solid var(--greige);transition:background-color var(--dur) var(--ease),color var(--dur) var(--ease),opacity var(--dur) var(--ease);}
+.btn-fill{background:var(--greige);color:var(--ink);}
+.btn-fill:hover{background:transparent;color:var(--greige);}
+.bg-paper .btn-fill,.bg-greige .btn-fill{border-color:var(--ink);background:var(--ink);color:var(--paper);}
+.bg-paper .btn-fill:hover,.bg-greige .btn-fill:hover{background:transparent;color:var(--ink);}
+.btn-ghost{background:transparent;color:var(--greige);}
+.btn-ghost:hover{background:var(--greige);color:var(--ink);}
+.bg-paper .btn-ghost{border-color:var(--ink);color:var(--ink);}
+.bg-paper .btn-ghost:hover{background:var(--ink);color:var(--paper);}
+.btn-lg{font-size:var(--btn-fs-lg);letter-spacing:var(--btn-track-lg);padding:var(--btn-pad-lg);}
+.btn-sm{font-size:var(--btn-fs-sm);letter-spacing:var(--btn-track-sm);padding:var(--btn-pad-sm);}
+
+.sec-head{max-width:820px;margin-bottom:clamp(40px,5vw,60px);}
+.sec-head h2{font:400 clamp(28px,3vw,44px)/1.12 var(--display);letter-spacing:-.02em;color:var(--on-dark);}
+.bg-paper .sec-head h2,.bg-paper-2 .sec-head h2,.bg-greige .sec-head h2{color:var(--ink);}
+.sec-head .eyebrow{margin-bottom:18px;}
+.mono{font-family:var(--mono);}
+
+/* reveals — pack v1.2 system: base opacity:0 ONLY under html.js + motion-ok; .in => opacity:1 */
+.rise{opacity:1;}
+@media (prefers-reduced-motion:no-preference){
+  html.js .rise{opacity:0;transform:translateY(22px);}
+  html.js .rise.in{opacity:1;transform:none;transition:opacity .6s var(--ease-soft),transform .6s var(--ease-soft);}
+  html.js .stagger>*{opacity:0;}
+  html.js .stagger.in>*{opacity:1;animation:riseIn .6s var(--ease-soft) backwards;}
+  html.js .stagger.in>*:nth-child(2){animation-delay:.09s;} html.js .stagger.in>*:nth-child(3){animation-delay:.18s;}
+  html.js .stagger.in>*:nth-child(4){animation-delay:.27s;} html.js .stagger.in>*:nth-child(5){animation-delay:.36s;}
+  html.js .stagger.in>*:nth-child(6){animation-delay:.45s;} html.js .stagger.in>*:nth-child(7){animation-delay:.54s;}
+  html.js .stagger.in>*:nth-child(8){animation-delay:.63s;}
+}
+@keyframes riseIn{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:none;}}
+
+/* ===== NAV ===== */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(12,12,12,.72);backdrop-filter:saturate(140%) blur(14px);-webkit-backdrop-filter:saturate(140%) blur(14px);border-bottom:1px solid var(--border-dark);}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;}
+.brand{font:500 18px/1 var(--display);letter-spacing:.06em;color:var(--on-dark);text-transform:uppercase;}
+.brand span{color:var(--accent);}
+.nav-links{display:flex;gap:28px;align-items:center;}
+.nav-links a{font:600 12px/1 var(--label);letter-spacing:1px;text-transform:uppercase;color:var(--on-dark-mute);transition:color var(--dur) var(--ease);}
+.nav-links a:hover{color:var(--accent);}
+.nav-links .btn{padding:12px 18px;}
+@media(max-width:820px){.nav-links a:not(.btn){display:none;}}
+
+/* ===== HERO ===== */
+.hero{min-height:clamp(600px,90svh,900px);display:flex;align-items:center;overflow:hidden;padding-top:64px;}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 55% at 50% 38%,rgba(var(--greige-rgb),.07),transparent 70%);pointer-events:none;}
+.hero::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(var(--greige-rgb),.035) 1px,transparent 1px),linear-gradient(90deg,rgba(var(--greige-rgb),.035) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(75% 65% at 50% 40%,#000,transparent 78%);-webkit-mask-image:radial-gradient(75% 65% at 50% 40%,#000,transparent 78%);pointer-events:none;}
+.hero .wrap{position:relative;z-index:1;text-align:center;}
+.hero h1{font:400 clamp(40px,6.6vw,86px)/1.03 var(--display);letter-spacing:-.025em;color:var(--on-dark);margin:20px auto 0;max-width:16ch;}
+.cycle{color:var(--accent);position:relative;display:inline-block;}
+.hero .sub{max-width:56ch;margin:26px auto 0;font-size:clamp(15px,1.3vw,18px);color:var(--on-dark-mute);}
+.hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:38px;}
+.hero-avail{margin-top:34px;display:inline-flex;align-items:center;gap:10px;font:500 12px/1 var(--mono);letter-spacing:.5px;color:var(--on-dark-mute);text-transform:uppercase;}
+.dot{width:8px;height:8px;background:var(--accent);border-radius:50%;box-shadow:0 0 0 0 rgba(var(--accent-rgb),.6);}
+@media (prefers-reduced-motion:no-preference){.dot{animation:pulse 2.4s ease-out infinite;}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(var(--accent-rgb),.5);}70%{box-shadow:0 0 0 9px rgba(var(--accent-rgb),0);}100%{box-shadow:0 0 0 0 rgba(var(--accent-rgb),0);}}
+
+/* ===== TICKER ===== */
+.ticker{border-top:1px solid var(--border-dark);border-bottom:1px solid var(--border-dark);padding:26px 0;}
+.ticker .wrap{display:flex;align-items:center;gap:28px;flex-wrap:wrap;justify-content:center;}
+.ticker .lab{font:600 11px/1 var(--label);letter-spacing:1.6px;text-transform:uppercase;color:var(--greige-deep);}
+.ticker .firms{display:flex;gap:26px;flex-wrap:wrap;justify-content:center;}
+.ticker .firms b{font:500 clamp(16px,1.7vw,22px)/1 var(--display);letter-spacing:.01em;color:var(--on-dark);}
+.ticker .firms b+b::before{content:"·";color:var(--greige-deep);margin-right:26px;margin-left:-13px;}
+.stackstrip{overflow:hidden;border-bottom:1px solid var(--border-dark);}
+.stackstrip .track{display:flex;gap:40px;padding:14px 0;white-space:nowrap;font:400 12.5px/1 var(--mono);letter-spacing:.4px;color:var(--greige-deep);width:max-content;}
+@media (prefers-reduced-motion:no-preference){.stackstrip .track{animation:marq 34s linear infinite;}}
+.stackstrip .track span{opacity:.85;}
+@keyframes marq{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ===== IMPACT ===== */
+.impact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.stat{background:var(--card-pale);border:1px solid var(--border-light);padding:34px 30px 30px;display:flex;flex-direction:column;min-height:230px;}
+.stat .tag{font:500 11px/1.3 var(--mono);letter-spacing:.5px;text-transform:uppercase;color:var(--accent-ink);}
+.stat .num{font:400 clamp(46px,5.2vw,66px)/1 var(--display);letter-spacing:-.02em;color:var(--ink);margin:auto 0 10px;}
+.stat .desc{font-size:15px;color:var(--ink-body);}
+.stat .src{margin-top:14px;font:500 11px/1.3 var(--mono);letter-spacing:.3px;color:var(--greige-deep);text-transform:uppercase;}
+.impact-strip{margin-top:20px;display:flex;flex-wrap:wrap;gap:14px 34px;padding:24px 30px;background:var(--paper-2);border:1px solid var(--border-light);}
+.impact-strip div{display:flex;flex-direction:column;gap:2px;}
+.impact-strip b{font:400 26px/1 var(--display);color:var(--ink);letter-spacing:-.01em;}
+.impact-strip small{font:500 10.5px/1.3 var(--mono);letter-spacing:.4px;text-transform:uppercase;color:var(--greige-deep);}
+@media(max-width:820px){.impact-grid{grid-template-columns:1fr;}}
+
+/* ===== WORK ===== */
+.work-row{display:grid;grid-template-columns:auto 1fr auto;gap:28px;align-items:start;padding:34px 26px;border-top:1px solid var(--border-dark);border-left:2px solid transparent;transition:background-color var(--dur) var(--ease),border-color var(--dur) var(--ease),padding-left var(--dur) var(--ease);}
+.work-row:last-child{border-bottom:1px solid var(--border-dark);}
+.work-row:hover{background:var(--black-2);border-left-color:var(--accent);padding-left:34px;}
+.work-idx{font:400 clamp(30px,3.6vw,48px)/1 var(--display);color:var(--greige-deep);letter-spacing:-.02em;}
+.work-main h3{font:400 clamp(22px,2.4vw,30px)/1.08 var(--display);letter-spacing:-.015em;color:var(--on-dark);}
+.work-main h3 em{font-style:normal;color:var(--greige-deep);font-size:.5em;letter-spacing:.06em;text-transform:uppercase;font-family:var(--label);font-weight:600;margin-left:12px;vertical-align:middle;}
+.work-main .line{margin-top:8px;font-size:15px;color:var(--on-dark-mute);max-width:60ch;}
+.work-tech{margin-top:14px;font:400 12px/1.7 var(--mono);letter-spacing:.2px;color:var(--greige-deep);max-width:62ch;}
+.work-chips{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px;}
+.work-chips span{font:500 11px/1 var(--label);letter-spacing:.4px;text-transform:uppercase;padding:7px 11px;border:1px solid var(--border-dark);color:var(--on-dark-mute);}
+.work-link{align-self:center;font:600 12px/1 var(--label);letter-spacing:1px;text-transform:uppercase;color:var(--greige);white-space:nowrap;}
+.work-link:hover{color:var(--accent);}
+@media(max-width:820px){.work-row{grid-template-columns:auto 1fr;}.work-link{grid-column:2;justify-self:start;margin-top:6px;}}
+
+/* ===== CAPABILITIES ===== */
+.lane{display:grid;grid-template-columns:.9fr 1.5fr auto;gap:30px;align-items:center;padding:32px 20px;border-top:1px solid var(--border-light);transition:background-color var(--dur) var(--ease);}
+.lane:last-child{border-bottom:1px solid var(--border-light);}
+.lane:hover{background:var(--paper);}
+.lane .lab{font:600 12px/1.4 var(--label);letter-spacing:1.4px;text-transform:uppercase;color:var(--ink);}
+.lane .l{font:400 clamp(19px,1.8vw,25px)/1.25 var(--display);letter-spacing:-.01em;color:var(--ink);}
+.lane .sub{font:400 12.5px/1.6 var(--mono);color:var(--greige-deep);text-align:right;}
+@media(max-width:820px){.lane{grid-template-columns:1fr;gap:10px;}.lane .sub{text-align:left;}}
+
+/* ===== SIGNATURE PIPELINE ===== */
+.pipe-wrap{margin-top:14px;}
+.pipe-scroll{overflow-x:auto;overflow-y:hidden;padding:20px 0 6px;-webkit-overflow-scrolling:touch;}
+.pipe{position:relative;display:flex;align-items:stretch;gap:0;min-width:860px;height:150px;}
+.pipe .node{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:10px;border:1px solid var(--border-dark);background:var(--black-2);padding:18px 10px;cursor:pointer;transition:border-color var(--dur) var(--ease),background-color var(--dur) var(--ease),color var(--dur) var(--ease);}
+.pipe .node+.node{border-left:none;}
+.pipe .node .k{font:500 11px/1 var(--mono);letter-spacing:.5px;color:var(--greige-deep);}
+.pipe .node .nm{font:500 clamp(12px,1vw,14px)/1.1 var(--label);letter-spacing:1px;text-transform:uppercase;color:var(--on-dark);text-align:center;}
+.pipe .node.on{border-color:var(--accent);background:#12211f;}
+.pipe .node.on .nm{color:var(--accent);}
+.pipe .node.active{outline:1px solid var(--accent);outline-offset:-1px;}
+.pipe .node.terminal{background:var(--greige);}
+.pipe .node.terminal .k,.pipe .node.terminal .nm{color:var(--ink);}
+.pipe .node.terminal.on{background:var(--accent);}
+.pipe .track-line{position:absolute;top:50%;left:6%;right:6%;height:2px;background:var(--border-dark);z-index:1;}
+.pipe .packet{position:absolute;top:50%;left:6%;width:12px;height:12px;background:var(--accent);transform:translate(-50%,-50%);z-index:3;box-shadow:0 0 14px 2px rgba(var(--accent-rgb),.7);}
+@media (prefers-reduced-motion:no-preference){.pipe .packet{animation:travel 6s linear infinite;}}
+@keyframes travel{0%{left:6%;}100%{left:94%;}}
+.pipe-caption{margin-top:22px;min-height:56px;border-left:2px solid var(--accent);padding:6px 0 6px 18px;display:flex;flex-direction:column;gap:6px;}
+.pipe-caption .ck{font:500 11px/1 var(--mono);letter-spacing:1px;text-transform:uppercase;color:var(--accent);}
+.pipe-caption .cv{font:400 clamp(15px,1.5vw,19px)/1.4 var(--display);letter-spacing:-.01em;color:var(--on-dark);}
+.pipe-hint{margin-top:14px;font:500 11px/1.4 var(--mono);letter-spacing:.5px;text-transform:uppercase;color:var(--greige-deep);}
+
+/* ===== EXPERIENCE ===== */
+.tl{max-width:900px;}
+.tl-item{display:grid;grid-template-columns:190px 1fr;gap:28px;padding:28px 0;border-top:1px solid var(--border-light);}
+.tl-item:last-child{border-bottom:1px solid var(--border-light);}
+.tl-date{font:500 12px/1.5 var(--mono);letter-spacing:.4px;text-transform:uppercase;color:var(--greige-deep);}
+.tl-role{font:400 clamp(19px,2vw,26px)/1.15 var(--display);letter-spacing:-.01em;color:var(--ink);}
+.tl-role b{color:var(--ink);}
+.tl-org{font:600 12px/1 var(--label);letter-spacing:1px;text-transform:uppercase;color:var(--accent-ink);margin-top:6px;display:block;}
+.tl-desc{margin-top:12px;font-size:14.5px;color:var(--ink-body);max-width:66ch;}
+@media(max-width:820px){.tl-item{grid-template-columns:1fr;gap:8px;}}
+
+/* ===== RECOGNITION (drench) ===== */
+.pubs{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.pub{background:var(--card-pale);border:1px solid var(--border-light);padding:28px 26px;}
+.pub .pk{font:500 11px/1 var(--mono);letter-spacing:.6px;text-transform:uppercase;color:var(--accent-ink);}
+.pub h3{font:400 clamp(19px,1.8vw,24px)/1.2 var(--display);letter-spacing:-.01em;color:var(--ink);margin:14px 0 8px;}
+.pub p{font-size:14px;color:var(--ink-body);}
+.pub .ven{margin-top:14px;font:500 11.5px/1.4 var(--mono);letter-spacing:.3px;color:var(--greige-deep);text-transform:uppercase;}
+.awards{margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.award{border-top:1px solid rgba(17,17,17,.22);padding-top:16px;}
+.award b{font:400 20px/1.2 var(--display);color:var(--ink);letter-spacing:-.01em;display:block;}
+.award small{font-size:13px;color:var(--ink-body);display:block;margin-top:6px;}
+@media(max-width:820px){.pubs,.awards{grid-template-columns:1fr;}}
+
+/* ===== CONTACT ===== */
+.contact{text-align:center;overflow:hidden;}
+.contact::before{content:"";position:absolute;inset:0;background:radial-gradient(50% 60% at 50% 50%,rgba(var(--greige-rgb),.08),transparent 72%);pointer-events:none;}
+.contact .wrap{position:relative;z-index:1;}
+.contact h2{font:400 clamp(30px,4.4vw,60px)/1.05 var(--display);letter-spacing:-.025em;color:var(--on-dark);max-width:18ch;margin:16px auto 0;}
+.mailbig{display:inline-block;margin:30px 0 8px;font:400 clamp(18px,2.4vw,30px)/1 var(--mono);letter-spacing:-.01em;color:var(--accent);word-break:break-all;}
+.mailbig:hover{text-decoration:underline;}
+.contact .phone{font:500 13px/1 var(--mono);letter-spacing:.5px;color:var(--on-dark-mute);}
+.contact-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:34px;}
+
+/* ===== FOOTER ===== */
+.foot{border-top:1px solid var(--border-dark);}
+.foot .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px;padding:56px 0 30px;}
+.foot .brand{font-size:22px;}
+.foot .tagline{margin-top:14px;font-size:13px;color:var(--on-dark-mute);max-width:34ch;}
+.foot h4{font:600 11px/1 var(--label);letter-spacing:1.4px;text-transform:uppercase;color:var(--greige-deep);margin-bottom:16px;}
+.foot ul{list-style:none;display:flex;flex-direction:column;gap:11px;}
+.foot ul a{font-size:13.5px;color:var(--on-dark-mute);transition:color var(--dur) var(--ease);}
+.foot ul a:hover{color:var(--accent);}
+.foot-base{border-top:1px solid var(--border-dark);}
+.foot-base .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;padding:20px 0;font:500 11px/1.4 var(--mono);letter-spacing:.4px;text-transform:uppercase;color:var(--greige-deep);}
+@media(max-width:820px){.foot .wrap{grid-template-columns:1fr 1fr;}}
+
+.vrfy{font-family:var(--mono);font-size:.8em;color:var(--accent-ink);opacity:.85;}
+.bg-black .vrfy,.bg-black-2 .vrfy{color:var(--accent);}
+.skip{position:absolute;left:-9999px;}
+.skip:focus{left:16px;top:16px;position:fixed;z-index:99;background:var(--greige);color:var(--ink);padding:10px 16px;}
+</style>
+</head>
+<body>
+<a href="#work" class="skip">Skip to content</a>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="wrap">
+    <a href="#top" class="brand">MUKIT<span>.</span>MAHDIN</a>
+    <div class="nav-links">
+      <a href="#impact">Impact</a>
+      <a href="#work">Work</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact" class="btn btn-fill btn-sm">Get in touch</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero bg-black" id="top">
+  <div class="wrap">
+    <span class="eyebrow rise">Software Engineer · Dhaka → Remote (US)</span>
+    <h1 class="rise">I build <span class="cycle" id="cycle">systems</span> that ship.</h1>
+    <p class="sub rise">1+ year shipping full-stack, AI-first features across enterprise SaaS — now focused on backend systems at scale. Async pipelines, REST APIs, and AI that moves real money.</p>
+    <div class="hero-cta rise">
+      <a href="#contact" class="btn btn-fill btn-lg">Get in touch</a>
+      <a href="#" class="btn btn-ghost btn-lg" data-resume>Download résumé</a>
+    </div>
+    <div class="hero-avail rise"><span class="dot"></span> Open to backend / AI engineering roles</div>
+  </div>
+</header>
+
+<!-- TICKER -->
+<section class="ticker bg-black">
+  <div class="wrap">
+    <span class="lab">Shipping at</span>
+    <div class="firms">
+      <b>KAZ Software</b><b>Advisor Growth Lab (US)</b><b>mADestic Digital</b>
+    </div>
+  </div>
+</section>
+<div class="stackstrip bg-black" aria-hidden="true">
+  <div class="track">
+    <span>ASP.NET Core</span><span>FastAPI</span><span>Node/Express</span><span>React</span><span>Next.js</span><span>Python</span><span>AWS Lambda</span><span>Pinecone</span><span>MSSQL</span><span>PostgreSQL</span><span>Celery</span><span>RabbitMQ</span>
+    <span>ASP.NET Core</span><span>FastAPI</span><span>Node/Express</span><span>React</span><span>Next.js</span><span>Python</span><span>AWS Lambda</span><span>Pinecone</span><span>MSSQL</span><span>PostgreSQL</span><span>Celery</span><span>RabbitMQ</span>
+  </div>
+</div>
+
+<!-- IMPACT -->
+<section class="pad bg-paper" id="impact">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <span class="eyebrow">The numbers</span>
+      <h2>Systems that paid for themselves.</h2>
+    </div>
+    <div class="impact-grid stagger">
+      <div class="stat">
+        <span class="tag">Market intelligence</span>
+        <span class="num" data-count="20" data-prefix="$" data-suffix="K+">$20K+</span>
+        <span class="desc">/month in client research &amp; content cost removed.</span>
+        <span class="src">Echo AI · Advisor Growth Lab</span>
+      </div>
+      <div class="stat">
+        <span class="tag">Regulatory NLP</span>
+        <span class="num" data-count="10" data-prefix="$" data-suffix="K+">$10K+</span>
+        <span class="desc">/month in manual regulatory analysis removed.</span>
+        <span class="src">RegPlus · KAZ Software</span>
+      </div>
+      <div class="stat">
+        <span class="tag">Enterprise ERP</span>
+        <span class="num" data-count="800" data-suffix="+">800+</span>
+        <span class="desc">hours/month of manual work eliminated.</span>
+        <span class="src">ErrumBD · mADestic</span>
+      </div>
+    </div>
+    <div class="impact-strip rise">
+      <div><b>$5K+/mo</b><small>Transfer-pricing docs</small></div>
+      <div><b>400+/hr</b><small>Article throughput</small></div>
+      <div><b>72K+</b><small>Articles trained on</small></div>
+      <div><b>40 Lacs BDT</b><small>Saved per year</small></div>
+      <div><b>2</b><small>Published papers</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- SELECTED WORK -->
+<section class="pad bg-black" id="work">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <span class="eyebrow">Selected work</span>
+      <h2>Four systems, owned end-to-end.</h2>
+    </div>
+    <div class="work-list">
+      <article class="work-row rise">
+        <div class="work-idx">01</div>
+        <div class="work-main">
+          <h3>RegPlus <em>KAZ Software</em></h3>
+          <p class="line">Unified AI generation system for a global tax-intelligence platform.</p>
+          <p class="work-tech">ASP.NET · React · TypeScript · Python · FastAPI · MSSQL · MongoDB · Agno · Pinecone · AWS Lambda</p>
+          <div class="work-chips"><span>Factory/resolver AI architecture</span><span>Async pipeline · Lambda + webhooks</span><span>Versioned prompt store</span></div>
+        </div>
+        <a class="work-link" href="#" data-vrfy>reganalytics.com →</a>
+      </article>
+      <article class="work-row rise">
+        <div class="work-idx">02</div>
+        <div class="work-main">
+          <h3>TaxIntel AI <em>KAZ Software</em></h3>
+          <p class="line">Regulatory graph-intelligence system over large-scale news &amp; compliance data.</p>
+          <p class="work-tech">Python · Playwright · FastAPI · React · Pinecone · Celery · MongoDB</p>
+          <div class="work-chips"><span>72K+ article NLP pipeline</span><span>WAF-bypass scraping @ 400+/hr</span><span>Multi-class classifier (Macro-F1)</span></div>
+        </div>
+        <span class="work-link" data-vrfy>Case study →</span>
+      </article>
+      <article class="work-row rise">
+        <div class="work-idx">03</div>
+        <div class="work-main">
+          <h3>ErrumBD <em>mADestic Digital</em></h3>
+          <p class="line">Multi-tenant retail ERP — admin portal, storefront, and mobile apps.</p>
+          <p class="work-tech">React · TypeScript · Node/Express · AWS RDS · MongoDB · RabbitMQ · Tailwind</p>
+          <div class="work-chips"><span>Barcode inventory + forecasting</span><span>800+ hrs/mo saved</span><span>RabbitMQ async services</span></div>
+        </div>
+        <span class="work-link" data-vrfy>Case study →</span>
+      </article>
+      <article class="work-row rise">
+        <div class="work-idx">04</div>
+        <div class="work-main">
+          <h3>Echo AI <em>Advisor Growth Lab (US)</em></h3>
+          <p class="line">Agentic marketing-intelligence platform — research to campaign to copy.</p>
+          <p class="work-tech">Python · FastAPI · MongoDB · Next.js · Tailwind · Anthropic API</p>
+          <div class="work-chips"><span>Blackbook → Campaign → Copy</span><span>Up to 50 variations/request</span><span>$20K+/mo cost removed</span></div>
+        </div>
+        <a class="work-link" href="#" data-vrfy>Live →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section class="pad bg-paper-2" id="capabilities">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <span class="eyebrow">What I do</span>
+      <h2>Three lanes I go deep in.</h2>
+    </div>
+    <div class="lanes">
+      <div class="lane rise">
+        <span class="lab">Backend at scale</span>
+        <span class="l">Async pipelines, REST API design, and data-driven workflows that hold up in production.</span>
+        <span class="sub">AWS Lambda · Celery/RabbitMQ<br>webhook callbacks</span>
+      </div>
+      <div class="lane rise">
+        <span class="lab">Applied &amp; agentic AI</span>
+        <span class="l">NLP classification, RAG, fine-tuning, and multi-agent automation shipped into real products.</span>
+        <span class="sub">Agno · LangGraph · Pinecone<br>PEFT / LoRA</span>
+      </div>
+      <div class="lane rise">
+        <span class="lab">Full-stack delivery</span>
+        <span class="l">Owning features end-to-end across backend services and frontend products in cross-functional teams.</span>
+        <span class="sub">React/Next.js · ASP.NET/FastAPI<br>TypeScript</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIGNATURE — PIPELINE -->
+<section class="pad bg-black" id="pipeline">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <span class="eyebrow">How my systems work</span>
+      <h2>The pattern behind everything I build.</h2>
+    </div>
+    <div class="pipe-wrap rise">
+      <div class="pipe-scroll">
+        <div class="pipe" id="pipe">
+          <div class="track-line"></div>
+          <div class="packet" id="packet"></div>
+          <button class="node" data-k="REQUEST" data-cap="A client product or user event kicks off the flow."><span class="k">01</span><span class="nm">Request</span></button>
+          <button class="node" data-k="INGEST" data-cap="Resilient collection — WAF-bypass scraping, batch checkpointing, 400+/hr."><span class="k">02</span><span class="nm">Ingest</span></button>
+          <button class="node" data-k="AI PROCESS" data-cap="Factory/resolver generation: section-wise, document-wise, streaming."><span class="k">03</span><span class="nm">AI Process</span></button>
+          <button class="node" data-k="VECTOR STORE" data-cap="Pinecone ingestion + versioned, MongoDB-backed prompt management."><span class="k">04</span><span class="nm">Vector Store</span></button>
+          <button class="node" data-k="CALLBACK" data-cap="Async on AWS Lambda with webhook callbacks — nothing blocks."><span class="k">05</span><span class="nm">Callback</span></button>
+          <a class="node terminal" href="#contact" data-k="HIRE ME" data-cap="The output ships. Want one built for you?"><span class="k">06</span><span class="nm">Hire me</span></a>
+        </div>
+      </div>
+      <div class="pipe-caption" id="pipeCap">
+        <span class="ck" id="pipeCapK">REQUEST</span>
+        <span class="cv" id="pipeCapV">A client product or user event kicks off the flow.</span>
+      </div>
+      <p class="pipe-hint">Tap a stage to see what I built there — the packet resolves on the hire-me node.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="pad bg-paper" id="experience">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <span class="eyebrow">Experience</span>
+      <h2>Where I've owned the work.</h2>
+    </div>
+    <div class="tl">
+      <div class="tl-item rise">
+        <div class="tl-date">Oct 2025 — Present</div>
+        <div>
+          <div class="tl-role"><b>Associate Software Engineer</b></div>
+          <span class="tl-org">KAZ Software</span>
+          <p class="tl-desc">Full-stack + AI features for RegPlus, a global tax-intelligence platform. Built an NLP classification system ($10K+/mo saved) and an AI tax-documentation generator ($5K+/mo saved).</p>
+        </div>
+      </div>
+      <div class="tl-item rise">
+        <div class="tl-date">Nov 2025 — Present</div>
+        <div>
+          <div class="tl-role"><b>Software Solutions &amp; AI Engineer</b> <span style="font-size:.6em;color:var(--greige-deep);">(Contract)</span></div>
+          <span class="tl-org">Advisor Growth Lab · NC, USA</span>
+          <p class="tl-desc">Built Echo AI, an AI market-intelligence platform ($20K+/mo saved). Delivered custom AI agents and automation pipelines for US enterprise clients as a client-facing engineer.</p>
+        </div>
+      </div>
+      <div class="tl-item rise">
+        <div class="tl-date">Mar 2025 — Sep 2025</div>
+        <div>
+          <div class="tl-role"><b>Engineering Manager</b></div>
+          <span class="tl-org">mADestic Digital</span>
+          <p class="tl-desc">Directed a full-scale ERP (ErrumBD, 800+ hrs/mo saved) and a digital loyalty app (40 Lacs BDT/yr saved). Coordinated cross-functional teams and guided AI R&amp;D.</p>
+        </div>
+      </div>
+      <div class="tl-item rise">
+        <div class="tl-date">Jun 2021 — Sep 2025</div>
+        <div>
+          <div class="tl-role"><b>BSc, Software Engineering</b></div>
+          <span class="tl-org">Islamic University of Technology (IUT)</span>
+          <p class="tl-desc">CGPA 3.70 / 4.00. Vice President, IUT Computer Society (10+ events, 30-member team). Senior SWE, Project Altair — ML &amp; automation for Mars Rover competitions.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECOGNITION (drench) -->
+<section class="pad bg-greige" id="recognition">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <span class="eyebrow">Recognition</span>
+      <h2>Published, and proven in competition.</h2>
+    </div>
+    <div class="pubs stagger">
+      <article class="pub">
+        <span class="pk">Publication · NCIM 2025</span>
+        <h3>TYMBERT: Tiny Yet Mighty</h3>
+        <p>Fine-tuned &amp; compressed TinyBERT for high-accuracy, low-resource NLP.</p>
+        <div class="ven">2nd Intl. Conf. on Next-Gen Computing, IoT &amp; ML · Jun 2025 · <span class="vrfy">ResearchGate [VERIFY]</span></div>
+      </article>
+      <article class="pub">
+        <span class="pk">Publication · OzCHI 2025</span>
+        <h3>AI Tools in Education</h3>
+        <p>Students' motivations, institutional policies &amp; ethics in Bangladesh.</p>
+        <div class="ven">37th Australian Conf. on HCI · Sydney · ACM DL pp. 974–981 · <span class="vrfy">ACM [VERIFY]</span></div>
+      </article>
+    </div>
+    <div class="awards">
+      <div class="award">
+        <b>Champion — Hult Prize @ IUT</b>
+        <small>+ Regional finalist, Hult Prize Mumbai Summit 2023. Impacto: an AR/AI startup tackling textile waste in fashion.</small>
+      </div>
+      <div class="award">
+        <b>Finalist — Blockchain Olympiad BD 2023</b>
+        <small>DefTax: a blockchain system to monitor and automate tax collection — modeled to cut evasion up to 90%.</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="pad contact bg-black" id="contact">
+  <div class="wrap">
+    <span class="eyebrow" style="justify-content:center;">Contact</span>
+    <h2>Let's build something that ships.</h2>
+    <a class="mailbig" href="mailto:mahdin.mukit248@gmail.com" id="mail">mahdin.mukit248@gmail.com</a>
+    <div><span class="phone">+880 1764 257445 · Dhaka, Bangladesh</span></div>
+    <div class="contact-cta">
+      <a href="mailto:mahdin.mukit248@gmail.com" class="btn btn-fill btn-lg">Email me</a>
+      <a href="#" class="btn btn-ghost btn-lg" data-vrfy>GitHub</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot bg-black">
+  <div class="wrap">
+    <div>
+      <a href="#top" class="brand">MUKIT<span>.</span>MAHDIN</a>
+      <p class="tagline">Software engineer · AI-first · backend at scale. Building async pipelines and AI products that move real numbers.</p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="#impact">Impact</a></li>
+        <li><a href="#work">Selected work</a></li>
+        <li><a href="#capabilities">Capabilities</a></li>
+        <li><a href="#experience">Experience</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="mailto:mahdin.mukit248@gmail.com">Email</a></li>
+        <li><a href="#" data-vrfy>GitHub <span class="vrfy">[VERIFY]</span></a></li>
+        <li><a href="#" data-vrfy>LinkedIn <span class="vrfy">[VERIFY]</span></a></li>
+        <li><a href="#" data-resume>Résumé (PDF)</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-base">
+    <div class="wrap">
+      <span>© 2026 Mukit Mahdin</span>
+      <span>Built with the Website Factory pipeline</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var mqReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- reveals via IntersectionObserver (adds .in => opacity:1 per pack CSS) ---- */
+  var revealEls = document.querySelectorAll('.rise, .stagger');
+  if('IntersectionObserver' in window && !mqReduce){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.08});
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---- hero cycling word ---- */
+  var words = ['systems','pipelines','AI products','features'];
+  var cy = document.getElementById('cycle'), wi = 0;
+  if(cy && !mqReduce){
+    setInterval(function(){
+      wi = (wi+1)%words.length;
+      cy.style.opacity = '0';
+      setTimeout(function(){ cy.textContent = words[wi]; cy.style.opacity = '1'; }, 180);
+    }, 2100);
+    cy.style.transition = 'opacity .18s linear';
+  }
+
+  /* ---- count-up (LED-011 guard: final value always lands) ---- */
+  function countUp(el){
+    var target = parseFloat(el.getAttribute('data-count'));
+    var prefix = el.getAttribute('data-prefix')||'';
+    var suffix = el.getAttribute('data-suffix')||'';
+    var final = prefix+target+suffix;
+    if(mqReduce){ el.textContent = final; return; }
+    var dur = 1100, start = null;
+    function step(ts){
+      if(!start) start = ts;
+      var p = Math.min((ts-start)/dur, 1);
+      var val = Math.round(target*(1-Math.pow(1-p,3)));
+      el.textContent = prefix+val+suffix;
+      if(p<1) requestAnimationFrame(step); else el.textContent = final;
+    }
+    requestAnimationFrame(step);
+    setTimeout(function(){ el.textContent = final; }, dur+400); // guard
+  }
+  var counted = false;
+  var impact = document.getElementById('impact');
+  function fireCount(){ if(counted) return; counted = true; document.querySelectorAll('[data-count]').forEach(countUp); }
+  if('IntersectionObserver' in window && impact){
+    var io2 = new IntersectionObserver(function(entries){ entries.forEach(function(e){ if(e.isIntersecting){ fireCount(); io2.disconnect(); }}); }, {threshold:0.3});
+    io2.observe(impact);
+  } else { fireCount(); }
+
+  /* ---- signature pipeline ---- */
+  var pipe = document.getElementById('pipe');
+  if(pipe){
+    var nodes = pipe.querySelectorAll('.node');
+    var capK = document.getElementById('pipeCapK'), capV = document.getElementById('pipeCapV');
+    function setCap(n){ capK.textContent = n.getAttribute('data-k'); capV.textContent = n.getAttribute('data-cap'); }
+    function light(i){ nodes.forEach(function(n,j){ n.classList.toggle('on', j<=i); n.classList.toggle('active', j===i); }); }
+    nodes.forEach(function(n,i){
+      n.addEventListener('click', function(ev){ if(!n.classList.contains('terminal')) ev.preventDefault(); light(i); setCap(n); });
+      n.addEventListener('mouseenter', function(){ setCap(n); });
+    });
+    if(mqReduce){
+      light(nodes.length-1); setCap(nodes[nodes.length-1]);
+      var pk = document.getElementById('packet'); if(pk){ pk.style.animation='none'; pk.style.left='94%'; }
+    } else {
+      // sync the node lighting to the 6s packet loop
+      var idx = 0, n = nodes.length;
+      light(0); setCap(nodes[0]);
+      setInterval(function(){ idx = (idx+1)%n; if(idx===0){ nodes.forEach(function(x){x.classList.remove('on','active');}); } light(idx); setCap(nodes[idx]); }, 1000);
+    }
+  }
+
+  /* ---- copy email on click of the big mail line ---- */
+  var mail = document.getElementById('mail');
+  if(mail && navigator.clipboard){
+    mail.addEventListener('click', function(ev){
+      ev.preventDefault();
+      navigator.clipboard.writeText('mahdin.mukit248@gmail.com').then(function(){
+        var t = mail.textContent; mail.textContent = 'copied ✓';
+        setTimeout(function(){ mail.textContent = t; }, 1400);
+      }).catch(function(){ window.location.href='mailto:mahdin.mukit248@gmail.com'; });
+    });
+  }
+
+  /* ---- [VERIFY] placeholder links: prevent dead navigation ---- */
+  document.querySelectorAll('[data-vrfy],[data-resume]').forEach(function(a){
+    a.addEventListener('click', function(ev){ if(a.getAttribute('href')==='#'||!a.getAttribute('href')){ ev.preventDefault(); } });
+  });
+})();
+</script>
+</body>
+</html>
