@@ -310,6 +310,7 @@ h2.h-sec .serif-i{color:var(--acc)}
 .disc b{color:var(--ink);font-weight:640}
 .guide{background:var(--grey);border:1px solid var(--line);border-radius:16px;padding:26px;transition:box-shadow .3s var(--ease),transform .3s var(--ease)}
 .sec--grey .guide{background:var(--white)}
+.sec--grey .labcard{background:var(--white)}
 .guide:hover{box-shadow:var(--shadow-md);transform:translateY(-3px)}
 .guide__hd{display:flex;gap:15px;align-items:center}
 .guide__photo{width:64px;height:64px;border-radius:14px;flex:none;background:linear-gradient(150deg,#5B4FE8,var(--acc));display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
@@ -651,7 +652,7 @@ html.gated .hero__scroll{display:none}
 <section class="sec sec--grey pg" id="assess">
   <div class="wrap assess__grid">
     <div class="io assess">
-      <span class="eyebrow">The readiness assessment</span>
+      <span class="eyebrow">Step one &middot; the readiness assessment</span>
       <h2 class="h-sec">We&rsquo;ve probably <span class="serif-i">already found you.</span></h2>
       <p class="lede">You&rsquo;re one of the 725,000. Opt in and we match you to your public record &mdash; firm, tenure, registrations, movement history &mdash; then read your position against advisors who stood exactly where you stand. Readiness is an evidence question, not a courage question &mdash; and the report is yours alone; no one is notified. If the honest read is &ldquo;stay put,&rdquo; that&rsquo;s the report you&rsquo;ll get. Three minutes tells you whether a longer conversation is even worth your time.</p>
       <div class="assess__meta"><div><b>7</b><span>Questions</span></div><div><b>3 min</b><span>To complete</span></div><div><b class="serif-i" style="font-size:22px">Private</b><span>Results are yours</span></div></div>
@@ -674,8 +675,28 @@ html.gated .hero__scroll{display:none}
   </div>
 </section>
 
+<!-- WHO -->
+<section class="sec sec--white pg" id="who">
+  <div class="wrap who__grid">
+    <div class="io who">
+      <span class="eyebrow">Step two &middot; the conversation</span>
+      <h2 class="h-sec">Straight with you, from <span class="serif-i">the first email.</span></h2>
+      <p class="lede">Advisor Growth Lab is a small team that lives inside advisor-movement data and transition conversations. The research isn&rsquo;t marketing garnish &mdash; it&rsquo;s how we work: the same movement record behind the numbers above sits behind every conversation we have, so what you hear from us is grounded in what advisors actually did, not what a pitch needs you to believe. We&rsquo;re not a recruiting mill. We don&rsquo;t sell your name.</p>
+      <div class="disc"><b>Our disclosure, up front:</b> AGL provides growth and recruiting services to partner firms, including Axiom, an independent RIA platform. If your assessment points that way and you want the introduction, we&rsquo;ll make it &mdash; and say so plainly. If it doesn&rsquo;t, we&rsquo;ll tell you that too.</div>
+    </div>
+    <div class="guide io" style="--d:.12s" id="talk">
+      <div class="guide__hd">
+        <div class="guide__photo"><svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="25" r="11" fill="none" stroke="#fff" stroke-width="2.4"/><path d="M13 57 C15 43 26 39 32 39 C38 39 49 43 51 57" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg><span class="guide__ph">PHOTO</span></div>
+        <div class="guide__who"><b data-verify="guide-name">Your transition guide</b><span>Advisor Growth Lab</span></div>
+      </div>
+      <p class="guide__q">&ldquo;My job isn&rsquo;t to move you. It&rsquo;s to make sure that if you move, it&rsquo;s <span class="serif-i">the right one.</span>&rdquo;</p>
+      <div class="guide__cta"><a href="#" data-verify="booking-url" class="btn btn--acc">Book a private call <svg class="arr" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+    </div>
+  </div>
+</section>
+
 <!-- THE LAB -->
-<section class="sec sec--white pg" id="lab">
+<section class="sec sec--grey pg" id="lab">
   <div class="wrap">
     <div class="lab__lead io">
       <span class="eyebrow">The Lab &middot; daily</span>
@@ -704,26 +725,6 @@ html.gated .hero__scroll{display:none}
       </a>
     </div>
     <div class="lab__all io"><a class="btn btn--line" href="resources/index.html">All episodes <svg class="arr" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
-  </div>
-</section>
-
-<!-- WHO -->
-<section class="sec sec--grey pg" id="who">
-  <div class="wrap who__grid">
-    <div class="io who">
-      <span class="eyebrow">Who we are</span>
-      <h2 class="h-sec">Straight with you, from <span class="serif-i">the first email.</span></h2>
-      <p class="lede">Advisor Growth Lab is a small team that lives inside advisor-movement data and transition conversations. The research isn&rsquo;t marketing garnish &mdash; it&rsquo;s how we work: the same movement record behind the numbers above sits behind every conversation we have, so what you hear from us is grounded in what advisors actually did, not what a pitch needs you to believe. We&rsquo;re not a recruiting mill. We don&rsquo;t sell your name.</p>
-      <div class="disc"><b>Our disclosure, up front:</b> AGL provides growth and recruiting services to partner firms, including Axiom, an independent RIA platform. If your assessment points that way and you want the introduction, we&rsquo;ll make it &mdash; and say so plainly. If it doesn&rsquo;t, we&rsquo;ll tell you that too.</div>
-    </div>
-    <div class="guide io" style="--d:.12s" id="talk">
-      <div class="guide__hd">
-        <div class="guide__photo"><svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="25" r="11" fill="none" stroke="#fff" stroke-width="2.4"/><path d="M13 57 C15 43 26 39 32 39 C38 39 49 43 51 57" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg><span class="guide__ph">PHOTO</span></div>
-        <div class="guide__who"><b data-verify="guide-name">Your transition guide</b><span>Advisor Growth Lab</span></div>
-      </div>
-      <p class="guide__q">&ldquo;My job isn&rsquo;t to move you. It&rsquo;s to make sure that if you move, it&rsquo;s <span class="serif-i">the right one.</span>&rdquo;</p>
-      <div class="guide__cta"><a href="#" data-verify="booking-url" class="btn btn--acc">Book a private call <svg class="arr" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
-    </div>
   </div>
 </section>
 
