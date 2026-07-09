@@ -263,7 +263,7 @@ h2.h-sec .serif-i{color:var(--acc)}
     <p>That&rsquo;s not a hypothetical to wave away. It&rsquo;s a clause to price. (The full mechanics of forgivable-note clawbacks &mdash; including what leaving in year three actually costs &mdash; are in <a href="forgivable-note-clawback.html">the clawback math briefing</a>.)</p>
     <div class="midcta io">
         <p>A retention offer landing on your desk is one of the signals the readiness assessment reads against your own record. See where you stand &mdash; 7 questions, 3 minutes, results are yours alone.</p>
-        <a href="../index.html#report" class="btn btn--acc">Start the assessment <svg class="arr" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="../index.html#report" data-assess class="btn btn--acc">Start the assessment <svg class="arr" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
     <h2 class="io">Should I sign, stay without signing, or start looking?</h2>
     <p>All three are legitimate positions. The mistake is choosing under deadline pressure with one input.</p>
@@ -281,7 +281,7 @@ h2.h-sec .serif-i{color:var(--acc)}
     <h2>Know where you stand &mdash; even if the answer is <span class="serif-i">&ldquo;stay.&rdquo;</span></h2>
     <p>Seven questions, three minutes. We match you to your public record and read your position against advisors who stood exactly where you stand. The report is yours alone; no one is notified &mdash; and if the honest read is &ldquo;stay put,&rdquo; that&rsquo;s the report you&rsquo;ll get.</p>
     <div class="convo__cta">
-      <a href="../index.html#report" class="btn btn--acc btn--lg">Start the assessment <svg class="arr" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="../index.html#report" data-assess class="btn btn--acc btn--lg">Start the assessment <svg class="arr" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       <a href="#" data-verify="booking-url" class="btn btn--line btn--lg">Book a private call</a>
     </div>
     <p class="convo__note">The call: no pitch, no pipeline. A guide who will tell you the truth, including when the truth is &ldquo;stay.&rdquo;</p>
@@ -327,6 +327,13 @@ h2.h-sec .serif-i{color:var(--acc)}
 (function(){
 "use strict";
 var RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* PLUG IN THE REAL ASSESSMENT: paste the live URL; empty = sample report on the home page. */
+var ASSESSMENT_URL = '';
+document.addEventListener('click', function(e){
+  var a = e.target.closest('[data-assess]');
+  if(!a || !ASSESSMENT_URL) return;
+  e.preventDefault(); window.location.href = ASSESSMENT_URL;
+}, true);
 /* mobile nav */
 var mbtn = document.getElementById('navmenu'), mnav = document.getElementById('mnav');
 if(mbtn){ mbtn.addEventListener('click', function(){

@@ -18,6 +18,18 @@ handoff/
 
 All links between pages are relative — the folder works at the domain root or in a subfolder.
 
+## Plugging in the real assessment (one line per file)
+
+Every page has this near the top of its `<script>` block:
+
+```js
+var ASSESSMENT_URL = '';
+```
+
+Paste the live assessment link (GHL form/quiz URL) between the quotes, in **all 5 files**.
+Every "Start the assessment" / "See where you stand" button then routes there.
+While it's empty, those buttons show the built-in sample report instead — nothing is broken.
+
 ## The two things waiting on Chris (both are one-line edits)
 
 1. **Booking URL** — every "Book a private call" button that isn't wired yet is marked:

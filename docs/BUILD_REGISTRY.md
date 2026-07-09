@@ -31,3 +31,4 @@ human edits in the session that makes them.*
 | 2026-07-09 | agl-pilot-post1-v2 | CLEAN | ESCALATE · critic escalate (0.87) | 1 | critic:opus repair#1:sonnet critic:opus | 171k/6.2k | $0.45 | 183s | 0 |
 | 2026-07-09 | agl-pilot-handoff-index-v7 | CLEAN | PASS · critic ship (0.87) | 0 | critic:opus | 509k/7.1k | $0.64 | 219s | 0 |
 | 2026-07-09 | agl-pilot-handoff-index-v8 | CLEAN | ESCALATE · critic repair (0.87) | 1 | critic:opus repair#1:sonnet | 582k/6.6k | $0.64 | 224s | 0 |
+| 2026-07-09 | agl-pilot-handoff-index-v9 | CLEAN | ESCALATE · critic escalate (0.87) | 0 | critic:opus | 892k/7.0k | $0.86 | 235s | 0 |
