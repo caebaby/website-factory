@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Advisor Growth Lab — We track all advisor transitions</title>
-<meta name="description" content="Every recruiter has a stake in your answer. AGL reads the public record on ~725,000 U.S. advisors so your next move runs on evidence — even if the answer is stay.">
+<title>Advisor Growth Lab — Advisor transitions are normal</title>
+<meta name="description" content="Public filings in, private read out. AGL reads the record on ~725,000 U.S. advisors so your transition decision runs on evidence — and 'stay' is a real answer.">
 <link rel="canonical" href="https://advisorgrowthlab.com/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="We track all advisor transitions. You have great options.">
+<meta property="og:title" content="Advisor transitions are normal. Yours still needs a read.">
 <meta property="og:description" content="Movement intelligence from public SEC, FINRA and BrokerCheck filings, an honest guide, and a private readiness assessment for advisors weighing a move.">
 <meta property="og:url" content="https://advisorgrowthlab.com/">
 <meta name="twitter:card" content="summary_large_image">
@@ -179,6 +179,7 @@ h2.h-sec .serif-i{color:var(--acc)}
 .help{display:block}
 .help__lead{display:flex;flex-wrap:wrap;align-items:flex-end;gap:18px 40px;max-width:none}
 .help__lead>div{flex:1 1 480px}
+.help__lead h2{max-width:26ch}
 .help__lead p{color:var(--body);font-size:16.5px;margin:18px 0 0;max-width:58ch;text-wrap:pretty}
 .help__lead .btn{margin-bottom:6px}
 .feat{display:grid;grid-template-columns:1fr 1fr;gap:0 56px;margin-top:34px}
@@ -263,6 +264,17 @@ h2.h-sec .serif-i{color:var(--acc)}
 .opt.sel .opt__rd::after{content:"";position:absolute;inset:3.5px;border-radius:50%;background:var(--acc)}
 .qfoot{margin-top:8px;font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:7px}
 .qfoot svg{width:13px;height:13px;color:var(--acc)}
+
+/* ================= MISTAKES ================= */
+.mist__lead{max-width:680px}
+.mist__dek{color:var(--body);font-size:17px;line-height:1.55;margin:16px 0 0;max-width:58ch;text-wrap:pretty}
+.mist{display:grid;grid-template-columns:1fr 1fr;gap:0 56px;margin-top:38px}
+.mrow{display:grid;grid-template-columns:auto 1fr;gap:18px;padding:24px 0;border-top:1px solid var(--line)}
+.mrow:nth-child(-n+2){border-top:none}
+.mrow__n{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--acc);margin-top:3px}
+.mrow h3{font-weight:640;font-size:17.5px;letter-spacing:-.015em;line-height:1.3;margin:0;text-wrap:balance}
+.mrow p{color:var(--body);font-size:14.5px;line-height:1.5;margin:7px 0 0;max-width:52ch}
+@media (max-width:900px){.mist{grid-template-columns:1fr;gap:0}.mrow:nth-child(2){border-top:1px solid var(--line)}}
 
 /* ================= OLD WAY / NEW WAY ================= */
 .ways__lead{max-width:680px}
@@ -515,13 +527,13 @@ html.gated .hero__scroll{display:none}
   <div class="hero__in" id="heroIn">
     <div class="hvar" data-a="adv">
       <span class="hchip glass hload hd2"><svg viewBox="0 0 12 12" fill="none"><rect x="2" y="5.5" width="8" height="5" rx="1.1" stroke="currentColor" stroke-width="1.1"/><path d="M3.8 5.5V4a2.2 2.2 0 014.4 0v1.5" stroke="currentColor" stroke-width="1.1"/></svg>Confidential &middot; for advisors weighing a move</span>
-      <h1 class="hload hd2">We track all advisor transitions. <span class="serif-i">You have great options.</span></h1>
-      <p class="hero__sub hload hd3" id="heroSub">We read the public record on 725,000 U.S. advisors so the biggest decision of your career runs on evidence, not pitches &mdash; and if the honest read is &ldquo;stay put,&rdquo; that&rsquo;s what you&rsquo;ll hear.</p>
+      <h1 class="hload hd2">Advisor transitions are normal. <span class="serif-i">Yours still needs a read.</span></h1>
+      <p class="hero__sub hload hd3" id="heroSub">Public filings in. Private read out. &ldquo;Stay&rdquo; is a real answer.</p>
       <div class="hero__cta hload hd4">
-        <p class="commit__ask">Are you a financial advisor weighing a move?</p>
+        <p class="commit__ask">Are you quietly running the numbers?</p>
         <p class="commit__q" id="commitQ" hidden>No worries &mdash; this room is built specifically for practicing financial advisors. If that changes, the door&rsquo;s open.</p>
         <button class="btn btn--acc btn--lg" id="commitYes">Yes <svg class="arr" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <button class="btn btn--glass glass btn--lg" id="commitNo">No</button>
+        <button class="btn btn--glass glass btn--lg" id="commitNo">Not yet</button>
       </div>
     </div>
   </div>
@@ -529,13 +541,13 @@ html.gated .hero__scroll{display:none}
 </section>
 
 <!-- RESONANCE -->
-<section class="reso pg" id="resonate" aria-label="Reasons advisors move, drawn from public research and forums">
+<section class="reso pg" id="resonate" aria-label="The questions advisors weighing a transition are asking, drawn from public research">
   <div class="wrap">
-    <div class="rk"><span class="rk__n num">01</span><span class="rk__t">The problem &middot; why advisors move</span></div>
-    <h2 class="reso__h">How many of these are <span class="serif-i">yours?</span></h2>
+    <div class="rk"><span class="rk__n num">01</span><span class="rk__t">The questions &middot; before the pitch</span></div>
+    <h2 class="reso__h">The questions come <span class="serif-i">before the pitch.</span></h2>
   </div>
-  <div class="wire__view reso__view"><div class="wire__track" id="wireTrack"><span class="wire__item">The grid changed. <b>Again.</b></span><span class="wire__sep"></span><span class="wire__item">Your firm <b>sold overnight</b></span><span class="wire__sep"></span><span class="wire__item">The retention offer <b>insulted the math</b></span><span class="wire__sep"></span><span class="wire__item">Hurdles up. <b>Support gone.</b></span><span class="wire__sep"></span><span class="wire__item">Watched a 30-year vet <b>get walked out</b></span><span class="wire__sep"></span><span class="wire__item">It&rsquo;s your book. <b>They own it.</b></span><span class="wire__sep"></span><span class="wire__item">Half your production, <b>kept by the firm</b></span><span class="wire__sep"></span><span class="wire__item">7 more years of <b>clawback handcuffs</b></span><span class="wire__sep"></span><span class="wire__item">Compliance kills <b>every post you write</b></span><span class="wire__sep"></span><span class="wire__item">Another recruiter. <b>This week.</b></span><span class="wire__sep"></span><span class="wire__item">Tech stuck in <b>2012</b></span><span class="wire__sep"></span><span class="wire__item">The merger broke <b>what worked</b></span></div></div>
-  <div class="wrap reso__more"><a href="#how">If even one hit home, keep reading <svg viewBox="0 0 16 16" fill="none"><path d="M8 3v9M4 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+  <div class="wire__view reso__view"><div class="wire__track" id="wireTrack"><span class="wire__item">Can my book <b>legally come with me?</b></span><span class="wire__sep"></span><span class="wire__item">What does my non-solicit <b>actually block?</b></span><span class="wire__sep"></span><span class="wire__item">How much of my T-12 is at risk <b>in year one?</b></span><span class="wire__sep"></span><span class="wire__item">What happens to my deferred comp <b>if I leave?</b></span><span class="wire__sep"></span><span class="wire__item">Do my clients have to <b>repaper everything?</b></span><span class="wire__sep"></span><span class="wire__item">Who owns the notes, the files, <b>the history?</b></span><span class="wire__sep"></span><span class="wire__item">Is my firm still in Protocol? <b>Is theirs?</b></span><span class="wire__sep"></span><span class="wire__item">What if the support gets worse <b>after year two?</b></span><span class="wire__sep"></span><span class="wire__item">Is the check <b>worth the handcuffs?</b></span><span class="wire__sep"></span><span class="wire__item">Am I early &mdash; or <b>already late?</b></span><span class="wire__sep"></span><span class="wire__item">Would independence mean <b>doing this alone?</b></span><span class="wire__sep"></span><span class="wire__item">What would make staying <b>the right call?</b></span></div></div>
+  <div class="wrap reso__more"><a href="#how">If one of these is already yours, get it answered before your firm knows you asked <svg viewBox="0 0 16 16" fill="none"><path d="M8 3v9M4 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
 </section>
 
 <!-- WHY WE EXIST -->
@@ -543,9 +555,9 @@ html.gated .hero__scroll{display:none}
   <div class="wrap help">
     <div class="help__lead io">
       <div>
-        <div class="rk"><span class="rk__n num">02</span><span class="rk__t">The pain &middot; the four questions</span></div>
-        <h2 class="h-sec">The questions you can&rsquo;t ask <span class="serif-i">out loud.</span></h2>
-        <p>Comp grids, mergers, recruiter noise &mdash; those are the triggers. Underneath them, every advisor weighing a move is stuck on the same four questions. All four are answerable. Just not by anyone with a stake in your answer.</p>
+        <div class="rk"><span class="rk__n num">02</span><span class="rk__t">The private research</span></div>
+        <h2 class="h-sec">The questions advisors research <span class="serif-i">on a throwaway account.</span></h2>
+        <p>The grid change. The acquisition. The recruiter who keeps calling. Those are the visible triggers. Under them is a quieter set of questions you can&rsquo;t safely ask anyone at your firm. All of them have answers &mdash; just not from someone with only one answer to sell.</p>
       </div>
     </div>
     <div class="feat">
@@ -577,10 +589,10 @@ html.gated .hero__scroll{display:none}
       <div class="intel__grid">
         <div class="io">
           <div class="rk"><span class="rk__n num">03</span><span class="rk__t">The evidence &middot; movement data</span></div>
-          <h2 class="h-sec">Moving is normal. <span class="serif-i">Moving blind isn&rsquo;t.</span></h2>
-          <p class="lede">Before any of those questions, the one under your skin: <em>is it just me?</em> It isn&rsquo;t. 11,172 advisors changed firms last year &mdash; a record. The itch isn&rsquo;t disloyalty; it&rsquo;s the industry reshaping itself.</p>
-          <p class="lede">We read the public record on all 725,000 U.S. registrations, continuously &mdash; the acquisitions, comp-grid changes and clustered departures that show a firm bleeding before the trade press writes it up. When Commonwealth sold to LPL, it was visible in the filings while the retention offers were still on desks.</p>
-          <p class="lede">One private call puts that record on your side of the table. It&rsquo;s a diagnostic, not a commitment &mdash; you can know and still stay.</p>
+          <h2 class="h-sec">Moving is normal now. <span class="serif-i">Guessing at the math isn&rsquo;t.</span></h2>
+          <p class="lede">Advisor movement isn&rsquo;t fringe. In 2025, 11,172 advisors changed firms &mdash; up 16.2%, a record. Fidelity found 56% of advisors had weighed a move over five years. One in four actually moved. Three in four didn&rsquo;t.</p>
+          <p class="lede">The data doesn&rsquo;t tell you to leave. It tells you the question is normal to be asking. The answer still depends on your book, your contracts, your timing, your channel, and your risk.</p>
+          <p class="lede">Those are the only numbers <em>worth</em> modeling.</p>
         </div>
         <div class="flow io" style="--d:.1s" data-anim>
           <div class="flow__top"><span class="flow__ttl">Advisor movement &middot; by the numbers</span><span class="dlive"><i></i>Public record &amp; named studies</span></div>
@@ -590,8 +602,8 @@ html.gated .hero__scroll{display:none}
           <div class="mstat"><b class="num">&minus;1.9%/yr</b><span><b class="mstat__k">THE SHIFT IS STRUCTURAL</b>wirehouse headcount shrinking through 2028 while independent RIAs grow +4% a year. The old model is emptying out.<em>Cerulli Associates projections</em></span></div>
           <div class="mstat"><b class="num">94%</b><span><b class="mstat__k">THE VERDICT</b>of movers say they&rsquo;re happy they did it; 85% cite more control. In the exit threads, the regret runs one direction: <em style="display:inline;font-style:italic;color:inherit">sooner.</em><em>Fidelity Advisor Movement Study, 2023</em></span></div>
           <div class="mstat__cta">
-            <p>Those are the industry&rsquo;s numbers. The only ones that matter are yours &mdash; your book, your channel, your timing. That&rsquo;s the 30-minute call.</p>
-            <a href="#talk" class="btn btn--acc btn--sm">Book a private call <svg class="arr" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <p>Those are the industry&rsquo;s numbers. The only ones that matter are yours &mdash; your book, your channel, your timing. That&rsquo;s the 30-minute read. You get the answer; we don&rsquo;t get a decision.</p>
+            <a href="#talk" class="btn btn--acc btn--sm">Get your private transition read <svg class="arr" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           </div>
           <p class="flow__note">Real figures from the named public studies and reporting &mdash; not our estimates.</p>
         </div>
@@ -607,18 +619,39 @@ html.gated .hero__scroll{display:none}
   </div>
 </section>
 
+<!-- MISTAKES -->
+<section class="sec sec--grey pg" id="mistakes">
+  <div class="wrap">
+    <div class="mist__lead io">
+      <div class="rk"><span class="rk__n num">04</span><span class="rk__t">The mistakes &middot; before resignation day</span></div>
+      <h2 class="h-sec">The expensive mistakes happen <span class="serif-i">before resignation day.</span></h2>
+      <p class="mist__dek">Bad transitions rarely start on resignation day. They start earlier &mdash; when an advisor answers the wrong question, trusts the wrong math, or waits until someone else controls the timeline.</p>
+    </div>
+    <div class="mist">
+      <div class="mrow io" style="--d:.00s"><span class="mrow__n num">01</span><div><h3>Staying too long</h3><p>Waiting for certainty that never comes while your leverage quietly erodes.</p></div></div>
+      <div class="mrow io" style="--d:.04s"><span class="mrow__n num">02</span><div><h3>Jumping too early</h3><p>Moving on the trigger emotion instead of the contract math.</p></div></div>
+      <div class="mrow io" style="--d:.08s"><span class="mrow__n num">03</span><div><h3>Chasing the headline number</h3><p>Reading the transition check as income instead of a loan against clawback and time.</p></div></div>
+      <div class="mrow io" style="--d:.12s"><span class="mrow__n num">04</span><div><h3>Picking economics over fit</h3><p>The grid pencils; the platform, culture, and support don&rsquo;t &mdash; and that&rsquo;s what you live in daily.</p></div></div>
+      <div class="mrow io" style="--d:.16s"><span class="mrow__n num">05</span><div><h3>Assuming your clients feel what you feel</h3><p>Loyalty is real. So is repapering friction. Portability is a fact, not a feeling.</p></div></div>
+      <div class="mrow io" style="--d:.20s"><span class="mrow__n num">06</span><div><h3>Winning this move by losing the next one</h3><p>Signing terms that trap you where a second move is worse than staying.</p></div></div>
+      <div class="mrow io" style="--d:.24s"><span class="mrow__n num">07</span><div><h3>Only asking people who win if you leave</h3><p>Every recruiter&rsquo;s math ends the same way. Conflict-free counsel doesn&rsquo;t.</p></div></div>
+      <div class="mrow io" style="--d:.28s"><span class="mrow__n num">08</span><div><h3>Skipping the read entirely</h3><p>Deciding by drift. No move is a decision too &mdash; it deserves the same diligence.</p></div></div>
+    </div>
+  </div>
+</section>
+
 <!-- OLD WAY / NEW WAY -->
 <section class="sec sec--white pg" id="ways">
   <div class="wrap">
     <div class="ways__lead io">
-      <div class="rk"><span class="rk__n num">04</span><span class="rk__t">The solution &middot; the third door</span></div>
-      <h2 class="h-sec">You&rsquo;ve been shown two doors: the quota, or <span class="serif-i">the wilderness.</span></h2>
+      <div class="rk"><span class="rk__n num">05</span><span class="rk__t">The solution &middot; the third door</span></div>
+      <h2 class="h-sec">You were handed two bad options: <span class="serif-i">the grid, or going it alone.</span></h2>
       <p class="ways__dek">Every forum thread paints the same two futures: stay captive, or go it completely alone &mdash; your own compliance, your own tech, your own everything. Nobody shows the third door, because the loudest voices only walked through the first two. There&rsquo;s a model in between &mdash; and in Fidelity&rsquo;s research, independence is where movers keep landing, and where they report being happier and more in control.</p>
     </div>
     <div class="ways">
       <div class="way way--old io" style="--d:.05s">
         <span class="way__tag">The two doors you know</span>
-        <h3>The quota &mdash; or the wilderness</h3>
+        <h3>The grid &mdash; or going it alone</h3>
         <ul>
           <li><svg viewBox="0 0 18 18" fill="none"><path d="M5 5l8 8M13 5l-8 8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg><span>A 45&ndash;55% payout &mdash; on a grid the firm can change under you</span></li>
           <li><svg viewBox="0 0 18 18" fill="none"><path d="M5 5l8 8M13 5l-8 8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg><span>The firm owns the client relationships you built</span></li>
@@ -646,8 +679,8 @@ html.gated .hero__scroll{display:none}
       </div>
     </div>
     <div class="ways-cta io">
-      <p>Independence was never the problem. Alone was. Whether the third door fits <em>your</em> book is a 30-minute diagnostic &mdash; not a pitch.</p>
-      <a href="#talk" class="btn btn--acc btn--lg">Book a private call <svg class="arr" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <p>Independence was never the problem. Alone was. And a real diagnostic can end three ways: stay, wait, or explore &mdash; if only one answer is ever allowed, it was never a diagnostic. It was a pitch.</p>
+      <a href="#talk" class="btn btn--acc btn--lg">Get your private transition read <svg class="arr" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
     <p class="ways-note io">Payout figures are illustrative ranges from publicly discussed transitions &mdash; not an offer, an estimate, or a guarantee. Destination and satisfaction findings: Fidelity Advisor Movement Study.</p>
   </div>
@@ -657,7 +690,7 @@ html.gated .hero__scroll{display:none}
 <section class="sec sec--grey pg" id="assess">
   <div class="wrap assess__grid">
     <div class="io assess">
-      <div class="rk"><span class="rk__n num">05</span><span class="rk__t">Step one &middot; the readiness assessment</span></div>
+      <div class="rk"><span class="rk__n num">06</span><span class="rk__t">Step one &middot; the readiness assessment</span></div>
       <h2 class="h-sec">We&rsquo;ve probably <span class="serif-i">already found you.</span></h2>
       <p class="lede">You&rsquo;re one of the 725,000. Opt in and we match you to your public record &mdash; firm, tenure, registrations, movement history &mdash; then read your position against advisors who stood where you&rsquo;re standing &mdash; and what they did next. Readiness is an evidence question, not a courage question &mdash; and the report is yours alone; no one is notified. If the honest read is &ldquo;stay put,&rdquo; that&rsquo;s the report you&rsquo;ll get. Three minutes tells you whether a longer conversation is even worth your time.</p>
       <div class="assess__meta"><div><b>7</b><span>Questions</span></div><div><b>3 min</b><span>To complete</span></div><div><b class="serif-i" style="font-size:22px">Private</b><span>Results are yours</span></div></div>
@@ -665,6 +698,7 @@ html.gated .hero__scroll{display:none}
         <button class="btn btn--acc btn--lg" data-assess data-open-report>Start the assessment <svg class="arr" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <button class="btn btn--line btn--lg" data-open-report>See a sample report</button>
       </div>
+      <p class="note" style="margin-top:14px">Three minutes. Nothing hits your firm. No recruiter ever calls.</p>
     </div>
     <div class="stack io" style="--d:.12s" data-anim>
       <div class="qcard" aria-hidden="true">
@@ -684,10 +718,10 @@ html.gated .hero__scroll{display:none}
 <section class="sec sec--white pg" id="who">
   <div class="wrap who__grid">
     <div class="io who">
-      <div class="rk"><span class="rk__n num">06</span><span class="rk__t">Step two &middot; the conversation</span></div>
+      <div class="rk"><span class="rk__n num">07</span><span class="rk__t">Step two &middot; the conversation</span></div>
       <h2 class="h-sec">Straight with you, from <span class="serif-i">the first email.</span></h2>
-      <p class="lede">Advisor Growth Lab is a small team that lives inside advisor-movement data and transition conversations. The research isn&rsquo;t marketing garnish &mdash; it&rsquo;s the job: every conversation we have runs on the same movement record you just read, so what you hear from us is what advisors actually did, not what a pitch needs you to believe. We&rsquo;re not a recruiting mill. We don&rsquo;t sell your name.</p>
-      <div class="disc"><b>Our disclosure, up front:</b> AGL provides growth and recruiting services to partner firms, including Axiom, an independent RIA platform. If your assessment points that way and you want the introduction, we&rsquo;ll make it &mdash; and say so plainly. If it doesn&rsquo;t, we&rsquo;ll tell you that too.</div>
+      <p class="lede">Thirty minutes with a guide, not a recruiter. You leave with a clearer read on five things: book portability, contract risk, timing, real economics, and what would make staying the right call. Sometimes the read is: don&rsquo;t move.</p>
+      <div class="disc"><b>How we get paid, since you&rsquo;re wondering:</b> partner firms pay us when an introduction turns into a placement &mdash; you never pay anything. If your read says &ldquo;explore,&rdquo; we&rsquo;ll point you at the org that actually fits &mdash; Axiom or another firm &mdash; and tell you exactly when our interest is in the room. If it says &ldquo;stay&rdquo; or &ldquo;wait,&rdquo; that&rsquo;s what you hear, and no one is notified.</div>
     </div>
     <div class="guide io" style="--d:.12s" id="talk">
       <div class="guide__hd">
@@ -695,7 +729,8 @@ html.gated .hero__scroll{display:none}
         <div class="guide__who"><b data-verify="guide-name">Your transition guide</b><span>Advisor Growth Lab</span></div>
       </div>
       <p class="guide__q">&ldquo;My job isn&rsquo;t to move you. It&rsquo;s to make sure that if you move, it&rsquo;s <span class="serif-i">the right one.</span>&rdquo;</p>
-      <div class="guide__cta"><a href="#" data-verify="booking-url" class="btn btn--acc">Book a private call <svg class="arr" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <div class="guide__cta"><a href="#" data-verify="booking-url" class="btn btn--acc">Get your private transition read <svg class="arr" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <p class="note" style="margin-top:10px;text-align:center">No commitment to move. Nothing is sent to your firm.</p></div>
     </div>
   </div>
 </section>
@@ -705,9 +740,9 @@ html.gated .hero__scroll{display:none}
   <div class="wrap">
     <div class="lab__lead io">
       <span class="eyebrow">The Lab &middot; daily</span>
-      <h2 class="h-sec">The briefing recruiters wish <span class="serif-i">you weren&rsquo;t getting.</span></h2>
+      <h2 class="h-sec">Who moved, where, and <span class="serif-i">what it signals.</span></h2>
       <!-- Alt H2 (quieter, if Chris prefers): What moved today, in plain terms. -->
-      <p class="lab__dek">Daily, plain-language reads on advisor movement, deal math, and firm signals &mdash; from the public record, no pitch.</p>
+      <p class="lab__dek">A daily read on advisor movement, deal math, and firm signals &mdash; straight from the public record. No rumor mill required.</p>
     </div>
     <div class="labgrid">
       <a class="labcard io" style="--d:.05s" href="resources/forgivable-note-clawback.html">
@@ -736,9 +771,9 @@ html.gated .hero__scroll{display:none}
 <!-- CLOSE -->
 <section class="sec sec--white close pg">
   <div class="wrap close__in io">
-    <h2>A move is a career decision, <span class="serif-i">not a data point.</span></h2>
-    <p>Waiting doesn&rsquo;t make the decision easier &mdash; it prices it higher. The data tells you what&rsquo;s happening; a guide helps you decide what&rsquo;s wise, for you, your team, your clients. Either way, you can know and still stay.</p>
-    <a href="#talk" class="btn btn--acc btn--lg">Book a private call <svg class="arr" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <h2>Know before you move. <span class="serif-i">Know if you shouldn&rsquo;t.</span></h2>
+    <p>Waiting doesn&rsquo;t lower the risk. It just moves the timeline into someone else&rsquo;s hands. The data tells you what&rsquo;s happening; a guide helps you decide what&rsquo;s wise &mdash; and &ldquo;stay&rdquo; is a real answer.</p>
+    <a href="#talk" class="btn btn--acc btn--lg">Get your private transition read <svg class="arr" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
   </div>
 </section>
 
