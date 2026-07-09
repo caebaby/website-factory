@@ -105,8 +105,10 @@ h1,h2,h3,h4{font-weight:650}
 .hero h1 .h1-strong{font-weight:850;color:#fff;letter-spacing:-.03em}
 .hero__sub{color:rgba(255,255,255,.9);font-size:19.5px;line-height:1.52;margin:20px auto 0;max-width:52ch;text-shadow:0 1px 18px rgba(8,12,36,.45);text-wrap:pretty}
 .hero__cta{display:flex;gap:13px;justify-content:center;margin-top:34px;flex-wrap:wrap}
-.commit__q{flex-basis:100%;margin:0 0 14px;font-size:16.5px;font-weight:560;color:rgba(255,255,255,.92);text-shadow:0 1px 18px rgba(8,12,36,.45);max-width:46ch;margin-left:auto;margin-right:auto}
+.commit__ask{flex-basis:100%;margin:0 0 14px;font-size:16.5px;font-weight:640;color:#fff;text-shadow:0 1px 18px rgba(8,12,36,.45)}
+.commit__q{flex-basis:100%;margin:0 0 14px;font-size:15.5px;font-weight:560;color:rgba(255,255,255,.92);text-shadow:0 1px 18px rgba(8,12,36,.45);max-width:46ch;margin-left:auto;margin-right:auto}
 .commit__q[hidden]{display:none}
+.hero__disc{flex-basis:100%;margin:18px auto 0;font-size:12.5px;color:rgba(255,255,255,.66);max-width:52ch;text-shadow:0 1px 14px rgba(8,12,36,.5)}
 #commitYes{min-width:170px}#commitNo{min-width:120px}
 .hero__scroll{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);z-index:2;color:rgba(255,255,255,.6);font-size:11px;font-weight:620;letter-spacing:.14em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:8px}
 .hero__scroll svg{width:16px;height:16px}
@@ -481,7 +483,6 @@ html.gated .hero__scroll{display:none}
 </style>
 </head>
 <body>
-<script>document.documentElement.classList.add('gated');</script>
 <!-- ============================ HOME VIEW ============================ -->
 <div id="view-home">
 
@@ -509,12 +510,14 @@ html.gated .hero__scroll{display:none}
   <div class="hero__in" id="heroIn">
     <div class="hvar" data-a="adv">
       <span class="hchip glass hload hd2"><svg viewBox="0 0 12 12" fill="none"><rect x="2" y="5.5" width="8" height="5" rx="1.1" stroke="currentColor" stroke-width="1.1"/><path d="M3.8 5.5V4a2.2 2.2 0 014.4 0v1.5" stroke="currentColor" stroke-width="1.1"/></svg>Confidential &middot; for advisors weighing a move</span>
-      <h1 class="hload hd2">Are you a <b class="h1-strong">financial advisor?</b></h1>
-      <p class="hero__sub hload hd3" id="heroSub">Because every recruiter who calls one has a stake in the answer. This is the other room &mdash; movement data on the whole industry, an honest guide, no pressure &mdash; built exclusively for advisors thinking clearly about their next move.</p>
+      <h1 class="hload hd2">Think clearly about your <b class="h1-strong">next move.</b></h1>
+      <p class="hero__sub hload hd3" id="heroSub">We read the public record on all 725,000 U.S. advisors so the biggest decision of your career runs on evidence, not pitches. If we reached out to you, that&rsquo;s why &mdash; the data said the moment was worth your attention. What you do with it is yours, including staying put.</p>
       <div class="hero__cta hload hd4">
+        <p class="commit__ask">Are you a financial advisor weighing a move?</p>
         <p class="commit__q" id="commitQ" hidden>No worries &mdash; this room is built specifically for practicing financial advisors. If that changes, the door&rsquo;s open.</p>
         <button class="btn btn--acc btn--lg" id="commitYes">Yes <svg class="arr" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <button class="btn btn--glass glass btn--lg" id="commitNo">No</button>
+        <p class="hero__disc">Straight up: AGL provides growth and recruiting services to partner firms, including Axiom. You&rsquo;ll always know when that matters.</p>
       </div>
     </div>
   </div>
