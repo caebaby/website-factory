@@ -108,7 +108,8 @@ h1,h2,h3,h4{font-weight:650}
 .commit__ask{flex-basis:100%;margin:0 0 14px;font-size:16.5px;font-weight:640;color:#fff;text-shadow:0 1px 18px rgba(8,12,36,.45)}
 .commit__q{flex-basis:100%;margin:0 0 14px;font-size:15.5px;font-weight:560;color:rgba(255,255,255,.92);text-shadow:0 1px 18px rgba(8,12,36,.45);max-width:46ch;margin-left:auto;margin-right:auto}
 .commit__q[hidden]{display:none}
-.hero__disc{flex-basis:100%;margin:18px auto 0;font-size:12.5px;color:rgba(255,255,255,.66);max-width:52ch;text-shadow:0 1px 14px rgba(8,12,36,.5)}
+.hero__disc{min-width:100%;margin:18px 0 0;font-size:12.5px;color:rgba(255,255,255,.66);text-shadow:0 1px 14px rgba(8,12,36,.5)}
+.hero__disc span{display:inline-block;max-width:52ch}
 #commitYes{min-width:170px}#commitNo{min-width:120px}
 .hero__scroll{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);z-index:2;color:rgba(255,255,255,.6);font-size:11px;font-weight:620;letter-spacing:.14em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:8px}
 .hero__scroll svg{width:16px;height:16px}
@@ -517,7 +518,7 @@ html.gated .hero__scroll{display:none}
         <p class="commit__q" id="commitQ" hidden>No worries &mdash; this room is built specifically for practicing financial advisors. If that changes, the door&rsquo;s open.</p>
         <button class="btn btn--acc btn--lg" id="commitYes">Yes <svg class="arr" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <button class="btn btn--glass glass btn--lg" id="commitNo">No</button>
-        <p class="hero__disc">Straight up: AGL provides growth and recruiting services to partner firms, including Axiom. You&rsquo;ll always know when that matters.</p>
+        <p class="hero__disc"><span>Straight up: AGL provides growth and recruiting services to partner firms, including Axiom. You&rsquo;ll always know when that matters.</span></p>
       </div>
     </div>
   </div>
