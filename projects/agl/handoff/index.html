@@ -104,10 +104,9 @@ h1,h2,h3,h4{font-weight:650}
 .hero h1 .serif-i{color:#C9D1FF;font-weight:400}
 .hero__sub{color:rgba(255,255,255,.9);font-size:19.5px;line-height:1.52;margin:20px auto 0;max-width:52ch;text-shadow:0 1px 18px rgba(8,12,36,.45);text-wrap:pretty}
 .hero__cta{display:flex;gap:13px;justify-content:center;margin-top:34px;flex-wrap:wrap}
-.commit{border-radius:18px;padding:22px 26px;max-width:560px;margin:0 auto;text-align:center}
-.commit__q{margin:0 0 16px;font-size:17px;font-weight:620;color:#fff;text-shadow:0 1px 18px rgba(8,12,36,.45)}
-.commit__btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-@media (max-width:620px){.commit__btns{flex-direction:column;align-items:stretch}.commit__btns .btn{width:100%}}
+.commit__q{flex-basis:100%;margin:0 0 14px;font-size:16.5px;font-weight:560;color:rgba(255,255,255,.92);text-shadow:0 1px 18px rgba(8,12,36,.45);max-width:46ch;margin-left:auto;margin-right:auto}
+.commit__q[hidden]{display:none}
+#commitYes{min-width:170px}#commitNo{min-width:120px}
 .hero__scroll{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);z-index:2;color:rgba(255,255,255,.6);font-size:11px;font-weight:620;letter-spacing:.14em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:8px}
 .hero__scroll svg{width:16px;height:16px}
 /* (audience toggle removed — advisor-only) */
@@ -429,6 +428,10 @@ h2.h-sec .serif-i{color:var(--acc)}
 .rfoot{background:var(--white);border-top:1px solid var(--line2);padding:26px 0}
 .rfoot p{font-size:12px;color:var(--muted);line-height:1.6;max-width:100ch;margin:0}
 
+/* ================= COMMITMENT GATE ================= */
+html.gated .pg{display:none}
+html.gated .hero__scroll{display:none}
+
 /* ================= RESPONSIVE ================= */
 @media (max-width:980px){
   .cnts{grid-template-columns:repeat(2,1fr)}
@@ -461,6 +464,7 @@ h2.h-sec .serif-i{color:var(--acc)}
 </style>
 </head>
 <body>
+<script>document.documentElement.classList.add('gated');</script>
 <!-- ============================ HOME VIEW ============================ -->
 <div id="view-home">
 
@@ -488,16 +492,12 @@ h2.h-sec .serif-i{color:var(--acc)}
   <div class="hero__in" id="heroIn">
     <div class="hvar" data-a="adv">
       <span class="hchip glass hload hd2"><svg viewBox="0 0 12 12" fill="none"><rect x="2" y="5.5" width="8" height="5" rx="1.1" stroke="currentColor" stroke-width="1.1"/><path d="M3.8 5.5V4a2.2 2.2 0 014.4 0v1.5" stroke="currentColor" stroke-width="1.1"/></svg>Confidential &middot; for advisors weighing a move</span>
-      <h1 class="hload hd2">Think clearly about your <span class="serif-i">next move.</span></h1>
-      <p class="hero__sub hload hd3">Every recruiter who calls has a stake in your answer. This is the other room &mdash; movement data on the whole industry, an honest guide beside you, no pressure &mdash; so the biggest decision of your career runs on evidence.</p>
+      <h1 class="hload hd2">Are you a <span class="serif-i">financial advisor?</span></h1>
+      <p class="hero__sub hload hd3" id="heroSub">Because every recruiter who calls one has a stake in the answer. This is the other room &mdash; movement data on the whole industry, an honest guide, no pressure &mdash; built exclusively for advisors thinking clearly about their next move.</p>
       <div class="hero__cta hload hd4">
-        <div class="commit glass" id="commit">
-          <p class="commit__q" id="commitQ">Are you an advisor thinking about a transition?</p>
-          <div class="commit__btns">
-            <button class="btn btn--acc btn--lg" id="commitYes">Yes &mdash; show me the research <svg class="arr" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-            <button class="btn btn--glass glass btn--lg" id="commitNo">Not yet &mdash; just looking</button>
-          </div>
-        </div>
+        <p class="commit__q" id="commitQ" hidden>No worries &mdash; this room is built specifically for practicing financial advisors. If that changes, the door&rsquo;s open.</p>
+        <button class="btn btn--acc btn--lg" id="commitYes">Yes <svg class="arr" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="btn btn--glass glass btn--lg" id="commitNo">No</button>
       </div>
     </div>
   </div>
@@ -505,7 +505,7 @@ h2.h-sec .serif-i{color:var(--acc)}
 </section>
 
 <!-- MOVEMENT WIRE -->
-<div class="wire" aria-label="Reasons advisors move, drawn from public research and forums">
+<div class="wire pg" aria-label="Reasons advisors move, drawn from public research and forums">
   <div class="wire__in">
     <span class="wire__label"><span class="wire__dot"></span>Why advisors move &middot; from the research</span>
     <div class="wire__view"><div class="wire__track" id="wireTrack"><span class="wire__item">The comp grid <b>changed again</b></span><span class="wire__sep"></span><span class="wire__item">The firm <b>sold overnight</b></span><span class="wire__sep"></span><span class="wire__item">The retention offer <b>didn&rsquo;t add up</b></span><span class="wire__sep"></span><span class="wire__item">Production hurdles up, <b>support cut</b></span><span class="wire__sep"></span><span class="wire__item">Watched a 30-year vet <b>get managed out</b></span><span class="wire__sep"></span><span class="wire__item">Wants to <b>own the book</b></span><span class="wire__sep"></span><span class="wire__item">Tired of the <b>payout ceiling</b></span><span class="wire__sep"></span><span class="wire__item">Equity <b>someone else</b> gets to sell</span><span class="wire__sep"></span><span class="wire__item">Compliance friction on <b>everything</b></span><span class="wire__sep"></span><span class="wire__item">Recruiter calls <b>every week</b></span><span class="wire__sep"></span><span class="wire__item">Tech stuck in <b>2012</b></span><span class="wire__sep"></span><span class="wire__item">Integration pain <b>after the merger</b></span></div></div>
@@ -513,7 +513,7 @@ h2.h-sec .serif-i{color:var(--acc)}
 </div>
 
 <!-- WHY WE EXIST -->
-<section class="sec sec--white" id="how">
+<section class="sec sec--white pg" id="how">
   <div class="wrap help">
     <div class="help__lead io">
       <span class="eyebrow">From the research</span>
@@ -543,7 +543,7 @@ h2.h-sec .serif-i{color:var(--acc)}
 </section>
 
 <!-- INTELLIGENCE -->
-<section class="intel" id="intel">
+<section class="intel pg" id="intel">
   <canvas class="intel__net" id="net1" aria-hidden="true"></canvas>
   <div class="intel__body">
     <div class="wrap">
@@ -579,7 +579,7 @@ h2.h-sec .serif-i{color:var(--acc)}
 </section>
 
 <!-- OLD WAY / NEW WAY -->
-<section class="sec sec--white" id="ways">
+<section class="sec sec--white pg" id="ways">
   <div class="wrap">
     <div class="ways__lead io">
       <span class="eyebrow">The solution advisors are choosing</span>
@@ -617,7 +617,7 @@ h2.h-sec .serif-i{color:var(--acc)}
 </section>
 
 <!-- ASSESSMENT -->
-<section class="sec sec--grey" id="assess">
+<section class="sec sec--grey pg" id="assess">
   <div class="wrap assess__grid">
     <div class="io assess">
       <span class="eyebrow">The readiness assessment</span>
@@ -648,7 +648,7 @@ h2.h-sec .serif-i{color:var(--acc)}
 </section>
 
 <!-- THE LAB -->
-<section class="sec sec--white" id="lab">
+<section class="sec sec--white pg" id="lab">
   <div class="wrap">
     <div class="lab__lead io">
       <span class="eyebrow">The Lab &middot; daily</span>
@@ -681,7 +681,7 @@ h2.h-sec .serif-i{color:var(--acc)}
 </section>
 
 <!-- WHO -->
-<section class="sec sec--grey" id="who">
+<section class="sec sec--grey pg" id="who">
   <div class="wrap who__grid">
     <div class="io who">
       <span class="eyebrow">Who we are</span>
@@ -701,7 +701,7 @@ h2.h-sec .serif-i{color:var(--acc)}
 </section>
 
 <!-- CLOSE -->
-<section class="sec sec--white close">
+<section class="sec sec--white close pg">
   <div class="wrap close__in io">
     <h2>A move is a career decision, <span class="serif-i">not a data point.</span></h2>
     <p>The data tells you what&rsquo;s happening. A guide helps you decide what&rsquo;s wise &mdash; for you, your team, your clients. When you&rsquo;re ready, the room is open.</p>
@@ -710,7 +710,7 @@ h2.h-sec .serif-i{color:var(--acc)}
 </section>
 
 <!-- FOOTER -->
-<footer class="foot">
+<footer class="foot pg">
   <div class="wrap">
     <div class="foot__top">
       <div>
@@ -931,17 +931,34 @@ if(heroInEl){
   setTimeout(heroReveal, 700); /* rAF-starvation safety net (LED-011) */
 }
 
-/* ---------- hero micro-commitment ---------- */
+/* ---------- commitment gate ---------- */
 var cy = document.getElementById('commitYes'), cn = document.getElementById('commitNo'), cq = document.getElementById('commitQ');
 function goTo(id){
   var t = document.getElementById(id);
   if(t) t.scrollIntoView({behavior: RM ? 'auto' : 'smooth', block: 'start'});
 }
-if(cy){ cy.addEventListener('click', function(){ goTo('how'); }); }
-if(cn){ cn.addEventListener('click', function(){
-  if(cq) cq.textContent = 'No pressure \u2014 the research is worth a read anyway.';
-  goTo('lab');
-}); }
+function ungate(){
+  if(!document.documentElement.classList.contains('gated')) return false;
+  document.documentElement.classList.remove('gated');
+  if(cq) cq.hidden = true;
+  kickIO();
+  return true;
+}
+if(cy){ cy.addEventListener('click', function(){ ungate(); requestAnimationFrame(function(){ goTo('how'); }); }); }
+if(cn){ cn.addEventListener('click', function(){ if(cq){ cq.hidden = false; } }); }
+/* any in-page anchor while gated = implicit yes: ungate, then scroll (keeps nav alive) */
+document.addEventListener('click', function(e){
+  var a = e.target.closest('a[href^="#"]');
+  if(!a) return;
+  var frag = (a.getAttribute('href') || '').slice(1);
+  if(!frag || frag === 'top' || a.hasAttribute('data-verify') || a.hasAttribute('data-open-report') || a.hasAttribute('data-open-home')) return;
+  if(document.documentElement.classList.contains('gated')){
+    e.preventDefault(); ungate();
+    requestAnimationFrame(function(){ goTo(frag); if(history.replaceState) history.replaceState(null,'','#'+frag); });
+  }
+});
+/* hash entries deep-link past the gate */
+if(location.hash && location.hash !== '#top' && location.hash !== '#report' && location.hash !== '#') ungate();
 
 /* ---------- nav ---------- */
 var nav = document.getElementById('nav');
