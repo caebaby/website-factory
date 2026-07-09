@@ -138,9 +138,24 @@ h1,h2,h3,h4{font-weight:650}
 .wire__sep{width:4px;height:4px;border-radius:50%;background:rgba(165,180,252,.35);flex:none}
 @media (prefers-reduced-motion:no-preference){
   .wire__track{animation:wiremove 52s linear infinite}
-  .wire:hover .wire__track{animation-play-state:paused}
+  .reso:hover .wire__track{animation-play-state:paused}
   @keyframes wiremove{to{transform:translateX(-50%)}}
 }
+/* resonance band */
+.reso{background:radial-gradient(80% 100% at 18% 0%,#1B2258,transparent 55%),linear-gradient(120deg,var(--deep1),var(--deep2));border-top:1px solid rgba(165,180,252,.14);border-bottom:1px solid rgba(165,180,252,.1);padding:72px 0 64px;overflow:hidden}
+.reso .wrap{text-align:center}
+.reso__eyebrow{color:var(--peri)}
+.reso__h{font-weight:650;font-size:clamp(28px,3.4vw,40px);line-height:1.06;letter-spacing:-.026em;color:#F1F2FB;margin:12px 0 0;text-wrap:balance}
+.reso__h .serif-i{color:var(--peri-2)}
+.reso__view{margin-top:40px;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.reso .wire__item{font-size:18px;padding:8px 34px;color:var(--on-deep-soft)}
+.reso .wire__item b{font-size:18px;color:#fff}
+.reso .wire__item .to{color:var(--gold)}
+.reso__more{margin-top:38px}
+.reso__more a{display:inline-flex;align-items:center;gap:9px;font-size:14.5px;font-weight:620;color:var(--peri-2)}
+.reso__more a svg{width:15px;height:15px}
+.reso__more a:hover{color:#fff}
+@media (max-width:620px){.reso{padding:52px 0 46px}.reso .wire__item{font-size:15.5px;padding:8px 22px}}
 
 /* ================= SECTIONS ================= */
 .sec{padding:110px 0}
@@ -157,12 +172,14 @@ h2.h-sec .serif-i{color:var(--acc)}
 }
 
 /* problem / how we help — editorial */
-.help{display:grid;grid-template-columns:.86fr 1.14fr;gap:64px}
-.help__lead p{color:var(--body);font-size:16.5px;margin:18px 0 0;max-width:34ch;text-wrap:pretty}
-.help__lead .btn{margin-top:26px}
-.feat{display:flex;flex-direction:column}
+.help{display:block}
+.help__lead{display:flex;flex-wrap:wrap;align-items:flex-end;gap:18px 40px;max-width:none}
+.help__lead>div{flex:1 1 480px}
+.help__lead p{color:var(--body);font-size:16.5px;margin:18px 0 0;max-width:58ch;text-wrap:pretty}
+.help__lead .btn{margin-bottom:6px}
+.feat{display:grid;grid-template-columns:1fr 1fr;gap:0 56px;margin-top:34px}
 .feat__row{display:grid;grid-template-columns:auto 1fr;gap:22px;padding:30px 0;border-top:1px solid var(--line)}
-.feat__row:first-child{border-top:none;padding-top:4px}
+.feat__row:nth-child(-n+2){border-top:none}
 .feat__ico{width:44px;height:44px;flex:none}
 .feat__ico svg{width:44px;height:44px}
 .feat__row h3{font-weight:640;font-size:19px;letter-spacing:-.015em;margin:3px 0 0}
@@ -264,7 +281,9 @@ h2.h-sec .serif-i{color:var(--acc)}
 .way--old li svg{color:#B24A3B;opacity:.75}
 .way--new li svg{color:var(--acc)}
 .way--new li b{color:var(--ink);font-weight:620}
-.ways-note{margin-top:16px;font-size:12.5px;color:var(--muted);line-height:1.5;max-width:65ch}
+.ways-cta{margin-top:36px;display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.ways-cta p{margin:0;font-size:17px;font-weight:560;color:var(--ink);max-width:40ch;text-wrap:pretty}
+.ways-note{margin-top:18px;font-size:12.5px;color:var(--muted);line-height:1.5;max-width:65ch}
 @media (max-width:900px){.ways{grid-template-columns:1fr}}
 
 /* ================= THE LAB (content teaser) ================= */
@@ -440,7 +459,9 @@ html.gated .hero__scroll{display:none}
 @media (max-width:900px){
   .navlinks,.nav .btn{display:none}
   .navmenu{display:inline-flex}
-  .help,.intel__grid,.assess__grid,.who__grid{grid-template-columns:1fr;gap:38px}
+  .intel__grid,.assess__grid,.who__grid{grid-template-columns:1fr;gap:38px}
+  .feat{grid-template-columns:1fr;gap:0}
+  .feat__row:nth-child(2){border-top:1px solid var(--line)}
   .ready{grid-template-columns:1fr;gap:28px;justify-items:start}
   .help__lead p{max-width:52ch}
 }
@@ -504,39 +525,43 @@ html.gated .hero__scroll{display:none}
   <div class="hero__scroll"><span>Scroll</span><svg viewBox="0 0 16 16" fill="none"><path d="M8 3v9M4 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
 </section>
 
-<!-- MOVEMENT WIRE -->
-<div class="wire pg" aria-label="Reasons advisors move, drawn from public research and forums">
-  <div class="wire__in">
-    <span class="wire__label"><span class="wire__dot"></span>Why advisors move &middot; from the research</span>
-    <div class="wire__view"><div class="wire__track" id="wireTrack"><span class="wire__item">The comp grid <b>changed again</b></span><span class="wire__sep"></span><span class="wire__item">The firm <b>sold overnight</b></span><span class="wire__sep"></span><span class="wire__item">The retention offer <b>didn&rsquo;t add up</b></span><span class="wire__sep"></span><span class="wire__item">Production hurdles up, <b>support cut</b></span><span class="wire__sep"></span><span class="wire__item">Watched a 30-year vet <b>get managed out</b></span><span class="wire__sep"></span><span class="wire__item">Wants to <b>own the book</b></span><span class="wire__sep"></span><span class="wire__item">Tired of the <b>payout ceiling</b></span><span class="wire__sep"></span><span class="wire__item">Equity <b>someone else</b> gets to sell</span><span class="wire__sep"></span><span class="wire__item">Compliance friction on <b>everything</b></span><span class="wire__sep"></span><span class="wire__item">Recruiter calls <b>every week</b></span><span class="wire__sep"></span><span class="wire__item">Tech stuck in <b>2012</b></span><span class="wire__sep"></span><span class="wire__item">Integration pain <b>after the merger</b></span></div></div>
+<!-- RESONANCE -->
+<section class="reso pg" id="resonate" aria-label="Reasons advisors move, drawn from public research and forums">
+  <div class="wrap">
+    <span class="eyebrow reso__eyebrow">Why advisors move &middot; from the research</span>
+    <h2 class="reso__h">Does this <span class="serif-i">resonate</span> with you?</h2>
   </div>
-</div>
+  <div class="wire__view reso__view"><div class="wire__track" id="wireTrack"><span class="wire__item">The comp grid <b>changed again</b></span><span class="wire__sep"></span><span class="wire__item">The firm <b>sold overnight</b></span><span class="wire__sep"></span><span class="wire__item">The retention offer <b>didn&rsquo;t add up</b></span><span class="wire__sep"></span><span class="wire__item">Production hurdles up, <b>support cut</b></span><span class="wire__sep"></span><span class="wire__item">Watched a 30-year vet <b>get managed out</b></span><span class="wire__sep"></span><span class="wire__item">Wants to <b>own the book</b></span><span class="wire__sep"></span><span class="wire__item">Tired of the <b>payout ceiling</b></span><span class="wire__sep"></span><span class="wire__item">Equity <b>someone else</b> gets to sell</span><span class="wire__sep"></span><span class="wire__item">Compliance friction on <b>everything</b></span><span class="wire__sep"></span><span class="wire__item">Recruiter calls <b>every week</b></span><span class="wire__sep"></span><span class="wire__item">Tech stuck in <b>2012</b></span><span class="wire__sep"></span><span class="wire__item">Integration pain <b>after the merger</b></span></div></div>
+  <div class="wrap reso__more"><a href="#how">If any of these are yours, keep reading <svg viewBox="0 0 16 16" fill="none"><path d="M8 3v9M4 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+</section>
 
 <!-- WHY WE EXIST -->
 <section class="sec sec--white pg" id="how">
   <div class="wrap help">
     <div class="help__lead io">
-      <span class="eyebrow">From the research</span>
-      <h2 class="h-sec">Why advisors <span class="serif-i">actually move.</span></h2>
-      <p>We read the public record on every U.S. advisor and mine what advisors say when nobody&rsquo;s selling to them. Underneath the recruiter noise, the same four pressures drive nearly every move &mdash; and every one of them can be read as evidence.</p>
-      <a href="#talk" class="btn btn--line">Talk to a guide <svg class="arr" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <div>
+        <span class="eyebrow">From the research</span>
+        <h2 class="h-sec">Why advisors <span class="serif-i">actually move.</span></h2>
+        <p>We read the public record on every U.S. advisor and mine what advisors say when nobody&rsquo;s selling to them. Four pressures drive nearly every move &mdash; and every one is worth a conversation before it&rsquo;s worth a decision.</p>
+      </div>
+      <a href="#talk" class="btn btn--acc">Book a private call <svg class="arr" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
     <div class="feat">
       <div class="feat__row io" style="--d:.05s">
         <span class="feat__ico"><svg viewBox="0 0 44 44" fill="none"><rect x="7" y="9" width="30" height="26" rx="4" fill="rgba(67,56,202,.16)"/><rect x="7" y="9" width="30" height="26" rx="4" stroke="#4338CA" stroke-width="1.8"/><path d="M13 22h7M13 27h11" stroke="#4338CA" stroke-width="2.2" stroke-linecap="round"/><path d="M13 16h18" stroke="#4338CA" stroke-width="2.2" stroke-linecap="round" opacity=".45"/><circle cx="31" cy="26.5" r="4.6" fill="#4338CA"/><path d="M29.2 26.5l1.3 1.3 2.4-2.6" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        <div><h3>The math you&rsquo;re shown is a sales number</h3><p>Recruiters open with the headline &mdash; &ldquo;up to 330% of trailing-12.&rdquo; Underneath: 7-to-9-year notes, clawbacks that fire even if <em>they</em> terminate you, hurdles a down market can trip, and a grid that quietly takes the check back. We model the move on your numbers instead &mdash; payout deltas, note structures, true take-home by destination, as illustrative ranges from public filings &mdash; ugly columns included. <a href="resources/forgivable-note-clawback.html">The Lab walks the clawback math in the open.</a></p></div>
+        <div><h3>The math you&rsquo;re shown is a sales number</h3><p>Recruiters open with &ldquo;up to 330% of trailing-12.&rdquo; Underneath: 7-to-9-year notes, clawbacks, hurdles a down market can trip, a grid that takes the check back. On one call, we model the move on <em>your</em> numbers &mdash; ugly columns included. <a href="resources/forgivable-note-clawback.html">The Lab walks the clawback math.</a></p></div>
       </div>
       <div class="feat__row io" style="--d:.14s">
         <span class="feat__ico"><svg viewBox="0 0 44 44" fill="none"><circle cx="15" cy="14" r="6" fill="rgba(67,56,202,.16)"/><circle cx="15" cy="14" r="6" stroke="#4338CA" stroke-width="1.8"/><path d="M5 36c1.5-7 6-10 10-10s8.5 3 10 10" stroke="#4338CA" stroke-width="2.2" stroke-linecap="round"/><circle cx="31.5" cy="16" r="4.4" fill="rgba(67,56,202,.16)" stroke="#4338CA" stroke-width="1.8" opacity=".65"/><path d="M27.5 34c1.1-5 4.2-7 7-7 1.6 0 3.3.7 4.7 2" stroke="#4338CA" stroke-width="2.2" stroke-linecap="round" opacity=".45"/></svg></span>
-        <div><h3>&ldquo;Will my clients follow me?&rdquo; is the whole ballgame</h3><p>Advisors who moved describe the gut-punch of learning only a quarter of the book came along &mdash; most of us think clients are more attached than they are. Portability isn&rsquo;t a feeling. It&rsquo;s your revenue mix, your channel, your Protocol and non-solicit position, the real depth of your top twenty households &mdash; and we read it as evidence before you bet anything on optimism.</p></div>
+        <div><h3>&ldquo;Will my clients follow me?&rdquo; is the whole ballgame</h3><p>Advisors who moved describe learning &mdash; too late &mdash; that only a quarter of the book came along. Portability isn&rsquo;t a feeling; it&rsquo;s your revenue mix, channel, and Protocol position. We read yours as evidence before you bet anything on optimism.</p></div>
       </div>
       <div class="feat__row io" style="--d:.23s">
         <span class="feat__ico"><svg viewBox="0 0 44 44" fill="none"><path d="M22 6 L35 11 V21 C35 30 29 35 22 38 C15 35 9 30 9 21 V11 Z" fill="rgba(67,56,202,.16)"/><path d="M22 6 L35 11 V21 C35 30 29 35 22 38 C15 35 9 30 9 21 V11 Z" stroke="#4338CA" stroke-width="1.8" stroke-linejoin="round"/><path d="M16 22 l4 4 8-8" stroke="#4338CA" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        <div><h3>Asking questions openly is itself a risk</h3><p>There&rsquo;s a reason advisors research moves from throwaway accounts &mdash; some custodians won&rsquo;t even take the exploratory call without your firm signing off. Your first step here is private and self-serve: your public record, read against the whole industry, nothing shared, no one notified. Ever.</p></div>
+        <div><h3>Asking questions openly is itself a risk</h3><p>There&rsquo;s a reason advisors research moves from throwaway accounts. Here, exploring is private by design &mdash; the assessment is self-serve, and the call is one guide, nothing shared, no one notified. Ever.</p></div>
       </div>
       <div class="feat__row io" style="--d:.32s">
         <span class="feat__ico"><svg viewBox="0 0 44 44" fill="none"><circle cx="16" cy="17" r="9" fill="rgba(67,56,202,.16)"/><circle cx="16" cy="17" r="9" stroke="#4338CA" stroke-width="2"/><circle cx="16" cy="17" r="3.1" stroke="#4338CA" stroke-width="1.8"/><path d="M23 24 36.5 37.5M31.5 32.5l4-4M27 36l3.4-3.4" stroke="#4338CA" stroke-width="2.2" stroke-linecap="round"/></svg></span>
-        <div><h3>You didn&rsquo;t build a book to be a line item</h3><p>The quiet fear underneath it all: watching advisors in their fifties get managed out because someone else owned their future. When your evidence says &ldquo;go,&rdquo; the conversation is about the model &mdash; real ownership, recurring fee-based revenue, a back office that carries the operation so you can serve clients, and peers around you so independence isn&rsquo;t lonely. When it says &ldquo;stay,&rdquo; we say stay.</p></div>
+        <div><h3>You didn&rsquo;t build a book to be a line item</h3><p>The quiet fear: watching advisors in their fifties get managed out because someone else owned their future. If your evidence says &ldquo;go,&rdquo; the call is about the model &mdash; ownership, recurring revenue, a carried back office, real peers. If it says &ldquo;stay,&rdquo; you&rsquo;ll hear &ldquo;stay.&rdquo;</p></div>
       </div>
     </div>
   </div>
@@ -551,11 +576,10 @@ html.gated .hero__scroll{display:none}
         <div class="io">
           <span class="eyebrow">The intelligence</span>
           <h2 class="h-sec">Moving is normal. <span class="serif-i">Moving blind isn&rsquo;t.</span></h2>
-          <p class="lede">In 2025, 11,172 experienced advisors changed firms &mdash; up 16% in a year, the highest count Diamond Consultants&rsquo; transition tracking has recorded. Fidelity&rsquo;s Advisor Movement Study found over half of advisors have weighed a move in the past five years; one in four followed through. The itch you&rsquo;re feeling isn&rsquo;t disloyalty. It&rsquo;s the industry reshaping itself.</p>
-          <p class="lede">Every one of those moves lands in the public record &mdash; SEC, FINRA, BrokerCheck, roughly 725,000 registrations &mdash; and we read it continuously: the acquisitions, the comp-grid changes, the departures that come in clusters. When Commonwealth sold to LPL, the movement was visible in the filings while the retention offers were still on desks.</p>
-          <p class="lede">The readiness assessment points that record at <em>you</em>: your registration history, matched against advisors who stood exactly where you stand &mdash; how portable your book looks, what they did next, whether your window is opening. Not a recruiter&rsquo;s read. The record&rsquo;s.</p>
-          <div class="chips"><span class="chip">Acquisitions &amp; their fallout</span><span class="chip">Comp-grid changes</span><span class="chip">Clustered departures</span></div>
-          <div style="margin-top:26px"><a href="#assess" class="btn btn--glass glass">See where you stand &middot; 3 min</a></div>
+          <p class="lede">11,172 advisors changed firms last year &mdash; a record. Over half of advisors have weighed a move in the past five years. The itch isn&rsquo;t disloyalty; it&rsquo;s the industry reshaping itself.</p>
+          <p class="lede">We read the public record on all 725,000 U.S. registrations, continuously &mdash; the acquisitions, comp-grid changes and clustered departures that show a firm bleeding before the trade press writes it up. When Commonwealth sold to LPL, it was visible in the filings while the retention offers were still on desks.</p>
+          <p class="lede">One private call puts that record on your side of the table. No pitch. Nothing shared.</p>
+          <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap"><a href="#talk" class="btn btn--acc">Book a private call <svg class="arr" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="#assess" class="btn btn--glass glass">See where you stand &middot; 3 min</a></div>
         </div>
         <div class="flow io" style="--d:.1s" data-anim>
           <div class="flow__top"><span class="flow__ttl">Advisor movement &middot; by the numbers</span><span class="dlive"><i></i>Public record &amp; named studies</span></div>
@@ -612,7 +636,11 @@ html.gated .hero__scroll{display:none}
         </ul>
       </div>
     </div>
-    <p class="ways-note io">Payout figures are illustrative ranges from publicly discussed transitions &mdash; not an offer, an estimate, or a guarantee. Destination and satisfaction findings: Fidelity Advisor Movement Study. Whether this trade is right for your book is exactly what the assessment reads.</p>
+    <div class="ways-cta io">
+      <p>Could this trade actually work for <em>your</em> book? That&rsquo;s a 30-minute conversation, not a pitch.</p>
+      <a href="#talk" class="btn btn--acc btn--lg">Book a private call <svg class="arr" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+    <p class="ways-note io">Payout figures are illustrative ranges from publicly discussed transitions &mdash; not an offer, an estimate, or a guarantee. Destination and satisfaction findings: Fidelity Advisor Movement Study.</p>
   </div>
 </section>
 
@@ -944,7 +972,7 @@ function ungate(){
   kickIO();
   return true;
 }
-if(cy){ cy.addEventListener('click', function(){ ungate(); requestAnimationFrame(function(){ goTo('how'); }); }); }
+if(cy){ cy.addEventListener('click', function(){ ungate(); requestAnimationFrame(function(){ goTo('resonate'); }); }); }
 if(cn){ cn.addEventListener('click', function(){ if(cq){ cq.hidden = false; } }); }
 /* any in-page anchor while gated = implicit yes: ungate, then scroll (keeps nav alive) */
 document.addEventListener('click', function(e){
