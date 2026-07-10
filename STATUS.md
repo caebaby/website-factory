@@ -379,7 +379,7 @@ on Haiku/Sonnet.
 Paste this into a new session (or continue in this one if Chris says to just run it here):
 
 ```
-Continue website-factory work (repo: ~/Documents/Claude Projects/website-factory).
+Continue website-factory work (repo: ~/Documents/Claude Projects/clients/website-factory).
 
 First read, in order: STATUS.md (especially the "Round 3"/"Round 4" and mesh-gradient/fit-card
 sections), CLAUDE.md, qa/LEDGER.md (especially LED-011 and LED-012), docs/REFERENCES.md.
