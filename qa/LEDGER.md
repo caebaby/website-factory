@@ -213,3 +213,34 @@ Append-only. Each entry: what broke, why, how it was caught, and what permanent 
 - **Root cause:** over-compliance + no minimum-information standard for data viz.
 - **Permanent artifact:** Rule → DESIGN_SYSTEM R33 (every chart encodes ≥1 comparative, labeled fact; range charts show numeric endpoints; if the honest content is one word, use a sentence, not a chart).
 - **Status:** rule added 2026-07-08.
+
+### LED-018 — Negative-inline mobile overflow can escape `scrollWidth` checks (P0-class visual defect)
+- **Build:** `projects/awp/build/home-v4-review.html` (2026-07-13), first mobile taste pass.
+- **Symptom:** the full-width fit panel used `.wrap` plus a negative inline margin; at 390px it shifted off the left edge even though `document.documentElement.scrollWidth === innerWidth`.
+- **Why the gate missed it:** negative-start overflow does not necessarily increase the document's measured scroll width. A no-horizontal-scroll assertion can pass while visible content is clipped off-canvas.
+- **Fix:** mobile override on the direct full-width child: `width:100%; margin-inline:0`. Use a mathematically bounded breakout when true bleed is needed; never negative-margin a constrained `.wrap` blindly.
+- **Permanent lesson:** Tier-B must inspect representative mobile screenshots, not infer mobile safety from `scrollWidth` alone. Add a future rendered-bounds census for meaningful normal-flow elements whose left edge is `< 0` or right edge exceeds the viewport.
+- **Status:** ✅ closed in v4; checker enhancement open.
+
+### LED-019 — Brand law can legitimately clear `accent-fill-absent` (accepted P2)
+- **Build:** `projects/awp/build/home-v4-review.html` (2026-07-13).
+- **Gate:** 0 P0 / 0 P1 / 1 P2 (`accent-fill-absent`).
+- **Why accepted:** Anchor's brand register explicitly requires gold to be sparing and precise, never a background field. Adding a gold drench only to silence the proxy would violate the client brand.
+- **Permanent lesson:** `accent-fill-absent` remains informational. The Tier-B critic may clear it when a documented brand rule intentionally reserves accent for details, controls, and small moments; record the exception instead of weakening the design or hard-coding client-specific gate logic.
+- **Status:** ✅ documented, accepted.
+
+### LED-020 — Correct source casting can become wrong after responsive cropping (P1-class meaning defect)
+- **Build:** `projects/awp/build/home-v4-review.html` family-video revision (2026-07-13).
+- **Symptom:** the source frame contained grandparents, parents, and children, and the desktop composition read as intergenerational. The same 16:9 footage under `object-fit:cover` at 390×844 reduced the visible story to one adult, contradicting the “High-Net-Worth Families” market label.
+- **Why the gate missed it:** geometry, loading, contrast, and overflow were all correct. The defect was semantic: responsive cropping removed the people that made the image true.
+- **Fix:** keep the wide documentary source for desktop and art-direct the narrow viewport with a slow bounded `object-position` sweep across the family. A dedicated portrait source remains the stronger production solution when client footage exists.
+- **Permanent lesson:** Tier-B media QA must test whether each responsive crop still contains the subject that substantiates its label, not merely whether the image loads and looks attractive. Add “semantic crop” to photo/video review.
+- **Status:** ✅ closed for review; portrait client footage preferred for launch.
+
+### LED-021 — Reveal CSS must gate under `.in` not `.visible` (P0, LED-013 recurrence)
+- **Build:** `projects/awp/build/home-v5.html` (2026-07-13).
+- **Symptom:** 10 P0 `opacity-invisible` blockers on first gate run — every `.reveal` element permanently invisible when gate forces `.in` class.
+- **Root cause:** CSS used `.reveal.visible` as the visible end-state, but the gate's animation-neutralizer forces `.in` (not `.visible`). The JS observer adds both `.visible` and `.in`, so in a real browser it worked — but under the gate's forced `.in` the content stayed at `opacity:0`.
+- **Fix:** Added `.reveal.in` as an additional selector for the visible end-state: `.reveal.in, .reveal.visible { opacity:1; transform:none; }`.
+- **Permanent lesson:** The gate's `__opacityCensus()` forces `.in` — reveal CSS must gate visible state under `.in` as well as any custom class the JS adds. This is the same class of bug as LED-013 (reveal end-state not gated under the forced class). The fix is trivial but the gate will catch it every time.
+- **Status:** ✅ closed. Gate: 0 P0 / 0 P1 / 1 accepted P2 (`accent-fill-absent`, LED-019).

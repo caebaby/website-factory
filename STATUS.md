@@ -1,12 +1,13 @@
 # Website Factory — Status
-Last updated: 2026-07-13 (Anchor/Alex meeting held; design-revision phase — read the ANCHOR block first, then FINISH LINE). Prior: 2026-07-08 catalog v3 + Cherny audit.
+Last updated: 2026-07-13 (Anchor v4 design-revision candidate shipped to public review — read the ANCHOR block first, then FINISH LINE). Prior: 2026-07-08 catalog v3 + Cherny audit.
 
 ---
 
 ## ▶ ANCHOR — Alex Miller (client site) — DESIGN-REVISION PHASE
 **Project home:** `projects/awp/` (AWP = Anchor Wealth Planning = Alex Miller). Build/copy/strategy/research/previews/qa all here.
-**Live review:** `build/home-v3-review.html` (hero A–E switcher + font toggle) · public link `caebaby.github.io/anchor-review/` · local server on :8200.
-**2026-07-13:** Chris met with Alex and walked the review. **Design revisions incoming — Chris's change list pending (will update this block).** Carried-over open loops before this meeting: hero pick (A/B/C/D/E), font pick (Alex brand vs Kindred feel), copy worksheet Part 1 (compliance blockers). Next after revisions: strip review toggles → inner pages (`SITE_ARCHITECTURE.md`) → send `COPY_DOC_FOR_ALEX.md`.
+**Live review:** `build/home-v5.html` · public link `caebaby.github.io/anchor-review/` · local server on :8200. Prior v4 and v3 builds remain as history.
+**2026-07-13 (v5):** Fresh clean-print from the brand kit + factory conversion spine — full 9-section structure restored (TRUST ESTABLISHMENT section added back, was missing in v4). Quality floor enforced: 3-layer shadow stacks on fit-card, shimmer sweep on gold/ink buttons, grain overlay, frosted-glass-on-scroll nav, eyebrow line animation, `::selection` color, radial gradient depth on every section background, staggered grid reveals. Three-video hero retained (pumpjack/business/family). Gate: **0 P0 / 0 P1 / 1 accepted P2** (`accent-fill-absent`; LED-019 — brand guide forbids gold background fills). Tier-B taste pass: console clean, no overflow 1280px, all 9 sections verified, reveals working, 1 video playing. LED-021 logged (reveal `.in` class gate). Public mirror commit: `14d3935`. Next: Chris/Alex direction reaction; replace licensed review footage with approved client footage; resolve copy/compliance facts; then inner pages.
+**2026-07-13 revision:** Family hero recast as a wide intergenerational dinner (grandparents, parents, children); business hero recast as a wider mature-owner office scene. Both are self-hosted eight-second ping-pong loops, with the same imagery retained in the Who We Serve cards. Mobile family framing sweeps across generations instead of freezing on one crop. Brand typography re-verified against `DESIGN.md`: EB Garamond + Nunito Sans are the approved Phase-1 web substitutes; paid Adobe Garamond Pro + Proxima Nova remain Phase 2 pending licensed files.
 
 ---
 
