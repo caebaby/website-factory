@@ -1,5 +1,12 @@
 # Website Factory — Status
-Last updated: 2026-07-08 (FABLE SESSION, evening — catalog v3 merged: 71 entries, anti-stamp architecture, palettes blessed. Read: FINISH LINE → CHERNY AUDIT → the 07-08 blocks. Factory build session queued: QA checks + run-pipeline w/ metrics + bench regression gate.)
+Last updated: 2026-07-13 (Anchor/Alex meeting held; design-revision phase — read the ANCHOR block first, then FINISH LINE). Prior: 2026-07-08 catalog v3 + Cherny audit.
+
+---
+
+## ▶ ANCHOR — Alex Miller (client site) — DESIGN-REVISION PHASE
+**Project home:** `projects/awp/` (AWP = Anchor Wealth Planning = Alex Miller). Build/copy/strategy/research/previews/qa all here.
+**Live review:** `build/home-v3-review.html` (hero A–E switcher + font toggle) · public link `caebaby.github.io/anchor-review/` · local server on :8200.
+**2026-07-13:** Chris met with Alex and walked the review. **Design revisions incoming — Chris's change list pending (will update this block).** Carried-over open loops before this meeting: hero pick (A/B/C/D/E), font pick (Alex brand vs Kindred feel), copy worksheet Part 1 (compliance blockers). Next after revisions: strip review toggles → inner pages (`SITE_ARCHITECTURE.md`) → send `COPY_DOC_FOR_ALEX.md`.
 
 ---
 
