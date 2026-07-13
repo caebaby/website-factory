@@ -244,3 +244,11 @@ Append-only. Each entry: what broke, why, how it was caught, and what permanent 
 - **Fix:** Added `.reveal.in` as an additional selector for the visible end-state: `.reveal.in, .reveal.visible { opacity:1; transform:none; }`.
 - **Permanent lesson:** The gate's `__opacityCensus()` forces `.in` — reveal CSS must gate visible state under `.in` as well as any custom class the JS adds. This is the same class of bug as LED-013 (reveal end-state not gated under the forced class). The fix is trivial but the gate will catch it every time.
 - **Status:** ✅ closed. Gate: 0 P0 / 0 P1 / 1 accepted P2 (`accent-fill-absent`, LED-019).
+
+### LED-022 — Accordion `grid-template-rows:0fr→1fr` collapses under gate (P0, LED-001 class)
+- **Build:** `projects/awp/build/home-v6.html` (2026-07-13).
+- **Symptom:** 5 P0 `collapsed-height` blockers — accordion body elements rendered at 0px height despite holding content.
+- **Root cause:** `grid-template-rows:0fr→1fr` transition technique for CSS-only accordions collapses when the gate's animation neutralizer freezes transitions. The `1fr` state on the open item gets reset to `0fr`, and `overflow:hidden` on the inner wrapper clips all content to 0px. The `max-height:0→400px` fallback also collapses for the same reason.
+- **Fix:** Replaced accordion with outcome cards (2-col grid of elevated cards with 3-layer shadow + gold bottom-line hover). No collapsing containers — all content is always in-flow.
+- **Permanent lesson:** Any layout technique that relies on animated height transitions (`grid-template-rows`, `max-height`, `height:auto` transitions) will collapse under the gate's animation neutralizer. For content that must be visible at all times, use static in-flow layouts (cards, grids, lists). Reserve animated-height techniques for truly optional content (mobile menus, filter panels) where the gate can be told to ignore them.
+- **Status:** ✅ closed. Replaced with outcome cards. Gate: 0 P0 / 0 P1 / 0 P2 (fully clean).
