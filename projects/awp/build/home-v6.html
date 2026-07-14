@@ -128,7 +128,7 @@
     .hero-slide video, .hero-slide .poster { width:100%; height:100%; object-fit:cover; }
     .hero-slide[data-market="energy"] video { object-position:center 58%; }
     .hero-slide[data-market="business"] video { object-position:center 42%; }
-    .hero-slide[data-market="family"] video { object-position:center 46%; }
+    .hero-slide[data-market="family"] video { object-position:76% 50%; }
     /* Different scrim: left-heavy gradient for left-anchored copy */
     .hero-slide::after { content:""; position:absolute; inset:0; background:linear-gradient(95deg,rgba(15,32,56,.94) 0%,rgba(15,32,56,.85) 30%,rgba(15,32,56,.4) 65%,rgba(15,32,56,.25) 100%),linear-gradient(0deg,rgba(15,32,56,.6) 0%,transparent 40%); }
     .hero-grain { pointer-events:none; position:absolute; inset:0; z-index:2; opacity:.08; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E"); mix-blend-mode:soft-light; }
@@ -199,6 +199,37 @@
     .trust-icon svg { width:100%; height:100%; }
     .trust-cell h3 { margin:0 0 8px; font-family:var(--serif); font-size:1.15rem; font-weight:500; color:var(--midnight); line-height:1.2; }
     .trust-cell p { margin:0; color:var(--body); font-size:.82rem; line-height:1.5; max-width:28ch; }
+
+    /* ═══ WHY ANCHOR — dark editorial pillars ═══ */
+    .why { position:relative; padding:clamp(72px,8vw,104px) 0; color:var(--on-dark); background:var(--midnight-deep); overflow:hidden; }
+    .why::before { content:""; position:absolute; inset:0; background:radial-gradient(ellipse at 16% 18%,rgba(45,84,116,.34),transparent 52%),radial-gradient(ellipse at 86% 76%,rgba(177,143,77,.08),transparent 46%); pointer-events:none; }
+    .why .wrap { position:relative; }
+    .why-head { display:grid; grid-template-columns:1fr .72fr; gap:clamp(36px,6vw,80px); align-items:end; margin-bottom:52px; }
+    .why .h-display { max-width:680px; color:var(--on-dark); font-size:clamp(2.2rem,3.5vw,3rem); }
+    .why .h-display em { color:#dfc77f; }
+    .why-intro { max-width:46ch; margin:0; color:var(--on-dark-mute); }
+    .why-grid { display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid rgba(192,216,233,.2); border-bottom:1px solid rgba(192,216,233,.2); }
+    .why-item { min-height:250px; padding:32px 26px; border-left:1px solid rgba(192,216,233,.2); }
+    .why-item:first-child { padding-left:0; border-left:0; }
+    .why-index { display:block; margin-bottom:52px; color:#dfc77f; font-family:var(--serif); font-size:1.2rem; }
+    .why-item h3 { margin:0 0 12px; color:var(--on-dark); font-family:var(--serif); font-size:clamp(1.35rem,1.8vw,1.7rem); font-weight:400; line-height:1.06; }
+    .why-item p { margin:0; color:var(--on-dark-mute); font-size:.84rem; line-height:1.55; }
+
+    /* ═══ ORIGIN STORY — copy plus coordination route ═══ */
+    .story { padding:clamp(72px,8vw,104px) 0; background:var(--paper); }
+    .story-grid { display:grid; grid-template-columns:.82fr 1.18fr; gap:clamp(44px,7vw,100px); align-items:center; }
+    .story-copy .h-display { max-width:650px; font-size:clamp(2.2rem,3.6vw,3.15rem); }
+    .story-copy p:not(.eyebrow) { margin:22px 0 0; color:var(--body); }
+    .story-copy .btn { margin-top:28px; }
+    .story-map { position:relative; min-height:500px; padding:clamp(34px,5vw,58px); color:var(--on-dark); background:linear-gradient(145deg,var(--midnight),var(--midnight-deep)); overflow:hidden; box-shadow:0 2px 4px rgba(30,57,90,.1),0 18px 48px rgba(30,57,90,.18); }
+    .story-map::before { content:""; position:absolute; inset:0; background:radial-gradient(circle at 82% 18%,rgba(177,143,77,.14),transparent 36%); pointer-events:none; }
+    .story-map > * { position:relative; }
+    .story-map h3 { margin:0; max-width:20ch; color:var(--on-dark); font-family:var(--serif); font-size:clamp(1.8rem,2.8vw,2.55rem); font-weight:400; line-height:1.05; }
+    .story-route { margin-top:48px; padding:0; border-top:1px solid rgba(192,216,233,.2); list-style:none; }
+    .story-route li { display:grid; grid-template-columns:38px 1fr; gap:18px; padding:20px 0; border-bottom:1px solid rgba(192,216,233,.2); }
+    .story-route span { color:#dfc77f; font-family:var(--serif); }
+    .story-route strong { display:block; margin-bottom:4px; color:var(--on-dark); font-family:var(--serif); font-size:1.12rem; font-weight:500; }
+    .story-route p { margin:0; color:var(--on-dark-mute); font-size:.8rem; line-height:1.5; }
 
     /* ═══ WHO WE SERVE — different: full-width image cards with overlay text, no stagger ═══ */
     .serve { position:relative; color:var(--on-dark); background:var(--midnight); overflow:hidden; }
@@ -333,6 +364,19 @@
     .final .lede { color:var(--on-dark-mute); }
     .final-cta-row { display:flex; flex-wrap:wrap; gap:10px; margin-top:32px; }
 
+    /* ═══ INSIGHTS — editorial reading list ═══ */
+    .insights { padding:clamp(72px,8vw,104px) 0; background:var(--cream-mid); }
+    .insights-head { display:grid; grid-template-columns:1fr auto; gap:36px; align-items:end; margin-bottom:44px; }
+    .insights .h-display { font-size:clamp(2rem,3vw,2.6rem); }
+    .insights-grid { display:grid; grid-template-columns:1.35fr .82fr .82fr; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .insight { min-height:320px; padding:30px 28px; border-right:1px solid var(--line); display:flex; flex-direction:column; }
+    .insight:first-child { padding-left:0; }
+    .insight:last-child { border-right:0; }
+    .insight-tag { color:var(--gold-dark); font-size:.62rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase; }
+    .insight h3 { max-width:32ch; margin:34px 0 14px; color:var(--midnight); font-family:var(--serif); font-size:clamp(1.45rem,2vw,2rem); font-weight:400; line-height:1.08; }
+    .insight p { margin:0 0 24px; color:var(--body); font-size:.85rem; line-height:1.55; }
+    .insight .text-link { margin-top:auto; }
+
     /* ═══ FOOTER — different: 3-column with gold rule ═══ */
     .footer { padding:64px 0 30px; color:var(--on-dark); background:#0a1525; }
     .footer-top { display:grid; grid-template-columns:1.8fr 1fr 1fr; gap:48px; padding-bottom:40px; border-bottom:1px solid rgba(177,143,77,.2); }
@@ -372,6 +416,11 @@
       .trust-row { grid-template-columns:repeat(3,1fr); }
       .trust-cell:nth-child(3n) { border-right:0; }
       .trust-cell:nth-child(n+4) { border-top:1px solid var(--line-faint); }
+      .why-head { grid-template-columns:1fr; }
+      .why-grid { grid-template-columns:1fr 1fr; }
+      .why-item:nth-child(3) { border-left:0; }
+      .why-item:nth-child(n+3) { border-top:1px solid rgba(192,216,233,.2); }
+      .story-grid { grid-template-columns:1fr; }
       .serve-cards { grid-template-columns:1fr 1fr; }
       .serve-card:nth-child(3) { grid-column:1/-1; }
       .proof-split { grid-template-columns:1fr; }
@@ -381,6 +430,8 @@
       .proof-cell:last-child { border-bottom:0; }
       .footer-top { grid-template-columns:1fr 1fr; }
       .footer-brand { grid-column:1/-1; }
+      .insights-grid { grid-template-columns:1fr 1fr; }
+      .insight:first-child { grid-column:1/-1; padding-left:28px; border-right:0; border-bottom:1px solid var(--line); }
     }
     @media (max-width:720px) {
       :root { --wrap:min(100% - 36px,1200px); }
@@ -400,13 +451,23 @@
       .trust-row { grid-template-columns:1fr; }
       .trust-cell { border-right:0; border-bottom:1px solid var(--line-faint); }
       .trust-cell:last-child { border-bottom:0; }
+      .why-grid { grid-template-columns:1fr; }
+      .why-item,.why-item:first-child { min-height:0; padding:26px 0; border-left:0; border-top:1px solid rgba(192,216,233,.2); }
+      .why-item:first-child { border-top:0; }
+      .why-index { margin-bottom:22px; }
+      .story-map { min-height:0; padding:34px 24px; }
       .serve-cards { grid-template-columns:1fr; }
       .serve-card { min-height:420px; }
+      .serve-card:nth-child(3) img { object-position:72% center; }
       .svc-grid { grid-template-columns:1fr; }
       .svc-trigger { grid-template-columns:40px 1fr auto; gap:14px; }
       .svc-body p { margin-left:54px; }
       .footer-top { grid-template-columns:1fr; }
       .footer-legal { grid-template-columns:1fr; }
+      .insights-head { grid-template-columns:1fr; }
+      .insights-grid { grid-template-columns:1fr; }
+      .insight,.insight:first-child { grid-column:auto; min-height:0; padding:28px 0; border-right:0; border-bottom:1px solid var(--line); }
+      .insight:last-child { border-bottom:0; }
     }
     @media (prefers-reduced-motion:reduce) {
       html { scroll-behavior:auto; }
@@ -606,6 +667,63 @@
       </div>
     </section>
 
+    <!-- ═══ WHY ANCHOR ═══ -->
+    <section class="why" id="why">
+      <div class="wrap">
+        <div class="why-head reveal">
+          <div>
+            <p class="eyebrow light">Why Anchor</p>
+            <h2 class="h-display">One advisor who sees <em>the whole picture.</em></h2>
+          </div>
+          <p class="why-intro">Complex wealth does not need another specialist working alone. It needs one accountable lead who keeps every professional, deadline, and decision connected.</p>
+        </div>
+        <div class="why-grid stagger reveal">
+          <article class="why-item">
+            <span class="why-index">01</span>
+            <h3>Coordinated, not siloed</h3>
+            <p>Investment, tax, estate, and business decisions are evaluated together before one move creates a problem somewhere else.</p>
+          </article>
+          <article class="why-item">
+            <span class="why-index">02</span>
+            <h3>One accountable lead</h3>
+            <p>You know who owns the next step. Anchor keeps the conversation moving across your CPA, attorney, and other specialists.</p>
+          </article>
+          <article class="why-item">
+            <span class="why-index">03</span>
+            <h3>Built for complexity</h3>
+            <p>Equity compensation, concentrated wealth, estate questions, and business transitions belong in one living plan.</p>
+          </article>
+          <article class="why-item">
+            <span class="why-index">04</span>
+            <h3>Houston fluency</h3>
+            <p>Energy compensation, commodity cycles, and closely held businesses are part of the planning context—not an afterthought.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ FIRM ORIGIN / COORDINATION STORY ═══ -->
+    <section class="story" id="story">
+      <div class="wrap story-grid">
+        <div class="story-copy reveal">
+          <p class="eyebrow">Why The Firm Exists</p>
+          <h2 class="h-display">The firm was designed around <em>one missing role.</em></h2>
+          <p>Excellent specialists can still leave you with fragmented advice. Anchor exists to own the space between them—to carry context from one conversation into the next and make sure decisions happen in the right order.</p>
+          <p>The goal is not to replace your CPA or attorney. It is to help them do better work for you by giving everyone the same view of the plan.</p>
+          <a class="btn btn-ink" href="#process">See The Planning Process <span class="arr" aria-hidden="true">→</span></a>
+        </div>
+        <div class="story-map reveal">
+          <p class="eyebrow light">The Anchor Role</p>
+          <h3>Turn separate expertise into one coordinated course.</h3>
+          <ol class="story-route">
+            <li><span>01</span><div><strong>Shared context</strong><p>Every professional sees the decisions, constraints, and timing that affect their work.</p></div></li>
+            <li><span>02</span><div><strong>Clear ownership</strong><p>Each next step has an owner, a deadline, and a reason it belongs in the sequence.</p></div></li>
+            <li><span>03</span><div><strong>One next move</strong><p>You leave each conversation knowing what matters now—not with another disconnected list.</p></div></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
     <!-- ═══ WHO WE SERVE ═══ -->
     <section class="serve" id="serve">
       <div class="wrap serve-pad">
@@ -634,7 +752,7 @@
             </div>
           </a>
           <a class="serve-card" href="#fit">
-            <img src="assets/hero-family-poster.png" alt="A smiling couple relaxing at home with their dog">
+            <img src="assets/hero-family-poster.png" alt="A modern multigenerational family spending time together at home">
             <div class="serve-card-body">
               <div class="serve-card-tag">03 · Across generations</div>
               <h3>High-Net-Worth Families</h3>
@@ -858,6 +976,39 @@
             <a class="btn btn-gold" href="#fit">Schedule a 30-Minute Conversation <span class="arr" aria-hidden="true">→</span></a>
             <a class="btn btn-ghost" href="#fit">Take the 4-Question Fit Check</a>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ INSIGHTS ═══ -->
+    <section class="insights" id="insights">
+      <div class="wrap">
+        <div class="insights-head reveal">
+          <div>
+            <p class="eyebrow">From The Planning Room</p>
+            <h2 class="h-display">Useful thinking for <em>the decisions ahead.</em></h2>
+          </div>
+          <a class="text-link" href="#fit">Talk through your situation <span class="arr" aria-hidden="true">→</span></a>
+        </div>
+        <div class="insights-grid stagger reveal">
+          <article class="insight">
+            <span class="insight-tag">Featured · Equity Compensation</span>
+            <h3>How RSU vesting creates a tax-timing trap</h3>
+            <p>Vesting, withholding, blackout periods, and concentration risk rarely arrive on a convenient schedule. Here is where coordination changes the decision.</p>
+            <a class="text-link" href="#fit">Explore the question <span class="arr" aria-hidden="true">→</span></a>
+          </article>
+          <article class="insight">
+            <span class="insight-tag">Coordination</span>
+            <h3>What “one living plan” actually means</h3>
+            <p>A practical look at how investments, taxes, estate work, and outside professionals stay connected over time.</p>
+            <a class="text-link" href="#fit">Read the overview <span class="arr" aria-hidden="true">→</span></a>
+          </article>
+          <article class="insight">
+            <span class="insight-tag">Business Transition</span>
+            <h3>The exit conversation starts before the LOI</h3>
+            <p>The planning work that gives an owner more options before a buyer, deadline, or tax event controls the timeline.</p>
+            <a class="text-link" href="#fit">See what to prepare <span class="arr" aria-hidden="true">→</span></a>
+          </article>
         </div>
       </div>
     </section>

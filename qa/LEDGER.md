@@ -252,3 +252,11 @@ Append-only. Each entry: what broke, why, how it was caught, and what permanent 
 - **Fix:** Replaced accordion with outcome cards (2-col grid of elevated cards with 3-layer shadow + gold bottom-line hover). No collapsing containers — all content is always in-flow.
 - **Permanent lesson:** Any layout technique that relies on animated height transitions (`grid-template-rows`, `max-height`, `height:auto` transitions) will collapse under the gate's animation neutralizer. For content that must be visible at all times, use static in-flow layouts (cards, grids, lists). Reserve animated-height techniques for truly optional content (mobile menus, filter panels) where the gate can be told to ignore them.
 - **Status:** ✅ closed. Replaced with outcome cards. Gate: 0 P0 / 0 P1 / 0 P2 (fully clean).
+
+### LED-023 — A clean-sheet reprint can silently drop approved narrative modules
+- **Build:** `projects/awp/build/home-v6.html` (2026-07-13).
+- **Symptom:** the new visual direction preserved the broad conversion spine but omitted three previously approved homepage modules: Why Anchor, the firm-origin/coordination story, and Insights. The client caught the loss below the hero.
+- **Root cause:** the reprint was checked against the factory skeleton, but no ordered section-manifest diff was made against the prior client-approved candidate. “Same spine” was treated too broadly and approved narrative content disappeared during recomposition.
+- **Fix:** restored all three modules inside v6's current “Chart” language; no visual rollback and no current sections removed.
+- **Permanent lesson:** before replacing a live candidate, diff the ordered semantic section manifest against the prior approved candidate. Mark every prior module **KEEP / MERGE / DELETE** with a reason. A clean print may change composition, but it cannot silently discard client-approved content.
+- **Status:** ✅ closed. Desktop/mobile Tier-B passed; gate 0 P0 / 0 P1 / 0 P2.

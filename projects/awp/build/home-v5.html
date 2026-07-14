@@ -109,7 +109,7 @@
     .brand-name { display:grid; line-height:1; }
     .brand-name strong { font-family:var(--serif); font-size:1.52rem; font-weight:500; letter-spacing:-.02em; }
     .brand-name span { margin-top:5px; font-size:.52rem; font-weight:700; letter-spacing:.23em; }
-    .nav-links { display:flex; align-items:center; justify-content:center; gap:clamp(18px,2vw,34px); }
+    .nav-links { display:flex; align-items:center; justify-content:flex-end; gap:clamp(18px,2vw,34px); }
     .nav-link { position:relative; font-size:.78rem; font-weight:600; text-decoration:none; transition:color .22s ease; }
     .nav-link::after { content:""; position:absolute; left:0; bottom:-6px; height:1.5px; width:0; background:var(--accent); transition:width .22s ease; }
     .nav-link:hover { color:var(--accent); }
@@ -448,10 +448,10 @@
         </video>
       </section>
       <section class="hero-slide" data-market="business" aria-label="Business owners">
-        <video muted loop playsinline preload="none" poster="assets/hero-business-poster.png" aria-hidden="true" data-src="assets/hero-business-loop.mp4"></video>
+        <video muted loop playsinline preload="metadata" poster="assets/hero-business-poster.png" aria-hidden="true" data-src="assets/hero-business-loop.mp4"></video>
       </section>
       <section class="hero-slide" data-market="family" aria-label="High-net-worth families">
-        <video muted loop playsinline preload="none" poster="assets/hero-family-poster.png" aria-hidden="true" data-src="assets/hero-family-loop.mp4"></video>
+        <video muted loop playsinline preload="metadata" poster="assets/hero-family-poster.png" aria-hidden="true" data-src="assets/hero-family-loop.mp4"></video>
       </section>
     </div>
     <div class="hero-noise" aria-hidden="true"></div>
@@ -486,20 +486,18 @@
 
   <div class="ticker" aria-hidden="true">
     <div class="ticker-track">
-      <span class="ticker-item"><svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="2" fill="currentColor"/></svg>My CPA and my advisor never talk.</span>
-      <span class="ticker-item"><svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="2" fill="currentColor"/></svg>Every bonus season feels like a tax trap.</span>
-      <span class="ticker-item"><svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="2" fill="currentColor"/></svg>I'm the project manager of my own financial life.</span>
-      <span class="ticker-item"><svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="2" fill="currentColor"/></svg>No one is looking at my full picture.</span>
-      <span class="ticker-item"><svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="2" fill="currentColor"/></svg>I have a trust but I'm not sure it still fits.</span>
-      <span class="ticker-item"><svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="2" fill="currentColor"/></svg>My advisor doesn't understand my equity comp.</span>
-      <span class="ticker-item"><svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="2" fill="currentColor"/></svg>My net worth is locked inside my business.</span>
-      <span class="ticker-item"><svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="2" fill="currentColor"/></svg>My CPA and my advisor never talk.</span>
-      <span class="ticker-item"><svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="2" fill="currentColor"/></svg>Every bonus season feels like a tax trap.</span>
-      <span class="ticker-item"><svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="2" fill="currentColor"/></svg>I'm the project manager of my own financial life.</span>
-      <span class="ticker-item"><svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="2" fill="currentColor"/></svg>No one is looking at my full picture.</span>
-      <span class="ticker-item"><svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="2" fill="currentColor"/></svg>I have a trust but I'm not sure it still fits.</span>
-      <span class="ticker-item"><svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="2" fill="currentColor"/></svg>My advisor doesn't understand my equity comp.</span>
-      <span class="ticker-item"><svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="2" fill="currentColor"/></svg>My net worth is locked inside my business.</span>
+      <span class="ticker-item"><svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="2" fill="currentColor"/></svg>We serve Oil &amp; Gas Executives</span>
+      <span class="ticker-item"><svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="2" fill="currentColor"/></svg>We serve Business Owners</span>
+      <span class="ticker-item"><svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="2" fill="currentColor"/></svg>We serve High Net Worth Families</span>
+      <span class="ticker-item"><svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="2" fill="currentColor"/></svg>We serve Oil &amp; Gas Executives</span>
+      <span class="ticker-item"><svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="2" fill="currentColor"/></svg>We serve Business Owners</span>
+      <span class="ticker-item"><svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="2" fill="currentColor"/></svg>We serve High Net Worth Families</span>
+      <span class="ticker-item"><svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="2" fill="currentColor"/></svg>We serve Oil &amp; Gas Executives</span>
+      <span class="ticker-item"><svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="2" fill="currentColor"/></svg>We serve Business Owners</span>
+      <span class="ticker-item"><svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="2" fill="currentColor"/></svg>We serve High Net Worth Families</span>
+      <span class="ticker-item"><svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="2" fill="currentColor"/></svg>We serve Oil &amp; Gas Executives</span>
+      <span class="ticker-item"><svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="2" fill="currentColor"/></svg>We serve Business Owners</span>
+      <span class="ticker-item"><svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="2" fill="currentColor"/></svg>We serve High Net Worth Families</span>
     </div>
   </div>
 

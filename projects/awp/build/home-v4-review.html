@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en">
+<!-- DESIGN PROVENANCE: CODEX · Anchor v4 direction · 2026-07-13 -->
+<html lang="en" data-design-builder="codex">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -43,6 +44,7 @@
     a:focus-visible,button:focus-visible,input:focus-visible { outline:3px solid var(--robin); outline-offset:4px; }
     .skip { position:fixed; left:16px; top:12px; z-index:1000; padding:10px 14px; background:var(--paper); color:var(--ink); transform:translateY(-180%); transition:transform .2s; }
     .skip:focus { transform:none; }
+    .build-marker { position:fixed; right:12px; bottom:12px; z-index:9999; padding:7px 10px; border:1px solid rgba(177,143,77,.48); color:var(--on-dark); background:rgba(15,32,56,.88); font-size:.6rem; font-weight:800; letter-spacing:.14em; line-height:1; text-transform:uppercase; pointer-events:none; backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); }
     .wrap { width:var(--wrap); margin-inline:auto; }
     .pad { padding:clamp(84px,9vw,132px) 0; }
     .pad-tight { padding:clamp(64px,7vw,96px) 0; }
@@ -363,6 +365,7 @@
   </style>
 </head>
 <body>
+  <div class="build-marker" aria-label="Design provenance: Codex">Codex Design</div>
   <a class="skip" href="#main">Skip to content</a>
 
   <nav class="nav" aria-label="Primary navigation">
