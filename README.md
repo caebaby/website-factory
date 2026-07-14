@@ -6,6 +6,8 @@ Static, Replit-ready website for Advisor Growth Lab. No build step is required.
 
 Johnny should begin with [`JOHNNY-REPLIT-CHECKLIST.md`](JOHNNY-REPLIT-CHECKLIST.md). It contains the exact upload, production connection, custom-domain, testing, and Google/Bing sitemap submission checkboxes required for launch.
 
+The clean package is published on the [`agl-replit-handoff` branch](https://github.com/caebaby/website-factory/tree/agl-replit-handoff), with a [direct ZIP archive](https://github.com/caebaby/website-factory/archive/refs/heads/agl-replit-handoff.zip). Because the repository is private, Johnny needs collaborator access or the downloaded ZIP must be sent to him.
+
 ## Run locally or in Replit
 
 ```bash
