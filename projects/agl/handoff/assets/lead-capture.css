@@ -1,0 +1,32 @@
+.agl-lead-stack{display:grid;gap:12px;margin-top:28px}
+.agl-lead{position:relative;padding:clamp(24px,4vw,34px);border:1px solid rgba(17,23,53,.16);border-radius:7px;text-align:left}
+.agl-lead--primary{overflow:hidden;color:#F4F4FA;border-color:#111735;background:#111735;box-shadow:0 28px 54px -42px rgba(17,23,53,.9)}
+.agl-lead--primary::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.4;background-image:linear-gradient(rgba(165,180,252,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(165,180,252,.12) 1px,transparent 1px),linear-gradient(135deg,transparent 49.5%,rgba(242,199,130,.17) 50%,transparent 50.5%);background-size:40px 40px,40px 40px,120px 120px;mask-image:linear-gradient(120deg,#000,transparent 72%)}
+.agl-lead>*{position:relative;z-index:1}
+.agl-lead__top{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:18px}
+.agl-lead__popular,.agl-lead__type{font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.agl-lead__popular{display:inline-flex;padding:7px 10px;color:#111735;background:#F2C782}
+.agl-lead__type{color:rgba(226,229,243,.62)}
+.agl-lead h4{max-width:28ch;margin:0;font-size:clamp(21px,3vw,29px);line-height:1.16;letter-spacing:-.03em}
+.agl-lead>p{max-width:58ch;margin:12px 0 0;color:rgba(226,229,243,.74);font-size:14.5px;line-height:1.5}
+.agl-lead__start,.agl-lead__continue,.agl-lead__schedule{display:inline-flex;align-items:center;justify-content:center;min-height:46px;margin-top:22px;padding:13px 19px;border:1px solid transparent;border-radius:6px;color:#111735;background:#F2C782;font:inherit;font-size:14px;font-weight:780;cursor:pointer;transition:transform .22s cubic-bezier(.22,.84,.32,1),background .22s}
+.agl-lead__start{min-width:190px;min-height:58px;margin-top:26px;padding:17px 30px;font-size:16px}
+.agl-lead__start:hover,.agl-lead__continue:hover,.agl-lead__schedule:hover{transform:translateY(-2px);background:#F6D59D}
+.agl-lead__flow{margin-top:24px;padding-top:22px;border-top:1px solid rgba(226,229,243,.18)}
+.agl-lead__progress{display:flex;align-items:center;gap:12px;margin-bottom:20px;color:rgba(226,229,243,.68);font-size:10.5px;font-weight:760;letter-spacing:.08em;text-transform:uppercase}
+.agl-lead__progress i{display:block;width:72px;height:2px;overflow:hidden;background:rgba(226,229,243,.17)}
+.agl-lead__progress i::after{content:"";display:block;width:var(--lead-progress,25%);height:100%;background:#A5B4FC;transition:width .25s cubic-bezier(.22,.84,.32,1)}
+.agl-lead__step{margin:0;padding:0;border:0}
+.agl-lead__step label{display:block;color:#F4F4FA;font-size:18px;font-weight:690;letter-spacing:-.01em}
+.agl-lead__step input{display:block;width:100%;max-width:520px;height:54px;margin-top:12px;padding:0 15px;border:1px solid rgba(226,229,243,.25);border-radius:5px;color:#111735;background:#F9F9FC;font:inherit;font-size:17px;outline:0;transition:border-color .18s,box-shadow .18s}
+.agl-lead__step input:focus{border-color:#A5B4FC;box-shadow:0 0 0 3px rgba(165,180,252,.2)}
+.agl-lead__step input::placeholder{color:#8A8D9C}
+.agl-lead__step-actions{display:flex;align-items:center;gap:16px}
+.agl-lead__back{margin-top:22px;padding:10px 0;border:0;color:rgba(226,229,243,.72);background:transparent;font:inherit;font-size:13px;font-weight:680;cursor:pointer}
+.agl-lead__complete{margin-top:24px;padding-top:22px;border-top:1px solid rgba(226,229,243,.18)}
+.agl-lead__complete strong{display:block;font-size:20px}.agl-lead__complete p{margin:8px 0 0;color:rgba(226,229,243,.74);font-size:14px}
+.agl-lead--secondary{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:center;padding:22px 24px;background:#F7F7F9}
+.agl-lead--secondary h4{font-size:18px}.agl-lead--secondary>div>p{margin:7px 0 0;color:#555A70;font-size:13.5px}
+.agl-lead--secondary a{display:inline-flex;align-items:center;white-space:nowrap;color:#4338CA;font-size:13.5px;font-weight:760}
+@media(max-width:620px){.agl-lead--secondary{grid-template-columns:1fr}.agl-lead--secondary a{margin-top:2px}.agl-lead__start,.agl-lead__continue,.agl-lead__schedule{width:100%}.agl-lead__step-actions{align-items:stretch;flex-direction:column;gap:4px}.agl-lead__back{margin-top:4px}}
+@media(prefers-reduced-motion:reduce){.agl-lead__start,.agl-lead__continue,.agl-lead__schedule,.agl-lead__progress i::after{transition:none}}

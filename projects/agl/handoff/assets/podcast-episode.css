@@ -1,0 +1,30 @@
+.episode-hero{position:relative;overflow:hidden;padding:58px 0 76px;color:#f3f4fa;background:#111735}
+.episode-hero::before{content:"";position:absolute;inset:0;opacity:.32;background-image:linear-gradient(rgba(165,180,252,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(165,180,252,.14) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(90deg,transparent 5%,#000 78%)}
+.episode-hero__in{position:relative;z-index:1}
+.episode-hero .crumb{margin-bottom:50px}
+.episode-hero__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(270px,.38fr);gap:clamp(48px,8vw,110px);align-items:end}
+.episode-kicker{display:block;color:#a5b4fc;font-size:11px;font-weight:720;letter-spacing:.13em;text-transform:uppercase}
+.episode-hero h1{max-width:15ch;margin:15px 0 0;font-size:clamp(42px,6.2vw,74px);font-weight:680;letter-spacing:-.05em;line-height:1;text-wrap:balance}
+.episode-hero__summary{margin:0;color:rgba(228,230,241,.78);font-size:18px;line-height:1.58;text-wrap:pretty}
+.episode-meta{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:25px;color:rgba(228,230,241,.58);font-size:12px;font-weight:650;letter-spacing:.06em;text-transform:uppercase}
+.episode-player{margin-top:30px;padding:19px 21px;border:1px solid rgba(165,180,252,.28);border-radius:6px;background:rgba(255,255,255,.055)}
+.episode-player__top{display:flex;align-items:center;gap:13px}
+.episode-player__icon{display:grid;width:38px;height:38px;place-items:center;border-radius:50%;background:#a5b4fc;color:#111735;font-size:13px}
+.episode-player strong{display:block;font-size:14px}.episode-player span{display:block;margin-top:2px;color:rgba(228,230,241,.6);font-size:12px}
+.episode-player__line{height:2px;margin-top:17px;background:linear-gradient(90deg,#a5b4fc 0 18%,rgba(228,230,241,.18) 18%)}
+.article{padding:78px 0 94px;background:#fff}
+.prose{max-width:720px}
+.prose .episode-label{display:block;margin-bottom:22px;color:#4338ca;font-size:11px;font-weight:720;letter-spacing:.12em;text-transform:uppercase}
+.prose>p{max-width:65ch;margin:20px 0 0;color:#51556b;font-size:17px;line-height:1.72;text-wrap:pretty}
+.prose>p:first-of-type{margin-top:0;color:#252b45;font-size:20px;line-height:1.6}
+.prose h2{max-width:28ch;margin:48px 0 0;color:#111735;font-size:clamp(25px,3vw,33px);letter-spacing:-.03em;line-height:1.16;text-wrap:balance}
+.prose ul{display:grid;gap:13px;margin:21px 0 0;padding:0;list-style:none}
+.prose li{position:relative;max-width:62ch;padding-left:25px;color:#51556b;line-height:1.62}
+.prose li::before{content:"";position:absolute;top:.65em;left:2px;width:7px;height:7px;border-radius:50%;background:#4338ca}
+.prose a{color:#4338ca;font-weight:650;border-bottom:1px solid rgba(67,56,202,.35)}
+.prose blockquote{margin:34px 0 0;padding:22px 25px;border:1px solid rgba(242,199,130,.58);border-radius:4px;background:#f5f5f7;color:#252b45;font-size:18px;line-height:1.55}
+.episode-related{margin-top:44px;padding-top:26px;border-top:1px solid rgba(17,23,53,.12)}
+.episode-related span{display:block;color:#72768a;font-size:10.5px;font-weight:720;letter-spacing:.11em;text-transform:uppercase}
+.episode-related a{display:block;width:fit-content;margin-top:10px;font-size:15px}
+@media(max-width:900px){.episode-hero__grid{grid-template-columns:1fr}.episode-hero__summary{max-width:50ch}.episode-hero .crumb{margin-bottom:38px}}
+@media(max-width:620px){.episode-hero{padding:42px 0 58px}.episode-hero h1{font-size:clamp(39px,13vw,56px)}.article{padding:58px 0 72px}}

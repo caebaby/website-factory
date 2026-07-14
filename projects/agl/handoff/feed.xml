@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Advisor Growth Lab Resources</title>
+    <link>https://advisorgrowthlab.com/resources/</link>
+    <description>Articles and podcast transcripts for experienced financial advisors evaluating transitions, business-model fit, economics, and practice growth.</description>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 14 Jul 2026 16:00:00 -0400</lastBuildDate>
+    <atom:link href="https://advisorgrowthlab.com/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The real math behind a 7-year forgivable note</title>
+      <link>https://advisorgrowthlab.com/resources/podcast/forgivable-note-clawback.html</link>
+      <guid isPermaLink="true">https://advisorgrowthlab.com/resources/podcast/forgivable-note-clawback.html</guid>
+      <pubDate>Wed, 08 Jul 2026 08:00:00 -0400</pubDate>
+      <description>A practical explanation of forgivable-note economics, remaining balances, and the clauses advisors should understand before signing.</description>
+    </item>
+    <item>
+      <title>The clawback math nobody walks you through before the 7-year note</title>
+      <link>https://advisorgrowthlab.com/resources/forgivable-note-clawback.html</link>
+      <guid isPermaLink="true">https://advisorgrowthlab.com/resources/forgivable-note-clawback.html</guid>
+      <pubDate>Wed, 08 Jul 2026 07:00:00 -0400</pubDate>
+      <description>Model the remaining balance, repayment triggers, and full-term economics before signing a financial advisor forgivable note.</description>
+    </item>
+    <item>
+      <title>What to do when your firm gets bought</title>
+      <link>https://advisorgrowthlab.com/resources/podcast/retention-offer-after-acquisition.html</link>
+      <guid isPermaLink="true">https://advisorgrowthlab.com/resources/podcast/retention-offer-after-acquisition.html</guid>
+      <pubDate>Tue, 07 Jul 2026 08:00:00 -0400</pubDate>
+      <description>How advisors can evaluate a retention offer, business-model changes, and the choice to stay or move after an acquisition.</description>
+    </item>
+    <item>
+      <title>How to read a retention offer after your firm is acquired</title>
+      <link>https://advisorgrowthlab.com/resources/retention-offer-after-acquisition.html</link>
+      <guid isPermaLink="true">https://advisorgrowthlab.com/resources/retention-offer-after-acquisition.html</guid>
+      <pubDate>Tue, 07 Jul 2026 07:00:00 -0400</pubDate>
+      <description>Evaluate the amount, term, restrictions, grid, and opportunity cost before signing a retention offer.</description>
+    </item>
+    <item>
+      <title>Are you ready to leave, or just having a bad quarter?</title>
+      <link>https://advisorgrowthlab.com/resources/podcast/am-i-ready-to-leave-my-firm.html</link>
+      <guid isPermaLink="true">https://advisorgrowthlab.com/resources/podcast/am-i-ready-to-leave-my-firm.html</guid>
+      <pubDate>Mon, 06 Jul 2026 08:00:00 -0400</pubDate>
+      <description>A private framework for separating temporary frustration from real transition readiness.</description>
+    </item>
+    <item>
+      <title>How to know if you are actually ready to leave your firm</title>
+      <link>https://advisorgrowthlab.com/resources/am-i-ready-to-leave-my-firm.html</link>
+      <guid isPermaLink="true">https://advisorgrowthlab.com/resources/am-i-ready-to-leave-my-firm.html</guid>
+      <pubDate>Mon, 06 Jul 2026 07:00:00 -0400</pubDate>
+      <description>Read your book, economics, timing, and life before anyone knows you are asking.</description>
+    </item>
+  </channel>
+</rss>

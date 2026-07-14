@@ -1,0 +1,10 @@
+entrypoint = "server.js"
+run = "npm start"
+
+[deployment]
+run = ["sh", "-c", "npm start"]
+deploymentTarget = "cloudrun"
+
+[[ports]]
+localPort = 3000
+externalPort = 80
