@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="assets/agl-mark.svg" type="image/svg+xml">
+<meta name="theme-color" content="#111735">
+<title>AGL Hero Image Options</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@1,6..72,400&amp;family=Schibsted+Grotesk:wght@400;500;600;650;700;800&amp;display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: oklch(17% .035 266);
+  --paper: oklch(98.9% .004 255);
+  --periwinkle: oklch(81% .09 278);
+  --gold: oklch(84% .10 80);
+  --sans: "Schibsted Grotesk", sans-serif;
+  --serif: "Newsreader", Georgia, serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; color: var(--paper); background: var(--ink); font-family: var(--sans); }
+.intro {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 28px clamp(22px, 5vw, 72px);
+  border-bottom: 1px solid rgba(255,255,255,.14);
+}
+.intro h1 { margin: 0; font-size: clamp(24px, 3vw, 40px); letter-spacing: -.03em; }
+.intro p { max-width: 580px; margin: 0; color: rgba(238,241,252,.66); font-size: 14px; }
+.option {
+  position: relative;
+  min-height: min(760px, 82svh);
+  display: grid;
+  align-items: center;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255,255,255,.18);
+  background-position: center;
+  background-size: cover;
+}
+.option::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(90deg, rgba(7,10,29,.97), rgba(7,10,29,.90) 35%, rgba(7,10,29,.58) 59%, rgba(7,10,29,.12) 86%),
+    linear-gradient(180deg, rgba(7,10,29,.04), rgba(7,10,29,.14) 62%, rgba(7,10,29,.78));
+}
+.option--mountain { background-image: url("assets/hero-cinematic.webp"); }
+.option--coast { background-image: url("assets/hero-option-coast.webp"); }
+.option--forest { background-image: url("assets/hero-option-forest.webp"); }
+.option--desert { background-image: url("assets/hero-option-desert.webp"); }
+.option--bright { background-image: url("assets/hero-option-bright.webp"); }
+.option--waves { background-image: url("assets/hero-waves-poster.webp"); }
+.option--sunrise { background-image: url("assets/hero-option-sunrise.webp"); }
+.option video {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.label {
+  position: absolute;
+  z-index: 2;
+  top: 24px;
+  right: clamp(22px, 5vw, 72px);
+  padding: 9px 12px;
+  border: 1px solid rgba(255,255,255,.24);
+  border-radius: 4px;
+  background: rgba(7,10,29,.58);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.copy {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+}
+.kicker { color: var(--periwinkle); font-size: 12px; font-weight: 800; letter-spacing: .12em; }
+h2 {
+  max-width: 780px;
+  margin: 14px 0 24px;
+  font-size: clamp(46px, 6vw, 72px);
+  font-weight: 650;
+  letter-spacing: -.04em;
+  line-height: 1.01;
+}
+h2 em { color: oklch(85% .085 277); font-family: var(--serif); font-weight: 400; }
+.sub { margin: 0; color: rgba(245,247,254,.78); font-size: clamp(18px, 2vw, 23px); }
+.privacy { display: flex; align-items: center; gap: 10px; margin-top: 36px; color: rgba(238,241,252,.64); font-size: 13px; }
+.privacy::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.choice {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 14px 20px;
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: 10px;
+  color: var(--paper);
+  font-size: 14px;
+  font-weight: 750;
+}
+.choice--primary { border-color: var(--paper); color: var(--ink); background: var(--paper); }
+@media (max-width: 680px) {
+  .intro { display: block; }
+  .intro p { margin-top: 12px; }
+  .option { min-height: 680px; background-position: 65% center; }
+  .copy { width: calc(100% - 32px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .option video { display: none; }
+}
+</style>
+</head>
+<body>
+<header class="intro">
+  <h1>AGL hero directions</h1>
+  <p>Each image uses the same live headline treatment. The current mountain option stays active on the homepage until another direction is selected.</p>
+</header>
+
+<section class="option option--mountain" aria-label="Current layered mountain horizon option">
+  <span class="label">Current · Mountain</span>
+  <div class="copy">
+    <div class="kicker">SEC · FINRA · BROKERCHECK</div>
+    <h2>Advisor transitions are normal. Yours still needs a <em>read.</em></h2>
+    <p class="sub">Public filings in. Private read out. 'Stay' is a real answer.</p>
+    <p class="privacy">Three minutes. Nothing hits your firm. No recruiter ever calls.</p>
+  </div>
+</section>
+
+<section class="option option--coast" aria-label="Atlantic coast horizon option">
+  <span class="label">Option 1 · Coast</span>
+  <div class="copy">
+    <div class="kicker">SEC · FINRA · BROKERCHECK</div>
+    <h2>Advisor transitions are normal. Yours still needs a <em>read.</em></h2>
+    <p class="sub">Public filings in. Private read out. 'Stay' is a real answer.</p>
+    <p class="privacy">Three minutes. Nothing hits your firm. No recruiter ever calls.</p>
+  </div>
+</section>
+
+<section class="option option--forest" aria-label="Forest valley horizon option">
+  <span class="label">Option 2 · Forest</span>
+  <div class="copy">
+    <div class="kicker">SEC · FINRA · BROKERCHECK</div>
+    <h2>Advisor transitions are normal. Yours still needs a <em>read.</em></h2>
+    <p class="sub">Public filings in. Private read out. 'Stay' is a real answer.</p>
+    <p class="privacy">Three minutes. Nothing hits your firm. No recruiter ever calls.</p>
+  </div>
+</section>
+
+<section class="option option--desert" aria-label="High desert horizon option">
+  <span class="label">Option 3 · High desert</span>
+  <div class="copy">
+    <div class="kicker">SEC · FINRA · BROKERCHECK</div>
+    <h2>Advisor transitions are normal. Yours still needs a <em>read.</em></h2>
+    <p class="sub">Public filings in. Private read out. 'Stay' is a real answer.</p>
+    <p class="privacy">Three minutes. Nothing hits your firm. No recruiter ever calls.</p>
+  </div>
+</section>
+
+<section class="option option--bright" id="bright" aria-label="Bright morning mountain horizon option">
+  <span class="label">Option 4 · Bright morning</span>
+  <div class="copy">
+    <div class="kicker">SEC · FINRA · BROKERCHECK</div>
+    <h2>Advisor transitions are normal. Yours still needs a <em>read.</em></h2>
+    <p class="sub">Public filings in. Private read out. 'Stay' is a real answer.</p>
+    <p class="privacy">Three minutes. Nothing hits your firm. No recruiter ever calls.</p>
+  </div>
+</section>
+
+<section class="option option--waves" id="waves" aria-label="Crashing waves video loop option">
+  <video autoplay muted loop playsinline preload="metadata" poster="assets/hero-waves-poster.webp" aria-hidden="true">
+    <source src="assets/hero-waves-loop.mp4" type="video/mp4">
+  </video>
+  <span class="label">Option 5 · Crashing waves</span>
+  <div class="copy">
+    <div class="kicker">SEC · FINRA · BROKERCHECK</div>
+    <h2>Advisor transitions are normal. Yours still needs a <em>read.</em></h2>
+    <p class="sub">Public filings in. Private read out. 'Stay' is a real answer.</p>
+    <p class="privacy">Three minutes. Nothing hits your firm. No recruiter ever calls.</p>
+  </div>
+</section>
+
+<section class="option option--sunrise" id="sunrise" aria-label="Sunrise mountain horizon with trust-led copy option">
+  <span class="label">Option 6 · Sunrise + trust copy</span>
+  <div class="copy">
+    <div class="kicker">PRIVATE · SEC / FINRA / BROKERCHECK</div>
+    <h2>We found you in the public record. Your next move deserves a private <em>read.</em></h2>
+    <p class="sub">Three minutes to see where you stand. Stay, wait, and explore are all real answers.</p>
+    <div class="actions" aria-label="Suggested hero actions">
+      <span class="choice choice--primary">Take the 3-minute assessment</span>
+      <span class="choice">Book a private read</span>
+    </div>
+    <p class="privacy">The report is yours alone. Nothing is sent to your firm. No recruiter calls.</p>
+  </div>
+</section>
+</body>
+</html>

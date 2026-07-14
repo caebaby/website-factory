@@ -1,85 +1,71 @@
-# AGL Site — Replit Handoff
-One folder, zero build steps. Drag everything in this folder into a Replit static site
-(or any static host) and it serves as-is. Every page is self-contained — fonts and images
-are inlined; there are no external requests, no npm, no build.
+# Advisor Growth Lab site
 
-## File map
+Static, Replit-ready website for Advisor Growth Lab. No build step is required.
 
+## Replit handoff
+
+Johnny should begin with [`JOHNNY-REPLIT-CHECKLIST.md`](JOHNNY-REPLIT-CHECKLIST.md). It contains the exact upload, production connection, custom-domain, testing, and Google/Bing sitemap submission checkboxes required for launch.
+
+## Run locally or in Replit
+
+```bash
+npm start
 ```
-handoff/
-├── index.html                                    ← Home (+ built-in sample report view at #report)
-├── README.md                                     ← this file (don't deploy; harmless if you do)
+
+The server uses `PORT` when Replit supplies it and defaults to port `3000` locally.
+
+## Site map
+
+```text
+/
+├── index.html                         Home
+├── private-research/index.html        Hidden/noindex research draft
+├── evidence/index.html                Evidence and methodology
+├── who-we-are/index.html              Who We Are
+├── start-here/index.html              Hidden/noindex assessment fallback
+├── schedule/index.html                On-site Calendly booking page
 └── resources/
-    ├── index.html                                ← "The Lab" — episode hub (nav label: The Lab)
-    ├── am-i-ready-to-leave-my-firm.html          ← Episode post (July 6)
-    ├── retention-offer-after-acquisition.html    ← Episode post (July 7)
-    └── forgivable-note-clawback.html             ← Episode post (July 8) ← newest / featured
+    ├── index.html                     Resource hub
+    ├── articles/index.html            Article directory
+    ├── podcast/
+    │   ├── index.html                 Podcast directory
+    │   ├── am-i-ready-to-leave-my-firm.html
+    │   ├── retention-offer-after-acquisition.html
+    │   └── forgivable-note-clawback.html
+    ├── am-i-ready-to-leave-my-firm.html
+    ├── retention-offer-after-acquisition.html
+    └── forgivable-note-clawback.html
 ```
 
-All links between pages are relative — the folder works at the domain root or in a subfolder.
+Every internal route is relative, so the folder can be served at a domain root or previewed locally.
 
-## Plugging in the real assessment (one line per file)
+## Required production connections
 
-Every page has this near the top of its `<script>` block:
+Search for `data-verify` before launch. Three external connections are intentionally pending, along with approved team content and privacy copy:
 
-```js
-var ASSESSMENT_URL = '';
+- `calendly-embed-url`: in `schedule/index.html`, replace `https://calendly.com/YOUR_LINK` with the production Calendly event URL. The page loads Calendly's supported inline widget only when a real URL is present. The assessment's “yes” path and every booking CTA already route to this on-site scheduling page.
+- `lead-form-endpoint`: replace the research follow-up form's `action="#"` with the production GHL, CRM, or form-handler endpoint. The research path submits first name, email, all six assessment answers, and a tailored `redirect_url`. The production handler should preserve or redirect to that URL after capture. With `action="#"`, the static preview redirects locally without transmitting personal information.
+- `newsletter-endpoint`: replace the daily briefing form's `action="#"` with the production email-platform or GHL endpoint. With `action="#"`, the static preview shows the confirmation state without transmitting the email address.
+
+Johnny's checklist breaks these into five numbered production items and includes test criteria for each one.
+
+The resource directory links, assessment route, article directory, podcast directory, and site navigation are already connected internally.
+
+## Link verification
+
+```bash
+npm run check
 ```
 
-Paste the live assessment link (GHL form/quiz URL) between the quotes, in **all 5 files**.
-Every "Start the assessment" / "See where you stand" button then routes there.
-While it's empty, those buttons show the built-in sample report instead — nothing is broken.
+This checks every local `href` and `src`, including URL fragments, then validates the public sitemap, canonical URLs, index directives, titles, descriptions, social metadata, JSON-LD, source sections, RSS discovery, and reciprocal article/podcast links.
 
-## The two things waiting on Chris (both are one-line edits)
+The repeatable publishing requirements are documented in `SEO-GEO-PUBLISHING.md`.
 
-1. **Booking URL** — every "Book a private call" button that isn't wired yet is marked:
-   `href="#" data-verify="booking-url"`
-   Search each file for `data-verify="booking-url"` and replace `#` with the real
-   Calendly/SavvyCal/GHL link (keep or drop the data-verify attribute — once the real URL
-   is in, drop it). Files affected: `index.html` (guide card) + all 3 episode posts
-   (end-of-post secondary CTA).
-2. **Subscribe endpoint** — the hub's "Get the daily briefing" button is marked:
-   `href="#" data-verify="subscribe-endpoint"` in `resources/index.html`.
-   Point it at the GHL form/landing URL when Chris supplies it.
+## Content notes
 
-Until those land, the buttons are visibly styled but intentionally inert — that's the
-factory's no-dead-CTA discipline (a declared pending endpoint, not a bug).
-
-## How to add a new episode (≈10 minutes, no design skills)
-
-1. **Copy** the newest post file (e.g. `forgivable-note-clawback.html`) →
-   `resources/<new-keyword-slug>.html`. The slug IS the search phrase
-   ("why-advisors-leave-wirehouses"), never an episode number.
-2. **Edit the head:** `<title>`, `<meta name="description">`, `<link rel="canonical">`,
-   the three `og:` tags, and the JSON-LD block (headline, description, datePublished, url).
-3. **Edit the hero:** breadcrumb short name, kicker category, H1, dek, `<time>` date.
-4. **Replace the article body** (`<article class="article">` → inside `.prose`):
-   H2s are the literal questions advisors type; keep the mid-post assessment CTA
-   (`.midcta`) after the biggest insight; keep the end conversion block untouched.
-5. **Update the related-briefings cards** at the bottom (link the 2 most relevant siblings).
-6. **Surface it** in three places:
-   - `resources/index.html`: update the featured card to the new post AND add a row to
-     the "All briefings" list (newest first).
-   - `index.html` home "The Lab" section: add the new card, remove the oldest (keep 3).
-   - Add the new post as a "related briefing" on 1–2 older sibling posts.
-7. **Compliance checklist per post** (non-negotiable): every dollar/percent figure is a
-   labeled illustrative range ("illustrative, not an offer, estimate, or guarantee");
-   movement stats name their public source (SEC/FINRA/BrokerCheck, or the named study);
-   no invented advisor stories or testimonials; unknown fact = ask Chris, don't guess.
-
-When audio ships: replace the "Audio edition coming soon" line with the player embed and
-add a `PodcastEpisode` object to the post's JSON-LD.
-
-## What's already true on every page
-
-- Conversion: every page routes to the assessment (`index.html#report` = the sample
-  report experience for now) and the private call. Don't add CTAs that go anywhere else.
-- The Axiom disclosure lives in every footer — never remove it.
-- Design system is locked (`projects/agl/v9/DESIGN_SYSTEM.md` in the factory repo):
-  indigo #4338CA accent, Schibsted Grotesk + Newsreader italic, 10px-radius buttons.
-  Copy edits are welcome; restyling is not.
-
-## QA before deploy (optional but recommended)
-
-From the factory repo: `node qa/run-pipeline.js <page.html> --critic-doc projects/agl/v9/DESIGN_SYSTEM.md`
-— all five pages shipped PASS through that gauntlet on 2026-07-08.
+- The first three podcast entries have dedicated episode pages with transcripts, related reading, and a floating conversion rail. Add production audio to those pages when it is ready.
+- The remaining podcast topics are marked as planned on the podcast directory and should be linked to their final episode pages when published.
+- Private Research and Start Here are retained as noindex fallback routes, but are hidden from public navigation and the sitemap.
+- The Who We Are portraits are intentionally marked placeholders. Replace them with approved photos of Chris and Johnny before launch.
+- Keep the disclosure in every footer.
+- Figures and projections must remain sourced and clearly labeled as illustrative where applicable.
