@@ -243,6 +243,26 @@ h2.h-sec .serif-i{color:var(--acc)}
 .foot__disc{font-size:12.5px;color:var(--muted);max-width:100ch;line-height:1.6}
 .foot__disc b{color:var(--body);font-weight:620}
 .foot__meta{font-size:12px;color:var(--muted)}
+/* short video collection */
+.short-videos{overflow:hidden;padding:92px 0 88px;background:#F1ECE3;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.short-videos__head{display:grid;grid-template-columns:.72fr 1.28fr;gap:72px;align-items:end}
+.short-videos__head h2{max-width:12ch;margin:14px 0 0;font-size:clamp(34px,4.5vw,56px);font-weight:660;line-height:1.02;letter-spacing:-.045em;text-wrap:balance}
+.short-videos__head p{max-width:57ch;margin:0;color:var(--body);font-size:17px;line-height:1.62}
+.short-videos__rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(245px,1fr);gap:14px;margin-top:44px;padding-bottom:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin}
+.sv-card{position:relative;min-height:470px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;padding:22px;color:#F4F5FC;background:#111735;border-radius:5px;scroll-snap-align:start;isolation:isolate}
+.sv-card::before{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(148deg,rgba(67,56,202,.82),transparent 56%),repeating-linear-gradient(132deg,transparent 0 36px,rgba(165,180,252,.13) 37px 38px),#111735}
+.sv-card:nth-child(2)::before{background:radial-gradient(circle at 70% 25%,rgba(242,199,130,.6),transparent 13%),linear-gradient(155deg,transparent 30%,rgba(67,56,202,.58)),#0B0F28}
+.sv-card:nth-child(3)::before{background:linear-gradient(90deg,transparent 50%,rgba(165,180,252,.11) 50%),linear-gradient(0deg,transparent 50%,rgba(165,180,252,.08) 50%),#171E48;background-size:54px 54px}
+.sv-card:nth-child(4)::before{background:repeating-linear-gradient(45deg,transparent 0 44px,rgba(195,204,255,.12) 45px 46px),linear-gradient(150deg,rgba(67,56,202,.68),transparent 60%),#0B0F28}
+.sv-card:nth-child(5)::before{background:radial-gradient(circle at 50% 32%,rgba(165,180,252,.3),transparent 26%),repeating-linear-gradient(90deg,transparent 0 48px,rgba(242,199,130,.12) 49px 50px),#111735}
+.sv-card::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(8,11,31,.98),transparent 65%)}
+.sv-card__top{display:flex;justify-content:space-between;gap:14px;color:rgba(244,245,252,.7);font-size:10.5px;font-weight:720;letter-spacing:.08em;text-transform:uppercase}
+.sv-card__play{width:62px;height:62px;display:grid;place-items:center;margin:auto;border:1px solid rgba(244,245,252,.56);border-radius:50%;color:#111735;background:rgba(244,245,252,.94);box-shadow:0 18px 44px -18px rgba(0,0,0,.75)}
+.sv-card__play::before{content:"";width:0;height:0;margin-left:4px;border-top:7px solid transparent;border-bottom:7px solid transparent;border-left:12px solid currentColor}
+.sv-card__topic{color:var(--peri-2);font-size:10px;font-weight:760;letter-spacing:.1em;text-transform:uppercase}
+.sv-card h3{max-width:16ch;margin:11px 0 0;font-size:clamp(22px,2vw,28px);font-weight:650;line-height:1.08;letter-spacing:-.03em;text-wrap:balance}
+.sv-card__action{display:block;margin-top:16px;color:rgba(244,245,252,.62);font-size:11.5px}
+.short-videos__note{margin:18px 0 0;color:var(--muted);font-size:12px}
 /* responsive */
 @media (max-width:900px){
   .navlinks,.nav .btn{display:none}
@@ -250,6 +270,7 @@ h2.h-sec .serif-i{color:var(--acc)}
   .relgrid,.podcast__grid,.training__grid{grid-template-columns:1fr;gap:36px}
   .podcast__intro{position:relative;top:auto}
   .hits--podcast .hits__grid{grid-template-columns:repeat(3,1fr)}
+  .short-videos__head{grid-template-columns:1fr;gap:22px;align-items:start}
 }
 @media (max-width:620px){
   .wrap,.narrow,.nav__in{padding-left:20px;padding-right:20px}
@@ -267,6 +288,9 @@ h2.h-sec .serif-i{color:var(--acc)}
   .bhero__cta{flex-direction:column;align-items:stretch}
   .bhero__cta .btn{width:100%}
   .convo__cta{flex-direction:column;align-items:center}
+  .short-videos{padding:68px 0 62px}
+  .short-videos__rail{grid-auto-columns:min(78vw,300px);margin-top:34px}
+  .sv-card{min-height:500px}
 }
 
 </style>
@@ -310,6 +334,46 @@ h2.h-sec .serif-i{color:var(--acc)}
       <p>Forgivable notes look like a bonus until you model leaving early. The clawback math in plain, illustrative numbers &mdash; before you sign a 7-year term.</p>
       <div class="fcard__meta"><span class="fcard__date num"><time datetime="2026-07-08">July 8, 2026</time></span><span class="fcard__go">Read the briefing <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
     </a>
+  </div>
+</section>
+<!-- SHORT VIDEOS -->
+<section class="short-videos" id="short-videos">
+  <div class="wrap">
+    <div class="short-videos__head">
+      <div class="io">
+        <span class="eyebrow">Short video briefings</span>
+        <h2>One useful idea at a time.</h2>
+      </div>
+      <p class="io" style="--d:.08s">Direct explanations from Chris and Johnny about business-model fit, modern advisor marketing, operating systems, transition economics, and the evidence behind advisor movement. Each finished video will include captions and a searchable transcript.</p>
+    </div>
+    <div class="short-videos__rail" aria-label="Short video briefing previews">
+      <article class="sv-card io">
+        <div class="sv-card__top"><span>01 · Chris</span><span>00:48</span></div>
+        <span class="sv-card__play" aria-hidden="true"></span>
+        <div><span class="sv-card__topic">Business-model fit</span><h3>The firm is not the starting point.</h3><span class="sv-card__action">Video poster preview</span></div>
+      </article>
+      <article class="sv-card io" style="--d:.05s">
+        <div class="sv-card__top"><span>02 · Chris</span><span>00:42</span></div>
+        <span class="sv-card__play" aria-hidden="true"></span>
+        <div><span class="sv-card__topic">Marketing systems</span><h3>A platform is not a marketing system.</h3><span class="sv-card__action">Video poster preview</span></div>
+      </article>
+      <article class="sv-card io" style="--d:.10s">
+        <div class="sv-card__top"><span>03 · Chris</span><span>00:55</span></div>
+        <span class="sv-card__play" aria-hidden="true"></span>
+        <div><span class="sv-card__topic">Transition economics</span><h3>A strong package can still be the wrong move.</h3><span class="sv-card__action">Video poster preview</span></div>
+      </article>
+      <article class="sv-card io" style="--d:.15s">
+        <div class="sv-card__top"><span>04 · Johnny</span><span>00:51</span></div>
+        <span class="sv-card__play" aria-hidden="true"></span>
+        <div><span class="sv-card__topic">Operating model</span><h3>Growth needs a system that can carry it.</h3><span class="sv-card__action">Video poster preview</span></div>
+      </article>
+      <article class="sv-card io" style="--d:.20s">
+        <div class="sv-card__top"><span>05 · AGL</span><span>00:46</span></div>
+        <span class="sv-card__play" aria-hidden="true"></span>
+        <div><span class="sv-card__topic">Advisor movement</span><h3>What the movement data can and cannot tell you.</h3><span class="sv-card__action">Video poster preview</span></div>
+      </article>
+    </div>
+    <p class="short-videos__note">Design preview. The actual video files and transcripts will replace these posters after recording.</p>
   </div>
 </section>
 <!-- ARTICLES -->
