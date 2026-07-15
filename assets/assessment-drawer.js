@@ -30,8 +30,8 @@
       options: ["Under $100 million", "$100 million to $250 million", "$250 million to $500 million", "More than $500 million"]
     },
     {
-      title: "Would you like to find out more about what it could look like to get your transition process started?",
-      options: ["Yes, I'd like to explore next steps", "Not yet, send me relevant research"]
+      title: "Would you like to speak with someone about your transition options?",
+      options: ["Yes, I'd like to speak with someone", "I'm not ready to talk yet"]
     }
   ];
 
@@ -141,16 +141,37 @@
 
   function render() {
     var item = questions[index];
+    var isDecision = index === questions.length - 1;
     current.textContent = String(index + 1);
     bar.style.width = (((index + 1) / questions.length) * 100) + "%";
     question.textContent = item.title;
     back.hidden = index === 0;
     options.innerHTML = "";
+    options.classList.toggle("is-decision", isDecision);
     item.options.forEach(function (label) {
       var button = document.createElement("button");
       button.type = "button";
       button.className = "agl-assess-drawer__option";
-      button.textContent = label;
+      if (isDecision) {
+        var isConversation = label.indexOf("Yes,") === 0;
+        button.classList.add(isConversation ? "agl-assess-drawer__option--conversation" : "agl-assess-drawer__option--research");
+        if (isConversation) {
+          var flag = document.createElement("span");
+          flag.className = "agl-assess-drawer__option-kicker";
+          flag.textContent = "Recommended next step";
+          button.appendChild(flag);
+        }
+        var copy = document.createElement("strong");
+        copy.className = "agl-assess-drawer__option-copy";
+        copy.textContent = label;
+        button.appendChild(copy);
+        var detail = document.createElement("span");
+        detail.className = "agl-assess-drawer__option-detail";
+        detail.textContent = isConversation ? "Choose a time for a private, no-pressure conversation." : "Send me relevant research instead.";
+        button.appendChild(detail);
+      } else {
+        button.textContent = label;
+      }
       if (answers[index] === label) button.classList.add("is-selected");
       button.addEventListener("click", function () {
         answers[index] = label;
