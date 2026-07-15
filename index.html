@@ -1200,8 +1200,15 @@ h3 {
 .thinking-videos__copy p + p { margin-top: 18px; }
 .vertical-video-rail {
   display: grid;
-  grid-template-columns: 1.06fr .97fr .97fr;
+  grid-auto-flow: column;
+  grid-auto-columns: clamp(310px, 31vw, 390px);
   gap: 20px;
+  padding-bottom: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-inline: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(67,56,202,.42) rgba(15,23,42,.08);
 }
 .vertical-video {
   position: relative;
@@ -1214,6 +1221,7 @@ h3 {
   color: #F7F8FF;
   background: var(--deep-2);
   border-radius: 6px;
+  scroll-snap-align: start;
   isolation: isolate;
 }
 .vertical-video:first-child { min-height: 620px; }
@@ -1239,6 +1247,18 @@ h3 {
     linear-gradient(0deg, transparent 50%, rgba(165,180,252,.08) 50%),
     var(--deep-2);
   background-size: 64px 64px;
+}
+.vertical-video:nth-child(4)::before {
+  background:
+    repeating-linear-gradient(45deg, transparent 0 46px, rgba(195,204,255,.12) 47px 48px),
+    linear-gradient(150deg, rgba(67,56,202,.7), transparent 61%),
+    var(--deep-1);
+}
+.vertical-video:nth-child(5)::before {
+  background:
+    radial-gradient(circle at 50% 31%, rgba(165,180,252,.28), transparent 25%),
+    repeating-linear-gradient(90deg, transparent 0 52px, rgba(242,199,130,.12) 53px 54px),
+    var(--deep-2);
 }
 .vertical-video::after {
   content: "";
@@ -1309,7 +1329,21 @@ h3 {
 }
 .vertical-video__link::after { content: "→"; transition: transform .25s var(--ease); }
 .vertical-video__link:hover::after { transform: translateX(4px); }
-.thinking-videos__note { margin: 22px 0 0; color: var(--muted); font-size: 12px; }
+.thinking-videos__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  margin-top: 18px;
+}
+.thinking-videos__note { margin: 0; color: var(--muted); font-size: 12px; }
+.thinking-videos__scroll {
+  flex: none;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 750;
+}
+.thinking-videos__scroll span { display: inline-block; margin-left: 8px; }
 
 @media (prefers-reduced-motion: no-preference) {
   .hero__sunrise { animation: sunriseLight 14s var(--ease) forwards; }
@@ -1395,19 +1429,10 @@ h3 {
   .mistakes-grid { grid-template-columns: 1fr 1fr; }
   .lab-head { display: block; }
   .thinking-videos__head { grid-template-columns: 1fr; }
-  .vertical-video-rail {
-    width: max-content;
-    display: flex;
-  }
+  .vertical-video-rail { grid-auto-columns: min(72vw, 390px); }
   .vertical-video,
   .vertical-video:first-child {
-    width: min(72vw, 390px);
     min-height: 570px;
-  }
-  .thinking-videos .wrap {
-    overflow-x: auto;
-    padding-bottom: 14px;
-    scrollbar-width: thin;
   }
 }
 
@@ -1463,7 +1488,9 @@ h3 {
   .decision-path__grid { grid-template-columns: repeat(5, 1fr); }
   .decision-path__step { min-height: 116px; padding: 22px 16px; }
   .vertical-video,
-  .vertical-video:first-child { width: 78vw; min-height: 520px; }
+  .vertical-video:first-child { min-height: 520px; }
+  .vertical-video-rail { grid-auto-columns: 78vw; }
+  .thinking-videos__footer { align-items: flex-start; flex-direction: column; gap: 10px; }
 }
 </style>
 <link rel="stylesheet" href="assets/lead-capture.css">
@@ -1705,8 +1732,31 @@ h3 {
             <a class="vertical-video__link" href="resources/index.html#short-videos">See the video collection</a>
           </div>
         </article>
+        <article class="vertical-video io" style="--delay: 220ms">
+          <div class="vertical-video__top"><span class="vertical-video__num">04 · CHRIS</span><span class="vertical-video__time">00:55</span></div>
+          <span class="vertical-video__play" aria-hidden="true"></span>
+          <div>
+            <span class="vertical-video__label">Transition economics</span>
+            <h3>A strong package can still be the wrong move.</h3>
+            <p>The headline number matters. The long-term model, restrictions, costs, and control matter more.</p>
+            <a class="vertical-video__link" href="resources/index.html#short-videos">See the video collection</a>
+          </div>
+        </article>
+        <article class="vertical-video io" style="--delay: 280ms">
+          <div class="vertical-video__top"><span class="vertical-video__num">05 · AGL</span><span class="vertical-video__time">00:46</span></div>
+          <span class="vertical-video__play" aria-hidden="true"></span>
+          <div>
+            <span class="vertical-video__label">Advisor movement</span>
+            <h3>What the data can and cannot tell you.</h3>
+            <p>Movement data reveals patterns and better questions. It cannot decide which model fits your practice.</p>
+            <a class="vertical-video__link" href="resources/index.html#short-videos">See the video collection</a>
+          </div>
+        </article>
       </div>
-      <p class="thinking-videos__note">Preview treatment. Final videos will be click-to-play with captions, transcripts, and no autoplay audio.</p>
+      <div class="thinking-videos__footer">
+        <p class="thinking-videos__note">Preview treatment. Final videos will be click-to-play with captions, transcripts, and no autoplay audio.</p>
+        <span class="thinking-videos__scroll" aria-hidden="true">Scroll for more <span>→</span></span>
+      </div>
     </div>
   </section>
 
