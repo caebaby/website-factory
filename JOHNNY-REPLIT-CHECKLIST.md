@@ -8,10 +8,10 @@ Complete the unchecked items below in Replit before pointing the public domain a
 
 - [ ] Open the [Replit-ready GitHub branch](https://github.com/caebaby/website-factory/tree/agl-replit-handoff) or [download its ZIP archive](https://github.com/caebaby/website-factory/archive/refs/heads/agl-replit-handoff.zip). The repository is private, so Chris must either add you as a GitHub collaborator or download the ZIP and send it to you.
 - [ ] Open the [approved browser reference](https://advisor-growth-lab-reference.caebaby.chatgpt.site) in a second window. Use it to compare layout, copy, interactions, and responsive behavior while configuring Replit. This reference is intentionally excluded from search indexing and is not the production domain.
-- [ ] Unzip it, then upload the **contents of the handoff folder** into the root of a new Replit App. The root must contain `.replit`, `package.json`, `server.js`, and `index.html`—do not place them inside another folder.
-- [ ] In Replit, click **Run**. Replit should use `npm start`; no build command or dependency installation is required.
+- [ ] Unzip it, then upload the **contents of the handoff folder** into the root of a new Replit App. The root must contain `.replit`, `index.html`, `assets/`, and the page folders—do not place them inside another folder.
+- [ ] In Replit, click **Run**. The included `.replit` file serves the site directly with Python, just like the Longview handoff. There is no build command, dependency installation, framework, or application server.
 - [ ] Open the preview and confirm the homepage, `/resources/`, `/resources/articles/`, `/resources/podcast/`, `/who-we-are/`, `/evidence/`, and `/schedule/` all load.
-- [ ] In the Replit Shell, run `npm run check`. Do not publish until both the link check and SEO/GEO check pass.
+- [ ] Optionally run `npm run check` in the Replit Shell before publishing. This validates the links and SEO/GEO files but does not build or change the site.
 
 Official reference: [Import a project into Replit](https://docs.replit.com/build/import-from-providers).
 
@@ -64,13 +64,13 @@ Recommended portrait export: 1200 × 1500 pixels, WebP, ideally below 250 KB eac
 
 ## 3. Publish on the canonical domain
 
-The site is configured around one canonical origin: `https://advisorgrowthlab.com` (no `www`). The server redirects `www.advisorgrowthlab.com` to that origin and prevents Replit preview domains from being indexed.
+The site is configured around one canonical origin: `https://advisorgrowthlab.com` (no `www`). Its canonical tags, index directives, structured data, sitemap, RSS feed, source sections, and internal links remain part of the static files and do not depend on a Node server.
 
-- [ ] Publish the Replit App.
+- [ ] In Replit's Publishing tool, choose **Static** deployment, set the public directory to `.`, and leave the build command blank. Then publish the Replit App.
 - [ ] In Replit's Publishing tool, connect `advisorgrowthlab.com` as the custom domain and apply the DNS records Replit provides.
-- [ ] If `www.advisorgrowthlab.com` is also connected, confirm it redirects to `https://advisorgrowthlab.com`.
+- [ ] If `www.advisorgrowthlab.com` is also connected, configure the domain or DNS provider to redirect it to `https://advisorgrowthlab.com` and confirm the redirect works.
 - [ ] Confirm HTTPS works without a certificate warning.
-- [ ] Keep the `.replit.app` preview URL out of marketing and do not submit it to search engines.
+- [ ] Keep the `.replit.app` preview URL private and out of marketing. Do not submit it to search engines; use the approved browser reference for external design review until the canonical domain is connected.
 
 Official reference: [Connect a custom domain in Replit](https://docs.replit.com/features/publishing/custom-domains).
 
