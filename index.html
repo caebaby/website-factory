@@ -786,7 +786,7 @@ h3 {
   scroll-margin-top: 72px;
   border-top: 1px solid rgba(17,23,53,.13);
   border-bottom: 1px solid rgba(17,23,53,.13);
-  background: #F4F4F7;
+  background: #F1ECE3;
 }
 #assessment::before {
   content: "";
@@ -794,11 +794,11 @@ h3 {
   z-index: 0;
   inset: 0;
   pointer-events: none;
-  opacity: .65;
+  opacity: .72;
   background-image:
-    linear-gradient(rgba(17,23,53,.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(17,23,53,.055) 1px, transparent 1px),
-    linear-gradient(135deg, transparent 49.6%, rgba(67,56,202,.08) 50%, transparent 50.4%);
+    linear-gradient(rgba(17,23,53,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(17,23,53,.06) 1px, transparent 1px),
+    linear-gradient(135deg, transparent 49.6%, rgba(67,56,202,.1) 50%, transparent 50.4%);
   background-size: 42px 42px, 42px 42px, 126px 126px;
   mask-image: linear-gradient(110deg, #000 0%, rgba(0,0,0,.64) 46%, transparent 84%);
 }
@@ -807,13 +807,46 @@ h3 {
 .assessment-intro h2 { font-size: clamp(38px, 5vw, 64px); }
 .assessment-intro .lede { margin-top: 20px; }
 .assessment-card {
+  position: relative;
   margin-top: 42px;
-  padding: clamp(26px, 4vw, 48px);
-  border: 2px solid rgba(67,56,202,.38);
-  border-radius: 10px;
-  background: rgba(248,250,255,.95);
-  box-shadow: 0 30px 70px -52px rgba(17,23,53,.9), 0 0 0 7px rgba(67,56,202,.045);
+  padding: 0;
+  overflow: hidden;
+  border: 2px solid rgba(67,56,202,.64);
+  border-radius: 7px;
+  background: #F8FAFF;
+  box-shadow: 12px 14px 0 rgba(67,56,202,.09), 0 32px 76px -48px rgba(17,23,53,.76);
 }
+.assessment-card__signal {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  min-height: 58px;
+  padding: 15px clamp(22px, 3vw, 34px);
+  border-bottom: 1px solid rgba(67,56,202,.18);
+  color: var(--muted);
+  background: rgba(67,56,202,.065);
+  font-size: 11px;
+  font-weight: 780;
+  letter-spacing: .075em;
+  text-transform: uppercase;
+}
+.assessment-card__private {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-right: auto;
+  color: var(--ink);
+}
+.assessment-card__private::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 5px rgba(67,56,202,.1);
+}
+#readinessAssessment { padding: clamp(28px, 4vw, 48px); }
 .assessment-progress {
   display: flex;
   align-items: center;
@@ -1477,6 +1510,10 @@ h3 {
     box-shadow: none;
   }
   .assessment-actions [data-assessment-back]::after { display: none; }
+  .assessment-card { box-shadow: 7px 9px 0 rgba(67,56,202,.09), 0 26px 58px -44px rgba(17,23,53,.72); }
+  .assessment-card__signal { align-items: flex-start; gap: 8px 18px; flex-wrap: wrap; }
+  .assessment-card__private { width: 100%; margin: 0 0 3px; }
+  #readinessAssessment { padding: 26px 20px 30px; }
   .assessment-panel--decision .assessment-option span { padding: 17px 18px; }
   .assessment-panel--decision .assessment-option--conversation span { min-height: 112px; }
   .research-card { grid-template-columns: 42px minmax(0, 1fr); gap: 14px; }
@@ -1822,10 +1859,14 @@ h3 {
         <div class="kicker">06 · START HERE</div>
         <h2>Start with what is making you consider a <span class="accent-word">change.</span></h2>
         <p class="lede">Answer six short questions about your practice, your timing, and what you want next. Your final answer determines what happens next.</p>
-        <span class="trust-note">About three minutes. Your answers are not sent to your firm.</span>
       </div>
 
       <div class="assessment-card io" style="--delay: 100ms">
+        <div class="assessment-card__signal" aria-label="Questionnaire privacy and length">
+          <span class="assessment-card__private">Private. Nothing is sent to your firm.</span>
+          <span>6 questions</span>
+          <span>About 3 minutes</span>
+        </div>
         <div id="readinessAssessment">
           <div class="assessment-flow">
             <div class="assessment-progress" aria-live="polite">
