@@ -17,12 +17,14 @@
 .stage-step strong{font-size:clamp(14px,1.35vw,17px);font-weight:750;line-height:1.15;letter-spacing:-.02em}
 .stage-step small{max-width:17ch;color:#5c6175;font-size:10.5px;line-height:1.35}
 .stage-step[aria-pressed="true"] small{color:rgba(246,246,251,.72)}
+.stage-attribution{margin:12px 0 18px;color:#72768a;text-align:right;font-size:10.5px;line-height:1.45}
 .stage-readout{margin-inline:calc(50% - 50vw);padding-inline:calc(50vw - 50%);background:#111735;color:#f3f4fa}
 .stage-guidance{min-height:300px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(300px,.95fr);gap:clamp(44px,8vw,104px);align-items:center;padding:clamp(44px,6vw,72px) 0}
 .stage-guidance[hidden]{display:none}
 .stage-guidance__route{display:block;color:#a5b4fc;font-size:10.5px;font-weight:800;letter-spacing:.11em;text-transform:uppercase}
 .stage-guidance h3{max-width:17ch;margin:13px 0 0;font-size:clamp(30px,4.2vw,52px);line-height:1.02;letter-spacing:-.045em;text-wrap:balance}
 .stage-guidance>p{max-width:49ch;margin:0;color:rgba(228,230,241,.7);font-size:15px;line-height:1.65}
+.stage-guidance__definition{max-width:59ch;margin:17px 0 0;color:rgba(228,230,241,.68);font-size:14.5px;line-height:1.62}
 .stage-guidance__milestone{max-width:58ch;margin:18px 0 0;color:rgba(228,230,241,.72);font-size:14px;line-height:1.6}
 .stage-guidance__milestone strong{color:#f2c782}
 .stage-guidance__label{display:block;margin-bottom:14px;color:#a5b4fc;font-size:10.5px;font-weight:800;letter-spacing:.11em;text-transform:uppercase}
@@ -49,4 +51,4 @@
 .calendly-placeholder h3{margin:0;color:#111735;font-size:25px;letter-spacing:-.025em}.calendly-placeholder p{margin:12px 0 0;color:#555a70;font-size:15px;line-height:1.55}
 .schedule-note{max-width:72ch;margin:24px auto 0;color:#72768a;font-size:12px;line-height:1.55;text-align:center}
 @media(max-width:980px){.growth-journey__head,.stage-guidance,.schedule-layout{grid-template-columns:1fr}.growth-journey__head{align-items:start}.stage-track{grid-template-columns:repeat(6,170px);overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;scrollbar-width:thin}.stage-step{scroll-snap-align:start}.stage-guidance{gap:34px}.schedule-context{position:relative;top:auto}.schedule-context h2{max-width:16ch}.schedule-context>p{max-width:58ch}}
-@media(max-width:620px){.growth-journey{padding-top:64px}.growth-journey__head{gap:24px}.growth-journey__head p{font-size:16px}.stage-track{min-height:226px;margin-top:38px;grid-template-columns:repeat(6,156px)}.stage-step{height:calc(108px + var(--stage) * 17px);padding:15px 13px}.stage-guidance{min-height:0;padding:44px 0 50px}.schedule-section{padding:48px 0}.schedule-calendar{margin-inline:-10px}.schedule-calendar__top{align-items:flex-start;flex-direction:column;gap:5px}.calendly-host{min-height:700px}.calendly-placeholder{padding:28px 20px}}
+@media(max-width:620px){.growth-journey{padding-top:64px}.growth-journey__head{gap:24px}.growth-journey__head p{font-size:16px}.stage-track{min-height:226px;margin-top:38px;grid-template-columns:repeat(6,156px)}.stage-step{height:calc(108px + var(--stage) * 17px);padding:15px 13px}.stage-attribution{text-align:left}.stage-guidance{min-height:0;padding:44px 0 50px}.schedule-section{padding:48px 0}.schedule-calendar{margin-inline:-10px}.schedule-calendar__top{align-items:flex-start;flex-direction:column;gap:5px}.calendly-host{min-height:700px}.calendly-placeholder{padding:28px 20px}}
