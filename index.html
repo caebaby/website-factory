@@ -1133,6 +1133,184 @@ h3 {
 
 .io { opacity: 1; }
 
+.decision-path {
+  overflow-x: auto;
+  border-bottom: 1px solid rgba(15,23,42,.14);
+  background: #F1ECE3;
+  scrollbar-width: thin;
+}
+.decision-path__grid {
+  min-width: 880px;
+  display: grid;
+  grid-template-columns: .9fr repeat(5, 1fr);
+}
+.decision-path__intro,
+.decision-path__step {
+  min-height: 132px;
+  padding: 26px 22px;
+  border-right: 1px solid rgba(15,23,42,.14);
+}
+.decision-path__intro {
+  display: flex;
+  align-items: flex-end;
+  padding-left: 0;
+  color: var(--body);
+  font-size: 13px;
+}
+.decision-path__step {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+}
+.decision-path__step:last-child { border-right: 0; }
+.decision-path__step span {
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .1em;
+}
+.decision-path__step strong {
+  font-size: clamp(14px, 1.5vw, 17px);
+  line-height: 1.2;
+  letter-spacing: -.018em;
+}
+.thinking-videos {
+  overflow: hidden;
+  background: var(--paper);
+}
+.thinking-videos__head {
+  display: grid;
+  grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr);
+  gap: clamp(42px, 9vw, 120px);
+  align-items: start;
+  margin-bottom: 58px;
+}
+.thinking-videos__head h2 {
+  max-width: 12ch;
+  margin: 0;
+}
+.thinking-videos__copy {
+  max-width: 59ch;
+  padding-top: 8px;
+  color: var(--body);
+  font-size: 18px;
+}
+.thinking-videos__copy p { margin: 0; }
+.thinking-videos__copy p + p { margin-top: 18px; }
+.vertical-video-rail {
+  display: grid;
+  grid-template-columns: 1.06fr .97fr .97fr;
+  gap: 20px;
+}
+.vertical-video {
+  position: relative;
+  min-height: 570px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: 26px;
+  color: #F7F8FF;
+  background: var(--deep-2);
+  border-radius: 6px;
+  isolation: isolate;
+}
+.vertical-video:first-child { min-height: 620px; }
+.vertical-video::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(150deg, rgba(67,56,202,.84), transparent 56%),
+    repeating-linear-gradient(132deg, transparent 0 39px, rgba(165,180,252,.13) 40px 41px),
+    var(--deep-2);
+}
+.vertical-video:nth-child(2)::before {
+  background:
+    radial-gradient(circle at 68% 28%, rgba(242,199,130,.58), transparent 14%),
+    linear-gradient(155deg, transparent 28%, rgba(67,56,202,.55)),
+    var(--deep-1);
+}
+.vertical-video:nth-child(3)::before {
+  background:
+    linear-gradient(90deg, transparent 50%, rgba(165,180,252,.11) 50%),
+    linear-gradient(0deg, transparent 50%, rgba(165,180,252,.08) 50%),
+    var(--deep-2);
+  background-size: 64px 64px;
+}
+.vertical-video::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(0deg, rgba(11,15,40,.98), transparent 64%);
+}
+.vertical-video__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 11px;
+}
+.vertical-video__num { font-weight: 800; letter-spacing: .12em; }
+.vertical-video__time { color: rgba(247,248,255,.68); }
+.vertical-video__play {
+  width: 70px;
+  height: 70px;
+  display: grid;
+  place-items: center;
+  margin: auto;
+  border: 1px solid rgba(247,248,255,.58);
+  border-radius: 50%;
+  color: var(--ink);
+  background: rgba(247,248,255,.93);
+  box-shadow: 0 18px 50px rgba(11,15,40,.48);
+}
+.vertical-video__play::before {
+  content: "";
+  width: 0;
+  height: 0;
+  margin-left: 4px;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 13px solid currentColor;
+}
+.vertical-video__label {
+  color: var(--periwinkle-2);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+.vertical-video h3 {
+  max-width: 16ch;
+  margin: 13px 0 0;
+  color: #F7F8FF;
+  font-size: clamp(26px, 2.6vw, 38px);
+  line-height: 1.02;
+  letter-spacing: -.04em;
+}
+.vertical-video p {
+  max-width: 33ch;
+  margin: 14px 0 0;
+  color: rgba(247,248,255,.7);
+  font-size: 14px;
+}
+.vertical-video__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  color: var(--periwinkle-2);
+  font-size: 12px;
+  font-weight: 750;
+}
+.vertical-video__link::after { content: "→"; transition: transform .25s var(--ease); }
+.vertical-video__link:hover::after { transform: translateX(4px); }
+.thinking-videos__note { margin: 22px 0 0; color: var(--muted); font-size: 12px; }
+
 @media (prefers-reduced-motion: no-preference) {
   .hero__sunrise { animation: sunriseLight 14s var(--ease) forwards; }
   .hero__sunrise img:nth-child(1) { animation: sunriseBase 14s var(--ease) forwards; }
@@ -1216,6 +1394,21 @@ h3 {
   .post a { grid-column: 2; text-align: left; }
   .mistakes-grid { grid-template-columns: 1fr 1fr; }
   .lab-head { display: block; }
+  .thinking-videos__head { grid-template-columns: 1fr; }
+  .vertical-video-rail {
+    width: max-content;
+    display: flex;
+  }
+  .vertical-video,
+  .vertical-video:first-child {
+    width: min(72vw, 390px);
+    min-height: 570px;
+  }
+  .thinking-videos .wrap {
+    overflow-x: auto;
+    padding-bottom: 14px;
+    scrollbar-width: thin;
+  }
 }
 
 @media (max-width: 720px) {
@@ -1265,6 +1458,12 @@ h3 {
   .research-card p { grid-column: 1 / -1; }
   .post { grid-template-columns: 1fr; gap: 10px; }
   .post a { grid-column: 1; }
+  .decision-path__grid { min-width: 760px; }
+  .decision-path__intro { display: none; }
+  .decision-path__grid { grid-template-columns: repeat(5, 1fr); }
+  .decision-path__step { min-height: 116px; padding: 22px 16px; }
+  .vertical-video,
+  .vertical-video:first-child { width: 78vw; min-height: 520px; }
 }
 </style>
 <link rel="stylesheet" href="assets/lead-capture.css">
@@ -1352,6 +1551,17 @@ h3 {
 </div>
 
 <main>
+  <section class="decision-path" aria-label="Advisor Growth Lab decision framework">
+    <div class="wrap decision-path__grid">
+      <div class="decision-path__intro">The decision starts here</div>
+      <div class="decision-path__step"><span>01</span><strong>Current stage</strong></div>
+      <div class="decision-path__step"><span>02</span><strong>Goals</strong></div>
+      <div class="decision-path__step"><span>03</span><strong>Business model</strong></div>
+      <div class="decision-path__step"><span>04</span><strong>Growth levers</strong></div>
+      <div class="decision-path__step"><span>05</span><strong>Evidence</strong></div>
+    </div>
+  </section>
+
   <section class="section section--paper" id="research">
     <div class="wrap split">
       <div class="sticky-title io">
@@ -1448,6 +1658,55 @@ h3 {
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="section thinking-videos" id="how-we-think">
+    <div class="wrap">
+      <div class="thinking-videos__head">
+        <div class="io">
+          <div class="kicker">HOW WE THINK</div>
+          <h2>The business you want to build comes before the <span class="accent-word">firm you choose.</span></h2>
+        </div>
+        <div class="thinking-videos__copy io" style="--delay: 100ms">
+          <p>Short, candid explanations from Chris and Johnny about the questions that matter before an advisor chooses a firm or business model.</p>
+          <p>We look at transitions through growth strategy, operations, sales execution, marketing systems, and advisor-movement data.</p>
+        </div>
+      </div>
+
+      <div class="vertical-video-rail" aria-label="Short videos from Advisor Growth Lab">
+        <article class="vertical-video io">
+          <div class="vertical-video__top"><span class="vertical-video__num">01 · CHRIS</span><span class="vertical-video__time">00:48</span></div>
+          <span class="vertical-video__play" aria-hidden="true"></span>
+          <div>
+            <span class="vertical-video__label">Start here</span>
+            <h3>The firm is not the starting point.</h3>
+            <p>Start with the practice you want to build, then work backward to the model and resources that can support it.</p>
+            <a class="vertical-video__link" href="resources/index.html#short-videos">See the video collection</a>
+          </div>
+        </article>
+        <article class="vertical-video io" style="--delay: 80ms">
+          <div class="vertical-video__top"><span class="vertical-video__num">02 · CHRIS</span><span class="vertical-video__time">00:42</span></div>
+          <span class="vertical-video__play" aria-hidden="true"></span>
+          <div>
+            <span class="vertical-video__label">Marketing systems</span>
+            <h3>A platform is not a marketing system.</h3>
+            <p>Technology only helps when positioning, content, distribution, follow-up, and accountability work together.</p>
+            <a class="vertical-video__link" href="resources/index.html#short-videos">See the video collection</a>
+          </div>
+        </article>
+        <article class="vertical-video io" style="--delay: 160ms">
+          <div class="vertical-video__top"><span class="vertical-video__num">03 · JOHNNY</span><span class="vertical-video__time">00:51</span></div>
+          <span class="vertical-video__play" aria-hidden="true"></span>
+          <div>
+            <span class="vertical-video__label">Operating model</span>
+            <h3>Growth needs a system that can carry it.</h3>
+            <p>Clarify who owns what, how opportunities move, and where repeatable activity turns into execution.</p>
+            <a class="vertical-video__link" href="resources/index.html#short-videos">See the video collection</a>
+          </div>
+        </article>
+      </div>
+      <p class="thinking-videos__note">Preview treatment. Final videos will be click-to-play with captions, transcripts, and no autoplay audio.</p>
     </div>
   </section>
 
