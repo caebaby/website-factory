@@ -7,6 +7,7 @@ Complete the unchecked items below in Replit before pointing the public domain a
 ## 1. Import and run the package
 
 - [ ] Open the [Replit-ready GitHub branch](https://github.com/caebaby/website-factory/tree/agl-replit-handoff) or [download its ZIP archive](https://github.com/caebaby/website-factory/archive/refs/heads/agl-replit-handoff.zip). The repository is private, so Chris must either add you as a GitHub collaborator or download the ZIP and send it to you.
+- [ ] Open the [approved browser reference](https://advisor-growth-lab-reference.caebaby.chatgpt.site) in a second window. Use it to compare layout, copy, interactions, and responsive behavior while configuring Replit. This reference is intentionally excluded from search indexing and is not the production domain.
 - [ ] Unzip it, then upload the **contents of the handoff folder** into the root of a new Replit App. The root must contain `.replit`, `package.json`, `server.js`, and `index.html`—do not place them inside another folder.
 - [ ] In Replit, click **Run**. Replit should use `npm start`; no build command or dependency installation is required.
 - [ ] Open the preview and confirm the homepage, `/resources/`, `/resources/articles/`, `/resources/podcast/`, `/who-we-are/`, `/evidence/`, and `/schedule/` all load.
