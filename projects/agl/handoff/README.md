@@ -2,6 +2,26 @@
 
 Static, Replit-ready website for Advisor Growth Lab. No build step is required.
 
+## Canonical source and current design
+
+The only editable source of truth for Advisor Growth Lab is:
+
+- Repository: `caebaby/website-factory`
+- Working branch: `feature/agl-pilot`
+- Working directory: `projects/agl/handoff/`
+
+The `agl-replit-handoff` branch is a deployment mirror of this directory. Do not edit that branch independently; refresh it from the canonical working directory when publishing a new handoff.
+
+The current homepage hero is a static cinematic image sequence—not a video. Its active assets are:
+
+- `assets/hero-option-sunrise.webp`
+- `assets/hero-sunrise-mid.webp`
+- `assets/hero-sunrise-day.webp`
+
+Files such as `hero-waves-loop.mp4`, `hero-waves-poster.webp`, and `hero-cinematic.webp` are retained legacy assets and are not evidence of the current design. Before describing or changing the site, verify the references in `index.html`; do not infer the active design from the contents of the asset folder.
+
+The separate local repository at `Documents/Claude Projects/clients/website-factory` is not an Advisor Growth Lab source and must not be used for AGL work.
+
 ## Replit handoff
 
 Johnny should begin with [`JOHNNY-REPLIT-CHECKLIST.md`](JOHNNY-REPLIT-CHECKLIST.md). It contains the exact upload, production connection, custom-domain, testing, and Google/Bing sitemap submission checkboxes required for launch.
@@ -11,10 +31,10 @@ The clean package is published on the [`agl-replit-handoff` branch](https://gith
 ## Run locally or in Replit
 
 ```bash
-npm start
+python3 -m http.server 3000
 ```
 
-The server uses `PORT` when Replit supplies it and defaults to port `3000` locally.
+This is a pure static deployment: no framework, dependency installation, build command, or application server is required. The included `package.json` exists only to provide optional validation commands; Replit does not need it to serve or publish the site.
 
 ## Site map
 
@@ -59,7 +79,7 @@ The resource directory links, assessment route, article directory, podcast direc
 npm run check
 ```
 
-This checks every local `href` and `src`, including URL fragments, then validates the public sitemap, canonical URLs, index directives, titles, descriptions, social metadata, JSON-LD, source sections, RSS discovery, and reciprocal article/podcast links.
+This optional pre-publish check confirms the current static hero implementation, checks every local `href` and `src` including URL fragments, then validates the public sitemap, canonical URLs, index directives, titles, descriptions, social metadata, JSON-LD, source sections, RSS discovery, and reciprocal article/podcast links. It does not build or transform the site.
 
 The repeatable publishing requirements are documented in `SEO-GEO-PUBLISHING.md`.
 
