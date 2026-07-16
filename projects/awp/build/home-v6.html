@@ -99,7 +99,7 @@
     /* ─── Nav — different: centered brand, split nav ─── */
     .nav { position:fixed; top:0; left:0; right:0; z-index:1000; height:72px; display:flex; align-items:center; background:transparent; border-bottom:1px solid transparent; transition:background .22s ease,box-shadow .22s ease,border-color .22s ease,height .22s ease; }
     .nav.scrolled { background:rgba(245,240,230,.92); backdrop-filter:blur(16px) saturate(1.4); -webkit-backdrop-filter:blur(16px) saturate(1.4); border-bottom-color:var(--line); box-shadow:0 1px 0 rgba(255,255,255,.8) inset,0 4px 24px rgba(30,57,90,.08); height:64px; }
-    .nav-inner { width:var(--wrap); height:100%; margin:auto; display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:24px; }
+    .nav-inner { width:var(--wrap); height:100%; margin:auto; display:flex; align-items:center; justify-content:space-between; gap:24px; }
     .nav-left { display:flex; align-items:center; gap:28px; }
     .nav-right { display:flex; align-items:center; justify-content:flex-end; gap:18px; }
     .nav.scrolled .nav-inner { color:var(--midnight); }
@@ -187,16 +187,62 @@
     .pain-card-body { max-width:56ch; margin:12px 0 0; color:var(--body); font-size:.9rem; line-height:1.55; }
 
     /* ═══ TRUST — different: horizontal scroll-row, not grid ═══ */
+
+    /* ═══ STORY VIDEO ═══ */
+    .alex-story { position:relative; background:var(--cream); color:var(--midnight); overflow:hidden; }
+    .alex-story::before { content:""; position:absolute; inset:0; background:radial-gradient(ellipse at 30% 50%,rgba(177,143,77,.06) 0%,transparent 55%); pointer-events:none; }
+    .alex-story .wrap { position:relative; }
+    .alex-story-pad { padding:clamp(72px,8vw,104px) 0; }
+    .alex-story-inner { display:grid; grid-template-columns:.82fr 1.18fr; gap:clamp(40px,7vw,92px); align-items:center; }
+    .alex-story-copy .h-display { color:var(--midnight); font-size:clamp(2rem,3.5vw,3rem); }
+    .alex-story-copy .h-display em { color:var(--gold-dark); }
+    .alex-story-copy .lede { color:var(--body); }
+    .alex-story-copy .btn { margin-top:26px; }
+    .alex-story-frame { position:relative; min-height:400px; padding:44px; display:flex; flex-direction:column; justify-content:flex-end; color:var(--on-dark); background:linear-gradient(145deg,var(--midnight),var(--midnight-deep)); overflow:hidden; box-shadow:0 4px 18px rgba(15,32,56,.18),0 30px 60px rgba(15,32,56,.12); }
+    .alex-story-frame::before { content:""; position:absolute; inset:0; background:linear-gradient(120deg,transparent 25%,rgba(177,143,77,.1) 25.3%,transparent 25.6%),radial-gradient(circle at 78% 20%,rgba(177,143,77,.2),transparent 34%); }
+    .alex-story-frame > * { position:relative; }
+    .alex-story-frame small { color:#dfc77f; font-size:.65rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase; }
+    .alex-story-frame blockquote { max-width:20ch; margin:18px 0 0; font-family:var(--serif); font-size:clamp(1.7rem,2.8vw,2.6rem); line-height:1.08; }
+
+    /* ═══ REELS ═══ */
+    .reels { background:var(--cream); }
+    .reels::before { content:""; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 30%,rgba(177,143,77,.04) 0%,transparent 50%); pointer-events:none; }
+    .reels .wrap { position:relative; }
+    .reels-pad { padding:clamp(72px,8vw,104px) 0; }
+    .reels-head { display:flex; flex-direction:column; align-items:center; text-align:center; margin-bottom:48px; }
+    .reels-head .eyebrow { justify-content:center; }
+    .reels-head .h-display { font-size:clamp(2rem,3.5vw,3rem); }
+    .reels-head .lede { margin-inline:auto; }
+    .reels-head { display:grid; grid-template-columns:1fr auto; gap:28px; align-items:end; text-align:left; }
+    .reels-head .eyebrow { justify-content:flex-start; }
+    .reels-head .lede { margin-inline:0; }
+    .reels-controls { display:flex; gap:8px; }
+    .rail-button { width:46px; height:46px; border:1px solid var(--line); border-radius:50%; background:transparent; color:var(--midnight); cursor:pointer; transition:background .2s,color .2s,border-color .2s; }
+    .rail-button:hover { color:#fff; background:var(--midnight); border-color:var(--midnight); }
+    .reels-row { display:flex; gap:20px; margin:0; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; overscroll-behavior-inline:contain; }
+    .reels-row::-webkit-scrollbar { display:none; }
+    .reel { position:relative; aspect-ratio:9/16; border-radius:10px; overflow:hidden; box-shadow:0 1px 2px rgba(30,57,90,.06),0 4px 14px rgba(30,57,90,.08),0 18px 40px rgba(30,57,90,.09); cursor:pointer; background:var(--midnight-deep); }
+    .reel { flex:0 0 clamp(230px,24vw,300px); scroll-snap-align:start; }
+    .reel video { width:100%; height:100%; object-fit:cover; }
+    .reel-overlay { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end; padding:24px 20px; background:linear-gradient(0deg,rgba(15,32,56,.92) 0%,rgba(15,32,56,.2) 50%,transparent 100%); z-index:2; transition:opacity .3s ease; }
+    .reel:hover .reel-overlay { opacity:0; }
+    .reel-tag { color:#ddc57f; font-size:.6rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; margin-bottom:8px; }
+    .reel-title { color:#fff; font-family:var(--serif); font-size:1.2rem; font-weight:400; line-height:1.1; margin:0; }
+    .reel-mute { position:absolute; top:12px; right:12px; z-index:3; width:34px; height:34px; border-radius:50%; border:1px solid rgba(255,255,255,.3); background:rgba(15,32,56,.5); display:grid; place-items:center; color:#fff; backdrop-filter:blur(6px); transition:opacity .3s ease; }
+    .reel:hover .reel-mute { opacity:1; }
     .trust { padding:clamp(72px,8vw,104px) 0; background:var(--cream-mid); }
     .trust::before { content:""; position:absolute; }
     .trust-head { display:grid; grid-template-columns:1fr auto; gap:40px; align-items:end; margin-bottom:48px; }
     .trust-head .h-display { font-size:clamp(2rem,3vw,2.6rem); }
-    .trust-row { display:grid; grid-template-columns:repeat(6,1fr); gap:0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .trust-row { position:relative; display:grid; grid-template-columns:repeat(4,1fr); gap:0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .trust-route { position:absolute; left:12.5%; right:12.5%; top:39px; height:1px; background:var(--line); overflow:hidden; }
+    .trust-route::after { content:""; position:absolute; inset:0; background:var(--gold); transform:scaleX(0); transform-origin:left; transition:transform 1.1s var(--ease) .15s; }
+    .trust-row.in .trust-route::after { transform:scaleX(1); }
     .trust-cell { padding:32px 24px; border-right:1px solid var(--line-faint); transition:background .3s var(--ease); }
     .trust-cell:last-child { border-right:0; }
     .trust-cell:hover { background:rgba(177,143,77,.04); }
-    .trust-icon { width:40px; height:40px; margin-bottom:18px; color:var(--gold); }
-    .trust-icon svg { width:100%; height:100%; }
+    .trust-node { position:relative; z-index:1; width:15px; height:15px; margin:0 0 28px; border:3px solid var(--cream-mid); border-radius:50%; background:var(--gold); box-shadow:0 0 0 1px var(--gold); }
+    .trust-status { display:inline-block; margin-top:12px; padding:4px 8px; border:1px solid var(--line); border-radius:20px; color:var(--pigeon); font-size:.58rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
     .trust-cell h3 { margin:0 0 8px; font-family:var(--serif); font-size:1.15rem; font-weight:500; color:var(--midnight); line-height:1.2; }
     .trust-cell p { margin:0; color:var(--body); font-size:.82rem; line-height:1.5; max-width:28ch; }
 
@@ -209,9 +255,15 @@
     .why .h-display em { color:#dfc77f; }
     .why-intro { max-width:46ch; margin:0; color:var(--on-dark-mute); }
     .why-grid { display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid rgba(192,216,233,.2); border-bottom:1px solid rgba(192,216,233,.2); }
-    .why-item { min-height:250px; padding:32px 26px; border-left:1px solid rgba(192,216,233,.2); }
+    .why-item { min-height:280px; padding:32px 26px; border-left:1px solid rgba(192,216,233,.2); transition:background .35s var(--ease); }
+    .why-item:hover,.why-item:focus-within { background:rgba(192,216,233,.045); }
     .why-item:first-child { padding-left:0; border-left:0; }
-    .why-index { display:block; margin-bottom:52px; color:#dfc77f; font-family:var(--serif); font-size:1.2rem; }
+    .why-index { display:block; margin-bottom:18px; color:#dfc77f; font-family:var(--serif); font-size:1.2rem; }
+    .why-motion { width:100%; height:56px; margin-bottom:22px; color:#dfc77f; }
+    .why-motion path,.why-motion line { fill:none; stroke:currentColor; stroke-width:1.2; stroke-dasharray:110; stroke-dashoffset:72; transition:stroke-dashoffset .65s var(--ease); }
+    .why-motion circle { fill:var(--midnight-deep); stroke:currentColor; transition:transform .55s var(--ease),fill .3s ease; transform-box:fill-box; transform-origin:center; }
+    .why-item:hover .why-motion path,.why-item:hover .why-motion line,.why-item:focus-within .why-motion path,.why-item:focus-within .why-motion line { stroke-dashoffset:0; }
+    .why-item:hover .why-motion circle,.why-item:focus-within .why-motion circle { transform:scale(1.35); fill:#dfc77f; }
     .why-item h3 { margin:0 0 12px; color:var(--on-dark); font-family:var(--serif); font-size:clamp(1.35rem,1.8vw,1.7rem); font-weight:400; line-height:1.06; }
     .why-item p { margin:0; color:var(--on-dark-mute); font-size:.84rem; line-height:1.55; }
 
@@ -255,46 +307,46 @@
     .fit { padding:clamp(72px,8vw,104px) 0; background:var(--cream); }
     .fit::before { content:""; position:absolute; inset:0; background:radial-gradient(ellipse at 80% 70%,rgba(177,143,77,.03) 0%,transparent 50%); pointer-events:none; }
     .fit .wrap { position:relative; }
-    .fit-card { position:relative; max-width:920px; margin:40px auto 0; padding:clamp(40px,5vw,72px); background:var(--midnight-deep); color:var(--on-dark); border-radius:10px; overflow:hidden; box-shadow:0 1px 2px rgba(30,57,90,.06),0 4px 14px rgba(30,57,90,.08),0 18px 40px rgba(30,57,90,.09),0 48px 80px rgba(30,57,90,.14),inset 0 1px 0 rgba(255,255,255,.04); }
-    .fit-card::before { content:""; position:absolute; width:480px; height:480px; right:-200px; top:-200px; border-radius:50%; background:radial-gradient(circle,rgba(177,143,77,.16),transparent 68%); pointer-events:none; }
-    .fit-head { position:relative; text-align:center; margin-bottom:48px; }
-    .fit-head .h-display { color:var(--on-dark); font-size:clamp(2rem,3vw,2.6rem); }
-    .fit-head .h-display em { color:#dfc77f; }
-    .fit-head .lede { color:var(--on-dark-mute); margin-inline:auto; }
+    .fit-card { position:relative; max-width:920px; margin:40px auto 0; padding:clamp(40px,5vw,72px); background:#ffffff; color:var(--midnight); border:1px solid var(--line-faint); border-radius:10px; overflow:hidden; box-shadow:0 1px 2px rgba(30,57,90,.04),0 4px 14px rgba(30,57,90,.08),0 18px 40px rgba(30,57,90,.09),inset 0 1px 0 rgba(255,255,255,.75); }
+    .fit-card::before { content:""; position:absolute; width:480px; height:480px; right:-200px; top:-200px; border-radius:50%; background:radial-gradient(circle,rgba(177,143,77,.08),transparent 68%); pointer-events:none; }
+    .fit-head { position:relative; display:flex; flex-direction:column; align-items:center; text-align:center; margin-bottom:48px; }
+    .fit-head .h-display { color:var(--midnight); font-size:clamp(2rem,3vw,2.6rem); }
+    .fit-head .h-display em { color:var(--gold-dark); }
+    .fit-head .lede { color:var(--body); margin-inline:auto; }
     /* Diagram — centered, horizontal flow */
     .fit-diagram { position:relative; max-width:580px; margin:0 auto 48px; }
     .fit-diagram svg { width:100%; overflow:visible; }
-    .fit-diagram text { fill:var(--on-dark-mute); font:700 9px var(--sans); letter-spacing:1px; }
-    .fit-diagram .plan-label { fill:#e1ca8b; font-size:10px; }
-    .fit-diagram .line { fill:none; stroke:rgba(192,216,233,.55); stroke-width:1.2; stroke-dasharray:2 4; }
+    .fit-diagram text { fill:var(--body); font:700 9px var(--sans); letter-spacing:1px; }
+    .fit-diagram .plan-label { fill:var(--gold-dark); font-size:10px; }
+    .fit-diagram .line { fill:none; stroke:rgba(61,90,117,.4); stroke-width:1.2; stroke-dasharray:2 4; }
     .fit-diagram .node { fill:var(--gold); }
-    .fit-diagram .ring { fill:none; stroke:rgba(177,143,77,.35); }
+    .fit-diagram .ring { fill:none; stroke:rgba(177,143,77,.3); }
     .fit-diagram .pulse { fill:var(--gold); transform-origin:center; animation:pulse 4s ease-in-out infinite; }
     @keyframes pulse { 0%,100% { transform:scale(1); } 50% { transform:scale(1.2); } }
     /* Form */
     .fit-form-area { position:relative; max-width:560px; margin:0 auto; }
     .fit-progress { display:flex; align-items:center; gap:16px; margin-bottom:28px; }
-    .fit-count { color:#e0c880; font-family:var(--serif); font-size:2rem; line-height:1; }
+    .fit-count { color:var(--gold-dark); font-family:var(--serif); font-size:2rem; line-height:1; }
     .fit-bars { display:flex; gap:5px; flex:1; }
-    .fit-bars span { height:3px; flex:1; background:rgba(255,255,255,.1); border-radius:2px; }
+    .fit-bars span { height:3px; flex:1; background:rgba(30,57,90,.12); border-radius:2px; }
     .fit-bars span.on { background:var(--gold); }
     .fit-step { border:0; padding:0; margin:0; }
     .js .fit-step { display:none; }
     .js .fit-step.active { display:block; }
-    .fit-step legend { color:var(--on-dark); font-family:var(--serif); font-size:clamp(1.6rem,2.4vw,2.2rem); line-height:1.1; margin-bottom:24px; }
+    .fit-step legend { color:var(--midnight); font-family:var(--serif); font-size:clamp(1.6rem,2.4vw,2.2rem); line-height:1.1; margin-bottom:24px; }
     .fit-opts { display:grid; gap:8px; }
-    .fit-opt { display:grid; grid-template-columns:20px 1fr; gap:12px; align-items:center; min-height:54px; padding:12px 16px; border:1px solid rgba(192,216,233,.18); background:rgba(255,255,255,.03); color:var(--on-dark); cursor:pointer; border-radius:6px; transition:border-color .25s,background .25s,transform .25s var(--ease); }
+    .fit-opt { display:grid; grid-template-columns:20px 1fr; gap:12px; align-items:center; min-height:54px; padding:12px 16px; border:1px solid var(--line); background:var(--cream); color:var(--midnight); cursor:pointer; border-radius:6px; transition:border-color .25s,background .25s,transform .25s var(--ease); }
     .fit-opt:hover { border-color:rgba(177,143,77,.5); background:rgba(177,143,77,.06); transform:translateX(4px); }
     .fit-opt input { width:18px; height:18px; margin:0; accent-color:var(--gold); }
     .fit-opt span { font-size:.84rem; font-weight:600; line-height:1.35; }
-    .fit-email { width:100%; min-height:54px; margin-top:20px; padding:14px 16px; border:1px solid rgba(192,216,233,.18); border-radius:6px; color:var(--on-dark); background:rgba(255,255,255,.03); }
-    .fit-email::placeholder { color:rgba(248,243,233,.4); }
+    .fit-email { width:100%; min-height:54px; margin-top:20px; padding:14px 16px; border:1px solid var(--line); border-radius:6px; color:var(--midnight); background:var(--cream); }
+    .fit-email::placeholder { color:var(--pigeon); }
     .fit-email:focus { border-color:var(--gold); box-shadow:0 0 0 3px rgba(177,143,77,.14); outline:none; }
     .fit-nav { display:flex; justify-content:space-between; gap:12px; margin-top:24px; }
-    .fit-back { border:0; color:var(--on-dark-mute); background:none; cursor:pointer; font-size:.78rem; font-weight:700; }
+    .fit-back { border:0; color:var(--body); background:none; cursor:pointer; font-size:.78rem; font-weight:700; }
     .fit-next { min-height:46px; padding:11px 20px; border:0; color:var(--midnight-deep); background:var(--gold); cursor:pointer; font-size:.78rem; font-weight:700; border-radius:5px; transition:background .22s ease,transform .22s ease; }
     .fit-next:hover { background:var(--gold-light); transform:translateY(-1px); }
-    .fit-micro { margin:14px 0 0; text-align:center; color:var(--on-dark-mute); font-size:.74rem; }
+    .fit-micro { margin:14px 0 0; text-align:center; color:var(--body); font-size:.74rem; }
     .fit-thanks { display:none; text-align:center; }
     .fit-thanks.show { display:block; }
 
@@ -315,18 +367,43 @@
     .svc-card p { margin:0; max-width:none; color:var(--body); font-size:.88rem; line-height:1.6; }
 
     /* ═══ PROCESS — different: vertical timeline, not horizontal steps ═══ */
-    .process { padding:clamp(72px,8vw,104px) 0; background:var(--paper); }
+    .process { padding:clamp(72px,8vw,104px) 0; background:#ffffff; }
+    .process::before { content:""; position:absolute; inset:0; background:radial-gradient(ellipse at 70% 30%,rgba(177,143,77,.04) 0%,transparent 50%),radial-gradient(ellipse at 20% 70%,rgba(30,57,90,.03) 0%,transparent 50%); pointer-events:none; }
+    .process .wrap { position:relative; }
     .process-head { margin-bottom:56px; }
     .process-head .h-display { font-size:clamp(2rem,3vw,2.6rem); }
-    .process-timeline { position:relative; max-width:760px; margin:0; padding-left:0; }
-    .process-timeline::before { content:""; position:absolute; left:19px; top:12px; bottom:12px; width:1px; background:var(--line); }
-    .process-step { position:relative; display:grid; grid-template-columns:40px 1fr; gap:28px; padding:0 0 48px; }
-    .process-step:last-child { padding-bottom:0; }
-    .process-step::before { content:""; position:absolute; left:14px; top:4px; width:11px; height:11px; border-radius:50%; background:var(--gold); border:2px solid var(--paper); box-shadow:0 0 0 1px var(--gold); z-index:1; }
-    .process-step small { color:var(--gold-dark); font-size:.64rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
-    .process-step h3 { margin:8px 0 8px; font-family:var(--serif); font-size:1.75rem; font-weight:400; color:var(--midnight); line-height:1; }
-    .process-step p { margin:0; color:var(--body); font-size:.88rem; max-width:52ch; }
-    .process-step .when { display:block; margin-top:10px; color:var(--midnight); font-family:var(--serif); font-size:.92rem; font-style:italic; }
+    .process-timeline { position:relative; max-width:none; margin:0; padding-left:0; }
+    .process-timeline::before { content:""; position:absolute; left:0; right:0; top:8px; width:100%; height:0; }
+    .process-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:34px; position:relative; }
+    .process-steps::before { content:""; position:absolute; left:0; right:0; top:8px; height:2px; background:linear-gradient(90deg,var(--gold),rgba(177,143,77,.15) 80%,transparent); transform:scaleX(0); transform-origin:left; transition:transform 1.2s var(--ease); }
+    .process-steps.in::before { transform:scaleX(1); }
+    .process-step { position:relative; padding-top:42px; display:block; }
+    .process-step::before { content:""; position:absolute; top:3px; left:0; width:14px; height:14px; border-radius:50%; background:var(--gold); border:3px solid #fff; box-shadow:0 0 0 1px var(--gold),0 2px 8px rgba(177,143,77,.25); z-index:1; transition:transform .3s var(--ease),box-shadow .3s ease; }
+    .process-step:hover::before { transform:scale(1.25); box-shadow:0 0 0 1px var(--gold),0 4px 16px rgba(177,143,77,.4); }
+    .process-step small { color:var(--gold-dark); font-size:.64rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; opacity:0; transform:translateY(8px); transition:opacity .5s var(--ease),transform .5s var(--ease); }
+    .process-step h3 { margin:8px 0 8px; font-family:var(--serif); font-size:1.75rem; font-weight:400; color:var(--midnight); line-height:1; opacity:0; transform:translateY(12px); transition:opacity .5s var(--ease) .1s,transform .5s var(--ease) .1s; }
+    .process-step p { margin:0; color:var(--body); font-size:.88rem; max-width:52ch; opacity:0; transform:translateY(10px); transition:opacity .5s var(--ease) .2s,transform .5s var(--ease) .2s; }
+    .process-step .when { display:block; margin-top:10px; color:var(--midnight); font-family:var(--serif); font-size:.92rem; font-style:italic; opacity:0; transform:translateY(8px); transition:opacity .5s var(--ease) .3s,transform .5s var(--ease) .3s; }
+    .process-timeline.in .process-step small,
+    .process-timeline.in .process-step h3,
+    .process-timeline.in .process-step p,
+    .process-timeline.in .process-step .when { opacity:1; transform:none; }
+    .process-timeline.in .process-step:nth-child(2) small { transition-delay:.15s; }
+    .process-timeline.in .process-step:nth-child(2) h3 { transition-delay:.25s; }
+    .process-timeline.in .process-step:nth-child(2) p { transition-delay:.35s; }
+    .process-timeline.in .process-step:nth-child(2) .when { transition-delay:.45s; }
+    .process-timeline.in .process-step:nth-child(3) small { transition-delay:.3s; }
+    .process-timeline.in .process-step:nth-child(3) h3 { transition-delay:.4s; }
+    .process-timeline.in .process-step:nth-child(3) p { transition-delay:.5s; }
+    .process-timeline.in .process-step:nth-child(3) .when { transition-delay:.6s; }
+    .process-timeline.in .process-step:nth-child(4) small { transition-delay:.45s; }
+    .process-timeline.in .process-step:nth-child(4) h3 { transition-delay:.55s; }
+    .process-timeline.in .process-step:nth-child(4) p { transition-delay:.65s; }
+    .process-timeline.in .process-step:nth-child(4) .when { transition-delay:.75s; }
+    .process-steps.in .process-step small,
+    .process-steps.in .process-step h3,
+    .process-steps.in .process-step p,
+    .process-steps.in .process-step .when { opacity:1; transform:none; }
     .process-no-ob { max-width:680px; margin:48px 0 0; padding:24px 28px; border-left:3px solid var(--gold); background:rgba(177,143,77,.04); }
     .process-no-ob p { margin:0; color:var(--midnight); font-family:var(--serif); font-size:1.15rem; font-style:italic; line-height:1.5; }
 
@@ -413,9 +490,11 @@
       .hero-selector { display:none; }
       .pain-spread { grid-template-columns:1fr; }
       .pain-left { position:static; }
-      .trust-row { grid-template-columns:repeat(3,1fr); }
-      .trust-cell:nth-child(3n) { border-right:0; }
-      .trust-cell:nth-child(n+4) { border-top:1px solid var(--line-faint); }
+      .alex-story-inner { grid-template-columns:1fr; }
+      .trust-row { grid-template-columns:repeat(2,1fr); }
+      .trust-route { display:none; }
+      .trust-cell:nth-child(2n) { border-right:0; }
+      .trust-cell:nth-child(n+3) { border-top:1px solid var(--line-faint); }
       .why-head { grid-template-columns:1fr; }
       .why-grid { grid-template-columns:1fr 1fr; }
       .why-item:nth-child(3) { border-left:0; }
@@ -451,6 +530,7 @@
       .trust-row { grid-template-columns:1fr; }
       .trust-cell { border-right:0; border-bottom:1px solid var(--line-faint); }
       .trust-cell:last-child { border-bottom:0; }
+      .alex-story-frame { min-height:330px; padding:32px 24px; }
       .why-grid { grid-template-columns:1fr; }
       .why-item,.why-item:first-child { min-height:0; padding:26px 0; border-left:0; border-top:1px solid rgba(192,216,233,.2); }
       .why-item:first-child { border-top:0; }
@@ -460,6 +540,9 @@
       .serve-card { min-height:420px; }
       .serve-card:nth-child(3) img { object-position:72% center; }
       .svc-grid { grid-template-columns:1fr; }
+      .reels-head { grid-template-columns:1fr; }
+      .reels-controls { display:none; }
+      .reel { flex-basis:78vw; }
       .svc-trigger { grid-template-columns:40px 1fr auto; gap:14px; }
       .svc-body p { margin-left:54px; }
       .footer-top { grid-template-columns:1fr; }
@@ -485,11 +568,6 @@
 
   <nav class="nav" id="nav" aria-label="Primary navigation">
     <div class="nav-inner">
-      <div class="nav-left">
-        <a class="nav-link" href="#pain">Problem</a>
-        <a class="nav-link" href="#trust">Credentials</a>
-        <a class="nav-link" href="#serve">Who We Serve</a>
-      </div>
       <a class="brand-center" href="#top" aria-label="Anchor Wealth Planning home">
         <span class="brand-mark" aria-hidden="true">
           <svg viewBox="0 0 32 32" fill="none"><path d="M16 4v20M11 9h10M7 19c1.7 5 5 7.5 9 7.5S23.3 24 25 19M7 19l-2 3M25 19l2 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="5" r="2.5" stroke="currentColor" stroke-width="2"/></svg>
@@ -497,7 +575,10 @@
         <span class="brand-name"><strong>Anchor</strong><span>WEALTH PLANNING</span></span>
       </a>
       <div class="nav-right">
-        <a class="nav-link" href="#services">Services</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="team.html">Team</a>
+        <a class="nav-link" href="#serve">Who We Serve</a>
+        <a class="nav-link" href="resources.html">Resources</a>
         <a class="nav-link" href="#process">Process</a>
         <a class="nav-cta" href="#fit">Book a Call →</a>
       </div>
@@ -505,7 +586,7 @@
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" stroke-width="1.5"/></svg>
       </button>
     </div>
-    <div class="mobile-menu" id="mobileMenu"><a href="#pain">Problem</a><a href="#trust">Credentials</a><a href="#serve">Who We Serve</a><a href="#services">Services</a><a href="#process">Process</a><a href="#fit">Book a Call →</a></div>
+    <div class="mobile-menu" id="mobileMenu"><a href="about.html">About</a><a href="team.html">Team</a><a href="#serve">Who We Serve</a><a href="resources.html">Resources</a><a href="#process">Process</a><a href="#fit">Book a Call →</a></div>
   </nav>
 
   <span id="top"></span>
@@ -519,10 +600,10 @@
         </video>
       </section>
       <section class="hero-slide" data-market="business" aria-label="Business owners">
-        <video muted loop playsinline preload="none" poster="assets/hero-business-poster.png" aria-hidden="true" data-src="assets/hero-business-loop.mp4"></video>
+        <video muted loop playsinline preload="metadata" poster="assets/hero-business-poster.png" aria-hidden="true" data-src="assets/hero-business-loop.mp4"></video>
       </section>
       <section class="hero-slide" data-market="family" aria-label="High-net-worth families">
-        <video muted loop playsinline preload="none" poster="assets/hero-family-poster.png" aria-hidden="true" data-src="assets/hero-family-loop.mp4"></video>
+        <video muted loop playsinline preload="metadata" poster="assets/hero-family-3gen-poster.png" aria-hidden="true" data-src="assets/family-3gen.mp4"></video>
       </section>
     </div>
     <div class="hero-grain" aria-hidden="true"></div>
@@ -540,16 +621,16 @@
       <div class="hero-inner">
         <div class="hero-text">
           <p class="eyebrow">Houston, TX · Fiduciary Wealth Management</p>
-          <h1>You've become the project manager of <em>your own wealth.</em></h1>
-          <p class="hero-sub">Alex Miller spent over a decade at Merrill Lynch before founding Anchor Wealth Planning to do one thing differently: coordinate your investments, taxes, and estate plan with your CPA and attorney — so you can stop being the glue.</p>
+          <h1 id="heroHeadline">When your equity vests, <em>who sees the whole picture?</em></h1>
+          <p class="hero-sub" id="heroSub">Anchor coordinates your investments, taxes, estate plan, and outside professionals — so you can stop being the glue.</p>
           <div class="hero-cta-row">
             <a class="btn btn-gold" href="#fit">Schedule a 30-Minute Conversation <span class="arr" aria-hidden="true">→</span></a>
             <a class="btn btn-ghost" href="#fit">Take the 4-Question Fit Check</a>
           </div>
           <div class="hero-proof">
-            <span class="proof-pill"><svg viewBox="0 0 14 14" fill="none"><path d="M7 2l1.5 3 3.5.5-2.5 2.5.5 3.5L7 10l-2.5 1.5.5-3.5L2 5.5l3.5-.5z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>Fiduciary</span>
-            <span class="proof-pill"><svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/><path d="M5 7l1.5 1.5L9.5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>Fee-only</span>
-            <span class="proof-pill"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1.5a2.5 2.5 0 012.5 2.5v1.5H4.5V4A2.5 2.5 0 017 1.5zM3 5.5h8v7H3z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>[VERIFY: 10]+ yrs</span>
+            <span class="proof-pill"><svg viewBox="0 0 14 14" fill="none"><path d="M7 2l1.5 3 3.5.5-2.5 2.5.5 3.5L7 10l-2.5 1.5.5-3.5L2 5.5l3.5-.5z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>[Credential 01]</span>
+            <span class="proof-pill"><svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/><path d="M5 7l1.5 1.5L9.5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>[Credential 02]</span>
+            <span class="proof-pill"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1.5a2.5 2.5 0 012.5 2.5v1.5H4.5V4A2.5 2.5 0 017 1.5zM3 5.5h8v7H3z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>[XX]+ yrs</span>
             <span class="proof-pill"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1.5C4.5 1.5 3 3 3 5.5c0 3 4 7 4 7s4-4 4-7c0-2.5-1.5-4-4-4z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><circle cx="7" cy="5" r="1.5" stroke="currentColor" stroke-width="1.2"/></svg>Houston-based</span>
           </div>
         </div>
@@ -622,6 +703,24 @@
       </div>
     </section>
 
+    <!-- ═══ ALEX STORY ═══ -->
+    <section class="alex-story" id="alex-story">
+      <div class="wrap alex-story-pad">
+        <div class="alex-story-inner reveal">
+          <div class="alex-story-copy">
+            <p class="eyebrow">Alex's Story</p>
+            <h2 class="h-display">Advice should answer to your life, <em>not a product quota.</em></h2>
+            <p class="lede">Alex founded Anchor around a simple conviction: complex wealth deserves one advisor accountable for connecting every decision.</p>
+            <a class="btn btn-ink" href="about.html">Read Why Anchor Exists <span class="arr" aria-hidden="true">→</span></a>
+          </div>
+          <div class="alex-story-frame" aria-label="Alex Miller founding story preview">
+            <small>Founding principle</small>
+            <blockquote>“The client should never have to be the translator between their own advisors.”</blockquote>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ═══ TRUST ═══ -->
     <section class="trust" id="trust">
       <div class="wrap reveal">
@@ -632,36 +731,31 @@
           </div>
           <p class="lede" style="margin:0;max-width:42ch;">Not a claim. Here's what it actually means.</p>
         </div>
-        <div class="trust-row stagger">
+        <div class="trust-row stagger reveal">
+          <span class="trust-route" aria-hidden="true"></span>
           <div class="trust-cell">
-            <div class="trust-icon"><svg viewBox="0 0 40 40" fill="none"><path d="M20 4l12 4v8c0 8-5 14-12 17-7-3-12-9-12-17V8z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M14 20l4 4 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <h3>Fiduciary Standard</h3>
-            <p>Legally obligated to act in your best interest. Not a marketing term — a legal obligation we chose when we left the wirehouse model.</p>
+            <div class="trust-node" aria-hidden="true"></div>
+            <h3>[XX]+ years in the industry</h3>
+            <p>Experience across institutional wealth management and independent advice.</p>
+            <span class="trust-status">Needs verification</span>
           </div>
           <div class="trust-cell">
-            <div class="trust-icon"><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="14" stroke="currentColor" stroke-width="1.5"/><path d="M20 12v16M14 16h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-            <h3>Fee-Only</h3>
-            <p>We are paid only by our clients. No commissions, no product incentives, no hidden conflicts. You know exactly what you pay and why.</p>
+            <div class="trust-node" aria-hidden="true"></div>
+            <h3>[Credential 01]</h3>
+            <p>Approved professional designation and issuing organization go here.</p>
+            <span class="trust-status">Needs verification</span>
           </div>
           <div class="trust-cell">
-            <div class="trust-icon"><svg viewBox="0 0 40 40" fill="none"><rect x="9" y="7" width="22" height="26" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M14 14h12M14 20h12M14 26h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-            <h3>[VERIFY: CFP® / Series 65]</h3>
-            <p>[VERIFY: Alex's specific designations — CFP®, ChFC?, Series 65?]</p>
+            <div class="trust-node" aria-hidden="true"></div>
+            <h3>[Credential 02]</h3>
+            <p>Approved license, certification, or specialist training goes here.</p>
+            <span class="trust-status">Needs verification</span>
           </div>
           <div class="trust-cell">
-            <div class="trust-icon"><svg viewBox="0 0 40 40" fill="none"><path d="M20 5l10 3v7c0 8-4 13-10 15-6-2-10-7-10-15V8z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M20 12v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-            <h3>[VERIFY: 10]+ Yrs Merrill</h3>
-            <p>Institutional training. We learned how the machine works — then chose to leave it to give advice without a product quota.</p>
-          </div>
-          <div class="trust-cell">
-            <div class="trust-icon"><svg viewBox="0 0 40 40" fill="none"><path d="M20 7a9 9 0 019 9c0 7-9 16-9 16S11 23 11 16a9 9 0 019-9z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="20" cy="15" r="3" stroke="currentColor" stroke-width="1.5"/></svg></div>
-            <h3>Independent RIA</h3>
-            <p>We answer to our clients, not to a corporate parent. The advice you get is the advice we'd give our own family.</p>
-          </div>
-          <div class="trust-cell">
-            <div class="trust-icon"><svg viewBox="0 0 40 40" fill="none"><path d="M20 9c-5 0-9 4-9 9v13h18V18c0-5-4-9-9-9z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M14 23v4M20 23v4M26 23v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-            <h3>Houston-Based</h3>
-            <p>We live in the energy capital. Permian Basin, Eagle Ford, commodity cycles — this is our world, not a coastal firm's afterthought.</p>
+            <div class="trust-node" aria-hidden="true"></div>
+            <h3>[Accolade 01]</h3>
+            <p>Approved recognition, year, source, and selection criteria go here.</p>
+            <span class="trust-status">Needs verification</span>
           </div>
         </div>
       </div>
@@ -680,21 +774,25 @@
         <div class="why-grid stagger reveal">
           <article class="why-item">
             <span class="why-index">01</span>
+            <svg class="why-motion" viewBox="0 0 180 56" aria-hidden="true"><path d="M5 42C35 42 36 14 68 14s34 28 66 28 31-20 41-20"/><circle cx="5" cy="42" r="3"/><circle cx="68" cy="14" r="3"/><circle cx="134" cy="42" r="3"/><circle cx="175" cy="22" r="3"/></svg>
             <h3>Coordinated, not siloed</h3>
             <p>Investment, tax, estate, and business decisions are evaluated together before one move creates a problem somewhere else.</p>
           </article>
           <article class="why-item">
             <span class="why-index">02</span>
+            <svg class="why-motion" viewBox="0 0 180 56" aria-hidden="true"><line x1="10" y1="28" x2="170" y2="28"/><circle cx="10" cy="28" r="3"/><circle cx="90" cy="28" r="6"/><circle cx="170" cy="28" r="3"/></svg>
             <h3>One accountable lead</h3>
             <p>You know who owns the next step. Anchor keeps the conversation moving across your CPA, attorney, and other specialists.</p>
           </article>
           <article class="why-item">
             <span class="why-index">03</span>
+            <svg class="why-motion" viewBox="0 0 180 56" aria-hidden="true"><path d="M8 44L48 20l38 13 42-25 44 23"/><circle cx="8" cy="44" r="3"/><circle cx="48" cy="20" r="3"/><circle cx="86" cy="33" r="3"/><circle cx="128" cy="8" r="3"/><circle cx="172" cy="31" r="3"/></svg>
             <h3>Built for complexity</h3>
             <p>Equity compensation, concentrated wealth, estate questions, and business transitions belong in one living plan.</p>
           </article>
           <article class="why-item">
             <span class="why-index">04</span>
+            <svg class="why-motion" viewBox="0 0 180 56" aria-hidden="true"><path d="M8 38h30l18-22 24 31 23-20 22 11h47"/><circle cx="8" cy="38" r="3"/><circle cx="56" cy="16" r="3"/><circle cx="80" cy="47" r="3"/><circle cx="103" cy="27" r="3"/><circle cx="172" cy="38" r="3"/></svg>
             <h3>Houston fluency</h3>
             <p>Energy compensation, commodity cycles, and closely held businesses are part of the planning context—not an afterthought.</p>
           </article>
@@ -733,7 +831,7 @@
           <p class="serve-sub">If you don't see yourself below, we may not be the right fit — and we'll tell you that honestly.</p>
         </div>
         <div class="serve-cards stagger reveal">
-          <a class="serve-card" href="#fit">
+          <a class="serve-card" href="oil-gas-executives.html">
             <img src="assets/hero-oilfield.jpg" alt="Pumpjack operating in a Texas oil field">
             <div class="serve-card-body">
               <div class="serve-card-tag">01 · Houston energy</div>
@@ -742,7 +840,7 @@
               <span class="text-link light" style="margin-top:14px;">See how we work with you <span class="arr" aria-hidden="true">→</span></span>
             </div>
           </a>
-          <a class="serve-card" href="#fit">
+          <a class="serve-card" href="business-owners.html">
             <img src="assets/hero-business-poster.png" alt="Business owner working calmly at his desk">
             <div class="serve-card-body">
               <div class="serve-card-tag">02 · Closely held</div>
@@ -751,7 +849,7 @@
               <span class="text-link light" style="margin-top:14px;">See how we work with you <span class="arr" aria-hidden="true">→</span></span>
             </div>
           </a>
-          <a class="serve-card" href="#fit">
+          <a class="serve-card" href="high-net-worth-families.html">
             <img src="assets/hero-family-poster.png" alt="A modern multigenerational family spending time together at home">
             <div class="serve-card-body">
               <div class="serve-card-tag">03 · Across generations</div>
@@ -767,28 +865,12 @@
     <!-- ═══ FIT ASSESSMENT ═══ -->
     <section class="fit" id="fit">
       <div class="wrap">
-        <div class="reveal" style="text-align:center;">
-          <p class="eyebrow" style="justify-content:center;">Fit Check</p>
+        <div class="reveal" style="display:flex;flex-direction:column;align-items:center;text-align:center;">
+          <p class="eyebrow">Fit Check</p>
           <h2 class="h-display" style="font-size:clamp(2rem,3vw,2.6rem);">Are we the right fit <em>for you?</em></h2>
           <p class="lede" style="margin-inline:auto;">Four questions. Two minutes. We'll tell you honestly whether we can help — and if we can't, we'll refer you to someone who can.</p>
         </div>
         <div class="fit-card reveal">
-          <div class="fit-head">
-            <div class="fit-diagram" aria-label="Your CPA, attorney, and portfolio converge into one living plan">
-              <svg viewBox="0 0 580 140" role="img">
-                <path class="line" d="M20 30C180 30 280 70 400 70"/>
-                <path class="line" d="M20 70H400"/>
-                <path class="line" d="M20 110C180 110 280 70 400 70"/>
-                <text x="20" y="22">YOUR CPA</text>
-                <text x="20" y="62">YOUR ATTORNEY</text>
-                <text x="20" y="102">YOUR PORTFOLIO</text>
-                <circle class="pulse" cx="410" cy="70" r="7"/>
-                <circle class="ring" cx="410" cy="70" r="18"/>
-                <text class="plan-label" x="440" y="67">ONE LIVING</text>
-                <text class="plan-label" x="440" y="80">PLAN</text>
-              </svg>
-            </div>
-          </div>
           <div class="fit-form-area">
             <div class="fit-progress" aria-hidden="true"><span class="fit-count" id="fitCount">01</span><div class="fit-bars"><span class="on"></span><span></span><span></span><span></span></div></div>
             <form id="fitForm" action="#fit" method="get">
@@ -801,7 +883,6 @@
               <fieldset class="fit-step" data-step="1"><legend>Your approximate investable assets?</legend><div class="fit-opts">
                 <label class="fit-opt"><input type="radio" name="assets" value="500k-2m"><span>$500K to $2M</span></label>
                 <label class="fit-opt"><input type="radio" name="assets" value="2m-5m"><span>$2M to $5M</span></label>
-                <label class="fit-opt"><input type="radio" name="assets" value="5m-10m"><span>$5M to $10M</span></label>
                 <label class="fit-opt"><input type="radio" name="assets" value="10m-plus"><span>$10M+</span></label>
               </div><div class="fit-nav"><button class="fit-back" type="button">← Back</button><button class="fit-next" type="button">Continue →</button></div></fieldset>
               <fieldset class="fit-step" data-step="2"><legend>What needs attention first?</legend><div class="fit-opts">
@@ -812,7 +893,7 @@
               </div><div class="fit-nav"><button class="fit-back" type="button">← Back</button><button class="fit-next" type="button">Continue →</button></div></fieldset>
               <fieldset class="fit-step" data-step="3"><legend>Where should we send your fit assessment?</legend><label><span class="sr-only">Email address</span><input class="fit-email" type="email" name="email" autocomplete="email" placeholder="Email address" required></label><div class="fit-nav"><button class="fit-back" type="button">← Back</button><button class="fit-next" type="submit">Get My Assessment →</button></div><p class="fit-micro">No spam. No sales pitch. An honest answer about whether we are a match.</p></fieldset>
             </form>
-            <div class="fit-thanks" id="fitThanks" tabindex="-1"><p class="eyebrow" style="justify-content:center;">Assessment received</p><h3 style="font-family:var(--serif);font-size:1.6rem;color:var(--on-dark);">We have a clear place to start.</h3><p style="color:var(--on-dark-mute);font-size:.85rem;">This review build does not send data. Production will route your answers to the fit-results experience.</p><a class="btn btn-gold" href="#fit" style="margin-top:16px;">Schedule the Conversation <span class="arr" aria-hidden="true">→</span></a></div>
+            <div class="fit-thanks" id="fitThanks" tabindex="-1"><p class="eyebrow" style="justify-content:center;">Assessment received</p><h3 style="font-family:var(--serif);font-size:1.6rem;color:var(--midnight);">We have a clear place to start.</h3><p style="color:var(--body);font-size:.85rem;">This review build does not send data. Production will route your answers to the fit-results experience.</p><a class="btn btn-gold" href="#fit" style="margin-top:16px;">Schedule the Conversation <span class="arr" aria-hidden="true">→</span></a></div>
           </div>
         </div>
       </div>
@@ -877,42 +958,32 @@
           <p class="lede">No surprise sales process. No pressure. Just a clear path from your first question to a coordinated plan.</p>
         </div>
         <div class="process-timeline stagger reveal">
+          <div class="process-steps">
           <article class="process-step">
-            <div></div>
-            <div>
-              <small>Step 01</small>
-              <h3>Discovery</h3>
-              <p>A 30-minute conversation. You tell us about your situation — your equity comp, your business, your family, your concerns. We listen and tell you honestly whether we can help.</p>
-              <span class="when">30 minutes, no obligation</span>
-            </div>
+            <small>Step 01</small>
+            <h3>Discovery</h3>
+            <p>A 30-minute conversation. You tell us about your situation — your equity comp, your business, your family, your concerns. We listen and tell you honestly whether we can help.</p>
+            <span class="when">30 minutes, no obligation</span>
           </article>
           <article class="process-step">
-            <div></div>
-            <div>
-              <small>Step 02</small>
-              <h3>Assessment</h3>
-              <p>We review your full financial picture — investments, tax returns, equity documents, estate plan, business interests. We identify the gaps between where you are and where your wealth needs to be.</p>
-              <span class="when">Usually 1–2 weeks</span>
-            </div>
+            <small>Step 02</small>
+            <h3>Assessment</h3>
+            <p>We review your full financial picture — investments, tax returns, equity documents, estate plan, business interests. We identify the gaps between where you are and where your wealth needs to be.</p>
+            <span class="when">Usually 1–2 weeks</span>
           </article>
           <article class="process-step">
-            <div></div>
-            <div>
-              <small>Step 03</small>
-              <h3>The Plan</h3>
-              <p>We build your coordinated plan. Investment strategy, tax plan, estate review, and (for business owners) exit roadmap. We walk your CPA and estate attorney through it. Everyone reads from the same page.</p>
-              <span class="when">You keep this document</span>
-            </div>
+            <small>Step 03</small>
+            <h3>The Plan</h3>
+            <p>We build your coordinated plan. Investment strategy, tax plan, estate review, and (for business owners) exit roadmap. We walk your CPA and estate attorney through it. Everyone reads from the same page.</p>
+            <span class="when">You keep this document</span>
           </article>
           <article class="process-step">
-            <div></div>
-            <div>
-              <small>Step 04</small>
-              <h3>Partnership</h3>
-              <p>We implement the plan and meet quarterly to keep it current. When your equity vests, when the commodity cycle turns, when a business opportunity appears — we've already modeled it. You stop being the project manager.</p>
-              <span class="when">Proactive, not reactive</span>
-            </div>
+            <small>Step 04</small>
+            <h3>Partnership</h3>
+            <p>We implement the plan and meet quarterly to keep it current. When your equity vests, when the commodity cycle turns, when a business opportunity appears — we've already modeled it. You stop being the project manager.</p>
+            <span class="when">Proactive, not reactive</span>
           </article>
+          </div>
         </div>
         <div class="process-no-ob reveal">
           <p>The first call is just a conversation. 30 minutes. No deck, no pitch, no pressure. If we're not a fit, we'll tell you — and refer you to someone who is.</p>
@@ -927,21 +998,22 @@
           <div class="proof-left">
             <p class="eyebrow light">Your Advisor</p>
             <h2 class="h-display">Institutional discipline, <em>brought to your side of the table.</em></h2>
-            <p class="lede">[VERIFY: 10]+ years inside Merrill Lynch taught Alex how the machine works — and why it doesn't always serve the client. He founded Anchor to coordinate the work that siloed advisors leave to the client.</p>
+            <p class="lede">Alex's approved background and prior-firm history will be added after client and compliance verification. Anchor was founded to coordinate the work that siloed advice leaves to the client.</p>
           </div>
           <div class="alex-block">
+            <div style="width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-dark));display:grid;place-items:center;margin-bottom:24px;border:3px solid rgba(177,143,77,.3);overflow:hidden;">
+              <span style="font-family:var(--serif);font-size:2.5rem;color:#fff;font-weight:500;">AM</span>
+            </div>
             <p class="eyebrow light">Alex's story</p>
-            <h3>[VERIFY: Alex Miller] left the wirehouse to give advice without a product quota.</h3>
-            <p>He learned the business from the inside — the institutional discipline, the resources, the scale. He also learned something that bothered him enough to leave: the model works for the firm. It doesn't always work for the client.</p>
-            <p>His clients at Merrill were oil &amp; gas executives, business owners, and families with real complexity. And in almost every case, the same gap: their CPA, their attorney, and their investment advisor were operating in separate rooms. The client was the one running between them.</p>
-            <p>He left to close that gap. Alex's full background, credentials, and founding story will publish after client and compliance verification.</p>
-            <a class="text-link light" href="#fit">Alex's full story <span class="arr" aria-hidden="true">→</span></a>
+            <h3>One advisor accountable for the space between decisions.</h3>
+            <p>Anchor brings investment, tax, estate, and business planning into one working view. The goal is clear ownership: the right professional, the right context, and the right next step.</p>
+            <p>Alex's approved biography, credentials, prior-firm history, and founding story will publish after client and compliance verification.</p>
+            <a class="text-link light" href="about.html">Read why Anchor exists <span class="arr" aria-hidden="true">→</span></a>
             <div class="alex-chips">
-              <span class="chip">[VERIFY: CFP®]</span>
-              <span class="chip">[VERIFY: Series 65]</span>
-              <span class="chip">[VERIFY: 10]+ yrs Merrill</span>
-              <span class="chip">Fiduciary</span>
-              <span class="chip">Fee-only</span>
+              <span class="chip">[Credential 01]</span>
+              <span class="chip">[Credential 02]</span>
+              <span class="chip">[XX]+ years</span>
+              <span class="chip">[Accolade 01]</span>
             </div>
           </div>
         </div>
@@ -980,35 +1052,49 @@
       </div>
     </section>
 
-    <!-- ═══ INSIGHTS ═══ -->
-    <section class="insights" id="insights">
-      <div class="wrap">
-        <div class="insights-head reveal">
+    <!-- ═══ VIDEO INSIGHTS ═══ -->
+    <section class="reels" id="insights">
+      <div class="wrap reels-pad">
+        <div class="reels-head reveal">
           <div>
             <p class="eyebrow">From The Planning Room</p>
-            <h2 class="h-display">Useful thinking for <em>the decisions ahead.</em></h2>
+            <h2 class="h-display">Short answers for <em>the decisions ahead.</em></h2>
+            <p class="lede">Swipe or use the arrows. Tap a video to play; use the sound control to unmute.</p>
           </div>
-          <a class="text-link" href="#fit">Talk through your situation <span class="arr" aria-hidden="true">→</span></a>
+          <div class="reels-controls" aria-label="Video carousel controls">
+            <button class="rail-button" id="reelsPrev" type="button" aria-label="Previous videos">←</button>
+            <button class="rail-button" id="reelsNext" type="button" aria-label="Next videos">→</button>
+          </div>
         </div>
-        <div class="insights-grid stagger reveal">
-          <article class="insight">
-            <span class="insight-tag">Featured · Equity Compensation</span>
-            <h3>How RSU vesting creates a tax-timing trap</h3>
-            <p>Vesting, withholding, blackout periods, and concentration risk rarely arrive on a convenient schedule. Here is where coordination changes the decision.</p>
-            <a class="text-link" href="#fit">Explore the question <span class="arr" aria-hidden="true">→</span></a>
-          </article>
-          <article class="insight">
-            <span class="insight-tag">Coordination</span>
-            <h3>What “one living plan” actually means</h3>
-            <p>A practical look at how investments, taxes, estate work, and outside professionals stay connected over time.</p>
-            <a class="text-link" href="#fit">Read the overview <span class="arr" aria-hidden="true">→</span></a>
-          </article>
-          <article class="insight">
-            <span class="insight-tag">Business Transition</span>
-            <h3>The exit conversation starts before the LOI</h3>
-            <p>The planning work that gives an owner more options before a buyer, deadline, or tax event controls the timeline.</p>
-            <a class="text-link" href="#fit">See what to prepare <span class="arr" aria-hidden="true">→</span></a>
-          </article>
+        <div class="reels-row stagger reveal">
+          <div class="reel" data-reel="0">
+            <video muted loop playsinline preload="none" poster="assets/hero-oilfield.jpg" data-src="assets/pumpjack.mp4"></video>
+            <div class="reel-overlay">
+              <span class="reel-tag">Oil &amp; Gas</span>
+              <h3 class="reel-title">How RSU vesting creates a tax-timing trap</h3>
+            </div>
+            <button class="reel-mute" type="button" aria-label="Unmute"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M3 6v4h2l3 3V3L5 6z" stroke="currentColor" stroke-width="1"/><path d="M10 5a3 3 0 010 6" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M12 3a5 5 0 010 10" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></button>
+          </div>
+          <div class="reel" data-reel="1">
+            <video muted loop playsinline preload="none" poster="assets/hero-business-poster.png" data-src="assets/hero-business-loop.mp4"></video>
+            <div class="reel-overlay">
+              <span class="reel-tag">Business Owners</span>
+              <h3 class="reel-title">The exit conversation starts before the LOI</h3>
+            </div>
+            <button class="reel-mute" type="button" aria-label="Unmute"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M3 6v4h2l3 3V3L5 6z" stroke="currentColor" stroke-width="1"/><path d="M10 5a3 3 0 010 6" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M12 3a5 5 0 010 10" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></button>
+          </div>
+          <div class="reel" data-reel="2">
+            <video muted loop playsinline preload="none" poster="assets/hero-family-3gen-poster.png" data-src="assets/family-3gen.mp4"></video>
+            <div class="reel-overlay">
+              <span class="reel-tag">Families</span>
+              <h3 class="reel-title">What "one living plan" actually means</h3>
+            </div>
+            <button class="reel-mute" type="button" aria-label="Unmute"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M3 6v4h2l3 3V3L5 6z" stroke="currentColor" stroke-width="1"/><path d="M10 5a3 3 0 010 6" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M12 3a5 5 0 010 10" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></button>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:space-between;gap:20px;align-items:center;margin-top:30px;">
+          <p style="margin:0;color:var(--body);font-size:.78rem;">Video topics shown for layout review; approved Alex footage will replace preview media before launch.</p>
+          <a class="text-link" href="resources.html">Browse all resources <span class="arr" aria-hidden="true">→</span></a>
         </div>
       </div>
     </section>
@@ -1025,11 +1111,11 @@
         </div>
         <div>
           <h4>Explore</h4>
-          <ul><li><a href="#proof">About</a></li><li><a href="#services">Services</a></li><li><a href="#serve">Who We Serve</a></li><li><a href="#process">Process</a></li><li><a href="#fit">Contact</a></li></ul>
+          <ul><li><a href="about.html">About</a></li><li><a href="team.html">Team</a></li><li><a href="#services">Services</a></li><li><a href="resources.html">Resources</a></li><li><a href="#fit">Contact</a></li></ul>
         </div>
         <div>
           <h4>Specialties</h4>
-          <ul><li><a href="#serve">Oil &amp; Gas Executives</a></li><li><a href="#serve">Business Owners</a></li><li><a href="#serve">HNW Families</a></li><li><a href="#services">Equity Compensation</a></li><li><a href="#services">Estate &amp; Legacy</a></li><li><a href="#services">Coordinated Planning</a></li></ul>
+          <ul><li><a href="oil-gas-executives.html">Oil &amp; Gas Executives</a></li><li><a href="business-owners.html">Business Owners</a></li><li><a href="high-net-worth-families.html">HNW Families</a></li><li><a href="#services">Equity Compensation</a></li><li><a href="#services">Estate &amp; Legacy</a></li><li><a href="#services">Coordinated Planning</a></li></ul>
         </div>
       </div>
       <div class="footer-legal">
@@ -1079,10 +1165,23 @@
         clearTimeout(timer);
         if (!paused && !reduced.matches) timer = setTimeout(() => setSlide((active + 1) % selBtns.length), 9000);
       }
+      const heroHeadlines = [
+        { h1: 'When your equity vests, <em>who sees the whole picture?</em>', sub: 'RSUs, deferred comp, blackout periods, commodity cycles. Anchor coordinates your investments, taxes, and estate plan with your CPA and attorney — so every vest, bonus, and decision happens in context.' },
+        { h1: 'Your business is your largest asset. <em>What\u2019s the plan for it?</em>', sub: 'Entity structure, exit timing, liquidity events, and the line between business value and personal wealth. Anchor starts the planning conversation years before the LOI arrives.' },
+        { h1: 'Your wealth grew. <em>Did your plan keep up?</em>', sub: 'Trust funding, beneficiary reviews, multi-generational coordination. Anchor keeps your CPA, attorney, and advisor reading from the same page — so your estate matches your actual net worth.' }
+      ];
+      const heroH1 = document.getElementById('heroHeadline');
+      const heroSubEl = document.getElementById('heroSub');
+      function updateHeroCopy(i) {
+        const data = heroHeadlines[i] || heroHeadlines[0];
+        heroH1.innerHTML = data.h1;
+        heroSubEl.textContent = data.sub;
+      }
       function setSlide(i, user = false) {
         active = +i;
         track.style.transform = `translate3d(-${active * 33.333333}%,0,0)`;
         selBtns.forEach((b, j) => { b.classList.toggle('active', j === active); b.setAttribute('aria-selected', String(j === active)); });
+        updateHeroCopy(active);
         playActive();
         if (user) hero.classList.remove('paused');
         schedule();
@@ -1148,7 +1247,45 @@
         showStep(step + 1);
       }));
       $$('.fit-back').forEach(b => b.addEventListener('click', () => showStep(step - 1)));
+      $$('.fit-step input[type="radio"]').forEach(input => input.addEventListener('change', () => {
+        const current = input.closest('.fit-step');
+        if (!current?.classList.contains('active') || step >= steps.length - 1) return;
+        current.querySelectorAll('.fit-opt').forEach(opt => opt.classList.toggle('selected', opt.contains(input)));
+        setTimeout(() => showStep(step + 1), 380);
+      }));
       form.addEventListener('submit', e => { e.preventDefault(); if (!form.reportValidity()) return; form.hidden = true; $('.fit-progress').hidden = true; $('#fitThanks').classList.add('show'); $('#fitThanks').focus(); });
+
+      /* Reels: pointer and touch friendly */
+      const reelsRail = $('.reels-row');
+      $('#reelsPrev')?.addEventListener('click', () => reelsRail.scrollBy({ left: -320, behavior: 'smooth' }));
+      $('#reelsNext')?.addEventListener('click', () => reelsRail.scrollBy({ left: 320, behavior: 'smooth' }));
+      $$('.reel').forEach(reel => {
+        const video = reel.querySelector('video');
+        const muteBtn = reel.querySelector('.reel-mute');
+        let loaded = false;
+        function hydrate() {
+          if (loaded || !video.dataset.src) return;
+          const s = document.createElement('source');
+          s.src = video.dataset.src; s.type = 'video/mp4';
+          video.appendChild(s);
+          loaded = true;
+          video.load();
+        }
+        reel.addEventListener('mouseenter', () => { hydrate(); video.play().catch(() => {}); });
+        reel.addEventListener('mouseleave', () => video.pause());
+        reel.addEventListener('click', e => {
+          if (e.target.closest('.reel-mute')) return;
+          hydrate();
+          if (video.paused) video.play().catch(() => {}); else video.pause();
+        });
+        if (muteBtn) {
+          muteBtn.addEventListener('click', e => {
+            e.stopPropagation();
+            video.muted = !video.muted;
+            if (!video.muted && video.paused) { hydrate(); video.play().catch(() => {}); }
+          });
+        }
+      });
     })();
   </script>
 </body>

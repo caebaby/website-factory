@@ -260,3 +260,11 @@ Append-only. Each entry: what broke, why, how it was caught, and what permanent 
 - **Fix:** restored all three modules inside v6's current “Chart” language; no visual rollback and no current sections removed.
 - **Permanent lesson:** before replacing a live candidate, diff the ordered semantic section manifest against the prior approved candidate. Mark every prior module **KEEP / MERGE / DELETE** with a reason. A clean print may change composition, but it cannot silently discard client-approved content.
 - **Status:** ✅ closed. Desktop/mobile Tier-B passed; gate 0 P0 / 0 P1 / 0 P2.
+
+### LED-024 — Reusing a generic section class/id can cross-wire two independent modules
+- **Build:** `projects/awp/build/home-v6.html` (2026-07-16 continuation).
+- **Symptom:** the Alex story-video module and the firm-origin module both used `.story` and `id="story"`. The later origin styles silently restyled the earlier video section, and fragment navigation had two destinations with the same identity.
+- **Root cause:** a restored narrative module inherited a generic component name already claimed elsewhere in the clean-sheet build. The semantic section manifest was preserved, but the selector/ID namespace was not checked.
+- **Fix:** renamed the advisor module to `.alex-story` / `#alex-story`, gave its descendants a scoped namespace, and removed the duplicate interactive placeholder. A rendered probe now reports zero duplicate IDs.
+- **Permanent lesson:** every restored or merged module needs a selector-and-ID namespace check in addition to the ordered section-manifest diff. Section names should describe the job (`alex-story`, `firm-origin`), not a generic shape (`story`).
+- **Status:** ✅ closed. Gate 0 P0; duplicate-ID probe clean.

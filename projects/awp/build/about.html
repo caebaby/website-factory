@@ -1,1120 +1,223 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Alex Miller | Anchor Wealth Planning</title>
-  <meta name="description" content="Alex Miller, founder of Anchor Wealth Planning. Over a decade at Merrill Lynch. Fiduciary, fee-only, Houston-based. The story behind the practice.">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Nunito+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-    /* ============================================
-       AWP DESIGN SYSTEM — editorial-luxury template
-       Archetype: B (Editor)
-       Built per: DESIGN.md + DESIGN_BRIEF.md + SECTION_MANIFEST.md
-       Agent 04 compliance — all quality rules enforced
-    ============================================ */
-
-    :root {
-      /* Primary — Midnight navy */
-      --primary:            #1e395a;
-      --primary-light:      #2d5474;
-      --primary-deep:       #0f2038;
-      --primary-rgb:        30, 57, 90;
-
-      /* Accent — Burnished Gold */
-      --accent:             #b18f4d;
-      --accent-dark:        #9a7a3e;
-      --accent-glow:        rgba(177,143,77,.35);
-      --accent-wash:        rgba(177,143,77,.06);
-      --accent-rgb:         177, 143, 77;
-
-      /* Secondary — Steel blue */
-      --secondary:          #3d5a75;
-      --secondary-rgb:      61, 90, 117;
-
-      /* Neutrals */
-      --pigeon:             #748ba0;
-      --pigeon-rgb:         116, 139, 160;
-      --robin:              #c0d8e9;
-      --robin-rgb:          192, 216, 233;
-
-      /* Backgrounds */
-      --bg-base:            #F5F0E6;
-      --bg-base-rgb:        245, 240, 230;
-      --bg-mid:             #EDE8DA;
-      --bg-card:            #FFFFFF;
-
-      /* Text */
-      --text-primary:       #1e395a;
-      --text-body:          #3d5a75;
-      --text-muted:         #748ba0;
-      --text-light:         #FFFFFF;
-      --text-light-muted:   rgba(255,255,255,.66);
-
-      /* Borders */
-      --border-light:       rgba(30,57,90,.12);
-      --border-gold:        rgba(177,143,77,.30);
-      --border-dark:        rgba(192,216,233,.22);
-
-      /* Typography */
-      --font-display:       'EB Garamond', Georgia, serif;
-      --font-body:          'Nunito Sans', 'Helvetica Neue', sans-serif;
-
-      /* Type Scale */
-      --t-display:          clamp(46px, 6vw, 78px);
-      --t-h1:               clamp(40px, 5.2vw, 66px);
-      --t-h2:               clamp(34px, 4.4vw, 50px);
-      --t-h3:               clamp(22px, 2.4vw, 28px);
-      --t-h4:               clamp(18px, 1.8vw, 21px);
-      --t-body:             clamp(16px, 1.6vw, 18px);
-      --t-small:            14px;
-      --t-micro:            11px;
-
-      /* Layout */
-      --maxw:               1180px;
-      --readable:           680px;
-      --section-v:          104px;
-      --section-sm:         72px;
-      --gap:                26px;
-      --gap-lg:             48px;
-
-      /* Transition tokens (Editor archetype + AWP adjustments) */
-      --t-reveal:           0.5s cubic-bezier(.16,1,.3,1);
-      --t-hover:            0.22s cubic-bezier(.34,1.2,.64,1);
-      --t-stagger:          0.08s;
-      --hover-lift:         3px;
-      --ticker-duration:    30s;
-      --countup-duration:   1800ms;
-    }
-
-    /* ============================================
-       RESET & BASE
-    ============================================ */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-
-    body {
-      font-family: var(--font-body);
-      font-size: var(--t-body);
-      line-height: 1.7;
-      color: var(--text-body);
-      background: var(--bg-base);
-      overflow-x: hidden;
-    }
-
-    h1, h2, h3, h4, h5 {
-      font-family: var(--font-display);
-      color: var(--text-primary);
-      line-height: 1.15;
-      font-weight: 400;
-    }
-
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    ::selection { background: rgba(var(--accent-rgb), .25); color: var(--primary-deep); }
-
-    img { max-width: 100%; height: auto; display: block; }
-
-    /* ============================================
-       GRAIN OVERLAY (every page)
-    ============================================ */
-    .grain-overlay {
-      position: fixed; inset: 0; z-index: 9999; pointer-events: none;
-      opacity: .035;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    }
-
-    /* ============================================
-       LAYOUT UTILITIES
-    ============================================ */
-    .container { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
-    .readable { max-width: var(--readable); }
-    .section { padding: var(--section-v) 0; position: relative; overflow: hidden; }
-    .section-sm { padding: var(--section-sm) 0; position: relative; overflow: hidden; }
-
-    /* Section background depth (never flat) */
-    .bg-cream {
-      background:
-        radial-gradient(ellipse at 15% 85%, rgba(var(--accent-rgb), .04) 0%, transparent 55%),
-        radial-gradient(ellipse at 85% 15%, rgba(var(--primary-rgb), .03) 0%, transparent 50%),
-        var(--bg-base);
-    }
-    .bg-cream-mid {
-      background:
-        radial-gradient(ellipse at 80% 70%, rgba(var(--accent-rgb), .03) 0%, transparent 50%),
-        var(--bg-mid);
-    }
-    .bg-dark {
-      background:
-        radial-gradient(ellipse at 20% 50%, rgba(var(--secondary-rgb), .4) 0%, transparent 55%),
-        radial-gradient(ellipse at 80% 20%, rgba(var(--accent-rgb), .08) 0%, transparent 40%),
-        var(--primary);
-    }
-    .bg-hero {
-      background:
-        radial-gradient(ellipse at 25% 60%, rgba(var(--secondary-rgb), .5) 0%, transparent 55%),
-        radial-gradient(ellipse at 75% 25%, rgba(var(--pigeon-rgb), .25) 0%, transparent 50%),
-        linear-gradient(165deg, var(--primary) 0%, var(--primary-light) 35%, var(--primary) 65%, var(--primary-deep) 100%);
-    }
-
-    /* ============================================
-       EYEBROW
-    ============================================ */
-    .eyebrow {
-      font-family: var(--font-body);
-      font-size: var(--t-micro); font-weight: 700; letter-spacing: .18em;
-      text-transform: uppercase; color: var(--accent);
-      display: inline-flex; align-items: center; gap: 14px;
-      margin-bottom: 20px;
-    }
-    .eyebrow::after {
-      content: ""; display: block; height: 1px; width: 46px;
-      background: var(--accent);
-      transform: scaleX(0); transform-origin: left;
-      transition: transform .6s ease .15s;
-    }
-    .reveal.visible .eyebrow::after,
-    .eyebrow.visible::after { transform: scaleX(1); }
-    .on-dark .eyebrow { text-shadow: 0 0 20px rgba(var(--accent-rgb), .35); }
-
-    /* ============================================
-       NAVIGATION — Frosted glass on scroll
-    ============================================ */
-    .nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      height: 76px; display: flex; align-items: center;
-      background: transparent; border-bottom: 1px solid transparent;
-      transition: background .22s ease, box-shadow .22s ease, border-color .22s ease;
-    }
-    .nav.scrolled {
-      background: rgba(var(--bg-base-rgb), .92);
-      backdrop-filter: blur(16px) saturate(1.4);
-      -webkit-backdrop-filter: blur(16px) saturate(1.4);
-      border-bottom-color: var(--border-light);
-      box-shadow:
-        0 1px 0 rgba(255,255,255,.8) inset,
-        0 4px 24px rgba(var(--primary-rgb), .08);
-    }
-    .nav-inner {
-      max-width: var(--maxw); margin: 0 auto; padding: 0 24px;
-      width: 100%; display: flex; align-items: center; justify-content: space-between;
-    }
-    .nav-logo {
-      font-family: var(--font-display); font-size: 24px; font-weight: 500;
-      color: var(--text-light); text-decoration: none; line-height: 1;
-      display: flex; flex-direction: column; gap: 2px;
-    }
-    .nav.scrolled .nav-logo { color: var(--text-primary); }
-    .nav-logo .logo-sub {
-      font-family: var(--font-body); font-size: 8px; font-weight: 700;
-      letter-spacing: .22em; text-transform: uppercase; opacity: .7;
-    }
-    .nav-links { display: flex; align-items: center; gap: 36px; }
-    .nav-link {
-      position: relative; font-size: 14px; font-weight: 600;
-      color: var(--text-light-muted); text-decoration: none;
-      transition: color .22s ease;
-    }
-    .nav.scrolled .nav-link { color: var(--secondary); }
-    .nav-link::after {
-      content: ''; position: absolute; left: 0; bottom: -6px;
-      height: 1.5px; width: 0; background: var(--accent);
-      transition: width .22s ease;
-    }
-    .nav-link:hover { color: var(--accent); text-decoration: none; }
-    .nav-link:hover::after { width: 100%; }
-
-    .nav-cta {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 10px 22px; background: var(--accent); color: #fff;
-      font-size: 13px; font-weight: 700; letter-spacing: .04em;
-      border-radius: 5px; border: none; cursor: pointer; text-decoration: none;
-      position: relative; overflow: hidden;
-      box-shadow: 0 1px 2px rgba(var(--accent-rgb),.15), 0 4px 16px rgba(var(--accent-rgb),.28);
-      transition: transform .22s ease, box-shadow .22s ease;
-    }
-    .nav-cta::before {
-      content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent);
-      transition: left .42s ease; pointer-events: none;
-    }
-    .nav-cta:hover::before { left: 100%; }
-    .nav-cta:hover { transform: translateY(-2px); text-decoration: none;
-      box-shadow: 0 2px 4px rgba(var(--accent-rgb),.18), 0 8px 32px rgba(var(--accent-rgb),.40); }
-    .nav-cta .arrow { transition: transform .25s cubic-bezier(.34,1.56,.64,1); }
-    .nav-cta:hover .arrow { transform: translateX(5px); }
-
-    /* Mobile nav */
-    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
-    .nav-toggle span {
-      display: block; width: 24px; height: 2px; background: var(--text-light);
-      transition: background .22s ease; position: relative;
-    }
-    .nav.scrolled .nav-toggle span { background: var(--text-primary); }
-    .nav-toggle span::before, .nav-toggle span::after {
-      content: ''; position: absolute; left: 0; width: 24px; height: 2px; background: inherit;
-      transition: transform .3s ease;
-    }
-    .nav-toggle span::before { top: -7px; }
-    .nav-toggle span::after { top: 7px; }
-    .nav-toggle.open span { background: transparent; }
-    .nav-toggle.open span::before { transform: rotate(45deg) translate(5px, 5px); background: var(--text-primary); }
-    .nav-toggle.open span::after { transform: rotate(-45deg) translate(5px, -5px); background: var(--text-primary); }
-
-    .mobile-menu {
-      position: fixed; inset: 0; z-index: 999; background: var(--bg-base);
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 32px;
-      opacity: 0; pointer-events: none; transition: opacity .3s ease;
-    }
-    .mobile-menu.open { opacity: 1; pointer-events: all; }
-    .mobile-menu a {
-      font-family: var(--font-display); font-size: 28px; color: var(--text-primary); text-decoration: none;
-    }
-
-    /* ============================================
-       BUTTONS
-    ============================================ */
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 16px 32px; background: var(--accent); color: #fff;
-      font-family: var(--font-body); font-size: 14px; font-weight: 700; letter-spacing: .04em;
-      border-radius: 5px; border: none; cursor: pointer; text-decoration: none;
-      position: relative; overflow: hidden;
-      box-shadow: 0 1px 2px rgba(var(--accent-rgb),.15), 0 4px 16px rgba(var(--accent-rgb),.28);
-      transition: transform .22s ease, box-shadow .22s ease;
-    }
-    .btn-primary::before {
-      content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent);
-      transition: left .42s ease; pointer-events: none;
-    }
-    .btn-primary:hover::before { left: 100%; }
-    .btn-primary .arrow { transition: transform .25s cubic-bezier(.34,1.56,.64,1); }
-    .btn-primary:hover .arrow { transform: translateX(5px); }
-    .btn-primary:hover {
-      transform: translateY(-2px); text-decoration: none;
-      box-shadow: 0 2px 4px rgba(var(--accent-rgb),.18), 0 8px 32px rgba(var(--accent-rgb),.40);
-    }
-
-    .btn-ghost-dark {
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 16px 32px; background: transparent; color: #fff;
-      font-family: var(--font-body); font-size: 14px; font-weight: 700; letter-spacing: .04em;
-      border-radius: 5px; border: 2px solid rgba(255,255,255,.35); cursor: pointer; text-decoration: none;
-      transition: border-color .22s ease, background .22s ease;
-    }
-    .btn-ghost-dark:hover { border-color: #fff; background: rgba(255,255,255,.07); text-decoration: none; }
-
-    .btn-ghost-light {
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 16px 32px; background: transparent; color: var(--primary);
-      font-family: var(--font-body); font-size: 14px; font-weight: 700; letter-spacing: .04em;
-      border-radius: 5px; border: 2px solid rgba(var(--primary-rgb),.3); cursor: pointer; text-decoration: none;
-      transition: border-color .22s ease, color .22s ease;
-    }
-    .btn-ghost-light:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
-
-    /* Soft CTA — text link with arrow (for PROBLEM/TRUST-free zones) */
-    .soft-cta {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-family: var(--font-body); font-size: 15px; font-weight: 600;
-      color: var(--accent); text-decoration: none;
-      transition: gap .22s ease;
-    }
-    .soft-cta:hover { gap: 12px; text-decoration: none; }
-    .soft-cta .arrow { transition: transform .25s ease; }
-    .soft-cta:hover .arrow { transform: translateX(3px); }
-
-    /* ============================================
-       HERO — Asymmetric 7/5 (Editor archetype)
-    ============================================ */
-    .hero {
-      min-height: 100vh; display: flex; align-items: center;
-      padding: 120px 0 80px; position: relative; overflow: hidden;
-    }
-    .hero-grid {
-      display: grid; grid-template-columns: 7fr 5fr; gap: var(--gap-lg);
-      align-items: center; width: 100%;
-    }
-    .hero-content { max-width: 640px; }
-    .hero h1 {
-      font-size: var(--t-display); color: #fff; margin-bottom: 24px;
-      text-shadow: 0 2px 12px rgba(0,0,0,.25);
-    }
-    .hero h1 .gold-accent { color: var(--accent); font-style: italic; }
-    .hero-sub {
-      font-size: var(--t-body); color: var(--text-light-muted); line-height: 1.8;
-      margin-bottom: 40px; max-width: 540px;
-    }
-    .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 48px; }
-    .hero-proof {
-      display: flex; gap: 32px; flex-wrap: wrap;
-      padding-top: 32px; border-top: 1px solid rgba(255,255,255,.12);
-    }
-    .hero-proof-item {
-      font-size: var(--t-small); color: var(--text-light-muted); line-height: 1.5;
-      max-width: 140px;
-    }
-    .hero-proof-item strong { color: #fff; font-weight: 700; display: block; margin-bottom: 2px; }
-
-    /* Hero decorative — subtle anchor SVG in negative space */
-    .hero-decor {
-      display: flex; align-items: center; justify-content: center;
-      position: relative;
-    }
-    .hero-decor svg { width: 280px; height: 280px; opacity: .08; }
-
-    /* ============================================
-       PAIN TICKER (marquee)
-    ============================================ */
-    .ticker-band {
-      background: var(--bg-base);
-      border-top: 1px solid var(--border-light);
-      border-bottom: 1px solid var(--border-light);
-      padding: 18px 0; overflow: hidden;
-    }
-    .ticker-track {
-      display: flex; gap: 60px; white-space: nowrap;
-      animation: ticker var(--ticker-duration) linear infinite;
-    }
-    .ticker-item {
-      font-family: var(--font-display); font-style: italic;
-      font-size: 18px; color: var(--text-muted);
-      display: flex; align-items: center; gap: 60px;
-    }
-    .ticker-item::after {
-      content: '◆'; font-size: 8px; color: var(--accent); font-style: normal;
-    }
-    @keyframes ticker {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-
-    /* ============================================
-       PAIN SECTION — Editorial stack (alternating bands)
-    ============================================ */
-    .pain-stack { display: flex; flex-direction: column; gap: 0; }
-    .pain-band {
-      display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap-lg);
-      align-items: center; padding: 64px 0;
-      border-bottom: 1px solid var(--border-light);
-    }
-    .pain-band:last-child { border-bottom: none; }
-    .pain-band:nth-child(even) .pain-quote { order: 2; }
-    .pain-band:nth-child(even) .pain-context { order: 1; }
-    .pain-quote {
-      font-family: var(--font-display); font-size: clamp(20px, 2.2vw, 26px);
-      font-style: italic; color: var(--text-primary); line-height: 1.5;
-      position: relative; padding-left: 24px;
-    }
-    .pain-quote::before {
-      content: '"'; position: absolute; left: -8px; top: -20px;
-      font-size: 80px; color: var(--accent); opacity: .3; line-height: 1;
-    }
-    .pain-context {
-      font-size: var(--t-body); color: var(--text-body); line-height: 1.8;
-    }
-    .pain-context strong { color: var(--text-primary); }
-
-    /* ============================================
-       TRUST ESTABLISHMENT
-    ============================================ */
-    .trust-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap);
-      margin-top: 48px;
-    }
-    .trust-item {
-      display: flex; flex-direction: column; gap: 14px;
-      padding: 28px 24px;
-    }
-    .trust-icon {
-      width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
-    }
-    .trust-icon svg { width: 100%; height: 100%; stroke: var(--accent); fill: none; stroke-width: 1.5; }
-    .trust-item h4 {
-      font-size: var(--t-h4); font-weight: 500; color: var(--text-primary);
-    }
-    .trust-item p { font-size: var(--t-small); color: var(--text-muted); line-height: 1.6; }
-
-    /* ============================================
-       ICP SELF-SORT (3-column with custom icons)
-    ============================================ */
-    .icp-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap);
-      margin-top: 48px;
-    }
-    .icp-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-light);
-      border-radius: 6px;
-      padding: 36px 30px; position: relative; overflow: hidden;
-      box-shadow:
-        0 1px 2px rgba(var(--primary-rgb), .04),
-        0 4px 14px rgba(var(--primary-rgb), .08),
-        0 18px 40px rgba(var(--primary-rgb), .09),
-        inset 0 1px 0 rgba(255,255,255,.75);
-      transition: transform .35s cubic-bezier(.34,1.2,.64,1), box-shadow .35s ease;
-    }
-    .icp-card::before {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(105deg, transparent 40%, rgba(var(--accent-rgb),.05) 50%, transparent 60%);
-      transform: translateX(-100%); transition: transform .55s ease; pointer-events: none;
-    }
-    .icp-card::after {
-      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-      transform: scaleX(0); transition: transform .4s ease;
-    }
-    .icp-card:hover {
-      transform: translateY(var(--hover-lift)) scale(1.004);
-      box-shadow:
-        0 2px 4px rgba(var(--primary-rgb), .04),
-        0 8px 28px rgba(var(--primary-rgb), .13),
-        0 28px 56px rgba(var(--primary-rgb), .11),
-        inset 0 1px 0 rgba(255,255,255,.85);
-    }
-    .icp-card:hover::before { transform: translateX(100%); }
-    .icp-card:hover::after { transform: scaleX(1); }
-
-    .icp-card-icon {
-      width: 56px; height: 56px; margin-bottom: 24px; position: relative;
-    }
-    .icp-card-icon svg { width: 100%; height: 100%; stroke: var(--accent); fill: none; stroke-width: 1.2; }
-    .icp-card h3 { font-size: var(--t-h3); font-weight: 500; margin-bottom: 12px; }
-    .icp-card p { font-size: var(--t-small); color: var(--text-muted); margin-bottom: 20px; line-height: 1.6; }
-
-    /* ============================================
-       FIT ASSESSMENT (Lead Capture)
-    ============================================ */
-    .fit-card {
-      background: var(--bg-card); border-radius: 8px;
-      border-top: 3px solid var(--accent);
-      padding: 48px 40px; max-width: 680px; margin: 48px auto 0;
-      position: relative; overflow: hidden;
-      box-shadow:
-        0 4px 8px rgba(var(--primary-rgb), .06),
-        0 16px 48px rgba(var(--primary-rgb), .16),
-        0 48px 80px rgba(var(--primary-rgb), .14),
-        inset 0 1px 0 rgba(255,255,255,.9);
-    }
-    .fit-form { display: flex; flex-direction: column; gap: 28px; margin-top: 32px; }
-    .fit-q { display: flex; flex-direction: column; gap: 10px; }
-    .fit-q label {
-      font-size: var(--t-small); font-weight: 700; color: var(--text-primary);
-      letter-spacing: .02em;
-    }
-    .fit-options { display: flex; flex-wrap: wrap; gap: 10px; }
-    .fit-option {
-      display: flex; align-items: center; gap: 8px;
-      padding: 10px 16px; border: 1.5px solid var(--border-light); border-radius: 5px;
-      font-size: var(--t-small); color: var(--text-body); cursor: pointer;
-      background: rgba(255,255,255,.9);
-      box-shadow: inset 0 2px 4px rgba(var(--primary-rgb),.04), 0 1px 0 rgba(255,255,255,.8);
-      transition: border-color .22s ease, background .22s ease;
-    }
-    .fit-option:hover, .fit-option.selected {
-      border-color: var(--accent); background: rgba(var(--accent-rgb),.06);
-    }
-    .fit-option input { accent-color: var(--accent); }
-
-    .fit-email-row { display: flex; gap: 12px; flex-wrap: wrap; }
-    .fit-email-row input {
-      flex: 1; min-width: 220px;
-      padding: 14px 18px; font-size: var(--t-small);
-      background: rgba(255,255,255,.9);
-      border: 1.5px solid var(--border-light); border-radius: 5px;
-      box-shadow: inset 0 2px 4px rgba(var(--primary-rgb),.06), 0 1px 0 rgba(255,255,255,.8);
-      transition: border-color .22s ease, box-shadow .22s ease;
-      font-family: var(--font-body); color: var(--text-primary);
-    }
-    .fit-email-row input:focus {
-      border-color: var(--accent);
-      box-shadow: inset 0 2px 4px rgba(var(--primary-rgb),.04), 0 0 0 3px rgba(var(--accent-rgb),.14), 0 1px 0 rgba(255,255,255,.8);
-      outline: none;
-    }
-    .fit-micro {
-      font-size: var(--t-small); color: var(--text-muted); margin-top: 12px; font-style: italic;
-    }
-
-    /* ============================================
-       SERVICES — Editorial feature list
-    ============================================ */
-    .service-item {
-      display: grid; grid-template-columns: 80px 1fr; gap: var(--gap-lg);
-      padding: 48px 0; border-bottom: 1px solid var(--border-light);
-      align-items: start;
-    }
-    .service-item:last-child { border-bottom: none; }
-    .service-numeral {
-      font-family: var(--font-display); font-size: 64px; font-weight: 400;
-      color: var(--accent); opacity: .2; line-height: 1;
-    }
-    .service-content h3 {
-      font-size: var(--t-h3); font-weight: 500; margin-bottom: 8px;
-    }
-    .service-pain {
-      font-family: var(--font-display); font-style: italic; font-size: 17px;
-      color: var(--accent); margin-bottom: 16px;
-    }
-    .service-content p {
-      font-size: var(--t-body); color: var(--text-body); line-height: 1.8;
-      max-width: 620px;
-    }
-
-    /* ============================================
-       PROCESS — Margin Notes (SIGNATURE MOMENT)
-    ============================================ */
-    .process-section { position: relative; }
-    .process-steps { display: flex; flex-direction: column; gap: 0; margin-top: 48px; }
-    .process-step {
-      display: grid; grid-template-columns: 1fr 280px; gap: 48px;
-      padding: 40px 0; position: relative;
-      border-left: 1px solid var(--border-gold);
-      padding-left: 32px; margin-left: 16px;
-    }
-    .process-step-body { max-width: 580px; }
-    .process-step-body h3 {
-      font-size: var(--t-h3); font-weight: 500; margin-bottom: 14px;
-      color: var(--text-primary);
-    }
-    .process-step-body p {
-      font-family: var(--font-display); font-size: 19px; line-height: 1.7;
-      color: var(--text-body);
-    }
-    .process-margin-note {
-      font-family: var(--font-display); font-style: italic; font-size: 15px;
-      color: var(--accent); line-height: 1.5;
-      padding: 8px 0; opacity: 0; transform: translateX(-10px);
-      transition: opacity .5s ease .4s, transform .5s ease .4s;
-    }
-    .reveal.visible .process-margin-note { opacity: 1; transform: translateX(0); }
-    .process-margin-note::before {
-      content: '← '; font-style: normal;
-    }
-
-    .process-callout {
-      margin-top: 40px; padding: 28px 32px;
-      background: rgba(var(--accent-rgb), .06);
-      border-left: 3px solid var(--accent); border-radius: 0 6px 6px 0;
-    }
-    .process-callout p {
-      font-family: var(--font-display); font-style: italic; font-size: 18px;
-      color: var(--text-primary); line-height: 1.6;
-    }
-
-    /* ============================================
-       ABOUT (compact, homepage)
-    ============================================ */
-    .about-split {
-      display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap-lg);
-      align-items: center; margin-top: 48px;
-    }
-    .about-photo {
-      aspect-ratio: 4/5; border-radius: 6px;
-      background:
-        radial-gradient(ellipse at 30% 30%, rgba(var(--accent-rgb),.08), transparent 60%),
-        linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-      display: flex; align-items: center; justify-content: center;
-      box-shadow:
-        0 1px 2px rgba(var(--primary-rgb), .04),
-        0 4px 14px rgba(var(--primary-rgb), .08),
-        0 18px 40px rgba(var(--primary-rgb), .09);
-      position: relative; overflow: hidden;
-    }
-    .about-photo-text {
-      font-family: var(--font-display); font-size: 18px; color: rgba(255,255,255,.4);
-      text-align: center; padding: 20px;
-    }
-    .about-creds {
-      display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px;
-    }
-    .cred-chip {
-      display: inline-block; padding: 6px 14px;
-      border: 1px solid var(--border-gold); border-radius: 4px;
-      font-size: var(--t-small); font-weight: 600; color: var(--text-primary);
-      background: rgba(var(--accent-rgb),.03);
-    }
-
-    /* ============================================
-       STATS STRIP (dark band, count-up)
-    ============================================ */
-    .stats-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gap);
-      text-align: center;
-    }
-    .stat-item { display: flex; flex-direction: column; gap: 8px; }
-    .stat-number {
-      font-family: var(--font-display); font-size: clamp(40px, 5vw, 60px);
-      font-weight: 500; color: var(--accent); line-height: 1;
-    }
-    .stat-label {
-      font-size: var(--t-small); color: var(--text-light-muted);
-      letter-spacing: .02em; max-width: 180px; margin: 0 auto;
-    }
-
-    /* ============================================
-       TESTIMONIALS — Editorial proof
-    ============================================ */
-    .testimonial-feature {
-      max-width: 800px; margin: 48px auto 0; text-align: center;
-      padding: 48px 40px; position: relative;
-    }
-    .testimonial-feature::before {
-      content: '"'; position: absolute; top: -20px; left: 50%; transform: translateX(-50%);
-      font-family: var(--font-display); font-size: 120px; color: var(--accent); opacity: .15; line-height: 1;
-    }
-    .testimonial-quote {
-      font-family: var(--font-display); font-size: clamp(20px, 2.4vw, 26px);
-      font-style: italic; color: var(--text-primary); line-height: 1.6;
-      position: relative; z-index: 1;
-    }
-    .testimonial-author {
-      margin-top: 24px; font-size: var(--t-small); color: var(--text-muted);
-      font-weight: 600; letter-spacing: .04em;
-    }
-
-    /* ============================================
-       FINAL CTA (dark navy, editorial close)
-    ============================================ */
-    .final-cta-content { max-width: 680px; margin: 0 auto; text-align: center; }
-    .final-cta-content h2 {
-      font-size: var(--t-h2); color: #fff; margin-bottom: 20px;
-      text-shadow: 0 2px 12px rgba(0,0,0,.25);
-    }
-    .final-cta-content p {
-      font-size: var(--t-body); color: var(--text-light-muted); line-height: 1.8;
-      margin-bottom: 36px;
-    }
-    .final-cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-
-    /* ============================================
-       FOOTER
-    ============================================ */
-    .footer {
-      padding: 72px 0 32px; background: var(--bg-mid);
-      border-top: 1px solid var(--border-light);
-    }
-    .footer-grid {
-      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: var(--gap-lg);
-      margin-bottom: 48px;
-    }
-    .footer-brand h4 {
-      font-family: var(--font-display); font-size: 22px; font-weight: 500;
-      color: var(--text-primary); margin-bottom: 8px;
-    }
-    .footer-brand .tagline {
-      font-family: var(--font-display); font-style: italic; font-size: 16px;
-      color: var(--accent); margin-bottom: 16px;
-    }
-    .footer-brand p { font-size: var(--t-small); color: var(--text-muted); line-height: 1.7; max-width: 320px; }
-    .footer-col h5 {
-      font-family: var(--font-body); font-size: var(--t-micro); font-weight: 700;
-      letter-spacing: .14em; text-transform: uppercase; color: var(--text-primary);
-      margin-bottom: 16px;
-    }
-    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .footer-col a {
-      font-size: var(--t-small); color: var(--text-muted); text-decoration: none;
-      transition: color .22s ease;
-    }
-    .footer-col a:hover { color: var(--accent); }
-
-    .footer-bottom {
-      padding-top: 28px; border-top: 1px solid var(--border-light);
-      display: flex; flex-direction: column; gap: 16px;
-    }
-    .footer-disclaimer {
-      font-size: 12px; color: var(--text-muted); line-height: 1.7; max-width: 900px;
-    }
-    .footer-copy {
-      font-size: var(--t-small); color: var(--text-muted);
-      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
-    }
-
-    /* ============================================
-       PLACEHOLDER MARKS
-    ============================================ */
-    mark.placeholder-mark {
-      background: rgba(var(--accent-rgb), .15); color: var(--primary);
-      padding: 2px 6px; border-radius: 3px; font-weight: 600;
-      border: 1px dashed var(--accent);
-    }
-
-    /* ============================================
-       SCROLL REVEAL ANIMATION
-    ============================================ */
-    .reveal {
-      opacity: 0; transform: translateY(30px);
-      transition: opacity var(--t-reveal), transform var(--t-reveal);
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-children > * {
-      opacity: 0; transform: translateY(20px);
-      transition: opacity var(--t-reveal), transform var(--t-reveal);
-    }
-    .reveal-children.visible > * { opacity: 1; transform: translateY(0); }
-    .reveal-children.visible > *:nth-child(1) { transition-delay: 0s; }
-    .reveal-children.visible > *:nth-child(2) { transition-delay: var(--t-stagger); }
-    .reveal-children.visible > *:nth-child(3) { transition-delay: calc(var(--t-stagger) * 2); }
-    .reveal-children.visible > *:nth-child(4) { transition-delay: calc(var(--t-stagger) * 3); }
-    .reveal-children.visible > *:nth-child(5) { transition-delay: calc(var(--t-stagger) * 4); }
-    .reveal-children.visible > *:nth-child(6) { transition-delay: calc(var(--t-stagger) * 5); }
-
-    /* ============================================
-       RESPONSIVE
-    ============================================ */
-    @media (max-width: 1024px) {
-      :root { --section-v: 80px; }
-      .hero-grid { grid-template-columns: 1fr; }
-      .hero-decor { display: none; }
-      .trust-grid { grid-template-columns: repeat(2, 1fr); }
-      .icp-grid { grid-template-columns: 1fr; }
-      .pain-band { grid-template-columns: 1fr; }
-      .pain-band:nth-child(even) .pain-quote { order: 1; }
-      .pain-band:nth-child(even) .pain-context { order: 2; }
-      .process-step { grid-template-columns: 1fr; gap: 12px; }
-      .process-margin-note::before { content: '↑ '; }
-      .about-split { grid-template-columns: 1fr; }
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
-      .service-item { grid-template-columns: 60px 1fr; }
-    }
-
-    @media (max-width: 768px) {
-      :root { --section-v: 64px; }
-      .nav-links { display: none; }
-      .nav-cta { display: none; }
-      .nav-toggle { display: block; }
-      .hero { padding: 100px 0 60px; min-height: auto; }
-      .hero h1 { font-size: clamp(34px, 8vw, 46px); }
-      .hero-ctas { flex-direction: column; }
-      .hero-ctas .btn-primary, .hero-ctas .btn-ghost-dark { width: 100%; justify-content: center; }
-      .hero-proof { flex-direction: column; gap: 16px; }
-      .trust-grid { grid-template-columns: 1fr; }
-      .stats-grid { grid-template-columns: 1fr 1fr; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .footer-copy { flex-direction: column; }
-      .fit-card { padding: 32px 24px; }
-      .fit-options { flex-direction: column; }
-      .service-item { grid-template-columns: 1fr; gap: 8px; }
-      .service-numeral { font-size: 44px; }
-    }
-
-    @media (max-width: 480px) {
-      :root { --section-v: 52px; }
-      .btn-primary { width: 100%; justify-content: center; }
-    }
-  </style>
-</head>
-<body>
-
-  <div class="grain-overlay"></div>
-
-  <nav class="nav" id="nav">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-logo">
-        Anchor
-        <span class="logo-sub">Wealth Planning</span>
-      </a>
-      <div class="nav-links">
-        <a href="about.html" class="nav-link">About</a>
-        <a href="services.html" class="nav-link">Services</a>
-        <a href="who-we-serve.html" class="nav-link">Who We Serve</a>
-        <a href="process.html" class="nav-link">Process</a>
-        <a href="contact.html" class="nav-link">Contact</a>
-      </div>
-      <a href="contact.html" class="nav-cta">Book a Call <span class="arrow">→</span></a>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-        <span></span>
-      </button>
-    </div>
-  </nav>
-
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="about.html">About</a>
-    <a href="services.html">Services</a>
-    <a href="who-we-serve.html">Who We Serve</a>
-    <a href="process.html">Process</a>
-    <a href="contact.html">Contact</a>
-  </div>
-
-
-  <!-- ============================================
-       ABOUT PAGE — Sub-hero
-    ============================================ -->
-  <section class="hero bg-hero" style="min-height: auto; padding: 140px 0 60px;">
-    <div class="container">
-      <div class="readable reveal">
-        <div class="eyebrow" style="color: var(--accent);">About</div>
-        <h1 style="font-size: var(--t-h1); color: #fff; margin-bottom: 20px;"><mark class="placeholder-mark" title="VERIFY: Confirm name">Alex Miller</mark></h1>
-        <p class="hero-sub" style="font-size: var(--t-body); max-width: 540px;">Founder, Anchor Wealth Planning. <mark class="placeholder-mark" title="VERIFY: Exact years">10+</mark> years at Merrill Lynch. Fiduciary. Houston-based.</p>
-        <div class="hero-ctas">
-          <a href="contact.html" class="btn-primary">Schedule a Conversation <span class="arrow">→</span></a>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>About | Anchor Wealth Planning</title>
+    <meta
+      name="description"
+      content="Why Anchor Wealth Planning was built to coordinate complex financial decisions."
+    />
+    <link rel="stylesheet" href="assets/anchor-inner.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <nav class="nav">
+      <div class="wrap nav-inner">
+        <a class="brand" href="home-v6.html"
+          ><svg viewBox="0 0 32 32" fill="none">
+            <path
+              d="M16 4v20M11 9h10M7 19c1.7 5 5 7.5 9 7.5S23.3 24 25 19M7 19l-2 3M25 19l2 3"
+              stroke="currentColor"
+              stroke-width="2"
+            />
+            <circle
+              cx="16"
+              cy="5"
+              r="2.5"
+              stroke="currentColor"
+              stroke-width="2"
+            /></svg
+          ><span><strong>Anchor</strong><small>WEALTH PLANNING</small></span></a
+        >
+        <div class="nav-links">
+          <a href="about.html">About</a><a href="team.html">Team</a
+          ><a href="home-v6.html#serve">Who We Serve</a
+          ><a href="resources.html">Resources</a
+          ><a class="cta" href="home-v6.html#fit">Take the Fit Check →</a>
         </div>
+        <button
+          class="menu"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+        >
+          Menu
+        </button>
       </div>
-    </div>
-  </section>
-
-  <!-- ORIGIN STORY -->
-  <section class="section bg-cream reveal">
-    <div class="container">
-      <div class="readable">
-        <div class="eyebrow">Origin Story</div>
-        <h2 style="font-size: var(--t-h2); margin-bottom: 32px;">Why I left the wirehouse.</h2>
-        <p style="font-size: var(--t-body); line-height: 1.9; margin-bottom: 20px;">
-          I spent <mark class="placeholder-mark" title="VERIFY: Exact years">10</mark> years inside Merrill Lynch. I learned the business from the inside — the institutional discipline, the resources, the scale. I also learned something that bothered me enough to leave.
-        </p>
-        <p style="font-size: var(--t-body); line-height: 1.9; margin-bottom: 20px;">
-          The model works for the firm. It doesn't always work for the client.
-        </p>
-        <p style="font-size: var(--t-body); line-height: 1.9; margin-bottom: 20px;">
-          My clients at Merrill were oil &amp; gas executives, business owners, and families with real complexity. Equity comp. Deferred income. Closely-held businesses. Estate plans that hadn't kept up with their wealth. And in almost every case, the same gap: their CPA, their attorney, and their investment advisor were operating in separate rooms. The client was the one running between them, holding it all together.
-        </p>
-        <p style="font-size: var(--t-body); line-height: 1.9;">
-          I left to close that gap.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- PHILOSOPHY -->
-  <section class="section bg-cream-mid reveal">
-    <div class="container">
-      <div class="readable">
-        <div class="eyebrow">Philosophy</div>
-        <h2 style="font-size: var(--t-h2); margin-bottom: 32px;">How I think about this work.</h2>
-        <p style="font-size: var(--t-body); line-height: 1.9; margin-bottom: 20px;">
-          Wealth management isn't portfolio management. A rebalanced portfolio doesn't fix a tax trap. A model allocation doesn't coordinate with your estate attorney. Real wealth management is the work that happens <em>between</em> the professionals — the tax strategy that informs the investment decision that aligns with the estate plan. That's the work most advisors leave to the client. It's the only work I do.
-        </p>
-        <p style="font-size: var(--t-body); line-height: 1.9;">
-          If your advisor can't sit down with your CPA and have an informed conversation about your deferred comp election, they're not managing your wealth. They're managing your money. There's a difference.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- APPROACH -->
-  <section class="section bg-cream reveal">
-    <div class="container">
-      <div class="readable">
-        <div class="eyebrow">Approach</div>
-        <h2 style="font-size: var(--t-h2); margin-bottom: 32px;">What makes this different.</h2>
-        <p style="font-size: var(--t-body); line-height: 1.9; margin-bottom: 20px;">
-          <strong style="color: var(--text-primary);">I specialize.</strong> I don't take clients I can't help — and I tell people that directly. If you're a wage-earner with a 401(k) and no complexity, I'm not the right advisor for you, and I'll refer you to someone who is.
-        </p>
-        <p style="font-size: var(--t-body); line-height: 1.9; margin-bottom: 20px;">
-          <strong style="color: var(--text-primary);">I coordinate.</strong> I work alongside your CPA and your estate attorney, not around them. We run joint planning meetings. We maintain one living document. When one professional makes a move, the others know.
-        </p>
-        <p style="font-size: var(--t-body); line-height: 1.9;">
-          <strong style="color: var(--text-primary);">I'm independent.</strong> I answer to my clients, not to a corporate parent. The advice you get from me is the advice I'd give my own family — because there's no product quota, no proprietary fund, and no conflict between what's best for you and what's best for the firm.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CREDENTIALS -->
-  <section class="section bg-cream-mid reveal">
-    <div class="container">
-      <div class="readable">
-        <div class="eyebrow">Credentials</div>
-        <h2 style="font-size: var(--t-h2); margin-bottom: 32px;">Background</h2>
-        <div class="about-creds" style="margin-bottom: 0;">
-          <span class="cred-chip"><mark class="placeholder-mark" title="VERIFY: CFP®">CFP®</mark></span>
-          <span class="cred-chip"><mark class="placeholder-mark" title="VERIFY: Series 65">Series 65</mark></span>
-          <span class="cred-chip"><mark class="placeholder-mark" title="VERIFY: Years">10+</mark> yrs Merrill Lynch</span>
-          <span class="cred-chip">Founder, AWP</span>
-          <span class="cred-chip">FINRA Registered</span>
-          <span class="cred-chip">Fiduciary</span>
-          <span class="cred-chip">Fee-Only</span>
+    </nav>
+    <main id="main">
+      <header class="hero">
+        <div class="wrap reveal">
+          <p class="eyebrow">Why Anchor Exists</p>
+          <h1>One plan. <em>One accountable lead.</em></h1>
+          <p class="lede">
+            Anchor was designed for people whose financial lives have outgrown a
+            collection of disconnected professionals.
+          </p>
+          <p class="crumb"><a href="home-v6.html">Home</a> / About</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- COMMUNITY -->
-  <section class="section bg-cream reveal">
-    <div class="container">
-      <div class="readable">
-        <div class="eyebrow">Community</div>
-        <h2 style="font-size: var(--t-h2); margin-bottom: 32px;">Houston roots.</h2>
-        <p style="font-size: var(--t-body); line-height: 1.9; margin-bottom: 20px;">
-          I live in Houston. I work with the people who power the energy capital — the executives running Permian Basin operations, the business owners building companies across the city, and the families whose wealth is tied to both. This isn't a coastal firm with a Houston office. This is home.
+      </header>
+      <section class="section">
+        <div class="wrap split">
+          <div class="reveal">
+            <p class="eyebrow">The Missing Role</p>
+            <h2 class="display">
+              Expert advice can still be <em>fragmented.</em>
+            </h2>
+          </div>
+          <div class="copy reveal">
+            <p>
+              Your CPA may know your tax return. Your attorney may know your
+              estate documents. Your investment advisor may know your portfolio.
+              But when each professional sees only one part, the client is left
+              carrying context between rooms.
+            </p>
+            <p>
+              Anchor exists to own that space between the specialists:
+              maintaining one living plan, putting decisions in sequence, and
+              making sure the right people have the right context before
+              deadlines arrive.
+            </p>
+            <p>
+              The objective is not more meetings. It is fewer disconnected
+              decisions.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="section alt">
+        <div class="wrap split">
+          <div class="route reveal">
+            <p class="eyebrow">The Anchor Role</p>
+            <h2>Keep every decision on the same course.</h2>
+            <ol class="rule-list">
+              <li>
+                <span>01</span>
+                <div>
+                  <h3>See the whole picture</h3>
+                  <p>
+                    Investments, taxes, estate work, equity compensation, and
+                    business interests belong in one view.
+                  </p>
+                </div>
+              </li>
+              <li>
+                <span>02</span>
+                <div>
+                  <h3>Set the sequence</h3>
+                  <p>
+                    Each decision has an owner, a dependency, and a deadline.
+                  </p>
+                </div>
+              </li>
+              <li>
+                <span>03</span>
+                <div>
+                  <h3>Coordinate the room</h3>
+                  <p>
+                    Your outside professionals receive the context they need to
+                    do their best work.
+                  </p>
+                </div>
+              </li>
+            </ol>
+          </div>
+          <div class="reveal">
+            <p class="eyebrow">Alex Miller</p>
+            <h2 class="display">
+              Built around <em>the client’s side</em> of the table.
+            </h2>
+            <div class="copy">
+              <p>
+                Alex’s approved biography, employment history, and founding
+                narrative will be added after client and compliance
+                verification.
+              </p>
+              <p>
+                For review, this page shows the intended narrative structure
+                without publishing unverified claims.
+              </p>
+            </div>
+            <a class="btn" href="team.html">Meet the Team →</a>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="wrap">
+          <p class="eyebrow">Credentials</p>
+          <h2 class="display" style="max-width: 22ch; margin-bottom: 42px">
+            Proof should be <em>specific.</em>
+          </h2>
+          <div class="credentials reveal">
+            <div class="credential">
+              <b>[XX]+ years</b>
+              <p>Industry experience</p>
+              <small>Needs verification</small>
+            </div>
+            <div class="credential">
+              <b>[Credential 01]</b>
+              <p>Approved designation</p>
+              <small>Needs verification</small>
+            </div>
+            <div class="credential">
+              <b>[Credential 02]</b>
+              <p>Approved certification</p>
+              <small>Needs verification</small>
+            </div>
+            <div class="credential">
+              <b>[Accolade 01]</b>
+              <p>Source and criteria</p>
+              <small>Needs verification</small>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="audience-next">
+        <div class="wrap split reveal">
+          <div>
+            <p class="eyebrow">Start Here</p>
+            <h2 class="display">
+              Does this approach fit <em>your situation?</em>
+            </h2>
+          </div>
+          <div>
+            <p>Four short questions identify the best next conversation.</p>
+            <div class="button-row">
+              <a class="btn" href="home-v6.html#fit">Take the Fit Check →</a
+              ><a class="btn ghost" href="resources.html">Explore Resources</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="wrap">
+        <div class="footer-grid">
+          <div>
+            <a class="brand" href="home-v6.html"
+              ><span
+                ><strong>Anchor</strong><small>WEALTH PLANNING</small></span
+              ></a
+            >
+            <p>Houston-based coordinated wealth planning.</p>
+          </div>
+          <div>
+            <h3>Explore</h3>
+            <a href="about.html">About</a><a href="team.html">Team</a
+            ><a href="resources.html">Resources</a>
+          </div>
+          <div>
+            <h3>Start</h3>
+            <a href="home-v6.html#fit">Fit Check</a
+            ><a href="home-v6.html#process">Process</a>
+          </div>
+        </div>
+        <p class="legal">
+          [VERIFY: RIA entity name and approved regulatory disclosure before
+          launch.] © 2026 Anchor Wealth Planning.
         </p>
-        <p style="font-size: var(--t-small); color: var(--text-muted); font-style: italic;">
-          <mark class="placeholder-mark" title="VERIFY: Community involvement, board service, professional associations">[Community involvement, board service, professional associations — to be added]</mark>
-        </p>
       </div>
-    </div>
-  </section>
-
-  <!-- PERSONAL -->
-  <section class="section bg-cream-mid reveal">
-    <div class="container">
-      <div class="readable">
-        <div class="eyebrow">Personal</div>
-        <h2 style="font-size: var(--t-h2); margin-bottom: 32px;">Outside the office.</h2>
-        <p style="font-size: var(--t-body); line-height: 1.9;">
-          <mark class="placeholder-mark" title="VERIFY: Alex's personal details — family, faith, interests. Ask Alex for 3-4 sentences in his own words.">[Alex's personal details — family, faith, interests. This section humanizes and builds trust. Ask Alex directly for 3–4 sentences in his own words.]</mark>
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="section bg-dark on-dark reveal">
-    <div class="container">
-      <div class="final-cta-content">
-        <div class="eyebrow" style="color: var(--accent); justify-content: center;">Let's Talk</div>
-        <h2 style="color: #fff; margin-bottom: 20px;">If what you read here resonates, let's talk.</h2>
-        <p style="color: var(--text-light-muted); margin-bottom: 36px;">30 minutes. No pitch.</p>
-        <a href="contact.html" class="btn-primary">Schedule a Conversation <span class="arrow">→</span></a>
-      </div>
-    </div>
-  </section>
-
-
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <h4>Anchor</h4>
-          <p class="tagline">"Charting the course towards your financial legacy."</p>
-          <p>Houston-based fiduciary wealth management for oil &amp; gas executives, business owners, and high-net-worth families.</p>
-        </div>
-        <div class="footer-col">
-          <h5>Navigation</h5>
-          <ul>
-            <li><a href="about.html">About</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="who-we-serve.html">Who We Serve</a></li>
-            <li><a href="process.html">Process</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h5>Specialties</h5>
-          <ul>
-            <li><a href="who-we-serve.html#oil-gas">Oil &amp; Gas Executives</a></li>
-            <li><a href="who-we-serve.html#business-owners">Business Owners</a></li>
-            <li><a href="who-we-serve.html#hnw-families">HNW Families</a></li>
-            <li><a href="services.html">Equity Compensation</a></li>
-            <li><a href="services.html">Estate &amp; Legacy</a></li>
-            <li><a href="services.html">Coordinated Planning</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h5>Contact</h5>
-          <ul>
-            <li><mark class="placeholder-mark" title="VERIFY: Phone">[Phone]</mark></li>
-            <li><mark class="placeholder-mark" title="VERIFY: Email">[Email]</mark></li>
-            <li>Houston, TX <mark class="placeholder-mark" title="VERIFY: Full address">[Address]</mark></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <!-- COMPLIANCE: Required before launch -->
-        <p class="footer-disclaimer">
-          <mark class="placeholder-mark" title="VERIFY: RIA entity name">[RIA Entity Name]</mark> is a registered investment advisor. Information presented is for educational purposes only and does not intend to make an offer or solicitation for the sale or purchase of any specific securities, investments, or investment strategies. Investments involve risk and unless otherwise stated, are not guaranteed. Past performance is not a guarantee of future results.
-        </p>
-        <div class="footer-copy">
-          <span>© 2026 Anchor Wealth Planning. All rights reserved.</span>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    // Nav scroll — frosted glass
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', function() {
-      if (window.scrollY > 40) {
-        nav.classList.add('scrolled');
-      } else {
-        nav.classList.remove('scrolled');
-      }
-    });
-
-    // Mobile menu toggle
-    const navToggle = document.getElementById('navToggle');
-    const mobileMenu = document.getElementById('mobileMenu');
-    navToggle.addEventListener('click', function() {
-      navToggle.classList.toggle('open');
-      mobileMenu.classList.toggle('open');
-    });
-
-    // Close mobile menu on link click
-    mobileMenu.querySelectorAll('a').forEach(function(link) {
-      link.addEventListener('click', function() {
-        navToggle.classList.remove('open');
-        mobileMenu.classList.remove('open');
-      });
-    });
-
-    // Scroll reveal — IntersectionObserver
-    const revealObserver = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-
-    document.querySelectorAll('.reveal, .reveal-children').forEach(function(el) {
-      revealObserver.observe(el);
-    });
-
-    // Count-up animation
-    const countUpObserver = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          const el = entry.target;
-          const target = parseInt(el.dataset.target, 10);
-          const suffix = el.dataset.suffix || '';
-          if (target > 0) {
-            const duration = 1800;
-            const startTime = performance.now();
-            function animate(now) {
-              const elapsed = now - startTime;
-              const progress = Math.min(elapsed / duration, 1);
-              const eased = 1 - Math.pow(1 - progress, 3);
-              const current = Math.floor(eased * target);
-              el.textContent = current + suffix;
-              if (progress < 1) {
-                requestAnimationFrame(animate);
-              } else {
-                el.textContent = target + suffix;
-              }
-            }
-            requestAnimationFrame(animate);
-          }
-          countUpObserver.unobserve(el);
-        }
-      });
-    }, { threshold: 0.5 });
-
-    document.querySelectorAll('.count-up').forEach(function(el) {
-      countUpObserver.observe(el);
-    });
-
-    // Fit assessment option selection
-    document.querySelectorAll('.fit-option').forEach(function(opt) {
-      opt.addEventListener('click', function() {
-        const name = opt.querySelector('input').name;
-        document.querySelectorAll('input[name="' + name + '"]').forEach(function(input) {
-          input.closest('.fit-option').classList.remove('selected');
-        });
-        opt.classList.add('selected');
-      });
-    });
-  </script>
-</body>
+    </footer>
+    <script src="assets/anchor-inner.js"></script>
+  </body>
 </html>
