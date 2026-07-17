@@ -12,6 +12,7 @@ from lxml import html
 ROOT = Path(__file__).resolve().parents[1]
 BUILD = ROOT / "build"
 OUTPUT = ROOT / "copy" / "Anchor_Wealth_Planning_Current_Copy_Review.docx"
+AI_OUTPUT = ROOT / "copy" / "ANCHOR_AI_COPY_PACKET.md"
 
 NAVY = "0F2038"
 BLUE = "2D5474"
@@ -511,5 +512,155 @@ def build_document():
     return OUTPUT
 
 
+def markdown_copy_item(tag, text, classes):
+    if tag == "h1":
+        return f"**H1:** {text}"
+    if tag == "h2":
+        return f"#### {text}"
+    if tag == "h3":
+        return f"##### {text}"
+    if tag == "h4":
+        return f"**SUBHEAD:** {text}"
+    if tag == "legend":
+        return f"**FORM QUESTION:** {text}"
+    if tag == "label":
+        return f"- **OPTION:** {text}"
+    if tag == "li":
+        return f"- {text}"
+    if tag in {"a", "button"}:
+        return f"- **CTA:** {text}"
+    if "eyebrow" in classes or "small" in classes:
+        return f"**SECTION LABEL:** {text}"
+    return text
+
+
+def build_ai_packet():
+    lines = [
+        "# ANCHOR WEALTH PLANNING — AI COPY PACKET",
+        "",
+        "> Upload this file to an AI and say: **Start the review. Ask me one decision at a time.**",
+        "",
+        "## Instructions for the AI",
+        "",
+        "You are helping Alex Miller approve and revise the copy for the Anchor Wealth Planning review website.",
+        "",
+        "Follow this workflow:",
+        "",
+        "1. Read the entire packet before responding.",
+        "2. Start with **Launch blockers**. Ask Alex one short question at a time.",
+        "3. Do not rewrite a section until Alex has answered the related decision questions.",
+        "4. After each answer, show only: **Decision captured**, **Affected pages**, and **Recommended final copy**.",
+        "5. Preserve approved copy that Alex did not ask to change.",
+        "6. Never invent facts, credentials, years, awards, testimonials, registration status, fees, client counts, prior employment, or performance claims.",
+        "7. Keep unresolved facts marked `[VERIFY]` and list the exact missing input.",
+        "8. Treat tax, legal, investment, fiduciary, RIA, and registration language as requiring compliance approval.",
+        "9. Keep the voice calm, precise, direct, Houston-aware, and sophisticated. Avoid hype, generic luxury language, and unsupported superiority claims.",
+        "10. When all questions are answered, return a final page-by-page copy deck using this format: `PAGE → SECTION → FINAL COPY → VERIFICATION NOTES`.",
+        "",
+        "## Launch blockers",
+        "",
+        "Ask these first, one at a time:",
+        "",
+        "1. What is the exact legal entity name and registration status?",
+        "2. Can the site use the words “fiduciary,” “RIA,” “fee-only,” or “fee-based”?",
+        "3. What disclosure language must appear in the footer?",
+        "4. What are Alex’s exact title, verified years in the industry, approved prior-firm history, credentials, licenses, and accolades?",
+        "5. What are the business phone, email, office location, scheduling link, and compliance contact?",
+        "6. Which services does Anchor provide directly, and which are coordinated through outside professionals?",
+        "7. What are the approved Fit Check asset bands and follow-up workflow?",
+        "8. Is the primary conversion action the Fit Check, a 30-minute call, or the Fit Check followed by scheduling?",
+        "9. Who belongs on the Team page, and what approved biography/headshot should be used for each person?",
+        "10. Which article, podcast, and video topics can Alex credibly publish first?",
+        "",
+        "## Global and repeated copy",
+        "",
+        "### Decisions Alex should make",
+        "",
+        "- Approve or replace the brand line.",
+        "- Confirm the firm description and preferred audience labels.",
+        "- Supply the final legal footer and privacy/contact requirements.",
+        "- Approve the four-step Fit Check description.",
+        "",
+        "### Current copy",
+        "",
+        "**Navigation:** About · Team · Who We Serve · Resources · Process · Book a Call",
+        "",
+        "**Brand line:** “Charting the course towards your financial legacy.”",
+        "",
+        "**Firm description:** Houston-based fiduciary wealth management for oil & gas executives, business owners, and high-net-worth families.",
+        "",
+        "**Legal placeholder:** `[VERIFY: RIA entity name]` is a registered investment advisor. Information presented is for educational purposes only and does not intend to make an offer or solicitation for the sale or purchase of any specific securities, investments, or investment strategies. Investments involve risk and unless otherwise stated, are not guaranteed. Past performance is not a guarantee of future results.",
+        "",
+        "**Repeated Fit Check headline:** Four questions. A better first conversation.",
+        "",
+        "**Repeated Fit Check explainer:** See whether your situation, timing, and coordination needs match the way Anchor works.",
+        "",
+        "**Repeated Fit Check steps:** 01 Your situation · 02 Current complexity · 03 Coordination gap · 04 Best next step.",
+        "",
+        "**Repeated Fit Check CTA:** Start the Fit Check.",
+        "",
+    ]
+
+    for title, filename, url, prompts in PAGES:
+        lines.extend([
+            "---",
+            "",
+            f"## Page: {title}",
+            "",
+            f"**Review URL:** {url}",
+            "",
+            "### Decisions Alex should make",
+            "",
+        ])
+        lines.extend(f"- {prompt}" for prompt in prompts)
+        lines.extend(["", "### Current copy", ""])
+
+        if filename == "home-v6.html":
+            lines.extend([
+                "#### Rotating hero copy",
+                "",
+                "**Oil & Gas H1:** When your equity vests, who sees the whole picture?",
+                "",
+                "RSUs, deferred comp, blackout periods, commodity cycles. Anchor coordinates your investments, taxes, and estate plan with your CPA and attorney — so every vest, bonus, and decision happens in context.",
+                "",
+                "**Business Owners H1:** Your business is your largest asset. What’s the plan for it?",
+                "",
+                "Entity structure, exit timing, liquidity events, and the line between business value and personal wealth. Anchor starts the planning conversation years before the LOI arrives.",
+                "",
+                "**Families H1:** Your wealth grew. Did your plan keep up?",
+                "",
+                "Trust funding, beneficiary reviews, multi-generational coordination. Anchor keeps your CPA, attorney, and advisor reading from the same page — so your estate matches your actual net worth.",
+                "",
+                "- **CTA:** Schedule a 30-Minute Conversation",
+                "- **CTA:** Take the 4-Question Fit Check",
+                "- **PROOF:** `[Credential 01]` · `[Credential 02]` · `[XX]+ yrs` · Houston-based",
+                "",
+            ])
+
+        for tag, text, classes in extract_copy(BUILD / filename):
+            rendered = markdown_copy_item(tag, text, classes)
+            if rendered:
+                lines.extend([rendered, ""])
+
+    lines.extend([
+        "---",
+        "",
+        "## Required final AI output",
+        "",
+        "When Alex has answered every applicable question, return:",
+        "",
+        "1. **Launch blockers still open**",
+        "2. **Approved facts and claims**",
+        "3. **Final page-by-page copy**",
+        "4. **Compliance review list**",
+        "5. **Asset and media request list**",
+        "6. **Change log: current copy → final copy**",
+        "",
+    ])
+    AI_OUTPUT.write_text("\n".join(lines), encoding="utf-8")
+    return AI_OUTPUT
+
+
 if __name__ == "__main__":
     print(build_document())
+    print(build_ai_packet())
