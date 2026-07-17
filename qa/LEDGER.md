@@ -268,3 +268,43 @@ Append-only. Each entry: what broke, why, how it was caught, and what permanent 
 - **Fix:** renamed the advisor module to `.alex-story` / `#alex-story`, gave its descendants a scoped namespace, and removed the duplicate interactive placeholder. A rendered probe now reports zero duplicate IDs.
 - **Permanent lesson:** every restored or merged module needs a selector-and-ID namespace check in addition to the ordered section-manifest diff. Section names should describe the job (`alex-story`, `firm-origin`), not a generic shape (`story`).
 - **Status:** ✅ closed. Gate 0 P0; duplicate-ID probe clean.
+
+### LED-025 — Auto-advance plus a manual Continue action creates a double-step race
+- **Build:** `projects/awp/build/home-v6.html` (2026-07-16 design revision).
+- **Symptom:** choosing a Fit Check radio option scheduled the next step after 380ms while a live Continue button could advance immediately. A fast click skipped a question; a pending timer could also undo Back. Focus remained inside the fieldset that had just been hidden because its legend was not focusable.
+- **Root cause:** two controls owned the same state transition, and the delayed callback read mutable global step state.
+- **Fix:** removed redundant Continue buttons from radio steps, stored the selected step inside the callback, cancels pending timers on every navigation, verifies the originating fieldset is still active, and focuses a `tabindex="-1"` legend after the new step renders.
+- **Permanent lesson:** an auto-advance form must have one transition owner. Delayed state changes need cancellation, a captured origin state, and an explicit post-transition focus target.
+- **Status:** ✅ closed. Desktop and 390px runtime probes advance exactly one step and Back remains stable after the former timer window.
+
+### LED-026 — Preview-media controls must match the media stream and interaction state
+- **Build:** `projects/awp/build/home-v6.html` (2026-07-16 design revision).
+- **Symptom:** silent placeholder MP4s exposed Unmute controls; the story play overlay became visually transparent but stayed tabbable, and reel play/pause had no keyboard path.
+- **Root cause:** production-video affordances were applied before the placeholder assets were inspected, and visual hidden state was treated as interaction hidden state.
+- **Fix:** removed fake sound controls and labeled the previews as silent, restored the GLM lazy-play pattern with native controls after playback starts, makes the overlaid play button non-interactive when hidden, and added focus/Enter/Space reel controls. Reduced-motion now blocks automatic video playback and smooth rail scrolling.
+- **Permanent lesson:** inspect actual audio tracks before drawing sound UI. Every visual control state must have matching focus, keyboard, and reduced-motion behavior.
+- **Status:** ✅ closed. Runtime probes confirm native story controls, reachable keyboard reel controls, and paused hero video under reduced motion.
+
+### LED-027 — A geometry-clean content shell can still fail search, trust, and publishing quality
+- **Build:** `projects/awp/build/resources.html`, `blog-template.html`, and `podcast-template.html` (2026-07-17 content-system reprint).
+- **Symptom:** the first content routes passed the visual geometry gate but looked like generic financial-editorial templates. The article exposed publish/read-time tokens, lacked named sources and a useful content artifact, and had no article schema, canonical, social metadata, or complete internal-link path. The podcast exposed pending platform links without real media. The directory treated content as rows beneath an oversized hero rather than a publication.
+- **Root cause:** the factory architecture names Resources as an SEO surface, but the deterministic gauntlet has no content-page contract. It checks rendered geometry, not whether a page is publishable, attributable, source-backed, machine-readable, or organized around search intent.
+- **Fix:** clean reprint into one Planning Room system. Added answer-first article structure, an Anchor-specific RSU timing map, primary IRS sources, contextual internal links, visible podcast inventory, honest preview states, semantic landmarks, review-mode `noindex`, canonical scaffolding, social metadata, and parseable `CollectionPage`, `BlogPosting`, `BreadcrumbList`, and `PodcastEpisode` JSON-LD.
+- **Permanent lesson:** every content route needs a preflight beyond the visual gate: unique title and description; review-versus-production robots state; final canonical and clean URL; exactly one H1; parseable page-type schema; approved author/date/image; primary sources for financial claims; problem-led taxonomy; related-service, trust, and conversion links; no visible build tokens; and no media/platform UI until real media exists.
+- **Status:** ✅ closed for local review. All three routes: 0 P0 / 0 P1 / 1 accepted P2 (`accent-fill-absent`, cleared under LED-019). Final domain, licensed fonts, author approval, and podcast media remain production inputs.
+
+### LED-028 — Content-route typography must sit one tier below campaign display scale
+- **Build:** `projects/awp/build/resources.html`, `blog-template.html`, and `podcast-template.html` (2026-07-17 content-system revision).
+- **Symptom:** the content routes were structurally sound, but oversized page titles and generous campaign-style section spacing made the directory, article, and episode pages feel slower and less useful than the homepage. The footer repeated a generic conversion link without showing what the Fit Check involved.
+- **Root cause:** homepage display tokens and vertical rhythm were carried too directly into long-form routes, where scanning density and information hierarchy matter more. The final CTA described an action but did not reduce uncertainty about the action.
+- **Fix:** reduced route-level H1/H2 scales and section gaps, tightened cards and article rhythm, retained purposeful numbered sequences, and replaced the generic footer CTA with a four-step Fit Check preview and direct start action.
+- **Permanent lesson:** content-route type should be calibrated separately from campaign/homepage display type. A conversion footer should preview the next interaction when that preview lowers commitment anxiety.
+- **Status:** ✅ closed for local review. All three routes: 0 P0 / 0 P1 / 1 accepted P2 (`accent-fill-absent`, cleared under LED-019); desktop and 390px taste passes show no horizontal overflow.
+
+### LED-029 — A public review mirror needs a release allowlist and media-license audit
+- **Build:** Anchor v6 public team-review release (2026-07-17).
+- **Symptom:** the first staged Pages worktree contained two inactive Mixkit family files whose free 720p license was restricted to personal use. They were no longer referenced, but a broad `git add -A` would still have published them. The media ledger also described two active loops as eight seconds when the encoded files were four seconds.
+- **Root cause:** the review mirror had accumulated assets through folder-level copying, while provenance was treated as a launch-only concern. Unreferenced files inside a Pages worktree are still public if committed, and stale duration/source notes make the release audit unreliable.
+- **Fix:** restored the project-generated modern family loop as the active hero asset, corrected `assets/SOURCES.md`, explicitly quarantined the restricted Mixkit reference, and rebuilt the public mirror from a curated page-and-asset allowlist in a fresh clone. Added review-wide `noindex,nofollow` before publication.
+- **Permanent lesson:** every public preview is a distribution event. Stage Pages from an explicit allowlist, verify every active media license and duration, exclude restricted and unused assets physically, and apply review-mode robots metadata consistently before push.
+- **Status:** ✅ closed. Fresh mirror contains no restricted family media; all active references resolve and all nine routes pass the release gate for team review.

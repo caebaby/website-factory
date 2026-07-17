@@ -35,5 +35,10 @@ filters.forEach((button) =>
       .forEach(
         (row) => (row.hidden = type !== "all" && row.dataset.type !== type),
       );
+    document.querySelectorAll("[data-resource-type]").forEach(
+      (group) =>
+        (group.hidden =
+          type !== "all" && group.dataset.resourceType !== type),
+    );
   }),
 );
