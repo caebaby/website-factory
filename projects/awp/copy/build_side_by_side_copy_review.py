@@ -473,6 +473,34 @@ def metadata_block_for_page(filename):
     )
 
 
+def accessibility_block_for_page(filename):
+    tree = html.fromstring((BUILD / filename).read_text(encoding="utf-8"))
+    values = []
+
+    def add(label, value):
+        value = " ".join((value or "").split())
+        item = f"{label}: {value}" if value else ""
+        if item and item not in values:
+            values.append(item)
+
+    for value in tree.xpath("//img/@alt"):
+        add("IMAGE ALT", value)
+    for value in tree.xpath("//input[@placeholder]/@placeholder"):
+        add("FORM PLACEHOLDER", value)
+    for element in tree.xpath("//*[contains(concat(' ', normalize-space(@class), ' '), ' sr-only ')]"):
+        add("SCREEN-READER LABEL", element.text_content())
+    for value in tree.xpath("//*[@aria-label]/@aria-label"):
+        add("INTERFACE LABEL", value)
+
+    if not values:
+        return None
+    return (
+        "Accessibility and interface text",
+        values,
+        "Confirm image descriptions and page-specific labels; standard navigation/control labels can remain unless inaccurate.",
+    )
+
+
 def blocks_for_page(filename):
     blocks = []
     title = "Page introduction"
@@ -621,6 +649,10 @@ def build():
         add_decision_row(table, prompts)
         meta_title, meta_text, meta_prompt = metadata_block_for_page(filename)
         add_copy_row(table, meta_title, meta_text, meta_prompt)
+        accessibility_block = accessibility_block_for_page(filename)
+        if accessibility_block:
+            a11y_title, a11y_text, a11y_prompt = accessibility_block
+            add_copy_row(table, a11y_title, a11y_text, a11y_prompt)
         if filename == "home-v6.html":
             for title, text, prompt in HERO_BLOCKS:
                 add_copy_row(table, title, text, prompt)
