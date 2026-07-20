@@ -30,6 +30,7 @@ html {
 
 body {
   margin: 0;
+  overflow-x: hidden;
   color: var(--ink);
   background: var(--paper);
   font-family: var(--sans);
@@ -1006,6 +1007,160 @@ input {
   color: var(--body);
 }
 
+/* Resource directory: one library, organized by the decision */
+.page-resources .content-masthead {
+  color: #f7f2e8;
+  background:
+    radial-gradient(circle at 82% 18%, rgba(177, 143, 77, 0.16), transparent 25%),
+    linear-gradient(112deg, var(--deep) 0 62%, #173451 62% 100%);
+  border-color: var(--line-dark);
+}
+
+.page-resources .content-masthead::after {
+  border-color: rgba(216, 189, 115, 0.24);
+  box-shadow: 0 0 0 70px rgba(177, 143, 77, 0.035), 0 0 0 140px rgba(192, 216, 233, 0.025);
+}
+
+.page-resources .content-masthead .breadcrumb,
+.page-resources .content-masthead .breadcrumb a {
+  color: #aebdca;
+}
+
+.page-resources .content-masthead .eyebrow {
+  color: #d8bd73;
+}
+
+.page-resources .content-masthead h1 {
+  max-width: 18ch;
+  font-size: clamp(3.1rem, 5.4vw, 4.9rem);
+}
+
+.page-resources .masthead-note {
+  border-color: var(--line-dark);
+}
+
+.page-resources .masthead-note p {
+  color: #bfd0de;
+}
+
+.page-resources .masthead-note strong {
+  color: #f7f2e8;
+}
+
+.resource-formats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 22px;
+}
+
+.resource-formats span {
+  padding: 6px 10px;
+  border: 1px solid rgba(216, 189, 115, 0.34);
+  color: #d8bd73;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.page-resources .content-section.compact {
+  background: var(--cream);
+  border-top: 1px solid var(--line);
+}
+
+.page-resources .brief-list {
+  border-top: 0;
+}
+
+.page-resources .brief-row {
+  margin-top: -1px;
+  padding: 23px 22px;
+  border: 1px solid var(--line);
+  background: rgba(251, 249, 243, 0.62);
+  transition: background 0.24s var(--ease), transform 0.24s var(--ease), border-color 0.24s var(--ease);
+}
+
+.page-resources .brief-row:hover {
+  z-index: 1;
+  border-color: rgba(30, 57, 90, 0.34);
+  background: var(--paper);
+  transform: translateX(4px);
+}
+
+.page-resources .brief-row small b {
+  display: block;
+  color: var(--navy);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+}
+
+.page-resources .podcast-shelf {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 86% 12%, rgba(177, 143, 77, 0.13), transparent 24%),
+    var(--navy);
+}
+
+.page-resources .podcast-shelf::after {
+  content: "";
+  position: absolute;
+  width: 420px;
+  aspect-ratio: 1;
+  right: -260px;
+  bottom: -280px;
+  border: 1px solid rgba(216, 189, 115, 0.16);
+  border-radius: 50%;
+  box-shadow: 0 0 0 68px rgba(216, 189, 115, 0.025);
+}
+
+.page-resources .podcast-shelf .wrap {
+  position: relative;
+  z-index: 1;
+}
+
+/* Reading pages: compact, calm, and visibly part of Anchor */
+.page-article .article-head,
+.page-podcast .episode-head {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(245, 240, 230, 0.98), rgba(245, 240, 230, 0.88)),
+    radial-gradient(circle at 88% 18%, rgba(177, 143, 77, 0.18), transparent 23%);
+}
+
+.page-article .article-head::after,
+.page-podcast .episode-head::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  width: 360px;
+  aspect-ratio: 1;
+  right: -210px;
+  top: -230px;
+  border: 1px solid rgba(30, 57, 90, 0.1);
+  border-radius: 50%;
+  box-shadow: 0 0 0 62px rgba(30, 57, 90, 0.025);
+}
+
+.page-article .article-head > .wrap,
+.page-podcast .episode-head > .wrap {
+  position: relative;
+  z-index: 1;
+}
+
+.page-article .article-head h1,
+.page-podcast .episode-copy h1 {
+  font-size: clamp(2.75rem, 4.5vw, 4rem);
+  line-height: 0.98;
+}
+
+.page-article .article-shell {
+  grid-template-columns: 170px minmax(0, 690px);
+  gap: clamp(40px, 5vw, 66px);
+}
+
 .footer {
   padding: 44px 0 26px;
   color: #c1ced8;
@@ -1243,6 +1398,14 @@ input {
   .article-head h1,
   .episode-copy h1 {
     font-size: clamp(2.45rem, 10.5vw, 3.1rem);
+  }
+
+  .page-resources .content-masthead h1 {
+    font-size: clamp(2.65rem, 12vw, 3.15rem);
+  }
+
+  .page-resources .brief-row {
+    padding: 21px 17px;
   }
 
   .content-masthead::after {

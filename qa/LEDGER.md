@@ -308,3 +308,11 @@ Append-only. Each entry: what broke, why, how it was caught, and what permanent 
 - **Fix:** restored the project-generated modern family loop as the active hero asset, corrected `assets/SOURCES.md`, explicitly quarantined the restricted Mixkit reference, and rebuilt the public mirror from a curated page-and-asset allowlist in a fresh clone. Added review-wide `noindex,nofollow` before publication.
 - **Permanent lesson:** every public preview is a distribution event. Stage Pages from an explicit allowlist, verify every active media license and duration, exclude restricted and unused assets physically, and apply review-mode robots metadata consistently before push.
 - **Status:** ✅ closed. Fresh mirror contains no restricted family media; all active references resolve and all nine routes pass the release gate for team review.
+
+### LED-030 — A shared inner-page shell still needs route-specific identity
+- **Build:** Anchor v6 secondary-page and resource-directory revision (2026-07-20).
+- **Symptom:** About, Team, and all three audience routes shared a coherent shell but opened with nearly identical dark mastheads. The Resources page separated podcasts from the main decision directory, making the requested podcast inventory easy to miss.
+- **Root cause:** consistency was treated as visual repetition instead of a shared system with route-level art direction. Content formats were also used as the primary directory structure even though visitors arrive with a decision, not a format preference.
+- **Fix:** retained one brand/navigation/type system while giving About and Team identity panels and each audience page its relevant approved image. Rebuilt Resources as a decision-led library with articles, podcasts, checklists, and frameworks in the same filterable index; retained a dedicated podcast shelf as a secondary listening path.
+- **Permanent lesson:** shared chrome and tokens create consistency; the route hero must still prove why that page exists. Resource directories should organize around visitor intent and expose every major content format inside the main browse path.
+- **Status:** ✅ closed for local review. Eight secondary/content routes pass the factory gate with 0 P0 / 0 P1; content routes are fully clean and inner routes retain only the accepted restrained-accent P2 under LED-019.
