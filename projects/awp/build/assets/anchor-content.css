@@ -1073,21 +1073,6 @@ input {
   border-color: var(--line-dark);
 }
 
-.page-resources .content-masthead::before {
-  content: "";
-  position: absolute;
-  z-index: 0;
-  width: min(31vw, 410px);
-  aspect-ratio: 1;
-  right: clamp(30px, 8vw, 140px);
-  top: 50%;
-  background: url("awp-logo-mark-watermark.png") center / contain no-repeat;
-  filter: grayscale(1) brightness(2.2);
-  opacity: 0.07;
-  transform: translateY(-50%);
-  pointer-events: none;
-}
-
 .page-resources .content-masthead::after {
   inset: 0;
   width: auto;
@@ -1927,7 +1912,6 @@ input {
     opacity: 0.045;
   }
 
-  .page-resources .content-masthead::before,
   .page-podcast .episode-head::before {
     width: 260px;
     right: -84px;
