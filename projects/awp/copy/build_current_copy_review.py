@@ -303,7 +303,9 @@ def clean_text(element):
     # so cover/title copy reads naturally in the review workbook.
     for br in element.xpath(".//br"):
         br.tail = " " + (br.tail or "")
-    return " ".join(element.text_content().split())
+    # Join inline text nodes explicitly so text separated by <strong>, <span>,
+    # or other inline tags cannot collapse into words such as "scheduleThese".
+    return " ".join(" ".join(element.itertext()).split())
 
 
 def is_hidden(element):

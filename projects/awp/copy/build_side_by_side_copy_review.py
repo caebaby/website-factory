@@ -141,6 +141,256 @@ HERO_BLOCKS = [
 ]
 
 
+# Alex should complete these first. They are ordered by launch risk, factual
+# dependency, and conversion impact—not by where they happen to appear on-site.
+PRIORITY_REVIEW = [
+    (
+        "REQUIRED BEFORE LAUNCH",
+        "Firm identity and legal disclosure",
+        [
+            "CURRENT POSITIONING: Houston-based fiduciary wealth management for oil & gas executives, business owners, and high-net-worth families.",
+            "CURRENT PLACEHOLDER: [VERIFY: RIA entity name] is a registered investment advisor.",
+            "CURRENT DISCLOSURE: Information presented is for educational purposes only and does not intend to make an offer or solicitation for the sale or purchase of any specific securities, investments, or investment strategies. Investments involve risk and unless otherwise stated, are not guaranteed. Past performance is not a guarantee of future results.",
+        ],
+        "Provide the exact legal entity name, approved regulatory description, and compliance-approved disclosure. Confirm whether ‘fiduciary wealth management’ is approved public language.",
+    ),
+    (
+        "REQUIRED BEFORE LAUNCH",
+        "Alex’s public title, biography, and founding story",
+        [
+            "CURRENT TITLE PLACEHOLDER: Alex Miller",
+            "CURRENT STORY POSITIONING: Anchor was founded to coordinate the decisions that fall between investments, taxes, estate work, and business planning.",
+            "CURRENT PLACEHOLDER: Alex’s approved biography, credentials, prior-firm history, community involvement, and personal details will be inserted after client and compliance review.",
+        ],
+        "Supply Alex’s exact title, approved short biography, prior-firm history, founding story, community involvement, and any personal details that should appear publicly.",
+    ),
+    (
+        "REQUIRED BEFORE LAUNCH",
+        "Verified experience, credentials, and accolades",
+        [
+            "[XX]+ years in the industry — Experience across institutional wealth management and independent advice.",
+            "[Credential 01] — Approved professional designation and issuing organization go here.",
+            "[Credential 02] — Approved license, certification, or specialist training goes here.",
+            "[Accolade 01] — Approved recognition, year, source, and selection criteria go here.",
+        ],
+        "Replace every placeholder with a verified fact. Include issuing organizations, dates where relevant, and accolade source/selection criteria—or remove the item.",
+    ),
+    (
+        "REQUIRED BEFORE LAUNCH",
+        "Team structure and public profiles",
+        [
+            "CURRENT TEAM PROMISE: People who own the next step. A coordinated plan works only when responsibility is clear.",
+            "CURRENT PLACEHOLDERS: Two additional [Name & Role] profiles for an advisor, client service lead, operations partner, or other approved team member.",
+        ],
+        "Identify who should appear publicly. Provide each person’s role, responsibilities, credentials, biography, headshot, and contact routing. Confirm whether unfilled profiles should remain hidden.",
+    ),
+    (
+        "REQUIRED BEFORE LAUNCH",
+        "Services Anchor actually delivers",
+        [
+            "Coordinated Planning — Joint planning meetings with the CPA and estate attorney; one living document shared across the team.",
+            "Investment Management — Strategy built around vesting schedules, trading restrictions, commodity exposure, and family cash-flow needs.",
+            "Tax Strategy & Coordination — Year-end coordination with the CPA; modeling of vesting, deferred compensation, charitable timing, and estimated payments.",
+            "Equity Compensation — RSUs, NQDC elections, 10b5-1 plans, blackout periods, concentration, and tax-aware diversification.",
+            "Estate & Legacy — Existing-trust review, beneficiary/funding coordination, and work with the estate attorney.",
+            "Business Owner Planning — Exit readiness, entity structure, personal/enterprise balance sheets, and post-liquidity planning.",
+        ],
+        "Confirm each service is genuinely offered and accurately described. Correct anything that overstates Anchor’s role versus the CPA or attorney. Confirm whether joint planning meetings and one living document are standard client experiences.",
+    ),
+    (
+        "REQUIRED BEFORE LAUNCH",
+        "Fit Check questions, thresholds, and response promise",
+        [
+            "PROMISE: Four questions. Two minutes. We’ll tell you honestly whether we can help—and if we can’t, we’ll refer you to someone who can.",
+            "SITUATION OPTIONS: Oil and gas executive with equity compensation · Business owner considering a transition · High-net-worth family with estate and legacy complexity · Other / not sure.",
+            "INVESTABLE-ASSET OPTIONS: $500K–$2M · $2M–$5M · $10M+.",
+            "FIRST-NEED OPTIONS: Tax coordination · Equity compensation · Business transition · Estate and legacy · Investment strategy · Not sure.",
+            "CURRENT REVIEW RESPONSE: Production will route answers to a fit-results experience. We’ll review your responses and follow up within one business day. No pitch. Just a clear next step.",
+        ],
+        "Approve every option and promise. Resolve the missing $5M–$10M band, confirm response timing, and confirm whether Anchor will make referrals when the visitor is not a fit.",
+    ),
+    (
+        "HIGH-IMPACT MESSAGE",
+        "Homepage hero — Oil & Gas",
+        [
+            "When your equity vests, who sees the whole picture?",
+            "RSUs, deferred comp, blackout periods, commodity cycles. Anchor coordinates your investments, taxes, and estate plan with your CPA and attorney—so every vest, bonus, and decision happens in context.",
+        ],
+        "Approve, edit, or replace this headline and description. Confirm this should be the lead hero audience.",
+    ),
+    (
+        "HIGH-IMPACT MESSAGE",
+        "Homepage hero — Business Owners",
+        [
+            "Your business is your largest asset. What’s the plan for it?",
+            "Entity structure, exit timing, liquidity events, and the line between business value and personal wealth. Anchor starts the planning conversation years before the LOI arrives.",
+        ],
+        "Approve or replace this headline and description. Confirm the ‘before the LOI’ framing matches Alex’s process.",
+    ),
+    (
+        "HIGH-IMPACT MESSAGE",
+        "Homepage hero — High-Net-Worth Families",
+        [
+            "Your wealth grew. Did your plan keep up?",
+            "Trust funding, beneficiary reviews, multi-generational coordination. Anchor keeps your CPA, attorney, and advisor reading from the same page—so your estate matches your actual net worth.",
+        ],
+        "Approve or replace this headline and description. Confirm the preferred public audience label.",
+    ),
+    (
+        "HIGH-IMPACT MESSAGE",
+        "Why Anchor",
+        [
+            "One advisor who sees the whole picture.",
+            "Complex wealth does not need another specialist working alone. It needs one accountable lead who keeps every professional, deadline, and decision moving from the same plan.",
+            "Coordinated, not siloed · One accountable lead · Built for complexity · Houston fluency.",
+        ],
+        "Approve the core differentiation. Clarify exactly what Alex owns, what outside professionals own, and whether ‘one accountable lead’ is the right promise.",
+    ),
+    (
+        "HIGH-IMPACT MESSAGE",
+        "Who Anchor is—and is not—for",
+        [
+            "Oil & Gas Executives — RSUs, NQDC elections, blackout periods, and commodity-cycle exposure.",
+            "Business Owners — Exit readiness, entity structure, and the line between business value and personal wealth.",
+            "High-Net-Worth Families — Trust funding, current beneficiaries, and a plan the next generation can understand.",
+            "CURRENT FRAMING: If you don’t see yourself below, we may not be the right fit—and we’ll tell you that honestly.",
+        ],
+        "Define the strongest-fit client for each audience: role or situation, complexity, approximate assets, timing, and any industries or situations Alex does not serve.",
+    ),
+    (
+        "HIGH-IMPACT MESSAGE",
+        "Primary conversion path",
+        [
+            "CURRENT PRIMARY CTA: Take the Fit Check.",
+            "CURRENT SECONDARY CTA: Schedule a 30-Minute Conversation.",
+            "CURRENT BEHAVIOR: Call CTAs route into the Fit Check before scheduling.",
+        ],
+        "Choose the intended sequence: Fit Check first, direct scheduling first, or Fit Check followed by scheduling. Confirm the preferred meeting length and CTA wording.",
+    ),
+    (
+        "HIGH-IMPACT MESSAGE",
+        "Visitor pain language and first-person statements",
+        [
+            "‘No one sees the full picture. My CPA handles taxes, my advisor handles investments, my attorney has the estate docs—and none of them talk to each other.’",
+            "‘My RSUs vest, I get a huge tax hit, and by the time I think about selling to diversify, I’m emotionally attached to the stock and it’s already dropped.’",
+            "‘We have a trust that was set up years ago. I’m honestly not sure if it’s even funded correctly, or if it still matches what we actually own.’",
+            "‘I know my business inside and out, but I have no idea what it’s actually worth or what I’d walk away with after taxes if I sold.’",
+        ],
+        "Approve, soften, or replace these audience statements. They should sound recognizably true to Alex’s clients without pretending to be direct client quotations unless they are sourced and approved.",
+    ),
+    (
+        "HIGH-IMPACT MESSAGE",
+        "Client process and ongoing service rhythm",
+        [
+            "01 Discovery — A 30-minute conversation about the situation and concerns.",
+            "02 Assessment — Review investments, tax returns, equity documents, estate plan, and business interests.",
+            "03 The Plan — Build the coordinated investment, tax, estate, and business-owner roadmap.",
+            "04 Partnership — Implement the plan and meet quarterly to keep it current.",
+        ],
+        "Confirm the real client journey, documents reviewed, deliverables, meeting cadence, and what changes before or after engagement.",
+    ),
+    (
+        "CONTENT DIRECTION",
+        "Resources and Anchor Wealth Podcast",
+        [
+            "SERIES NAME: Anchor Wealth Podcast.",
+            "DIRECTORY PROMISE: Clear thinking for decisions that touch everything.",
+            "CURRENT TOPIC AREAS: Equity and tax timing · Business transition · Family and legacy · Advisor coordination.",
+            "CURRENT CONTENT MIX: Articles · Podcast episodes · Checklists · Frameworks.",
+            "CURRENT AUTHORITY: Alex Miller as article author and Anchor Wealth Podcast host; source-backed articles, episode notes, and transcripts lead to the Fit Check.",
+        ],
+        "Approve the podcast name, Alex as author/host, and topic ownership. Choose the first three to six real article or episode topics, publishing platforms, transcript versus show-note policy, compliance review process, and any guide, checklist, or newsletter offer.",
+    ),
+]
+
+
+# Remaining copy worth a human look after the priorities above are settled.
+# Routine labels, repeated CTAs, metadata, alt text, and duplicated footer copy
+# are intentionally excluded from the client workload.
+SECONDARY_PAGE_GROUPS = {
+    "home-v6.html": [
+        ("Homepage supporting message", [
+            "The firm was designed around one missing role.",
+            "Turn separate expertise into one coordinated course.",
+            "You've been the project manager long enough.",
+        ]),
+    ],
+    "about.html": [
+        ("About-page supporting message", [
+            "One plan. One accountable lead.",
+            "Expert advice can still be fragmented.",
+            "Keep every decision on the same course.",
+        ]),
+    ],
+    "oil-gas-executives.html": [
+        ("Oil & Gas page supporting message", [
+            "Your compensation moves with the cycle.",
+            "Your career and wealth may share one risk.",
+            "Map the calendar",
+            "Model the exposure",
+            "Coordinate the professionals",
+        ]),
+    ],
+    "business-owners.html": [
+        ("Business-owner page supporting message", [
+            "The exit conversation starts before the offer.",
+            "The company is valuable. Is the wealth portable?",
+            "Separate the balance sheets",
+            "Build exit readiness",
+            "Plan the other side",
+        ]),
+    ],
+    "high-net-worth-families.html": [
+        ("Family page supporting message", [
+            "Keep the plan current across generations.",
+            "Your wealth changed. Did the plan?",
+            "Review what exists",
+            "Close implementation gaps",
+            "Prepare the family",
+        ]),
+    ],
+    "resources.html": [
+        ("Resources-directory introduction", [
+            "Clear thinking for decisions that touch everything.",
+            "Choose how you want to think it through.",
+            "Start with the decision, not the format.",
+        ]),
+        ("Sample resource titles and descriptions", [
+            "How RSU vesting creates a tax-timing trap",
+            "What coordinated planning looks like before year-end",
+            "What one living plan actually coordinates",
+            "The exit conversation starts before the LOI",
+            "Does the estate plan still match what the family owns?",
+        ]),
+    ],
+    "blog-template.html": [
+        ("Sample article — core message", [
+            "How RSU vesting creates a tax-timing trap",
+            "The short answer",
+            "A better sequence before the next vest",
+        ]),
+        ("Sample article — supporting sections", [
+            "What should you gather before the vest date?",
+            "Common RSU tax-planning questions",
+            "Primary sources and further reading",
+        ]),
+    ],
+    "podcast-template.html": [
+        ("Sample podcast episode — opening message", [
+            "What coordinated planning looks like before year-end",
+            "The calendar is where coordination becomes visible.",
+            "Start with the decisions, not the meetings",
+        ]),
+        ("Sample podcast episode — practical takeaways", [
+            "Give every decision one owner",
+            "Move information before the deadline",
+            "Update the plan after the decision",
+            "Four items for the first calendar pass",
+        ]),
+    ],
+}
+
+
 def set_font(run, size=None, color=None, bold=None, italic=None):
     run.font.name = "Calibri"
     run._element.get_or_add_rPr().rFonts.set(qn("w:ascii"), "Calibri")
@@ -346,20 +596,20 @@ def change_prompt(title, text, default_prompt):
     combined = f"{title} {' '.join(text)}".lower()
     if any(token in combined for token in ["[verify", "credential", "accolade", "years", "registered investment advisor"]):
         return "Verified fact or compliance-approved replacement required."
-    if any(token in combined for token in ["fit check", "cta:", "schedule", "book a call"]):
+    if any(token in combined for token in ["fit check", "cta:", "schedule a", "book a call"]):
         return "Keep the action or type the preferred CTA and next step."
     return "Keep, edit, or replace this copy."
 
 
-def add_copy_row(table, title, text, prompt=None):
+def add_copy_row(table, title, text, prompt=None, priority=None):
     row = table.add_row()
     prevent_row_split(row)
     left, right = row.cells
-    set_shading(left, WHITE)
+    set_shading(left, PALE_GOLD if priority == "REQUIRED BEFORE LAUNCH" else WHITE)
     set_shading(right, PALE_GOLD)
 
     clear_cell(left)
-    add_small_label(left, "Section / copy block")
+    add_small_label(left, priority or "Secondary copy")
     p = left.add_paragraph()
     p.paragraph_format.space_after = Pt(5)
     r = p.add_run(title)
@@ -386,7 +636,8 @@ def add_copy_row(table, title, text, prompt=None):
     p.paragraph_format.space_after = Pt(4)
     r = p.add_run("Alex's replacement copy or notes:")
     set_font(r, size=8.5, color=BLUE, bold=True)
-    for _ in range(3):
+    response_lines = 3 if priority == "REQUIRED BEFORE LAUNCH" else 2
+    for _ in range(response_lines):
         p = right.add_paragraph()
         p.paragraph_format.space_after = Pt(9)
         r = p.add_run(" ")
@@ -582,8 +833,36 @@ def blocks_for_page(filename):
     return blocks
 
 
-def add_page_heading(doc, kicker, title, url=None):
+def secondary_groups_for_page(filename):
+    lookup = {}
+    for title, text in blocks_for_page(filename):
+        lookup.setdefault(title, text)
+
+    groups = []
+    for group_title, block_titles in SECONDARY_PAGE_GROUPS.get(filename, []):
+        combined = []
+        for block_title in block_titles:
+            text = lookup.get(block_title)
+            if text is None:
+                raise ValueError(f"Missing secondary copy block in {filename}: {block_title}")
+            combined.append(block_title)
+            for item in text:
+                if item.startswith(("SECTION LABEL:", "CTA / LINK:", "LABEL:", "DETAIL LABEL:", "CHAPTER:")):
+                    continue
+                if item.startswith("Home /") or item in {
+                    "Articles", "Podcasts", "Frameworks", "Listen to the podcast",
+                    "View framework", "Explore topic",
+                }:
+                    continue
+                combined.append(item)
+        groups.append((group_title, combined))
+    return groups
+
+
+def add_page_heading(doc, kicker, title, url=None, page_break_before=False):
     p = doc.add_paragraph()
+    p.paragraph_format.page_break_before = page_break_before
+    p.paragraph_format.keep_with_next = True
     p.paragraph_format.space_before = Pt(0)
     p.paragraph_format.space_after = Pt(2)
     r = p.add_run(kicker.upper())
@@ -591,6 +870,7 @@ def add_page_heading(doc, kicker, title, url=None):
     doc.add_paragraph(title, style="Heading 1")
     if url:
         p = doc.add_paragraph()
+        p.paragraph_format.keep_with_next = True
         p.paragraph_format.space_after = Pt(8)
         r = p.add_run(url)
         set_font(r, size=8, color=BLUE)
@@ -610,56 +890,62 @@ def build():
 
     p = doc.add_paragraph()
     p.paragraph_format.space_after = Pt(3)
-    r = p.add_run("CLIENT COPY WORKBOOK")
+    r = p.add_run("CLIENT DECISION WORKBOOK")
     set_font(r, size=9, color=GOLD, bold=True)
     p = doc.add_paragraph()
     p.paragraph_format.space_after = Pt(6)
-    r = p.add_run("Anchor Website Copy Review")
+    r = p.add_run("Anchor Website Copy Priorities")
     set_font(r, size=24, color=NAVY, bold=True)
     p = doc.add_paragraph()
     p.paragraph_format.space_after = Pt(10)
-    r = p.add_run("Current copy is on the left. Alex types the replacement wording, corrections, or notes directly into the box on the right.")
+    r = p.add_run("Part 1 contains the decisions that materially affect accuracy, trust, positioning, and conversion. Complete those first. Part 2 contains secondary wording that only needs attention if Alex wants it changed.")
     set_font(r, size=11, color=BODY)
 
     instruction_table = new_review_table(doc)
     add_copy_row(
         instruction_table,
-        "How to complete the review",
+        "How to complete this review",
         [
-            "1. Choose Keep, Edit, or Replace for each copy block.",
-            "2. Type changes directly into the right-hand cell.",
-            "3. Plain-language notes are fine; the final copy can be polished afterward.",
-            "4. Do not guess facts. Mark uncertain credentials, claims, fees, or disclosures for verification.",
-            "5. Save the completed Word file and upload it back to the project or an AI.",
+            "1. Complete every REQUIRED BEFORE LAUNCH block.",
+            "2. Review the HIGH-IMPACT MESSAGE blocks and change only what does not sound like Alex.",
+            "3. Complete CONTENT DIRECTION if articles or the podcast will launch with the site.",
+            "4. Use Part 2 only for wording Alex actively wants to change.",
+            "5. Plain-language notes are enough; final copy will be polished after the factual decisions are settled.",
+            "REMOVED FROM THIS WORKBOOK: routine navigation, repeated buttons, standard footer labels, SEO/social metadata, schema, accessibility labels, and duplicated copy that can safely remain as written.",
         ],
-        "Use this first box for any overall direction or voice notes.",
+        "Use this box for any overall voice direction or non-negotiable language.",
+        priority="START HERE",
     )
 
     doc.add_page_break()
-    add_page_heading(doc, "Global copy", "Navigation, positioning, legal, and Fit Check")
+    add_page_heading(doc, "Part 1 — complete first", "The copy decisions that matter")
+    p = doc.add_paragraph()
+    p.paragraph_format.space_after = Pt(8)
+    r = p.add_run("These blocks are intentionally ordered by launch risk and business impact. Alex does not need to work through the website page by page.")
+    set_font(r, size=9.5, color=BODY, italic=True)
     table = new_review_table(doc)
-    for title, text, prompt in GLOBAL_BLOCKS:
-        add_copy_row(table, title, text, prompt)
+    for priority, title, text, prompt in PRIORITY_REVIEW:
+        add_copy_row(table, title, text, prompt, priority=priority)
 
-    for page_title, filename, url, prompts in PAGES:
-        doc.add_page_break()
-        add_page_heading(doc, "Page review", page_title, url)
+    add_page_heading(doc, "Part 2 — only if needed", "Secondary copy worth reviewing", page_break_before=True)
+    p = doc.add_paragraph()
+    p.paragraph_format.space_after = Pt(10)
+    r = p.add_run("The strongest strategic and factual decisions are already in Part 1. Everything below can stay as written unless Alex wants a different tone, emphasis, or example.")
+    set_font(r, size=10, color=BODY)
+
+    first_secondary_page = True
+    for page_title, filename, url, _prompts in PAGES:
+        selected = secondary_groups_for_page(filename)
+        if not selected:
+            continue
+        add_page_heading(doc, "Secondary page review", page_title, url, page_break_before=not first_secondary_page)
+        first_secondary_page = False
         table = new_review_table(doc)
-        add_decision_row(table, prompts)
-        meta_title, meta_text, meta_prompt = metadata_block_for_page(filename)
-        add_copy_row(table, meta_title, meta_text, meta_prompt)
-        accessibility_block = accessibility_block_for_page(filename)
-        if accessibility_block:
-            a11y_title, a11y_text, a11y_prompt = accessibility_block
-            add_copy_row(table, a11y_title, a11y_text, a11y_prompt)
-        if filename == "home-v6.html":
-            for title, text, prompt in HERO_BLOCKS:
-                add_copy_row(table, title, text, prompt)
-        for title, text in blocks_for_page(filename):
+        for title, text in selected:
             add_copy_row(table, title, text)
 
-    doc.core_properties.title = "Anchor Website Copy Review — Side by Side"
-    doc.core_properties.subject = "Editable client copy review workbook"
+    doc.core_properties.title = "Anchor Website Copy Priorities — Side by Side"
+    doc.core_properties.subject = "Prioritized editable client copy decision workbook"
     doc.core_properties.author = "Website Factory"
     doc.core_properties.keywords = "Anchor Wealth Planning, copy review, Alex Miller"
     doc.save(OUTPUT)
