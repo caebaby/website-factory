@@ -107,13 +107,14 @@ input {
 }
 
 .brand-mark {
-  width: 28px;
-  height: 28px;
-  display: grid;
-  place-items: center;
-  border: 1px solid rgba(177, 143, 77, 0.68);
-  color: #d9c17d;
-  font: 500 1.15rem/1 var(--serif);
+  width: 39px;
+  height: 32px;
+  display: block;
+  flex: 0 0 auto;
+  border: 0;
+  background: url("awp-logo-mark-nav.png") center / contain no-repeat;
+  color: transparent;
+  font-size: 0;
 }
 
 .brand strong {

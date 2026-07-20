@@ -107,8 +107,16 @@ img {
 }
 
 .brand svg {
-  width: 29px;
-  color: var(--gold-bright);
+  display: none;
+}
+
+.brand::before {
+  content: "";
+  width: 39px;
+  height: 32px;
+  display: block;
+  flex: 0 0 auto;
+  background: url("awp-logo-mark-nav.png") center / contain no-repeat;
 }
 
 .brand strong {
