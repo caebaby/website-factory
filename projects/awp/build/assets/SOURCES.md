@@ -10,6 +10,7 @@ All files are self-hosted in this directory for the design review.
 | `hero-family-loop.mp4` | Motion loop derived from `hero-family-modern.png` | Same as source image | Four-second restrained push-in loop for the family hero |
 | `hero-business-poster.png` | First-frame poster derived from `hero-business-loop.mp4` | Same as source video | Poster and ICP card |
 | `hero-family-poster.png` | Responsive poster derived from `hero-family-modern.png` | Same as source image | Poster and ICP card |
+| `awp-logo-mark-watermark.png` | Client-supplied `AWP_Primary_Logo_Mark_RGB_72dpi.png` from the AWP 2026 brand asset package | Client-owned brand asset; preserve proportions and approved mark geometry | Low-opacity article masthead watermark |
 | `family-3gen.mp4` | [Mixkit 6472, “Three generations walking together at sunset”](https://mixkit.co/free-stock-video/three-generations-walking-together-at-sunset-6472/) | Mixkit Restricted License; the free 720p file is personal-use only. Do not publish or use for commercial launch. | Inactive casting reference retained in the working asset folder only |
 | `hero-family-3gen-poster.png` | Frame derived from `family-3gen.mp4` | Same restricted source license; do not publish or use for commercial launch | Inactive poster reference retained in the working asset folder only |
 

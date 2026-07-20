@@ -332,3 +332,11 @@ Append-only. Each entry: what broke, why, how it was caught, and what permanent 
 - **Fix:** replaced the disclosures with static question-and-answer rows. Every answer is now visible, crawlable, and matched in substance by the `FAQPage` JSON-LD.
 - **Permanent lesson:** core FAQ answers on search-led financial content should remain in normal document flow. Use disclosures only for genuinely optional detail, and never let structured data promise content the default page presentation hides.
 - **Status:** ✅ closed. Article gate returned to 0 P0 / 0 P1; only accepted LED-019 P2 remains.
+
+### LED-033 — A brand watermark should use the real mark and earn its contrast quietly
+- **Build:** Anchor article masthead and conversion rail revision (2026-07-20).
+- **Symptom:** the compact masthead was structurally strong but its generic contour decoration did not add Anchor identity. The sidebar conversion prompt was visually loose and the gold button's dark text lacked the requested emphasis.
+- **Root cause:** generic geometry was standing in for an available brand asset, while the conversion prompt was styled as a ruled note instead of one clear action surface.
+- **Fix:** imported the client-supplied transparent logo mark, preserved its proportions, and used it as a large grayscale watermark at 7.5 percent opacity over a quiet navy wash. Rebuilt the conversion prompt as a square navy panel with a dark-gold, light-text button and layered shadow.
+- **Permanent lesson:** when a real mark exists, subtle repetition can create more identity than generic decoration. Watermarks need enough scale to register and low enough contrast to remain peripheral; conversion prompts should own one bounded surface when they must interrupt a long reading flow.
+- **Status:** ✅ closed. Article gate is fully clean at 0 P0 / 0 P1 / 0 P2; desktop taste pass confirms the watermark remains subordinate to the headline.
