@@ -372,3 +372,11 @@ Append-only. Each entry: what broke, why, how it was caught, and what permanent 
 - **Fix:** set the feature grid to content-driven alignment, added three repeatable latest-episode rows, Alex-host attribution, and a clear Fit Check-to-conversation handoff, then removed the duplicate podcast shelf. Expanded the directory `ItemList` and documented unique production URLs plus the publish/update contract.
 - **Permanent lesson:** companion modules do not need equal heights. A content feature earns space by exposing the next useful choices and the conversion path. Static markup should mirror the future CMS collection model so new content changes records, not page architecture.
 - **Status:** ✅ closed for noindex client review. Resources passes at 0 P0 / 0 P1 with only the accepted LED-019 restrained-accent P2; fresh desktop/mobile Tier-B verifier returned SHIP with zero broken links, assets, or fragments.
+
+### LED-038 — Replacing a brand motif requires a sitewide pseudo-element sweep
+- **Build:** Anchor nine-route motif revision (2026-07-20).
+- **Symptom:** the real Anchor watermark had replaced the generic circle in major mastheads and the Resources podcast card, but large ring ornaments survived in conversion closes, route cards, the article rail, the podcast cover template, and several homepage panels.
+- **Root cause:** the mark was adopted component by component without auditing large decorative shapes in shared CSS, page-specific overrides, and the homepage's inline styles.
+- **Fix:** replaced every large decorative ring or circular panel glow with `awp-logo-mark-watermark.png` at low opacity. Preserved circles that communicate function or identity: media controls, carousel controls, progress/process markers, credential dots, and the portrait placeholder.
+- **Permanent lesson:** a motif change is a site-system migration, not a local decoration edit. Search shared styles, page-specific overrides, inline styles, pseudo-elements, radial backgrounds, border radii, and dormant templates; classify each circle as decorative or functional before replacing it.
+- **Status:** ✅ closed for noindex client review. Static sweep found no remaining large decorative rings; representative desktop/mobile routes passed visually and all nine routes returned 0 P0 / 0 P1.

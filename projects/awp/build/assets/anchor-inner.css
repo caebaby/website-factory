@@ -399,15 +399,14 @@ img {
 .route::after {
   content: "";
   position: absolute;
-  width: 230px;
+  width: min(72%, 270px);
   aspect-ratio: 1;
-  right: -112px;
-  bottom: -112px;
-  border: 1px solid rgba(216, 189, 115, 0.2);
-  border-radius: 50%;
-  box-shadow:
-    0 0 0 42px rgba(216, 189, 115, 0.035),
-    0 0 0 84px rgba(216, 189, 115, 0.025);
+  right: -42px;
+  bottom: -54px;
+  background: url("awp-logo-mark-watermark.png") center / contain no-repeat;
+  filter: grayscale(1) brightness(2.2);
+  opacity: 0.065;
+  pointer-events: none;
 }
 
 .route > * {
@@ -566,13 +565,15 @@ img {
 .audience-next::after {
   content: "";
   position: absolute;
-  width: 520px;
+  width: min(31vw, 420px);
   aspect-ratio: 1;
-  right: -300px;
-  top: -230px;
-  border: 1px solid rgba(216, 189, 115, 0.17);
-  border-radius: 50%;
-  box-shadow: 0 0 0 80px rgba(216, 189, 115, 0.025);
+  right: clamp(28px, 7vw, 120px);
+  top: 50%;
+  background: url("awp-logo-mark-watermark.png") center / contain no-repeat;
+  filter: grayscale(1) brightness(2.2);
+  opacity: 0.065;
+  transform: translateY(-50%);
+  pointer-events: none;
 }
 
 .audience-next .wrap {
