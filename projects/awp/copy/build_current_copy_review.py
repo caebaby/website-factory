@@ -299,6 +299,10 @@ def add_review_box(doc, prompts):
 
 
 def clean_text(element):
+    # lxml joins text around <br> without spaces; preserve the visual line break
+    # so cover/title copy reads naturally in the review workbook.
+    for br in element.xpath(".//br"):
+        br.tail = " " + (br.tail or "")
     return " ".join(element.text_content().split())
 
 
@@ -370,23 +374,53 @@ def add_copy_item(doc, tag, text, classes):
 def extract_copy(path):
     tree = html.fromstring(path.read_text(encoding="utf-8"))
     main = tree.xpath("//main")[0] if tree.xpath("//main") else tree.xpath("//body")[0]
-    xpath = ".//*[self::h1 or self::h2 or self::h3 or self::h4 or self::p or self::legend or self::label or self::li or self::button or self::a]"
+    xpath = (
+        ".//*[self::h1 or self::h2 or self::h3 or self::h4 or self::p "
+        "or self::legend or self::label or self::li or self::button or self::a "
+        "or self::small or self::summary or self::figcaption or self::span or self::strong or self::div]"
+    )
     output = []
     for element in main.xpath(xpath):
         if is_hidden(element):
             continue
         tag = element.tag.lower()
         classes = set((element.get("class") or "").split())
+        if tag == "div" and not classes.intersection({"serve-card-tag"}):
+            continue
         if tag in {"a", "button"}:
-            allowed = {"btn", "button", "text-link", "story-link", "fit-next", "fit-back"}
-            if not classes.intersection(allowed):
-                continue
             if element.xpath(".//*[self::h1 or self::h2 or self::h3 or self::p]"):
+                continue
+            if classes.intersection({"rail-button", "hero-pause", "menu-toggle", "menu"}):
                 continue
         if tag == "li" and element.xpath(".//*[self::h1 or self::h2 or self::h3 or self::p]"):
             continue
+        if tag in {"small", "summary", "figcaption", "span", "strong"}:
+            # Parent text-bearing elements already include their inline descendants.
+            # Keep standalone labels/microcopy while avoiding duplicate fragments.
+            parent = element.getparent()
+            duplicate_ancestor = False
+            while parent is not None and parent is not main:
+                parent_tag = parent.tag.lower() if isinstance(parent.tag, str) else ""
+                if parent_tag in {"h1", "h2", "h3", "h4", "p", "legend", "label", "button"}:
+                    duplicate_ancestor = True
+                    break
+                if parent_tag == "li" and not parent.xpath(".//*[self::h1 or self::h2 or self::h3 or self::p]"):
+                    duplicate_ancestor = True
+                    break
+                if parent_tag == "a" and not parent.xpath(".//*[self::h1 or self::h2 or self::h3 or self::p]"):
+                    duplicate_ancestor = True
+                    break
+                parent = parent.getparent()
+            if duplicate_ancestor:
+                continue
+            if element.xpath("./*[self::h1 or self::h2 or self::h3 or self::h4 or self::p]"):
+                continue
+            if element.xpath("./*[self::small or self::summary or self::span or self::strong]") and "text-link" not in classes:
+                continue
         text = clean_text(element)
         if not text:
+            continue
+        if tag == "span" and text.isdigit() and "chapter-number" not in classes:
             continue
         if output and output[-1][1] == text:
             continue

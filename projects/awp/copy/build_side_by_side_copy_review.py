@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 
 from docx import Document
@@ -7,6 +8,7 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from docx.shared import Inches, Pt, RGBColor
+from lxml import html
 
 from build_current_copy_review import BUILD, PAGES, extract_copy
 
@@ -36,12 +38,15 @@ CELL_MARGINS_DXA = {"top": 100, "bottom": 100, "start": 140, "end": 140}
 GLOBAL_BLOCKS = [
     (
         "Primary navigation",
-        ["About · Team · Who We Serve · Resources · Process · Book a Call"],
-        "Confirm the labels and preferred primary action.",
+        [
+            "Homepage: About · Team · Who We Serve · Resources · Process · Book a Call",
+            "Content pages: About · Team · Who We Serve · Resources · Take the Fit Check",
+        ],
+        "Confirm the labels and preferred primary action on both homepage and content pages.",
     ),
     (
         "Brand line",
-        ["“Charting the course towards your financial legacy.”"],
+        ["\"Charting the course towards your financial legacy.\""],
         "Keep it, revise it, or provide a replacement.",
     ),
     (
@@ -55,8 +60,36 @@ GLOBAL_BLOCKS = [
         "Compliance-approved replacement required before launch.",
     ),
     (
+        "Other current disclosure variants",
+        [
+            "About / Team: [VERIFY: RIA entity name and approved regulatory disclosure before launch.] © 2026 Anchor Wealth Planning.",
+            "Audience pages: Educational content only. [VERIFY full regulatory disclosure before launch.]",
+            "Resources / Article: Educational information only. This material is not individualized tax, legal, or investment advice. Consult the appropriate qualified professionals before acting. © 2026 Anchor Wealth Planning.",
+            "Podcast: Educational information only. Podcast content is not individualized tax, legal, or investment advice. Consult the appropriate qualified professionals before acting. © 2026 Anchor Wealth Planning.",
+        ],
+        "Provide one compliance-approved system and identify any page-specific variants.",
+    ),
+    (
+        "Content-page footer description",
+        [
+            "Houston-based coordinated wealth planning.",
+            "Coordinated planning for Houston executives, business owners, and families with complex financial lives.",
+        ],
+        "Approve or replace this repeated footer positioning statement.",
+    ),
+    (
+        "Footer navigation labels",
+        [
+            "Homepage Explore: About · Team · Services · Resources · Contact",
+            "Homepage Specialties: Oil & Gas Executives · Business Owners · HNW Families · Equity Compensation · Estate & Legacy · Coordinated Planning",
+            "Content pages: Explore · Start · Who We Serve · Take the Fit Check · Oil and Gas Executives",
+        ],
+        "Confirm the footer labels and destinations.",
+    ),
+    (
         "Repeated Fit Check footer",
         [
+            "The Anchor Fit Check",
             "Four questions. A better first conversation.",
             "See whether your situation, timing, and coordination needs match the way Anchor works.",
             "01 Your situation · 02 Current complexity · 03 Coordination gap · 04 Best next step.",
@@ -67,6 +100,11 @@ GLOBAL_BLOCKS = [
 ]
 
 HERO_BLOCKS = [
+    (
+        "Hero positioning label",
+        ["Houston, TX · Fiduciary Wealth Management"],
+        "Confirm the location and whether fiduciary language is approved.",
+    ),
     (
         "Rotating hero — Oil & Gas",
         [
@@ -94,6 +132,7 @@ HERO_BLOCKS = [
     (
         "Hero actions and proof",
         [
+            "Market tabs: 01 Oil & Gas · 02 Business Owners · 03 Families",
             "CTA: Schedule a 30-Minute Conversation",
             "CTA: Take the 4-Question Fit Check",
             "[Credential 01] · [Credential 02] · [XX]+ yrs · Houston-based",
@@ -383,35 +422,136 @@ def add_decision_row(table, prompts):
         p.add_run(" ")
 
 
+def metadata_block_for_page(filename):
+    tree = html.fromstring((BUILD / filename).read_text(encoding="utf-8"))
+    values = []
+
+    title = tree.xpath("string(//title)").strip()
+    if title:
+        values.append(f"SEO TITLE: {title}")
+
+    for label, xpath in [
+        ("META DESCRIPTION", "//meta[@name='description']/@content"),
+        ("AUTHOR", "//meta[@name='author']/@content"),
+        ("SOCIAL TITLE", "//meta[@property='og:title']/@content"),
+        ("SOCIAL DESCRIPTION", "//meta[@property='og:description']/@content"),
+    ]:
+        result = tree.xpath(xpath)
+        if result:
+            value = " ".join(result[0].split())
+            if value and value not in " ".join(values):
+                values.append(f"{label}: {value}")
+
+    schema_summaries = []
+    for node in tree.xpath("//script[@type='application/ld+json']/text()"):
+        try:
+            data = json.loads(node)
+        except (TypeError, ValueError):
+            continue
+        records = data.get("@graph", []) if isinstance(data, dict) and "@graph" in data else [data]
+        for record in records:
+            if not isinstance(record, dict):
+                continue
+            schema_type = record.get("@type")
+            if isinstance(schema_type, list):
+                schema_type = ", ".join(schema_type)
+            headline = record.get("headline") or record.get("name")
+            description = record.get("description")
+            author = record.get("author")
+            author_name = author.get("name") if isinstance(author, dict) else None
+            date_published = record.get("datePublished")
+            details = [str(value) for value in [schema_type, headline, description, author_name, date_published] if value]
+            if details:
+                schema_summaries.append(" · ".join(details))
+    if schema_summaries:
+        values.append("STRUCTURED DATA: " + " | ".join(schema_summaries))
+
+    return (
+        "SEO, social, and GEO metadata",
+        values or ["No page-specific SEO metadata is currently present."],
+        "Approve the search/social wording and verify every person, organization, date, and schema fact.",
+    )
+
+
 def blocks_for_page(filename):
     blocks = []
     title = "Page introduction"
     parts = []
+    pending_label = None
+    pending_details = []
 
-    def flush():
+    def flush(force=False):
         nonlocal title, parts
         cleaned = [part for part in parts if part]
-        if cleaned:
+        if cleaned or (force and title not in {"Page introduction", "Copy block"}):
             blocks.append((title, cleaned))
         title = "Copy block"
         parts = []
 
     for tag, text, classes in extract_copy(BUILD / filename):
-        if "eyebrow" in classes or "small" in classes:
-            continue
-        if tag in {"h1", "h2", "h3", "h4", "legend"}:
+        if "eyebrow" in classes:
             flush()
-            title = text
+            pending_label = text
             continue
+        is_lead_detail = (
+            (tag == "small" and (text.startswith("Step ") or " · " in text or text.endswith("preview")))
+            or bool(classes.intersection({"chapter-number", "reel-tag", "serve-card-tag"}))
+        )
+        if is_lead_detail:
+            flush()
+            if "chapter-number" in classes:
+                pending_details.append(f"CHAPTER: {text}")
+            elif classes.intersection({"reel-tag", "serve-card-tag"}):
+                pending_details.append(f"LABEL: {text}")
+            else:
+                pending_details.append(f"DETAIL LABEL: {text}")
+            continue
+        if tag in {"h1", "h2", "h3", "h4", "legend", "strong"}:
+            flush(force=True)
+            title = text
+            if pending_label:
+                parts.append(f"SECTION LABEL: {pending_label}")
+                pending_label = None
+            if pending_details:
+                parts.extend(pending_details)
+                pending_details = []
+            continue
+
+        if pending_label:
+            flush()
+            title = pending_label
+            pending_label = None
+
         if tag == "label":
             parts.append(f"OPTION: {text}")
         elif tag == "li":
             parts.append(text)
         elif tag in {"a", "button"}:
-            parts.append(f"CTA: {text}")
+            parts.append(f"CTA / LINK: {text}")
+        elif tag == "small":
+            parts.append(f"DETAIL LABEL: {text}")
+        elif tag == "figcaption":
+            parts.append(f"IMAGE CAPTION: {text}")
+        elif tag == "summary":
+            parts.append(f"EXPANDER LABEL: {text}")
+        elif "svc-card-pain" in classes:
+            parts.append(f"SUPPORTING QUOTE: {text}")
+        elif "when" in classes:
+            parts.append(f"TIMING LABEL: {text}")
+        elif classes.intersection({"trust-status", "tag", "chip", "reel-tag", "serve-card-tag"}):
+            parts.append(f"LABEL: {text}")
         else:
             parts.append(text)
-    flush()
+    if pending_label:
+        flush()
+        title = pending_label
+        pending_label = None
+    if pending_details:
+        flush()
+        title = "Detail labels"
+        parts.extend(pending_details)
+        pending_details = []
+    flush(force=True)
     return blocks
 
 
@@ -479,6 +619,8 @@ def build():
         add_page_heading(doc, "Page review", page_title, url)
         table = new_review_table(doc)
         add_decision_row(table, prompts)
+        meta_title, meta_text, meta_prompt = metadata_block_for_page(filename)
+        add_copy_row(table, meta_title, meta_text, meta_prompt)
         if filename == "home-v6.html":
             for title, text, prompt in HERO_BLOCKS:
                 add_copy_row(table, title, text, prompt)
