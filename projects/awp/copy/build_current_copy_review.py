@@ -99,7 +99,7 @@ PAGES = [
         "resources.html",
         "https://caebaby.github.io/anchor-review/resources.html",
         [
-            "Approve “The Planning Room” as the podcast/resource-series name.",
+            "Approve “Anchor Wealth Podcast” as the public podcast-series name.",
             "Choose the initial three to six article and podcast topics Alex can credibly own.",
             "Confirm whether podcast links should point to Spotify, Apple Podcasts, YouTube, or an embedded player once episodes are live.",
             "Approve the topic taxonomy: equity and tax timing, business transition, family and legacy, and advisor coordination.",
@@ -123,9 +123,9 @@ PAGES = [
         "podcast-template.html",
         "https://caebaby.github.io/anchor-review/podcast-template.html",
         [
-            "Confirm Alex as host and approve “The Planning Room” title.",
+            "Confirm Alex as host and approve “Anchor Wealth Podcast” as the series title.",
             "Replace preview language with the final episode number, date, duration, audio/video embed, platform links, and guest information if applicable.",
-            "Approve the four-part conversation map and written briefing.",
+            "Approve the four-part conversation map, episode notes, and transcript structure.",
             "Decide whether full transcripts, edited show notes, or both will publish for SEO and accessibility.",
         ],
     ),
@@ -495,7 +495,7 @@ def build_document():
     )
     add_current_copy_label(doc)
     for text in [
-        "Primary navigation: About · Team · Who We Serve · Resources · Process · Book a Call",
+        "Primary navigation: About · Team · Who We Serve · Resources · Process · Take the Fit Check",
         "Brand line: “Charting the course towards your financial legacy.”",
         "Firm description: Houston-based fiduciary wealth management for oil & gas executives, business owners, and high-net-worth families.",
         "Current legal placeholder: [VERIFY: RIA entity name] is a registered investment advisor. Information presented is for educational purposes only and does not intend to make an offer or solicitation for the sale or purchase of any specific securities, investments, or investment strategies. Investments involve risk and unless otherwise stated, are not guaranteed. Past performance is not a guarantee of future results.",
@@ -617,7 +617,7 @@ def build_ai_packet():
         "",
         "### Current copy",
         "",
-        "**Navigation:** About · Team · Who We Serve · Resources · Process · Book a Call",
+        "**Navigation:** About · Team · Who We Serve · Resources · Process · Take the Fit Check",
         "",
         "**Brand line:** “Charting the course towards your financial legacy.”",
         "",

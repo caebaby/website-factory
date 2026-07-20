@@ -39,10 +39,9 @@ GLOBAL_BLOCKS = [
     (
         "Primary navigation",
         [
-            "Homepage: About · Team · Who We Serve · Resources · Process · Book a Call",
-            "Content pages: About · Team · Who We Serve · Resources · Take the Fit Check",
+            "All pages: About · Team · Who We Serve · Resources · Process · Take the Fit Check",
         ],
-        "Confirm the labels and preferred primary action on both homepage and content pages.",
+        "Confirm the labels and the Fit Check as the consistent primary action across the site.",
     ),
     (
         "Brand line",

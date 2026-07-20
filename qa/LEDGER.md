@@ -348,3 +348,19 @@ Append-only. Each entry: what broke, why, how it was caught, and what permanent 
 - **Fix:** retained the homepage hero as the exception and standardized every secondary route on one tight navy masthead, subtle dot field, real Anchor-mark watermark, restrained title scale, and route-specific copy. Removed the About/Team initials, audience hero photos, Resources circle, and podcast cover from their headers; their substantive content remains below.
 - **Permanent lesson:** a site can reserve expressive hero art direction for the homepage while secondary routes earn distinction through language and content. Shared masthead behavior creates continuity; decorative route variants should not make content pages compete with the primary campaign surface.
 - **Status:** ✅ closed for local review. Desktop and narrow-viewport Tier-B passed. All eight routes pass at 0 P0 / 0 P1; Resources and article are 0 P2, with the remaining restrained-accent P2 notes accepted under LED-019.
+
+### LED-035 — Shared navigation needs an exact geometry and content contract
+- **Build:** Anchor nine-route site system (2026-07-20 release candidate).
+- **Symptom:** navigation bars looked related but changed height, logo scale, link spacing, labels, and Fit Check CTA wording between the homepage and content routes.
+- **Root cause:** consistency was judged visually page by page instead of enforced as one measurable component contract.
+- **Fix:** standardized every route on a 76px bar, 1180px inner width with 24px gutters, the same client-supplied mark and wordmark scale, the same link labels/order, and the same `Take the Fit Check` CTA. Added a DOM comparison of navigation labels/order to release QA.
+- **Permanent lesson:** visual similarity is not component consistency. Shared chrome needs exact dimensions, content, order, and responsive behavior, verified across the full route set.
+- **Status:** ✅ closed for local review. All nine routes pass the shared navigation contract and the factory gate with 0 P0 / 0 P1.
+
+### LED-036 — Resource format labels must name the visitor action
+- **Build:** Anchor Resources, article, podcast, and homepage content paths (2026-07-20 release candidate).
+- **Symptom:** podcast inventory used `The Planning Room` and `briefing` language while the destination and requested action were audio, making the format unclear.
+- **Root cause:** editorial-series vocabulary drifted independently from the resource badge, metadata, schema, transcript language, and CTA.
+- **Fix:** standardized the series name as `Anchor Wealth Podcast`, audio badges as `Podcast`, and the primary action as `Listen to the podcast`; aligned homepage, Resources, article companion path, podcast page, schema, and client copy workbook. Replaced the Resources feature-card circle with the subtle real Anchor mark.
+- **Permanent lesson:** series name, resource format, destination metadata, and CTA must agree. Add a content-format semantic sweep to release QA so audio never reads like an article action.
+- **Status:** ✅ closed for local review. No stale `The Planning Room`, `written briefing`, or `episode briefing` language remains in active routes or client copy artifacts.

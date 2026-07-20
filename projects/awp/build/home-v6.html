@@ -98,28 +98,25 @@
     .text-link.light { color:#e0c880; }
 
     /* ─── Nav — different: centered brand, split nav ─── */
-    .nav { position:fixed; top:0; left:0; right:0; z-index:1000; height:72px; display:flex; align-items:center; background:transparent; border-bottom:1px solid transparent; transition:background .22s ease,box-shadow .22s ease,border-color .22s ease,height .22s ease; }
-    .nav.scrolled { background:rgba(245,240,230,.92); backdrop-filter:blur(16px) saturate(1.4); -webkit-backdrop-filter:blur(16px) saturate(1.4); border-bottom-color:var(--line); box-shadow:0 1px 0 rgba(255,255,255,.8) inset,0 4px 24px rgba(30,57,90,.08); height:64px; }
-    .nav-inner { width:var(--wrap); height:100%; margin:auto; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    .nav { position:fixed; top:0; left:0; right:0; z-index:1000; height:76px; display:flex; align-items:center; background:rgba(15,32,56,.96); border-bottom:1px solid rgba(192,216,233,.2); transition:box-shadow .22s ease; }
+    .nav.scrolled { background:rgba(15,32,56,.96); border-bottom-color:rgba(192,216,233,.2); box-shadow:0 4px 24px rgba(15,32,56,.18); }
+    .nav-inner { width:min(calc(100% - 48px),1180px); height:100%; margin:auto; display:flex; align-items:center; justify-content:space-between; gap:28px; }
     .nav-left { display:flex; align-items:center; gap:28px; }
-    .nav-right { display:flex; align-items:center; justify-content:flex-end; gap:18px; }
-    .nav.scrolled .nav-inner { color:var(--midnight); }
-    .nav:not(.scrolled) .nav-inner { color:var(--on-dark); }
-    .nav-link { position:relative; font-size:.76rem; font-weight:600; text-decoration:none; transition:color .22s ease; }
+    .nav-right { display:flex; align-items:center; justify-content:flex-end; gap:26px; }
+    .nav.scrolled .nav-inner,.nav:not(.scrolled) .nav-inner { color:var(--on-dark); }
+    .nav-link { position:relative; font-size:.75rem; font-weight:700; text-decoration:none; transition:color .22s ease; }
     .nav-link::after { content:""; position:absolute; left:0; bottom:-5px; height:1.5px; width:0; background:var(--gold); transition:width .22s ease; }
     .nav-link:hover { color:var(--gold); }
     .nav-link:hover::after { width:100%; }
-    .brand-center { display:flex; align-items:center; gap:11px; text-decoration:none; }
-    .brand-mark { width:42px; height:33px; display:block; flex:0 0 auto; background:url("assets/awp-logo-mark-nav.png") center/contain no-repeat; }
+    .brand-center { display:flex; align-items:center; gap:12px; text-decoration:none; }
+    .brand-mark { width:39px; height:32px; display:block; flex:0 0 auto; background:url("assets/awp-logo-mark-nav.png") center/contain no-repeat; }
     .brand-mark svg { display:none; }
-    .brand-name { display:grid; line-height:1; text-align:center; }
-    .brand-name strong { font-family:var(--serif); font-size:1.35rem; font-weight:500; letter-spacing:-.02em; }
-    .brand-name span { margin-top:4px; font-size:.48rem; font-weight:700; letter-spacing:.22em; }
-    .nav-cta { padding:9px 16px; color:var(--midnight-deep); background:var(--gold); text-decoration:none; font-size:.72rem; font-weight:700; border-radius:5px; transition:background .22s ease,transform .22s ease; }
+    .brand-name { display:grid; line-height:1; text-align:left; }
+    .brand-name strong { font-family:var(--serif); font-size:1.4rem; font-weight:500; letter-spacing:-.02em; }
+    .brand-name span { margin-top:4px; font-size:.5rem; font-weight:700; letter-spacing:.16em; }
+    .nav-cta { min-height:46px; display:inline-flex; align-items:center; padding:11px 19px; border:1px solid var(--gold); color:var(--midnight-deep); background:var(--gold); text-decoration:none; font-size:.74rem; font-weight:800; transition:background .22s ease,transform .22s ease; }
     .nav-cta:hover { background:var(--gold-dark); transform:translateY(-1px); }
-    .menu-toggle { display:none; border:0; background:none; padding:8px; cursor:pointer; }
-    .nav.scrolled .menu-toggle { color:var(--midnight); }
-    .nav:not(.scrolled) .menu-toggle { color:var(--on-dark); }
+    .menu-toggle { display:none; min-width:48px; min-height:42px; border:1px solid rgba(255,255,255,.3); color:var(--on-dark); background:transparent; cursor:pointer; }
     .mobile-menu { display:none; }
 
     /* ═══ HERO — full-bleed video, left-anchored copy, chart-line motif ═══ */
@@ -485,10 +482,6 @@
 
     /* ─── Responsive ─── */
     @media (max-width:1020px) {
-      .nav-left, .nav-right { display:none; }
-      .menu-toggle { display:block; }
-      .nav-inner { grid-template-columns:auto 1fr auto; }
-      .nav:not(.scrolled) .nav-cta { color:var(--midnight-deep); }
       .hero-selector { display:none; }
       .pain-spread { grid-template-columns:1fr; }
       .pain-left { position:static; }
@@ -513,12 +506,16 @@
       .insights-grid { grid-template-columns:1fr 1fr; }
       .insight:first-child { grid-column:1/-1; padding-left:28px; border-right:0; border-bottom:1px solid var(--line); }
     }
+    @media (max-width:900px) {
+      .nav-left,.nav-right { display:none; }
+      .menu-toggle { display:block; }
+    }
     @media (max-width:720px) {
       :root { --wrap:min(100% - 36px,1200px); }
-      .nav { height:64px; }
-      .brand-name strong { font-size:1.2rem; }
+      .nav { height:76px; }
+      .brand-name strong { font-size:1.3rem; }
       .nav-cta { display:none; }
-      .nav.open .mobile-menu { position:absolute; top:64px; left:0; right:0; display:grid; gap:1px; padding:12px 16px 18px; border-top:1px solid rgba(192,216,233,.16); background:var(--midnight-deep); }
+      .nav.open .mobile-menu { position:absolute; top:76px; left:0; right:0; display:grid; gap:1px; padding:12px 16px 18px; border-top:1px solid rgba(192,216,233,.16); background:var(--midnight-deep); }
       .mobile-menu a { padding:12px 8px; border-bottom:1px solid rgba(192,216,233,.12); color:var(--on-dark); font-size:.84rem; font-weight:650; text-decoration:none; }
       .mobile-menu a:last-child { border-bottom:0; color:#e0c77f; }
       .hero { min-height:100svh; }
@@ -585,13 +582,11 @@
         <a class="nav-link" href="#serve">Who We Serve</a>
         <a class="nav-link" href="resources.html">Resources</a>
         <a class="nav-link" href="#process">Process</a>
-        <a class="nav-cta" href="#fit">Book a Call →</a>
+        <a class="nav-cta" href="#fit">Take the Fit Check</a>
       </div>
-      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" stroke-width="1.5"/></svg>
-      </button>
+      <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">Menu</button>
     </div>
-    <div class="mobile-menu" id="mobileMenu"><a href="about.html">About</a><a href="team.html">Team</a><a href="#serve">Who We Serve</a><a href="resources.html">Resources</a><a href="#process">Process</a><a href="#fit">Book a Call →</a></div>
+    <div class="mobile-menu" id="mobileMenu"><a href="about.html">About</a><a href="team.html">Team</a><a href="#serve">Who We Serve</a><a href="resources.html">Resources</a><a href="#process">Process</a><a href="#fit">Take the Fit Check</a></div>
   </nav>
 
   <span id="top"></span>
@@ -1061,7 +1056,7 @@
       <div class="wrap reels-pad">
         <div class="reels-head reveal">
           <div>
-            <p class="eyebrow">From The Planning Room</p>
+            <p class="eyebrow">From Anchor Wealth Podcast</p>
             <h2 class="h-display">Short answers for <em>the decisions ahead.</em></h2>
             <p class="lede">Swipe the rail. Hover, focus, or tap a preview to play the silent footage.</p>
           </div>

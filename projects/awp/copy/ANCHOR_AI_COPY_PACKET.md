@@ -45,7 +45,7 @@ Ask these first, one at a time:
 
 ### Current copy
 
-**Navigation:** About · Team · Who We Serve · Resources · Process · Book a Call
+**Navigation:** About · Team · Who We Serve · Resources · Process · Take the Fit Check
 
 **Brand line:** “Charting the course towards your financial legacy.”
 
@@ -139,17 +139,25 @@ Not a claim. Here's what it actually means.
 
 Experience across institutional wealth management and independent advice.
 
+Needs verification
+
 ##### [Credential 01]
 
 Approved professional designation and issuing organization go here.
+
+Needs verification
 
 ##### [Credential 02]
 
 Approved license, certification, or specialist training goes here.
 
+Needs verification
+
 ##### [Accolade 01]
 
 Approved recognition, year, source, and selection criteria go here.
+
+Needs verification
 
 **SECTION LABEL:** Why Anchor
 
@@ -187,9 +195,15 @@ The goal is not to replace your CPA or attorney. It is to help them do better wo
 
 ##### Turn separate expertise into one coordinated course.
 
+Shared context
+
 Every professional sees the decisions, constraints, and timing that affect their work.
 
+Clear ownership
+
 Each next step has an owner, a deadline, and a reason it belongs in the sequence.
+
+One next move
 
 You leave each conversation knowing what matters now—not with another disconnected list.
 
@@ -199,17 +213,29 @@ You leave each conversation knowing what matters now—not with another disconne
 
 If you don't see yourself below, we may not be the right fit — and we'll tell you that honestly.
 
+01 · Houston energy
+
 ##### Oil & Gas Executives
 
 RSUs, NQDC elections, blackout periods, and commodity-cycle exposure. You're paid in stock and options the way the industry pays its leaders.
+
+See how we work with you →
+
+02 · Closely held
 
 ##### Business Owners
 
 Exit readiness, entity structure, and the line between business value and personal wealth. The exit conversation starts years before the LOI.
 
+See how we work with you →
+
+03 · Across generations
+
 ##### High-Net-Worth Families
 
 Trust funding, current beneficiaries, and a plan the next generation can understand. Your wealth has outgrown the plan built for it.
+
+See how we work with you →
 
 **SECTION LABEL:** Fit Check
 
@@ -275,25 +301,37 @@ Most advisors manage your investments and stop there. We coordinate your investm
 
 ##### Coordinated Planning
 
+"No one sees the full picture."
+
 We run joint planning meetings with your CPA and estate attorney. We maintain one living document that all three professionals reference. When your CPA makes a tax move, your portfolio reflects it. When your attorney updates your trust, your investment strategy adjusts. You stop being the translator.
 
 ##### Investment Management
+
+"My advisor doesn't understand my situation."
 
 Built around your actual life — your vesting schedule, your blackout periods, your commodity exposure — not a model portfolio. We manage concentration risk, tax-loss harvesting, and asset location in coordination with your tax strategy, not in isolation.
 
 ##### Tax Strategy & Coordination
 
+"Every bonus season feels like a tax trap."
+
 We sit down with your CPA before year-end — not after. We model RSU vesting events, deferred comp elections, and bonus timing against your actual tax situation. Proactive tax planning, not reactive tax preparation.
 
 ##### Equity Compensation
+
+"My RSUs and bonus feel like a tax trap every year."
 
 RSU vesting schedules, NQDC elections, 10b5-1 plans, blackout period strategy. We model concentration risk against the commodity cycle and build a diversification plan that respects your constraints — not one that ignores them.
 
 ##### Estate & Legacy
 
+"I have real wealth but no plan for what comes after me."
+
 We review your existing trusts against your current net worth. We coordinate with your estate attorney to fund trusts correctly, update beneficiaries, and ensure your documents still match your life. Legacy planning is a living process, not a one-time document.
 
 ##### Business Owner Planning
+
+"I don't know what I'd walk away with if I sold."
 
 We start the exit conversation 3–5 years before the LOI. Entity structure optimization, personal and business wealth separation, pre-sale tax strategy, and post-liquidity management. By the time a buyer appears, you're ready.
 
@@ -305,21 +343,37 @@ We start the exit conversation 3–5 years before the LOI. Entity structure opti
 
 No surprise sales process. No pressure. Just a clear path from your first question to a coordinated plan.
 
+Step 01
+
 ##### Discovery
 
 A 30-minute conversation. You tell us about your situation — your equity comp, your business, your family, your concerns. We listen and tell you honestly whether we can help.
+
+30 minutes, no obligation
+
+Step 02
 
 ##### Assessment
 
 We review your full financial picture — investments, tax returns, equity documents, estate plan, business interests. We identify the gaps between where you are and where your wealth needs to be.
 
+Usually 1–2 weeks
+
+Step 03
+
 ##### The Plan
 
 We build your coordinated plan. Investment strategy, tax plan, estate review, and (for business owners) exit roadmap. We walk your CPA and estate attorney through it. Everyone reads from the same page.
 
+You keep this document
+
+Step 04
+
 ##### Partnership
 
 We implement the plan and meet quarterly to keep it current. When your equity vests, when the commodity cycle turns, when a business opportunity appears — we've already modeled it. You stop being the project manager.
+
+Proactive, not reactive
 
 The first call is just a conversation. 30 minutes. No deck, no pitch, no pressure. If we're not a fit, we'll tell you — and refer you to someone who is.
 
@@ -328,6 +382,8 @@ The first call is just a conversation. 30 minutes. No deck, no pitch, no pressur
 #### Institutional discipline, brought to your side of the table.
 
 Alex's approved background and prior-firm history will be added after client and compliance verification. Anchor was founded to coordinate the work that siloed advice leaves to the client.
+
+AM
 
 **SECTION LABEL:** Alex's story
 
@@ -339,13 +395,27 @@ Alex's approved biography, credentials, prior-firm history, and founding story w
 
 - **CTA:** Read why Anchor exists →
 
+[Credential 01]
+
+[Credential 02]
+
+[XX]+ years
+
+[Accolade 01]
+
+01 · Shared context
+
 ##### Joint planning conversations
 
 Questions reach the right professional with the financial context already attached. Your CPA, attorney, and advisor sit in the same room — virtual or physical.
 
+02 · Tangible output
+
 ##### One living plan
 
 Decisions, dependencies, and next steps live in one document you can understand. When one professional makes a move, the others know.
+
+03 · Ongoing rhythm
 
 ##### Reviews before deadlines
 
@@ -361,19 +431,29 @@ If your CPA and your advisor aren't reading from the same plan, you're doing the
 
 - **CTA:** Take the 4-Question Fit Check
 
-**SECTION LABEL:** From The Planning Room
+**SECTION LABEL:** From Anchor Wealth Podcast
 
 #### Short answers for the decisions ahead.
 
 Swipe the rail. Hover, focus, or tap a preview to play the silent footage.
 
+Oil & Gas
+
 ##### How RSU vesting creates a tax-timing trap
+
+Business Owners
 
 ##### The exit conversation starts before the LOI
 
+Families
+
 ##### What "one living plan" actually means
 
+Concentrated Wealth
+
 ##### When one company shapes the whole financial plan
+
+Estate & Legacy
 
 ##### Five questions before revisiting a family trust
 
@@ -403,6 +483,8 @@ Video topics shown for layout review; approved Alex footage will replace preview
 Anchor was designed for people whose financial lives have outgrown a collection of disconnected professionals.
 
 Home / About
+
+- **CTA:** Home
 
 **SECTION LABEL:** The Missing Role
 
@@ -446,11 +528,19 @@ For review, this page shows the intended narrative structure without publishing 
 
 Industry experience
 
+Needs verification
+
 Approved designation
+
+Needs verification
 
 Approved certification
 
+Needs verification
+
 Source and criteria
+
+Needs verification
 
 **SECTION LABEL:** Start Here
 
@@ -485,19 +575,31 @@ A coordinated plan works only when responsibility is clear.
 
 Home / Team
 
+- **CTA:** Home
+
+Founder & Wealth Advisor · Title to verify
+
 #### Alex Miller
 
 Alex’s approved biography, credentials, prior firm history, community involvement, and personal details will be inserted here after client and compliance review.
 
 - **CTA:** Start the Fit Check →
 
+Team profile placeholder
+
 #### [Name & Role]
 
 Use this row for an additional advisor, client service lead, operations partner, or other approved team member.
 
+Pending content
+
+Team profile placeholder
+
 #### [Name & Role]
 
 Biography, credentials, responsibilities, and contact routing to be supplied and verified.
+
+Pending content
 
 **SECTION LABEL:** A Better First Step
 
@@ -529,6 +631,8 @@ The fit check routes every visitor toward the right next conversation.
 Equity awards, deferred compensation, blackout periods, and industry exposure need one coordinated decision calendar.
 
 Home / Who We Serve / Oil & Gas Executives
+
+- **CTA:** Home
 
 **SECTION LABEL:** The Planning Problem
 
@@ -581,6 +685,8 @@ Business value, personal wealth, taxes, succession, and family decisions need ti
 
 Home / Who We Serve / Business Owners
 
+- **CTA:** Home
+
 **SECTION LABEL:** The Planning Problem
 
 #### The company is valuable. Is the wealth portable?
@@ -632,6 +738,8 @@ Investments, trusts, beneficiaries, taxes, and family communication should tell 
 
 Home / Who We Serve / High-Net-Worth Families
 
+- **CTA:** Home
+
 **SECTION LABEL:** The Planning Problem
 
 #### Your wealth changed. Did the plan?
@@ -668,7 +776,7 @@ The fit check identifies the coordination gap that should lead the conversation.
 
 ### Decisions Alex should make
 
-- Approve “The Planning Room” as the podcast/resource-series name.
+- Approve “Anchor Wealth Podcast” as the public podcast-series name.
 - Choose the initial three to six article and podcast topics Alex can credibly own.
 - Confirm whether podcast links should point to Spotify, Apple Podcasts, YouTube, or an embedded player once episodes are live.
 - Approve the topic taxonomy: equity and tax timing, business transition, family and legacy, and advisor coordination.
@@ -676,13 +784,27 @@ The fit check identifies the coordination gap that should lead the conversation.
 
 ### Current copy
 
-**H1:** Decisions that do not fit in a silo.
+- **CTA:** Home
 
-For Houston executives, business owners, and families. Clear answers for moments when tax, investments, estate planning, and timing all touch the same decision.
+Resources
 
-#### Two ways into the conversation.
+**SECTION LABEL:** Anchor Resources
 
-Read the decision brief or open the podcast. Both are designed to leave you with a clearer next question.
+**H1:** Clear thinking for decisions that touch everything.
+
+Built for Houston executives, business owners, and families. Browse articles, podcast conversations, and practical frameworks by the decision in front of you.
+
+Articles
+
+Podcasts
+
+Frameworks
+
+**SECTION LABEL:** Start here
+
+#### Choose how you want to think it through.
+
+Read the six-minute brief or listen to a focused planning conversation. Both lead to a practical next question.
 
 **SECTION LABEL:** Equity and tax timing
 
@@ -692,45 +814,115 @@ Why the vest date, withholding method, trading window, and diversification decis
 
 - **CTA:** Read the 6-minute briefing
 
-#### The Planning Room
+Podcast
+
+#### Anchor Wealth Podcast
 
 Direct conversations about the financial decisions that require your advisor, CPA, and attorney to work from the same plan.
 
-#### Find the pressure point first.
+- **CTA:** Listen to the podcast
 
-The directory is organized around the problem a reader is trying to solve, not the format of the content.
+**SECTION LABEL:** Resource directory
+
+#### Start with the decision, not the format.
+
+Articles, podcast episodes, and working frameworks live together here. Filter by the issue that needs attention now.
+
+- **CTA:** All topics
+
+- **CTA:** Equity and tax timing
+
+- **CTA:** Business transition
+
+- **CTA:** Family and legacy
+
+- **CTA:** Advisor coordination
+
+Article · 6 min
 
 ##### How RSU vesting creates a tax-timing trap
 
 Align vesting, withholding, trading windows, and the plan for the shares that remain.
 
+Read briefing
+
+Podcast · Episode 01
+
+##### What coordinated planning looks like before year-end
+
+Put every decision, owner, and deadline on one shared calendar before the year gets crowded.
+
+Listen to the podcast
+
+Framework · 5 min
+
 ##### What one living plan actually coordinates
 
 A practical division of labor across the advisor, CPA, attorney, and client.
+
+View framework
+
+Checklist · 7 min
 
 ##### The exit conversation starts before the LOI
 
 Questions to answer while the owner still controls the timeline and the range of options.
 
-##### Does the estate plan still match what the family owns?
+Explore topic
 
-Review funding, beneficiaries, decision makers, and family communication after wealth changes.
-
-#### Conversations for the planning room.
-
-Short, focused discussions with written notes for readers who prefer the key decisions in one place.
-
-##### What coordinated planning looks like before year-end
-
-Assign the decision, the owner, and the deadline before the calendar gets crowded.
+Podcast · Preview
 
 ##### Five questions to ask before responding to an offer
 
 Separate valuation, taxes, family goals, and deal timing before momentum makes the choice.
 
+Listen to the podcast
+
+Family review · 5 min
+
+##### Does the estate plan still match what the family owns?
+
+Review funding, beneficiaries, decision makers, and family communication after wealth changes.
+
+Explore topic
+
+Podcast · Preview
+
 ##### The decisions hiding inside an RSU vest
 
 Withholding is only one part of the decision. Concentration and cash flow still need a plan.
+
+Listen to the podcast
+
+**SECTION LABEL:** The podcast
+
+#### Listen to the Anchor Wealth Podcast.
+
+Short, focused conversations. Every episode page includes written notes, a conversation map, and related reading.
+
+Coordination series preview
+
+##### What coordinated planning looks like before year-end
+
+Assign the decision, the owner, and the deadline before the calendar gets crowded.
+
+Listen to the podcast
+
+Business transition series preview
+
+##### Five questions to ask before responding to an offer
+
+Separate valuation, taxes, family goals, and deal timing before momentum makes the choice.
+
+Listen to the podcast
+
+Equity compensation series preview
+
+##### The decisions hiding inside an RSU vest
+
+Withholding is only one part of the decision. Concentration and cash flow still need a plan.
+
+Listen to the podcast
 
 ---
 
@@ -748,15 +940,61 @@ Withholding is only one part of the decision. Concentration and cash flow still 
 
 ### Current copy
 
+- **CTA:** Home
+
+- **CTA:** Resources
+
+RSU vesting
+
+**SECTION LABEL:** Equity compensation · Decision briefing
+
 **H1:** How RSU vesting creates a tax-timing trap
 
 The vest, the tax withholding, and the first open trading window may happen on three different clocks. Your plan has to connect them before the shares arrive.
 
+Alex Miller, Anchor Wealth Planning
+
+- **CTA:** Alex Miller
+
+Published July 17, 2026 · Updated July 20, 2026 · 8 minute read
+
+Your next step
+
+#### Bring the whole decision into one conversation.
+
+See whether Anchor’s planning process fits the complexity and timing of your situation.
+
+- **CTA:** Take the Fit Check
+
 On this page
+
+- **CTA:** Short answer
+
+- **CTA:** What happens at vest
+
+- **CTA:** The withholding gap
+
+- **CTA:** Trading windows
+
+- **CTA:** Decision sequence
+
+- **CTA:** Documents to gather
+
+- **CTA:** Questions to answer
+
+- **CTA:** RSU FAQ
+
+- **CTA:** Sources
+
+- **CTA:** Companion podcastAnchor Wealth Podcast · Episode notesListen to the podcast
+
+The short answer
 
 RSUs generally create compensation income when the shares settle after vesting. Employer withholding may not equal the tax ultimately due, and a trading restriction can delay your ability to sell. The planning task is to estimate the tax, decide how much stock to retain, and identify the cash source before the vest date.
 
 An RSU vest can look automatic on a statement. Shares arrive, a portion is withheld, and the rest appears in the account. The harder part is what the statement does not decide: whether the withholding is enough, when the remaining shares can be sold, how much company exposure is reasonable, and what the proceeds are meant to fund.
+
+#### Four decisions arrive with one vest
 
 #### What usually happens when RSUs vest?
 
@@ -788,6 +1026,20 @@ This is especially important when salary, annual bonus, deferred compensation, r
 
 - Assign the proceeds. Connect any sale to cash reserves, diversification, debt, charitable giving, or another stated goal.
 
+#### What should you gather before the vest date?
+
+The planning meeting moves faster when the advisor and CPA are working from the same source documents. Bring the items that control the transaction and the items that show its effect on the household.
+
+- Award agreement and current vesting scheduleThese control the grant conditions, settlement timing, and plan-specific mechanics.
+
+- Employer trading policyInclude blackout dates, preclearance requirements, and any Rule 10b5-1 plan already in place.
+
+- Recent pay statement and prior-year tax returnThese help the CPA place the vest inside total household income and withholding.
+
+- Current company-stock exposureCount vested shares, unvested awards, employee stock plans, and other holdings tied to the same employer or industry.
+
+- Near-term cash needs and planned usesName the tax reserve, major purchase, charitable gift, debt payment, or diversification goal before the shares settle.
+
 #### Questions worth answering early
 
 ##### How much of the household balance sheet depends on one company?
@@ -802,15 +1054,49 @@ The first deadline may be a tax payment, a company election, a trading precleara
 
 A written retention and sale policy is more useful when it names the exceptions. Examples include a changed cash need, a material change in the company outlook, a new trading restriction, or a revised tax estimate.
 
+#### Common RSU tax-planning questions
+
+##### Are RSUs taxed twice?
+
+Generally, no. RSUs typically create ordinary compensation income when the shares settle. That amount generally becomes the tax basis in the shares. If the shares are later sold for more or less than that basis, the difference can create a separate capital gain or loss. Accurate basis records matter because an incorrect brokerage record can make the same value appear taxable twice on a return.
+
+##### Does RSU withholding cover the final tax bill?
+
+Not necessarily. Withholding is a prepayment. The IRS permits a 22 percent flat withholding method for certain separately identified supplemental wages up to $1 million in 2026, while amounts above that threshold are generally subject to a 37 percent rate. The household’s final liability can still differ because it reflects total income, filing status, deductions, other taxes, and payments already made.
+
+##### Can an executive sell the shares immediately after vesting?
+
+It depends on the award terms and employer policy. Settlement may occur after the vest date, and company trading windows, blackout periods, preclearance requirements, or material nonpublic information can restrict a discretionary sale. The employer’s legal or compliance team controls those rules.
+
+##### What is the first planning decision?
+
+Start by mapping the dates and estimating the tax. Once the household knows when income is expected, what may be withheld, and when a sale may be available, it can set a retention rule and assign any proceeds to a specific purpose.
+
 #### Primary sources and further reading
 
 - IRS Publication 525, Taxable and Nontaxable Income, including restricted property and qualified equity grant guidance.
 
+- **CTA:** IRS Publication 525, Taxable and Nontaxable Income
+
 - IRS Publication 15, Employer’s Tax Guide, section 7 on supplemental wage withholding.
+
+- **CTA:** IRS Publication 15, Employer’s Tax Guide
 
 - IRS Publication 15-T, Federal Income Tax Withholding Methods.
 
+- **CTA:** IRS Publication 15-T, Federal Income Tax Withholding Methods
+
+- SEC guide to Rule 10b5-1 insider trading arrangements, including the conditions and cooling-off periods that apply to qualifying trading plans.
+
+- **CTA:** SEC guide to Rule 10b5-1 insider trading arrangements
+
 This material is for educational purposes only and is not individualized tax, legal, or investment advice. Equity plan terms and individual facts vary. Coordinate decisions with the appropriate qualified professionals before acting.
+
+- **CTA:** Planning for oil and gas executives
+
+- **CTA:** How Anchor coordinates the work
+
+- **CTA:** More decision briefings
 
 ---
 
@@ -820,24 +1106,62 @@ This material is for educational purposes only and is not individualized tax, le
 
 ### Decisions Alex should make
 
-- Confirm Alex as host and approve “The Planning Room” title.
+- Confirm Alex as host and approve “Anchor Wealth Podcast” as the series title.
 - Replace preview language with the final episode number, date, duration, audio/video embed, platform links, and guest information if applicable.
-- Approve the four-part conversation map and written briefing.
+- Approve the four-part conversation map, episode notes, and transcript structure.
 - Decide whether full transcripts, edited show notes, or both will publish for SEO and accessibility.
 
 ### Current copy
+
+- **CTA:** Home
+
+- **CTA:** Resources
+
+Anchor Wealth Podcast
+
+Anchor Wealth Planning
 
 **H1:** What coordinated planning looks like before year-end
 
 A focused conversation about timing, ownership, and getting every professional onto the same plan before decisions become deadlines.
 
-- **CTA:** Read the episode notes
+Podcast preview
+
+Hosted by Alex Miller
+
+Episode transcript included
+
+- **CTA:** Listen to the podcast
 
 - **CTA:** Browse all resources
 
 #### The calendar is where coordination becomes visible.
 
-Most complex planning problems do not begin with a lack of advice. They begin when good advice arrives from different professionals on different timelines. The planning room exists to put the decision, the owner, and the deadline in one place.
+Most complex planning problems do not begin with a lack of advice. They begin when good advice arrives from different professionals on different timelines. The podcast puts the decision, the owner, and the deadline in one place.
+
+01
+
+Start with the decisions, not the meetings
+
+List the elections, tax payments, transactions, and family decisions that have a real deadline.
+
+02
+
+Give every decision one owner
+
+The lead professional does not need to do every task, but someone must own the next step.
+
+03
+
+Move information before the deadline
+
+The CPA, attorney, and advisor need the same assumptions before each recommendation is final.
+
+04
+
+Update the plan after the decision
+
+A vest, business offer, trust change, or liquidity event should change the living plan, not disappear into a file.
 
 ##### Four items for the first calendar pass
 
@@ -849,13 +1173,21 @@ Most complex planning problems do not begin with a lack of advice. They begin wh
 
 - Business, family, or liquidity events on the horizon
 
-#### Read the episode briefing
+#### Episode transcript
+
+Read the transcript
 
 The practical output of a coordinated year-end review is not another stack of recommendations. It is a shared decision calendar. Each line should name what must be decided, who owns the next step, which professional needs to contribute, and the date after which the option changes or disappears.
 
 Start with decisions that cannot be reversed. Elections, estimated-tax payments, transaction terms, gifting deadlines, and trading windows belong at the top. Then identify the information each professional needs. A tax estimate built on an old vesting schedule or an estate recommendation that ignores a pending business transaction is not coordinated advice.
 
 The calendar also makes the follow-through visible. Once a decision is made, the investment policy, cash plan, estate documents, and professional assumptions should be updated so the next conversation begins with the same facts.
+
+- **CTA:** Read the RSU tax-timing briefing
+
+- **CTA:** How Anchor works
+
+- **CTA:** Browse all resources
 
 ---
 

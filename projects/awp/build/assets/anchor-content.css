@@ -389,13 +389,13 @@ input {
 .podcast-feature::before {
   content: "";
   position: absolute;
-  width: 260px;
-  height: 260px;
-  right: -80px;
-  top: -80px;
-  border: 1px solid rgba(177, 143, 77, 0.35);
-  border-radius: 50%;
-  box-shadow: 0 0 0 48px rgba(177, 143, 77, 0.06), 0 0 0 96px rgba(192, 216, 233, 0.035);
+  width: min(74%, 320px);
+  aspect-ratio: 1;
+  right: -54px;
+  top: -46px;
+  background: url("awp-logo-mark-watermark.png") center / contain no-repeat;
+  filter: grayscale(1) brightness(2.2);
+  opacity: 0.085;
 }
 
 .podcast-feature > * {
@@ -403,13 +403,12 @@ input {
 }
 
 .podcast-monogram {
-  width: 52px;
-  height: 52px;
-  display: grid;
-  place-items: center;
-  border: 1px solid rgba(177, 143, 77, 0.58);
+  display: inline-block;
   color: #dec980;
-  font: 500 1.5rem var(--serif);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .podcast-feature h2 {
@@ -1846,6 +1845,10 @@ input {
 @media (max-width: 680px) {
   :root {
     --wrap: min(calc(100% - 34px), 1180px);
+  }
+
+  .brand strong {
+    font-size: 1.3rem;
   }
 
   .content-masthead,

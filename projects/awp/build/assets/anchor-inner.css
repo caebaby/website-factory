@@ -91,11 +91,12 @@ img {
 }
 
 .nav-inner {
-  min-height: 78px;
+  width: min(calc(100% - 48px), 1180px);
+  min-height: 76px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 30px;
+  gap: 28px;
 }
 
 .brand {
@@ -121,15 +122,15 @@ img {
 
 .brand strong {
   display: block;
-  font: 500 1.45rem/0.92 var(--serif);
+  font: 500 1.4rem/1 var(--serif);
 }
 
 .brand small {
   display: block;
-  margin-top: 5px;
+  margin-top: 4px;
   font-size: 0.5rem;
   font-weight: 700;
-  letter-spacing: 0.17em;
+  letter-spacing: 0.16em;
 }
 
 .nav-links {
@@ -153,17 +154,17 @@ img {
 
 .nav-links .cta,
 .btn {
-  min-height: 48px;
+  min-height: 46px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 12px 21px;
+  padding: 11px 19px;
   border: 1px solid var(--gold);
   color: var(--deep);
   background: var(--gold);
   text-decoration: none;
-  font-size: 0.75rem;
+  font-size: 0.74rem;
   font-weight: 800;
   transition:
     transform 0.25s var(--ease),
@@ -197,7 +198,7 @@ img {
 
 .menu {
   display: none;
-  min-width: 50px;
+  min-width: 48px;
   min-height: 42px;
   border: 1px solid rgba(247, 242, 232, 0.35);
   color: #f7f2e8;
@@ -656,7 +657,7 @@ img {
   }
 
   .nav-inner {
-    min-height: 70px;
+    min-height: 76px;
   }
 
   .menu {
