@@ -316,3 +316,11 @@ Append-only. Each entry: what broke, why, how it was caught, and what permanent 
 - **Fix:** retained one brand/navigation/type system while giving About and Team identity panels and each audience page its relevant approved image. Rebuilt Resources as a decision-led library with articles, podcasts, checklists, and frameworks in the same filterable index; retained a dedicated podcast shelf as a secondary listening path.
 - **Permanent lesson:** shared chrome and tokens create consistency; the route hero must still prove why that page exists. Resource directories should organize around visitor intent and expose every major content format inside the main browse path.
 - **Status:** ✅ closed for local review. Eight secondary/content routes pass the factory gate with 0 P0 / 0 P1; content routes are fully clean and inner routes retain only the accepted restrained-accent P2 under LED-019.
+
+### LED-031 — Borrow the information shape, not the reference brand
+- **Build:** Anchor article, podcast, and Resources templates (2026-07-20 tight-content revision).
+- **Symptom:** the first Anchor article was polished but still too spacious and campaign-like for a practical financial briefing. The client preferred the compact hierarchy of AGL's article template: a contained masthead, narrow reading measure, and a persistent next-step rail.
+- **Root cause:** the content route inherited too much homepage scale and treated brand continuity as preserving the same visual proportions. That made a useful article feel slower than its reference task required.
+- **Fix:** translated the AGL information shape into Anchor's own system: a compact navy masthead, EB Garamond/Nunito typography, 660px reading column, honest companion-podcast link, restrained sticky Fit Check rail, and tighter prose rhythm. The same compact logic now carries through Resources and the podcast template.
+- **Permanent lesson:** when a client supplies a reference, identify the reusable information architecture separately from its palette, fonts, ornament, and voice. Port the hierarchy and reading behavior; re-author the visual language for the client brand.
+- **Status:** ✅ closed for local review. Resources is 0 P0 / 0 P1 / 0 P2. Article and podcast are 0 P0 / 0 P1 with only the accepted restrained-accent P2 under LED-019.

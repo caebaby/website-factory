@@ -1009,6 +1009,7 @@ input {
 
 /* Resource directory: one library, organized by the decision */
 .page-resources .content-masthead {
+  padding: clamp(38px, 4.5vw, 54px) 0 clamp(40px, 4.5vw, 56px);
   color: #f7f2e8;
   background:
     radial-gradient(circle at 82% 18%, rgba(177, 143, 77, 0.16), transparent 25%),
@@ -1032,7 +1033,7 @@ input {
 
 .page-resources .content-masthead h1 {
   max-width: 18ch;
-  font-size: clamp(3.1rem, 5.4vw, 4.9rem);
+  font-size: clamp(2.9rem, 4.7vw, 4.25rem);
 }
 
 .page-resources .masthead-note {
@@ -1120,45 +1121,288 @@ input {
   z-index: 1;
 }
 
-/* Reading pages: compact, calm, and visibly part of Anchor */
-.page-article .article-head,
-.page-podcast .episode-head {
+/* Reading pages: tight, calm, and visibly part of Anchor */
+.page-article .article-head {
   position: relative;
   overflow: hidden;
+  padding: clamp(30px, 3.5vw, 44px) 0 clamp(36px, 4vw, 50px);
+  color: #f7f2e8;
   background:
-    linear-gradient(90deg, rgba(245, 240, 230, 0.98), rgba(245, 240, 230, 0.88)),
-    radial-gradient(circle at 88% 18%, rgba(177, 143, 77, 0.18), transparent 23%);
+    linear-gradient(112deg, var(--deep) 0 72%, #173451 72% 100%);
+  border-color: var(--line-dark);
 }
 
-.page-article .article-head::after,
-.page-podcast .episode-head::after {
+.page-article .article-head::after {
   content: "";
   position: absolute;
   z-index: 0;
-  width: 360px;
-  aspect-ratio: 1;
-  right: -210px;
-  top: -230px;
-  border: 1px solid rgba(30, 57, 90, 0.1);
-  border-radius: 50%;
-  box-shadow: 0 0 0 62px rgba(30, 57, 90, 0.025);
+  inset: 0;
+  width: auto;
+  background: radial-gradient(circle at 1px 1px, rgba(216, 189, 115, 0.18) 1px, transparent 1.4px) 0 0 / 52px 52px;
+  opacity: 0.32;
 }
 
-.page-article .article-head > .wrap,
-.page-podcast .episode-head > .wrap {
+.page-article .article-head > .wrap {
   position: relative;
   z-index: 1;
+  max-width: 1020px;
 }
 
-.page-article .article-head h1,
-.page-podcast .episode-copy h1 {
-  font-size: clamp(2.75rem, 4.5vw, 4rem);
-  line-height: 0.98;
+.page-article .article-head .breadcrumb,
+.page-article .article-head .breadcrumb a {
+  color: #9fb0c1;
+}
+
+.page-article .article-head .breadcrumb {
+  margin-bottom: 24px;
+}
+
+.page-article .article-head-grid {
+  display: block;
+}
+
+.article-title-block {
+  max-width: 780px;
+}
+
+.page-article .article-title-block .eyebrow {
+  color: #d8bd73;
+}
+
+.page-article .article-head h1 {
+  max-width: 19ch;
+  margin: 8px 0 13px;
+  font-size: clamp(2.65rem, 4.25vw, 3.8rem);
+  line-height: 0.97;
+}
+
+.page-article .article-dek {
+  max-width: 66ch;
+  margin: 0;
+  color: #bfd0de;
+  font-size: 0.88rem;
+  line-height: 1.62;
+}
+
+.page-article .byline {
+  display: block;
+  margin-top: 18px;
+  padding: 0;
+  border: 0;
+}
+
+.page-article .byline strong,
+.page-article .byline span {
+  display: inline;
+}
+
+.page-article .byline strong,
+.page-article .byline a {
+  color: #f7f2e8;
+}
+
+.page-article .byline span span {
+  margin-left: 10px;
+  color: #95a8b9;
 }
 
 .page-article .article-shell {
-  grid-template-columns: 170px minmax(0, 690px);
-  gap: clamp(40px, 5vw, 66px);
+  width: min(calc(100% - 48px), 980px);
+  grid-template-columns: minmax(0, 660px) minmax(200px, 240px);
+  grid-template-areas: "article aside";
+  gap: clamp(52px, 6vw, 80px);
+  padding: clamp(44px, 5vw, 64px) 0 clamp(64px, 7vw, 90px);
+}
+
+.page-article .prose {
+  grid-area: article;
+}
+
+.page-article .article-toc {
+  grid-area: aside;
+  position: sticky;
+  top: 22px;
+  display: block;
+  border-top: 1px solid var(--gold);
+}
+
+.article-next {
+  padding: 18px 0 25px;
+  border-bottom: 1px solid var(--line);
+}
+
+.article-next .side-kicker {
+  margin: 0 0 10px;
+  padding: 0;
+  color: var(--gold-dark);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.article-next h2 {
+  margin: 0 0 10px;
+  color: var(--ink);
+  font: 500 1.35rem/1.05 var(--serif);
+}
+
+.article-next .side-copy {
+  margin: 0 0 17px;
+  padding: 0;
+  color: var(--body);
+  font-size: 0.75rem;
+  line-height: 1.55;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.article-next .button {
+  width: 100%;
+  min-height: 42px;
+  padding: 9px 12px;
+}
+
+.side-index {
+  padding-top: 20px;
+}
+
+.side-index p {
+  padding: 0 0 7px;
+}
+
+.article-companion {
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 0 0 14px;
+  padding: 14px 17px;
+  border: 1px solid var(--line);
+  color: var(--navy);
+  background: rgba(237, 242, 244, 0.72);
+  text-decoration: none;
+}
+
+.article-companion span,
+.article-companion strong,
+.article-companion small {
+  display: block;
+}
+
+.article-companion strong {
+  font-size: 0.75rem;
+}
+
+.article-companion small {
+  color: var(--body);
+  font-size: 0.7rem;
+}
+
+.article-companion b {
+  flex: 0 0 auto;
+  font-size: 0.72rem;
+}
+
+.page-article .quick-answer {
+  margin-bottom: 28px;
+  padding: 18px 20px;
+}
+
+.page-article .quick-answer p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.page-article .prose > p:first-of-type {
+  margin-top: 0;
+  color: var(--ink);
+  font: 400 1.1rem/1.58 var(--serif);
+}
+
+.page-article .prose p,
+.page-article .prose li {
+  font-size: 0.88rem;
+  line-height: 1.72;
+}
+
+.page-article .prose h2 {
+  max-width: 24ch;
+  margin: 1.7em 0 0.45em;
+  font-size: clamp(1.65rem, 2.2vw, 2rem);
+  line-height: 1.04;
+}
+
+.page-article .prose h3 {
+  margin-top: 1.65em;
+  font-size: 1.25rem;
+}
+
+.page-article .timing-figure {
+  margin: 28px 0;
+}
+
+.page-article .planning-question {
+  margin: 24px 0;
+  padding: 18px 20px;
+}
+
+.page-article .planning-question p {
+  font-size: 1rem;
+}
+
+.page-article .decision-sequence {
+  margin-top: 22px;
+}
+
+.page-article .decision-sequence li {
+  padding: 15px 0;
+}
+
+/* Podcast uses the same compact masthead logic, with its cover as the one visual anchor. */
+.page-podcast .episode-head {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(34px, 4vw, 52px) 0;
+  color: #f7f2e8;
+  background: var(--deep);
+  border-color: var(--line-dark);
+}
+
+.page-podcast .episode-head .breadcrumb,
+.page-podcast .episode-head .breadcrumb a,
+.page-podcast .episode-copy > p:not(.eyebrow) {
+  color: #aebdca;
+}
+
+.page-podcast .episode-head-grid {
+  grid-template-columns: minmax(190px, 250px) minmax(0, 1fr);
+  gap: clamp(34px, 5vw, 64px);
+}
+
+.page-podcast .episode-art {
+  width: min(100%, 250px);
+}
+
+.page-podcast .episode-art span {
+  font-size: clamp(2rem, 3.2vw, 3.1rem);
+}
+
+.page-podcast .episode-copy h1 {
+  max-width: 19ch;
+  font-size: clamp(2.5rem, 4vw, 3.55rem);
+  line-height: 0.98;
+}
+
+.page-podcast .episode-meta {
+  border-color: var(--line-dark);
+  color: #94a8b9;
+}
+
+.page-podcast .button.secondary {
+  border-color: rgba(247, 242, 232, 0.34);
+  color: #f7f2e8;
 }
 
 .footer {
@@ -1355,6 +1599,18 @@ input {
     grid-template-columns: 1fr;
   }
 
+  .page-article .article-shell {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "article"
+      "aside";
+  }
+
+  .page-article .article-toc {
+    position: static;
+    margin-top: 10px;
+  }
+
   .article-toc {
     position: static;
     display: flex;
@@ -1406,6 +1662,46 @@ input {
 
   .page-resources .brief-row {
     padding: 21px 17px;
+  }
+
+  .page-article .article-head h1 {
+    font-size: clamp(2.45rem, 11.5vw, 3rem);
+  }
+
+  .page-article .article-shell {
+    width: var(--wrap);
+    gap: 38px;
+  }
+
+  .page-article .byline strong,
+  .page-article .byline span {
+    display: block;
+  }
+
+  .page-article .byline span span {
+    margin: 3px 0 0;
+  }
+
+  .page-article .article-toc {
+    display: block;
+  }
+
+  .page-article .side-index {
+    display: none;
+  }
+
+  .article-companion {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .page-podcast .episode-head-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-podcast .episode-art {
+    width: min(68vw, 230px);
   }
 
   .content-masthead::after {
