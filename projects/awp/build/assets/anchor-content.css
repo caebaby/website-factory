@@ -1073,6 +1073,10 @@ input {
   border-color: var(--line-dark);
 }
 
+.page-resources .content-masthead::before {
+  content: none;
+}
+
 .page-resources .content-masthead::after {
   inset: 0;
   width: auto;
