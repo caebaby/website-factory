@@ -388,3 +388,11 @@ Append-only. Each entry: what broke, why, how it was caught, and what permanent 
 - **Fix:** trimmed transparent padding only from the supplied light-background lockup, verified the visible pixels without resampling or recoloring, and used that single asset across all nine light navigation bars. Scoped the replacement to navigation so footer branding remains unchanged; standardized the rendered bar at exactly 76px and mobile gutters at 24px. Removed the Anchor watermark from the homepage Fit Check card per client direction.
 - **Permanent lesson:** once an approved lockup exists, use it as one asset. Choose the navigation surface that matches the supplied colorway instead of rebuilding or recoloring the mark, and verify exact rendered height, gutters, and logo geometry across every route before release.
 - **Status:** ✅ closed for noindex client review. Fresh verifier returned SHIP at 1440px and 500px; the nine-route gate is 0 P0 / 0 P1.
+
+### LED-040 — Media identity and responsive composition are release requirements
+- **Build:** Anchor homepage family hero correction (2026-07-20).
+- **Symptom:** a later site sync reactivated the obsolete family-at-table loop even though the client had approved a younger family walking at sunset. The first safe replacement restored the correct scene on desktop, but its landscape crop reduced the phone hero to one adult silhouette.
+- **Root cause:** media validation checked file presence and playback without locking the approved scene identity or confirming that the subject survived `object-fit: cover` at narrow widths.
+- **Fix:** replaced every active family-hero/card/preview reference with licensed Pexels 9361674 sunset-walking footage, documented provenance, and created a 9:16 derivative from the same footage that keeps all four family members visible on phones. Restricted and obsolete working cuts remain inactive and excluded from the public release allowlist.
+- **Permanent lesson:** a media change is not verified by a working URL. Release QA must assert the approved subject/scene, inspect the actual playing frame at desktop and mobile widths, and treat responsive reframing as its own deliverable when a landscape composition loses the intended story.
+- **Status:** ✅ closed locally. Fresh verifier returned SHIP after 1440px and 500px playback checks; homepage gate is 0 P0 / 0 P1 / 0 P2.
