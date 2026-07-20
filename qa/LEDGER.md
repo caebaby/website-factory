@@ -324,3 +324,11 @@ Append-only. Each entry: what broke, why, how it was caught, and what permanent 
 - **Fix:** translated the AGL information shape into Anchor's own system: a compact navy masthead, EB Garamond/Nunito typography, 660px reading column, honest companion-podcast link, restrained sticky Fit Check rail, and tighter prose rhythm. The same compact logic now carries through Resources and the podcast template.
 - **Permanent lesson:** when a client supplies a reference, identify the reusable information architecture separately from its palette, fonts, ornament, and voice. Port the hierarchy and reading behavior; re-author the visual language for the client brand.
 - **Status:** ✅ closed for local review. Resources is 0 P0 / 0 P1 / 0 P2. Article and podcast are 0 P0 / 0 P1 with only the accepted restrained-accent P2 under LED-019.
+
+### LED-032 — Closed FAQ content can fail both the geometry gate and the answer-first goal
+- **Build:** Anchor RSU article GEO/SEO revision (2026-07-20).
+- **Symptom:** four native closed `<details>` answers produced four P0 `collapsed-height` defects. The answers existed in the DOM and structured data but were visually hidden until interaction.
+- **Root cause:** the FAQ was treated as optional disclosure UI even though each answer was part of the article's core search and generative-answer value. Closed native disclosure geometry is correctly indistinguishable from other collapsed content to the factory gate.
+- **Fix:** replaced the disclosures with static question-and-answer rows. Every answer is now visible, crawlable, and matched in substance by the `FAQPage` JSON-LD.
+- **Permanent lesson:** core FAQ answers on search-led financial content should remain in normal document flow. Use disclosures only for genuinely optional detail, and never let structured data promise content the default page presentation hides.
+- **Status:** ✅ closed. Article gate returned to 0 P0 / 0 P1; only accepted LED-019 P2 remains.

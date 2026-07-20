@@ -10,12 +10,15 @@
     <link rel="canonical" href="blog-template.html" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="How RSU Vesting Creates a Tax-Timing Trap" />
-    <meta property="og:description" content="The vest, the withholding, and the first open trading window may happen on three different clocks." />
+    <meta property="og:description" content="Plan for RSU income recognition, 2026 withholding, trading windows, and concentration risk before the shares settle." />
     <meta property="og:image" content="assets/rsu-timing-map.svg" />
+    <meta property="og:site_name" content="Anchor Wealth Planning" />
     <meta property="article:published_time" content="2026-07-17" />
-    <meta property="article:modified_time" content="2026-07-17" />
+    <meta property="article:modified_time" content="2026-07-20" />
     <meta property="article:author" content="Alex Miller" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="How RSU Vesting Creates a Tax-Timing Trap" />
+    <meta name="twitter:description" content="A practical planning sequence for RSU taxes, trading windows, and concentration risk." />
     <link rel="stylesheet" href="assets/anchor-content.css" />
     <script type="application/ld+json">
       {
@@ -29,9 +32,18 @@
             "description": "How RSU vesting, withholding, trading windows, and concentration risk can collide.",
             "image": ["assets/rsu-timing-map.svg"],
             "datePublished": "2026-07-17",
-            "dateModified": "2026-07-17",
+            "dateModified": "2026-07-20",
             "inLanguage": "en-US",
             "isAccessibleForFree": true,
+            "articleSection": "Equity Compensation Planning",
+            "timeRequired": "PT8M",
+            "keywords": ["RSU tax planning", "restricted stock units", "supplemental wage withholding", "trading windows", "concentrated stock"],
+            "citation": [
+              "https://www.irs.gov/publications/p15",
+              "https://www.irs.gov/publications/p525",
+              "https://www.irs.gov/forms-pubs/about-publication-15-t",
+              "https://www.sec.gov/resources-small-businesses/small-business-compliance-guides/insider-trading-arrangements-and-related-disclosures"
+            ],
             "author": {
               "@type": "Person",
               "name": "Alex Miller",
@@ -54,6 +66,31 @@
               { "@type": "ListItem", "position": 1, "name": "Home", "item": "home-v6.html" },
               { "@type": "ListItem", "position": 2, "name": "Resources", "item": "resources.html" },
               { "@type": "ListItem", "position": 3, "name": "RSU vesting tax timing", "item": "blog-template.html" }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Are RSUs taxed twice?",
+                "acceptedAnswer": { "@type": "Answer", "text": "RSUs generally create ordinary compensation income when the shares settle. That amount generally becomes the tax basis in the shares. A later sale can create a separate capital gain or loss based on the change in value after settlement." }
+              },
+              {
+                "@type": "Question",
+                "name": "Does RSU withholding cover the final tax bill?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Not necessarily. Employer withholding is a tax prepayment, while the final liability depends on the household's full tax return, marginal rate, other income, deductions, and prior payments." }
+              },
+              {
+                "@type": "Question",
+                "name": "Can an executive sell RSU shares immediately after vesting?",
+                "acceptedAnswer": { "@type": "Answer", "text": "It depends on the award terms and the employer's trading policy. Settlement timing, blackout periods, preclearance requirements, and possession of material nonpublic information can affect when a sale is available." }
+              },
+              {
+                "@type": "Question",
+                "name": "What is the first RSU planning decision?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Start by mapping the vest, settlement, tax-payment, and available trading dates. Then estimate the tax, set a retention rule, and assign any sale proceeds to a specific purpose." }
+              }
             ]
           }
         ]
@@ -91,7 +128,7 @@
               <h1>How RSU vesting creates a tax-timing trap</h1>
               <p class="article-dek">The vest, the tax withholding, and the first open trading window may happen on three different clocks. Your plan has to connect them before the shares arrive.</p>
               <div class="byline">
-                <span><strong><a href="about.html">Alex Miller</a>, Anchor Wealth Planning</strong><span>Published July 17, 2026 · 6 minute read</span></span>
+                <span><strong><a href="about.html">Alex Miller</a>, Anchor Wealth Planning</strong><span>Published July 17, 2026 · Updated July 20, 2026 · 8 minute read</span></span>
               </div>
             </div>
           </div>
@@ -113,7 +150,9 @@
             <a href="#withholding-gap">The withholding gap</a>
             <a href="#trading-window">Trading windows</a>
             <a href="#decision-sequence">Decision sequence</a>
+            <a href="#records">Documents to gather</a>
             <a href="#questions">Questions to answer</a>
+            <a href="#rsu-faq">RSU FAQ</a>
             <a href="#sources">Sources</a>
           </nav>
         </aside>
@@ -127,10 +166,15 @@
 
           <p>An RSU vest can look automatic on a statement. Shares arrive, a portion is withheld, and the rest appears in the account. The harder part is what the statement does not decide: whether the withholding is enough, when the remaining shares can be sold, how much company exposure is reasonable, and what the proceeds are meant to fund.</p>
 
-          <figure class="timing-figure reveal">
-            <img src="assets/rsu-timing-map.svg" width="1200" height="675" alt="Four timelines aligning an RSU vest with tax recognition, the first open trading window, and the personal plan for the shares" />
-            <figcaption>Illustrative planning map. Actual settlement, withholding, and trading restrictions depend on the employer plan and the individual situation.</figcaption>
-          </figure>
+          <section class="decision-brief" aria-labelledby="decision-brief-title">
+            <h2 id="decision-brief-title">Four decisions arrive with one vest</h2>
+            <dl>
+              <div><dt>01 · Award terms</dt><dd>Confirm the vest date, settlement mechanics, and what the plan document says will happen to cover required withholding.</dd></div>
+              <div><dt>02 · Tax estimate</dt><dd>Compare expected withholding with the household’s projected federal, state, and local tax liability.</dd></div>
+              <div><dt>03 · Sale availability</dt><dd>Check trading windows, blackout periods, preclearance rules, and any other employer restrictions before assuming the shares are liquid.</dd></div>
+              <div><dt>04 · Use of the shares</dt><dd>Decide in advance what to retain, what to diversify, and which stated goal any proceeds are meant to fund.</dd></div>
+            </dl>
+          </section>
 
           <h2 id="at-vesting">What usually happens when RSUs vest?</h2>
           <p>Restricted stock units are a promise to deliver shares or cash after specified conditions are met. For many public-company plans, ordinary compensation income is recognized when vested units settle and the shares are delivered. The amount is generally tied to the fair market value at that time and is commonly reported through payroll.</p>
@@ -156,6 +200,16 @@
             <li><span><strong>Assign the proceeds.</strong> Connect any sale to cash reserves, diversification, debt, charitable giving, or another stated goal.</span></li>
           </ol>
 
+          <h2 id="records">What should you gather before the vest date?</h2>
+          <p>The planning meeting moves faster when the advisor and CPA are working from the same source documents. Bring the items that control the transaction and the items that show its effect on the household.</p>
+          <ul class="document-list">
+            <li><strong>Award agreement and current vesting schedule</strong><span>These control the grant conditions, settlement timing, and plan-specific mechanics.</span></li>
+            <li><strong>Employer trading policy</strong><span>Include blackout dates, preclearance requirements, and any Rule 10b5-1 plan already in place.</span></li>
+            <li><strong>Recent pay statement and prior-year tax return</strong><span>These help the CPA place the vest inside total household income and withholding.</span></li>
+            <li><strong>Current company-stock exposure</strong><span>Count vested shares, unvested awards, employee stock plans, and other holdings tied to the same employer or industry.</span></li>
+            <li><strong>Near-term cash needs and planned uses</strong><span>Name the tax reserve, major purchase, charitable gift, debt payment, or diversification goal before the shares settle.</span></li>
+          </ul>
+
           <h2 id="questions">Questions worth answering early</h2>
           <h3>How much of the household balance sheet depends on one company?</h3>
           <p>Count more than the shares in the brokerage account. Include unvested equity, salary, bonus, deferred compensation, retirement benefits, and any industry-sensitive assets.</p>
@@ -166,11 +220,20 @@
           <h3>What would change the planned sale?</h3>
           <p>A written retention and sale policy is more useful when it names the exceptions. Examples include a changed cash need, a material change in the company outlook, a new trading restriction, or a revised tax estimate.</p>
 
+          <section class="article-faq" id="rsu-faq" aria-labelledby="rsu-faq-title">
+            <h2 id="rsu-faq-title">Common RSU tax-planning questions</h2>
+            <div class="faq-item"><h3>Are RSUs taxed twice?</h3><p>Generally, no. RSUs typically create ordinary compensation income when the shares settle. That amount generally becomes the tax basis in the shares. If the shares are later sold for more or less than that basis, the difference can create a separate capital gain or loss. Accurate basis records matter because an incorrect brokerage record can make the same value appear taxable twice on a return.</p></div>
+            <div class="faq-item"><h3>Does RSU withholding cover the final tax bill?</h3><p>Not necessarily. Withholding is a prepayment. The IRS permits a 22 percent flat withholding method for certain separately identified supplemental wages up to $1 million in 2026, while amounts above that threshold are generally subject to a 37 percent rate. The household’s final liability can still differ because it reflects total income, filing status, deductions, other taxes, and payments already made.</p></div>
+            <div class="faq-item"><h3>Can an executive sell the shares immediately after vesting?</h3><p>It depends on the award terms and employer policy. Settlement may occur after the vest date, and company trading windows, blackout periods, preclearance requirements, or material nonpublic information can restrict a discretionary sale. The employer’s legal or compliance team controls those rules.</p></div>
+            <div class="faq-item"><h3>What is the first planning decision?</h3><p>Start by mapping the dates and estimating the tax. Once the household knows when income is expected, what may be withheld, and when a sale may be available, it can set a retention rule and assign any proceeds to a specific purpose.</p></div>
+          </section>
+
           <h2 id="sources">Primary sources and further reading</h2>
           <ul class="source-list">
             <li><a href="https://www.irs.gov/publications/p525">IRS Publication 525, Taxable and Nontaxable Income</a>, including restricted property and qualified equity grant guidance.</li>
             <li><a href="https://www.irs.gov/publications/p15">IRS Publication 15, Employer’s Tax Guide</a>, section 7 on supplemental wage withholding.</li>
             <li><a href="https://www.irs.gov/forms-pubs/about-publication-15-t">IRS Publication 15-T, Federal Income Tax Withholding Methods</a>.</li>
+            <li><a href="https://www.sec.gov/resources-small-businesses/small-business-compliance-guides/insider-trading-arrangements-and-related-disclosures">SEC guide to Rule 10b5-1 insider trading arrangements</a>, including the conditions and cooling-off periods that apply to qualifying trading plans.</li>
           </ul>
 
           <p class="article-disclosure">This material is for educational purposes only and is not individualized tax, legal, or investment advice. Equity plan terms and individual facts vary. Coordinate decisions with the appropriate qualified professionals before acting.</p>

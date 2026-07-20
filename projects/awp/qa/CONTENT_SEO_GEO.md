@@ -5,7 +5,7 @@ Google treats generative-search visibility as an extension of foundational SEO. 
 ## Review build, current
 
 - `resources.html`: `CollectionPage` plus `ItemList` JSON-LD.
-- `blog-template.html`: `BlogPosting` plus `BreadcrumbList` JSON-LD, answer-first summary, named primary sources, contextual internal links, representative planning artifact.
+- `blog-template.html`: `BlogPosting`, `BreadcrumbList`, and visible `FAQPage` JSON-LD; answer-first summary; named IRS and SEC primary sources; contextual internal links; explicit decision, document, and FAQ sections.
 - `podcast-template.html`: `PodcastEpisode` plus `PodcastSeries` JSON-LD, episode notes, written companion, related article and conversion route.
 - All three review pages are `noindex,nofollow`.
 - Local metadata/schema preflight: `/tmp/check-anchor-content.js` during the 2026-07-17 build session.
@@ -31,3 +31,5 @@ Google treats generative-search visibility as an extension of foundational SEO. 
 - Organize directory filters around client problems, not content formats.
 - Every article links to one related service/audience page, one trust page, and one contextual conversion route.
 - Do not expose `[VERIFY]`, dates-to-fill, read-time tokens, pending links, or internal compliance notes.
+- Keep every FAQ answer visible in the HTML and identical in substance to its structured-data answer.
+- Date-sensitive rates and thresholds must name the applicable year and be rechecked against the current primary publication before each annual update.
