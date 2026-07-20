@@ -814,13 +814,23 @@ Why the vest date, withholding method, trading window, and diversification decis
 
 - **CTA:** Read the 6-minute briefing
 
-Podcast
+**SECTION LABEL:** Hosted by Alex Miller
 
 #### Anchor Wealth Podcast
 
-Direct conversations about the financial decisions that require your advisor, CPA, and attorney to work from the same plan.
+Hear how Alex thinks through decisions that cross investments, taxes, estate planning, and business ownership.
 
-- **CTA:** Listen to the podcast
+Latest conversations
+
+- Episode 01 · Coordination What coordinated planning looks like before year-end Listen
+
+- Preview · Business transition Five questions to ask before responding to an offer Listen
+
+- Preview · Equity compensation The decisions hiding inside an RSU vest Listen
+
+Does this sound like your situation? Take the four-question Fit Check. If there is a fit, the next step is a conversation with Alex.
+
+- **CTA:** Take the Fit Check →
 
 **SECTION LABEL:** Resource directory
 
@@ -887,36 +897,6 @@ Review funding, beneficiaries, decision makers, and family communication after w
 Explore topic
 
 Podcast · Preview
-
-##### The decisions hiding inside an RSU vest
-
-Withholding is only one part of the decision. Concentration and cash flow still need a plan.
-
-Listen to the podcast
-
-**SECTION LABEL:** The podcast
-
-#### Listen to the Anchor Wealth Podcast.
-
-Short, focused conversations. Every episode page includes written notes, a conversation map, and related reading.
-
-Coordination series preview
-
-##### What coordinated planning looks like before year-end
-
-Assign the decision, the owner, and the deadline before the calendar gets crowded.
-
-Listen to the podcast
-
-Business transition series preview
-
-##### Five questions to ask before responding to an offer
-
-Separate valuation, taxes, family goals, and deal timing before momentum makes the choice.
-
-Listen to the podcast
-
-Equity compensation series preview
 
 ##### The decisions hiding inside an RSU vest
 

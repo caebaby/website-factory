@@ -364,3 +364,11 @@ Append-only. Each entry: what broke, why, how it was caught, and what permanent 
 - **Fix:** standardized the series name as `Anchor Wealth Podcast`, audio badges as `Podcast`, and the primary action as `Listen to the podcast`; aligned homepage, Resources, article companion path, podcast page, schema, and client copy workbook. Replaced the Resources feature-card circle with the subtle real Anchor mark.
 - **Permanent lesson:** series name, resource format, destination metadata, and CTA must agree. Add a content-format semantic sweep to release QA so audio never reads like an article action.
 - **Status:** ✅ closed for local review. No stale `The Planning Room`, `written briefing`, or `episode briefing` language remains in active routes or client copy artifacts.
+
+### LED-037 — Equal-height feature grids can turn a useful module into an empty billboard
+- **Build:** Anchor Resources podcast feature (2026-07-20 content-structure revision).
+- **Symptom:** the podcast feature inherited the height of the adjacent article card, leaving a large navy void between its introduction and CTA. The mark looked correct, but the module did not show enough content or persuasion to justify its footprint.
+- **Root cause:** the grid's default stretch behavior treated visual equality as structural consistency. The podcast module also separated its episode inventory into a duplicate shelf below instead of using the feature area as a real series entry point.
+- **Fix:** set the feature grid to content-driven alignment, added three repeatable latest-episode rows, Alex-host attribution, and a clear Fit Check-to-conversation handoff, then removed the duplicate podcast shelf. Expanded the directory `ItemList` and documented unique production URLs plus the publish/update contract.
+- **Permanent lesson:** companion modules do not need equal heights. A content feature earns space by exposing the next useful choices and the conversion path. Static markup should mirror the future CMS collection model so new content changes records, not page architecture.
+- **Status:** ✅ closed for noindex client review. Resources passes at 0 P0 / 0 P1 with only the accepted LED-019 restrained-accent P2; fresh desktop/mobile Tier-B verifier returned SHIP with zero broken links, assets, or fragments.
