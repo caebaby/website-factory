@@ -5,7 +5,8 @@
     "io: 'tools'  = the agent is given file paths and writes the output itself (needs a tool-capable CLI: claude / hermes with hermes-cli toolset / codex).",
     "parse: 'claude-json' only for `claude -p --output-format json` (unlocks cost tracking). Everything else: 'raw'.",
     "Hermes headless is VERIFIED (2026-07-23): `hermes chat -Q -q {PROMPT} -m <model>` — stdout carries ONLY the final response (session id goes to stderr), so io:'stdout' roles work with any model Hermes can reach (OpenRouter/GLM/Kimi). See 'alternates' below for tested command shapes.",
-    "Promotion rule: no model enters a live role until it passes the model-bench packet (benchmarks/model-bench/) or a copy-gate/gauntlet-audited trial run. Alternates are staged, not hired.",
+    "Promotion rule: no model enters a live role until it passes the model-bench packet (benchmarks/model-bench/) or a copy-gate/gauntlet-audited trial run. Alternates are staged, not hired. Audition any candidate: node factory.js audition <alternate-name>.",
+    "fallbacks: [names] on a role = runtime auto-selection. Candidates are tried in order when the one before it FAILS to run (spawn error, timeout, empty output). This is availability routing, not quality routing — quality routing is the leaderboard deciding who holds the primary slot.",
     "The model-bench (benchmarks/model-bench/) is the hiring exam: before promoting a model into a role, run the packet, log the verdict in BUILD_REGISTRY, let the data decide.",
     "Law 10 applies: quality at the LOWEST token cost that clears the gates. Director + critic are the only slots worth premium models."
   ],
@@ -20,7 +21,8 @@
       "label": "strategy — copy spine w/ VOC bindings",
       "cmd": "claude",
       "args": ["-p", "{PROMPT}", "--output-format", "json", "--model", "claude-sonnet-5"],
-      "io": "stdout", "parse": "claude-json", "timeoutMin": 20
+      "io": "stdout", "parse": "claude-json", "timeoutMin": 20,
+      "fallbacks": ["hermes-glm", "hermes-default"]
     },
     "director": {
       "label": "director — taste tier, runs once per client",

@@ -60,24 +60,47 @@ function loadState(proj) {
 function saveState(proj, st) { fs.writeFileSync(statePath(proj), JSON.stringify(st, null, 2)); }
 
 /* ---------------- spawning ---------------- */
-function spawnRole(role, prompt) {
-  const rc = CONFIG.roles[role];
-  if (!rc) die('no role "' + role + '" in factory.config.json');
+function resolveRC(name) {
+  return (CONFIG.roles && CONFIG.roles[name]) ||
+         (CONFIG.alternates && CONFIG.alternates[name]) || null;
+}
+
+function tryOne(label, rc, prompt) {
   const args = rc.args.map(a => a === '{PROMPT}' ? prompt : a);
-  log(role + ' → ' + rc.cmd + ' (' + (rc.label || rc.args.join(' ').slice(0, 60)) + ')');
+  log(label + ' → ' + rc.cmd + ' (' + (rc.label || rc.args.join(' ').slice(0, 60)) + ')');
   const r = spawnSync(rc.cmd, args, {
     encoding: 'utf8', maxBuffer: 64 * 1024 * 1024,
     timeout: (rc.timeoutMin || 25) * 60000, cwd: REPO,
   });
-  if (r.error) die(role + ' spawn failed: ' + r.error.message);
-  if (r.status !== 0 && !r.stdout) die(role + ' exited ' + r.status + ': ' + (r.stderr || '').slice(-400));
+  if (r.error) return { err: 'spawn failed: ' + r.error.message };
+  if (r.status !== 0 && !r.stdout) return { err: 'exited ' + r.status + ': ' + (r.stderr || '').slice(-400) };
   if (rc.parse === 'claude-json') {
     let env;
-    try { env = JSON.parse(r.stdout); } catch (e) { die(role + ' output unparseable: ' + (r.stdout || '').slice(-300)); }
-    if (env.is_error) die(role + ' errored: ' + String(env.result).slice(0, 400));
+    try { env = JSON.parse(r.stdout); } catch (e) { return { err: 'output unparseable: ' + (r.stdout || '').slice(-300) }; }
+    if (env.is_error) return { err: 'agent errored: ' + String(env.result).slice(0, 400) };
     return { text: String(env.result || ''), costUsd: env.total_cost_usd || 0 };
   }
+  if (!r.stdout || r.stdout.trim().length < 20) return { err: 'empty/near-empty stdout' };
   return { text: r.stdout, costUsd: 0 };
+}
+
+/* Primary first, then each named fallback (from roles/alternates) in order.
+ * The fallback chain is the runtime auto-selector: quality is protected by the
+ * gates, so a fallback model failing to SPAWN is recoverable, and a fallback
+ * model producing weak work gets caught downstream like anyone else's. */
+function spawnRole(role, prompt) {
+  const rc = CONFIG.roles[role];
+  if (!rc) die('no role "' + role + '" in factory.config.json');
+  const chain = [{ name: role, rc }].concat(
+    (rc.fallbacks || []).map(n => ({ name: n, rc: resolveRC(n) })).filter(c => c.rc));
+  const errs = [];
+  for (const c of chain) {
+    const res = tryOne(role + (c.name === role ? '' : ' [fallback: ' + c.name + ']'), c.rc, prompt);
+    if (!res.err) { if (c.name !== role) log('NOTE: ' + role + ' served by fallback "' + c.name + '"'); return res; }
+    errs.push(c.name + ': ' + res.err);
+    log(role + ' candidate "' + c.name + '" failed — ' + res.err.slice(0, 120));
+  }
+  die(role + ' failed on every candidate:\n  ' + errs.join('\n  '));
 }
 
 /* ---------------- prompt assembly ---------------- */
@@ -219,11 +242,34 @@ function print(client, dryRun) {
   log('pipeline complete for ' + client + '.');
 }
 
+/* ---------------- audition: run any candidate through the model-bench ---------------- */
+function audition(name) {
+  const rc = resolveRC(name);
+  if (!rc) die('no role or alternate named "' + name + '" in factory.config.json');
+  const packet = path.join(REPO, 'benchmarks', 'model-bench', 'packet.txt');
+  if (!fs.existsSync(packet)) die('bench packet missing: ' + packet);
+  const prompt = fs.readFileSync(packet, 'utf8');
+  log('audition "' + name + '" — one-shot on the bench packet (' + Math.round(prompt.length / 1024) + 'KB)…');
+  const res = tryOne('audition:' + name, rc, prompt);
+  if (res.err) die('audition failed: ' + res.err);
+  let html = res.text.trim();
+  const fence = html.match(/```(?:html)?\s*([\s\S]*?)```\s*$/);
+  if (fence && fence[1].trim().toLowerCase().startsWith('<!doctype')) html = fence[1].trim();
+  const out = path.join(REPO, 'benchmarks', 'model-bench', 'runs', 'candidate-' + name + '.html');
+  fs.writeFileSync(out, html + '\n');
+  log('one-shot saved → ' + out + (res.costUsd ? ' ($' + res.costUsd.toFixed(3) + ')' : ''));
+  log('Score it (gauntlet, same as every candidate):');
+  log('  node qa/run-pipeline.js ' + out);
+  log('Then log the verdict in benchmarks/model-bench/README.md + BUILD_REGISTRY — the leaderboard is the hiring authority.');
+}
+
 /* ---------------- CLI ---------------- */
 const [, , cmd, client, arg3] = process.argv;
 const dryRun = process.argv.includes('--dry-run');
 if (cmd === 'print' && client) {
   print(client, dryRun);
+} else if (cmd === 'audition' && client) {
+  audition(client);
 } else if (cmd === 'approve' && client && arg3) {
   const proj = path.join(REPO, 'projects', client);
   const st = loadState(proj);
@@ -236,6 +282,6 @@ if (cmd === 'print' && client) {
   const st = loadState(path.join(REPO, 'projects', client));
   console.log(JSON.stringify(st, null, 2));
 } else {
-  console.log('usage:\n  node factory.js print <client> [--dry-run]\n  node factory.js approve <client> <gate>\n  node factory.js status <client>');
+  console.log('usage:\n  node factory.js print <client> [--dry-run]\n  node factory.js approve <client> <gate>\n  node factory.js status <client>\n  node factory.js audition <role-or-alternate>   run a candidate through the model-bench packet');
   process.exit(1);
 }
