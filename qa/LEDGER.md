@@ -260,3 +260,147 @@ Append-only. Each entry: what broke, why, how it was caught, and what permanent 
 - **Fix:** restored all three modules inside v6's current “Chart” language; no visual rollback and no current sections removed.
 - **Permanent lesson:** before replacing a live candidate, diff the ordered semantic section manifest against the prior approved candidate. Mark every prior module **KEEP / MERGE / DELETE** with a reason. A clean print may change composition, but it cannot silently discard client-approved content.
 - **Status:** ✅ closed. Desktop/mobile Tier-B passed; gate 0 P0 / 0 P1 / 0 P2.
+
+### LED-024 — Reusing a generic section class/id can cross-wire two independent modules
+- **Build:** `projects/awp/build/home-v6.html` (2026-07-16 continuation).
+- **Symptom:** the Alex story-video module and the firm-origin module both used `.story` and `id="story"`. The later origin styles silently restyled the earlier video section, and fragment navigation had two destinations with the same identity.
+- **Root cause:** a restored narrative module inherited a generic component name already claimed elsewhere in the clean-sheet build. The semantic section manifest was preserved, but the selector/ID namespace was not checked.
+- **Fix:** renamed the advisor module to `.alex-story` / `#alex-story`, gave its descendants a scoped namespace, and removed the duplicate interactive placeholder. A rendered probe now reports zero duplicate IDs.
+- **Permanent lesson:** every restored or merged module needs a selector-and-ID namespace check in addition to the ordered section-manifest diff. Section names should describe the job (`alex-story`, `firm-origin`), not a generic shape (`story`).
+- **Status:** ✅ closed. Gate 0 P0; duplicate-ID probe clean.
+
+### LED-025 — Auto-advance plus a manual Continue action creates a double-step race
+- **Build:** `projects/awp/build/home-v6.html` (2026-07-16 design revision).
+- **Symptom:** choosing a Fit Check radio option scheduled the next step after 380ms while a live Continue button could advance immediately. A fast click skipped a question; a pending timer could also undo Back. Focus remained inside the fieldset that had just been hidden because its legend was not focusable.
+- **Root cause:** two controls owned the same state transition, and the delayed callback read mutable global step state.
+- **Fix:** removed redundant Continue buttons from radio steps, stored the selected step inside the callback, cancels pending timers on every navigation, verifies the originating fieldset is still active, and focuses a `tabindex="-1"` legend after the new step renders.
+- **Permanent lesson:** an auto-advance form must have one transition owner. Delayed state changes need cancellation, a captured origin state, and an explicit post-transition focus target.
+- **Status:** ✅ closed. Desktop and 390px runtime probes advance exactly one step and Back remains stable after the former timer window.
+
+### LED-026 — Preview-media controls must match the media stream and interaction state
+- **Build:** `projects/awp/build/home-v6.html` (2026-07-16 design revision).
+- **Symptom:** silent placeholder MP4s exposed Unmute controls; the story play overlay became visually transparent but stayed tabbable, and reel play/pause had no keyboard path.
+- **Root cause:** production-video affordances were applied before the placeholder assets were inspected, and visual hidden state was treated as interaction hidden state.
+- **Fix:** removed fake sound controls and labeled the previews as silent, restored the GLM lazy-play pattern with native controls after playback starts, makes the overlaid play button non-interactive when hidden, and added focus/Enter/Space reel controls. Reduced-motion now blocks automatic video playback and smooth rail scrolling.
+- **Permanent lesson:** inspect actual audio tracks before drawing sound UI. Every visual control state must have matching focus, keyboard, and reduced-motion behavior.
+- **Status:** ✅ closed. Runtime probes confirm native story controls, reachable keyboard reel controls, and paused hero video under reduced motion.
+
+### LED-027 — A geometry-clean content shell can still fail search, trust, and publishing quality
+- **Build:** `projects/awp/build/resources.html`, `blog-template.html`, and `podcast-template.html` (2026-07-17 content-system reprint).
+- **Symptom:** the first content routes passed the visual geometry gate but looked like generic financial-editorial templates. The article exposed publish/read-time tokens, lacked named sources and a useful content artifact, and had no article schema, canonical, social metadata, or complete internal-link path. The podcast exposed pending platform links without real media. The directory treated content as rows beneath an oversized hero rather than a publication.
+- **Root cause:** the factory architecture names Resources as an SEO surface, but the deterministic gauntlet has no content-page contract. It checks rendered geometry, not whether a page is publishable, attributable, source-backed, machine-readable, or organized around search intent.
+- **Fix:** clean reprint into one Planning Room system. Added answer-first article structure, an Anchor-specific RSU timing map, primary IRS sources, contextual internal links, visible podcast inventory, honest preview states, semantic landmarks, review-mode `noindex`, canonical scaffolding, social metadata, and parseable `CollectionPage`, `BlogPosting`, `BreadcrumbList`, and `PodcastEpisode` JSON-LD.
+- **Permanent lesson:** every content route needs a preflight beyond the visual gate: unique title and description; review-versus-production robots state; final canonical and clean URL; exactly one H1; parseable page-type schema; approved author/date/image; primary sources for financial claims; problem-led taxonomy; related-service, trust, and conversion links; no visible build tokens; and no media/platform UI until real media exists.
+- **Status:** ✅ closed for local review. All three routes: 0 P0 / 0 P1 / 1 accepted P2 (`accent-fill-absent`, cleared under LED-019). Final domain, licensed fonts, author approval, and podcast media remain production inputs.
+
+### LED-028 — Content-route typography must sit one tier below campaign display scale
+- **Build:** `projects/awp/build/resources.html`, `blog-template.html`, and `podcast-template.html` (2026-07-17 content-system revision).
+- **Symptom:** the content routes were structurally sound, but oversized page titles and generous campaign-style section spacing made the directory, article, and episode pages feel slower and less useful than the homepage. The footer repeated a generic conversion link without showing what the Fit Check involved.
+- **Root cause:** homepage display tokens and vertical rhythm were carried too directly into long-form routes, where scanning density and information hierarchy matter more. The final CTA described an action but did not reduce uncertainty about the action.
+- **Fix:** reduced route-level H1/H2 scales and section gaps, tightened cards and article rhythm, retained purposeful numbered sequences, and replaced the generic footer CTA with a four-step Fit Check preview and direct start action.
+- **Permanent lesson:** content-route type should be calibrated separately from campaign/homepage display type. A conversion footer should preview the next interaction when that preview lowers commitment anxiety.
+- **Status:** ✅ closed for local review. All three routes: 0 P0 / 0 P1 / 1 accepted P2 (`accent-fill-absent`, cleared under LED-019); desktop and 390px taste passes show no horizontal overflow.
+
+### LED-029 — A public review mirror needs a release allowlist and media-license audit
+- **Build:** Anchor v6 public team-review release (2026-07-17).
+- **Symptom:** the first staged Pages worktree contained two inactive Mixkit family files whose free 720p license was restricted to personal use. They were no longer referenced, but a broad `git add -A` would still have published them. The media ledger also described two active loops as eight seconds when the encoded files were four seconds.
+- **Root cause:** the review mirror had accumulated assets through folder-level copying, while provenance was treated as a launch-only concern. Unreferenced files inside a Pages worktree are still public if committed, and stale duration/source notes make the release audit unreliable.
+- **Fix:** restored the project-generated modern family loop as the active hero asset, corrected `assets/SOURCES.md`, explicitly quarantined the restricted Mixkit reference, and rebuilt the public mirror from a curated page-and-asset allowlist in a fresh clone. Added review-wide `noindex,nofollow` before publication.
+- **Permanent lesson:** every public preview is a distribution event. Stage Pages from an explicit allowlist, verify every active media license and duration, exclude restricted and unused assets physically, and apply review-mode robots metadata consistently before push.
+- **Status:** ✅ closed. Fresh mirror contains no restricted family media; all active references resolve and all nine routes pass the release gate for team review.
+
+### LED-030 — A shared inner-page shell still needs route-specific identity
+- **Build:** Anchor v6 secondary-page and resource-directory revision (2026-07-20).
+- **Symptom:** About, Team, and all three audience routes shared a coherent shell but opened with nearly identical dark mastheads. The Resources page separated podcasts from the main decision directory, making the requested podcast inventory easy to miss.
+- **Root cause:** consistency was treated as visual repetition instead of a shared system with route-level art direction. Content formats were also used as the primary directory structure even though visitors arrive with a decision, not a format preference.
+- **Fix:** retained one brand/navigation/type system while giving About and Team identity panels and each audience page its relevant approved image. Rebuilt Resources as a decision-led library with articles, podcasts, checklists, and frameworks in the same filterable index; retained a dedicated podcast shelf as a secondary listening path.
+- **Permanent lesson:** shared chrome and tokens create consistency; the route hero must still prove why that page exists. Resource directories should organize around visitor intent and expose every major content format inside the main browse path.
+- **Status:** ✅ closed for local review. Eight secondary/content routes pass the factory gate with 0 P0 / 0 P1; content routes are fully clean and inner routes retain only the accepted restrained-accent P2 under LED-019.
+
+### LED-031 — Borrow the information shape, not the reference brand
+- **Build:** Anchor article, podcast, and Resources templates (2026-07-20 tight-content revision).
+- **Symptom:** the first Anchor article was polished but still too spacious and campaign-like for a practical financial briefing. The client preferred the compact hierarchy of AGL's article template: a contained masthead, narrow reading measure, and a persistent next-step rail.
+- **Root cause:** the content route inherited too much homepage scale and treated brand continuity as preserving the same visual proportions. That made a useful article feel slower than its reference task required.
+- **Fix:** translated the AGL information shape into Anchor's own system: a compact navy masthead, EB Garamond/Nunito typography, 660px reading column, honest companion-podcast link, restrained sticky Fit Check rail, and tighter prose rhythm. The same compact logic now carries through Resources and the podcast template.
+- **Permanent lesson:** when a client supplies a reference, identify the reusable information architecture separately from its palette, fonts, ornament, and voice. Port the hierarchy and reading behavior; re-author the visual language for the client brand.
+- **Status:** ✅ closed for local review. Resources is 0 P0 / 0 P1 / 0 P2. Article and podcast are 0 P0 / 0 P1 with only the accepted restrained-accent P2 under LED-019.
+
+### LED-032 — Closed FAQ content can fail both the geometry gate and the answer-first goal
+- **Build:** Anchor RSU article GEO/SEO revision (2026-07-20).
+- **Symptom:** four native closed `<details>` answers produced four P0 `collapsed-height` defects. The answers existed in the DOM and structured data but were visually hidden until interaction.
+- **Root cause:** the FAQ was treated as optional disclosure UI even though each answer was part of the article's core search and generative-answer value. Closed native disclosure geometry is correctly indistinguishable from other collapsed content to the factory gate.
+- **Fix:** replaced the disclosures with static question-and-answer rows. Every answer is now visible, crawlable, and matched in substance by the `FAQPage` JSON-LD.
+- **Permanent lesson:** core FAQ answers on search-led financial content should remain in normal document flow. Use disclosures only for genuinely optional detail, and never let structured data promise content the default page presentation hides.
+- **Status:** ✅ closed. Article gate returned to 0 P0 / 0 P1; only accepted LED-019 P2 remains.
+
+### LED-033 — A brand watermark should use the real mark and earn its contrast quietly
+- **Build:** Anchor article masthead and conversion rail revision (2026-07-20).
+- **Symptom:** the compact masthead was structurally strong but its generic contour decoration did not add Anchor identity. The sidebar conversion prompt was visually loose and the gold button's dark text lacked the requested emphasis.
+- **Root cause:** generic geometry was standing in for an available brand asset, while the conversion prompt was styled as a ruled note instead of one clear action surface.
+- **Fix:** imported the client-supplied transparent logo mark, preserved its proportions, and used it as a large grayscale watermark at 7.5 percent opacity over a quiet navy wash. Rebuilt the conversion prompt as a square navy panel with a dark-gold, light-text button and layered shadow.
+- **Permanent lesson:** when a real mark exists, subtle repetition can create more identity than generic decoration. Watermarks need enough scale to register and low enough contrast to remain peripheral; conversion prompts should own one bounded surface when they must interrupt a long reading flow.
+- **Status:** ✅ closed. Article gate is fully clean at 0 P0 / 0 P1 / 0 P2; desktop taste pass confirms the watermark remains subordinate to the headline.
+
+### LED-034 — Secondary-page consistency should come from one masthead behavior
+- **Build:** Anchor About, Team, audience, Resources, article, and podcast routes (2026-07-20).
+- **Symptom:** the resource article established a compact, credible publication header, but the other secondary routes still opened with split photography, oversized initials, a generic circle, or a cover-art composition. The page family felt like several campaigns sharing a navigation bar instead of one site.
+- **Root cause:** route identity was carried by separate hero compositions rather than by content hierarchy inside a shared secondary-page masthead. That visual variation competed with the homepage, which should remain the site's signature campaign moment.
+- **Fix:** retained the homepage hero as the exception and standardized every secondary route on one tight navy masthead, subtle dot field, real Anchor-mark watermark, restrained title scale, and route-specific copy. Removed the About/Team initials, audience hero photos, Resources circle, and podcast cover from their headers; their substantive content remains below.
+- **Permanent lesson:** a site can reserve expressive hero art direction for the homepage while secondary routes earn distinction through language and content. Shared masthead behavior creates continuity; decorative route variants should not make content pages compete with the primary campaign surface.
+- **Status:** ✅ closed for local review. Desktop and narrow-viewport Tier-B passed. All eight routes pass at 0 P0 / 0 P1; Resources and article are 0 P2, with the remaining restrained-accent P2 notes accepted under LED-019.
+
+### LED-035 — Shared navigation needs an exact geometry and content contract
+- **Build:** Anchor nine-route site system (2026-07-20 release candidate).
+- **Symptom:** navigation bars looked related but changed height, logo scale, link spacing, labels, and Fit Check CTA wording between the homepage and content routes.
+- **Root cause:** consistency was judged visually page by page instead of enforced as one measurable component contract.
+- **Fix:** standardized every route on a 76px bar, 1180px inner width with 24px gutters, the same client-supplied mark and wordmark scale, the same link labels/order, and the same `Take the Fit Check` CTA. Added a DOM comparison of navigation labels/order to release QA.
+- **Permanent lesson:** visual similarity is not component consistency. Shared chrome needs exact dimensions, content, order, and responsive behavior, verified across the full route set.
+- **Status:** ✅ closed for local review. All nine routes pass the shared navigation contract and the factory gate with 0 P0 / 0 P1.
+
+### LED-036 — Resource format labels must name the visitor action
+- **Build:** Anchor Resources, article, podcast, and homepage content paths (2026-07-20 release candidate).
+- **Symptom:** podcast inventory used `The Planning Room` and `briefing` language while the destination and requested action were audio, making the format unclear.
+- **Root cause:** editorial-series vocabulary drifted independently from the resource badge, metadata, schema, transcript language, and CTA.
+- **Fix:** standardized the series name as `Anchor Wealth Podcast`, audio badges as `Podcast`, and the primary action as `Listen to the podcast`; aligned homepage, Resources, article companion path, podcast page, schema, and client copy workbook. Replaced the Resources feature-card circle with the subtle real Anchor mark.
+- **Permanent lesson:** series name, resource format, destination metadata, and CTA must agree. Add a content-format semantic sweep to release QA so audio never reads like an article action.
+- **Status:** ✅ closed for local review. No stale `The Planning Room`, `written briefing`, or `episode briefing` language remains in active routes or client copy artifacts.
+
+### LED-037 — Equal-height feature grids can turn a useful module into an empty billboard
+- **Build:** Anchor Resources podcast feature (2026-07-20 content-structure revision).
+- **Symptom:** the podcast feature inherited the height of the adjacent article card, leaving a large navy void between its introduction and CTA. The mark looked correct, but the module did not show enough content or persuasion to justify its footprint.
+- **Root cause:** the grid's default stretch behavior treated visual equality as structural consistency. The podcast module also separated its episode inventory into a duplicate shelf below instead of using the feature area as a real series entry point.
+- **Fix:** set the feature grid to content-driven alignment, added three repeatable latest-episode rows, Alex-host attribution, and a clear Fit Check-to-conversation handoff, then removed the duplicate podcast shelf. Expanded the directory `ItemList` and documented unique production URLs plus the publish/update contract.
+- **Permanent lesson:** companion modules do not need equal heights. A content feature earns space by exposing the next useful choices and the conversion path. Static markup should mirror the future CMS collection model so new content changes records, not page architecture.
+- **Status:** ✅ closed for noindex client review. Resources passes at 0 P0 / 0 P1 with only the accepted LED-019 restrained-accent P2; fresh desktop/mobile Tier-B verifier returned SHIP with zero broken links, assets, or fragments.
+
+### LED-038 — Replacing a brand motif requires a sitewide pseudo-element sweep
+- **Build:** Anchor nine-route motif revision (2026-07-20).
+- **Symptom:** the real Anchor watermark had replaced the generic circle in major mastheads and the Resources podcast card, but large ring ornaments survived in conversion closes, route cards, the article rail, the podcast cover template, and several homepage panels.
+- **Root cause:** the mark was adopted component by component without auditing large decorative shapes in shared CSS, page-specific overrides, and the homepage's inline styles.
+- **Fix:** replaced every large decorative ring or circular panel glow with `awp-logo-mark-watermark.png` at low opacity. Preserved circles that communicate function or identity: media controls, carousel controls, progress/process markers, credential dots, and the portrait placeholder.
+- **Permanent lesson:** a motif change is a site-system migration, not a local decoration edit. Search shared styles, page-specific overrides, inline styles, pseudo-elements, radial backgrounds, border radii, and dormant templates; classify each circle as decorative or functional before replacing it.
+- **Status:** ✅ closed for noindex client review. Static sweep found no remaining large decorative rings; representative desktop/mobile routes passed visually and all nine routes returned 0 P0 / 0 P1.
+
+### LED-039 — Approved brand lockups should not be reconstructed in CSS
+- **Build:** Anchor nine-route navigation revision (2026-07-20).
+- **Symptom:** navigation combined a cropped logo mark with separately typed brand-name text even after the client supplied the approved full lockup. The rebuilt treatment was close, but it was not the exact brand artwork requested for the menu bar.
+- **Root cause:** the early prototype treated the wordmark as a responsive UI label instead of a single approved identity asset. The first replacement also exposed a one-pixel bar-height mismatch and different mobile gutters between shared shells.
+- **Fix:** trimmed transparent padding only from the supplied light-background lockup, verified the visible pixels without resampling or recoloring, and used that single asset across all nine light navigation bars. Scoped the replacement to navigation so footer branding remains unchanged; standardized the rendered bar at exactly 76px and mobile gutters at 24px. Removed the Anchor watermark from the homepage Fit Check card per client direction.
+- **Permanent lesson:** once an approved lockup exists, use it as one asset. Choose the navigation surface that matches the supplied colorway instead of rebuilding or recoloring the mark, and verify exact rendered height, gutters, and logo geometry across every route before release.
+- **Status:** ✅ closed for noindex client review. Fresh verifier returned SHIP at 1440px and 500px; the nine-route gate is 0 P0 / 0 P1.
+
+### LED-040 — Media identity and responsive composition are release requirements
+- **Build:** Anchor homepage family hero correction (2026-07-20).
+- **Symptom:** a later site sync reactivated the obsolete family-at-table loop even though the client had approved a younger family walking at sunset. The first safe replacement restored the correct scene on desktop, but its landscape crop reduced the phone hero to one adult silhouette.
+- **Root cause:** media validation checked file presence and playback without locking the approved scene identity or confirming that the subject survived `object-fit: cover` at narrow widths.
+- **Fix:** replaced every active family-hero/card/preview reference with licensed Pexels 9361674 sunset-walking footage, documented provenance, and created a 9:16 derivative from the same footage that keeps all four family members visible on phones. Restricted and obsolete working cuts remain inactive and excluded from the public release allowlist.
+- **Permanent lesson:** a media change is not verified by a working URL. Release QA must assert the approved subject/scene, inspect the actual playing frame at desktop and mobile widths, and treat responsive reframing as its own deliverable when a landscape composition loses the intended story.
+- **Status:** ✅ closed locally. Fresh verifier returned SHIP after 1440px and 500px playback checks; homepage gate is 0 P0 / 0 P1 / 0 P2.
+
+### LED-041 — Client copy review should be ordered by decision impact, not site order
+- **Build:** Anchor client copy decision workbook (2026-07-20).
+- **Symptom:** the complete side-by-side workbook mirrored all nine routes but grew to 69 pages, forcing the client to review routine navigation, repeated CTAs, metadata, accessibility labels, and minor interface text before reaching the facts and positioning that could materially delay launch.
+- **Root cause:** extraction completeness was mistaken for client decision usefulness. Page order preserved implementation structure rather than the client's launch risk and business priorities.
+- **Fix:** rebuilt the workbook in two layers. Part 1 contains launch-required facts, high-impact message decisions, conversion choices, and content direction. Part 2 groups optional supporting copy by page. Removed safe-to-retain metadata, shared interface labels, repeated controls, and duplicates; retained the current-copy versus client-change boxes.
+- **Permanent lesson:** client review artifacts should ask only for decisions the client is uniquely qualified to make. Put legal identity, credentials, team, services, fit criteria, positioning, and conversion path first; group optional wording later; keep implementation and optimization details inside the production team.
+- **Status:** ✅ closed. Workbook reduced from 69 to 18 pages; all required priority blocks are present, all pages rendered cleanly, and the accessibility audit is 0 high / 0 medium / 0 low.

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">RSU timing map</title>
+  <desc id="desc">Four coordinated timelines show vesting, tax withholding, trading windows, and the personal planning decision.</desc>
+  <rect width="1200" height="675" fill="#f5f0e6"/>
+  <path d="M0 94H1200M0 581H1200" stroke="#1e395a" stroke-opacity=".13"/>
+  <text x="72" y="72" fill="#1e395a" font-family="Georgia, serif" font-size="34">One vest. Four clocks.</text>
+  <text x="72" y="112" fill="#536477" font-family="Arial, sans-serif" font-size="16">The planning work is aligning what happens automatically with what still requires a decision.</text>
+  <g font-family="Arial, sans-serif" font-size="15" fill="#1e395a">
+    <text x="72" y="212">COMPANY</text>
+    <text x="72" y="306">TAX</text>
+    <text x="72" y="400">MARKET</text>
+    <text x="72" y="494">PERSONAL PLAN</text>
+  </g>
+  <g stroke="#1e395a" stroke-opacity=".24" stroke-width="2">
+    <path d="M265 206H1118"/>
+    <path d="M265 300H1118"/>
+    <path d="M265 394H1118"/>
+    <path d="M265 488H1118"/>
+  </g>
+  <g fill="#b18f4d" stroke="#f5f0e6" stroke-width="5">
+    <circle cx="434" cy="206" r="13"/>
+    <circle cx="434" cy="300" r="13"/>
+    <circle cx="726" cy="394" r="13"/>
+    <circle cx="918" cy="488" r="13"/>
+  </g>
+  <g fill="#1e395a" font-family="Georgia, serif" font-size="24">
+    <text x="406" y="173">Shares vest</text>
+    <text x="406" y="267">Income recognized</text>
+    <text x="699" y="361">First open window</text>
+    <text x="891" y="455">Proceeds assigned</text>
+  </g>
+  <g fill="#536477" font-family="Arial, sans-serif" font-size="15">
+    <text x="406" y="237">Employer controls the date</text>
+    <text x="406" y="331">Withholding is not the final return</text>
+    <text x="699" y="425">Price and liquidity may have changed</text>
+    <text x="891" y="519">Cash, diversification, and goals connect</text>
+  </g>
+  <path d="M434 206V300M447 300C555 300 602 342 713 390M739 402C821 423 864 458 906 481" fill="none" stroke="#b18f4d" stroke-width="3" stroke-dasharray="6 8"/>
+  <rect x="72" y="594" width="1056" height="1" fill="#1e395a" opacity=".13"/>
+  <text x="72" y="630" fill="#748ba0" font-family="Arial, sans-serif" font-size="14">ILLUSTRATIVE DECISION MAP · ANCHOR WEALTH PLANNING</text>
+</svg>
