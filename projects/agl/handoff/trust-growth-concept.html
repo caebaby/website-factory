@@ -1,0 +1,726 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="assets/agl-mark.svg" type="image/svg+xml">
+<meta name="theme-color" content="#111735">
+<title>Trust, Video and Authority Concept | Advisor Growth Lab</title>
+<meta name="description" content="A private visual concept for Advisor Growth Lab's trust, video, call-explainer and authority sections.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@1,6..72,400&amp;family=Schibsted+Grotesk:wght@400;500;600;650;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: oklch(25% .065 274);
+  --ink-deep: oklch(17.5% .075 274);
+  --indigo: oklch(48% .19 282);
+  --indigo-dark: oklch(40% .18 282);
+  --periwinkle: oklch(80% .085 280);
+  --paper: oklch(98.8% .006 258);
+  --warm: oklch(95.2% .022 74);
+  --mist: oklch(94.5% .012 268);
+  --body: oklch(43% .035 270);
+  --muted: oklch(55% .026 270);
+  --line: color-mix(in oklch, var(--ink) 15%, transparent);
+  --line-light: color-mix(in oklch, var(--paper) 18%, transparent);
+  --gold: oklch(80% .105 78);
+  --sans: "Schibsted Grotesk", "Avenir Next", Arial, sans-serif;
+  --serif: "Newsreader", Georgia, serif;
+  --max: 1220px;
+  --ease: cubic-bezier(.16, 1, .3, 1);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; background: var(--ink-deep); }
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  opacity: .025;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+button { font: inherit; }
+::selection { color: var(--paper); background: var(--indigo); }
+:focus-visible { outline: 2px solid var(--indigo); outline-offset: 4px; }
+
+.wrap { width: min(var(--max), calc(100% - 64px)); margin-inline: auto; }
+.section { padding: clamp(76px, 10vw, 132px) 0; }
+.concept-bar {
+  position: relative;
+  z-index: 80;
+  padding: 9px 24px;
+  color: var(--ink);
+  background: var(--gold);
+  text-align: center;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.nav {
+  position: absolute;
+  z-index: 40;
+  top: 36px;
+  left: 0;
+  width: 100%;
+  color: var(--paper);
+  border-bottom: 1px solid var(--line-light);
+}
+.nav__in {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+.brand { display: inline-flex; align-items: center; gap: 11px; font-size: 15px; font-weight: 700; }
+.brand img { width: 32px; height: 32px; filter: brightness(0) invert(1); }
+.nav__links { display: flex; align-items: center; gap: 26px; color: color-mix(in oklch, var(--paper) 78%, transparent); font-size: 13px; }
+.nav__links a:hover { color: var(--paper); }
+.nav__cta {
+  padding: 11px 16px;
+  color: var(--ink);
+  background: var(--paper);
+  border-radius: 6px;
+  font-weight: 750;
+}
+
+.hero {
+  position: relative;
+  min-height: min(900px, 92vh);
+  display: grid;
+  align-items: end;
+  overflow: hidden;
+  color: var(--paper);
+  background: var(--ink-deep);
+}
+.hero__image,
+.hero__shade,
+.hero__grid { position: absolute; inset: 0; }
+.hero__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 60% 48%;
+  filter: saturate(.92) contrast(1.04);
+}
+.hero__shade {
+  background:
+    linear-gradient(90deg, color-mix(in oklch, var(--ink-deep) 91%, transparent) 0%, color-mix(in oklch, var(--ink-deep) 77%, transparent) 48%, color-mix(in oklch, var(--ink-deep) 19%, transparent) 78%),
+    linear-gradient(0deg, color-mix(in oklch, var(--ink-deep) 91%, transparent) 0%, transparent 52%);
+}
+.hero__grid {
+  opacity: .24;
+  background-image:
+    linear-gradient(color-mix(in oklch, var(--paper) 13%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklch, var(--paper) 13%, transparent) 1px, transparent 1px);
+  background-size: 84px 84px;
+  mask-image: linear-gradient(90deg, #000 0%, transparent 75%);
+}
+.hero__content {
+  position: relative;
+  z-index: 2;
+  width: min(790px, 76vw);
+  padding: 190px 0 clamp(80px, 10vw, 132px);
+}
+.eyebrow {
+  display: block;
+  margin-bottom: 22px;
+  color: var(--periwinkle);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+.hero h1 {
+  max-width: 12ch;
+  margin: 0;
+  font-size: clamp(52px, 7.6vw, 96px);
+  font-weight: 680;
+  letter-spacing: -.062em;
+  line-height: .95;
+  text-wrap: balance;
+}
+.hero h1 em { color: var(--periwinkle); font-family: var(--serif); font-weight: 400; }
+.hero__lede {
+  max-width: 59ch;
+  margin: 28px 0 0;
+  color: color-mix(in oklch, var(--paper) 82%, transparent);
+  font-size: clamp(18px, 2vw, 22px);
+  line-height: 1.55;
+}
+.hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+.button {
+  display: inline-flex;
+  min-height: 50px;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 14px 22px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 750;
+  transition: transform .3s var(--ease), background .3s var(--ease), color .3s var(--ease);
+}
+.button::after { content: "↗"; font-size: 16px; }
+.button:hover { transform: translateY(-2px); }
+.button--light { color: var(--ink); background: var(--paper); }
+.button--line { color: var(--paper); border-color: color-mix(in oklch, var(--paper) 32%, transparent); }
+.button--indigo { color: var(--paper); background: var(--indigo); }
+.button--indigo:hover { background: var(--indigo-dark); }
+
+.decision-strip { border-bottom: 1px solid var(--line); background: var(--warm); }
+.decision-strip__in {
+  display: grid;
+  grid-template-columns: .9fr repeat(5, 1fr);
+  min-height: 132px;
+}
+.decision-strip__intro,
+.decision-step { padding: 26px 22px; border-right: 1px solid var(--line); }
+.decision-strip__intro { display: flex; align-items: flex-end; padding-left: 0; color: var(--body); font-size: 13px; }
+.decision-step { display: flex; min-width: 0; flex-direction: column; justify-content: space-between; gap: 14px; }
+.decision-step:last-child { border-right: 0; }
+.decision-step span { color: var(--indigo); font-size: 10px; font-weight: 800; letter-spacing: .1em; }
+.decision-step strong { font-size: clamp(14px, 1.5vw, 17px); letter-spacing: -.018em; }
+
+.split-head { display: grid; grid-template-columns: .78fr 1.22fr; gap: clamp(42px, 9vw, 120px); margin-bottom: 58px; }
+.split-head h2 {
+  max-width: 12ch;
+  margin: 0;
+  font-size: clamp(40px, 5.5vw, 70px);
+  line-height: .98;
+  letter-spacing: -.055em;
+  text-wrap: balance;
+}
+.split-head__copy { max-width: 59ch; padding-top: 8px; color: var(--body); font-size: 18px; }
+.split-head__copy p { margin: 0; }
+.split-head__copy p + p { margin-top: 18px; }
+
+.videos { overflow: hidden; background: var(--paper); }
+.video-rail { display: grid; grid-template-columns: 1.06fr .97fr .97fr; gap: 20px; }
+.video-card {
+  position: relative;
+  min-height: 570px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: 26px;
+  color: var(--paper);
+  background: var(--ink);
+  border-radius: 5px;
+  isolation: isolate;
+}
+.video-card:first-child { min-height: 620px; }
+.video-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(150deg, color-mix(in oklch, var(--indigo) 82%, transparent), transparent 56%),
+    repeating-linear-gradient(132deg, transparent 0 39px, color-mix(in oklch, var(--periwinkle) 13%, transparent) 40px 41px),
+    var(--ink);
+}
+.video-card:nth-child(2)::before {
+  background:
+    radial-gradient(circle at 68% 28%, color-mix(in oklch, var(--gold) 58%, transparent), transparent 14%),
+    linear-gradient(155deg, transparent 28%, color-mix(in oklch, var(--indigo) 55%, transparent)),
+    var(--ink-deep);
+}
+.video-card:nth-child(3)::before {
+  background:
+    linear-gradient(90deg, transparent 50%, color-mix(in oklch, var(--periwinkle) 13%, transparent) 50%),
+    linear-gradient(0deg, transparent 50%, color-mix(in oklch, var(--periwinkle) 10%, transparent) 50%),
+    var(--ink);
+  background-size: 64px 64px;
+}
+.video-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(0deg, color-mix(in oklch, var(--ink-deep) 96%, transparent), transparent 64%);
+}
+.video-card__top { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.video-card__num { font-size: 11px; font-weight: 800; letter-spacing: .12em; }
+.video-card__time { color: color-mix(in oklch, var(--paper) 70%, transparent); font-size: 11px; }
+.video-card__play {
+  width: 70px;
+  height: 70px;
+  display: grid;
+  place-items: center;
+  margin: auto;
+  border: 1px solid color-mix(in oklch, var(--paper) 58%, transparent);
+  border-radius: 50%;
+  color: var(--ink);
+  background: color-mix(in oklch, var(--paper) 93%, transparent);
+  box-shadow: 0 18px 50px color-mix(in oklch, var(--ink-deep) 48%, transparent);
+}
+.video-card__play::before { content: ""; width: 0; height: 0; margin-left: 4px; border-top: 8px solid transparent; border-bottom: 8px solid transparent; border-left: 13px solid currentColor; }
+.video-card__label { color: var(--periwinkle); font-size: 10px; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
+.video-card h3 { max-width: 16ch; margin: 13px 0 0; font-size: clamp(26px, 2.6vw, 38px); line-height: 1.02; letter-spacing: -.04em; }
+.video-card p { max-width: 33ch; margin: 14px 0 0; color: color-mix(in oklch, var(--paper) 72%, transparent); font-size: 14px; }
+.video-note { margin: 22px 0 0; color: var(--muted); font-size: 12px; }
+
+.quotes { color: var(--paper); background: var(--ink-deep); }
+.quotes__head { display: flex; align-items: end; justify-content: space-between; gap: 40px; padding-bottom: 42px; border-bottom: 1px solid var(--line-light); }
+.quotes__head h2 { max-width: 13ch; margin: 0; font-size: clamp(38px, 5.2vw, 66px); line-height: .98; letter-spacing: -.05em; }
+.quotes__head p { max-width: 48ch; margin: 0; color: color-mix(in oklch, var(--paper) 68%, transparent); font-size: 14px; }
+.quote-list { display: grid; grid-template-columns: 1.12fr .92fr .96fr; }
+.quote {
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 44px 36px 36px 0;
+  border-right: 1px solid var(--line-light);
+}
+.quote + .quote { padding-left: 36px; }
+.quote:last-child { padding-right: 0; border-right: 0; }
+.quote__mark { color: var(--gold); font-family: var(--serif); font-size: 70px; line-height: .6; }
+.quote blockquote { margin: 0; font-size: clamp(24px, 2.6vw, 36px); font-weight: 600; line-height: 1.16; letter-spacing: -.034em; }
+.quote footer { margin-top: 30px; }
+.quote footer strong { display: block; font-size: 14px; }
+.quote footer a { display: inline-block; margin-top: 6px; color: var(--periwinkle); font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+.quote footer a:hover { color: var(--paper); }
+.quotes__note { margin: 26px 0 0; color: color-mix(in oklch, var(--paper) 52%, transparent); font-size: 11px; }
+
+.call { background: var(--warm); }
+.call__grid { display: grid; grid-template-columns: minmax(0, .86fr) minmax(420px, 1.14fr); gap: clamp(50px, 9vw, 124px); align-items: start; }
+.call h2 { max-width: 10ch; margin: 0; font-size: clamp(44px, 6.5vw, 82px); line-height: .94; letter-spacing: -.06em; }
+.call__lede { max-width: 45ch; margin: 26px 0 0; color: var(--body); font-size: 18px; }
+.call__promise { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); font-size: 14px; font-weight: 650; }
+.call-steps { border-top: 1px solid color-mix(in oklch, var(--ink) 28%, transparent); }
+.call-step { display: grid; grid-template-columns: 58px 1fr; gap: 22px; padding: 28px 0; border-bottom: 1px solid var(--line); }
+.call-step span { color: var(--indigo); font-size: 11px; font-weight: 800; letter-spacing: .1em; }
+.call-step h3 { margin: 0; font-size: 22px; line-height: 1.2; letter-spacing: -.025em; }
+.call-step p { max-width: 53ch; margin: 9px 0 0; color: var(--body); font-size: 14px; }
+
+.people { background: var(--paper); }
+.people__intro { max-width: 880px; margin-bottom: 68px; }
+.people__intro h2 { margin: 0; font-size: clamp(42px, 6.4vw, 80px); line-height: .96; letter-spacing: -.06em; }
+.people__intro p { max-width: 63ch; margin: 24px 0 0; color: var(--body); font-size: 18px; }
+.profile { display: grid; grid-template-columns: minmax(310px, .8fr) minmax(0, 1.2fr); min-height: 520px; border-top: 1px solid color-mix(in oklch, var(--ink) 28%, transparent); }
+.profile:last-child { border-bottom: 1px solid color-mix(in oklch, var(--ink) 28%, transparent); }
+.profile__portrait {
+  position: relative;
+  display: flex;
+  min-height: 520px;
+  align-items: flex-end;
+  overflow: hidden;
+  padding: 28px;
+  color: var(--paper);
+  background: var(--ink);
+  isolation: isolate;
+}
+.profile__portrait::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: .7;
+  background-image:
+    linear-gradient(color-mix(in oklch, var(--periwinkle) 15%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklch, var(--periwinkle) 15%, transparent) 1px, transparent 1px),
+    linear-gradient(138deg, transparent 48%, color-mix(in oklch, var(--gold) 38%, transparent) 49%, transparent 50%);
+  background-size: 42px 42px, 42px 42px, 126px 126px;
+}
+.profile:nth-child(3) .profile__portrait::before { transform: rotate(180deg); }
+.profile__initials { color: color-mix(in oklch, var(--paper) 22%, transparent); font-size: clamp(90px, 13vw, 190px); font-weight: 800; letter-spacing: -.09em; line-height: .7; }
+.profile__portrait small { position: absolute; top: 24px; left: 26px; font-size: 10px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.profile__body { display: flex; flex-direction: column; justify-content: center; padding: clamp(42px, 7vw, 86px); border-left: 1px solid var(--line); }
+.profile__role { color: var(--indigo); font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.profile h3 { margin: 14px 0 0; font-size: clamp(40px, 5vw, 65px); line-height: 1; letter-spacing: -.05em; }
+.profile p { max-width: 60ch; margin: 23px 0 0; color: var(--body); font-size: 17px; }
+.profile__lens { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+.profile__lens span { padding: 8px 11px; border: 1px solid var(--line); border-radius: 4px; color: var(--body); font-size: 11px; font-weight: 650; }
+
+.booking { color: var(--paper); background: var(--ink); }
+.booking__head { max-width: 780px; margin-bottom: 54px; }
+.booking__head h2 { margin: 0; font-size: clamp(42px, 6vw, 76px); line-height: .98; letter-spacing: -.055em; }
+.booking__head p { max-width: 57ch; margin: 22px 0 0; color: color-mix(in oklch, var(--paper) 69%, transparent); }
+.booking__frame { display: grid; grid-template-columns: 340px 1fr; min-height: 610px; border: 1px solid var(--line-light); }
+.booking-video { position: relative; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; padding: 26px; background: var(--ink-deep); isolation: isolate; }
+.booking-video::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 66% 28%, color-mix(in oklch, var(--gold) 72%, transparent), transparent 13%),
+    linear-gradient(146deg, color-mix(in oklch, var(--indigo) 72%, transparent), transparent 54%),
+    repeating-linear-gradient(45deg, transparent 0 48px, color-mix(in oklch, var(--periwinkle) 11%, transparent) 49px 50px);
+}
+.booking-video__caption { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.booking-video .video-card__play { margin: auto; }
+.booking-video h3 { margin: 0; font-size: 30px; line-height: 1.04; letter-spacing: -.04em; }
+.booking-video p { margin: 12px 0 0; color: color-mix(in oklch, var(--paper) 72%, transparent); font-size: 13px; }
+.calendar { padding: clamp(32px, 5vw, 62px); color: var(--ink); background: var(--paper); }
+.calendar__top { display: flex; align-items: start; justify-content: space-between; gap: 24px; padding-bottom: 30px; border-bottom: 1px solid var(--line); }
+.calendar__top h3 { max-width: 18ch; margin: 0; font-size: 30px; line-height: 1.1; letter-spacing: -.04em; }
+.calendar__top span { color: var(--muted); font-size: 12px; white-space: nowrap; }
+.calendar__week { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 34px; }
+.day strong { display: block; font-size: 13px; }
+.day small { display: block; margin-top: 4px; color: var(--muted); font-size: 11px; }
+.time { display: block; width: 100%; margin-top: 12px; padding: 12px 8px; border: 1px solid var(--line); border-radius: 4px; color: var(--indigo); background: transparent; text-align: center; font-size: 12px; font-weight: 750; }
+.time:hover { color: var(--paper); background: var(--indigo); border-color: var(--indigo); }
+.calendar__foot { display: flex; align-items: center; justify-content: space-between; gap: 28px; margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--line); }
+.calendar__foot p { max-width: 42ch; margin: 0; color: var(--muted); font-size: 11px; }
+
+.disclosure { background: var(--mist); }
+.disclosure__in { display: grid; grid-template-columns: .55fr 1.45fr; gap: clamp(38px, 8vw, 100px); align-items: start; }
+.disclosure h2 { margin: 0; font-size: 20px; letter-spacing: -.02em; }
+.disclosure p { max-width: 76ch; margin: 0; color: var(--body); font-size: 15px; }
+.disclosure p + p { margin-top: 15px; }
+
+.final { position: relative; overflow: hidden; padding: clamp(86px, 12vw, 160px) 0; color: var(--paper); background: var(--indigo); }
+.final::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: .32;
+  background-image: repeating-linear-gradient(132deg, transparent 0 77px, color-mix(in oklch, var(--paper) 17%, transparent) 78px 79px);
+}
+.final__in { position: relative; display: flex; align-items: end; justify-content: space-between; gap: 54px; }
+.final h2 { max-width: 12ch; margin: 0; font-size: clamp(48px, 7.4vw, 94px); line-height: .94; letter-spacing: -.065em; }
+.final__action { max-width: 410px; }
+.final__action p { margin: 0 0 24px; color: color-mix(in oklch, var(--paper) 78%, transparent); }
+
+.footer { padding: 34px 0; color: color-mix(in oklch, var(--paper) 60%, transparent); background: var(--ink-deep); font-size: 11px; }
+.footer__in { display: flex; justify-content: space-between; gap: 28px; }
+
+@media (max-width: 980px) {
+  .nav__links a:not(.nav__cta) { display: none; }
+  .decision-strip__in { grid-template-columns: repeat(5, 1fr); }
+  .decision-strip__intro { display: none; }
+  .split-head, .call__grid, .disclosure__in { grid-template-columns: 1fr; }
+  .video-rail { display: flex; width: max-content; }
+  .video-card, .video-card:first-child { width: min(72vw, 390px); min-height: 570px; }
+  .videos .wrap { overflow-x: auto; padding-bottom: 14px; scrollbar-width: thin; }
+  .quotes__head { align-items: start; flex-direction: column; }
+  .quote-list { grid-template-columns: 1fr; }
+  .quote { min-height: 0; padding: 42px 0; border-right: 0; border-bottom: 1px solid var(--line-light); }
+  .quote + .quote { padding-left: 0; }
+  .quote:last-child { border-bottom: 0; }
+  .profile { grid-template-columns: minmax(270px, .7fr) minmax(0, 1.3fr); }
+  .booking__frame { grid-template-columns: 280px 1fr; }
+  .calendar__week { gap: 10px; }
+}
+
+@media (max-width: 720px) {
+  .wrap { width: min(var(--max), calc(100% - 38px)); }
+  .concept-bar { padding-inline: 12px; font-size: 9px; }
+  .nav { top: 32px; }
+  .nav__in { min-height: 66px; }
+  .nav__links { gap: 0; }
+  .brand span { display: none; }
+  .nav__cta { font-size: 12px; }
+  .hero { min-height: 820px; }
+  .hero__image { object-position: 69% center; }
+  .hero__shade { background: linear-gradient(0deg, color-mix(in oklch, var(--ink-deep) 95%, transparent) 0%, color-mix(in oklch, var(--ink-deep) 50%, transparent) 75%); }
+  .hero__content { width: 100%; padding: 160px 0 72px; }
+  .hero h1 { font-size: clamp(48px, 15vw, 68px); }
+  .hero__actions { flex-direction: column; }
+  .button { width: 100%; }
+  .decision-strip { overflow-x: auto; }
+  .decision-strip__in { width: 760px; }
+  .decision-step { padding: 22px 16px; }
+  .split-head { gap: 26px; }
+  .video-card, .video-card:first-child { width: 78vw; min-height: 520px; }
+  .quote blockquote { font-size: 28px; }
+  .call__grid { gap: 56px; }
+  .call-step { grid-template-columns: 42px 1fr; }
+  .profile { grid-template-columns: 1fr; }
+  .profile__portrait { min-height: 390px; }
+  .profile__body { padding: 44px 0 62px; border-left: 0; }
+  .booking__frame { grid-template-columns: 1fr; }
+  .booking-video { min-height: 500px; }
+  .calendar { padding: 28px 20px; }
+  .calendar__week { grid-template-columns: 1fr; }
+  .calendar__week .day:not(:first-child) { display: none; }
+  .calendar__foot { align-items: stretch; flex-direction: column; }
+  .final__in { align-items: start; flex-direction: column; }
+  .footer__in { flex-direction: column; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: .01ms !important; }
+}
+</style>
+</head>
+<body>
+<div class="concept-bar">Concept preview · Not live · Trust, authority and video direction</div>
+
+<header class="nav" aria-label="Concept navigation">
+  <div class="wrap nav__in">
+    <a class="brand" href="index.html" aria-label="Advisor Growth Lab home">
+      <img src="assets/agl-mark.svg" alt="">
+      <span>Advisor Growth Lab</span>
+    </a>
+    <nav class="nav__links" aria-label="Preview sections">
+      <a href="#how-we-think">How we think</a>
+      <a href="#what-happens">The call</a>
+      <a href="#why-us">Why us</a>
+      <a class="nav__cta" href="#booking">Discuss my practice</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <img class="hero__image" src="assets/hero-sunrise-day.webp" alt="Sun rising through clearing clouds over a mountain horizon">
+    <div class="hero__shade"></div>
+    <div class="hero__grid"></div>
+    <div class="wrap hero__content">
+      <span class="eyebrow">For advisors considering what comes next</span>
+      <h1>Build the practice you <em>actually want.</em></h1>
+      <p class="hero__lede">A transition is not the goal. The goal is a business model, operating system, and growth plan that support your clients, your team, and the practice you want to build.</p>
+      <div class="hero__actions">
+        <a class="button button--light" href="#what-happens">See what happens on the call</a>
+        <a class="button button--line" href="index.html#assessment">Get answers about my transition</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="decision-strip" aria-label="Advisor Growth Lab decision framework">
+    <div class="wrap decision-strip__in">
+      <div class="decision-strip__intro">The decision starts here</div>
+      <div class="decision-step"><span>01</span><strong>Current stage</strong></div>
+      <div class="decision-step"><span>02</span><strong>Goals</strong></div>
+      <div class="decision-step"><span>03</span><strong>Business model</strong></div>
+      <div class="decision-step"><span>04</span><strong>Growth levers</strong></div>
+      <div class="decision-step"><span>05</span><strong>Evidence</strong></div>
+    </div>
+  </div>
+
+  <section class="section videos" id="how-we-think">
+    <div class="wrap">
+      <div class="split-head">
+        <h2>How we think about growth.</h2>
+        <div class="split-head__copy">
+          <p>Short, candid explanations from Chris and Johnny about the questions that matter before an advisor chooses a firm or business model.</p>
+          <p>No manufactured urgency. No recruiting theater. Just the growth, operating, sales, marketing, and evidence lenses we use to pressure-test a decision.</p>
+        </div>
+      </div>
+
+      <div class="video-rail" aria-label="Proposed short video topics">
+        <article class="video-card">
+          <div class="video-card__top"><span class="video-card__num">01 · CHRIS</span><span class="video-card__time">00:48</span></div>
+          <span class="video-card__play" aria-hidden="true"></span>
+          <div>
+            <span class="video-card__label">Start here</span>
+            <h3>The firm is not the starting point.</h3>
+            <p>Start with the practice you want to build, then work backward to the model and resources that can support it.</p>
+          </div>
+        </article>
+        <article class="video-card">
+          <div class="video-card__top"><span class="video-card__num">02 · CHRIS</span><span class="video-card__time">00:42</span></div>
+          <span class="video-card__play" aria-hidden="true"></span>
+          <div>
+            <span class="video-card__label">Marketing systems</span>
+            <h3>A platform is not a marketing system.</h3>
+            <p>Technology only helps when positioning, content, distribution, follow-up, and accountability work together.</p>
+          </div>
+        </article>
+        <article class="video-card">
+          <div class="video-card__top"><span class="video-card__num">03 · JOHNNY</span><span class="video-card__time">00:51</span></div>
+          <span class="video-card__play" aria-hidden="true"></span>
+          <div>
+            <span class="video-card__label">Operating model</span>
+            <h3>Growth needs a system that can carry it.</h3>
+            <p>Clarify who owns what, how opportunities move, and where repeatable activity turns into execution.</p>
+          </div>
+        </article>
+      </div>
+      <p class="video-note">Concept treatment: click-to-play, captions on by default, full transcripts, and no autoplay audio.</p>
+    </div>
+  </section>
+
+  <section class="section quotes" aria-labelledby="principles-title">
+    <div class="wrap">
+      <div class="quotes__head">
+        <h2 id="principles-title">The principles behind the work.</h2>
+        <p>These are supporting ideas from respected business builders and thinkers. They are not testimonials for Advisor Growth Lab.</p>
+      </div>
+      <div class="quote-list">
+        <article class="quote">
+          <span class="quote__mark" aria-hidden="true">“</span>
+          <blockquote>You do not rise to the level of your goals. You fall to the level of your systems.</blockquote>
+          <footer>
+            <strong>James Clear</strong>
+            <a href="https://jamesclear.com/quotes/you-do-not-rise-to-the-level-of-your-goals-you-fall-to-the-level-of-your-systems" target="_blank" rel="noopener noreferrer">Read the source</a>
+          </footer>
+        </article>
+        <article class="quote">
+          <span class="quote__mark" aria-hidden="true">“</span>
+          <blockquote>Ideas are easy, execution is everything.</blockquote>
+          <footer>
+            <strong>John Doerr</strong>
+            <a href="https://www.kleinerperkins.com/perspectives/john-doerr-nvca-lifetime-achievement-award-acceptance-speech/" target="_blank" rel="noopener noreferrer">Read the source</a>
+          </footer>
+        </article>
+        <article class="quote">
+          <span class="quote__mark" aria-hidden="true">“</span>
+          <blockquote>Great vision without great people is irrelevant.</blockquote>
+          <footer>
+            <strong>Jim Collins</strong>
+            <a href="https://www.jimcollins.com/article_topics/articles/first-who.html" target="_blank" rel="noopener noreferrer">Read the source</a>
+          </footer>
+        </article>
+      </div>
+      <p class="quotes__note">Quoted for educational context. No endorsement, affiliation, or relationship is implied.</p>
+    </div>
+  </section>
+
+  <section class="section call" id="what-happens">
+    <div class="wrap call__grid">
+      <div>
+        <span class="eyebrow">A useful first conversation</span>
+        <h2>What happens on the call?</h2>
+        <p class="call__lede">We do not begin with a firm, a package, or a pitch. We begin with the practice you have and the one you want to build.</p>
+        <p class="call__promise">The point is a clearer decision, even when the right answer is to stay where you are, wait, or keep learning.</p>
+      </div>
+      <div class="call-steps">
+        <article class="call-step">
+          <span>01</span>
+          <div><h3>Identify your current stage</h3><p>Where the practice sits today, what has changed, and which constraints are starting to matter.</p></div>
+        </article>
+        <article class="call-step">
+          <span>02</span>
+          <div><h3>Define the business you want</h3><p>Your growth, scale, client experience, team, succession, and personal goals create the decision criteria.</p></div>
+        </article>
+        <article class="call-step">
+          <span>03</span>
+          <div><h3>Examine the bridge</h3><p>We look at model fit, resources, operating support, sales execution, marketing systems, and the levers that could close the gap.</p></div>
+        </article>
+        <article class="call-step">
+          <span>04</span>
+          <div><h3>Leave with clearer next questions</h3><p>You will know what needs to be validated before taking another step and whether a broader search is worth your time.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section people" id="why-us">
+    <div class="wrap">
+      <div class="people__intro">
+        <span class="eyebrow">Why Advisor Growth Lab</span>
+        <h2>Two operator lenses. One clearer decision.</h2>
+        <p>Advisor Growth Lab combines growth strategy, marketing systems, operations, sales execution, and advisor-movement data. The value is not a preselected destination. It is a stronger way to evaluate the path.</p>
+      </div>
+
+      <article class="profile">
+        <div class="profile__portrait">
+          <small>Portrait to be added</small>
+          <span class="profile__initials">CE</span>
+        </div>
+        <div class="profile__body">
+          <span class="profile__role">Chris · Growth strategist</span>
+          <h3>Start with the destination.</h3>
+          <p>Chris looks at where the practice is today, where the advisor wants it to go, and what has to change to close that gap. His lens covers business-model fit, growth strategy, personal positioning, modern marketing systems, and the resources needed to execute.</p>
+          <div class="profile__lens" aria-label="Chris's focus areas">
+            <span>Growth strategy</span><span>Business-model fit</span><span>Personal brand</span><span>Marketing systems</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="profile">
+        <div class="profile__portrait">
+          <small>Portrait to be added</small>
+          <span class="profile__initials">J</span>
+        </div>
+        <div class="profile__body">
+          <span class="profile__role">Johnny · Operations and sales</span>
+          <h3>Make the plan executable.</h3>
+          <p>Johnny brings operating experience and an in-depth sales background. His lens focuses on how a model works in practice: roles, process, accountability, repeatable activity, team alignment, and the systems required to turn a growth plan into execution.</p>
+          <div class="profile__lens" aria-label="Johnny's focus areas">
+            <span>Operations</span><span>Sales execution</span><span>Process design</span><span>Accountability</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section booking" id="booking">
+    <div class="wrap">
+      <div class="booking__head">
+        <span class="eyebrow">Booking page preview</span>
+        <h2>Know what the conversation is before you book it.</h2>
+        <p>A single 30 to 45 second welcome video sits beside the calendar on desktop and above it on mobile. It lowers uncertainty without turning the booking page into another sales page.</p>
+      </div>
+      <div class="booking__frame">
+        <div class="booking-video">
+          <span class="booking-video__caption">Before we speak · 00:38</span>
+          <span class="video-card__play" aria-hidden="true"></span>
+          <div>
+            <h3>Here is what we will work through.</h3>
+            <p>A direct welcome from Chris. No autoplay and no long-form pitch.</p>
+          </div>
+        </div>
+        <div class="calendar">
+          <div class="calendar__top">
+            <h3>Private practice-growth conversation</h3>
+            <span>30 min</span>
+          </div>
+          <div class="calendar__week" aria-label="Example availability">
+            <div class="day"><strong>Tuesday</strong><small>July 21</small><a class="time" href="schedule/index.html">10:00 AM</a><a class="time" href="schedule/index.html">1:30 PM</a><a class="time" href="schedule/index.html">3:00 PM</a></div>
+            <div class="day"><strong>Wednesday</strong><small>July 22</small><a class="time" href="schedule/index.html">9:30 AM</a><a class="time" href="schedule/index.html">12:00 PM</a><a class="time" href="schedule/index.html">4:00 PM</a></div>
+            <div class="day"><strong>Thursday</strong><small>July 23</small><a class="time" href="schedule/index.html">11:00 AM</a><a class="time" href="schedule/index.html">2:00 PM</a><a class="time" href="schedule/index.html">4:30 PM</a></div>
+          </div>
+          <div class="calendar__foot">
+            <p>Your information stays private. Choosing a time does not commit you to a transition, a firm, or a recruiting process.</p>
+            <a class="button button--indigo" href="schedule/index.html">View live scheduling page</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section disclosure" aria-labelledby="disclosure-title">
+    <div class="wrap disclosure__in">
+      <h2 id="disclosure-title">How we are compensated</h2>
+      <div>
+        <p>You do not pay Advisor Growth Lab for this conversation. We begin with your goals and the business model you need.</p>
+        <p>If we identify a potential partner and that firm would compensate us for an introduction or placement, we will disclose that relationship before making the introduction.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap final__in">
+      <h2>Talk through the practice you want to build.</h2>
+      <div class="final__action">
+        <p>Bring the questions you have been working through privately. We will help you organize them into a clearer set of decisions.</p>
+        <a class="button button--light" href="schedule/index.html">Find a private time</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__in">
+    <span>Advisor Growth Lab · Private concept preview</span>
+    <a href="index.html">Return to the current site</a>
+  </div>
+</footer>
+</body>
+</html>
