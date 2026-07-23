@@ -1,0 +1,53 @@
+{
+  "_readme": [
+    "Role → CLI routing for factory.js. Any CLI works. Placeholders: {PROMPT} is replaced with the assembled stage prompt.",
+    "io: 'stdout' = inputs are embedded in the prompt, stdout becomes the output file (works with ANY model/CLI, no tools needed).",
+    "io: 'tools'  = the agent is given file paths and writes the output itself (needs a tool-capable CLI: claude / hermes with hermes-cli toolset / codex).",
+    "parse: 'claude-json' only for `claude -p --output-format json` (unlocks cost tracking). Everything else: 'raw'.",
+    "Swap any role to Hermes/OpenRouter, e.g.: { \"cmd\": \"hermes\", \"args\": [\"chat\", \"--model\", \"glm-5-turbo\", \"--toolsets\", \"hermes-cli\", \"-p\", \"{PROMPT}\"], \"io\": \"tools\", \"parse\": \"raw\" }",
+    "(Verify your hermes CLI's exact non-interactive flags first — the ones above are illustrative.)",
+    "The model-bench (benchmarks/model-bench/) is the hiring exam: before promoting a model into a role, run the packet, log the verdict in BUILD_REGISTRY, let the data decide.",
+    "Law 10 applies: quality at the LOWEST token cost that clears the gates. Director + critic are the only slots worth premium models."
+  ],
+  "roles": {
+    "research": {
+      "label": "research — synthesis over Black Book + interview",
+      "cmd": "claude",
+      "args": ["-p", "{PROMPT}", "--output-format", "json", "--model", "claude-sonnet-5", "--allowedTools", "Read,WebSearch,WebFetch", "--permission-mode", "acceptEdits"],
+      "io": "stdout", "parse": "claude-json", "timeoutMin": 30
+    },
+    "strategy": {
+      "label": "strategy — copy spine w/ VOC bindings",
+      "cmd": "claude",
+      "args": ["-p", "{PROMPT}", "--output-format", "json", "--model", "claude-sonnet-5"],
+      "io": "stdout", "parse": "claude-json", "timeoutMin": 20
+    },
+    "director": {
+      "label": "director — taste tier, runs once per client",
+      "cmd": "claude",
+      "args": ["-p", "{PROMPT}", "--output-format", "json", "--model", "claude-opus-4-8", "--allowedTools", "Read", "--permission-mode", "acceptEdits"],
+      "io": "stdout", "parse": "claude-json", "timeoutMin": 30
+    },
+    "copy": {
+      "label": "copy — strongest writer that benches clean",
+      "cmd": "claude",
+      "args": ["-p", "{PROMPT}", "--output-format", "json", "--model", "claude-opus-4-8"],
+      "io": "stdout", "parse": "claude-json", "timeoutMin": 30
+    },
+    "copygate": {
+      "label": "copy gate — fresh skeptic, different model than copy",
+      "cmd": "claude",
+      "args": ["-p", "{PROMPT}", "--output-format", "json", "--model", "claude-sonnet-5"],
+      "io": "stdout", "parse": "claude-json", "timeoutMin": 15
+    },
+    "build": {
+      "label": "build — executor tier; GLM-via-Hermes proven on Anchor v5",
+      "cmd": "claude",
+      "args": ["-p", "{PROMPT}", "--output-format", "json", "--model", "claude-sonnet-5", "--allowedTools", "Read,Write,Edit", "--permission-mode", "acceptEdits"],
+      "io": "tools", "parse": "claude-json", "timeoutMin": 40
+    }
+  },
+  "projects": {
+    "_example": { "accent": "#C9A227" }
+  }
+}

@@ -1,25 +1,51 @@
 # THE PROCESS — one page, the whole factory
 *The front door. If you (human or model) are here to build a website, start here and only here.
-Everything else in the repo hangs off this page. Updated 2026-07-08.*
+Everything else in the repo hangs off this page. Updated 2026-07-23.*
 
 **The product:** give the system palette, fonts, ICP, and client details — it PRINTS a website
 that looks like a $25–50K team built it and converts to MQLs/SQLs. (`templates/PRINT_SPEC.md` is
 the contract: what's LOCKED vs what a client supplies.)
 
+## THE ONE COMMAND
+
+```
+node factory.js print <client>        # runs stages 1→5 below, pauses at the two human gates
+node factory.js approve <client> <gate>   # approve from anywhere (Slack ping if webhook set)
+```
+`factory.js` is the foreman: every stage is a fresh subprocess of whatever CLI
+`factory.config.json` assigns to that role — claude, hermes (GLM/Kimi/OpenRouter), codex,
+anything. Roles are swappable per model-bench results; the gates and gauntlet don't care who
+built the file. Manual stage-by-stage (below) remains valid and identical in behavior.
+
 ## The print button — run of show
 
 ```
-0. INTAKE          projects/<client>/INTAKE.md  ← the only human-authored input
+0a. INTERVIEW      higher-tier clients: 60-min founder interview
+                   (templates/_base/INTERVIEW.md) → research/INTERVIEW_TRANSCRIPT.md.
+                   The highest-authority VOC source in the system.
+0b. DEEP RESEARCH  ICP Deep Research Pack (playbooks/icp-research-pack, ~$1–3 on cheap APIs):
+                   python3 runner/run.py <intake> --outdir research/ → BLACK_BOOK.md
+                   (verified VOC + belief maps + belief-change order).
+0c. INTAKE         projects/<client>/INTAKE.md  ← the only human-authored input
                    (palette · fonts-or-register · ICP+pains · client details · REAL assets
                     · visual world + signature-motif idea + proof inventory*)
-1. RESEARCH        agents/01 → ICP_BRIEF (exact-words pains, insider language)
-2. STRATEGY        agents/02 → COPY_STRATEGY on the conversion skeleton (REFERENCES.md RULE #1)
+1. RESEARCH        agents/01 → ICP_BRIEF with the VOC LEDGER (citable VOC-nn rows:
+                   verbatim quote + source). The ledger is the binding currency downstream.
+2. STRATEGY        agents/02 → COPY_STRATEGY + the COPY SPINE (Part B): every section bound
+                   by ID to VOC rows, one objection, placed proof, CTA psychology. The spine
+                   is the forcing function that turns research into copy — "see research"
+                   is not a binding, a VOC ID is.
 2.5 DIRECTION      agents/00 DIRECTOR (taste tier, once per client):
                    register + pattern-per-section vector (ASSEMBLY dials, ≤40% same-vertical
                    overlap) + bespoke signature moment (AMBITION FLOOR + CONVERSION LAW)
-                   → self-contained BUILD BRIEF. Chris gates DIRECTION here — wrong direction
+                   → self-contained BUILD BRIEF. ✋ Chris gates DIRECTION here — wrong direction
                    costs one section, not a site.
-3. COPY            agents/03 → COPY_ALL (RMBC, kill-list, [VERIFY] discipline)
+3. COPY            agents/03 → COPY_ALL written FROM the spine (RMBC, kill-list, [VERIFY]
+                   discipline) + mandatory Traceability Appendix (section → VOC rows → the line).
+3.5 COPY GATE      agents/03.5 — fresh independent auditor, different model than the writer:
+                   traceability · awareness match · generic-copy detection · fact discipline ·
+                   conversion architecture. VERDICT: REPAIR blocks the build. This gate exists
+                   because deep research once turned into generic copy with nothing stopping it.
 4. PRINT           agents/04 EXECUTOR (best design tier for design-critical scopes):
                    builds FROM THE BRIEF + pattern invariants — clean prints only, NEVER
                    elevation passes on finished pages (LED-013). One scope at a time; hero first.
@@ -77,6 +103,9 @@ world), signature-motif seed, assets manifest, proof inventory with legal footin
 
 | Need | Go to |
 |---|---|
+| One-command orchestrator + model routing | `factory.js` + `factory.config.json` |
+| Founder interview kit (60-min VOC extraction) | `templates/_base/INTERVIEW.md` |
+| Deep-research chain (Black Book) | `playbooks/icp-research-pack` (Claude Projects repo) |
 | Product contract (locked/flexible) | `templates/PRINT_SPEC.md` |
 | Conversion skeleton + CRO rules | `docs/REFERENCES.md` |
 | Pattern pool + mash-up rules | `templates/components/catalog.html` + `templates/ASSEMBLY.md` |
