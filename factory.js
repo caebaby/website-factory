@@ -255,6 +255,12 @@ function audition(name) {
   let html = res.text.trim();
   const fence = html.match(/```(?:html)?\s*([\s\S]*?)```\s*$/);
   if (fence && fence[1].trim().toLowerCase().startsWith('<!doctype')) html = fence[1].trim();
+  /* Reject non-builds: provider errors, refusals, and truncated stubs must never
+   * become "candidates" (a 40-byte HTTP 401 once trivially passed the gate). */
+  const lower = html.toLowerCase();
+  if (html.length < 5000 || (!lower.includes('<!doctype') && !lower.includes('<html'))) {
+    die('audition output is not a plausible build (' + html.length + ' bytes). First 200 chars:\n' + html.slice(0, 200));
+  }
   const out = path.join(REPO, 'benchmarks', 'model-bench', 'runs', 'candidate-' + name + '.html');
   fs.writeFileSync(out, html + '\n');
   log('one-shot saved → ' + out + (res.costUsd ? ' ($' + res.costUsd.toFixed(3) + ')' : ''));
