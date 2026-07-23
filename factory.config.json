@@ -4,8 +4,8 @@
     "io: 'stdout' = inputs are embedded in the prompt, stdout becomes the output file (works with ANY model/CLI, no tools needed).",
     "io: 'tools'  = the agent is given file paths and writes the output itself (needs a tool-capable CLI: claude / hermes with hermes-cli toolset / codex).",
     "parse: 'claude-json' only for `claude -p --output-format json` (unlocks cost tracking). Everything else: 'raw'.",
-    "Swap any role to Hermes/OpenRouter, e.g.: { \"cmd\": \"hermes\", \"args\": [\"chat\", \"--model\", \"glm-5-turbo\", \"--toolsets\", \"hermes-cli\", \"-p\", \"{PROMPT}\"], \"io\": \"tools\", \"parse\": \"raw\" }",
-    "(Verify your hermes CLI's exact non-interactive flags first — the ones above are illustrative.)",
+    "Hermes headless is VERIFIED (2026-07-23): `hermes chat -Q -q {PROMPT} -m <model>` — stdout carries ONLY the final response (session id goes to stderr), so io:'stdout' roles work with any model Hermes can reach (OpenRouter/GLM/Kimi). See 'alternates' below for tested command shapes.",
+    "Promotion rule: no model enters a live role until it passes the model-bench packet (benchmarks/model-bench/) or a copy-gate/gauntlet-audited trial run. Alternates are staged, not hired.",
     "The model-bench (benchmarks/model-bench/) is the hiring exam: before promoting a model into a role, run the packet, log the verdict in BUILD_REGISTRY, let the data decide.",
     "Law 10 applies: quality at the LOWEST token cost that clears the gates. Director + critic are the only slots worth premium models."
   ],
@@ -45,6 +45,27 @@
       "cmd": "claude",
       "args": ["-p", "{PROMPT}", "--output-format", "json", "--model", "claude-sonnet-5", "--allowedTools", "Read,Write,Edit", "--permission-mode", "acceptEdits"],
       "io": "tools", "parse": "claude-json", "timeoutMin": 40
+    }
+  },
+  "alternates": {
+    "_comment": "Tested command shapes, staged for promotion after benching. Copy one over a role's cmd/args/io/parse to swap models.",
+    "hermes-glm": {
+      "label": "GLM via Hermes — verified headless 2026-07-23; Anchor v5 was GLM-built",
+      "cmd": "hermes",
+      "args": ["chat", "-Q", "-q", "{PROMPT}", "-m", "glm-5-turbo"],
+      "io": "stdout", "parse": "raw", "timeoutMin": 30
+    },
+    "hermes-default": {
+      "label": "Hermes default model — verified headless 2026-07-23",
+      "cmd": "hermes",
+      "args": ["chat", "-Q", "-q", "{PROMPT}"],
+      "io": "stdout", "parse": "raw", "timeoutMin": 30
+    },
+    "hermes-tools": {
+      "label": "Hermes with file tools for io:'tools' roles — UNTESTED, verify --yolo/--accept-hooks behavior before live use",
+      "cmd": "hermes",
+      "args": ["chat", "-Q", "-q", "{PROMPT}", "-m", "glm-5-turbo", "-t", "hermes-cli", "--accept-hooks"],
+      "io": "tools", "parse": "raw", "timeoutMin": 40
     }
   },
   "projects": {
