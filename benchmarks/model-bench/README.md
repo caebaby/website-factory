@@ -51,6 +51,8 @@ loop works on a `.pipeline.html` copy).
 | 2026-07-08 | fugu-ultra | sakana chat, one-shot blind | 0 P0 · 0 P1 · 2 P2 | craft 7 · distinct 7 · motion 6 · copy 7.5 · compliance 9 | FIX — 3 findings (see below) |
 | 2026-07-08 | claude-sonnet-5 → **run-pipeline** | headless repair loop, zero humans | entry 1 P0 · 4 P1 → exit 0/0 | opus critic **ship 0.86** | **PASS** — 2 repair iters, $0.78, 6m12s |
 | 2026-07-08 | fugu-ultra → **run-pipeline** | headless repair loop, zero humans | entry 0 P0 · 5 P1 → exit 0/0 | opus critic 0.84, MINORs only | **PASS** — 1 repair iter, $0.39, 3m48s |
+| 2026-07-23 | glm-4.5-flash (Z.AI via hermes) | `factory.js audition hermes-default`, one-shot blind | 2 P0 · 1 P1 · 2 P2 | — (straight to pipeline) | FIX — 2 dead CTAs (sonnet's failure class), counter anim-dependent |
+| 2026-07-23 | glm-4.5-flash → **run-pipeline** | headless repair loop, zero humans | entry 2 P0 · 1 P1 → exit 0/0 | opus critic **ship 0.85** | **PASS** — 3 repair iters, $1.53, 10m6s. Third vendor through the gate; generation cost ≈ $0 (free tier), spend is Claude repair/critic |
 
 **Repair-loop note (2026-07-08):** the entry gate is the NEW check suite (LED-014/015/016) —
 under it the one-shots' real defect matrix is: sonnet = 1 dead CTA (bare-`#`; its `#assessCta`
