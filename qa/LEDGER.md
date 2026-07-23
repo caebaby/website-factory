@@ -185,27 +185,35 @@ Append-only. Each entry: what broke, why, how it was caught, and what permanent 
 - **Symptom:** "Start the assessment" (the page's MQL event) linked to `#assess` — the section it sits in. The report screen was reachable only by hand-typing the URL hash; the view-switch never scrolled to top.
 - **Root cause:** one-shot builder wired visuals, not interactions; nothing in the gate exercises clicks.
 - **Caught by:** rendered review + JS probe (bench). Escaped the deterministic gate entirely — it checks geometry, not wiring.
-- **Permanent artifact (pending implementation):**
-  - Check → `qa/visual-checks.js` `cta-dead-anchor` (P0): any `.btn`/primary CTA whose href resolves to its own containing section, a missing id, or `#`.
-  - Check → `conversion-path-smoke` (P0): programmatically invoke each primary CTA; assert a state change (navigation, view switch, or form focus).
+- **Permanent artifact:**
+  - ✅ SHIPPED (2026-07-08 factory session): `cta-dead-anchor` (P0) in `qa/visual-checks.js` + `run-checks.js`. Design finding while implementing: **static condemnation is wrong in BOTH directions.** Sonnet's `#assessCta` (href = its own section) is actually JS-wired (preventDefault → render quiz → scroll) — the original bench review over-condemned it from a static read. Fugu's `href="#report"` has no such id but is flawlessly wired (data-open-report handler + hashchange router). So the check works behaviorally: every suspicious CTA (`#`, missing id, self-anchor, hidden target) gets a REAL dispatched click on an isolated fresh load; aliveness = DOM mutation / visible-hash move / real scroll / focus move, and for self-anchors only mutation/focus count (scrolling to yourself IS the defect). Audits + probes run per entry state (default + every discoverable hash entry), because report-view CTAs are only judgeable with the report open.
+  - ✅ `cta-pending-endpoint` (P1): an `href="#"` CTA carrying `data-verify="<detail>"` is a DECLARED awaiting-client-detail endpoint — warns until wired, never blocks (factory [VERIFY] discipline).
   - Rule → DESIGN_SYSTEM R34 (interaction wiring is part of "done").
-- **Status:** ⏳ checks not yet written; rule added 2026-07-08.
+  - Fixture → `qa/fixtures/led014-broken.html` (3 dead reasons fire; wired bare-`#` and declared-pending stay clean).
+  - `conversion-path-smoke` (drive the full quiz flow) remains open — the click probe covers CTAs present in the rendered DOM, not buttons that only exist after multi-step interactions.
+- **Status:** ✅ check shipped + proven on bench candidates (sonnet: 1 real P0; fugu: 0 — its wiring really is flawless). See LED-018 for what it immediately caught in the gold build.
 
 ### LED-015 — Animated stat renders 0 on an entry path (P0-class, trust)
 - **Build:** model-bench claude-sonnet-5 (2026-07-08)
 - **Symptom:** report's "match confidence" stat (data-count-to=93) rendered **0%** when the report was opened via URL hash — the counter only ran on the button-driven view switch.
 - **Root cause:** count-up wired to one entry path; hash entry skipped it.
 - **Caught by:** rendered review (bench).
-- **Permanent artifact (pending):** check → `counter-stuck-at-zero` (P0): after freezing animations to end-state, any `[data-count-to]`-style element whose rendered text is still 0/empty. Note: the gold build's 5×P1 `opacity-anim-dependent` warnings are the same class (state depends on an animation actually running) — fix queued for gold.
-- **Status:** ⏳ check not yet written; rule R34 covers.
+- **Permanent artifact:**
+  - ✅ SHIPPED (2026-07-08 factory session), as a two-tier check mirroring LED-013's severity split:
+    - **P0 `counter-stuck-at-zero`** (`__counterCensus` in visual-checks.js): every visible counter-attr element (`data-count-to/-to/-target/-count/-count-up`) is scrolled into view (so IO triggers really fire), the page polls until numbers stop moving, then any counter whose target ≠ 0 but renders 0/empty is broken wiring. Re-run in every hash entry state — a hidden view's counters are judged when the view is open (the "wired to one entry path" class).
+    - **P1 `counter-anim-dependent`** (source scan in run-checks.js): counter whose INITIAL markup is 0/empty — the value exists only if the count-up actually runs (rAF starvation / skipped entry path shows 0). The robust pattern ships the final value in markup and lets JS zero + animate on top — fugu independently ships this pattern; sonnet (4 counters) and the gold build (3 counters) did not.
+  - Empirical correction to the entry above: in the archived sonnet artifact, hash entry DOES run the counter (showReport → animateReportOnce). The reproducible defect class is the anim-dependent markup, which is what the P1 catches; the P0 catches true never-wired counters (fixture-proven).
+  - Fixture → `qa/fixtures/led015-broken.html` (dead / fragile / robust counter triplet).
+- **Status:** ✅ checks shipped; gold's 3 counters fixed to robust markup (LED-018).
 
 ### LED-016 — Internal build-notes leaked into public copy (P1-class, taste/trust)
 - **Build:** model-bench fugu-ultra one-shot (2026-07-08)
 - **Symptom:** marketing page showed implementation caveats as visible copy: "*Fictional interface value for this demo; replace with live public-filing query before launch*", "Ticker … public page must be wired to verified aggregate queries", report sub-head "This screen demonstrates the assessment result experience."
 - **Root cause:** the model's compliance instinct expressed itself as dev-notes instead of reader-facing labels; the packet never distinguished the two registers.
 - **Caught by:** rendered review (bench).
-- **Permanent artifact:** Rule → DESIGN_SYSTEM R32 (compliance labels are reader-facing words like "Illustrative — from public filings"; never dev-notes, never self-describing demo-speak). Critic checklist item added. A cheap check is possible (`grep` for "replace with|must be wired|this demo|this screen demonstrates" class of phrases) — pending.
-- **Status:** rule added 2026-07-08; check pending.
+- **Permanent artifact:** Rule → DESIGN_SYSTEM R32 (compliance labels are reader-facing words like "Illustrative — from public filings"; never dev-notes, never self-describing demo-speak). Critic checklist item added.
+  - ✅ SHIPPED (2026-07-08 factory session): **P1 `build-note-phrase`** in `qa/visual-checks.js` — scans all text nodes (script/style excluded; hidden views INCLUDED, since some entry path will show them) for the dev-note register: "replace with live/real/verified…", "must be wired", "for this demo", "this screen/page demonstrates", "before launch", lorem ipsum, TODO:/FIXME/TKTK. Reader-facing labels ("Illustrative…", "Sample report") stay clean. Fires on all 3 fugu leak sites (5 phrase hits); fixture `qa/fixtures/led016-broken.html`.
+- **Status:** ✅ rule + check shipped.
 
 ### LED-017 — Charts with zero information content (P1-class, craft)
 - **Build:** model-bench fugu-ultra (2026-07-08)
@@ -404,3 +412,52 @@ Append-only. Each entry: what broke, why, how it was caught, and what permanent 
 - **Fix:** rebuilt the workbook in two layers. Part 1 contains launch-required facts, high-impact message decisions, conversion choices, and content direction. Part 2 groups optional supporting copy by page. Removed safe-to-retain metadata, shared interface labels, repeated controls, and duplicates; retained the current-copy versus client-change boxes.
 - **Permanent lesson:** client review artifacts should ask only for decisions the client is uniquely qualified to make. Put legal identity, credentials, team, services, fit criteria, positioning, and conversion path first; group optional wording later; keep implementation and optimization details inside the production team.
 - **Status:** ✅ closed. Workbook reduced from 69 to 18 pages; all required priority blocks are present, all pages rendered cleanly, and the accessibility audit is 0 high / 0 medium / 0 low.
+
+---
+
+## Pipeline-acceptance entries (merged from feature/agl-pilot 2026-07-23)
+*Originally logged as LED-018..022 on the pilot branch; renumbered LED-042..046 at merge to resolve a numbering collision with the Anchor line's LED-018..041.*
+
+### LED-042 — The GOLD build shipped 3 dead booking CTAs + 3 fragile counters (P0-class, conversion — caught by the LED-014/015 checks on their first run)
+- **Build:** `projects/agl/v9/agl-site.html` (the quality gold exemplar, Chris-approved, LIVE at https://caebaby.github.io/agl-site-preview/)
+- **Symptom:** all three "Book a private call" CTAs — the page's PRIMARY conversion event — were `href="#"` with no JS wiring (home guide card + report nav + report close). Clicking did nothing. Both prior gates and human review missed it: the geometry gate doesn't click, and humans assume a styled button works. Plus the 3 proof counters shipped `0` in markup (anim-dependent — LED-015 class).
+- **How it was caught:** the new `cta-dead-anchor` behavioral probe fired 3× on its first gold run — the checks earned their keep before the session ended.
+- **Fix (applied 2026-07-08):** report-view CTAs → `href="#talk" data-open-home` + the delegated handler now scrolls to the link's hash target after the view switch; guide-card CTA → declared `data-verify="booking-url"` pending endpoint (the real booking URL is a client detail Chris must supply — P1 until wired, per [VERIFY] discipline); counters ship final values in markup (`725,000` / `9,400` / `18,000`), JS zeroes + animates on top.
+- **⚠️ OPEN ACTION (Chris):** (1) supply the real booking URL (Calendly/SavvyCal/mailto) for the guide-card CTA; (2) the LIVE deployed copy in `caebaby/agl-site-preview` still has all three dead CTAs — redeploy from this repaired gold when the booking URL lands.
+- **The lesson:** the gold exemplar is not exempt from the gate. Every new check runs against gold immediately — "gold" means gate-clean TODAY, not blessed forever.
+- **Status:** ✅ fixed in repo gold; live redeploy blocked on the booking URL.
+
+### LED-043 — Critic goalpost-moving stalls the repair loop (system defect, caught on run-pipeline's first acceptance run)
+- **Build:** run-pipeline acceptance run 1, bench-sonnet (2026-07-08)
+- **Symptom:** the deterministic gate went clean after repair #1, but each FRESH critic round returned a *different* set of MAJOR findings at overall ≈0.81 — the loop burned all 3 iterations on taste and ESCALATED a build that was fine. One taste "repair" even hid a functional element (the hero audience toggle) to satisfy an unanchored "hierarchy" nit.
+- **Root cause:** unanchored critic. The prompt asked for judgment without requiring rule citations, and each fresh spawn had no knowledge of what the previous round demanded — so goalposts moved every round. (Reflection research predicted exactly this: compounding noise past ~3 iterations.)
+- **Permanent fix (all three in `qa/run-pipeline.js`):**
+  1. **Rule-cited MAJORs only** — a MAJOR must cite the rulebook (R-id); uncited MAJORs are downgraded to MINOR *mechanically* by the orchestrator, not just by prompt. MINORs never block; they're harvest material.
+  2. **Convergence contract** — each critic receives the previous round's MAJORs + the repairs claimed against them, with an explicit no-goalpost-moving clause: prior MAJORs addressed + nothing new rule-violating ⇒ ship.
+  3. **Separate taste budget** — gate repairs converge deterministically (budget 3); taste rounds don't (budget 2, then escalate to a human eye). Critics are also forbidden from prescribing removal of functional elements — that's an escalate, not a fix.
+- **Proof:** re-run after the fix: bench-sonnet PASS in 2 iterations (critic ship 0.86, MAJORs cited R3/R2/R34), bench-fugu PASS in 1 (MINORs only). Both registry rows — including the failed run — kept in `docs/BUILD_REGISTRY.md` as the instrumentation record.
+- **Status:** ✅ fixed + episode logs (`<work>.episode.json`) now persist every round's critic reasoning, so this failure class is diagnosable from artifacts instead of vibes.
+
+### LED-044 — Gold shipped with no doctype/charset/viewport (quirks mode + broken mobile scaling; escaped every gate)
+- **Build:** `projects/agl/v9/agl-site.html` (gold), found during the AGL pilot handoff prep (2026-07-08)
+- **Symptom:** the file starts at `<title>` — no `<!doctype html>`, no `<meta charset>`, no `<meta name="viewport">`. Browsers render it in quirks mode, and on real phones the page renders at ~980px virtual width and scales down (every mobile breakpoint effectively dead in production).
+- **Why every gate missed it:** headless Chrome inspections run desktop-sized on file:// URLs; the geometry checks measure the rendered result, which looks fine in that context. Nothing asserts document-mode or head hygiene.
+- **Fix (handoff only):** `projects/agl/handoff/index.html` + all /resources pages carry the full head (doctype, charset, viewport, title/description, canonical, OG). GOLD IS UNCHANGED — it is replay-pinned; re-pin is a conscious decision for Chris.
+- **Permanent artifact — OPEN:** a `head-hygiene` check (P0 if viewport missing, P1 if doctype/charset missing) belongs in `qa/run-checks.js`. NOT added this session — qa/ is frozen under the pilot's scope fence. Next factory session should add it + fixture.
+- **Status:** 🟡 handoff fixed; check + gold re-pin open.
+
+### LED-045 — Pipeline repair agent DUPLICATED the reveal rule instead of replacing it (stall→escalate worked as designed)
+- **Build:** AGL pilot, `run-pipeline` on the handoff home page (2026-07-08). Gate input: 5× `opacity-anim-dependent` P1 on the v9 hero load-in (`.hload` forwards-fill — the LED-013/LED-011 class, present in pinned gold).
+- **Symptom:** the scoped repair agent reported success ("moved animation under `#heroIn.in`; base now visible") but actually ADDED the new `#heroIn.in .hload` rule while leaving the original bare `.hload{opacity:0;…;animation:…forwards}` in place — net effect zero; re-gate showed the same 5 P1s; the loop correctly detected STALL and ESCALATED after 1 iteration.
+- **The system worked:** repair self-report ≠ evidence (the standing law, now proven for repairs too); the deterministic re-gate caught the no-op and the stall rule stopped the burn.
+- **Human-touch fix (counted per Cherny instrumentation):** applied the LED-013 pattern properly in `handoff/index.html` — base `.hload` hidden w/o animation, ALL of `{opacity:1; animation:hrise backwards}` under `#heroIn.in .hload`, explicit from/to keyframes, double-rAF `.in` add. Re-gate: the 5 P1s gone; handoff home is now CLEANER than pinned gold (which still carries them).
+- **Lesson for the repair prompt (open):** scoped repairs that modify a CSS rule must be instructed to show the rule being REMOVED as well as the rule being added — "replace" edits that only add are invisible to the agent's own diff sense. Candidate hardening for the repair prompt template next session (prompt file untouched this session — scope fence).
+- **Status:** ✅ defect fixed by hand; two hardening items open (repair-prompt wording; gold re-pin with the same hero fix).
+
+### LED-046 — Critic treats declared pending-endpoint CTAs inconsistently (variance, not a defect)
+- **Build:** AGL pilot, post `am-i-ready-to-leave-my-firm.html` re-run after a citation fix (2026-07-09)
+- **Symptom:** identical `href="#" data-verify="booking-url"` CTA state PASSED four pipeline runs (critics waived or ignored, per the cta-pending-endpoint non-blocking rule), then a fifth critic raised it as an R34 MAJOR and ESCALATED — "get the booking URL from Chris." Content was otherwise unchanged.
+- **Read:** the escalation's *disposition* is correct (it IS a client-fact dependency, already VERIFY item #1) but the *inconsistency* burns repair iterations and money on a known, declared TODO.
+- **Hardening (open, qa/ frozen this session):** run-pipeline's critic prompt should state that `data-verify` declared pending endpoints are client TODOs — reportable, never MAJOR/escalate. Mirrors the gate's own `cta-pending-endpoint` non-blocking rule.
+- **Status:** 🟡 page ships on its prior PASS + unchanged-content basis; critic-prompt hardening open.
+- **Second occurrence (2026-07-09, home v8):** critic raised the same declared CTA as MAJOR; the scoped repair "fixed" it by pointing the button at `#talk` — the section it sits inside — i.e. it manufactured an LED-014 self-anchor to satisfy the critic. The re-gate caught it and the run correctly ESCALATED; repair rejected, source kept. Escalates the hardening from nice-to-have to required: the critic prompt MUST whitelist `data-verify` pending endpoints, and the repair prompt MUST refuse to re-target them.

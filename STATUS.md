@@ -1,5 +1,5 @@
 # Website Factory — Status
-Last updated: 2026-07-20 (Anchor nine-route client review is live; the client copy workbook is prioritized and ready for Alex. Read the ANCHOR block first, then FINISH LINE).
+Last updated: 2026-07-20 (Anchor nine-route client review is live; the client copy workbook is prioritized and ready for Alex. Read the ANCHOR block first, then FINISH LINE). **2026-07-23: branches merged — this file now carries the Anchor line, the AGL pilot line (see AGL PILOT SESSION block), and the Codex Anchor iterations in one history.**
 
 ---
 
@@ -27,6 +27,44 @@ Last updated: 2026-07-20 (Anchor nine-route client review is live; the client co
 
 ---
 
+## ▶ 2026-07-08 (late night) — AGL PILOT SESSION: first real client through the whole pipeline (branch `feature/agl-pilot`)
+
+**Deliverable, met:** `projects/agl/handoff/` — 5 static pages Johnny can drag into Replit tonight
+(home + /resources hub + 3 full episode posts), every page **PASS** through
+`run-pipeline --critic-doc DESIGN_SYSTEM.md` (critic ship 0.86–0.88, $0.19–0.21/page, ~90s/page —
+registry rows `agl-pilot-*`). One [VERIFY] sheet for Chris: `projects/agl/copy/VERIFY_SHEET.md` (12 items;
+the two launch-blockers are the booking URL and, for social cards, an og:image).
+
+**The pipeline ran as designed (PROCESS steps 0–5, fresh agent per role):**
+- INTAKE (`projects/agl/INTAKE.md`) drafted from repo accuracy rules — sell the MODEL, Lane = peer,
+  no inflated counts, proof inventory with legal footing.
+- Agent 01 research (`research/ICP_BRIEF.md`): r/CFP verbatim pain/desire quotes (via pullpush archive,
+  permalinked), competitor map (Diamond/3xEquity/FA Match/FP Transitions/ATS), 4 competitive gaps.
+  Headline finding: **nobody in the category can honestly return "stay put" — the disinterested answer
+  is unclaimed ground.** Gold's hero sub already carries the #1 power line verbatim.
+- Agent 02 strategy (`strategy/COPY_STRATEGY.md`): gold arc validated (do-not-touch verdict on the spine),
+  3 copy refinements, nav label **"The Lab"** (URL stays /resources), 10-episode topic map ranked by
+  conversion proximity, stakes-headline formula.
+- Agent 03 copy (`copy/COPY_ALL.md`): home deltas + hub + 3 full posts, compliance ledger
+  (all economics labeled illustrative; r/CFP material paraphrased, zero unverified verbatim quotes).
+- BUILD: home = gold + deltas (never redesigned); hub + posts skinned entirely in v9's language
+  (tokens/buttons/glass/bhero/constellation/io verbatim from gold). All self-contained (R30), proper
+  heads (doctype/viewport/canonical/OG/JSON-LD — gold lacked these, see LED-044).
+- GAUNTLET: 4/5 CLEAN-first-run; home escalated once (repair agent duplicated the reveal rule —
+  LED-045, stall→escalate held), human-touch fix applied the LED-013 pattern → **home is now cleaner
+  than pinned gold** (0 anim-dependent P1s vs gold's 5). Human touches this session: 1.
+
+**New factory asset harvested:** `templates/PAGE_SYSTEM.md` v1 — the SEO/blog page system
+(3-tier linking, per-post SEO contract, hook→payload→conversion anatomy, production contract).
+First worked example = the 3 AGL posts.
+
+**Open after this session:**
+- [ ] Chris: the 12-item VERIFY sheet (booking URL + subscribe endpoint unblock the two pending CTAs).
+- [ ] Chris: pick home H2 — shipped "The briefing recruiters wish you weren't getting." (quieter alt in comment).
+- [ ] Gold re-pin decision: port the hero-reveal fix + head hygiene from handoff back into v9 gold (re-pin replay consciously, LEDGER entry).
+- [ ] Next factory session: `head-hygiene` check (LED-044) + repair-prompt hardening (LED-045) — qa/ was frozen this session.
+- [ ] Track B (live data assessment) still separate — assessment CTAs route to the sample-report experience meanwhile.
+
 ## ▶ THE FINISH LINE (Chris, 2026-07-08): "custom bangers, one after another, minimal HITL"
 
 Business context: outbound is scaling and getting replies — the factory + AGL site are the
@@ -34,11 +72,14 @@ conversion surface. Telegram trigger PARKED (build the pipeline, the trigger is 
 Humans compress to two 1-minute gates: direction-brief approve + pre-ship.
 
 **The 5 remaining builds, in order:**
-1. Implement bench round-1 checks in `qa/visual-checks.js`: `cta-dead-anchor` (P0),
-   `counter-stuck-at-zero` (P0), build-note-phrase scan (P1). (LED-014/015/016)
-2. **`run-pipeline <slug>` — the headless repair loop as one command** (highest leverage:
-   converts one-shot FIX verdicts into PASS with zero humans). Acceptance test: feed the two
-   bench candidates (runs/candidate-sonnet.html, runs/candidate-fugu.html) through it → PASS.
+1. ✅ DONE 2026-07-08 — bench round-1 checks live in `qa/visual-checks.js` + `run-checks.js`:
+   `cta-dead-anchor` (P0, behavioral click-probe), `counter-stuck-at-zero` (P0) +
+   `counter-anim-dependent` (P1), `build-note-phrase` (P1). Fire on the bench candidates,
+   pass gold. First gold run caught 3 REAL dead booking CTAs in the shipped AGL v9 → LED-042.
+2. ✅ DONE 2026-07-08 — **`node qa/run-pipeline.js <build.html>` is the one command.**
+   ACCEPTANCE TEST PASSED: sonnet FIX(1P0/4P1) → PASS in 2 iters ($0.78, 6m12s); fugu
+   FIX(0P0/5P1) → PASS in 1 iter ($0.39, 3m48s). Zero human edits. Metrics auto-log to
+   BUILD_REGISTRY "Pipeline runs". First run exposed critic goalpost-moving → fixed (LED-043).
 3. Claims-verification agent pass ([VERIFY] discipline enforced — every factual claim traces
    to intake/research or flags). The accuracy gate Chris asked for.
 4. Pattern pool depth + MENU CURATION + **INVARIANT RETROFIT (Chris, 2026-07-08: "I don't
@@ -55,6 +96,16 @@ Humans compress to two 1-minute gates: direction-brief approve + pre-ship.
 5. **AGL = pilot client #1 through the full pipeline.** Chris's v9 change list becomes
    INTAKE.md; the live data-backed assessment (spec in agent-flows, Track B) is AGL's
    signature moment. Finishing the system and finishing the AGL site are the same workstream.
+   **SCOPE EXPANDED (Chris, 2026-07-08 night):** deliverable = the finished AGL site WITH
+   final copy, packaged for Johnny to spin up on Replit. Plus: (a) a content section on the
+   home page that routes to a new **/resources** page; (b) a direct-response-oriented
+   resources page + blog/episode layout — AGL is launching a **daily 100%-AI-produced
+   podcast**, and the resources/blog surface is the SEO/organic-traffic engine (each episode
+   = a post; every post drives to the assessment/booking conversion event, per CONVERSION
+   LAW). The factory has no SEO/blog blueprint yet — that page system (semantic HTML, meta,
+   schema.org, internal linking, post template) gets designed in the pilot session and
+   harvested back into `templates/PAGE_SYSTEM.md`. Dependency: Chris's real booking URL
+   (LED-042) — until supplied, CTAs stay `data-verify="booking-url"`.
 
 Why we believe the low-HITL claim: bench round 1 — two models one-shot to ~85% of gold with
 near-disjoint failure modes; the gate+critic+repair loop covers the space no single model does.
@@ -65,10 +116,10 @@ Scorecard of the five principles against this system, and the adoption order:
 
 | Principle | Status |
 |---|---|
-| Bench as regression suite (doc/prompt changes must not lower golden-build scores) | QUEUED — factory-session step 3 |
-| One command + brutal dogfood (`run-pipeline`, then real clients immediately) | QUEUED — factory-session steps 1–2, then AGL pilot |
+| Bench as regression suite (doc/prompt changes must not lower golden-build scores) | ✅ SHIPPED 2026-07-08 — `qa/replay.js` + pinned manifest + pre-commit hook (`git config core.hooksPath .githooks`) |
+| One command + brutal dogfood (`run-pipeline`, then real clients immediately) | ✅ command SHIPPED + acceptance-proven 2026-07-08 — dogfood begins with the AGL pilot |
 | Cut the doc surface in half (~14 process/spec docs is sprawl; sprawl caused LED-003) | OPEN |
-| Instrument the metric: human-minutes per shipped banger (+ repair iterations, tokens, wall-clock) | OPEN — must land WITH run-pipeline |
+| Instrument the metric: human-minutes per shipped banger (+ repair iterations, tokens, wall-clock) | ✅ SHIPPED 2026-07-08 — every run-pipeline invocation auto-logs to BUILD_REGISTRY "Pipeline runs" (incl. the failed first run — that's the point) |
 | Durable vs disposable scaffolding (moats appreciate: ledger/registry/catalog/palettes/gold builds/evals; choreography sheds each model generation) | OPEN — falls out of the usage audit |
 
 **Adoption sequence:**
@@ -82,6 +133,60 @@ Scorecard of the five principles against this system, and the adoption order:
 3. The durable/disposable sort falls out of the same usage audit; re-run it each model
    generation and shed more scaffolding. The system should get SIMPLER as it gets better —
    that's the tell it's built right.
+
+---
+
+## ▶ 2026-07-08 (night) — FACTORY BUILD SESSION: the gauntlet became one command (branch `feature/qa-checks-and-run-pipeline`)
+
+**Definition of victory, met:** `node qa/run-pipeline.js <flawed-build.html>` takes a defective
+build and returns it shippable with no human in the loop. Both bench candidates: enter FIX →
+exit PASS, zero human edits.
+
+**1. The three bench-round-1 checks (LED-014/015/016)** — all live, all fixture-proven, all
+verified fire-on-defect / silent-on-gold:
+- `cta-dead-anchor` (P0): every suspicious CTA (`#`, missing id, self-anchor, hidden target)
+  gets a REAL dispatched click on an isolated page load, per entry state. Design lesson (in
+  LED-014): static reads over-condemn in BOTH directions — sonnet's "dead" self-anchor was
+  JS-wired; fugu's "missing-id" href was flawlessly handler-wired. Only clicking tells.
+  `cta-pending-endpoint` (P1) covers declared `data-verify` placeholders awaiting client details.
+- `counter-stuck-at-zero` (P0) + `counter-anim-dependent` (P1): LED-013's base-state-carries-
+  the-truth doctrine applied to numbers. run-checks now re-runs censuses in every hash entry
+  state and scroll-exercises counters so IO triggers actually fire.
+- `build-note-phrase` (P1): dev-note register scan over ALL text nodes (hidden views included).
+- run-checks.js is now a multi-entry-state orchestrator (default + discovered hash states +
+  isolated click-probe loads). Runtime ~15-40s per build, still zero-dependency.
+- **LED-042 (formerly LED-018): first gold run caught 3 REAL dead "Book a private call" CTAs in shipped AGL v9** —
+  repaired in repo (report CTAs route to #talk; guide-card CTA declared `data-verify`), but
+  **the LIVE preview site still has them; redeploy needs Chris's booking URL.**
+
+**2. `qa/run-pipeline.js`** — RENDER → INSPECT → CRITIQUE (fresh opus critic on frozen
+`qa/screenshot.js` captures) → scoped REPAIR (fresh sonnet) → RE-VERIFY. Fresh `claude -p`
+spawn per role; builder never grades its own work. Caps: 3 repair iters, 2 taste rounds;
+escalates on stall/regression/unparseable critic. PASS = 0 P0 + 0 unwaived P1 + critic ship
+(pending-endpoints don't block; critic can waive only false-positives/accepted tensions).
+Every iteration persists to `<work>.episode.json`; every run appends metrics to
+BUILD_REGISTRY "Pipeline runs" (iterations, tokens, cost, wall-clock, human touches).
+- **LED-043 (formerly LED-019; found by acceptance run 1, fixed, re-proven):** unanchored critics move goalposts —
+  fresh critic each round invented new MAJORs at ~0.81 and the loop burned to ESCALATE. Fix:
+  MAJORs must cite a rulebook rule (uncited → mechanically downgraded), each critic sees the
+  prior round's MAJORs + repairs (convergence contract), taste rounds budgeted separately.
+- Acceptance evidence: registry rows for the failed run AND both passes are all in
+  BUILD_REGISTRY. Repaired outputs at `runs/candidate-*.pipeline.html` (untracked; one-shot
+  artifacts stay frozen as bench evidence).
+
+**3. Regression gate** — `qa/replay.js` + `qa/replay-manifest.json`: gold's scores pinned
+(0 P0 / ≤6 P1 / 0 P2), every fixture + bench candidate must keep firing its known defects.
+Pre-commit hook (`.githooks/pre-commit`, installed via `git config core.hooksPath .githooks`)
+replays the corpus whenever qa/, agents/, templates/, PROCESS.md, the packet, or gold change.
+Negative path verified (drifted pin → exit 1 with re-pin instructions). Re-pin consciously,
+same commit, with a LEDGER entry.
+
+**Open after this session:** ① Chris: booking URL for the guide-card CTA → then redeploy
+agl-site-preview from repo gold (LED-042). ② finish-line item 3 (claims-verification pass)
+and item 4 (catalog work) unchanged. ③ AGL pilot = next session, running INTAKE → … →
+run-pipeline end-to-end. ④ gold's 5 legacy `opacity-anim-dependent` P1s still queued.
+⑤ `conversion-path-smoke` (drive multi-step quiz flows) still open — click-probe covers
+DOM-present CTAs only.
 
 ---
 

@@ -28,6 +28,19 @@ AGL site from v8 to a v9-quality build.
    model that didn't build it — plus `node ../../qa/run-checks.js` for the deterministic gate.
 4. Log the result here (model, date, critic scores, P0 count, verdict) — bench results are
    factory memory, same spirit as `qa/LEDGER.md`.
+5. FIX verdicts don't need a human: `node ../../qa/run-pipeline.js runs/candidate-<model>.html`
+   drives the candidate through the headless repair loop (gate → critic → scoped repair →
+   re-verify) and logs metrics to `docs/BUILD_REGISTRY.md`.
+
+## Regression gate (this bench is also the factory's regression suite)
+
+The one-shot candidates + the gold build are PINNED in `qa/replay-manifest.json` — the gold
+build's scores may never get worse, and each candidate's known defects must keep firing. Any
+change to `qa/*.js`, agent prompts, templates, `PROCESS.md`, the packet, or the gold build
+re-runs the corpus via the pre-commit hook (`git config core.hooksPath .githooks`, or run
+`node ../../qa/replay.js` by hand). Re-pin only consciously, same commit, with a LEDGER entry.
+**The one-shot runs/ artifacts are frozen evidence — never repair them in place** (the repair
+loop works on a `.pipeline.html` copy).
 
 ## Results log
 
@@ -36,6 +49,16 @@ AGL site from v8 to a v9-quality build.
 | 2026-07-08 | claude-fable-5 (reference) | Claude Code, self-verifying | 0 (5×P1 anim-robustness warnings — fix queued) | — | GOLD |
 | 2026-07-08 | claude-sonnet-5 | claude.ai chat, one-shot blind | 0 P0 · 0 P1 · 3 P2 | craft 8 · distinct 7.5 · motion 6.5 · copy 8.5 · compliance 9 | FIX — 4 findings (see below) |
 | 2026-07-08 | fugu-ultra | sakana chat, one-shot blind | 0 P0 · 0 P1 · 2 P2 | craft 7 · distinct 7 · motion 6 · copy 7.5 · compliance 9 | FIX — 3 findings (see below) |
+| 2026-07-08 | claude-sonnet-5 → **run-pipeline** | headless repair loop, zero humans | entry 1 P0 · 4 P1 → exit 0/0 | opus critic **ship 0.86** | **PASS** — 2 repair iters, $0.78, 6m12s |
+| 2026-07-08 | fugu-ultra → **run-pipeline** | headless repair loop, zero humans | entry 0 P0 · 5 P1 → exit 0/0 | opus critic 0.84, MINORs only | **PASS** — 1 repair iter, $0.39, 3m48s |
+
+**Repair-loop note (2026-07-08):** the entry gate is the NEW check suite (LED-014/015/016) —
+under it the one-shots' real defect matrix is: sonnet = 1 dead CTA (bare-`#`; its `#assessCta`
+"self-anchor" from the original findings is actually JS-wired — the behavioral click-probe
+cleared what the static read over-condemned) + 4 anim-dependent counters; fugu = 5 build-note
+phrases, wiring genuinely flawless. Repaired outputs live UNCOMMITTED as
+`runs/candidate-*.pipeline.html` (+ `.episode.json` audit trails); the one-shot artifacts stay
+frozen. First acceptance run also surfaced + fixed critic goalpost-moving → LED-043.
 
 **Sonnet findings (2026-07-08):** (1) BLOCKER: primary CTA "Start the assessment" links to `#assess`
 (itself) — dead conversion path; report only reachable by URL hash. (2) BLOCKER: on hash entry the

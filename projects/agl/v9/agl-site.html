@@ -521,9 +521,9 @@ h2.h-sec .serif-i{color:var(--acc)}
         </div>
       </div>
       <div class="cnts">
-        <div class="cnt-card io" style="--d:0s" data-anim><b><span class="cnt num" data-to="725000">0</span><span class="gold">+</span></b><span>Advisor records tracked, from public SEC, FINRA &amp; BrokerCheck filings</span></div>
-        <div class="cnt-card io" style="--d:.09s" data-anim><b><span class="cnt num" data-to="9400">0</span></b><span>Moves detected this quarter*</span></div>
-        <div class="cnt-card io" style="--d:.18s" data-anim><b><span class="cnt num" data-to="18000">0</span><span class="gold">+</span></b><span>Firms monitored for events that push advisors to move*</span></div>
+        <div class="cnt-card io" style="--d:0s" data-anim><b><span class="cnt num" data-to="725000">725,000</span><span class="gold">+</span></b><span>Advisor records tracked, from public SEC, FINRA &amp; BrokerCheck filings</span></div>
+        <div class="cnt-card io" style="--d:.09s" data-anim><b><span class="cnt num" data-to="9400">9,400</span></b><span>Moves detected this quarter*</span></div>
+        <div class="cnt-card io" style="--d:.18s" data-anim><b><span class="cnt num" data-to="18000">18,000</span><span class="gold">+</span></b><span>Firms monitored for events that push advisors to move*</span></div>
         <div class="cnt-card io" style="--d:.27s" data-anim><b>0</b><span>Advisor profiles sold or shared with recruiters. Ever.</span></div>
       </div>
       <p class="cnts-note io">*Illustrative operating figures. Registration counts reflect public filings data.</p>
@@ -577,7 +577,7 @@ h2.h-sec .serif-i{color:var(--acc)}
         <div class="guide__who"><b>[Guide name]</b><span>Transition guide</span></div>
       </div>
       <p class="guide__q">&ldquo;My job isn&rsquo;t to move you. It&rsquo;s to make sure that if you move, it&rsquo;s <span class="serif-i">the right one.</span>&rdquo;</p>
-      <div class="guide__cta"><a href="#" class="btn btn--acc">Book a private call <svg class="arr" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <div class="guide__cta"><a href="#" data-verify="booking-url" class="btn btn--acc">Book a private call <svg class="arr" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
     </div>
   </div>
 </section>
@@ -616,7 +616,7 @@ h2.h-sec .serif-i{color:var(--acc)}
   <div class="rnav__in">
     <a href="#" class="rnav__back" data-open-home><svg viewBox="0 0 14 14" fill="none"><path d="M9 2 4 7l5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>advisorgrowthlab.com</a>
     <span class="rtag">Sample report &middot; illustrative data</span>
-    <a href="#" class="btn btn--acc btn--sm">Book a private call</a>
+    <a href="#talk" data-open-home class="btn btn--acc btn--sm">Book a private call</a>
   </div>
 </header>
 
@@ -766,7 +766,7 @@ h2.h-sec .serif-i{color:var(--acc)}
     <h2>The report tells you where you stand.<br>A guide helps you decide <span class="serif-i">what&rsquo;s wise.</span></h2>
     <p>One conversation. No pitch, no pipeline, nothing shared. If staying put is your best move, that&rsquo;s exactly what you&rsquo;ll hear.</p>
     <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-      <a href="#" class="btn btn--acc btn--lg">Book a private call <svg class="arr" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="#talk" data-open-home class="btn btn--acc btn--lg">Book a private call <svg class="arr" viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       <a href="#" class="btn btn--line btn--lg" data-open-home>Back to the site</a>
     </div>
   </div>
@@ -796,7 +796,12 @@ function show(view){
 document.addEventListener('click', function(e){
   var r = e.target.closest('[data-open-report]'), h = e.target.closest('[data-open-home]');
   if(r){ e.preventDefault(); show('report'); }
-  if(h){ e.preventDefault(); show('home'); }
+  if(h){
+    e.preventDefault(); show('home');
+    var frag = (h.getAttribute('href') || '').slice(1);
+    var tgt = frag && document.getElementById(frag);
+    if(tgt) requestAnimationFrame(function(){ tgt.scrollIntoView({behavior: RM ? 'auto' : 'smooth', block: 'center'}); });
+  }
 });
 if(location.hash === '#report') show('report');
 

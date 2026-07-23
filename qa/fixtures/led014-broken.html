@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!-- LED-014 fixture: dead vs wired CTAs. The gate must flag exactly the three
+     DEAD ones (bare-hash, missing-target, self-anchor) as P0 cta-dead-anchor,
+     report the declared pending endpoint as P1 cta-pending-endpoint, and stay
+     SILENT on the JS-wired bare-hash CTA (the fugu lesson: wiring can live
+     entirely in script — only a real click can tell). -->
+<html lang="en"><head><meta charset="utf-8"><title>LED-014 fixture</title>
+<style>
+  body{font-family:Georgia,serif;margin:0}
+  section{padding:80px 40px;min-height:300px}
+  .btn{display:inline-block;padding:14px 22px;background:#1e395a;color:#fff;text-decoration:none;border-radius:6px}
+  #panel{display:none;padding:20px;background:#eee}
+</style></head>
+<body>
+<section id="hero">
+  <h1>A page with five call-to-action buttons</h1>
+  <p>Three are dead, one is declared pending, one is wired in script. The gate must tell them apart by clicking, not by reading attributes.</p>
+  <!-- DEAD 1: bare hash, no wiring -->
+  <a href="#" class="btn">Book a call (dead bare-hash)</a>
+  <!-- DEAD 2: target id does not exist, no wiring -->
+  <a href="#signup" class="btn">Start now (dead missing-target)</a>
+  <!-- ALIVE: bare hash but a click handler does real work -->
+  <a href="#" id="wired" class="btn">Open the panel (wired)</a>
+  <!-- PENDING: declared awaiting-client-detail endpoint -->
+  <a href="#" data-verify="booking-url" class="btn">Book a call (declared pending)</a>
+  <div id="panel">The panel opened — this click did real work.</div>
+</section>
+<section id="assess">
+  <h2>The assessment</h2>
+  <p>Seven questions, two minutes.</p>
+  <!-- DEAD 3: links to the section it already sits in -->
+  <a href="#assess" class="btn">Start the assessment (dead self-anchor)</a>
+</section>
+<script>
+  document.getElementById('wired').addEventListener('click', function(e){
+    e.preventDefault();
+    document.getElementById('panel').style.display = 'block';
+  });
+</script>
+</body></html>

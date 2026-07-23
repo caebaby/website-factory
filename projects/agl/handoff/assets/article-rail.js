@@ -1,0 +1,20 @@
+(function(){
+  "use strict";
+  var scriptUrl=document.currentScript&&document.currentScript.src;
+  var siteRoot=scriptUrl?new URL("../",scriptUrl):new URL("/",window.location.href);
+  var bookUrl=new URL("schedule/index.html",siteRoot).href;
+  var assessmentUrl=new URL("start-here/index.html#assessment",siteRoot).href;
+  var article=document.querySelector("article.article");
+  var prose=article&&article.querySelector(".narrow.prose");
+  if(!article||!prose)return;
+  var shell=document.createElement("div");
+  shell.className="article-shell";
+  prose.classList.remove("narrow");
+  article.insertBefore(shell,prose);
+  shell.appendChild(prose);
+  var rail=document.createElement("aside");
+  rail.className="article-rail";
+  rail.setAttribute("aria-label","Private next steps");
+  rail.innerHTML='<div class="article-rail__rule"></div><span class="article-rail__label">Your next step</span><h2>Make the decision with better information.</h2><p>Start privately. A transition is only worth pursuing when the model fits your clients, team, and practice.</p><div class="article-rail__actions"><a href="'+bookUrl+'">Book a private call <span aria-hidden="true">→</span></a><a href="'+assessmentUrl+'">Get transition answers <span aria-hidden="true">→</span></a></div><span class="article-rail__note">No recruiter pressure. Staying can be the right answer.</span>';
+  shell.appendChild(rail);
+})();

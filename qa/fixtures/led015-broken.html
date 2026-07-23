@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!-- LED-015 fixture: counter wiring. The gate must flag:
+       P0 counter-stuck-at-zero  — #dead-counter (visible, target 500, no
+                                   script ever runs it; a reader sees "0")
+       P1 counter-anim-dependent — #fragile-counter (works when its animation
+                                   runs, but ships "0" in markup — any entry
+                                   path / rAF starvation that skips the
+                                   animation shows 0; LED-011/015 class)
+     and stay silent on #robust-counter (final value in markup; JS zeroes it
+     and animates on top — the pattern the fugu candidate proved). -->
+<html lang="en"><head><meta charset="utf-8"><title>LED-015 fixture</title>
+<style>
+  body{font-family:Georgia,serif;margin:0}
+  section{padding:80px 40px}
+  .stat b{font-size:44px;display:block}
+</style></head>
+<body>
+<section>
+  <h1>Proof band</h1>
+  <div class="stat"><b id="dead-counter" data-count-to="500">0</b><span>Placements (never wired — a reader sees zero)</span></div>
+  <div class="stat"><b id="fragile-counter" data-count-to="1200">0</b><span>Advisors (works only if the animation runs)</span></div>
+  <div class="stat"><b id="robust-counter" data-count-to="725000">725,000</b><span>Records (truth in markup, animation on top)</span></div>
+</section>
+<script>
+  // fragile + robust counters both animate; dead-counter is never touched.
+  function runCounter(el){
+    var to = parseFloat(el.getAttribute('data-count-to')), t0 = null;
+    function step(t){
+      if(!t0) t0 = t;
+      var p = Math.min((t - t0) / 600, 1);
+      el.textContent = Math.round(to * p).toLocaleString('en-US');
+      if(p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  runCounter(document.getElementById('fragile-counter'));
+  runCounter(document.getElementById('robust-counter'));
+</script>
+</body></html>

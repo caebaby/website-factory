@@ -1,0 +1,23 @@
+#!/bin/sh
+# Replay-corpus regression gate (Cherny audit: doc/prompt/check changes must
+# not lower the golden build's scores or silence a known defect).
+# Install once:  git config core.hooksPath .githooks
+# Bypass consciously:  git commit --no-verify  (then run qa/replay.js yourself)
+
+CHANGED=$(git diff --cached --name-only)
+TRIGGER=$(echo "$CHANGED" | grep -E '^(qa/(visual-checks|run-checks|replay)\.js|qa/replay-manifest\.json|qa/fixtures/|agents/|templates/|PROCESS\.md|benchmarks/model-bench/(PROMPT\.md|packet\.txt|make_packet\.py)|projects/agl/v9/)' )
+
+if [ -z "$TRIGGER" ]; then
+  exit 0
+fi
+
+echo "[pre-commit] gate-relevant files staged — replaying the corpus (qa/replay.js)…"
+echo "$TRIGGER" | sed 's/^/  · /'
+node "$(git rev-parse --show-toplevel)/qa/replay.js"
+STATUS=$?
+if [ $STATUS -ne 0 ]; then
+  echo "[pre-commit] BLOCKED: the staged change drifts the replay corpus."
+  echo "             Fix the drift, or re-pin qa/replay-manifest.json in this"
+  echo "             commit with a LEDGER entry, or bypass with --no-verify."
+fi
+exit $STATUS
