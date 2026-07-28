@@ -2,7 +2,8 @@
   "done": [
     "research",
     "strategy",
-    "direction"
+    "direction",
+    "copy"
   ],
   "gates": {
     "direction": "2026-07-28T19:30:28.393Z"
@@ -28,6 +29,13 @@
       "costUsd": 1.42786125,
       "ms": 139445,
       "at": "2026-07-28T12:11:38.879Z"
+    },
+    {
+      "stage": "copy",
+      "role": "copy",
+      "costUsd": 0,
+      "ms": 100388,
+      "at": "2026-07-28T23:21:47.559Z"
     }
   ]
 }

@@ -65,6 +65,62 @@ function resolveRC(name) {
          (CONFIG.alternates && CONFIG.alternates[name]) || null;
 }
 
+/* Strip the "review diff" wrapper that GLM/DeepSeek emit via Hermes headless.
+ * Recognized format (with \r\n line endings):
+ *   ┊ **review diff**\r\n
+ *   a/path → b/path\r\n
+ *   @@ -0,0 +1,N @@\r\n
+ *   +actual content line\r\n
+ *   +actual content line\r\n
+ *   ...
+ *   <trailing meta: "File created and committed...">
+ * Strategy: if the @@ hunks are present, extract only '+' lines (strip leading +).
+ * If there are no diff markers but the text starts with a model meta-preamble,
+ * leave it alone (the prompt-level guard handles that). */
+function stripDiffWrapper(text) {
+  if (!text) return text;
+  /* Only process if we see the diff hunk header */
+  const hasHunk = /^┊\s*\*{0,2}\s*review diff|@@ -\d+/m.test(text);
+  if (!hasHunk) return text;
+  const lines = text.split(/\r?\n/);
+  const contentLines = [];
+  let inHunk = false;
+  let sawContent = false;
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    /* skip diff headers: review-diff banner, a/path→b/path, hunk markers */
+    if (/^┊/.test(line)) continue;
+    if (/^[ab]\//.test(line) && line.includes('→')) continue;
+    if (/^@@/.test(line)) { inHunk = true; continue; }
+    if (inHunk || sawContent) {
+      /* content lines in a unified diff start with + */
+      if (/^\+/.test(line)) {
+        contentLines.push(line.slice(1));
+        sawContent = true;
+      } else if (/^-/.test(line)) {
+        /* removed lines — skip */
+      } else if (sawContent && line.trim() === '') {
+        /* blank line inside content — keep as paragraph break */
+        contentLines.push(line);
+      } else if (sawContent && !/^(┊|[ab]\/|@@)/.test(line)) {
+        /* non-diff content after hunk started — likely trailing meta or continued content */
+        /* stop at meta-commentary patterns */
+        if (/^(Written to|File created|File written|Done\.|Ready for|I've created|Committing|Committed)/i.test(line.trim())) {
+          break;
+        }
+        /* Also catch "FILENAME.md created/committed for..." style meta that comes
+         * on the same line as content without a newline break */
+        if (/\w+\.md\s+(created|written|committed)\b/i.test(line.trim())) {
+          break;
+        }
+        contentLines.push(line);
+      }
+    }
+  }
+  if (contentLines.length === 0) return text; /* safety: don't return empty */
+  return contentLines.join('\n').replace(/\n{3,}/g, '\n\n\n').trim() + '\n';
+}
+
 function tryOne(label, rc, prompt) {
   const args = rc.args.map(a => a === '{PROMPT}' ? prompt : a);
   log(label + ' → ' + rc.cmd + ' (' + (rc.label || rc.args.join(' ').slice(0, 60)) + ')');
@@ -81,15 +137,25 @@ function tryOne(label, rc, prompt) {
     return { text: String(env.result || ''), costUsd: env.total_cost_usd || 0 };
   }
   if (!r.stdout || r.stdout.trim().length < 20) return { err: 'empty/near-empty stdout' };
+  let text = r.stdout;
   /* Catch provider/API errors that come back as short stdout strings (e.g. the
-   * "HTTP 401: Missing Authentication header" that once became a 40-byte copy file).
-   * Only flag when output is suspiciously short AND matches a known error signature. */
-  if (r.stdout.trim().length < 500) {
-    const s = r.stdout.trim();
+   * "HTTP 401: Missing Authentication header" that once became a 40-byte copy file). */
+  if (text.trim().length < 500) {
+    const s = text.trim();
     if (/^(HTTP \d{3}|Error\b|Unauthorized|Forbidden|Missing Authentication|401|403|500 Internal)/i.test(s))
       return { err: 'provider error in stdout (' + s.length + ' bytes): ' + s.slice(0, 200) };
+    /* Catch meta-summary pattern: model describes what it "wrote" instead of
+     * outputting the content (e.g. "Written to file. Key points:...") */
+    if (/^(Written to|File created|File written|I've created|I have created|Here (is|are) the)/i.test(s))
+      return { err: 'meta-summary instead of content (' + s.length + ' bytes): ' + s.slice(0, 200) };
   }
-  return { text: r.stdout, costUsd: 0 };
+  /* Strip "review diff" wrapper that GLM/DeepSeek emit via Hermes headless.
+   * Format: ┊ **review diff**\r\n a/path → b/path\r\n @@ -0,0 +1,N @@\r\n +line...
+   * Extract only the added content lines. Also strips trailing meta-commentary
+   * ("File created and committed..."). */
+  text = stripDiffWrapper(text);
+  if (text.trim().length < 20) return { err: 'output empty after diff-stripping (was pure diff header / no content)' };
+  return { text, costUsd: 0 };
 }
 
 /* Primary first, then each named fallback (from roles/alternates) in order.
@@ -137,7 +203,10 @@ function buildPrompt(stage, proj, client) {
   return agentDoc + '\n\n---\nCLIENT: ' + client + '\n' +
     resolved.map(f => '\n=== INPUT: ' + f.rel + ' ===\n' + f.content).join('\n') +
     '\n\n---\nReturn ONLY the complete contents of ' + stage.output +
-    ' — no preamble, no commentary, no code fences.';
+    ' — no preamble, no commentary, no code fences, no review diff, no meta-summary.\n' +
+    'Output the file content directly as your entire response. Do not describe what you wrote.\n' +
+    'Do not wrap in diff format. Do not add lines like "File created" or "Written to".\n' +
+    'Do not summarize or explain. The ENTIRE response must be the file contents.';
 }
 
 /* ---------------- gates ---------------- */

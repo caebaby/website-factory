@@ -1,0 +1,4 @@
+[factory 23:20:07] copy → hermes (copy - DeepSeek V4 Pro via Hermes (budget frontier))
+[factory 23:21:47] stage copy done → copy/COPY_ALL.md
+[factory 23:21:47] copygate → claude (copygate — Claude Sonnet: DIFFERENT vendor than copy (independence rule))
+FATAL: copy gate verdict: REPAIR. Fix copy per copy/COPY_GATE.md (re-run stage by deleting "copygate"+"copy" from .factory-state.json done list), then re-run print.
