@@ -1,0 +1,65 @@
+{
+  "_readme": [
+    "PROVEN LOW-COST roster — every generative slot on models that have actually passed this factory's gates.",
+    "Copy this object's 'roles' over factory.config.json's 'roles' to activate.",
+    "Philosophy (law 10): gates guarantee quality, so every role runs the cheapest thing that clears them.",
+    "Director stays premium: runs ONCE per client, ~$1, and every downstream dollar depends on it.",
+    "Copygate is a DIFFERENT vendor than copy (independence rule). Gauntlet critic/repair remain Claude (vision).",
+    "Derived from Mahdin's Config C (2026-07-27) with its two bugs fixed: per-role fallbacks, cross-vendor copygate."
+  ],
+  "roles": {
+    "research": {
+      "label": "research — Claude Sonnet (needs WebSearch/Read tools)",
+      "cmd": "claude",
+      "args": ["-p", "{PROMPT}", "--output-format", "json", "--model", "claude-sonnet-5", "--allowedTools", "Read,WebSearch,WebFetch", "--permission-mode", "acceptEdits"],
+      "io": "stdout", "parse": "claude-json", "timeoutMin": 30,
+      "fallbacks": ["hermes-default"]
+    },
+    "strategy": {
+      "label": "strategy — GLM 4.5-flash via Hermes (free tier, gauntlet-proven vendor)",
+      "cmd": "hermes",
+      "args": ["chat", "-Q", "-q", "{PROMPT}"],
+      "io": "stdout", "parse": "raw", "timeoutMin": 25,
+      "fallbacks": ["claude-sonnet-cheap"]
+    },
+    "director": {
+      "label": "director — premium taste tier, runs once per client",
+      "cmd": "claude",
+      "args": ["-p", "{PROMPT}", "--output-format", "json", "--model", "claude-opus-4-8"],
+      "io": "stdout", "parse": "claude-json", "timeoutMin": 30
+    },
+    "copy": {
+      "label": "copy — GLM via Hermes until a cheaper writer benches better",
+      "cmd": "hermes",
+      "args": ["chat", "-Q", "-q", "{PROMPT}"],
+      "io": "stdout", "parse": "raw", "timeoutMin": 30,
+      "fallbacks": ["claude-sonnet-cheap"]
+    },
+    "copygate": {
+      "label": "copygate — Claude Sonnet: DIFFERENT vendor than copy (independence rule)",
+      "cmd": "claude",
+      "args": ["-p", "{PROMPT}", "--output-format", "json", "--model", "claude-sonnet-5"],
+      "io": "stdout", "parse": "claude-json", "timeoutMin": 15
+    },
+    "build": {
+      "label": "build — Claude Sonnet tools mode (GLM audition passed via stdout; hermes-tools still UNTESTED)",
+      "cmd": "claude",
+      "args": ["-p", "{PROMPT}", "--output-format", "json", "--model", "claude-sonnet-5", "--allowedTools", "Read,Write,Edit", "--permission-mode", "acceptEdits"],
+      "io": "tools", "parse": "claude-json", "timeoutMin": 40
+    }
+  },
+  "alternates": {
+    "claude-sonnet-cheap": {
+      "label": "Sonnet fallback for any stdout role",
+      "cmd": "claude",
+      "args": ["-p", "{PROMPT}", "--output-format", "json", "--model", "claude-sonnet-5"],
+      "io": "stdout", "parse": "claude-json", "timeoutMin": 25
+    },
+    "hermes-default": {
+      "label": "Hermes default (glm-4.5-flash) — verified headless + gauntlet-proven 2026-07-23",
+      "cmd": "hermes",
+      "args": ["chat", "-Q", "-q", "{PROMPT}"],
+      "io": "stdout", "parse": "raw", "timeoutMin": 30
+    }
+  }
+}

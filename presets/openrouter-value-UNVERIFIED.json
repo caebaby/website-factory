@@ -1,0 +1,25 @@
+{
+  "_readme": [
+    "Mahdin's Config A (value) + Config B (quality) rosters — STAGED, NOT HIRED.",
+    "Every model here must pass `node factory.js audition <name>` + the gauntlet before entering factory.config.json (the bench is the hiring authority).",
+    "Also inert until the OpenRouter key has credits. Toolset name '-t file' is unverified; the only verified Hermes toolset is 'hermes-cli'.",
+    "See docs/OPERATORS.md §12 for the full shortlist and rationale."
+  ],
+  "value_roster_candidates": {
+    "research": "deepseek/deepseek-v4-flash",
+    "strategy": "z-ai/glm-5-turbo",
+    "director": "anthropic/claude-sonnet-5",
+    "copy": "moonshotai/kimi-k3",
+    "copygate": "deepseek/deepseek-v4-flash",
+    "build": "deepseek/deepseek-v4-pro"
+  },
+  "quality_roster_candidates": {
+    "research": "moonshotai/kimi-k3",
+    "strategy": "z-ai/glm-5.2",
+    "director": "anthropic/claude-opus-4.8",
+    "copy": "deepseek/deepseek-v4-pro",
+    "copygate": "moonshotai/kimi-k3",
+    "build": "z-ai/glm-5.2"
+  },
+  "hermes_shape": { "cmd": "hermes", "args": ["chat", "-Q", "-q", "{PROMPT}", "-m", "<slug>", "--provider", "openrouter"], "io": "stdout", "parse": "raw" }
+}
