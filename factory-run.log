@@ -1,3 +1,8 @@
-[factory 23:30:53] research → claude (research — Claude Sonnet (needs WebSearch/Read tools))
-[factory 23:32:45] stage research done → research/ICP_BRIEF.md ($0.306)
-[factory 23:32:45] strategy → hermes (strategy — GLM 4.5-flash via Hermes (free tier, gauntlet-proven vendor))
+[factory 23:38:50] research → claude (research — Claude Sonnet (tools mode: writes file directly))
+[factory 23:41:00] stage research done → research/ICP_BRIEF.md ($0.510)
+[factory 23:41:00] strategy → hermes (strategy — GLM 4.5-flash via Hermes (free tier, gauntlet-proven vendor))
+[factory 23:45:09] stage strategy done → strategy/COPY_STRATEGY.md
+[factory 23:45:09] director → claude (director — premium taste tier, runs once per client)
+[factory 23:47:14] stage direction done → briefs/BUILD_BRIEF.md ($1.214)
+[factory 23:47:14] PAUSED at gate "direction". Wrote /Users/chrisevans/Documents/Claude Projects/clients/website-factory/projects/verdant/GATE_direction.md
+[factory 23:47:14] Approve from anywhere: node factory.js approve verdant direction

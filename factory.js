@@ -121,41 +121,66 @@ function stripDiffWrapper(text) {
   return contentLines.join('\n').replace(/\n{3,}/g, '\n\n\n').trim() + '\n';
 }
 
+/* Errors that are likely transient (network/auth/rate) — worth retrying the
+ * same model before falling through to the next candidate. */
+function isTransient(err) {
+  return /401|403|429|timeout|ETIMEDOUT|ECONNRESET|ECONNREFUSED|EOF|temporar|retry|overloaded|5\d\d/i.test(err);
+}
+
 function tryOne(label, rc, prompt) {
   const args = rc.args.map(a => a === '{PROMPT}' ? prompt : a);
   log(label + ' → ' + rc.cmd + ' (' + (rc.label || rc.args.join(' ').slice(0, 60)) + ')');
-  const r = spawnSync(rc.cmd, args, {
-    encoding: 'utf8', maxBuffer: 64 * 1024 * 1024,
-    timeout: (rc.timeoutMin || 25) * 60000, cwd: REPO,
-  });
-  if (r.error) return { err: 'spawn failed: ' + r.error.message };
-  if (r.status !== 0 && !r.stdout) return { err: 'exited ' + r.status + ': ' + (r.stderr || '').slice(-400) };
-  if (rc.parse === 'claude-json') {
-    let env;
-    try { env = JSON.parse(r.stdout); } catch (e) { return { err: 'output unparseable: ' + (r.stdout || '').slice(-300) }; }
-    if (env.is_error) return { err: 'agent errored: ' + String(env.result).slice(0, 400) };
-    return { text: String(env.result || ''), costUsd: env.total_cost_usd || 0 };
+  const maxAttempts = 3;
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    if (attempt > 1) log(label + ' retry ' + attempt + '/' + maxAttempts + ' (transient error)');
+    const r = spawnSync(rc.cmd, args, {
+      encoding: 'utf8', maxBuffer: 64 * 1024 * 1024,
+      timeout: (rc.timeoutMin || 25) * 60000, cwd: REPO,
+    });
+    /* Check for spawn / exit failures that may be transient (401, 429, timeout, etc).
+     * Retry the same model before falling through to the next in the fallback chain. */
+    if (r.error) {
+      const e = 'spawn failed: ' + r.error.message;
+      if (isTransient(e) && attempt < maxAttempts) { Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 3000 * attempt); continue; }
+      return { err: e };
+    }
+    if (r.status !== 0 && !r.stdout) {
+      const e = 'exited ' + r.status + ': ' + (r.stderr || '').slice(-400);
+      if (isTransient(e) && attempt < maxAttempts) { Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 3000 * attempt); continue; }
+      return { err: e };
+    }
+    /* --- output validation (same model as before) --- */
+    if (rc.parse === 'claude-json') {
+      let env;
+      try { env = JSON.parse(r.stdout); } catch (e) { return { err: 'output unparseable: ' + (r.stdout || '').slice(-300) }; }
+      if (env.is_error) {
+        const e = 'agent errored: ' + String(env.result).slice(0, 400);
+        if (isTransient(e) && attempt < maxAttempts) { Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 3000 * attempt); continue; }
+        return { err: e };
+      }
+      return { text: String(env.result || ''), costUsd: env.total_cost_usd || 0 };
+    }
+    if (!r.stdout || r.stdout.trim().length < 20) return { err: 'empty/near-empty stdout' };
+    let text = r.stdout;
+    /* Catch provider/API errors that come back as short stdout strings (e.g. the
+     * "HTTP 401: Missing Authentication header" that once became a 40-byte copy file). */
+    if (text.trim().length < 500) {
+      const s = text.trim();
+      if (/^(HTTP \d{3}|Error\b|Unauthorized|Forbidden|Missing Authentication|401|403|500 Internal)/i.test(s)) {
+        if (isTransient(s) && attempt < maxAttempts) { Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 3000 * attempt); continue; }
+        return { err: 'provider error in stdout (' + s.length + ' bytes): ' + s.slice(0, 200) };
+      }
+      /* Catch meta-summary pattern: model describes what it "wrote" instead of
+       * outputting the content (e.g. "Written to file. Key points:...") */
+      if (/^(Written to|File created|File written|I've created|I have created|Here (is|are) the)/i.test(s))
+        return { err: 'meta-summary instead of content (' + s.length + ' bytes): ' + s.slice(0, 200) };
+    }
+    /* Strip "review diff" wrapper that GLM/DeepSeek emit via Hermes headless. */
+    text = stripDiffWrapper(text);
+    if (text.trim().length < 20) return { err: 'output empty after diff-stripping (was pure diff header / no content)' };
+    return { text, costUsd: 0 };
   }
-  if (!r.stdout || r.stdout.trim().length < 20) return { err: 'empty/near-empty stdout' };
-  let text = r.stdout;
-  /* Catch provider/API errors that come back as short stdout strings (e.g. the
-   * "HTTP 401: Missing Authentication header" that once became a 40-byte copy file). */
-  if (text.trim().length < 500) {
-    const s = text.trim();
-    if (/^(HTTP \d{3}|Error\b|Unauthorized|Forbidden|Missing Authentication|401|403|500 Internal)/i.test(s))
-      return { err: 'provider error in stdout (' + s.length + ' bytes): ' + s.slice(0, 200) };
-    /* Catch meta-summary pattern: model describes what it "wrote" instead of
-     * outputting the content (e.g. "Written to file. Key points:...") */
-    if (/^(Written to|File created|File written|I've created|I have created|Here (is|are) the)/i.test(s))
-      return { err: 'meta-summary instead of content (' + s.length + ' bytes): ' + s.slice(0, 200) };
-  }
-  /* Strip "review diff" wrapper that GLM/DeepSeek emit via Hermes headless.
-   * Format: ┊ **review diff**\r\n a/path → b/path\r\n @@ -0,0 +1,N @@\r\n +line...
-   * Extract only the added content lines. Also strips trailing meta-commentary
-   * ("File created and committed..."). */
-  text = stripDiffWrapper(text);
-  if (text.trim().length < 20) return { err: 'output empty after diff-stripping (was pure diff header / no content)' };
-  return { text, costUsd: 0 };
+  return { err: 'exhausted retries' };
 }
 
 /* Primary first, then each named fallback (from roles/alternates) in order.
