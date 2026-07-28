@@ -12,7 +12,7 @@
   ],
   "roles": {
     "research": {
-      "label": "research \u2014 Claude Sonnet (needs WebSearch/Read tools)",
+      "label": "research \u2014 Claude Sonnet (tools mode: writes file directly)",
       "cmd": "claude",
       "args": [
         "-p",
@@ -22,11 +22,11 @@
         "--model",
         "claude-sonnet-5",
         "--allowedTools",
-        "Read,WebSearch,WebFetch",
+        "Read,Write,WebSearch,WebFetch",
         "--permission-mode",
         "acceptEdits"
       ],
-      "io": "stdout",
+      "io": "tools",
       "parse": "claude-json",
       "timeoutMin": 30,
       "fallbacks": [
