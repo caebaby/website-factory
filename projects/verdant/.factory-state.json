@@ -1,0 +1,33 @@
+{
+  "done": [
+    "research",
+    "strategy",
+    "direction"
+  ],
+  "gates": {
+    "direction": "2026-07-28T19:30:28.393Z"
+  },
+  "log": [
+    {
+      "stage": "research",
+      "role": "research",
+      "costUsd": 0.6705153500000001,
+      "ms": 144294,
+      "at": "2026-07-28T12:07:52.499Z"
+    },
+    {
+      "stage": "strategy",
+      "role": "strategy",
+      "costUsd": 0,
+      "ms": 86889,
+      "at": "2026-07-28T12:09:19.434Z"
+    },
+    {
+      "stage": "direction",
+      "role": "director",
+      "costUsd": 1.42786125,
+      "ms": 139445,
+      "at": "2026-07-28T12:11:38.879Z"
+    }
+  ]
+}

@@ -33,3 +33,4 @@ human edits in the session that makes them.*
 | 2026-07-09 | agl-pilot-handoff-index-v8 | CLEAN | ESCALATE · critic repair (0.87) | 1 | critic:opus repair#1:sonnet | 582k/6.6k | $0.64 | 224s | 0 |
 | 2026-07-09 | agl-pilot-handoff-index-v9 | CLEAN | ESCALATE · critic escalate (0.87) | 0 | critic:opus | 892k/7.0k | $0.86 | 235s | 0 |
 | 2026-07-23 | candidate-hermes-default | FIX(2P0/1P1) | PASS · critic ship (0.85) | 3 | repair#1:sonnet critic:opus repair#2:sonnet critic:opus repair#3:sonnet critic:opus | 1786k/24.1k | $1.53 | 606s | 0 |
+| 2026-07-27 | verdant-mahdin | FIX(14P0/0P1) | PASS · critic ship (0.85) | 2 | repair#1:sonnet critic:opus repair#2:sonnet critic:opus | 1493k/26.7k | $1.49 | 555s | 0 |

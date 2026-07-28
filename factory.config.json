@@ -65,19 +65,21 @@
       "timeoutMin": 30
     },
     "copy": {
-      "label": "copy \u2014 GLM via Hermes until a cheaper writer benches better",
+      "label": "copy - DeepSeek V4 Pro via Hermes (budget frontier)",
       "cmd": "hermes",
       "args": [
         "chat",
         "-Q",
         "-q",
-        "{PROMPT}"
+        "{PROMPT}",
+        "-m",
+        "deepseek/deepseek-v4-pro"
       ],
       "io": "stdout",
       "parse": "raw",
       "timeoutMin": 30,
       "fallbacks": [
-        "claude-sonnet-cheap"
+        "hermes-default"
       ]
     },
     "copygate": {

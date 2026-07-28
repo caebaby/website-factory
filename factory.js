@@ -81,6 +81,14 @@ function tryOne(label, rc, prompt) {
     return { text: String(env.result || ''), costUsd: env.total_cost_usd || 0 };
   }
   if (!r.stdout || r.stdout.trim().length < 20) return { err: 'empty/near-empty stdout' };
+  /* Catch provider/API errors that come back as short stdout strings (e.g. the
+   * "HTTP 401: Missing Authentication header" that once became a 40-byte copy file).
+   * Only flag when output is suspiciously short AND matches a known error signature. */
+  if (r.stdout.trim().length < 500) {
+    const s = r.stdout.trim();
+    if (/^(HTTP \d{3}|Error\b|Unauthorized|Forbidden|Missing Authentication|401|403|500 Internal)/i.test(s))
+      return { err: 'provider error in stdout (' + s.length + ' bytes): ' + s.slice(0, 200) };
+  }
   return { text: r.stdout, costUsd: 0 };
 }
 
