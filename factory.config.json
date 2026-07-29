@@ -189,5 +189,12 @@
       "accent": "#C9A24B"
     }
   },
-  "_active_preset": "proven-low-cost (Mahdin integration test, 2026-07-27)"
+  "_active_preset": "proven-low-cost (Mahdin integration test, 2026-07-27)",
+  "researchChain": {
+    "enabled": true,
+    "cmd": "python3",
+    "runner": "/Users/chrisevans/Documents/Claude Projects/playbooks/icp-research-pack/runner/run.py",
+    "timeoutMin": 45,
+    "_note": "Stage 0b: auto-runs Perplexity+GLM+Gemini deep research when no BLACK_BOOK.md exists. Keys live in the runner .env."
+  }
 }

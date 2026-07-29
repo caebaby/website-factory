@@ -275,6 +275,30 @@ function print(client, dryRun) {
   const st = loadState(proj);
   let totalCost = 0;
 
+  /* Stage 0b — deep research chain (Perplexity search + GLM reasoning + Gemini
+   * verify, per its own .env). Auto-runs when no Black Book exists yet, so the
+   * factory always consumes verified deep research rather than silently
+   * skipping it. A FAILED verification is honored: no Black Book is produced
+   * and the print continues on intake-only research, loudly. */
+  const rc = CONFIG.researchChain;
+  const bb = path.join(proj, 'research', 'BLACK_BOOK.md');
+  if (rc && rc.enabled && !fs.existsSync(bb) && !st.done.includes('deepresearch')) {
+    if (dryRun) { log('(dry) stage 0b deep-research chain → research/BLACK_BOOK.md (runner: ' + rc.runner + ')'); }
+    else {
+      log('deep-research chain starting (Perplexity→GLM→Gemini; 10-20 min)…');
+      const r = spawnSync(rc.cmd || 'python3', [rc.runner, path.join(proj, 'INTAKE.md'), '--outdir', path.join(proj, 'research')],
+        { encoding: 'utf8', stdio: 'inherit', timeout: (rc.timeoutMin || 45) * 60000, cwd: path.dirname(rc.runner) });
+      const book = path.join(proj, 'research', '05-black-book.md');
+      if (r.status === 0 && fs.existsSync(book)) {
+        fs.copyFileSync(book, bb);
+        log('deep research VERIFIED → research/BLACK_BOOK.md');
+      } else {
+        log('⚠ deep research did not pass verification (exit ' + r.status + ') — continuing WITHOUT a Black Book. See research/06-verification-*.md.');
+      }
+      st.done.push('deepresearch'); saveState(proj, st);
+    }
+  }
+
   for (const stage of STAGES) {
     if (st.done.includes(stage.name)) continue;
 
