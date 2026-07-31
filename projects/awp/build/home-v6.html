@@ -128,9 +128,10 @@
     .hero-slide video, .hero-slide .poster { width:100%; height:100%; object-fit:cover; }
     .hero-slide[data-market="energy"] video { object-position:center 58%; }
     .hero-slide[data-market="business"] video { object-position:center 42%; }
-    .hero-slide[data-market="family"] video { object-position:62% 50%; }
+    .hero-slide[data-market="family"] video { object-position:center 50%; }
     /* Different scrim: left-heavy gradient for left-anchored copy */
     .hero-slide::after { content:""; position:absolute; inset:0; background:linear-gradient(95deg,rgba(15,32,56,.94) 0%,rgba(15,32,56,.85) 30%,rgba(15,32,56,.4) 65%,rgba(15,32,56,.25) 100%),linear-gradient(0deg,rgba(15,32,56,.6) 0%,transparent 40%); }
+    .hero-slide[data-market="family"]::after { background:linear-gradient(95deg,rgba(15,32,56,.86) 0%,rgba(15,32,56,.72) 31%,rgba(15,32,56,.22) 68%,rgba(15,32,56,.12) 100%),linear-gradient(0deg,rgba(15,32,56,.42) 0%,transparent 40%); }
     .hero-grain { pointer-events:none; position:absolute; inset:0; z-index:2; opacity:.08; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E"); mix-blend-mode:soft-light; }
     /* Chart-line decoration — thin gold latitude lines */
     .hero-chart { position:absolute; inset:0; z-index:3; pointer-events:none; opacity:.12; }
@@ -523,6 +524,7 @@
       .hero { min-height:100svh; }
       .hero-slide[data-market="family"] video { object-position:center; }
       .hero-slide::after { background:linear-gradient(95deg,rgba(15,32,56,.96),rgba(15,32,56,.65)); }
+      .hero-slide[data-market="family"]::after { background:linear-gradient(95deg,rgba(15,32,56,.88),rgba(15,32,56,.46)); }
       .hero h1 { font-size:clamp(2.6rem,10vw,4rem); }
       .hero-proof { display:none; }
       .hero-cta-row .btn { width:100%; }
@@ -606,7 +608,7 @@
         <video muted loop playsinline preload="metadata" poster="assets/hero-business-poster.png" aria-hidden="true" data-src="assets/hero-business-loop.mp4"></video>
       </section>
       <section class="hero-slide" data-market="family" aria-label="High-net-worth families">
-        <video muted loop playsinline preload="metadata" poster="assets/hero-family-sunset-pexels.jpg" aria-hidden="true" data-src="assets/hero-family-sunset-pexels.mp4" data-src-mobile="assets/hero-family-sunset-pexels-mobile.mp4" data-poster-mobile="assets/hero-family-sunset-pexels-mobile.jpg"></video>
+        <video muted loop playsinline preload="metadata" poster="assets/hero-family-modern-kitchen.jpg" aria-hidden="true" data-src="assets/hero-family-modern-kitchen.mp4" data-src-mobile="assets/hero-family-modern-kitchen-mobile.mp4" data-poster-mobile="assets/hero-family-modern-kitchen-mobile.jpg"></video>
       </section>
     </div>
     <div class="hero-grain" aria-hidden="true"></div>
@@ -852,7 +854,7 @@
             </div>
           </a>
           <a class="serve-card" href="high-net-worth-families.html">
-            <img src="assets/hero-family-sunset-pexels.jpg" alt="A family walking hand in hand at sunset">
+            <img src="assets/hero-family-modern-kitchen.jpg" alt="Grandparent, parents, and children cooking together in a bright modern kitchen">
             <div class="serve-card-body">
               <div class="serve-card-tag">03 · Across generations</div>
               <h3>High-Net-Worth Families</h3>
@@ -1084,7 +1086,7 @@
             </div>
           </div>
           <div class="reel" data-reel="2" tabindex="0" role="button" aria-label="Play or pause Families preview">
-            <video muted loop playsinline preload="none" poster="assets/hero-family-sunset-pexels.jpg" data-src="assets/hero-family-sunset-pexels.mp4"></video>
+            <video muted loop playsinline preload="none" poster="assets/hero-family-modern-kitchen.jpg" data-src="assets/hero-family-modern-kitchen.mp4"></video>
             <div class="reel-overlay">
               <span class="reel-tag">Families</span>
               <h3 class="reel-title">What "one living plan" actually means</h3>
@@ -1098,7 +1100,7 @@
             </div>
           </div>
           <div class="reel" data-reel="4" tabindex="0" role="button" aria-label="Play or pause Estate and Legacy preview">
-            <video muted loop playsinline preload="none" poster="assets/hero-family-sunset-pexels.jpg" data-src="assets/hero-family-sunset-pexels.mp4"></video>
+            <video muted loop playsinline preload="none" poster="assets/hero-family-modern-kitchen.jpg" data-src="assets/hero-family-modern-kitchen.mp4"></video>
             <div class="reel-overlay">
               <span class="reel-tag">Estate &amp; Legacy</span>
               <h3 class="reel-title">Five questions before revisiting a family trust</h3>
