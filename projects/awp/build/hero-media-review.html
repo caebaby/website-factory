@@ -43,7 +43,7 @@
     .choice{min-height:48px;padding:12px 18px;border:1px solid var(--line);background:var(--paper);color:var(--ink);font-size:.76rem;font-weight:800;cursor:pointer;transition:transform .2s var(--ease),background .2s,color .2s,border-color .2s}
     .choice:hover{transform:translateY(-2px);border-color:var(--gold)}
     .choice[aria-pressed='true']{border-color:var(--gold);background:var(--gold);color:var(--navy);box-shadow:0 8px 24px rgba(177,143,77,.22)}
-    .option-note{min-height:48px;margin:12px 0 0;color:var(--body);font-size:.82rem;line-height:1.5}
+    .option-note{max-width:65ch;min-height:48px;margin:12px 0 0;color:var(--body);font-size:.82rem;line-height:1.5}
     .decision{max-width:65ch;margin:18px 0 0;padding:16px 18px;border-left:3px solid var(--gold);background:rgba(177,143,77,.08);color:var(--body);font-size:.82rem;line-height:1.55}
     @media(max-width:760px){.nav-note{display:none}.intro{grid-template-columns:1fr;gap:20px}.review-head{display:block}.review-head p{margin-top:14px}.stage{min-height:680px}.stage-copy{top:auto;bottom:68px;width:calc(100% - 56px);transform:none}.stage::after{background:linear-gradient(180deg,rgba(15,32,56,.16),rgba(15,32,56,.84) 78%)}.stage-copy h3{font-size:clamp(2.8rem,13vw,4.2rem)}.badge{right:16px;top:16px}}
     @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.choice{transition:none}}
@@ -64,7 +64,7 @@
           <p class="kicker">Anchor Wealth Planning</p>
           <h1>Brighter family. <em>Better business-owner options.</em></h1>
         </div>
-        <p>Each clip is shown at the actual homepage crop with real hero copy and the production overlay. The family replacement is installed locally; the business hero remains unchanged until an option is selected.</p>
+        <p>Each clip is shown at the actual homepage crop with real hero copy and the production overlay. The family replacement and preferred boardroom scene are installed locally; earlier desk options remain available below.</p>
       </div>
 
       <section class="review-block" aria-labelledby="family-title">
@@ -86,12 +86,12 @@
 
       <section class="review-block" aria-labelledby="business-title">
         <div class="review-head">
-          <h2 id="business-title">Business owner <em>options</em></h2>
-          <p>Three wider desk compositions. Option A is the current hero. B and C stay review-only until approved.</p>
+          <h2 id="business-title">Business owner <em>selection</em></h2>
+          <p>The preferred Vlada Karpovich boardroom scene is active locally. Three prior desk options remain available for comparison.</p>
         </div>
         <div class="stage" data-stage="business">
-          <video id="businessVideo" muted loop playsinline autoplay preload="metadata" poster="assets/hero-business-poster.png" src="assets/hero-business-loop.mp4"></video>
-          <span class="badge" id="businessBadge">A · Current</span>
+          <video id="businessVideo" muted loop playsinline autoplay preload="metadata" poster="assets/hero-business-vlada-meeting.jpg" src="assets/hero-business-vlada-meeting.mp4" data-src-mobile="assets/hero-business-vlada-meeting-mobile.mp4" data-poster-mobile="assets/hero-business-vlada-meeting-mobile.jpg"></video>
+          <span class="badge" id="businessBadge">Selected · Boardroom</span>
           <div class="stage-copy">
             <p class="kicker">Business owners</p>
             <h3>Your business is an asset. <em>Your life is the plan.</em></h3>
@@ -99,11 +99,12 @@
           </div>
         </div>
         <div class="choice-row" role="group" aria-label="Business hero video options">
-          <button class="choice" type="button" aria-pressed="true" data-src="assets/hero-business-loop.mp4" data-poster="assets/hero-business-poster.png" data-label="A · Current" data-note="Current: older Texas-adjacent executive, white desk, paperwork, wide composition.">A · Current paperwork</button>
-          <button class="choice" type="button" aria-pressed="false" data-src="assets/hero-business-formal-ceo.mp4" data-poster="assets/hero-business-formal-ceo.jpg" data-label="B · Formal CEO" data-note="Formal CEO: mature, composed, modern office, strong negative space and executive authority.">B · Formal CEO</button>
-          <button class="choice" type="button" aria-pressed="false" data-src="assets/hero-business-smart-casual.mp4" data-poster="assets/hero-business-smart-casual.jpg" data-label="C · Smart-casual founder" data-note="Smart-casual founder: 40s, relaxed, working through documents at a desk; less corporate and more owner-operator.">C · Smart-casual founder</button>
+          <button class="choice" type="button" aria-pressed="true" data-src="assets/hero-business-vlada-meeting.mp4" data-src-mobile="assets/hero-business-vlada-meeting-mobile.mp4" data-poster="assets/hero-business-vlada-meeting.jpg" data-poster-mobile="assets/hero-business-vlada-meeting-mobile.jpg" data-label="Selected · Boardroom" data-note="Selected: bright boardroom, mature executive presence, and collaborative planning in progress.">A · Selected boardroom</button>
+          <button class="choice" type="button" aria-pressed="false" data-src="assets/hero-business-loop.mp4" data-poster="assets/hero-business-poster.png" data-label="B · Previous" data-note="Previous: older Texas-adjacent executive, white desk, paperwork, wide composition.">B · Previous paperwork</button>
+          <button class="choice" type="button" aria-pressed="false" data-src="assets/hero-business-formal-ceo.mp4" data-poster="assets/hero-business-formal-ceo.jpg" data-label="C · Formal CEO" data-note="Formal CEO: mature, composed, modern office, strong negative space and executive authority.">C · Formal CEO</button>
+          <button class="choice" type="button" aria-pressed="false" data-src="assets/hero-business-smart-casual.mp4" data-poster="assets/hero-business-smart-casual.jpg" data-label="D · Smart-casual founder" data-note="Smart-casual founder: 40s, relaxed, working through documents at a desk; less corporate and more owner-operator.">D · Smart-casual founder</button>
         </div>
-        <p class="option-note" id="businessNote" aria-live="polite">Current: older Texas-adjacent executive, white desk, paperwork, wide composition.</p>
+        <p class="option-note" id="businessNote" aria-live="polite">Selected: bright boardroom, mature executive presence, and collaborative planning in progress.</p>
       </section>
     </div>
   </main>
@@ -112,12 +113,14 @@
     const video=document.getElementById('businessVideo');
     const badge=document.getElementById('businessBadge');
     const note=document.getElementById('businessNote');
+    const isMobile=()=>matchMedia('(max-width:760px)').matches;
+    if(isMobile()&&video.dataset.srcMobile){video.pause();video.poster=video.dataset.posterMobile;video.src=video.dataset.srcMobile;video.load();video.play().catch(()=>{});}
     document.querySelectorAll('.choice').forEach(button=>button.addEventListener('click',()=>{
       document.querySelectorAll('.choice').forEach(item=>item.setAttribute('aria-pressed','false'));
       button.setAttribute('aria-pressed','true');
       video.pause();
-      video.poster=button.dataset.poster;
-      video.src=button.dataset.src;
+      video.poster=isMobile()&&button.dataset.posterMobile?button.dataset.posterMobile:button.dataset.poster;
+      video.src=isMobile()&&button.dataset.srcMobile?button.dataset.srcMobile:button.dataset.src;
       badge.textContent=button.dataset.label;
       note.textContent=button.dataset.note;
       video.load();

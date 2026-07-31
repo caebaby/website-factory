@@ -127,7 +127,7 @@
     .hero-slide { position:relative; flex:0 0 33.333333%; height:100%; overflow:hidden; }
     .hero-slide video, .hero-slide .poster { width:100%; height:100%; object-fit:cover; }
     .hero-slide[data-market="energy"] video { object-position:center 58%; }
-    .hero-slide[data-market="business"] video { object-position:center 42%; }
+    .hero-slide[data-market="business"] video { object-position:center 50%; }
     .hero-slide[data-market="family"] video { object-position:center 50%; }
     /* Different scrim: left-heavy gradient for left-anchored copy */
     .hero-slide::after { content:""; position:absolute; inset:0; background:linear-gradient(95deg,rgba(15,32,56,.94) 0%,rgba(15,32,56,.85) 30%,rgba(15,32,56,.4) 65%,rgba(15,32,56,.25) 100%),linear-gradient(0deg,rgba(15,32,56,.6) 0%,transparent 40%); }
@@ -605,7 +605,7 @@
         </video>
       </section>
       <section class="hero-slide" data-market="business" aria-label="Business owners">
-        <video muted loop playsinline preload="metadata" poster="assets/hero-business-poster.png" aria-hidden="true" data-src="assets/hero-business-loop.mp4"></video>
+        <video muted loop playsinline preload="metadata" poster="assets/hero-business-vlada-meeting.jpg" aria-hidden="true" data-src="assets/hero-business-vlada-meeting.mp4" data-src-mobile="assets/hero-business-vlada-meeting-mobile.mp4" data-poster-mobile="assets/hero-business-vlada-meeting-mobile.jpg"></video>
       </section>
       <section class="hero-slide" data-market="family" aria-label="High-net-worth families">
         <video muted loop playsinline preload="metadata" poster="assets/hero-family-modern-kitchen.jpg" aria-hidden="true" data-src="assets/hero-family-modern-kitchen.mp4" data-src-mobile="assets/hero-family-modern-kitchen-mobile.mp4" data-poster-mobile="assets/hero-family-modern-kitchen-mobile.jpg"></video>
@@ -845,7 +845,7 @@
             </div>
           </a>
           <a class="serve-card" href="business-owners.html">
-            <img src="assets/hero-business-poster.png" alt="Business owner working calmly at his desk">
+            <img src="assets/hero-business-vlada-meeting.jpg" alt="Mature business leaders reviewing plans together in a bright boardroom">
             <div class="serve-card-body">
               <div class="serve-card-tag">02 · Closely held</div>
               <h3>Business Owners</h3>
@@ -1079,7 +1079,7 @@
             </div>
           </div>
           <div class="reel" data-reel="1" tabindex="0" role="button" aria-label="Play or pause Business Owners preview">
-            <video muted loop playsinline preload="none" poster="assets/hero-business-poster.png" data-src="assets/hero-business-loop.mp4"></video>
+            <video muted loop playsinline preload="none" poster="assets/hero-business-vlada-meeting.jpg" data-src="assets/hero-business-vlada-meeting.mp4"></video>
             <div class="reel-overlay">
               <span class="reel-tag">Business Owners</span>
               <h3 class="reel-title">The exit conversation starts before the LOI</h3>

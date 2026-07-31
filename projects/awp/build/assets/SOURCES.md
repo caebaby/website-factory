@@ -5,14 +5,18 @@ All files are self-hosted in this directory for the design review.
 | Local file | Source | License note | Use |
 |---|---|---|---|
 | `pumpjack.mp4` | Pexels video 10227529, downloaded for the prior Anchor review build | Pexels license; retain source record and re-check before final commercial launch | Oil and gas hero |
-| `hero-business-loop.mp4` | [Pexels 5104284, Gustavo Fring](https://www.pexels.com/video/a-man-working-in-the-office-5104284/) | Pexels license; free to use and modify | Wide mature business-owner hero; four-second loop |
+| `hero-business-loop.mp4` | [Pexels 5104284, Gustavo Fring](https://www.pexels.com/video/a-man-working-in-the-office-5104284/) | Pexels license; free to use and modify | Inactive prior business-owner hero retained as the Alex story placeholder and for rollback |
+| `hero-business-vlada-meeting.mp4` | [Pexels 7552425, Vlada Karpovich](https://www.pexels.com/video/people-in-a-meeting-7552425/) | Pexels license; free to use and modify | Active business-owner hero and homepage business preview; twelve-second web derivative with audio removed |
+| `hero-business-vlada-meeting.jpg` | Poster frame derived from Pexels 7552425 | Same Pexels license as source video | Active business-owner hero and Who We Serve poster |
+| `hero-business-vlada-meeting-mobile.mp4` | Mobile composition derived from Pexels 7552425 | Same Pexels license as source video | Narrow-screen business hero derivative preserving the full boardroom group using blurred fill from the same footage |
+| `hero-business-vlada-meeting-mobile.jpg` | Poster frame derived from the mobile Pexels 7552425 composition | Same Pexels license as source video | Mobile business-owner hero poster |
 | `hero-business-formal-ceo.mp4` | [Pexels 4434830](https://www.pexels.com/video/a-businessman-sitting-in-his-office-with-laptop-4434830/) | Pexels license; free to use and modify | Review-only business-owner option B; mature formal CEO at a wide office desk; audio removed |
 | `hero-business-formal-ceo.jpg` | Poster frame derived from Pexels 4434830 | Same Pexels license as source video | Review-page poster for option B |
 | `hero-business-smart-casual.mp4` | [Pexels 6700652](https://www.pexels.com/video/man-on-work-desk-6700652/) | Pexels license; free to use and modify | Review-only business-owner option C; relaxed founder working through documents; audio removed |
 | `hero-business-smart-casual.jpg` | Poster frame derived from Pexels 6700652 | Same Pexels license as source video | Review-page poster for option C |
 | `hero-family-modern.png` | Generated with OpenAI image generation for the Anchor review | Project-generated review asset; replace with approved client photography before launch if available | Modern Houston three-generation family master image |
 | `hero-family-loop.mp4` | Motion loop derived from `hero-family-modern.png` | Same as source image | Inactive prior table-scene loop retained only as working history |
-| `hero-business-poster.png` | First-frame poster derived from `hero-business-loop.mp4` | Same as source video | Poster and ICP card |
+| `hero-business-poster.png` | First-frame poster derived from `hero-business-loop.mp4` | Same as source video | Alex story placeholder poster and rollback reference |
 | `hero-family-poster.png` | Responsive poster derived from `hero-family-modern.png` | Same as source image | Inactive prior table-scene poster retained only as working history |
 | `hero-family-sunset-pexels.mp4` | [Pexels 9361674](https://www.pexels.com/video/a-family-holding-their-hands-while-walking-9361674/) | Pexels license; free to use and modify | Inactive prior young-family sunset walk retained for rollback; audio removed for web delivery |
 | `hero-family-sunset-pexels.jpg` | Poster frame derived from Pexels 9361674 | Same Pexels license as source video | Inactive prior family poster retained for rollback |

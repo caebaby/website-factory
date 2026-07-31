@@ -469,3 +469,11 @@ Append-only. Each entry: what broke, why, how it was caught, and what permanent 
 - **Fix:** rejected dated and incomplete casts; selected a bright modern-kitchen scene with grandparent, parents, and children visible together; created optimized desktop/mobile derivatives; reduced only the family-specific scrim; and built a real-copy review page for business-owner alternatives so casting is judged at the production crop. Existing business footage stays active until an alternative is explicitly approved.
 - **Permanent lesson:** people footage is approved only after the playing frame passes four checks together: intended cast is visibly present, the setting feels current for the audience, the subject survives desktop/mobile crops, and the final CSS overlay preserves both faces and copy contrast. Alternatives belong in an in-context switcher, not a contact sheet alone.
 - **Status:** ✅ closed locally. Homepage gate 0 P0; comparison page gate 0 P0 / 0 P1; desktop/mobile Tier-B passed. Public mirror intentionally unchanged pending selection.
+
+### LED-048 — The strongest “CEO” scene may show leadership context, not a solo portrait
+- **Build:** Anchor preferred business-owner hero revision (2026-07-31).
+- **Symptom:** literal solo-at-desk candidates satisfied the casting brief but read as stock portraits. The client preferred a bright boardroom scene with mature leaders actively reviewing plans together.
+- **Root cause:** the selection pass over-weighted a single identifiable CEO and under-weighted the strategic story the page needs to communicate: ownership decisions happen with other people in the room.
+- **Fix:** installed the client-selected Vlada Karpovich meeting footage as the business-owner hero and related homepage preview, retained the prior solo clips as comparison/rollback options, and created a mobile blurred-fill derivative so the full leadership group remains visible.
+- **Permanent lesson:** translate casting labels into the persuasion job. “CEO” can mean visible authority, consequential documents, and calm collaboration; do not force a literal solo portrait when the in-context scene communicates the value proposition better.
+- **Status:** ✅ implemented locally. Homepage gate 0 P0; comparison page gate 0 P0 / 0 P1; desktop/mobile Tier-B passed. Public mirror pending final visual approval.
