@@ -484,4 +484,4 @@ Append-only. Each entry: what broke, why, how it was caught, and what permanent 
 - **Root cause:** responsive composition prioritized preserving every participant over the stated visual requirement that the hero fill the viewport cleanly.
 - **Fix:** removed the business hero's mobile source override and now use the same 16:9 derivative at every breakpoint with `object-fit: cover`. Narrow screens crop the outer participants while the footage remains edge to edge.
 - **Permanent lesson:** when the direction is full-screen, blurred fill and letterboxing are not acceptable responsive fallbacks. Use a true cover crop, art-direct the focal point, and state the crop tradeoff explicitly.
-- **Status:** ✅ implemented locally. Homepage and comparison page both pass with 0 P0; desktop and 390px Tier-B confirm edge-to-edge video with no blurred bands. Public mirror remains unchanged pending approval.
+- **Status:** ✅ published for client review. Homepage and comparison page both pass with 0 P0; desktop and 390px Tier-B confirm edge-to-edge business video with no blurred bands. Curated public mirror commit `c4b1d3b` was verified live after deployment.
