@@ -477,3 +477,11 @@ Append-only. Each entry: what broke, why, how it was caught, and what permanent 
 - **Fix:** installed the client-selected Vlada Karpovich meeting footage as the business-owner hero and related homepage preview, retained the prior solo clips as comparison/rollback options, and created a mobile blurred-fill derivative so the full leadership group remains visible.
 - **Permanent lesson:** translate casting labels into the persuasion job. “CEO” can mean visible authority, consequential documents, and calm collaboration; do not force a literal solo portrait when the in-context scene communicates the value proposition better.
 - **Status:** ✅ implemented locally. Homepage gate 0 P0; comparison page gate 0 P0 / 0 P1; desktop/mobile Tier-B passed. Public mirror pending final visual approval.
+
+### LED-049 — A full-screen video direction rules out blurred-fill preservation
+- **Build:** Anchor business-owner hero correction (2026-08-02).
+- **Symptom:** the selected landscape boardroom footage preserved the full meeting on narrow screens by placing it inside a vertical derivative with blurred bands. The full group remained visible, but the result looked letterboxed and failed the requested full-screen presentation.
+- **Root cause:** responsive composition prioritized preserving every participant over the stated visual requirement that the hero fill the viewport cleanly.
+- **Fix:** removed the business hero's mobile source override and now use the same 16:9 derivative at every breakpoint with `object-fit: cover`. Narrow screens crop the outer participants while the footage remains edge to edge.
+- **Permanent lesson:** when the direction is full-screen, blurred fill and letterboxing are not acceptable responsive fallbacks. Use a true cover crop, art-direct the focal point, and state the crop tradeoff explicitly.
+- **Status:** ✅ implemented locally. Homepage and comparison page both pass with 0 P0; desktop and 390px Tier-B confirm edge-to-edge video with no blurred bands. Public mirror remains unchanged pending approval.
