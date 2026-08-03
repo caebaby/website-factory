@@ -1,0 +1,20 @@
+run = "python3 -m http.server 3000"
+entrypoint = "index.html"
+
+[deployment]
+deploymentTarget = "static"
+publicDir = "."
+
+[[deployment.responseHeaders]]
+path = "/*"
+name = "X-Content-Type-Options"
+value = "nosniff"
+
+[[deployment.responseHeaders]]
+path = "/*"
+name = "Referrer-Policy"
+value = "strict-origin-when-cross-origin"
+
+[[ports]]
+localPort = 3000
+externalPort = 80

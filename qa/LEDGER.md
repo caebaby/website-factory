@@ -525,3 +525,19 @@ Append-only. Each entry: what broke, why, how it was caught, and what permanent 
 - **Fix:** the shared `anchor-inner.js` close handler now resets the menu button to `aria-expanded="false"`; cache-busted script references ensure the corrected behavior ships with all five inner routes.
 - **Permanent lesson:** every disclosure/navigation close path must update the visual state, body state where used, focus/announcement state, and `aria-expanded` together. Verify both toggle-click and link-selection paths.
 - **Status:** ✅ fixed and visually verified locally. Open-menu checks at 390px and 820px show the Client Login row, zero horizontal overflow, and `aria-expanded="false"` after link selection. The same verification also closed the homepage's prior 721–900px menu-display breakpoint gap.
+
+### LED-055 — A structural copy gate cannot prove that every approved client decision landed
+- **Build:** Anchor Alex-copy client-review release (2026-08-03).
+- **Symptom:** the nine-route build had 0 P0 and looked complete, but a source-to-build verifier found four approved decisions missing or semantically weakened: the full Why Anchor promise, two Fit Check answers, the one-business-day/no-pitch response promise, and Fit Check-first CTA hierarchy.
+- **Root cause:** generic page checks verify structure, references, and risky language; they do not compare every response-bearing cell in a client-returned workbook against its intended destination in the build.
+- **Fix:** created a dated, itemized implementation audit; reconciled every response-bearing decision; repaired all four misses; and required a fresh independent verifier to re-audit the source document after the repairs.
+- **Permanent lesson:** client-feedback releases need two separate gates: the normal site gate and a source-to-build decision audit with explicit applied/deferred/ambiguous states. A green structural gate is necessary, not sufficient.
+- **Status:** ✅ closed. Twenty-one response-bearing decisions checked; no missed approved copy remains. Unresolved legal, compliance, team-media, Fit Check-band, scheduling, and podcast inputs remain explicitly separated as launch dependencies.
+
+### LED-056 — A Replit handoff is a release package, not a dump of the build directory
+- **Build:** Anchor Replit handoff (2026-08-03).
+- **Symptom:** the approved review site lived inside the Factory project with historical builds, inactive/restricted assets, source-only artifacts, and assumptions that do not belong in a client-owned Replit root.
+- **Root cause:** the design build and the deployment handoff serve different jobs. Copying the whole project would leak history, enlarge the app, and make the production contract ambiguous.
+- **Fix:** created a curated static-root package containing only the 10 supported routes, active self-hosted assets, `.replit`, `package.json`, a deterministic reference/content check, crawler-safe review defaults, an explicit sitemap, and a production launch checklist. Verified 390px/820px/1440px layouts, menus, media cover behavior, Fit Check auto-advance, image loading, and console output against the package itself.
+- **Permanent lesson:** every Replit handoff needs an allowlist, a runnable root contract, automated local-reference checks, review-vs-production crawler controls, explicit external-system owners, and browser QA at the actual handoff origin.
+- **Status:** ✅ closed. `projects/awp/handoff/` passes `npm run check`; every Factory route gate has 0 P0.
