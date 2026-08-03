@@ -166,6 +166,13 @@ img {
   color: var(--navy);
 }
 
+.nav-links .client-login {
+  color: #765c29;
+  text-decoration: underline;
+  text-decoration-color: rgba(177, 143, 77, 0.6);
+  text-underline-offset: 0.32em;
+}
+
 .nav-links .cta,
 .btn {
   min-height: 46px;
@@ -642,6 +649,10 @@ img {
 
 .footer-grid a:hover {
   color: #f7f2e8;
+}
+
+.footer-grid .client-login {
+  color: #dbc37f;
 }
 
 .legal {

@@ -160,6 +160,13 @@ input {
   color: var(--navy);
 }
 
+.nav-links .client-login {
+  color: #765c29;
+  text-decoration: underline;
+  text-decoration-color: rgba(177, 143, 77, 0.6);
+  text-underline-offset: 0.32em;
+}
+
 .nav-links .nav-cta,
 .button {
   min-height: 46px;
@@ -1749,6 +1756,10 @@ input {
 .footer a:hover {
   color: #f5f0e6;
   text-decoration: underline;
+}
+
+.footer .client-login {
+  color: #d8bd73;
 }
 
 .footer-legal {

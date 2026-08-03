@@ -509,3 +509,19 @@ Append-only. Each entry: what broke, why, how it was caught, and what permanent 
 - **Fix:** replaced the active mobile family source with a true 720×1280 cover derivative from the same Pexels 8479992 footage. A smooth reversible pan crosses the multigenerational group and returns to its opening frame, keeping motion loopable without blurred bands, stretching, or letterboxing.
 - **Permanent lesson:** a responsive video derivative must satisfy both casting and presentation. If edge-to-edge is required, use an art-directed crop or pan-and-scan; blurred duplication is not a full-screen treatment.
 - **Status:** ✅ fixed locally. The old blurred asset remains inactive for traceability; provenance and usage are explicit in `assets/SOURCES.md`.
+
+### LED-053 — Authentication transaction URLs are not durable client-portal links
+- **Build:** Anchor current-client login integration (2026-08-03).
+- **Symptom:** the supplied Investor360 destination contained `/u/login?state=...`; opening it independently returned an internal error and would strand future clients when the state token expired.
+- **Root cause:** a URL copied from the middle of an Auth0 authorization transaction was treated as a reusable login endpoint.
+- **Fix:** linked every header, mobile menu, and footer to the official stable entry point, `https://www.investor360.com/`, which redirects through `/login` and creates a fresh authentication transaction. Links open in a new tab with `noopener noreferrer` and an explicit accessible label.
+- **Permanent lesson:** never publish OAuth/Auth0 links containing `state`, `code`, `nonce`, or other transaction parameters. Use the provider's documented stable entry URL and verify its redirect behavior before release.
+- **Status:** ✅ implemented locally across all nine Anchor routes; public review remains unchanged pending approval.
+
+### LED-054 — A visually closed menu must also reset its announced state
+- **Build:** Anchor current-client login integration (2026-08-03).
+- **Symptom:** selecting any link in the inner-page mobile menu removed the visible `.open` state but left the toggle at `aria-expanded="true"`, so assistive technology heard an expanded menu that was no longer present.
+- **Root cause:** the link-click handler updated only the CSS class while the content-page and homepage shells correctly updated both visual and semantic state.
+- **Fix:** the shared `anchor-inner.js` close handler now resets the menu button to `aria-expanded="false"`; cache-busted script references ensure the corrected behavior ships with all five inner routes.
+- **Permanent lesson:** every disclosure/navigation close path must update the visual state, body state where used, focus/announcement state, and `aria-expanded` together. Verify both toggle-click and link-selection paths.
+- **Status:** ✅ fixed and visually verified locally. Open-menu checks at 390px and 820px show the Client Login row, zero horizontal overflow, and `aria-expanded="false"` after link selection. The same verification also closed the homepage's prior 721–900px menu-display breakpoint gap.
