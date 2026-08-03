@@ -493,3 +493,11 @@ Append-only. Each entry: what broke, why, how it was caught, and what permanent 
 - **Fix:** made Alex's direct audience-order instruction authoritative; mapped unambiguous creative and factual responses into the build; labeled credentials, experience, title, and team roles as client supplied pending compliance; retained the legal entity/RIA statement as `[VERIFY]`; and recorded unresolved or ambiguous items in a dated client-feedback changelog.
 - **Permanent lesson:** store client-returned documents as immutable evidence, maintain a separate applied/deferred/ambiguous implementation log, and preserve three distinct states for sensitive copy: placeholder, client supplied, and compliance approved. A later direct instruction wins over an earlier document only where the conflict is explicit.
 - **Status:** ✅ implemented and independently verified locally. Nine-route gate has 0 P0; the 18-page workbook has 0 accessibility findings; public review remains unchanged pending Chris's visual approval.
+
+### LED-051 — One hero frame is not a reusable portrait-card asset
+- **Build:** Anchor homepage audience-card correction (2026-08-03).
+- **Symptom:** the approved family hero image looked right at 16:9 but generic `object-fit: cover` cut adult faces at both edges inside the tall Who We Serve card. The same reuse left the other audience cards dependent on incidental browser cropping.
+- **Root cause:** source approval was treated as component approval even though the hero and card have materially different aspect ratios and focal-point requirements.
+- **Fix:** created dedicated 900×1125 assets for all three audience cards. The family version is an OpenAI-assisted portrait reframe of the approved Pexels 8479992 scene that preserves every generation; oil and business use deterministic centered crops from their approved sources. Recorded provenance and approval state in `assets/SOURCES.md`.
+- **Permanent lesson:** verify media per component aspect ratio. When a source must serve both landscape and portrait surfaces, provide art-directed assets for each instead of relying on generic cover cropping.
+- **Status:** ✅ fixed locally. Desktop and 390px Tier-B show complete family faces and centered oil/business subjects; homepage gate remains 0 P0.
