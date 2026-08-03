@@ -462,7 +462,7 @@ img {
 /* About proof */
 .credentials {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
@@ -541,10 +541,11 @@ img {
 }
 
 .team-row:not(:first-child) .portrait {
-  color: var(--muted);
+  color: var(--navy);
   background: var(--cream);
-  border: 1px dashed rgba(30, 57, 90, 0.26);
-  font-size: 3rem;
+  border: 1px solid rgba(30, 57, 90, 0.2);
+  font-size: 1.65rem;
+  letter-spacing: 0.05em;
 }
 
 .team-row h2 {
@@ -746,17 +747,7 @@ img {
   }
 
   .credentials {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .credential:nth-child(3) {
-    padding-left: 0;
-    border-left: 0;
-    border-top: 1px solid var(--line);
-  }
-
-  .credential:nth-child(4) {
-    border-top: 1px solid var(--line);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .team-row,

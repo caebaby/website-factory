@@ -49,7 +49,7 @@ Ask these first, one at a time:
 
 **Brand line:** “Charting the course towards your financial legacy.”
 
-**Firm description:** Houston-based fiduciary wealth management for oil & gas executives, business owners, and high-net-worth families.
+**Firm description:** Houston-based fiduciary wealth management for high-net-worth families, oil & gas executives, and business owners.
 
 **Legal placeholder:** `[VERIFY: RIA entity name]` is a registered investment advisor. Information presented is for educational purposes only and does not intend to make an offer or solicitation for the sale or purchase of any specific securities, investments, or investment strategies. Investments involve risk and unless otherwise stated, are not guaranteed. Past performance is not a guarantee of future results.
 
@@ -83,6 +83,10 @@ Ask these first, one at a time:
 
 #### Rotating hero copy
 
+**Families H1:** Your wealth grew. Did your plan keep up?
+
+Trust funding, beneficiary reviews, multi-generational coordination. Anchor keeps your CPA, attorney, and advisor reading from the same page — so your estate matches your actual net worth.
+
 **Oil & Gas H1:** When your equity vests, who sees the whole picture?
 
 RSUs, deferred comp, blackout periods, commodity cycles. Anchor coordinates your investments, taxes, and estate plan with your CPA and attorney — so every vest, bonus, and decision happens in context.
@@ -91,13 +95,9 @@ RSUs, deferred comp, blackout periods, commodity cycles. Anchor coordinates your
 
 Entity structure, exit timing, liquidity events, and the line between business value and personal wealth. Anchor starts the planning conversation years before the LOI arrives.
 
-**Families H1:** Your wealth grew. Did your plan keep up?
-
-Trust funding, beneficiary reviews, multi-generational coordination. Anchor keeps your CPA, attorney, and advisor reading from the same page — so your estate matches your actual net worth.
-
 - **CTA:** Schedule a 30-Minute Conversation
 - **CTA:** Take the 4-Question Fit Check
-- **PROOF:** `[Credential 01]` · `[Credential 02]` · `[XX]+ yrs` · Houston-based
+- **PROOF:** APMA® · CRPC® · 19 years · Houston-based (client supplied; compliance review pending)
 
 **SECTION LABEL:** The Problem
 
@@ -113,7 +113,7 @@ You've become the project manager of your own wealth, and you're paying for the 
 
 Equity compensation is how the energy industry pays its leaders. RSU vesting, deferred comp, and blackout periods create a tax-timing problem that generalist advisors don't understand.
 
-"We have a trust that was set up years ago. I'm honestly not sure if it's even funded correctly, or if it still matches what we actually own."
+"We want to leave a legacy and protect our family when we pass. We are just not sure this has been done properly, and we want a second opinion."
 
 Your net worth has grown. Your estate documents haven't. The gap between your wealth and your plan is widening every year.
 
@@ -135,33 +135,27 @@ Preview footage · [XX:XX]. Replace with Alex's approved story video before laun
 
 Not a claim. Here's what it actually means.
 
-##### [XX]+ years in the industry
+##### 19 years in the industry
 
-Experience across institutional wealth management and independent advice.
+Experience across financial planning, wealth management, and independent advice.
 
-Needs verification
+Client supplied
 
-##### [Credential 01]
+##### APMA®
 
-Approved professional designation and issuing organization go here.
+Accredited Portfolio Management Advisor, College for Financial Planning.
 
-Needs verification
+Client supplied
 
-##### [Credential 02]
+##### CRPC®
 
-Approved license, certification, or specialist training goes here.
+Chartered Retirement Planning Counselor, College for Financial Planning.
 
-Needs verification
-
-##### [Accolade 01]
-
-Approved recognition, year, source, and selection criteria go here.
-
-Needs verification
+Client supplied
 
 **SECTION LABEL:** Why Anchor
 
-#### One advisor who sees the whole picture.
+#### A dedicated advisor who sees the whole picture.
 
 Complex wealth does not need another specialist working alone. It needs one accountable lead who keeps every professional, deadline, and decision connected.
 
@@ -176,10 +170,6 @@ You know who owns the next step. Anchor keeps the conversation moving across you
 ##### Built for complexity
 
 Equity compensation, concentrated wealth, estate questions, and business transitions belong in one living plan.
-
-##### Houston fluency
-
-Energy compensation, commodity cycles, and closely held businesses are part of the planning context—not an afterthought.
 
 **SECTION LABEL:** Why The Firm Exists
 
@@ -211,29 +201,29 @@ You leave each conversation knowing what matters now—not with another disconne
 
 #### We specialize. Generalists are everywhere.
 
-If you don't see yourself below, we may not be the right fit — and we'll tell you that honestly.
+If you do not see your situation below, let’s have a quick introduction and find out. We are happy to offer an honest opinion about whether we are the right fit for each other.
 
-01 · Houston energy
-
-##### Oil & Gas Executives
-
-RSUs, NQDC elections, blackout periods, and commodity-cycle exposure. You're paid in stock and options the way the industry pays its leaders.
-
-See how we work with you →
-
-02 · Closely held
-
-##### Business Owners
-
-Exit readiness, entity structure, and the line between business value and personal wealth. The exit conversation starts years before the LOI.
-
-See how we work with you →
-
-03 · Across generations
+01 · Across generations
 
 ##### High-Net-Worth Families
 
 Trust funding, current beneficiaries, and a plan the next generation can understand. Your wealth has outgrown the plan built for it.
+
+See how we work with you →
+
+02 · Houston energy
+
+##### Oil & Gas Executives
+
+RSUs, NQDC elections, blackout periods, and commodity-cycle exposure. You are paid in stock and options the way the industry pays its leaders.
+
+See how we work with you →
+
+03 · Closely held
+
+##### Business Owners
+
+Exit readiness, entity structure, and the line between business value and personal wealth. The exit conversation starts years before the LOI.
 
 See how we work with you →
 
@@ -245,13 +235,11 @@ Four questions. Two minutes. We'll tell you honestly whether we can help — and
 
 **FORM QUESTION:** What best describes your situation?
 
-- **OPTION:** Oil and gas executive with equity compensation
+- **OPTION:** High-net-worth family with estate and legacy complexity
+
+- **OPTION:** Executive with equity compensation
 
 - **OPTION:** Business owner considering a transition
-
-- **OPTION:** Coordinating wealth across several professionals
-
-- **OPTION:** Something else
 
 **FORM QUESTION:** Your approximate investable assets?
 
@@ -381,27 +369,27 @@ The first call is just a conversation. 30 minutes. No deck, no pitch, no pressur
 
 #### Institutional discipline, brought to your side of the table.
 
-Alex's approved background and prior-firm history will be added after client and compliance verification. Anchor was founded to coordinate the work that siloed advice leaves to the client.
+At Anchor, financial advice is personal, approachable, and centered on what matters most: you and your family.
 
 AM
 
 **SECTION LABEL:** Alex's story
 
-##### One advisor accountable for the space between decisions.
+##### Financial Advisor and Managing Partner.
 
-Anchor brings investment, tax, estate, and business planning into one working view. The goal is clear ownership: the right professional, the right context, and the right next step.
+Alex Miller brings 19 years of experience helping individuals and families pursue their financial goals through comprehensive planning and investment management.
 
-Alex's approved biography, credentials, prior-firm history, and founding story will publish after client and compliance verification.
+His work emphasizes family legacy, estate and wealth planning, and retirement strategies, with a focus on enduring relationships and coordinated decisions.
 
 - **CTA:** Read why Anchor exists →
 
-[Credential 01]
+APMA®
 
-[Credential 02]
+CRPC®
 
-[XX]+ years
+19 years
 
-[Accolade 01]
+Client supplied
 
 01 · Shared context
 
@@ -437,6 +425,10 @@ If your CPA and your advisor aren't reading from the same plan, you're doing the
 
 Swipe the rail. Hover, focus, or tap a preview to play the silent footage.
 
+Families
+
+##### What "one living plan" actually means
+
 Oil & Gas
 
 ##### How RSU vesting creates a tax-timing trap
@@ -444,10 +436,6 @@ Oil & Gas
 Business Owners
 
 ##### The exit conversation starts before the LOI
-
-Families
-
-##### What "one living plan" actually means
 
 Concentrated Wealth
 
@@ -516,9 +504,11 @@ Your outside professionals receive the context they need to do their best work.
 
 #### Built around the client’s side of the table.
 
-Alex’s approved biography, employment history, and founding narrative will be added after client and compliance verification.
+Alex Miller is a Financial Advisor and Managing Partner with 19 years of experience helping individuals and families pursue their financial goals through comprehensive planning and investment management.
 
-For review, this page shows the intended narrative structure without publishing unverified claims.
+His work centers on family legacy, estate and wealth planning, and retirement strategies. Anchor’s approach is personal, approachable, and built around enduring relationships with the people and families it serves.
+
+Title, biography, and experience: client supplied · compliance review pending
 
 - **CTA:** Meet the Team →
 
@@ -526,21 +516,17 @@ For review, this page shows the intended narrative structure without publishing 
 
 #### Proof should be specific.
 
-Industry experience
+Experience in financial planning and investment management
 
-Needs verification
+Client supplied · compliance review
 
-Approved designation
+Accredited Portfolio Management Advisor, College for Financial Planning
 
-Needs verification
+Client supplied · compliance review
 
-Approved certification
+Chartered Retirement Planning Counselor, College for Financial Planning
 
-Needs verification
-
-Source and criteria
-
-Needs verification
+Client supplied · compliance review
 
 **SECTION LABEL:** Start Here
 
@@ -571,41 +557,102 @@ Four short questions identify the best next conversation.
 
 **H1:** People who own the next step.
 
-A coordinated plan works only when responsibility is clear.
+Dedicated people who own the next step. A coordinated plan works only when responsibility is clear and accountability is paramount.
 
 Home / Team
 
 - **CTA:** Home
 
-Founder & Wealth Advisor · Title to verify
+Financial Advisor & Managing Partner · Client supplied
 
 #### Alex Miller
 
-Alex’s approved biography, credentials, prior firm history, community involvement, and personal details will be inserted here after client and compliance review.
+Alex brings 19 years of experience helping individuals and families pursue their financial goals through comprehensive planning and investment management. His work emphasizes family legacy, estate and wealth planning, and retirement strategies.
 
 - **CTA:** Start the Fit Check →
 
-Team profile placeholder
+Director of Operations · Client supplied
 
-#### [Name & Role]
+#### Haley Johnson
 
-Use this row for an additional advisor, client service lead, operations partner, or other approved team member.
+Team biography and approved headshot are pending client and compliance review.
 
-Pending content
+Biography pending
 
-Team profile placeholder
+Team Operations Leader, Advisor Services · Axiom · Client supplied
 
-#### [Name & Role]
+#### Dawn Cooper
 
-Biography, credentials, responsibilities, and contact routing to be supplied and verified.
+Axiom relationship, team biography, and approved headshot are pending client and compliance review.
 
-Pending content
+Biography pending
+
+Director of Insurance Strategies · Axiom · Client supplied
+
+#### Derek Morris
+
+Axiom relationship, team biography, and approved headshot are pending client and compliance review.
+
+Biography pending
 
 **SECTION LABEL:** A Better First Step
 
 #### Start with your situation, not a sales pitch.
 
 The fit check routes every visitor toward the right next conversation.
+
+- **CTA:** Take the Fit Check →
+
+---
+
+## Page: High-Net-Worth Families
+
+**Review URL:** https://caebaby.github.io/anchor-review/high-net-worth-families.html
+
+### Decisions Alex should make
+
+- Confirm whether “high-net-worth families” is the preferred public audience label.
+- Verify the scope around trust funding, beneficiary reviews, account ownership, family communication, and estate-attorney coordination.
+- Clarify the typical family complexity or asset level that signals a strong fit.
+- Provide one anonymized family situation to make the page more specific and credible.
+
+### Current copy
+
+**SECTION LABEL:** High-Net-Worth Families
+
+**H1:** Keep the plan current across generations.
+
+Investments, trusts, beneficiaries, taxes, and family communication should tell the same story.
+
+Home / Who We Serve / High-Net-Worth Families
+
+- **CTA:** Home
+
+**SECTION LABEL:** The Planning Problem
+
+#### Your wealth changed. Did the plan?
+
+Estate documents can remain untouched while assets, businesses, relationships, tax rules, and family priorities change around them. A signed document is not the same as an implemented plan.
+
+Anchor keeps the estate attorney, CPA, investment plan, account ownership, and beneficiary choices connected—and helps the family understand what the structure is designed to accomplish.
+
+##### Review what exists
+
+Compare current documents and beneficiaries with the family’s actual assets and intentions.
+
+##### Close implementation gaps
+
+Coordinate account ownership, trust funding, investment policy, and professional follow-through.
+
+##### Prepare the family
+
+Create an understandable plan and a thoughtful communication rhythm for the next generation.
+
+**SECTION LABEL:** A Living Plan
+
+#### Legacy is a process, not a binder.
+
+The fit check identifies the coordination gap that should lead the conversation.
 
 - **CTA:** Take the Fit Check →
 
@@ -712,59 +759,6 @@ Define the cash flow, investment, family, and legacy decisions after liquidity.
 #### Prepare before an LOI narrows the options.
 
 The fit check routes owners toward the most useful first planning conversation.
-
-- **CTA:** Take the Fit Check →
-
----
-
-## Page: High-Net-Worth Families
-
-**Review URL:** https://caebaby.github.io/anchor-review/high-net-worth-families.html
-
-### Decisions Alex should make
-
-- Confirm whether “high-net-worth families” is the preferred public audience label.
-- Verify the scope around trust funding, beneficiary reviews, account ownership, family communication, and estate-attorney coordination.
-- Clarify the typical family complexity or asset level that signals a strong fit.
-- Provide one anonymized family situation to make the page more specific and credible.
-
-### Current copy
-
-**SECTION LABEL:** High-Net-Worth Families
-
-**H1:** Keep the plan current across generations.
-
-Investments, trusts, beneficiaries, taxes, and family communication should tell the same story.
-
-Home / Who We Serve / High-Net-Worth Families
-
-- **CTA:** Home
-
-**SECTION LABEL:** The Planning Problem
-
-#### Your wealth changed. Did the plan?
-
-Estate documents can remain untouched while assets, businesses, relationships, tax rules, and family priorities change around them. A signed document is not the same as an implemented plan.
-
-Anchor keeps the estate attorney, CPA, investment plan, account ownership, and beneficiary choices connected—and helps the family understand what the structure is designed to accomplish.
-
-##### Review what exists
-
-Compare current documents and beneficiaries with the family’s actual assets and intentions.
-
-##### Close implementation gaps
-
-Coordinate account ownership, trust funding, investment policy, and professional follow-through.
-
-##### Prepare the family
-
-Create an understandable plan and a thoughtful communication rhythm for the next generation.
-
-**SECTION LABEL:** A Living Plan
-
-#### Legacy is a process, not a binder.
-
-The fit check identifies the coordination gap that should lead the conversation.
 
 - **CTA:** Take the Fit Check →
 
@@ -932,7 +926,7 @@ RSU vesting
 
 The vest, the tax withholding, and the first open trading window may happen on three different clocks. Your plan has to connect them before the shares arrive.
 
-Alex Miller, Anchor Wealth Planning
+Alex Miller , Anchor Wealth Planning
 
 - **CTA:** Alex Miller
 
@@ -966,7 +960,7 @@ On this page
 
 - **CTA:** Sources
 
-- **CTA:** Companion podcastAnchor Wealth Podcast · Episode notesListen to the podcast
+- **CTA:** Companion podcast Anchor Wealth Podcast · Episode notes Listen to the podcast
 
 The short answer
 
@@ -1010,15 +1004,15 @@ This is especially important when salary, annual bonus, deferred compensation, r
 
 The planning meeting moves faster when the advisor and CPA are working from the same source documents. Bring the items that control the transaction and the items that show its effect on the household.
 
-- Award agreement and current vesting scheduleThese control the grant conditions, settlement timing, and plan-specific mechanics.
+- Award agreement and current vesting schedule These control the grant conditions, settlement timing, and plan-specific mechanics.
 
-- Employer trading policyInclude blackout dates, preclearance requirements, and any Rule 10b5-1 plan already in place.
+- Employer trading policy Include blackout dates, preclearance requirements, and any Rule 10b5-1 plan already in place.
 
-- Recent pay statement and prior-year tax returnThese help the CPA place the vest inside total household income and withholding.
+- Recent pay statement and prior-year tax return These help the CPA place the vest inside total household income and withholding.
 
-- Current company-stock exposureCount vested shares, unvested awards, employee stock plans, and other holdings tied to the same employer or industry.
+- Current company-stock exposure Count vested shares, unvested awards, employee stock plans, and other holdings tied to the same employer or industry.
 
-- Near-term cash needs and planned usesName the tax reserve, major purchase, charitable gift, debt payment, or diversification goal before the shares settle.
+- Near-term cash needs and planned uses Name the tax reserve, major purchase, charitable gift, debt payment, or diversification goal before the shares settle.
 
 #### Questions worth answering early
 
@@ -1054,19 +1048,19 @@ Start by mapping the dates and estimating the tax. Once the household knows when
 
 #### Primary sources and further reading
 
-- IRS Publication 525, Taxable and Nontaxable Income, including restricted property and qualified equity grant guidance.
+- IRS Publication 525, Taxable and Nontaxable Income , including restricted property and qualified equity grant guidance.
 
 - **CTA:** IRS Publication 525, Taxable and Nontaxable Income
 
-- IRS Publication 15, Employer’s Tax Guide, section 7 on supplemental wage withholding.
+- IRS Publication 15, Employer’s Tax Guide , section 7 on supplemental wage withholding.
 
 - **CTA:** IRS Publication 15, Employer’s Tax Guide
 
-- IRS Publication 15-T, Federal Income Tax Withholding Methods.
+- IRS Publication 15-T, Federal Income Tax Withholding Methods .
 
 - **CTA:** IRS Publication 15-T, Federal Income Tax Withholding Methods
 
-- SEC guide to Rule 10b5-1 insider trading arrangements, including the conditions and cooling-off periods that apply to qualifying trading plans.
+- SEC guide to Rule 10b5-1 insider trading arrangements , including the conditions and cooling-off periods that apply to qualifying trading plans.
 
 - **CTA:** SEC guide to Rule 10b5-1 insider trading arrangements
 

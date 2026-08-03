@@ -50,7 +50,7 @@ GLOBAL_BLOCKS = [
     ),
     (
         "Firm description",
-        ["Houston-based fiduciary wealth management for oil & gas executives, business owners, and high-net-worth families."],
+        ["Houston-based fiduciary wealth management for high-net-worth families, oil & gas executives, and business owners."],
         "Confirm every descriptor and audience label is accurate and approved.",
     ),
     (
@@ -80,7 +80,7 @@ GLOBAL_BLOCKS = [
         "Footer navigation labels",
         [
             "Homepage Explore: About · Team · Services · Resources · Contact",
-            "Homepage Specialties: Oil & Gas Executives · Business Owners · HNW Families · Equity Compensation · Estate & Legacy · Coordinated Planning",
+            "Homepage Specialties: HNW Families · Oil & Gas Executives · Business Owners · Estate & Legacy · Equity Compensation · Coordinated Planning",
             "Content pages: Explore · Start · Who We Serve · Take the Fit Check · Oil and Gas Executives",
         ],
         "Confirm the footer labels and destinations.",
@@ -105,12 +105,20 @@ HERO_BLOCKS = [
         "Confirm the location and whether fiduciary language is approved.",
     ),
     (
+        "Rotating hero — High-Net-Worth Families",
+        [
+            "Your wealth grew. Did your plan keep up?",
+            "Trust funding, beneficiary reviews, multi-generational coordination. Anchor keeps your CPA, attorney, and advisor reading from the same page — so your estate matches your actual net worth.",
+        ],
+        "Alex selected this as the lead hero. Approve or replace the family copy.",
+    ),
+    (
         "Rotating hero — Oil & Gas",
         [
             "When your equity vests, who sees the whole picture?",
             "RSUs, deferred comp, blackout periods, commodity cycles. Anchor coordinates your investments, taxes, and estate plan with your CPA and attorney — so every vest, bonus, and decision happens in context.",
         ],
-        "Approve the headline and description for the lead hero.",
+        "Approve or replace the oil-and-gas hero copy.",
     ),
     (
         "Rotating hero — Business Owners",
@@ -121,20 +129,12 @@ HERO_BLOCKS = [
         "Approve or replace the business-owner hero copy.",
     ),
     (
-        "Rotating hero — Families",
-        [
-            "Your wealth grew. Did your plan keep up?",
-            "Trust funding, beneficiary reviews, multi-generational coordination. Anchor keeps your CPA, attorney, and advisor reading from the same page — so your estate matches your actual net worth.",
-        ],
-        "Approve or replace the family hero copy.",
-    ),
-    (
         "Hero actions and proof",
         [
-            "Market tabs: 01 Oil & Gas · 02 Business Owners · 03 Families",
+            "Market tabs: 01 Families · 02 Oil & Gas · 03 Business Owners",
             "CTA: Schedule a 30-Minute Conversation",
             "CTA: Take the 4-Question Fit Check",
-            "[Credential 01] · [Credential 02] · [XX]+ yrs · Houston-based",
+            "APMA® · CRPC® · 19 years · Houston-based (client supplied; compliance review pending)",
         ],
         "Confirm the conversion path and supply verified proof.",
     ),
@@ -148,7 +148,7 @@ PRIORITY_REVIEW = [
         "REQUIRED BEFORE LAUNCH",
         "Firm identity and legal disclosure",
         [
-            "CURRENT POSITIONING: Houston-based fiduciary wealth management for oil & gas executives, business owners, and high-net-worth families.",
+            "CURRENT POSITIONING: Houston-based fiduciary wealth management for high-net-worth families, oil & gas executives, and business owners.",
             "CURRENT PLACEHOLDER: [VERIFY: RIA entity name] is a registered investment advisor.",
             "CURRENT DISCLOSURE: Information presented is for educational purposes only and does not intend to make an offer or solicitation for the sale or purchase of any specific securities, investments, or investment strategies. Investments involve risk and unless otherwise stated, are not guaranteed. Past performance is not a guarantee of future results.",
         ],
@@ -158,9 +158,9 @@ PRIORITY_REVIEW = [
         "REQUIRED BEFORE LAUNCH",
         "Alex’s public title, biography, and founding story",
         [
-            "CURRENT TITLE PLACEHOLDER: Alex Miller",
+            "CURRENT TITLE: Alex Miller, Financial Advisor and Managing Partner (client supplied; compliance review pending).",
             "CURRENT STORY POSITIONING: Anchor was founded to coordinate the decisions that fall between investments, taxes, estate work, and business planning.",
-            "CURRENT PLACEHOLDER: Alex’s approved biography, credentials, prior-firm history, community involvement, and personal details will be inserted after client and compliance review.",
+            "CURRENT BIOGRAPHY: Alex brings 19 years of experience helping individuals and families pursue their financial goals through comprehensive planning and investment management. His work emphasizes family legacy, estate and wealth planning, and retirement strategies.",
         ],
         "Supply Alex’s exact title, approved short biography, prior-firm history, founding story, community involvement, and any personal details that should appear publicly.",
     ),
@@ -168,10 +168,10 @@ PRIORITY_REVIEW = [
         "REQUIRED BEFORE LAUNCH",
         "Verified experience, credentials, and accolades",
         [
-            "[XX]+ years in the industry — Experience across institutional wealth management and independent advice.",
-            "[Credential 01] — Approved professional designation and issuing organization go here.",
-            "[Credential 02] — Approved license, certification, or specialist training goes here.",
-            "[Accolade 01] — Approved recognition, year, source, and selection criteria go here.",
+            "19 years in the industry (client supplied; compliance review pending).",
+            "APMA® — Accredited Portfolio Management Advisor, College for Financial Planning (client supplied; compliance review pending).",
+            "CRPC® — Chartered Retirement Planning Counselor, College for Financial Planning (client supplied; compliance review pending).",
+            "No accolade supplied; the placeholder has been removed.",
         ],
         "Replace every placeholder with a verified fact. Include issuing organizations, dates where relevant, and accolade source/selection criteria—or remove the item.",
     ),
@@ -179,8 +179,10 @@ PRIORITY_REVIEW = [
         "REQUIRED BEFORE LAUNCH",
         "Team structure and public profiles",
         [
-            "CURRENT TEAM PROMISE: People who own the next step. A coordinated plan works only when responsibility is clear.",
-            "CURRENT PLACEHOLDERS: Two additional [Name & Role] profiles for an advisor, client service lead, operations partner, or other approved team member.",
+            "CURRENT TEAM PROMISE: Dedicated people who own the next step. A coordinated plan works only when responsibility is clear and accountability is paramount.",
+            "Haley Johnson — Director of Operations.",
+            "Dawn Cooper — Team Operations Leader, Advisor Services — Axiom.",
+            "Derek Morris — Director of Insurance Strategies — Axiom.",
         ],
         "Identify who should appear publicly. Provide each person’s role, responsibilities, credentials, biography, headshot, and contact routing. Confirm whether unfilled profiles should remain hidden.",
     ),
@@ -202,7 +204,7 @@ PRIORITY_REVIEW = [
         "Fit Check questions, thresholds, and response promise",
         [
             "PROMISE: Four questions. Two minutes. We’ll tell you honestly whether we can help—and if we can’t, we’ll refer you to someone who can.",
-            "SITUATION OPTIONS: Oil and gas executive with equity compensation · Business owner considering a transition · High-net-worth family with estate and legacy complexity · Other / not sure.",
+            "SITUATION OPTIONS: High-net-worth family with estate and legacy complexity · Executive with equity compensation · Business owner considering a transition.",
             "INVESTABLE-ASSET OPTIONS: $500K–$2M · $2M–$5M · $10M+.",
             "FIRST-NEED OPTIONS: Tax coordination · Equity compensation · Business transition · Estate and legacy · Investment strategy · Not sure.",
             "CURRENT REVIEW RESPONSE: Production will route answers to a fit-results experience. We’ll review your responses and follow up within one business day. No pitch. Just a clear next step.",
@@ -211,12 +213,21 @@ PRIORITY_REVIEW = [
     ),
     (
         "HIGH-IMPACT MESSAGE",
+        "Homepage hero — High-Net-Worth Families",
+        [
+            "Your wealth grew. Did your plan keep up?",
+            "Trust funding, beneficiary reviews, multi-generational coordination. Anchor keeps your CPA, attorney, and advisor reading from the same page—so your estate matches your actual net worth.",
+        ],
+        "Alex selected this as the lead hero. Approve, edit, or replace the headline and description.",
+    ),
+    (
+        "HIGH-IMPACT MESSAGE",
         "Homepage hero — Oil & Gas",
         [
             "When your equity vests, who sees the whole picture?",
             "RSUs, deferred comp, blackout periods, commodity cycles. Anchor coordinates your investments, taxes, and estate plan with your CPA and attorney—so every vest, bonus, and decision happens in context.",
         ],
-        "Approve, edit, or replace this headline and description. Confirm this should be the lead hero audience.",
+        "Approve or replace this headline and description.",
     ),
     (
         "HIGH-IMPACT MESSAGE",
@@ -229,20 +240,11 @@ PRIORITY_REVIEW = [
     ),
     (
         "HIGH-IMPACT MESSAGE",
-        "Homepage hero — High-Net-Worth Families",
-        [
-            "Your wealth grew. Did your plan keep up?",
-            "Trust funding, beneficiary reviews, multi-generational coordination. Anchor keeps your CPA, attorney, and advisor reading from the same page—so your estate matches your actual net worth.",
-        ],
-        "Approve or replace this headline and description. Confirm the preferred public audience label.",
-    ),
-    (
-        "HIGH-IMPACT MESSAGE",
         "Why Anchor",
         [
-            "One advisor who sees the whole picture.",
+            "A dedicated advisor who sees the whole picture.",
             "Complex wealth does not need another specialist working alone. It needs one accountable lead who keeps every professional, deadline, and decision moving from the same plan.",
-            "Coordinated, not siloed · One accountable lead · Built for complexity · Houston fluency.",
+            "Coordinated, not siloed · One accountable lead · Built for complexity.",
         ],
         "Approve the core differentiation. Clarify exactly what Alex owns, what outside professionals own, and whether ‘one accountable lead’ is the right promise.",
     ),
@@ -250,10 +252,10 @@ PRIORITY_REVIEW = [
         "HIGH-IMPACT MESSAGE",
         "Who Anchor is—and is not—for",
         [
+            "High-Net-Worth Families — Trust funding, current beneficiaries, and a plan the next generation can understand.",
             "Oil & Gas Executives — RSUs, NQDC elections, blackout periods, and commodity-cycle exposure.",
             "Business Owners — Exit readiness, entity structure, and the line between business value and personal wealth.",
-            "High-Net-Worth Families — Trust funding, current beneficiaries, and a plan the next generation can understand.",
-            "CURRENT FRAMING: If you don’t see yourself below, we may not be the right fit—and we’ll tell you that honestly.",
+            "CURRENT FRAMING: If you do not see your situation below, let’s have a quick introduction. Anchor will offer an honest opinion about whether the relationship is a fit.",
         ],
         "Define the strongest-fit client for each audience: role or situation, complexity, approximate assets, timing, and any industries or situations Alex does not serve.",
     ),

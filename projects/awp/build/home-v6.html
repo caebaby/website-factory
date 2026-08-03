@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
-  <meta name="description" content="Anchor Wealth Planning — Houston fiduciary wealth management for oil & gas executives, business owners, and high-net-worth families.">
+  <meta name="description" content="Anchor Wealth Planning — Houston fiduciary wealth management for high-net-worth families, oil & gas executives, and business owners.">
   <title>Anchor Wealth Planning | One Living Plan</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -152,6 +152,7 @@
     .proof-pill:first-child { padding-left:0; }
     .proof-pill:last-child { border-right:0; }
     .proof-pill svg { width:14px; height:14px; color:var(--gold); flex-shrink:0; }
+    .proof-status { flex-basis:100%; margin-top:9px; color:rgba(255,255,255,.5); font-size:.54rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
 
     /* Hero selector — vertical tabs on right side, different from v4's bottom bar */
     .hero-selector { position:absolute; z-index:6; right:max(28px,calc((100vw - var(--wrap))/2 + 4px)); top:50%; transform:translateY(-50%); display:flex; flex-direction:column; gap:2px; }
@@ -237,8 +238,8 @@
     .trust::before { content:""; position:absolute; }
     .trust-head { display:grid; grid-template-columns:1fr auto; gap:40px; align-items:end; margin-bottom:48px; }
     .trust-head .h-display { font-size:clamp(2rem,3vw,2.6rem); }
-    .trust-row { position:relative; display:grid; grid-template-columns:repeat(4,1fr); gap:0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
-    .trust-row::before { content:""; position:absolute; z-index:0; left:12.5%; right:12.5%; top:39px; height:1px; background:rgba(177,143,77,.72); }
+    .trust-row { position:relative; display:grid; grid-template-columns:repeat(3,1fr); gap:0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .trust-row::before { content:""; position:absolute; z-index:0; left:16.666%; right:16.666%; top:39px; height:1px; background:rgba(177,143,77,.72); }
     .trust-cell { position:relative; z-index:1; padding:32px 24px; border-right:1px solid var(--line-faint); text-align:center; transition:background .3s var(--ease); }
     .trust-cell:last-child { border-right:0; }
     .trust-cell:hover { background:rgba(177,143,77,.04); }
@@ -260,7 +261,7 @@
     .why .h-display { max-width:680px; color:var(--on-dark); font-size:clamp(2.2rem,3.5vw,3rem); }
     .why .h-display em { color:#dfc77f; }
     .why-intro { max-width:46ch; margin:0; color:var(--on-dark-mute); }
-    .why-grid { display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid rgba(192,216,233,.2); border-bottom:1px solid rgba(192,216,233,.2); }
+    .why-grid { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid rgba(192,216,233,.2); border-bottom:1px solid rgba(192,216,233,.2); }
     .why-item { min-height:230px; padding:32px 26px; border-left:1px solid rgba(192,216,233,.2); transition:background .35s var(--ease); }
     .why-item:hover { background:rgba(192,216,233,.045); }
     .reel:focus-visible { outline:3px solid var(--robin); outline-offset:4px; }
@@ -488,14 +489,10 @@
       .hero-selector { display:none; }
       .pain-spread { grid-template-columns:1fr; }
       .pain-left { position:static; }
-      .trust-row { grid-template-columns:repeat(2,1fr); }
+      .trust-row { grid-template-columns:repeat(3,1fr); }
       .trust-row::before { display:none; }
-      .trust-cell:nth-child(2n) { border-right:0; }
-      .trust-cell:nth-child(n+3) { border-top:1px solid var(--line-faint); }
       .why-head { grid-template-columns:1fr; }
-      .why-grid { grid-template-columns:1fr 1fr; }
-      .why-item:nth-child(3) { border-left:0; }
-      .why-item:nth-child(n+3) { border-top:1px solid rgba(192,216,233,.2); }
+      .why-grid { grid-template-columns:repeat(3,1fr); }
       .story-grid { grid-template-columns:1fr; }
       .serve-cards { grid-template-columns:1fr 1fr; }
       .serve-card:nth-child(3) { grid-column:1/-1; }
@@ -599,6 +596,9 @@
   <!-- ═══ HERO ═══ -->
   <header class="hero" id="hero" aria-label="Anchor Wealth Planning introduction">
     <div class="hero-track" id="heroTrack">
+      <section class="hero-slide" data-market="family" aria-label="High-net-worth families">
+        <video muted loop playsinline preload="metadata" poster="assets/hero-family-modern-kitchen.jpg" aria-hidden="true" data-src="assets/hero-family-modern-kitchen.mp4" data-src-mobile="assets/hero-family-modern-kitchen-mobile.mp4" data-poster-mobile="assets/hero-family-modern-kitchen-mobile.jpg"></video>
+      </section>
       <section class="hero-slide" data-market="energy" aria-label="Oil and gas executives">
         <video muted loop playsinline preload="metadata" poster="assets/hero-oilfield.jpg" aria-hidden="true">
           <source src="assets/pumpjack.mp4" type="video/mp4">
@@ -606,9 +606,6 @@
       </section>
       <section class="hero-slide" data-market="business" aria-label="Business owners">
         <video muted loop playsinline preload="metadata" poster="assets/hero-business-vlada-meeting.jpg" aria-hidden="true" data-src="assets/hero-business-vlada-meeting.mp4"></video>
-      </section>
-      <section class="hero-slide" data-market="family" aria-label="High-net-worth families">
-        <video muted loop playsinline preload="metadata" poster="assets/hero-family-modern-kitchen.jpg" aria-hidden="true" data-src="assets/hero-family-modern-kitchen.mp4" data-src-mobile="assets/hero-family-modern-kitchen-mobile.mp4" data-poster-mobile="assets/hero-family-modern-kitchen-mobile.jpg"></video>
       </section>
     </div>
     <div class="hero-grain" aria-hidden="true"></div>
@@ -626,26 +623,27 @@
       <div class="hero-inner">
         <div class="hero-text">
           <p class="eyebrow">Houston, TX · Fiduciary Wealth Management</p>
-          <h1 id="heroHeadline">When your equity vests, <em>who sees the whole picture?</em></h1>
-          <p class="hero-sub" id="heroSub">Anchor coordinates your investments, taxes, estate plan, and outside professionals — so you can stop being the glue.</p>
+          <h1 id="heroHeadline">Your wealth grew. <em>Did your plan keep up?</em></h1>
+          <p class="hero-sub" id="heroSub">Trust funding, beneficiary reviews, multigenerational coordination. Anchor keeps your CPA, attorney, and advisor reading from the same page, so your estate matches your actual net worth.</p>
           <div class="hero-cta-row">
             <a class="btn btn-gold" href="#fit">Schedule a 30-Minute Conversation <span class="arr" aria-hidden="true">→</span></a>
             <a class="btn btn-ghost" href="#fit">Take the 4-Question Fit Check</a>
           </div>
           <div class="hero-proof">
-            <span class="proof-pill"><svg viewBox="0 0 14 14" fill="none"><path d="M7 2l1.5 3 3.5.5-2.5 2.5.5 3.5L7 10l-2.5 1.5.5-3.5L2 5.5l3.5-.5z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>[Credential 01]</span>
-            <span class="proof-pill"><svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/><path d="M5 7l1.5 1.5L9.5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>[Credential 02]</span>
-            <span class="proof-pill"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1.5a2.5 2.5 0 012.5 2.5v1.5H4.5V4A2.5 2.5 0 017 1.5zM3 5.5h8v7H3z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>[XX]+ yrs</span>
+            <span class="proof-pill"><svg viewBox="0 0 14 14" fill="none"><path d="M7 2l1.5 3 3.5.5-2.5 2.5.5 3.5L7 10l-2.5 1.5.5-3.5L2 5.5l3.5-.5z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>APMA®</span>
+            <span class="proof-pill"><svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/><path d="M5 7l1.5 1.5L9.5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>CRPC®</span>
+            <span class="proof-pill"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1.5a2.5 2.5 0 012.5 2.5v1.5H4.5V4A2.5 2.5 0 017 1.5zM3 5.5h8v7H3z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>19 years</span>
             <span class="proof-pill"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1.5C4.5 1.5 3 3 3 5.5c0 3 4 7 4 7s4-4 4-7c0-2.5-1.5-4-4-4z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><circle cx="7" cy="5" r="1.5" stroke="currentColor" stroke-width="1.2"/></svg>Houston-based</span>
+            <span class="proof-status">Credentials and experience: client supplied · compliance review pending</span>
           </div>
         </div>
       </div>
     </div>
     <!-- Vertical selector on right edge -->
     <div class="hero-selector" role="tablist" aria-label="Who Anchor serves">
-      <button class="sel-btn active" type="button" role="tab" aria-selected="true" data-slide="0"><small>01</small><span>Oil &amp; Gas</span></button>
-      <button class="sel-btn" type="button" role="tab" aria-selected="false" data-slide="1"><small>02</small><span>Business Owners</span></button>
-      <button class="sel-btn" type="button" role="tab" aria-selected="false" data-slide="2"><small>03</small><span>Families</span></button>
+      <button class="sel-btn active" type="button" role="tab" aria-selected="true" data-slide="0"><small>01</small><span>Families</span></button>
+      <button class="sel-btn" type="button" role="tab" aria-selected="false" data-slide="1"><small>02</small><span>Oil &amp; Gas</span></button>
+      <button class="sel-btn" type="button" role="tab" aria-selected="false" data-slide="2"><small>03</small><span>Business Owners</span></button>
     </div>
     <button class="hero-pause" type="button" aria-label="Pause hero rotation" aria-pressed="false">
       <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 3h3v10H4zM9 3h3v10H9z"/></svg>
@@ -695,7 +693,7 @@
             </article>
             <article class="pain-card">
               <span class="pain-card-num">03</span>
-              <p class="pain-card-quote">"We have a trust that was set up years ago. I'm honestly not sure if it's even funded correctly, or if it still matches what we actually own."</p>
+              <p class="pain-card-quote">"We want to leave a legacy and protect our family when we pass. We are just not sure this has been done properly, and we want a second opinion."</p>
               <p class="pain-card-body">Your net worth has grown. Your estate documents haven't. The gap between your wealth and your plan is widening every year.</p>
             </article>
             <article class="pain-card">
@@ -743,27 +741,21 @@
         <div class="trust-row stagger reveal">
           <div class="trust-cell">
             <div class="trust-node" aria-hidden="true"></div>
-            <h3>[XX]+ years in the industry</h3>
-            <p>Experience across institutional wealth management and independent advice.</p>
-            <span class="trust-status">Needs verification</span>
+            <h3>19 years in the industry</h3>
+            <p>Experience across financial planning, wealth management, and independent advice.</p>
+            <span class="trust-status">Client supplied</span>
           </div>
           <div class="trust-cell">
             <div class="trust-node" aria-hidden="true"></div>
-            <h3>[Credential 01]</h3>
-            <p>Approved professional designation and issuing organization go here.</p>
-            <span class="trust-status">Needs verification</span>
+            <h3>APMA®</h3>
+            <p>Accredited Portfolio Management Advisor, College for Financial Planning.</p>
+            <span class="trust-status">Client supplied</span>
           </div>
           <div class="trust-cell">
             <div class="trust-node" aria-hidden="true"></div>
-            <h3>[Credential 02]</h3>
-            <p>Approved license, certification, or specialist training goes here.</p>
-            <span class="trust-status">Needs verification</span>
-          </div>
-          <div class="trust-cell">
-            <div class="trust-node" aria-hidden="true"></div>
-            <h3>[Accolade 01]</h3>
-            <p>Approved recognition, year, source, and selection criteria go here.</p>
-            <span class="trust-status">Needs verification</span>
+            <h3>CRPC®</h3>
+            <p>Chartered Retirement Planning Counselor, College for Financial Planning.</p>
+            <span class="trust-status">Client supplied</span>
           </div>
         </div>
       </div>
@@ -775,7 +767,7 @@
         <div class="why-head reveal">
           <div>
             <p class="eyebrow light">Why Anchor</p>
-            <h2 class="h-display">One advisor who sees <em>the whole picture.</em></h2>
+            <h2 class="h-display">A dedicated advisor who sees <em>the whole picture.</em></h2>
           </div>
           <p class="why-intro">Complex wealth does not need another specialist working alone. It needs one accountable lead who keeps every professional, deadline, and decision connected.</p>
         </div>
@@ -794,11 +786,6 @@
             <span class="why-index">03</span>
             <h3>Built for complexity</h3>
             <p>Equity compensation, concentrated wealth, estate questions, and business transitions belong in one living plan.</p>
-          </article>
-          <article class="why-item">
-            <span class="why-index">04</span>
-            <h3>Houston fluency</h3>
-            <p>Energy compensation, commodity cycles, and closely held businesses are part of the planning context—not an afterthought.</p>
           </article>
         </div>
       </div>
@@ -832,33 +819,33 @@
         <div class="serve-head reveal">
           <p class="eyebrow light">Who We Serve</p>
           <h2 class="h-display">We specialize. <em>Generalists are everywhere.</em></h2>
-          <p class="serve-sub">If you don't see yourself below, we may not be the right fit — and we'll tell you that honestly.</p>
+          <p class="serve-sub">If you do not see your situation below, let’s have a quick introduction and find out. We are happy to offer an honest opinion about whether we are the right fit for each other.</p>
         </div>
         <div class="serve-cards stagger reveal">
+          <a class="serve-card" href="high-net-worth-families.html">
+            <img src="assets/hero-family-modern-kitchen.jpg" alt="Grandparent, parents, and children cooking together in a bright modern kitchen">
+            <div class="serve-card-body">
+              <div class="serve-card-tag">01 · Across generations</div>
+              <h3>High-Net-Worth Families</h3>
+              <p>Trust funding, current beneficiaries, and a plan the next generation can understand. Your wealth has outgrown the plan built for it.</p>
+              <span class="text-link light" style="margin-top:14px;">See how we work with you <span class="arr" aria-hidden="true">→</span></span>
+            </div>
+          </a>
           <a class="serve-card" href="oil-gas-executives.html">
             <img src="assets/hero-oilfield.jpg" alt="Pumpjack operating in a Texas oil field">
             <div class="serve-card-body">
-              <div class="serve-card-tag">01 · Houston energy</div>
+              <div class="serve-card-tag">02 · Houston energy</div>
               <h3>Oil &amp; Gas Executives</h3>
-              <p>RSUs, NQDC elections, blackout periods, and commodity-cycle exposure. You're paid in stock and options the way the industry pays its leaders.</p>
+              <p>RSUs, NQDC elections, blackout periods, and commodity-cycle exposure. You are paid in stock and options the way the industry pays its leaders.</p>
               <span class="text-link light" style="margin-top:14px;">See how we work with you <span class="arr" aria-hidden="true">→</span></span>
             </div>
           </a>
           <a class="serve-card" href="business-owners.html">
             <img src="assets/hero-business-vlada-meeting.jpg" alt="Mature business leaders reviewing plans together in a bright boardroom">
             <div class="serve-card-body">
-              <div class="serve-card-tag">02 · Closely held</div>
+              <div class="serve-card-tag">03 · Closely held</div>
               <h3>Business Owners</h3>
               <p>Exit readiness, entity structure, and the line between business value and personal wealth. The exit conversation starts years before the LOI.</p>
-              <span class="text-link light" style="margin-top:14px;">See how we work with you <span class="arr" aria-hidden="true">→</span></span>
-            </div>
-          </a>
-          <a class="serve-card" href="high-net-worth-families.html">
-            <img src="assets/hero-family-modern-kitchen.jpg" alt="Grandparent, parents, and children cooking together in a bright modern kitchen">
-            <div class="serve-card-body">
-              <div class="serve-card-tag">03 · Across generations</div>
-              <h3>High-Net-Worth Families</h3>
-              <p>Trust funding, current beneficiaries, and a plan the next generation can understand. Your wealth has outgrown the plan built for it.</p>
               <span class="text-link light" style="margin-top:14px;">See how we work with you <span class="arr" aria-hidden="true">→</span></span>
             </div>
           </a>
@@ -879,10 +866,9 @@
             <div class="fit-progress" aria-hidden="true"><span class="fit-count" id="fitCount">01</span><div class="fit-bars"><span class="on"></span><span></span><span></span><span></span></div></div>
             <form id="fitForm" action="#fit" method="get">
               <fieldset class="fit-step active" data-step="0"><legend tabindex="-1">What best describes your situation?</legend><div class="fit-opts">
-                <label class="fit-opt"><input type="radio" name="situation" value="energy"><span>Oil and gas executive with equity compensation</span></label>
+                <label class="fit-opt"><input type="radio" name="situation" value="family"><span>High-net-worth family with estate and legacy complexity</span></label>
+                <label class="fit-opt"><input type="radio" name="situation" value="energy"><span>Executive with equity compensation</span></label>
                 <label class="fit-opt"><input type="radio" name="situation" value="owner"><span>Business owner considering a transition</span></label>
-                <label class="fit-opt"><input type="radio" name="situation" value="coordinating"><span>Coordinating wealth across several professionals</span></label>
-                <label class="fit-opt"><input type="radio" name="situation" value="other"><span>Something else</span></label>
               </div></fieldset>
               <fieldset class="fit-step" data-step="1"><legend tabindex="-1">Your approximate investable assets?</legend><div class="fit-opts">
                 <label class="fit-opt"><input type="radio" name="assets" value="500k-2m"><span>$500K to $2M</span></label>
@@ -1002,22 +988,22 @@
           <div class="proof-left">
             <p class="eyebrow light">Your Advisor</p>
             <h2 class="h-display">Institutional discipline, <em>brought to your side of the table.</em></h2>
-            <p class="lede">Alex's approved background and prior-firm history will be added after client and compliance verification. Anchor was founded to coordinate the work that siloed advice leaves to the client.</p>
+            <p class="lede">At Anchor, financial advice is personal, approachable, and centered on what matters most: you and your family.</p>
           </div>
           <div class="alex-block">
             <div style="width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-dark));display:grid;place-items:center;margin-bottom:24px;border:3px solid rgba(177,143,77,.3);overflow:hidden;">
               <span style="font-family:var(--serif);font-size:2.5rem;color:#fff;font-weight:500;">AM</span>
             </div>
             <p class="eyebrow light">Alex's story</p>
-            <h3>One advisor accountable for the space between decisions.</h3>
-            <p>Anchor brings investment, tax, estate, and business planning into one working view. The goal is clear ownership: the right professional, the right context, and the right next step.</p>
-            <p>Alex's approved biography, credentials, prior-firm history, and founding story will publish after client and compliance verification.</p>
+            <h3>Financial Advisor and Managing Partner.</h3>
+            <p>Alex Miller brings 19 years of experience helping individuals and families pursue their financial goals through comprehensive planning and investment management.</p>
+            <p>His work emphasizes family legacy, estate and wealth planning, and retirement strategies, with a focus on enduring relationships and coordinated decisions.</p>
             <a class="text-link light" href="about.html">Read why Anchor exists <span class="arr" aria-hidden="true">→</span></a>
             <div class="alex-chips">
-              <span class="chip">[Credential 01]</span>
-              <span class="chip">[Credential 02]</span>
-              <span class="chip">[XX]+ years</span>
-              <span class="chip">[Accolade 01]</span>
+              <span class="chip">APMA®</span>
+              <span class="chip">CRPC®</span>
+              <span class="chip">19 years</span>
+              <span class="chip">Client supplied</span>
             </div>
           </div>
         </div>
@@ -1071,25 +1057,25 @@
           </div>
         </div>
         <div class="reels-row stagger reveal">
-          <div class="reel" data-reel="0" tabindex="0" role="button" aria-label="Play or pause Oil and Gas preview">
+          <div class="reel" data-reel="0" tabindex="0" role="button" aria-label="Play or pause Families preview">
+            <video muted loop playsinline preload="none" poster="assets/hero-family-modern-kitchen.jpg" data-src="assets/hero-family-modern-kitchen.mp4"></video>
+            <div class="reel-overlay">
+              <span class="reel-tag">Families</span>
+              <h3 class="reel-title">What "one living plan" actually means</h3>
+            </div>
+          </div>
+          <div class="reel" data-reel="1" tabindex="0" role="button" aria-label="Play or pause Oil and Gas preview">
             <video muted loop playsinline preload="none" poster="assets/hero-oilfield.jpg" data-src="assets/pumpjack.mp4"></video>
             <div class="reel-overlay">
               <span class="reel-tag">Oil &amp; Gas</span>
               <h3 class="reel-title">How RSU vesting creates a tax-timing trap</h3>
             </div>
           </div>
-          <div class="reel" data-reel="1" tabindex="0" role="button" aria-label="Play or pause Business Owners preview">
+          <div class="reel" data-reel="2" tabindex="0" role="button" aria-label="Play or pause Business Owners preview">
             <video muted loop playsinline preload="none" poster="assets/hero-business-vlada-meeting.jpg" data-src="assets/hero-business-vlada-meeting.mp4"></video>
             <div class="reel-overlay">
               <span class="reel-tag">Business Owners</span>
               <h3 class="reel-title">The exit conversation starts before the LOI</h3>
-            </div>
-          </div>
-          <div class="reel" data-reel="2" tabindex="0" role="button" aria-label="Play or pause Families preview">
-            <video muted loop playsinline preload="none" poster="assets/hero-family-modern-kitchen.jpg" data-src="assets/hero-family-modern-kitchen.mp4"></video>
-            <div class="reel-overlay">
-              <span class="reel-tag">Families</span>
-              <h3 class="reel-title">What "one living plan" actually means</h3>
             </div>
           </div>
           <div class="reel" data-reel="3" tabindex="0" role="button" aria-label="Play or pause Concentrated Wealth preview">
@@ -1122,7 +1108,7 @@
         <div class="footer-brand">
           <a class="brand-center" href="#top"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M16 4v20M11 9h10M7 19c1.7 5 5 7.5 9 7.5S23.3 24 25 19M7 19l-2 3M25 19l2 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="5" r="2.5" stroke="currentColor" stroke-width="2"/></svg></span><span class="brand-name"><strong>Anchor</strong><span>WEALTH PLANNING</span></span></a>
           <p>"Charting the course towards your financial legacy."</p>
-          <p class="desc">Houston-based fiduciary wealth management for oil &amp; gas executives, business owners, and high-net-worth families.</p>
+          <p class="desc">Houston-based fiduciary wealth management for high-net-worth families, executives, and business owners.</p>
         </div>
         <div>
           <h4>Explore</h4>
@@ -1130,7 +1116,7 @@
         </div>
         <div>
           <h4>Specialties</h4>
-          <ul><li><a href="oil-gas-executives.html">Oil &amp; Gas Executives</a></li><li><a href="business-owners.html">Business Owners</a></li><li><a href="high-net-worth-families.html">HNW Families</a></li><li><a href="#services">Equity Compensation</a></li><li><a href="#services">Estate &amp; Legacy</a></li><li><a href="#services">Coordinated Planning</a></li></ul>
+          <ul><li><a href="high-net-worth-families.html">HNW Families</a></li><li><a href="oil-gas-executives.html">Oil &amp; Gas Executives</a></li><li><a href="business-owners.html">Business Owners</a></li><li><a href="#services">Estate &amp; Legacy</a></li><li><a href="#services">Equity Compensation</a></li><li><a href="#services">Coordinated Planning</a></li></ul>
         </div>
       </div>
       <div class="footer-legal">
@@ -1184,9 +1170,9 @@
         if (!paused && !reduced.matches) timer = setTimeout(() => setSlide((active + 1) % selBtns.length), 9000);
       }
       const heroHeadlines = [
-        { h1: 'When your equity vests, <em>who sees the whole picture?</em>', sub: 'RSUs, deferred comp, blackout periods, commodity cycles. Anchor coordinates your investments, taxes, and estate plan with your CPA and attorney — so every vest, bonus, and decision happens in context.' },
-        { h1: 'Your business is your largest asset. <em>What\u2019s the plan for it?</em>', sub: 'Entity structure, exit timing, liquidity events, and the line between business value and personal wealth. Anchor starts the planning conversation years before the LOI arrives.' },
-        { h1: 'Your wealth grew. <em>Did your plan keep up?</em>', sub: 'Trust funding, beneficiary reviews, multi-generational coordination. Anchor keeps your CPA, attorney, and advisor reading from the same page — so your estate matches your actual net worth.' }
+        { h1: 'Your wealth grew. <em>Did your plan keep up?</em>', sub: 'Trust funding, beneficiary reviews, multigenerational coordination. Anchor keeps your CPA, attorney, and advisor reading from the same page, so your estate matches your actual net worth.' },
+        { h1: 'When your equity vests, <em>who sees the whole picture?</em>', sub: 'RSUs, deferred comp, blackout periods, commodity cycles. Anchor coordinates your investments, taxes, and estate plan with your CPA and attorney, so every vest, bonus, and decision happens in context.' },
+        { h1: 'Your business is your largest asset. <em>What\u2019s the plan for it?</em>', sub: 'Entity structure, exit timing, liquidity events, and the line between business value and personal wealth. Anchor starts the planning conversation years before the LOI arrives.' }
       ];
       const heroH1 = document.getElementById('heroHeadline');
       const heroSubEl = document.getElementById('heroSub');
