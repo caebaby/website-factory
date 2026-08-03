@@ -501,3 +501,11 @@ Append-only. Each entry: what broke, why, how it was caught, and what permanent 
 - **Fix:** created dedicated 900×1125 assets for all three audience cards. The family version is an OpenAI-assisted portrait reframe of the approved Pexels 8479992 scene that preserves every generation; oil and business use deterministic centered crops from their approved sources. Recorded provenance and approval state in `assets/SOURCES.md`.
 - **Permanent lesson:** verify media per component aspect ratio. When a source must serve both landscape and portrait surfaces, provide art-directed assets for each instead of relying on generic cover cropping.
 - **Status:** ✅ fixed locally. Desktop and 390px Tier-B show complete family faces and centered oil/business subjects; homepage gate remains 0 P0.
+
+### LED-052 — Preserving the full group with blurred fill is still letterboxing
+- **Build:** Anchor family hero responsive-media correction (2026-08-03).
+- **Symptom:** the family hero switched to a 9:16 derivative on narrow screens, but the landscape clip was centered between blurred copies of itself. The family remained visible while the top and bottom read as obvious borders.
+- **Root cause:** responsive media treated subject preservation as the only requirement and reused the blurred-fill technique already rejected for the business-owner hero.
+- **Fix:** replaced the active mobile family source with a true 720×1280 cover derivative from the same Pexels 8479992 footage. A smooth reversible pan crosses the multigenerational group and returns to its opening frame, keeping motion loopable without blurred bands, stretching, or letterboxing.
+- **Permanent lesson:** a responsive video derivative must satisfy both casting and presentation. If edge-to-edge is required, use an art-directed crop or pan-and-scan; blurred duplication is not a full-screen treatment.
+- **Status:** ✅ fixed locally. The old blurred asset remains inactive for traceability; provenance and usage are explicit in `assets/SOURCES.md`.
