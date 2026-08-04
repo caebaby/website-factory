@@ -1,4 +1,4 @@
-# Anchor Wealth Planning — Replit handoff
+# Anchor Wealth Planning: Replit handoff
 
 Static, Replit-ready client-review site. No build step, framework, dependency installation, or application server is required.
 
@@ -8,6 +8,17 @@ Static, Replit-ready client-review site. No build step, framework, dependency in
 2. Confirm the Replit root contains `.replit`, `index.html`, `assets/`, `scripts/`, and the secondary HTML pages.
 3. Click **Run**. Replit serves the site with Python on port 3000.
 4. Run `npm run check` in the Replit Shell before publishing.
+
+## Read first: Johnny and Replit AI
+
+Before changing content or media, read these files in order:
+
+1. `AI-HANDOFF-NOTES.md`: exact picture, video, audio, and social-image placement map.
+2. `PRELAUNCH-VERIFICATION.md`: what has been tested, what remains blocked, and the compliance approval record.
+3. `REPLIT-LAUNCH-CHECKLIST.md`: the final production sequence.
+4. `assets/SOURCES.md`: licensing and approval state for every shipped visual asset.
+
+Run `npm run preflight` after any link, media, metadata, or page change. Replit AI must not remove review-mode crawler controls or claim regulatory approval unless the approval record is complete.
 
 ## Site map
 
@@ -46,4 +57,4 @@ The handoff preserves the approved responsive behavior:
 - 820px tablets: collapsed navigation remains functional through the full tablet breakpoint;
 - desktop: full-width video hero, three-card audience layout, and consistent publication navigation.
 
-The automated check validates page structure and local references. The final Replit preview must still receive a real phone/tablet/desktop visual pass before the domain is connected.
+The Factory already completed phone, tablet, and desktop browser QA against this package. Johnny must repeat the short live-preview pass after importing into Replit and after every production-media replacement.

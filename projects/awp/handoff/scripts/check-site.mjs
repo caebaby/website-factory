@@ -40,6 +40,7 @@ for (const page of pages) {
   if (!/<meta\s+name=["']robots["']\s+content=["']noindex,nofollow["']/i.test(html)) fail(page, "review package must stay noindex,nofollow");
   if (!/<title>[^<]+<\/title>/i.test(html)) fail(page, "missing title");
   if (!/<meta\s+name=["']description["']/i.test(html)) fail(page, "missing meta description");
+  if (!/<link\s+rel=["']canonical["']/i.test(html)) fail(page, "missing review canonical");
   if ((html.match(/<h1(?:\s|>)/gi) || []).length !== 1) fail(page, "must contain exactly one H1");
   if ((html.match(/>Client Login</g) || []).length < 2) fail(page, "Client Login must appear in navigation and footer");
 
@@ -87,6 +88,31 @@ for (const forbidden of ["family-3gen", "mixkit-"]) {
 
 const robots = await readFile(join(root, "robots.txt"), "utf8");
 if (!/Disallow:\s*\//i.test(robots)) fail("robots.txt", "review package must disallow crawling");
+
+const aiNotes = await readFile(join(root, "AI-HANDOFF-NOTES.md"), "utf8");
+for (const required of ["MEDIA-01", "MEDIA-02", "MEDIA-03", "MEDIA-04", "MEDIA-05", "MEDIA-06", "MEDIA-07", "MEDIA-08", "MEDIA-09"]) {
+  if (!aiNotes.includes(required)) fail("AI-HANDOFF-NOTES.md", `missing media placement ${required}`);
+}
+for (const required of ["hero-business-loop.mp4", "hero-business-poster.png", "team.html", "#alex-story", "#insights", "podcast-template.html", "og:image"]) {
+  if (!aiNotes.includes(required)) fail("AI-HANDOFF-NOTES.md", `missing AI replacement instruction: ${required}`);
+}
+
+const verification = await readFile(join(root, "PRELAUNCH-VERIFICATION.md"), "utf8");
+for (const required of [
+  "FORMAL_COMPLIANCE_APPROVAL=NOT_RECEIVED",
+  "PRODUCTION_INDEXING=BLOCKED",
+  "MOBILE_QA=PASS",
+  "LOCAL_LINKS=PASS",
+  "SEO_GEO_STRUCTURE=PASS_REVIEW_MODE",
+]) {
+  if (!verification.includes(required)) fail("PRELAUNCH-VERIFICATION.md", `missing release state ${required}`);
+}
+const approvalStates = [...verification.matchAll(/^FORMAL_COMPLIANCE_APPROVAL=([^\s]+)$/gm)].map(match => match[1]);
+if (approvalStates.length !== 1) {
+  fail("PRELAUNCH-VERIFICATION.md", "must contain exactly one formal compliance approval state");
+} else if (approvalStates[0] !== "NOT_RECEIVED") {
+  fail("PRELAUNCH-VERIFICATION.md", "review package approval state must remain NOT_RECEIVED until an authorized approval artifact and audited gate update exist");
+}
 
 if (failures.length) {
   console.error(`FAIL — ${failures.length} issue(s)`);

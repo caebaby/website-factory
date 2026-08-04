@@ -541,3 +541,19 @@ Append-only. Each entry: what broke, why, how it was caught, and what permanent 
 - **Fix:** created a curated static-root package containing only the 10 supported routes, active self-hosted assets, `.replit`, `package.json`, a deterministic reference/content check, crawler-safe review defaults, an explicit sitemap, and a production launch checklist. Verified 390px/820px/1440px layouts, menus, media cover behavior, Fit Check auto-advance, image loading, and console output against the package itself.
 - **Permanent lesson:** every Replit handoff needs an allowlist, a runnable root contract, automated local-reference checks, review-vs-production crawler controls, explicit external-system owners, and browser QA at the actual handoff origin.
 - **Status:** ✅ closed. `projects/awp/handoff/` passes `npm run check`; every Factory route gate has 0 P0.
+
+### LED-057 — AI media handoffs need component-level destinations, not a generic asset TODO
+- **Build:** Anchor Johnny/Replit handoff (2026-08-04).
+- **Symptom:** the package identified that story, portrait, Insights, and podcast media were pending, but an AI taking over later would still have to infer which page, selector, aspect ratio, filename, fallback, and metadata field each delivered asset should replace.
+- **Root cause:** a human-readable launch checklist recorded dependencies but did not encode the placement contract required for deterministic AI implementation.
+- **Fix:** added `projects/awp/handoff/AI-HANDOFF-NOTES.md` with stable MEDIA-01 through MEDIA-09 IDs, exact routes/selectors/current assets, preferred filenames, responsive crops, alt-text/poster/schema/transcript duties, installed-review-media approval states, and an ambiguity rule requiring the AI to ask for the MEDIA ID.
+- **Permanent lesson:** every pending media dependency needs five fields: owner/input, destination selector, required derivatives, metadata/accessibility work, and approval state. “Replace video later” is not a handoff.
+- **Status:** ✅ closed. `npm run check` now fails if the manifest or its required media contracts disappear.
+
+### LED-058 — Compliance-oriented QA is not regulatory or firm approval
+- **Build:** Anchor Johnny/Replit prelaunch verification (2026-08-04).
+- **Symptom:** a deployment checklist could be read as proving the site had already passed FINRA, SEC, MML/MassMutual, or principal review when the repository contains no named reviewer, ticket, approval date, approved disclosure block, or evidence of the exact Alex/Anchor legal relationship.
+- **Root cause:** technical, content-risk, and regulatory approval states were collapsed into one word: “compliance.” That invites an AI or implementer to remove `[VERIFY]`, `noindex`, or review warnings after a rules-oriented lint pass.
+- **Fix:** added machine-readable prelaunch states that separate internal compliance-oriented screening from formal approval; required a reviewer/organization/date/ticket/artifact record before the approval state can change; and made the automated handoff check reject every formal-approval value except the package's single `NOT_RECEIVED` state. Any future approved state requires the authorized artifact plus an audited gate update. Production indexing remains explicitly blocked.
+- **Permanent lesson:** automated checks can prove references, disclosures are present as placeholders, and risky claims are flagged. Only the authorized firm/regulatory reviewer can approve the final entity wording, registrations, credentials, relationship disclosures, testimonials/quotes, filing links, and recordkeeping package.
+- **Status:** ✅ control shipped; 🟡 formal approval remains pending external evidence.
