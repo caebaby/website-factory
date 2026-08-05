@@ -1,87 +1,37 @@
 {
-  "glm-5.2": {
-    "input": 0.55,
-    "output": 2.19,
-    "reasoning": 2.19
-  },
-  "glm-5": {
-    "input": 0.55,
-    "output": 2.19,
-    "reasoning": 2.19
-  },
-  "glm-5-turbo": {
-    "input": 0.14,
-    "output": 0.28,
-    "reasoning": 0.28
-  },
-  "glm-4.5-flash": {
-    "input": 0.14,
-    "output": 0.28,
-    "reasoning": 0.28
-  },
-  "deepseek/deepseek-v4-pro": {
-    "input": 0.27,
-    "output": 1.1,
-    "reasoning": 1.1
-  },
-  "deepseek-v4-pro": {
-    "input": 0.27,
-    "output": 1.1,
-    "reasoning": 1.1
-  },
-  "deepseek-reasoner": {
-    "input": 0.55,
-    "output": 2.19,
-    "reasoning": 2.19
-  },
-  "claude-sonnet-5": {
-    "input": 3.0,
-    "output": 15.0,
-    "reasoning": 0
-  },
-  "claude-opus-4-8": {
-    "input": 15.0,
-    "output": 75.0,
-    "reasoning": 0
-  },
-  "claude-haiku-4.5": {
-    "input": 0.8,
-    "output": 4.0,
-    "reasoning": 0
-  },
-  "fugu-ultra": {
-    "input": 2.0,
-    "output": 8.0,
-    "reasoning": 0
-  },
-  "fugu-ultra-20260615": {
-    "input": 2.0,
-    "output": 8.0,
-    "reasoning": 0
-  },
-  "google/gemini-2.5-flash": {
-    "input": 0.15,
-    "output": 0.6,
-    "reasoning": 0.6
-  },
-  "gemini-2.5-flash": {
-    "input": 0.15,
-    "output": 0.6,
-    "reasoning": 0.6
-  },
-  "moonshot/kimi-k2": {
-    "input": 0.6,
-    "output": 2.5,
-    "reasoning": 2.5
-  },
-  "kimi-k2": {
-    "input": 0.6,
-    "output": 2.5,
-    "reasoning": 2.5
-  },
-  "grok-4.5": {
-    "input": 5.0,
-    "output": 15.0,
-    "reasoning": 0
-  }
+  "_updated": "2026-08-05 — prices verified from OpenRouter /api/v1/models live fetch",
+  "_note": "All prices are $/1M tokens. Verify on provider dashboards periodically. GLM via ZAI direct may differ from OpenRouter reseller price.",
+
+  "glm-5.2":           {"input": 0.76, "output": 2.42, "reasoning": 2.42},
+  "glm-5.1":           {"input": 0.95, "output": 2.99, "reasoning": 2.99},
+  "glm-5":             {"input": 0.95, "output": 2.55, "reasoning": 2.55},
+  "glm-5-turbo":       {"input": 1.20, "output": 4.00, "reasoning": 4.00},
+  "glm-5v-turbo":      {"input": 1.20, "output": 4.00, "reasoning": 4.00},
+  "glm-4.7":           {"input": 0.40, "output": 1.75, "reasoning": 1.75},
+  "glm-4.7-flash":     {"input": 0.06, "output": 0.40, "reasoning": 0.40},
+  "glm-4.6":           {"input": 0.50, "output": 2.00, "reasoning": 2.00},
+  "glm-4.5-flash":     {"input": 0.14, "output": 0.28, "reasoning": 0.28},
+
+  "moonshotai/kimi-k3":              {"input": 3.00, "output": 15.00, "reasoning": 15.00},
+  "moonshotai/kimi-k2.7-code":       {"input": 0.70, "output": 3.50, "reasoning": 3.50},
+  "moonshotai/kimi-k2.6":            {"input": 0.59, "output": 2.48, "reasoning": 2.48},
+  "moonshotai/kimi-k2.5":            {"input": 0.57, "output": 2.85, "reasoning": 2.85},
+  "moonshotai/kimi-k2-thinking":     {"input": 0.60, "output": 2.50, "reasoning": 2.50},
+  "moonshotai/kimi-k2-0905":         {"input": 0.60, "output": 2.50, "reasoning": 2.50},
+  "moonshotai/kimi-k2":              {"input": 0.57, "output": 2.30, "reasoning": 2.30},
+
+  "deepseek/deepseek-v4-pro":        {"input": 0.44, "output": 0.87, "reasoning": 0.87},
+  "deepseek/deepseek-v4-flash":      {"input": 0.14, "output": 0.28, "reasoning": 0.28},
+  "deepseek/deepseek-v4-flash-latest": {"input": 0.09, "output": 0.18, "reasoning": 0.18},
+  "deepseek/deepseek-v3.2":          {"input": 0.27, "output": 0.40, "reasoning": 0.40},
+
+  "claude-sonnet-5":     {"input": 3.00, "output": 15.00, "reasoning": 0},
+  "claude-opus-4-8":     {"input": 15.00, "output": 75.00, "reasoning": 0},
+  "claude-haiku-4.5":    {"input": 0.80, "output": 4.00, "reasoning": 0},
+
+  "google/gemini-2.5-flash": {"input": 0.15, "output": 0.60, "reasoning": 0.60},
+  "grok-4.5":                {"input": 5.00, "output": 15.00, "reasoning": 0},
+
+  "fugu-ultra":             {"input": 2.00, "output": 8.00, "reasoning": 0},
+  "fugu-ultra-20260615":    {"input": 2.00, "output": 8.00, "reasoning": 0}
 }
