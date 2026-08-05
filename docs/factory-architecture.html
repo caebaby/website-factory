@@ -3,364 +3,503 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Website Factory — System Architecture</title>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Factory System — How It Works</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'JetBrains Mono', monospace; background: #020617; min-height: 100vh; padding: 2rem; color: white; }
-    .container { max-width: 1200px; margin: 0 auto; }
-    .header { margin-bottom: 2rem; }
-    .header-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem; }
-    .pulse-dot { width: 12px; height: 12px; background: #22d3ee; border-radius: 50%; animation: pulse 2s infinite; }
-    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-    h1 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.025em; }
-    .subtitle { color: #94a3b8; font-size: 0.875rem; margin-left: 1.75rem; }
-    .diagram-container { background: rgba(15, 23, 42, 0.5); border-radius: 1rem; border: 1px solid #1e293b; padding: 1.5rem; overflow-x: auto; }
-    svg { width: 100%; min-width: 1000px; display: block; }
-    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 2rem; }
-    .card { background: rgba(15, 23, 42, 0.5); border-radius: 0.75rem; border: 1px solid #1e293b; padding: 1.25rem; }
-    .card-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; }
-    .card-dot { width: 8px; height: 8px; border-radius: 50%; }
-    .card-dot.cyan { background: #22d3ee; }
-    .card-dot.emerald { background: #34d399; }
-    .card-dot.violet { background: #a78bfa; }
-    .card-dot.amber { background: #fbbf24; }
-    .card-dot.rose { background: #fb7185; }
-    .card-dot.orange { background: #fb923c; }
-    .card h3 { font-size: 0.875rem; font-weight: 600; }
-    .card ul { list-style: none; color: #94a3b8; font-size: 0.75rem; }
-    .card li { margin-bottom: 0.375rem; }
-    .footer { text-align: center; margin-top: 1.5rem; color: #475569; font-size: 0.75rem; }
+    body { font-family: 'Inter', sans-serif; background: #0B0F1A; min-height: 100vh; padding: 2.5rem 1.5rem; color: #E2E8F0; }
+    .container { max-width: 960px; margin: 0 auto; }
+    .header { margin-bottom: 2.5rem; text-align: center; }
+    .header h1 { font-size: 1.75rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.5rem; }
+    .header p { color: #94A3B8; font-size: 0.95rem; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+
+    /* SECTIONS */
+    .section { margin-bottom: 2.5rem; }
+    .section-label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #64748B; margin-bottom: 0.75rem; padding-left: 0.25rem; }
+
+    /* GITHUB AS SOURCE */
+    .github-box {
+      background: linear-gradient(135deg, rgba(251,191,36,0.06), rgba(251,191,36,0.02));
+      border: 1.5px solid rgba(251,191,36,0.3);
+      border-radius: 16px;
+      padding: 1.75rem;
+    }
+    .github-title { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1.25rem; }
+    .github-title h2 { font-size: 1.1rem; font-weight: 700; color: #FBBF24; }
+    .github-title .icon { font-size: 1.2rem; }
+    .layer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .layer-card {
+      background: rgba(15,23,42,0.6);
+      border-radius: 12px;
+      padding: 1.1rem;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .layer-card h3 { font-size: 0.85rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .layer-card h3 .tag { font-size: 0.65rem; font-weight: 600; padding: 2px 8px; border-radius: 4px; margin-left: 0.5rem; vertical-align: middle; }
+    .layer-card ul { list-style: none; }
+    .layer-card li { font-size: 0.8rem; color: #94A3B8; padding: 0.2rem 0; padding-left: 0.85rem; position: relative; }
+    .layer-card li::before { content: "·"; position: absolute; left: 0; color: #475569; font-weight: 700; }
+
+    /* PIPELINE FLOW */
+    .flow-container {
+      background: rgba(15,23,42,0.4);
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 2rem 1.5rem;
+    }
+    .flow-steps { display: flex; align-items: stretch; gap: 0; flex-wrap: wrap; justify-content: center; }
+    .flow-step {
+      flex: 1;
+      min-width: 120px;
+      max-width: 140px;
+      text-align: center;
+      position: relative;
+    }
+    .step-box {
+      background: rgba(15,23,42,0.8);
+      border: 1.5px solid;
+      border-radius: 10px;
+      padding: 0.75rem 0.5rem;
+      margin: 0 0.25rem;
+      min-height: 85px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .step-box h4 { font-size: 0.8rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .step-box .model { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; }
+    .step-box .desc { font-size: 0.68rem; color: #94A3B8; margin-top: 0.2rem; }
+
+    .step-llm { border-color: #A78BFA; }
+    .step-llm h4 { color: #C4B5FD; }
+    .step-llm .model { color: #A78BFA; }
+    .step-gate { border-color: #FB7185; border-width: 2px; }
+    .step-gate h4 { color: #FCA5A5; }
+    .step-gate .model { color: #FB7185; }
+    .step-build { border-color: #22D3EE; }
+    .step-build h4 { color: #67E8F9; }
+    .step-build .model { color: #22D3EE; }
+    .step-ship { border-color: #34D399; }
+    .step-ship h4 { color: #6EE7B7; }
+    .step-ship .model { color: #34D399; }
+
+    .flow-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #475569;
+      font-size: 1.1rem;
+      width: 20px;
+      flex-shrink: 0;
+    }
+
+    .gate-flag {
+      display: inline-block;
+      background: rgba(251,113,133,0.15);
+      color: #FB7185;
+      font-size: 0.6rem;
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: 3px;
+      margin-top: 0.25rem;
+    }
+
+    /* COLLABORATION ROW */
+    .collab-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1rem; align-items: center; margin-top: 1.5rem; }
+    .person-box {
+      background: rgba(8,51,68,0.3);
+      border: 1.5px solid rgba(34,211,238,0.3);
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+    }
+    .person-box h4 { font-size: 0.85rem; font-weight: 700; color: #67E8F9; }
+    .person-box p { font-size: 0.72rem; color: #94A3B8; margin-top: 0.2rem; }
+    .collab-connector { text-align: center; color: #FBBF24; font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; white-space: nowrap; }
+
+    /* REPEATABLE PATTERN */
+    .pattern-box {
+      background: linear-gradient(135deg, rgba(167,139,250,0.06), rgba(167,139,250,0.02));
+      border: 1.5px solid rgba(167,139,250,0.25);
+      border-radius: 16px;
+      padding: 1.75rem;
+    }
+    .pattern-title { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem; }
+    .pattern-title h2 { font-size: 1.1rem; font-weight: 700; color: #A78BFA; }
+    .pattern-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; margin: 1rem 0; }
+    .pattern-step {
+      background: rgba(15,23,42,0.6);
+      border: 1px solid rgba(167,139,250,0.2);
+      border-radius: 8px;
+      padding: 0.65rem 0.35rem;
+      text-align: center;
+    }
+    .pattern-step .num { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: #64748B; }
+    .pattern-step .name { font-size: 0.75rem; font-weight: 600; color: #C4B5FD; margin: 0.15rem 0; }
+    .pattern-step .example { font-size: 0.62rem; color: #64748B; }
+    .pattern-note { font-size: 0.8rem; color: #94A3B8; margin-top: 0.75rem; line-height: 1.5; }
+    .pattern-note strong { color: #A78BFA; }
+
+    /* SCHEDULING */
+    .sched-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .sched-card {
+      background: rgba(15,23,42,0.5);
+      border-radius: 12px;
+      padding: 1.1rem;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .sched-card h4 { font-size: 0.85rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .sched-card p { font-size: 0.76rem; color: #94A3B8; line-height: 1.45; }
+    .sched-card .cost { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 600; margin-top: 0.5rem; }
+    .sched-card.manual { border-left: 3px solid #22D3EE; }
+    .sched-card.manual h4 { color: #67E8F9; }
+    .sched-card.manual .cost { color: #22D3EE; }
+    .sched-card.cron { border-left: 3px solid #FB923C; }
+    .sched-card.cron h4 { color: #FDBA74; }
+    .sched-card.cron .cost { color: #FB923C; }
+    .sched-card.agent { border-left: 3px solid #34D399; }
+    .sched-card.agent h4 { color: #6EE7B7; }
+    .sched-card.agent .cost { color: #34D399; }
+
+    /* HITL DETAIL */
+    .hitl-box {
+      background: rgba(15,23,42,0.4);
+      border-radius: 16px;
+      border: 1px solid rgba(251,113,133,0.15);
+      padding: 1.75rem;
+    }
+    .hitl-steps { display: flex; flex-direction: column; gap: 0.75rem; }
+    .hitl-step { display: flex; align-items: flex-start; gap: 0.85rem; }
+    .hitl-num {
+      flex-shrink: 0;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .hitl-num.gate { background: rgba(251,113,133,0.15); color: #FB7185; border: 1.5px solid #FB7185; }
+    .hitl-num.auto { background: rgba(34,211,238,0.1); color: #22D3EE; border: 1.5px solid #22D3EE; }
+    .hitl-text h4 { font-size: 0.85rem; font-weight: 600; }
+    .hitl-text h4 .who { font-size: 0.65rem; font-weight: 600; padding: 1px 6px; border-radius: 3px; margin-left: 0.4rem; vertical-align: middle; }
+    .hitl-text h4 .human { background: rgba(251,113,133,0.15); color: #FB7185; }
+    .hitl-text h4 .ai { background: rgba(34,211,238,0.1); color: #22D3EE; }
+    .hitl-text p { font-size: 0.78rem; color: #94A3B8; margin-top: 0.15rem; line-height: 1.4; }
+
+    /* SIMPLICITY ANSWER */
+    .simplicity-box {
+      background: linear-gradient(135deg, rgba(52,211,153,0.06), rgba(52,211,153,0.02));
+      border: 1.5px solid rgba(52,211,153,0.25);
+      border-radius: 16px;
+      padding: 1.75rem;
+    }
+    .simplicity-box h2 { font-size: 1.1rem; font-weight: 700; color: #34D399; margin-bottom: 0.75rem; }
+    .simplicity-box p { font-size: 0.85rem; color: #CBD5E1; line-height: 1.55; margin-bottom: 0.75rem; }
+    .simplicity-box strong { color: #6EE7B7; }
+    .simplicity-list { list-style: none; margin-top: 0.5rem; }
+    .simplicity-list li { font-size: 0.8rem; color: #94A3B8; padding: 0.3rem 0; padding-left: 1.25rem; position: relative; }
+    .simplicity-list li::before { content: "✓"; position: absolute; left: 0; color: #34D399; font-weight: 700; }
+    .simplicity-list li.avoid::before { content: "✗"; color: #FB7185; }
+
+    .footer { text-align: center; margin-top: 2rem; color: #334155; font-size: 0.75rem; }
   </style>
 </head>
 <body>
   <div class="container">
+    <!-- Header -->
     <div class="header">
-      <div class="header-row">
-        <div class="pulse-dot"></div>
-        <h1>Website Factory — System Architecture</h1>
-      </div>
-      <p class="subtitle">Unified Hermes workflow for Chris &amp; Johnny — multi-model routing, HITL gates, GitHub collaboration</p>
+      <h1>The Factory System</h1>
+      <p>GitHub is the source of everything. Simple, effective, repeatable.</p>
     </div>
 
-    <div class="diagram-container">
-      <svg viewBox="0 0 1000 880">
-        <defs>
-          <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-            <polygon points="0 0, 10 3.5, 0 7" fill="#64748b" />
-          </marker>
-          <marker id="arrowhead-cyan" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-            <polygon points="0 0, 10 3.5, 0 7" fill="#22d3ee" />
-          </marker>
-          <marker id="arrowhead-rose" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-            <polygon points="0 0, 10 3.5, 0 7" fill="#fb7185" />
-          </marker>
-          <marker id="arrowhead-amber" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-            <polygon points="0 0, 10 3.5, 0 7" fill="#fbbf24" />
-          </marker>
-          <marker id="arrowhead-emerald" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-            <polygon points="0 0, 10 3.5, 0 7" fill="#34d399" />
-          </marker>
-          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/>
-          </pattern>
-        </defs>
+    <!-- SECTION 1: GitHub as Source -->
+    <div class="section">
+      <div class="section-label">01 — Source of Truth</div>
+      <div class="github-box">
+        <div class="github-title">
+          <span class="icon">📦</span>
+          <h2>GitHub = The Entire System</h2>
+        </div>
+        <p style="font-size:0.85rem; color:#94A3B8; margin-bottom:1rem; line-height:1.5;">
+          One repo. Two layers. The factory code never conflicts with client work — different branches touch different parts.
+        </p>
+        <div class="layer-grid">
+          <div class="layer-card">
+            <h3>Part 1: The Factory <span class="tag" style="background:rgba(251,191,36,0.15);color:#FBBF24;">static</span></h3>
+            <ul>
+              <li><span class="mono">factory.js</span> — the engine</li>
+              <li><span class="mono">agents/</span> — process definitions</li>
+              <li><span class="mono">templates/</span> — design system + packs</li>
+              <li><span class="mono">qa/</span> — quality gates + gauntlet</li>
+              <li><span class="mono">factory.config.json</span> — model routing</li>
+              <li><span class="mono">tools/</span> — cost tracking, pricing</li>
+            </ul>
+          </div>
+          <div class="layer-card">
+            <h3>Part 2: The Work <span class="tag" style="background:rgba(34,211,238,0.1);color:#22D3EE;">changes daily</span></h3>
+            <ul>
+              <li><span class="mono">projects/awp/</span> — client folder</li>
+              <li><span class="mono">projects/cpp/</span> — client folder</li>
+              <li><span class="mono">projects/new-client/</span></li>
+              <li>Each has: <span class="mono">INTAKE.md</span></li>
+              <li>+ <span class="mono">.factory-state.json</span></li>
+              <li>+ research, strategy, copy, build</li>
+            </ul>
+          </div>
+        </div>
 
-        <rect width="100%" height="100%" fill="url(#grid)" />
-
-        <!-- =================================================================
-             COLLABORATION LAYER (top)
-             ================================================================= -->
-        <rect x="30" y="30" width="940" height="130" rx="12" fill="rgba(251, 191, 36, 0.05)" stroke="#fbbf24" stroke-width="1" stroke-dasharray="8,4"/>
-        <text x="44" y="48" fill="#fbbf24" font-size="10" font-weight="600">COLLABORATION LAYER — GitHub (caebaby/website-factory)</text>
-
-        <!-- Chris Hermes -->
-        <rect x="60" y="65" width="130" height="70" rx="6" fill="rgba(8, 51, 68, 0.4)" stroke="#22d3ee" stroke-width="1.5"/>
-        <text x="125" y="85" fill="white" font-size="11" font-weight="600" text-anchor="middle">Chris's Hermes</text>
-        <text x="125" y="100" fill="#22d3ee" font-size="8" text-anchor="middle">GLM-5.2 / Kimi-K3</text>
-        <text x="125" y="113" fill="#94a3b8" font-size="8" text-anchor="middle">factory.js print</text>
-        <text x="125" y="125" fill="#94a3b8" font-size="8" text-anchor="middle">cost_tracker.py</text>
-
-        <!-- GitHub Repo (center) -->
-        <rect x="350" y="55" width="300" height="90" rx="6" fill="rgba(120, 53, 15, 0.3)" stroke="#fbbf24" stroke-width="1.5"/>
-        <text x="500" y="75" fill="white" font-size="12" font-weight="600" text-anchor="middle">GitHub Repository</text>
-        <text x="500" y="90" fill="#fbbf24" font-size="8" text-anchor="middle">caebaby/website-factory</text>
-        <text x="500" y="106" fill="#94a3b8" font-size="8" text-anchor="middle">main = canonical (templates, agents, qa)</text>
-        <text x="500" y="118" fill="#94a3b8" font-size="8" text-anchor="middle">project branches = per-client work</text>
-        <text x="500" y="132" fill="#fb7185" font-size="8" text-anchor="middle">PR review = HITL gate</text>
-
-        <!-- Johnny Hermes -->
-        <rect x="810" y="65" width="130" height="70" rx="6" fill="rgba(8, 51, 68, 0.4)" stroke="#22d3ee" stroke-width="1.5"/>
-        <text x="875" y="85" fill="white" font-size="11" font-weight="600" text-anchor="middle">Johnny's Hermes</text>
-        <text x="875" y="100" fill="#22d3ee" font-size="8" text-anchor="middle">Same config + skills</text>
-        <text x="875" y="113" fill="#94a3b8" font-size="8" text-anchor="middle">Review / QA / Deploy</text>
-        <text x="875" y="125" fill="#94a3b8" font-size="8" text-anchor="middle">Gate approvals</text>
-
-        <!-- Collaboration arrows -->
-        <line x1="190" y1="100" x2="348" y2="100" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrowhead-amber)"/>
-        <text x="269" y="94" fill="#94a3b8" font-size="8" text-anchor="middle">push / PR</text>
-        <line x1="650" y1="100" x2="808" y2="100" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrowhead-amber)"/>
-        <text x="729" y="94" fill="#94a3b8" font-size="8" text-anchor="middle">pull / review</text>
-
-        <!-- =================================================================
-             ORCHESTRATION LAYER
-             ================================================================= -->
-        <rect x="30" y="185" width="940" height="110" rx="12" fill="rgba(6, 78, 59, 0.08)" stroke="#34d399" stroke-width="1" stroke-dasharray="8,4"/>
-        <text x="44" y="203" fill="#34d399" font-size="10" font-weight="600">ORCHESTRATION LAYER — factory.js (subprocess orchestrator, file-based state)</text>
-
-        <rect x="60" y="215" width="880" height="65" rx="6" fill="rgba(6, 78, 59, 0.2)" stroke="#34d399" stroke-width="1.5"/>
-        <text x="500" y="235" fill="white" font-size="11" font-weight="600" text-anchor="middle">factory.js — The Foreman</text>
-        <text x="180" y="252" fill="#94a3b8" font-size="8" text-anchor="middle">node factory.js print &lt;client&gt;</text>
-        <text x="180" y="266" fill="#34d399" font-size="8" text-anchor="middle">8 stages, 2 human gates</text>
-        <text x="500" y="252" fill="#94a3b8" font-size="8" text-anchor="middle">.factory-state.json (resume any stage)</text>
-        <text x="500" y="266" fill="#34d399" font-size="8" text-anchor="middle">fallback chains per role</text>
-        <text x="820" y="252" fill="#94a3b8" font-size="8" text-anchor="middle">factory.config.json</text>
-        <text x="820" y="266" fill="#34d399" font-size="8" text-anchor="middle">model routing per stage</text>
-
-        <!-- Arrow from collab to orchestration -->
-        <line x1="500" y1="160" x2="500" y2="183" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-
-        <!-- =================================================================
-             PIPELINE STAGES (center column, left-to-right flow)
-             ================================================================= -->
-        <rect x="30" y="320" width="940" height="370" rx="12" fill="rgba(30, 41, 59, 0.3)" stroke="#94a3b8" stroke-width="1" stroke-dasharray="8,4"/>
-        <text x="44" y="338" fill="#94a3b8" font-size="10" font-weight="600">PIPELINE — 8 stages, each a fresh subprocess spawn of the configured model</text>
-
-        <!-- Stage 01: Research -->
-        <rect x="50" y="355" width="135" height="75" rx="6" fill="rgba(76, 29, 149, 0.3)" stroke="#a78bfa" stroke-width="1.5"/>
-        <text x="117" y="373" fill="white" font-size="10" font-weight="600" text-anchor="middle">01 Research</text>
-        <text x="117" y="388" fill="#a78bfa" font-size="8" text-anchor="middle">DeepSeek-Reasoner</text>
-        <text x="117" y="402" fill="#94a3b8" font-size="7" text-anchor="middle">INTAKE → ICP_BRIEF</text>
-        <text x="117" y="415" fill="#94a3b8" font-size="7" text-anchor="middle">+ VOC Ledger</text>
-
-        <!-- Stage 02: Strategy -->
-        <rect x="205" y="355" width="135" height="75" rx="6" fill="rgba(76, 29, 149, 0.3)" stroke="#a78bfa" stroke-width="1.5"/>
-        <text x="272" y="373" fill="white" font-size="10" font-weight="600" text-anchor="middle">02 Strategy</text>
-        <text x="272" y="388" fill="#a78bfa" font-size="8" text-anchor="middle">GLM-5.2</text>
-        <text x="272" y="402" fill="#94a3b8" font-size="7" text-anchor="middle">→ COPY_STRATEGY</text>
-        <text x="272" y="415" fill="#94a3b8" font-size="7" text-anchor="middle">+ COPY SPINE</text>
-
-        <!-- Stage 02.5: Director (HITL GATE BEFORE) -->
-        <rect x="360" y="355" width="135" height="75" rx="6" fill="rgba(136, 19, 55, 0.3)" stroke="#fb7185" stroke-width="2"/>
-        <text x="427" y="373" fill="white" font-size="10" font-weight="600" text-anchor="middle">02.5 Director ★</text>
-        <text x="427" y="388" fill="#fb7185" font-size="8" text-anchor="middle">Kimi-K3 / Opus</text>
-        <text x="427" y="402" fill="#94a3b8" font-size="7" text-anchor="middle">→ BUILD_BRIEF</text>
-        <text x="427" y="415" fill="#fb7185" font-size="7" text-anchor="middle">✋ DIRECTION GATE</text>
-
-        <!-- Stage 03: Copy -->
-        <rect x="515" y="355" width="135" height="75" rx="6" fill="rgba(76, 29, 149, 0.3)" stroke="#a78bfa" stroke-width="1.5"/>
-        <text x="582" y="373" fill="white" font-size="10" font-weight="600" text-anchor="middle">03 Copy</text>
-        <text x="582" y="388" fill="#a78bfa" font-size="8" text-anchor="middle">DeepSeek V4-Pro</text>
-        <text x="582" y="402" fill="#94a3b8" font-size="7" text-anchor="middle">→ COPY_ALL.md</text>
-        <text x="582" y="415" fill="#94a3b8" font-size="7" text-anchor="middle">RMBC + VERIFY flags</text>
-
-        <!-- Stage 03.5: Copy Gate -->
-        <rect x="670" y="355" width="135" height="75" rx="6" fill="rgba(6, 78, 59, 0.3)" stroke="#34d399" stroke-width="1.5"/>
-        <text x="737" y="373" fill="white" font-size="10" font-weight="600" text-anchor="middle">03.5 Copy Gate</text>
-        <text x="737" y="388" fill="#34d399" font-size="8" text-anchor="middle">Sonnet (independent)</text>
-        <text x="737" y="402" fill="#94a3b8" font-size="7" text-anchor="middle">→ COPY_GATE.md</text>
-        <text x="737" y="415" fill="#fb7185" font-size="7" text-anchor="middle">REPAIR blocks build</text>
-
-        <!-- Stage 04: Build -->
-        <rect x="825" y="355" width="125" height="75" rx="6" fill="rgba(8, 51, 68, 0.3)" stroke="#22d3ee" stroke-width="2"/>
-        <text x="887" y="373" fill="white" font-size="10" font-weight="600" text-anchor="middle">04 Build ★</text>
-        <text x="887" y="388" fill="#22d3ee" font-size="8" text-anchor="middle">Sonnet / GLM-5.2</text>
-        <text x="887" y="402" fill="#94a3b8" font-size="7" text-anchor="middle">→ build/index.html</text>
-        <text x="887" y="415" fill="#94a3b8" font-size="7" text-anchor="middle">from BUILD_BRIEF</text>
-
-        <!-- Horizontal flow arrows -->
-        <line x1="185" y1="392" x2="203" y2="392" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-        <line x1="340" y1="392" x2="358" y2="392" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-        <line x1="495" y1="392" x2="513" y2="392" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-        <line x1="650" y1="392" x2="668" y2="392" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-        <line x1="805" y1="392" x2="823" y2="392" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-
-        <!-- Stage 05: Gauntlet -->
-        <rect x="190" y="455" width="280" height="80" rx="6" fill="rgba(136, 19, 55, 0.2)" stroke="#fb7185" stroke-width="1.5"/>
-        <text x="330" y="473" fill="white" font-size="10" font-weight="600" text-anchor="middle">05 Gauntlet (QA Repair Loop)</text>
-        <text x="330" y="488" fill="#fb7185" font-size="8" text-anchor="middle">node qa/run-pipeline.js</text>
-        <text x="330" y="502" fill="#94a3b8" font-size="7" text-anchor="middle">RENDER → INSPECT → CRITIQUE → REPAIR → RE-VERIFY</text>
-        <text x="330" y="515" fill="#94a3b8" font-size="7" text-anchor="middle">Max 3 iterations. Builder never grades own work.</text>
-        <text x="330" y="527" fill="#fbbf24" font-size="7" text-anchor="middle">Fresh agent for every role. Deterministic checks first.</text>
-
-        <!-- Stage 06: Ship Gate -->
-        <rect x="530" y="455" width="170" height="80" rx="6" fill="rgba(136, 19, 55, 0.3)" stroke="#fb7185" stroke-width="2"/>
-        <text x="615" y="473" fill="white" font-size="10" font-weight="600" text-anchor="middle">06 Human Gate</text>
-        <text x="615" y="488" fill="#fb7185" font-size="8" text-anchor="middle">✋ SHIP GATE</text>
-        <text x="615" y="502" fill="#94a3b8" font-size="7" text-anchor="middle">Chris/Johnny review</text>
-        <text x="615" y="515" fill="#94a3b8" font-size="7" text-anchor="middle">on review link</text>
-        <text x="615" y="527" fill="#fbbf24" font-size="7" text-anchor="middle">Corrections → LEDGER</text>
-
-        <!-- Stage 07: Ship -->
-        <rect x="740" y="455" width="210" height="80" rx="6" fill="rgba(6, 78, 59, 0.3)" stroke="#34d399" stroke-width="1.5"/>
-        <text x="845" y="473" fill="white" font-size="10" font-weight="600" text-anchor="middle">07 Ship + Harvest</text>
-        <text x="845" y="488" fill="#34d399" font-size="8" text-anchor="middle">Deploy → Pages/Vercel</text>
-        <text x="845" y="502" fill="#94a3b8" font-size="7" text-anchor="middle">Register vector in BUILD_REGISTRY</text>
-        <text x="845" y="515" fill="#fbbf24" font-size="7" text-anchor="middle">Harvest: patterns → catalog</text>
-        <text x="845" y="527" fill="#fbbf24" font-size="7" text-anchor="middle">defects → LEDGER (compounds)</text>
-
-        <!-- Flow from build down to gauntlet -->
-        <path d="M 887 430 L 887 445 L 330 445 L 330 453" fill="none" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-        <line x1="470" y1="495" x2="528" y2="495" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-        <line x1="700" y1="495" x2="738" y2="495" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-
-        <!-- Harvest feedback loop arrow (curved back to catalog) -->
-        <path d="M 845 535 Q 845 580 500 580 Q 50 580 50 430 Q 50 392 48 392" fill="none" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="5,5" marker-end="url(#arrowhead-amber)"/>
-        <text x="400" y="575" fill="#fbbf24" font-size="8" font-weight="600">HARVEST LOOP — every build compounds the system</text>
-
-        <!-- =================================================================
-             MODEL LAYER (bottom)
-             ================================================================= -->
-        <rect x="30" y="565" width="940" height="140" rx="12" fill="rgba(8, 51, 68, 0.05)" stroke="#22d3ee" stroke-width="1" stroke-dasharray="8,4"/>
-        <text x="44" y="583" fill="#22d3ee" font-size="10" font-weight="600">MODEL LAYER — routed via Hermes, cost tracked per-stage</text>
-
-        <!-- Cheap tier -->
-        <rect x="50" y="600" width="200" height="90" rx="6" fill="rgba(6, 78, 59, 0.3)" stroke="#34d399" stroke-width="1.5"/>
-        <text x="150" y="618" fill="white" font-size="10" font-weight="600" text-anchor="middle">Budget Tier</text>
-        <text x="150" y="635" fill="#34d399" font-size="8" text-anchor="middle">GLM-5.2 ($0.76/$2.42)</text>
-        <text x="150" y="648" fill="#34d399" font-size="8" text-anchor="middle">DeepSeek V4-Pro ($0.44/$0.87)</text>
-        <text x="150" y="661" fill="#34d399" font-size="8" text-anchor="middle">DeepSeek Flash ($0.09/$0.18)</text>
-        <text x="150" y="675" fill="#94a3b8" font-size="7" text-anchor="middle">research, strategy, copy</text>
-        <text x="150" y="686" fill="#fbbf24" font-size="7" text-anchor="middle">auxiliary tasks → flash</text>
-
-        <!-- Mid tier -->
-        <rect x="280" y="600" width="200" height="90" rx="6" fill="rgba(8, 51, 68, 0.3)" stroke="#22d3ee" stroke-width="1.5"/>
-        <text x="380" y="618" fill="white" font-size="10" font-weight="600" text-anchor="middle">Mid Tier</text>
-        <text x="380" y="635" fill="#22d3ee" font-size="8" text-anchor="middle">Kimi-K3 ($3/$15)</text>
-        <text x="380" y="648" fill="#22d3ee" font-size="8" text-anchor="middle">Claude Sonnet ($3/$15)</text>
-        <text x="380" y="661" fill="#22d3ee" font-size="8" text-anchor="middle">Fugu-Ultra ($2/$8)</text>
-        <text x="380" y="675" fill="#94a3b8" font-size="7" text-anchor="middle">build, copy gate, repair</text>
-        <text x="380" y="686" fill="#94a3b8" font-size="7" text-anchor="middle">critic, verification</text>
-
-        <!-- Premium tier -->
-        <rect x="510" y="600" width="200" height="90" rx="6" fill="rgba(136, 19, 55, 0.3)" stroke="#fb7185" stroke-width="1.5"/>
-        <text x="610" y="618" fill="white" font-size="10" font-weight="600" text-anchor="middle">Premium Tier</text>
-        <text x="610" y="635" fill="#fb7185" font-size="8" text-anchor="middle">Claude Opus ($15/$75)</text>
-        <text x="610" y="648" fill="#94a3b8" font-size="7" text-anchor="middle">director only (if cheap</text>
-        <text x="610" y="660" fill="#94a3b8" font-size="7" text-anchor="middle">models don't clear bench)</text>
-        <text x="610" y="675" fill="#fbbf24" font-size="7" text-anchor="middle">Audition winner replaces</text>
-
-        <!-- Cost + Evals -->
-        <rect x="740" y="600" width="210" height="90" rx="6" fill="rgba(76, 29, 149, 0.3)" stroke="#a78bfa" stroke-width="1.5"/>
-        <text x="845" y="618" fill="white" font-size="10" font-weight="600" text-anchor="middle">Cost &amp; Evals</text>
-        <text x="845" y="635" fill="#a78bfa" font-size="8" text-anchor="middle">cost_tracker.py</text>
-        <text x="845" y="648" fill="#94a3b8" font-size="7" text-anchor="middle">Hermes state.db token counts</text>
-        <text x="845" y="661" fill="#94a3b8" font-size="7" text-anchor="middle">+ pricing.json overlay</text>
-        <text x="845" y="675" fill="#fbbf24" font-size="7" text-anchor="middle">Gauntlet = quality eval</text>
-        <text x="845" y="686" fill="#fbbf24" font-size="7" text-anchor="middle">Bench packet = model eval</text>
-
-        <!-- Arrow from pipeline to model layer -->
-        <line x1="500" y1="540" x2="500" y2="563" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-        <text x="515" y="555" fill="#94a3b8" font-size="8">routes to</text>
-
-        <!-- =================================================================
-             SCHEDULE LAYER (right side annotation)
-             ================================================================= -->
-        <text x="44" y="730" fill="#94a3b8" font-size="10" font-weight="600">SCHEDULING — cron vs agent vs manual (right tool for each job)</text>
-
-        <rect x="50" y="745" width="280" height="55" rx="6" fill="rgba(251, 146, 60, 0.15)" stroke="#fb923c" stroke-width="1.5"/>
-        <text x="190" y="763" fill="white" font-size="9" font-weight="600" text-anchor="middle">Cron Jobs (no_agent=True)</text>
-        <text x="190" y="777" fill="#fb923c" font-size="7" text-anchor="middle">Cost watchdogs, heartbeat checks,</text>
-        <text x="190" y="788" fill="#fb923c" font-size="7" text-anchor="middle">billing alerts — script-only, zero tokens</text>
-
-        <rect x="360" y="745" width="280" height="55" rx="6" fill="rgba(8, 51, 68, 0.3)" stroke="#22d3ee" stroke-width="1.5"/>
-        <text x="500" y="763" fill="white" font-size="9" font-weight="600" text-anchor="middle">Manual / On-Demand (factory.js)</text>
-        <text x="500" y="777" fill="#22d3ee" font-size="7" text-anchor="middle">Client builds — HITL gates make</text>
-        <text x="500" y="788" fill="#22d3ee" font-size="7" text-anchor="middle">automation counterproductive here</text>
-
-        <rect x="670" y="745" width="280" height="55" rx="6" fill="rgba(6, 78, 59, 0.3)" stroke="#34d399" stroke-width="1.5"/>
-        <text x="810" y="763" fill="white" font-size="9" font-weight="600" text-anchor="middle">Agent Cron (LLM-driven)</text>
-        <text x="810" y="777" fill="#34d399" font-size="7" text-anchor="middle">Daily ICP monitoring, blog drafts,</text>
-        <text x="810" y="788" fill="#34d399" font-size="7" text-anchor="middle">competitor scans — needs reasoning</text>
-
-        <!-- =================================================================
-             LEGEND
-             ================================================================= -->
-        <text x="500" y="830" fill="white" font-size="10" font-weight="600" text-anchor="middle">Legend</text>
-
-        <rect x="180" y="840" width="14" height="9" rx="2" fill="rgba(8, 51, 68, 0.4)" stroke="#22d3ee" stroke-width="1"/>
-        <text x="200" y="848" fill="#94a3b8" font-size="8">Hermes / Build</text>
-
-        <rect x="300" y="840" width="14" height="9" rx="2" fill="rgba(76, 29, 149, 0.4)" stroke="#a78bfa" stroke-width="1"/>
-        <text x="320" y="848" fill="#94a3b8" font-size="8">LLM Stage</text>
-
-        <rect x="410" y="840" width="14" height="9" rx="2" fill="rgba(136, 19, 55, 0.4)" stroke="#fb7185" stroke-width="1"/>
-        <text x="430" y="848" fill="#94a3b8" font-size="8">HITL Gate / Premium</text>
-
-        <rect x="560" y="840" width="14" height="9" rx="2" fill="rgba(6, 78, 59, 0.4)" stroke="#34d399" stroke-width="1"/>
-        <text x="580" y="848" fill="#94a3b8" font-size="8">Orchestration / QA</text>
-
-        <rect x="700" y="840" width="14" height="9" rx="2" fill="rgba(251, 191, 36, 0.3)" stroke="#fbbf24" stroke-width="1"/>
-        <text x="720" y="848" fill="#94a3b8" font-size="8">GitHub / Harvest</text>
-
-        <line x1="180" y1="860" x2="200" y2="860" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="5,5"/>
-        <text x="208" y="863" fill="#94a3b8" font-size="8">Feedback loop</text>
-
-        <text x="300" y="863" fill="#fb7185" font-size="8">★ = design-critical (premium model)</text>
-      </svg>
+        <!-- Collaboration -->
+        <div class="collab-row">
+          <div class="person-box">
+            <h4>Chris</h4>
+            <p>Hermes + GLM-5.2 / Kimi-K3</p>
+            <p style="margin-top:0.4rem;">Runs builds, reviews direction</p>
+          </div>
+          <div class="collab-connector">
+            ← push / PR →<br>
+            <span style="color:#64748B; font-size:0.65rem;">branch per client</span><br>
+            ← pull / review →
+          </div>
+          <div class="person-box">
+            <h4>Johnny</h4>
+            <p>Same Hermes config + skills</p>
+            <p style="margin-top:0.4rem;">Reviews gates, QA, deploys</p>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- Info Cards -->
-    <div class="cards">
-      <div class="card">
-        <div class="card-header">
-          <div class="card-dot cyan"></div>
-          <h3>Why Not LangChain?</h3>
+    <!-- SECTION 2: The Pipeline -->
+    <div class="section">
+      <div class="section-label">02 — The Pipeline (Website Factory)</div>
+      <div class="flow-container">
+        <div class="flow-steps">
+          <div class="flow-step">
+            <div class="step-box step-llm">
+              <h4>Research</h4>
+              <div class="model">DeepSeek</div>
+              <div class="desc">ICP + VOC</div>
+            </div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="step-box step-llm">
+              <h4>Strategy</h4>
+              <div class="model">GLM-5.2</div>
+              <div class="desc">Copy spine</div>
+            </div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="step-box step-gate">
+              <h4>Director</h4>
+              <div class="model">Kimi-K3</div>
+              <div class="desc">Build brief</div>
+              <div class="gate-flag">✋ GATE 1</div>
+            </div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="step-box step-llm">
+              <h4>Copy</h4>
+              <div class="model">DeepSeek</div>
+              <div class="desc">COPY_ALL</div>
+            </div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="step-box step-build">
+              <h4>Build</h4>
+              <div class="model">Sonnet</div>
+              <div class="desc">index.html</div>
+            </div>
+          </div>
         </div>
-        <ul>
-          <li>• factory.js already IS the orchestrator</li>
-          <li>• Subprocess spawning = zero framework lock-in</li>
-          <li>• File-based state = GitHub-native collaboration</li>
-          <li>• Any CLI, any model, any provider — swap freely</li>
-          <li>• No abstraction tax, no API churn</li>
-        </ul>
-      </div>
 
-      <div class="card">
-        <div class="card-header">
-          <div class="card-dot rose"></div>
-          <h3>HITL Is The Product</h3>
-        </div>
-        <ul>
-          <li>• Direction gate: wrong direction = one section, not a site</li>
-          <li>• Ship gate: every correction compounds (LEDGER)</li>
-          <li>• PR review = Johnny's gate, not a Slack ping</li>
-          <li>• Full automation is a pipe dream; checkpoints compound</li>
-          <li>• State persists between runs — resume anywhere</li>
-        </ul>
-      </div>
+        <div style="text-align:center; margin: 0.75rem 0; color:#334155; font-size:0.9rem;">↓</div>
 
-      <div class="card">
-        <div class="card-header">
-          <div class="card-dot amber"></div>
-          <h3>Scheduling Strategy</h3>
+        <div class="flow-steps">
+          <div class="flow-step">
+            <div class="step-box step-build" style="border-color:#FB7185;">
+              <h4 style="color:#FCA5A5;">Gauntlet</h4>
+              <div class="model" style="color:#FB7185;">QA Loop</div>
+              <div class="desc">Repair × 3 max</div>
+            </div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="step-box step-gate">
+              <h4>Ship Gate</h4>
+              <div class="model">Human</div>
+              <div class="desc">Review link</div>
+              <div class="gate-flag">✋ GATE 2</div>
+            </div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="step-box step-ship">
+              <h4>Ship</h4>
+              <div class="model">Deploy</div>
+              <div class="desc">Pages/Vercel</div>
+            </div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="step-box step-ship" style="border-color:#FBBF24;">
+              <h4 style="color:#FCD34D;">Harvest</h4>
+              <div class="model" style="color:#FBBF24;">Feedback</div>
+              <div class="desc">Patterns → catalog</div>
+            </div>
+          </div>
         </div>
-        <ul>
-          <li>• <strong>Cron (no_agent):</strong> cost/billing watchdogs — $0</li>
-          <li>• <strong>Manual:</strong> client builds — HITL gates required</li>
-          <li>• <strong>Agent cron:</strong> ICP monitoring, content drafts</li>
-          <li>• <strong>Never cron a build:</strong> gates exist for a reason</li>
-          <li>• The right answer depends on whether reasoning is needed</li>
-        </ul>
-      </div>
 
-      <div class="card">
-        <div class="card-header">
-          <div class="card-dot violet"></div>
-          <h3>Cost &amp; Quality Evaluation</h3>
+        <p style="text-align:center; font-size:0.75rem; color:#64748B; margin-top:1.25rem; font-family:'JetBrains Mono',monospace;">
+          Each stage = fresh model spawn. State persists in .factory-state.json. Resume from any stage.
+        </p>
+      </div>
+    </div>
+
+    <!-- SECTION 3: HITL Detail -->
+    <div class="section">
+      <div class="section-label">03 — Human in the Loop (How Gates Work)</div>
+      <div class="hitl-box">
+        <div class="hitl-steps">
+          <div class="hitl-step">
+            <div class="hitl-num auto">1</div>
+            <div class="hitl-text">
+              <h4>Pipeline runs automatically through stages <span class="who ai">AI</span></h4>
+              <p>Research → Strategy → Director all run back-to-back via <span class="mono">factory.js print &lt;client&gt;</span></p>
+            </div>
+          </div>
+          <div class="hitl-step">
+            <div class="hitl-num gate">2</div>
+            <div class="hitl-text">
+              <h4>PAUSE: Direction Gate <span class="who human">CHRIS</span></h4>
+              <p>Pipeline stops. Chris reviews <span class="mono">BUILD_BRIEF.md</span> + hero preview. Wrong direction here costs one section, not a site. This is the moment to redirect.</p>
+            </div>
+          </div>
+          <div class="hitl-step">
+            <div class="hitl-num auto">3</div>
+            <div class="hitl-text">
+              <h4>Chris approves: <span class="mono">node factory.js approve &lt;client&gt; direction</span> <span class="who ai">AUTO-CONTINUES</span></h4>
+              <p>Pipeline resumes: Copy → Copy Gate → Build → Gauntlet. All automatic from here.</p>
+            </div>
+          </div>
+          <div class="hitl-step">
+            <div class="hitl-num gate">4</div>
+            <div class="hitl-text">
+              <h4>PAUSE: Ship Gate <span class="who human">CHRIS or JOHNNY</span></h4>
+              <p>Pipeline stops again. Review the gauntlet-clean build on the review link. Every correction becomes a rule, check, or pattern in LEDGER.md — it compounds.</p>
+            </div>
+          </div>
+          <div class="hitl-step">
+            <div class="hitl-num auto">5</div>
+            <div class="hitl-text">
+              <h4>Approve → Ship + Harvest <span class="who ai">AI</span></h4>
+              <p>Deploy to Pages/Vercel. Register the build vector. Harvest patterns back into the catalog. The system just got smarter for the next client.</p>
+            </div>
+          </div>
         </div>
-        <ul>
-          <li>• cost_tracker.py: real tokens from Hermes state.db</li>
-          <li>• pricing.json: user-maintained rate table</li>
-          <li>• Gauntlet: deterministic quality gate (0 P0 to ship)</li>
-          <li>• Bench packet: model audition (one-shot build test)</li>
-          <li>• Build Registry: every run logged with metrics</li>
+      </div>
+    </div>
+
+    <!-- SECTION 4: Repeatable Pattern -->
+    <div class="section">
+      <div class="section-label">04 — This Is a Repeatable Model</div>
+      <div class="pattern-box">
+        <div class="pattern-title">
+          <h2>🔄 Same Engine Shape for Every Workflow</h2>
+        </div>
+        <p style="font-size:0.85rem; color:#94A3B8; line-height:1.5;">
+          The website factory is workflow #1. Content systems use the same pattern — just different stages.
+        </p>
+        <div class="pattern-grid">
+          <div class="pattern-step">
+            <div class="num">STEP 1</div>
+            <div class="name">Intake</div>
+            <div class="example">Website: INTAKE.md<br>Content: Brief</div>
+          </div>
+          <div class="pattern-step">
+            <div class="num">STEP 2</div>
+            <div class="name">Stages</div>
+            <div class="example">Model-routed<br>per stage</div>
+          </div>
+          <div class="pattern-step">
+            <div class="num">STEP 3</div>
+            <div class="name">HITL Gate</div>
+            <div class="example">Human review<br>at key point</div>
+          </div>
+          <div class="pattern-step">
+            <div class="num">STEP 4</div>
+            <div class="name">Output</div>
+            <div class="example">Ship +<br>cost tracked</div>
+          </div>
+          <div class="pattern-step">
+            <div class="num">STEP 5</div>
+            <div class="name">Harvest</div>
+            <div class="example">System gets<br>smarter</div>
+          </div>
+        </div>
+        <p class="pattern-note">
+          <strong>Website Factory:</strong> intake → research → strategy → direction → copy → build → gauntlet → ship<br>
+          <strong>Content Pipeline:</strong> brief → research → draft → review gate → edit → publish → harvest<br>
+          <strong>Future workflows:</strong> same shape, different stages, same GitHub + Hermes + cost tracking
+        </p>
+      </div>
+    </div>
+
+    <!-- SECTION 5: Scheduling -->
+    <div class="section">
+      <div class="section-label">05 — Scheduling (Right Tool for Each Job)</div>
+      <div class="sched-grid">
+        <div class="sched-card manual">
+          <h4>🔧 Manual</h4>
+          <p>Client builds. <span class="mono">factory.js print</span> run by Chris or Johnny. HITL gates make full automation counterproductive.</p>
+          <div class="cost">Cost: per-run</div>
+        </div>
+        <div class="sched-card cron">
+          <h4>⏰ Cron (script)</h4>
+          <p>Cost watchdogs, billing alerts, heartbeat checks. Script-only, zero tokens, zero LLM.</p>
+          <div class="cost">Cost: $0</div>
+        </div>
+        <div class="sched-card agent">
+          <h4>🤖 Agent Cron</h4>
+          <p>Daily ICP monitoring, blog drafts, competitor scans. Needs reasoning — LLM-driven.</p>
+          <div class="cost">Cost: per-tick</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 6: Simplicity Answer -->
+    <div class="section">
+      <div class="section-label">06 — Is This the Simplest Effective Process?</div>
+      <div class="simplicity-box">
+        <h2>Yes — If You Avoid Two Traps</h2>
+        <p>
+          The system is already simple: <strong>GitHub is the file system, factory.js is the engine, Hermes routes the models.</strong> Three moving parts. Everything else is files.
+        </p>
+        <ul class="simplicity-list">
+          <li>One repo, two layers (factory code + client work)</li>
+          <li>factory.js orchestrates — no LangChain, no workflow framework</li>
+          <li>HITL gates are PRs / approval commands, not infrastructure</li>
+          <li>Cost tracking reads from existing Hermes session data</li>
+          <li>State is a JSON file per client — resume from anywhere</li>
         </ul>
+        <ul class="simplicity-list">
+          <li class="avoid">Don't add GitHub Actions to auto-trigger builds (you'd review anyway)</li>
+          <li class="avoid">Don't separate the factory from the projects into multiple repos</li>
+          <li class="avoid">Don't build an intake form automation until manual intake breaks</li>
+          <li class="avoid">Don't add LangChain, workflow engines, or orchestration frameworks</li>
+        </ul>
+        <p style="margin-top:1rem; font-size:0.8rem; color:#64748B; font-style:italic;">
+          Rule of thumb: if a new piece of infrastructure doesn't make the pipeline faster, cheaper, or higher quality — it's complexity without payoff. The current design has three ingredients. Keep it there until one of them breaks.
+        </p>
       </div>
     </div>
 
     <p class="footer">
-      Website Factory Architecture • Chris Evans &amp; Johnny Nel • 2026-08-05
+      Website Factory System • Chris Evans &amp; Johnny Nel • 2026-08-05
     </p>
   </div>
 </body>
