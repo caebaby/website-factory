@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Factory — System Architecture</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'JetBrains Mono', monospace; background: #020617; min-height: 100vh; padding: 2rem; color: white; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .header { margin-bottom: 2rem; }
+    .header-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem; }
+    .pulse-dot { width: 12px; height: 12px; background: #22d3ee; border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    h1 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.025em; }
+    .subtitle { color: #94a3b8; font-size: 0.875rem; margin-left: 1.75rem; }
+    .diagram-container { background: rgba(15, 23, 42, 0.5); border-radius: 1rem; border: 1px solid #1e293b; padding: 1.5rem; overflow-x: auto; }
+    svg { width: 100%; min-width: 1000px; display: block; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 2rem; }
+    .card { background: rgba(15, 23, 42, 0.5); border-radius: 0.75rem; border: 1px solid #1e293b; padding: 1.25rem; }
+    .card-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; }
+    .card-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .card-dot.cyan { background: #22d3ee; }
+    .card-dot.emerald { background: #34d399; }
+    .card-dot.violet { background: #a78bfa; }
+    .card-dot.amber { background: #fbbf24; }
+    .card-dot.rose { background: #fb7185; }
+    .card-dot.orange { background: #fb923c; }
+    .card h3 { font-size: 0.875rem; font-weight: 600; }
+    .card ul { list-style: none; color: #94a3b8; font-size: 0.75rem; }
+    .card li { margin-bottom: 0.375rem; }
+    .footer { text-align: center; margin-top: 1.5rem; color: #475569; font-size: 0.75rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="header-row">
+        <div class="pulse-dot"></div>
+        <h1>Website Factory — System Architecture</h1>
+      </div>
+      <p class="subtitle">Unified Hermes workflow for Chris &amp; Johnny — multi-model routing, HITL gates, GitHub collaboration</p>
+    </div>
+
+    <div class="diagram-container">
+      <svg viewBox="0 0 1000 880">
+        <defs>
+          <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#64748b" />
+          </marker>
+          <marker id="arrowhead-cyan" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#22d3ee" />
+          </marker>
+          <marker id="arrowhead-rose" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#fb7185" />
+          </marker>
+          <marker id="arrowhead-amber" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#fbbf24" />
+          </marker>
+          <marker id="arrowhead-emerald" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#34d399" />
+          </marker>
+          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+          </pattern>
+        </defs>
+
+        <rect width="100%" height="100%" fill="url(#grid)" />
+
+        <!-- =================================================================
+             COLLABORATION LAYER (top)
+             ================================================================= -->
+        <rect x="30" y="30" width="940" height="130" rx="12" fill="rgba(251, 191, 36, 0.05)" stroke="#fbbf24" stroke-width="1" stroke-dasharray="8,4"/>
+        <text x="44" y="48" fill="#fbbf24" font-size="10" font-weight="600">COLLABORATION LAYER — GitHub (caebaby/website-factory)</text>
+
+        <!-- Chris Hermes -->
+        <rect x="60" y="65" width="130" height="70" rx="6" fill="rgba(8, 51, 68, 0.4)" stroke="#22d3ee" stroke-width="1.5"/>
+        <text x="125" y="85" fill="white" font-size="11" font-weight="600" text-anchor="middle">Chris's Hermes</text>
+        <text x="125" y="100" fill="#22d3ee" font-size="8" text-anchor="middle">GLM-5.2 / Kimi-K3</text>
+        <text x="125" y="113" fill="#94a3b8" font-size="8" text-anchor="middle">factory.js print</text>
+        <text x="125" y="125" fill="#94a3b8" font-size="8" text-anchor="middle">cost_tracker.py</text>
+
+        <!-- GitHub Repo (center) -->
+        <rect x="350" y="55" width="300" height="90" rx="6" fill="rgba(120, 53, 15, 0.3)" stroke="#fbbf24" stroke-width="1.5"/>
+        <text x="500" y="75" fill="white" font-size="12" font-weight="600" text-anchor="middle">GitHub Repository</text>
+        <text x="500" y="90" fill="#fbbf24" font-size="8" text-anchor="middle">caebaby/website-factory</text>
+        <text x="500" y="106" fill="#94a3b8" font-size="8" text-anchor="middle">main = canonical (templates, agents, qa)</text>
+        <text x="500" y="118" fill="#94a3b8" font-size="8" text-anchor="middle">project branches = per-client work</text>
+        <text x="500" y="132" fill="#fb7185" font-size="8" text-anchor="middle">PR review = HITL gate</text>
+
+        <!-- Johnny Hermes -->
+        <rect x="810" y="65" width="130" height="70" rx="6" fill="rgba(8, 51, 68, 0.4)" stroke="#22d3ee" stroke-width="1.5"/>
+        <text x="875" y="85" fill="white" font-size="11" font-weight="600" text-anchor="middle">Johnny's Hermes</text>
+        <text x="875" y="100" fill="#22d3ee" font-size="8" text-anchor="middle">Same config + skills</text>
+        <text x="875" y="113" fill="#94a3b8" font-size="8" text-anchor="middle">Review / QA / Deploy</text>
+        <text x="875" y="125" fill="#94a3b8" font-size="8" text-anchor="middle">Gate approvals</text>
+
+        <!-- Collaboration arrows -->
+        <line x1="190" y1="100" x2="348" y2="100" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrowhead-amber)"/>
+        <text x="269" y="94" fill="#94a3b8" font-size="8" text-anchor="middle">push / PR</text>
+        <line x1="650" y1="100" x2="808" y2="100" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrowhead-amber)"/>
+        <text x="729" y="94" fill="#94a3b8" font-size="8" text-anchor="middle">pull / review</text>
+
+        <!-- =================================================================
+             ORCHESTRATION LAYER
+             ================================================================= -->
+        <rect x="30" y="185" width="940" height="110" rx="12" fill="rgba(6, 78, 59, 0.08)" stroke="#34d399" stroke-width="1" stroke-dasharray="8,4"/>
+        <text x="44" y="203" fill="#34d399" font-size="10" font-weight="600">ORCHESTRATION LAYER — factory.js (subprocess orchestrator, file-based state)</text>
+
+        <rect x="60" y="215" width="880" height="65" rx="6" fill="rgba(6, 78, 59, 0.2)" stroke="#34d399" stroke-width="1.5"/>
+        <text x="500" y="235" fill="white" font-size="11" font-weight="600" text-anchor="middle">factory.js — The Foreman</text>
+        <text x="180" y="252" fill="#94a3b8" font-size="8" text-anchor="middle">node factory.js print &lt;client&gt;</text>
+        <text x="180" y="266" fill="#34d399" font-size="8" text-anchor="middle">8 stages, 2 human gates</text>
+        <text x="500" y="252" fill="#94a3b8" font-size="8" text-anchor="middle">.factory-state.json (resume any stage)</text>
+        <text x="500" y="266" fill="#34d399" font-size="8" text-anchor="middle">fallback chains per role</text>
+        <text x="820" y="252" fill="#94a3b8" font-size="8" text-anchor="middle">factory.config.json</text>
+        <text x="820" y="266" fill="#34d399" font-size="8" text-anchor="middle">model routing per stage</text>
+
+        <!-- Arrow from collab to orchestration -->
+        <line x1="500" y1="160" x2="500" y2="183" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+
+        <!-- =================================================================
+             PIPELINE STAGES (center column, left-to-right flow)
+             ================================================================= -->
+        <rect x="30" y="320" width="940" height="370" rx="12" fill="rgba(30, 41, 59, 0.3)" stroke="#94a3b8" stroke-width="1" stroke-dasharray="8,4"/>
+        <text x="44" y="338" fill="#94a3b8" font-size="10" font-weight="600">PIPELINE — 8 stages, each a fresh subprocess spawn of the configured model</text>
+
+        <!-- Stage 01: Research -->
+        <rect x="50" y="355" width="135" height="75" rx="6" fill="rgba(76, 29, 149, 0.3)" stroke="#a78bfa" stroke-width="1.5"/>
+        <text x="117" y="373" fill="white" font-size="10" font-weight="600" text-anchor="middle">01 Research</text>
+        <text x="117" y="388" fill="#a78bfa" font-size="8" text-anchor="middle">DeepSeek-Reasoner</text>
+        <text x="117" y="402" fill="#94a3b8" font-size="7" text-anchor="middle">INTAKE → ICP_BRIEF</text>
+        <text x="117" y="415" fill="#94a3b8" font-size="7" text-anchor="middle">+ VOC Ledger</text>
+
+        <!-- Stage 02: Strategy -->
+        <rect x="205" y="355" width="135" height="75" rx="6" fill="rgba(76, 29, 149, 0.3)" stroke="#a78bfa" stroke-width="1.5"/>
+        <text x="272" y="373" fill="white" font-size="10" font-weight="600" text-anchor="middle">02 Strategy</text>
+        <text x="272" y="388" fill="#a78bfa" font-size="8" text-anchor="middle">GLM-5.2</text>
+        <text x="272" y="402" fill="#94a3b8" font-size="7" text-anchor="middle">→ COPY_STRATEGY</text>
+        <text x="272" y="415" fill="#94a3b8" font-size="7" text-anchor="middle">+ COPY SPINE</text>
+
+        <!-- Stage 02.5: Director (HITL GATE BEFORE) -->
+        <rect x="360" y="355" width="135" height="75" rx="6" fill="rgba(136, 19, 55, 0.3)" stroke="#fb7185" stroke-width="2"/>
+        <text x="427" y="373" fill="white" font-size="10" font-weight="600" text-anchor="middle">02.5 Director ★</text>
+        <text x="427" y="388" fill="#fb7185" font-size="8" text-anchor="middle">Kimi-K3 / Opus</text>
+        <text x="427" y="402" fill="#94a3b8" font-size="7" text-anchor="middle">→ BUILD_BRIEF</text>
+        <text x="427" y="415" fill="#fb7185" font-size="7" text-anchor="middle">✋ DIRECTION GATE</text>
+
+        <!-- Stage 03: Copy -->
+        <rect x="515" y="355" width="135" height="75" rx="6" fill="rgba(76, 29, 149, 0.3)" stroke="#a78bfa" stroke-width="1.5"/>
+        <text x="582" y="373" fill="white" font-size="10" font-weight="600" text-anchor="middle">03 Copy</text>
+        <text x="582" y="388" fill="#a78bfa" font-size="8" text-anchor="middle">DeepSeek V4-Pro</text>
+        <text x="582" y="402" fill="#94a3b8" font-size="7" text-anchor="middle">→ COPY_ALL.md</text>
+        <text x="582" y="415" fill="#94a3b8" font-size="7" text-anchor="middle">RMBC + VERIFY flags</text>
+
+        <!-- Stage 03.5: Copy Gate -->
+        <rect x="670" y="355" width="135" height="75" rx="6" fill="rgba(6, 78, 59, 0.3)" stroke="#34d399" stroke-width="1.5"/>
+        <text x="737" y="373" fill="white" font-size="10" font-weight="600" text-anchor="middle">03.5 Copy Gate</text>
+        <text x="737" y="388" fill="#34d399" font-size="8" text-anchor="middle">Sonnet (independent)</text>
+        <text x="737" y="402" fill="#94a3b8" font-size="7" text-anchor="middle">→ COPY_GATE.md</text>
+        <text x="737" y="415" fill="#fb7185" font-size="7" text-anchor="middle">REPAIR blocks build</text>
+
+        <!-- Stage 04: Build -->
+        <rect x="825" y="355" width="125" height="75" rx="6" fill="rgba(8, 51, 68, 0.3)" stroke="#22d3ee" stroke-width="2"/>
+        <text x="887" y="373" fill="white" font-size="10" font-weight="600" text-anchor="middle">04 Build ★</text>
+        <text x="887" y="388" fill="#22d3ee" font-size="8" text-anchor="middle">Sonnet / GLM-5.2</text>
+        <text x="887" y="402" fill="#94a3b8" font-size="7" text-anchor="middle">→ build/index.html</text>
+        <text x="887" y="415" fill="#94a3b8" font-size="7" text-anchor="middle">from BUILD_BRIEF</text>
+
+        <!-- Horizontal flow arrows -->
+        <line x1="185" y1="392" x2="203" y2="392" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+        <line x1="340" y1="392" x2="358" y2="392" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+        <line x1="495" y1="392" x2="513" y2="392" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+        <line x1="650" y1="392" x2="668" y2="392" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+        <line x1="805" y1="392" x2="823" y2="392" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+
+        <!-- Stage 05: Gauntlet -->
+        <rect x="190" y="455" width="280" height="80" rx="6" fill="rgba(136, 19, 55, 0.2)" stroke="#fb7185" stroke-width="1.5"/>
+        <text x="330" y="473" fill="white" font-size="10" font-weight="600" text-anchor="middle">05 Gauntlet (QA Repair Loop)</text>
+        <text x="330" y="488" fill="#fb7185" font-size="8" text-anchor="middle">node qa/run-pipeline.js</text>
+        <text x="330" y="502" fill="#94a3b8" font-size="7" text-anchor="middle">RENDER → INSPECT → CRITIQUE → REPAIR → RE-VERIFY</text>
+        <text x="330" y="515" fill="#94a3b8" font-size="7" text-anchor="middle">Max 3 iterations. Builder never grades own work.</text>
+        <text x="330" y="527" fill="#fbbf24" font-size="7" text-anchor="middle">Fresh agent for every role. Deterministic checks first.</text>
+
+        <!-- Stage 06: Ship Gate -->
+        <rect x="530" y="455" width="170" height="80" rx="6" fill="rgba(136, 19, 55, 0.3)" stroke="#fb7185" stroke-width="2"/>
+        <text x="615" y="473" fill="white" font-size="10" font-weight="600" text-anchor="middle">06 Human Gate</text>
+        <text x="615" y="488" fill="#fb7185" font-size="8" text-anchor="middle">✋ SHIP GATE</text>
+        <text x="615" y="502" fill="#94a3b8" font-size="7" text-anchor="middle">Chris/Johnny review</text>
+        <text x="615" y="515" fill="#94a3b8" font-size="7" text-anchor="middle">on review link</text>
+        <text x="615" y="527" fill="#fbbf24" font-size="7" text-anchor="middle">Corrections → LEDGER</text>
+
+        <!-- Stage 07: Ship -->
+        <rect x="740" y="455" width="210" height="80" rx="6" fill="rgba(6, 78, 59, 0.3)" stroke="#34d399" stroke-width="1.5"/>
+        <text x="845" y="473" fill="white" font-size="10" font-weight="600" text-anchor="middle">07 Ship + Harvest</text>
+        <text x="845" y="488" fill="#34d399" font-size="8" text-anchor="middle">Deploy → Pages/Vercel</text>
+        <text x="845" y="502" fill="#94a3b8" font-size="7" text-anchor="middle">Register vector in BUILD_REGISTRY</text>
+        <text x="845" y="515" fill="#fbbf24" font-size="7" text-anchor="middle">Harvest: patterns → catalog</text>
+        <text x="845" y="527" fill="#fbbf24" font-size="7" text-anchor="middle">defects → LEDGER (compounds)</text>
+
+        <!-- Flow from build down to gauntlet -->
+        <path d="M 887 430 L 887 445 L 330 445 L 330 453" fill="none" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+        <line x1="470" y1="495" x2="528" y2="495" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+        <line x1="700" y1="495" x2="738" y2="495" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+
+        <!-- Harvest feedback loop arrow (curved back to catalog) -->
+        <path d="M 845 535 Q 845 580 500 580 Q 50 580 50 430 Q 50 392 48 392" fill="none" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="5,5" marker-end="url(#arrowhead-amber)"/>
+        <text x="400" y="575" fill="#fbbf24" font-size="8" font-weight="600">HARVEST LOOP — every build compounds the system</text>
+
+        <!-- =================================================================
+             MODEL LAYER (bottom)
+             ================================================================= -->
+        <rect x="30" y="565" width="940" height="140" rx="12" fill="rgba(8, 51, 68, 0.05)" stroke="#22d3ee" stroke-width="1" stroke-dasharray="8,4"/>
+        <text x="44" y="583" fill="#22d3ee" font-size="10" font-weight="600">MODEL LAYER — routed via Hermes, cost tracked per-stage</text>
+
+        <!-- Cheap tier -->
+        <rect x="50" y="600" width="200" height="90" rx="6" fill="rgba(6, 78, 59, 0.3)" stroke="#34d399" stroke-width="1.5"/>
+        <text x="150" y="618" fill="white" font-size="10" font-weight="600" text-anchor="middle">Budget Tier</text>
+        <text x="150" y="635" fill="#34d399" font-size="8" text-anchor="middle">GLM-5.2 ($0.76/$2.42)</text>
+        <text x="150" y="648" fill="#34d399" font-size="8" text-anchor="middle">DeepSeek V4-Pro ($0.44/$0.87)</text>
+        <text x="150" y="661" fill="#34d399" font-size="8" text-anchor="middle">DeepSeek Flash ($0.09/$0.18)</text>
+        <text x="150" y="675" fill="#94a3b8" font-size="7" text-anchor="middle">research, strategy, copy</text>
+        <text x="150" y="686" fill="#fbbf24" font-size="7" text-anchor="middle">auxiliary tasks → flash</text>
+
+        <!-- Mid tier -->
+        <rect x="280" y="600" width="200" height="90" rx="6" fill="rgba(8, 51, 68, 0.3)" stroke="#22d3ee" stroke-width="1.5"/>
+        <text x="380" y="618" fill="white" font-size="10" font-weight="600" text-anchor="middle">Mid Tier</text>
+        <text x="380" y="635" fill="#22d3ee" font-size="8" text-anchor="middle">Kimi-K3 ($3/$15)</text>
+        <text x="380" y="648" fill="#22d3ee" font-size="8" text-anchor="middle">Claude Sonnet ($3/$15)</text>
+        <text x="380" y="661" fill="#22d3ee" font-size="8" text-anchor="middle">Fugu-Ultra ($2/$8)</text>
+        <text x="380" y="675" fill="#94a3b8" font-size="7" text-anchor="middle">build, copy gate, repair</text>
+        <text x="380" y="686" fill="#94a3b8" font-size="7" text-anchor="middle">critic, verification</text>
+
+        <!-- Premium tier -->
+        <rect x="510" y="600" width="200" height="90" rx="6" fill="rgba(136, 19, 55, 0.3)" stroke="#fb7185" stroke-width="1.5"/>
+        <text x="610" y="618" fill="white" font-size="10" font-weight="600" text-anchor="middle">Premium Tier</text>
+        <text x="610" y="635" fill="#fb7185" font-size="8" text-anchor="middle">Claude Opus ($15/$75)</text>
+        <text x="610" y="648" fill="#94a3b8" font-size="7" text-anchor="middle">director only (if cheap</text>
+        <text x="610" y="660" fill="#94a3b8" font-size="7" text-anchor="middle">models don't clear bench)</text>
+        <text x="610" y="675" fill="#fbbf24" font-size="7" text-anchor="middle">Audition winner replaces</text>
+
+        <!-- Cost + Evals -->
+        <rect x="740" y="600" width="210" height="90" rx="6" fill="rgba(76, 29, 149, 0.3)" stroke="#a78bfa" stroke-width="1.5"/>
+        <text x="845" y="618" fill="white" font-size="10" font-weight="600" text-anchor="middle">Cost &amp; Evals</text>
+        <text x="845" y="635" fill="#a78bfa" font-size="8" text-anchor="middle">cost_tracker.py</text>
+        <text x="845" y="648" fill="#94a3b8" font-size="7" text-anchor="middle">Hermes state.db token counts</text>
+        <text x="845" y="661" fill="#94a3b8" font-size="7" text-anchor="middle">+ pricing.json overlay</text>
+        <text x="845" y="675" fill="#fbbf24" font-size="7" text-anchor="middle">Gauntlet = quality eval</text>
+        <text x="845" y="686" fill="#fbbf24" font-size="7" text-anchor="middle">Bench packet = model eval</text>
+
+        <!-- Arrow from pipeline to model layer -->
+        <line x1="500" y1="540" x2="500" y2="563" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+        <text x="515" y="555" fill="#94a3b8" font-size="8">routes to</text>
+
+        <!-- =================================================================
+             SCHEDULE LAYER (right side annotation)
+             ================================================================= -->
+        <text x="44" y="730" fill="#94a3b8" font-size="10" font-weight="600">SCHEDULING — cron vs agent vs manual (right tool for each job)</text>
+
+        <rect x="50" y="745" width="280" height="55" rx="6" fill="rgba(251, 146, 60, 0.15)" stroke="#fb923c" stroke-width="1.5"/>
+        <text x="190" y="763" fill="white" font-size="9" font-weight="600" text-anchor="middle">Cron Jobs (no_agent=True)</text>
+        <text x="190" y="777" fill="#fb923c" font-size="7" text-anchor="middle">Cost watchdogs, heartbeat checks,</text>
+        <text x="190" y="788" fill="#fb923c" font-size="7" text-anchor="middle">billing alerts — script-only, zero tokens</text>
+
+        <rect x="360" y="745" width="280" height="55" rx="6" fill="rgba(8, 51, 68, 0.3)" stroke="#22d3ee" stroke-width="1.5"/>
+        <text x="500" y="763" fill="white" font-size="9" font-weight="600" text-anchor="middle">Manual / On-Demand (factory.js)</text>
+        <text x="500" y="777" fill="#22d3ee" font-size="7" text-anchor="middle">Client builds — HITL gates make</text>
+        <text x="500" y="788" fill="#22d3ee" font-size="7" text-anchor="middle">automation counterproductive here</text>
+
+        <rect x="670" y="745" width="280" height="55" rx="6" fill="rgba(6, 78, 59, 0.3)" stroke="#34d399" stroke-width="1.5"/>
+        <text x="810" y="763" fill="white" font-size="9" font-weight="600" text-anchor="middle">Agent Cron (LLM-driven)</text>
+        <text x="810" y="777" fill="#34d399" font-size="7" text-anchor="middle">Daily ICP monitoring, blog drafts,</text>
+        <text x="810" y="788" fill="#34d399" font-size="7" text-anchor="middle">competitor scans — needs reasoning</text>
+
+        <!-- =================================================================
+             LEGEND
+             ================================================================= -->
+        <text x="500" y="830" fill="white" font-size="10" font-weight="600" text-anchor="middle">Legend</text>
+
+        <rect x="180" y="840" width="14" height="9" rx="2" fill="rgba(8, 51, 68, 0.4)" stroke="#22d3ee" stroke-width="1"/>
+        <text x="200" y="848" fill="#94a3b8" font-size="8">Hermes / Build</text>
+
+        <rect x="300" y="840" width="14" height="9" rx="2" fill="rgba(76, 29, 149, 0.4)" stroke="#a78bfa" stroke-width="1"/>
+        <text x="320" y="848" fill="#94a3b8" font-size="8">LLM Stage</text>
+
+        <rect x="410" y="840" width="14" height="9" rx="2" fill="rgba(136, 19, 55, 0.4)" stroke="#fb7185" stroke-width="1"/>
+        <text x="430" y="848" fill="#94a3b8" font-size="8">HITL Gate / Premium</text>
+
+        <rect x="560" y="840" width="14" height="9" rx="2" fill="rgba(6, 78, 59, 0.4)" stroke="#34d399" stroke-width="1"/>
+        <text x="580" y="848" fill="#94a3b8" font-size="8">Orchestration / QA</text>
+
+        <rect x="700" y="840" width="14" height="9" rx="2" fill="rgba(251, 191, 36, 0.3)" stroke="#fbbf24" stroke-width="1"/>
+        <text x="720" y="848" fill="#94a3b8" font-size="8">GitHub / Harvest</text>
+
+        <line x1="180" y1="860" x2="200" y2="860" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="5,5"/>
+        <text x="208" y="863" fill="#94a3b8" font-size="8">Feedback loop</text>
+
+        <text x="300" y="863" fill="#fb7185" font-size="8">★ = design-critical (premium model)</text>
+      </svg>
+    </div>
+
+    <!-- Info Cards -->
+    <div class="cards">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-dot cyan"></div>
+          <h3>Why Not LangChain?</h3>
+        </div>
+        <ul>
+          <li>• factory.js already IS the orchestrator</li>
+          <li>• Subprocess spawning = zero framework lock-in</li>
+          <li>• File-based state = GitHub-native collaboration</li>
+          <li>• Any CLI, any model, any provider — swap freely</li>
+          <li>• No abstraction tax, no API churn</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-dot rose"></div>
+          <h3>HITL Is The Product</h3>
+        </div>
+        <ul>
+          <li>• Direction gate: wrong direction = one section, not a site</li>
+          <li>• Ship gate: every correction compounds (LEDGER)</li>
+          <li>• PR review = Johnny's gate, not a Slack ping</li>
+          <li>• Full automation is a pipe dream; checkpoints compound</li>
+          <li>• State persists between runs — resume anywhere</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-dot amber"></div>
+          <h3>Scheduling Strategy</h3>
+        </div>
+        <ul>
+          <li>• <strong>Cron (no_agent):</strong> cost/billing watchdogs — $0</li>
+          <li>• <strong>Manual:</strong> client builds — HITL gates required</li>
+          <li>• <strong>Agent cron:</strong> ICP monitoring, content drafts</li>
+          <li>• <strong>Never cron a build:</strong> gates exist for a reason</li>
+          <li>• The right answer depends on whether reasoning is needed</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-dot violet"></div>
+          <h3>Cost &amp; Quality Evaluation</h3>
+        </div>
+        <ul>
+          <li>• cost_tracker.py: real tokens from Hermes state.db</li>
+          <li>• pricing.json: user-maintained rate table</li>
+          <li>• Gauntlet: deterministic quality gate (0 P0 to ship)</li>
+          <li>• Bench packet: model audition (one-shot build test)</li>
+          <li>• Build Registry: every run logged with metrics</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="footer">
+      Website Factory Architecture • Chris Evans &amp; Johnny Nel • 2026-08-05
+    </p>
+  </div>
+</body>
+</html>
