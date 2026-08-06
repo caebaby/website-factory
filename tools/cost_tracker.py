@@ -146,34 +146,46 @@ def track_cost(client, json_out=False, update=False):
         at_ts = entry.get("at", "")
         ms = entry.get("ms", 0)
 
-        # Time window: 2 min before to 2 min after the stage timestamp
-        # (factory.js logs the END of the stage, sessions start before)
-        epoch = ts_to_epoch(at_ts)
-        window_start = epoch - (ms / 1000) - 60
-        window_end = epoch + 60
-
-        # Find matching sessions
-        sessions = query_sessions(window_start, window_end)
-
         stage_input = stage_output = stage_reasoning = 0
         stage_cost = 0
         models_used = set()
         session_ids = []
 
-        for s in sessions:
-            # Skip trivially tiny sessions (startup pings, etc.)
-            if (s["input_tokens"] or 0) < 50:
-                continue
-            stage_input += s["input_tokens"] or 0
-            stage_output += s["output_tokens"] or 0
-            stage_reasoning += s["reasoning_tokens"] or 0
-            models_used.add(s["model"])
-            session_ids.append(s["id"])
+        # ── Deep research chain (stage 0b): read usage.json if present ──
+        if stage == "deepresearch":
+            usage_file = proj / "research" / "usage.json"
+            if usage_file.exists():
+                with open(usage_file) as f:
+                    ru = json.load(f)
+                stage_input += ru.get("total_prompt_tokens", 0)
+                stage_output += ru.get("total_completion_tokens", 0)
+                for call in ru.get("calls", []):
+                    models_used.add(call.get("model", call.get("provider", "?")))
+                    c, _ = calc_cost(call.get("model", ""), call.get("prompt_tokens", 0),
+                                     call.get("completion_tokens", 0), 0)
+                    if c:
+                        stage_cost += c
+        else:
+            # ── Hermes/Claude stages: query session DB by time window ──
+            epoch = ts_to_epoch(at_ts)
+            window_start = epoch - (ms / 1000) - 60
+            window_end = epoch + 60
+            sessions = query_sessions(window_start, window_end)
 
-            cost, _ = calc_cost(s["model"], s["input_tokens"] or 0,
-                               s["output_tokens"] or 0, s["reasoning_tokens"] or 0)
-            if cost:
-                stage_cost += cost
+            for s in sessions:
+                # Skip trivially tiny sessions (startup pings, etc.)
+                if (s["input_tokens"] or 0) < 50:
+                    continue
+                stage_input += s["input_tokens"] or 0
+                stage_output += s["output_tokens"] or 0
+                stage_reasoning += s["reasoning_tokens"] or 0
+                models_used.add(s["model"])
+                session_ids.append(s["id"])
+
+                cost, _ = calc_cost(s["model"], s["input_tokens"] or 0,
+                                    s["output_tokens"] or 0, s["reasoning_tokens"] or 0)
+                if cost:
+                    stage_cost += cost
 
         # Also add any cost directly logged by factory.js (Claude JSON)
         factory_cost = entry.get("costUsd", 0)

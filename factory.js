@@ -364,6 +364,16 @@ function print(client, dryRun) {
     st.log.push({ stage: stage.name, role: stage.role, costUsd: res.costUsd, ms: Date.now() - t0, at: new Date().toISOString() });
     saveState(proj, st);
     log('stage ' + stage.name + ' done → ' + stage.output + (res.costUsd ? ' ($' + res.costUsd.toFixed(3) + ')' : ''));
+
+    /* Budget guardrail: pause if cumulative cost exceeds per-client budget.
+       Config: factory.config.json → projects.<client>.budgetUsd (default: no cap).
+       On breach: log, notify, and exit — re-run after investigating or raising the cap. */
+    const budget = CONFIG.projects && CONFIG.projects[client] && CONFIG.projects[client].budgetUsd;
+    if (budget && totalCost >= budget) {
+      notifySlack('⚠️ Budget guardrail hit for ' + client + ': $' + totalCost.toFixed(2) + ' ≥ $' + budget + ' cap. Pipeline paused.');
+      die('BUDGET GUARDRAIL: cumulative cost $' + totalCost.toFixed(2) + ' reached the $' + budget +
+          ' cap for ' + client + '.\n  Investigate the last stage, or raise the budget in factory.config.json → projects.' + client + '.budgetUsd.\n  To resume after raising: node factory.js print ' + client);
+    }
   }
   log('pipeline complete for ' + client + '.');
 }
