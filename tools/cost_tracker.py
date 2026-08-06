@@ -116,7 +116,7 @@ def ts_to_epoch(ts_str):
 
 # ── main ──────────────────────────────────────────────────────────────
 
-def track_cost(client, json_out=False, update=False):
+def track_cost(client, json_out=False, update=False, csv_out=False):
     proj = REPO / "projects" / client
     state_file = proj / ".factory-state.json"
     if not state_file.exists():
@@ -221,6 +221,25 @@ def track_cost(client, json_out=False, update=False):
         print(json.dumps(report, indent=2))
         return
 
+    if csv_out:
+        import csv as csvmod
+        csvfile = proj / "cost-report.csv"
+        with open(csvfile, 'w', newline='') as f:
+            w = csvmod.writer(f)
+            w.writerow(["Stage", "Role", "Model(s)", "Input Tokens", "Output Tokens",
+                        "Reasoning Tokens", "Cost (USD)", "Wall Clock (min)"])
+            for s in report["stages"]:
+                w.writerow([s["stage"], s["role"], "; ".join(s["models"]),
+                           s["input_tokens"], s["output_tokens"], s["reasoning_tokens"],
+                           f"{s['cost_usd']:.4f}", f"{s['wall_clock_min']:.1f}"])
+            t = report["totals"]
+            w.writerow([])
+            w.writerow(["TOTAL", "", "", t["input_tokens"], t["output_tokens"],
+                       t["reasoning_tokens"], f"{t['cost_usd']:.4f}", ""])
+        print(f"CSV written to {csvfile}")
+        print(f"Open in Google Sheets: File → Import → Upload")
+        return
+
     # Human-readable
     print(f"\n{'═' * 60}")
     print(f"  FACTORY COST REPORT — {client}")
@@ -249,8 +268,14 @@ def track_cost(client, json_out=False, update=False):
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Usage: python3 tools/cost_tracker.py <client> [--json] [--update]")
+        print("Usage: python3 tools/cost_tracker.py <client> [--json] [--csv] [--update]")
         print("       python3 tools/cost_tracker.py --init-pricing   # write pricing.json")
+        print("")
+        print("Outputs:")
+        print("  (no flag)   human-readable terminal table")
+        print("  --json      machine-readable JSON to stdout")
+        print("  --csv       CSV file (import to Google Sheets) → projects/<client>/cost-report.csv")
+        print("  --update    rewrite .factory-state.json with cost data")
         sys.exit(1)
 
     if sys.argv[1] == "--init-pricing":
@@ -262,4 +287,5 @@ if __name__ == "__main__":
     client = sys.argv[1]
     json_out = "--json" in sys.argv
     update = "--update" in sys.argv
-    track_cost(client, json_out, update)
+    csv_out = "--csv" in sys.argv
+    track_cost(client, json_out, update, csv_out)

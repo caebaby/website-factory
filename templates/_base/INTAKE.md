@@ -1,175 +1,110 @@
-# Client Intake — Website Brief
+# INTAKE — <client-name>
 
-Fill this out before the build starts. The more complete this is, the less back-and-forth during the build. Every blank field adds time.
-
----
-
-## 1. Business Basics
-
-**Business name:**  
-**Tagline (if exists):**  
-**Website URL (current, if any):**  
-**Location(s):**  
-**Phone:**  
-**Email:**  
-**Primary contact name + role:**  
+> **How to use this file:** This is the single input that feeds the entire pipeline.
+> Fill in what you know. Leave sections blank if unknown — the research stage fills gaps.
+> You don't need perfect structure — just get the information in here. The pipeline reads this file.
+>
+> **Raw notes are fine.** Paste conversation notes, bullet points, links, whatever you have.
+> The research agent extracts structure from this. Don't overthink the format.
 
 ---
 
-## 2. What You Do
+## Business
 
-**In one sentence, what do you do?**
-
-**What are your core services/offerings? (list them)**
-1. 
-2. 
-3. 
-
-**What does a client get that they can't get elsewhere?**
-
-**What do you NOT do? (helps with positioning)**
+**Name:**
+**What they do (1-2 sentences in plain language):**
+**Location:**
+**Current website URL (if any):**
 
 ---
 
-## 3. Who You Serve (ICP)
+## Who They Serve (ICP)
 
-**Describe your ideal client in detail:**
-- Age range:
-- Gender (if relevant):
-- Occupation/industry:
-- Income/revenue level:
-- Location:
-- Life stage / situation:
+**Describe their ideal client:**
+*(Paste whatever you have — notes, bullet points, verbatim quotes from the client. Don't worry about formatting.)*
 
-**What is their #1 problem before they find you?**
+**Their #1 problem/pain:**
 
-**What does their life look like AFTER working with you?**
+**What makes them nervous about hiring someone like this?**
 
-**What have they tried before that didn't work?**
-
-**What makes them nervous about hiring someone like you?**
-
-**Where do they hang out online? (forums, Reddit, Facebook groups, etc.)**
+**Insider language / industry jargon you heard them use:**
 
 ---
 
-## 4. Your Story
+## Their Story / Philosophy
 
-**How did you get into this?**
+**How they got into this:**
 
-**Why do you do this work specifically?**
+**Why they do this work:**
 
-**What's the moment/experience that defined your approach?**
-
-**Credentials, certifications, licenses:**
-
-**Years in business:**
-
-**Number of clients served (approx):**
+**What makes them different (their words, not yours):**
 
 ---
 
-## 5. Proof
+## Brand
 
-**Testimonials (paste 2-3 real quotes with client first name + descriptor):**
-1. 
-2. 
-3. 
+**Colors (if known — hex codes or descriptions):**
+**Logo (where is it / who has it?):**
+**Fonts (if they have preferences):**
+**Visual vibe in a few words:**
+*(e.g. "warm and premium", "dark and confident", "clean and modern")*
 
-**Results / stats you can document:**
-- 
-- 
-
-**Media mentions, awards, associations:**
+**If unknown — who picks?** *(Often "Chris picks" is the answer — that's fine)*
 
 ---
 
-## 6. Brand
+## Proof
 
-**Brand colors (hex codes if known):**  
-**Logo (file location or upload):**  
-**Fonts (if you have preferences):**  
-**Adjectives that describe the brand feel (pick 3-5):**  
-**Adjectives that do NOT describe the brand (what to avoid):**  
+**Testimonials (paste any real quotes):**
+**Stats / results they can document:**
+**Credentials, awards, media mentions:**
 
----
-
-## 7. Inspiration
-
-**List 3-5 websites you like the look/feel of (any industry):**
-1. 
-2. 
-3. 
-
-**What specifically do you like about them?**
-
-**List 1-2 competitor sites:**
-1. 
-2. 
+*(Leave blank if not collected yet — use [VERIFY] placeholders)*
 
 ---
 
-## 8. Pages Needed
+## Competitors / Inspiration
 
-Check all that apply:
+**Competitor websites (2-3 URLs):**
+1.
+2.
+3.
 
-- [ ] Homepage
-- [ ] About / Our Story
-- [ ] Services (overview)
-- [ ] Individual service pages
-- [ ] Team / About Us
-- [ ] Individual team/advisor profiles
-- [ ] Blog / Resources
-- [ ] Individual blog posts (how many?)
-- [ ] Contact
-- [ ] Booking / Scheduling
-- [ ] Landing page(s) (lead magnets, campaigns)
-- [ ] FAQ
-- [ ] Testimonials / Case Studies
-- [ ] Portfolio / Gallery
-- [ ] Other: _______________
+**Sites they like (any industry):**
+1.
+2.
+3.
 
 ---
 
-## 9. Conversion Goals
+## Assets They Have
 
-**Primary goal of the site (pick one):**
-- [ ] Book a call / consultation
-- [ ] Generate leads (email capture)
-- [ ] Direct sales / e-commerce
-- [ ] Phone calls
-- [ ] Walk-in traffic
-- [ ] Other: _______________
+**Photos/video:** *(real assets, none yet, etc.)*
+**Existing content to keep:** *(PDFs, copy, messaging)*
+**Brand collateral:** *(style guide, brand book, etc.)*
+
+---
+
+## Conversion Goal
+
+**Primary action you want visitors to take:**
+*(Book a call, fill a form, take an assessment, etc.)*
 
 **Secondary goal:**
 
-**What offer/lead magnet do you have? (PDF guide, quiz, free assessment, etc.)**
+**Offer / lead magnet (if any):**
 
 ---
 
-## 10. Technical
+## Notes / Context
 
-**Domain name (owned?):**  
-**Hosting preference:**  
-**Existing CRM / email system:**  
-**Booking system (Calendly, Acuity, etc.):**  
-**Any compliance requirements? (financial, legal, medical, etc.):**  
-**Will the client edit their own content? (yes/no):**  
+**Anything else from conversations that matters:**
+*(Paste raw notes here — confidential context, team dynamics, things to avoid, compliance requirements, etc. The pipeline reads everything in this file.)*
 
 ---
 
-## 11. Timeline & Budget
+## Raw Conversation Notes
 
-**Launch deadline:**  
-**Hard constraints or deadlines:**  
-**Budget range:**  
+*(Optional: paste your call/conversation notes here directly. The research stage reads this
+as a high-authority VOC source. Don't clean it up — raw is better than structured-but-lossy.)*
 
----
-
-## 12. Anything Else
-
-**What would make this website a failure?**
-
-**What would make this website a massive success?**
-
-**Anything else we should know?**
