@@ -62,6 +62,17 @@ PAGES = [
         ],
     ),
     (
+        "High-Net-Worth Families",
+        "high-net-worth-families.html",
+        "https://caebaby.github.io/anchor-review/high-net-worth-families.html",
+        [
+            "Confirm whether “high-net-worth families” is the preferred public audience label.",
+            "Verify the scope around trust funding, beneficiary reviews, account ownership, family communication, and estate-attorney coordination.",
+            "Clarify the typical family complexity or asset level that signals a strong fit.",
+            "Provide one anonymized family situation to make the page more specific and credible.",
+        ],
+    ),
+    (
         "Oil & Gas Executives",
         "oil-gas-executives.html",
         "https://caebaby.github.io/anchor-review/oil-gas-executives.html",
@@ -81,17 +92,6 @@ PAGES = [
             "Confirm whether valuation, entity structure, succession, pre-sale planning, and post-liquidity planning are all within scope.",
             "Approve or replace the “before the LOI” framing.",
             "Provide one anonymized owner situation that shows Alex’s coordination role without making an unverified performance claim.",
-        ],
-    ),
-    (
-        "High-Net-Worth Families",
-        "high-net-worth-families.html",
-        "https://caebaby.github.io/anchor-review/high-net-worth-families.html",
-        [
-            "Confirm whether “high-net-worth families” is the preferred public audience label.",
-            "Verify the scope around trust funding, beneficiary reviews, account ownership, family communication, and estate-attorney coordination.",
-            "Clarify the typical family complexity or asset level that signals a strong fit.",
-            "Provide one anonymized family situation to make the page more specific and credible.",
         ],
     ),
     (
@@ -491,7 +491,7 @@ def build_document():
         doc,
         [
             "Approve the brand line “Charting the course towards your financial legacy” or replace it.",
-            "Confirm the preferred firm description: Houston-based fiduciary wealth management for oil and gas executives, business owners, and high-net-worth families.",
+            "Confirm the preferred firm description: Houston-based fiduciary wealth management for high-net-worth families, oil and gas executives, and business owners.",
             "Provide the final legal footer and privacy/contact requirements.",
         ],
     )
@@ -499,7 +499,7 @@ def build_document():
     for text in [
         "Primary navigation: About · Team · Who We Serve · Resources · Process · Take the Fit Check",
         "Brand line: “Charting the course towards your financial legacy.”",
-        "Firm description: Houston-based fiduciary wealth management for oil & gas executives, business owners, and high-net-worth families.",
+        "Firm description: Houston-based fiduciary wealth management for high-net-worth families, oil & gas executives, and business owners.",
         "Current legal placeholder: [VERIFY: RIA entity name] is a registered investment advisor. Information presented is for educational purposes only and does not intend to make an offer or solicitation for the sale or purchase of any specific securities, investments, or investment strategies. Investments involve risk and unless otherwise stated, are not guaranteed. Past performance is not a guarantee of future results.",
         "Repeated Fit Check footer headline: Four questions. A better first conversation.",
         "Repeated Fit Check footer explainer: See whether your situation, timing, and coordination needs match the way Anchor works.",
@@ -524,9 +524,9 @@ def build_document():
         if filename == "home-v6.html":
             doc.add_paragraph("Rotating hero copy", style="Heading 2")
             hero_variants = [
+                ("Families", "Your wealth grew. Did your plan keep up?", "Trust funding, beneficiary reviews, multi-generational coordination. Anchor keeps your CPA, attorney, and advisor reading from the same page — so your estate matches your actual net worth."),
                 ("Oil & Gas", "When your equity vests, who sees the whole picture?", "RSUs, deferred comp, blackout periods, commodity cycles. Anchor coordinates your investments, taxes, and estate plan with your CPA and attorney — so every vest, bonus, and decision happens in context."),
                 ("Business Owners", "Your business is your largest asset. What’s the plan for it?", "Entity structure, exit timing, liquidity events, and the line between business value and personal wealth. Anchor starts the planning conversation years before the LOI arrives."),
-                ("Families", "Your wealth grew. Did your plan keep up?", "Trust funding, beneficiary reviews, multi-generational coordination. Anchor keeps your CPA, attorney, and advisor reading from the same page — so your estate matches your actual net worth."),
             ]
             for label, headline, subhead in hero_variants:
                 p = doc.add_paragraph()
@@ -535,7 +535,7 @@ def build_document():
                 doc.add_paragraph(subhead)
             doc.add_paragraph("CTA: Schedule a 30-Minute Conversation")
             doc.add_paragraph("CTA: Take the 4-Question Fit Check")
-            doc.add_paragraph("Proof labels: [Credential 01] · [Credential 02] · [XX]+ yrs · Houston-based")
+            doc.add_paragraph("Proof labels: APMA® · CRPC® · 19 years · Houston-based (client supplied; compliance review pending)")
 
         for tag, text, classes in extract_copy(BUILD / filename):
             add_copy_item(doc, tag, text, classes)
@@ -623,7 +623,7 @@ def build_ai_packet():
         "",
         "**Brand line:** “Charting the course towards your financial legacy.”",
         "",
-        "**Firm description:** Houston-based fiduciary wealth management for oil & gas executives, business owners, and high-net-worth families.",
+        "**Firm description:** Houston-based fiduciary wealth management for high-net-worth families, oil & gas executives, and business owners.",
         "",
         "**Legal placeholder:** `[VERIFY: RIA entity name]` is a registered investment advisor. Information presented is for educational purposes only and does not intend to make an offer or solicitation for the sale or purchase of any specific securities, investments, or investment strategies. Investments involve risk and unless otherwise stated, are not guaranteed. Past performance is not a guarantee of future results.",
         "",
@@ -655,6 +655,10 @@ def build_ai_packet():
             lines.extend([
                 "#### Rotating hero copy",
                 "",
+                "**Families H1:** Your wealth grew. Did your plan keep up?",
+                "",
+                "Trust funding, beneficiary reviews, multi-generational coordination. Anchor keeps your CPA, attorney, and advisor reading from the same page — so your estate matches your actual net worth.",
+                "",
                 "**Oil & Gas H1:** When your equity vests, who sees the whole picture?",
                 "",
                 "RSUs, deferred comp, blackout periods, commodity cycles. Anchor coordinates your investments, taxes, and estate plan with your CPA and attorney — so every vest, bonus, and decision happens in context.",
@@ -663,13 +667,9 @@ def build_ai_packet():
                 "",
                 "Entity structure, exit timing, liquidity events, and the line between business value and personal wealth. Anchor starts the planning conversation years before the LOI arrives.",
                 "",
-                "**Families H1:** Your wealth grew. Did your plan keep up?",
-                "",
-                "Trust funding, beneficiary reviews, multi-generational coordination. Anchor keeps your CPA, attorney, and advisor reading from the same page — so your estate matches your actual net worth.",
-                "",
                 "- **CTA:** Schedule a 30-Minute Conversation",
                 "- **CTA:** Take the 4-Question Fit Check",
-                "- **PROOF:** `[Credential 01]` · `[Credential 02]` · `[XX]+ yrs` · Houston-based",
+                "- **PROOF:** APMA® · CRPC® · 19 years · Houston-based (client supplied; compliance review pending)",
                 "",
             ])
 

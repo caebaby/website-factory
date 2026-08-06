@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Factory System — How It Works</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #0B0F1A; min-height: 100vh; padding: 2.5rem 1.5rem; color: #E2E8F0; }
+    .container { max-width: 960px; margin: 0 auto; }
+    .header { margin-bottom: 2.5rem; text-align: center; }
+    .header h1 { font-size: 1.75rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.5rem; }
+    .header p { color: #94A3B8; font-size: 0.95rem; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+
+    /* SECTIONS */
+    .section { margin-bottom: 2.5rem; }
+    .section-label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #64748B; margin-bottom: 0.75rem; padding-left: 0.25rem; }
+
+    /* GITHUB AS SOURCE */
+    .github-box {
+      background: linear-gradient(135deg, rgba(251,191,36,0.06), rgba(251,191,36,0.02));
+      border: 1.5px solid rgba(251,191,36,0.3);
+      border-radius: 16px;
+      padding: 1.75rem;
+    }
+    .github-title { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1.25rem; }
+    .github-title h2 { font-size: 1.1rem; font-weight: 700; color: #FBBF24; }
+    .github-title .icon { font-size: 1.2rem; }
+    .layer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .layer-card {
+      background: rgba(15,23,42,0.6);
+      border-radius: 12px;
+      padding: 1.1rem;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .layer-card h3 { font-size: 0.85rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .layer-card h3 .tag { font-size: 0.65rem; font-weight: 600; padding: 2px 8px; border-radius: 4px; margin-left: 0.5rem; vertical-align: middle; }
+    .layer-card ul { list-style: none; }
+    .layer-card li { font-size: 0.8rem; color: #94A3B8; padding: 0.2rem 0; padding-left: 0.85rem; position: relative; }
+    .layer-card li::before { content: "·"; position: absolute; left: 0; color: #475569; font-weight: 700; }
+
+    /* PIPELINE FLOW */
+    .flow-container {
+      background: rgba(15,23,42,0.4);
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 2rem 1.5rem;
+    }
+    .flow-steps { display: flex; align-items: stretch; gap: 0; flex-wrap: wrap; justify-content: center; }
+    .flow-step {
+      flex: 1;
+      min-width: 120px;
+      max-width: 140px;
+      text-align: center;
+      position: relative;
+    }
+    .step-box {
+      background: rgba(15,23,42,0.8);
+      border: 1.5px solid;
+      border-radius: 10px;
+      padding: 0.75rem 0.5rem;
+      margin: 0 0.25rem;
+      min-height: 85px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .step-box h4 { font-size: 0.8rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .step-box .model { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; }
+    .step-box .desc { font-size: 0.68rem; color: #94A3B8; margin-top: 0.2rem; }
+
+    .step-llm { border-color: #A78BFA; }
+    .step-llm h4 { color: #C4B5FD; }
+    .step-llm .model { color: #A78BFA; }
+    .step-gate { border-color: #FB7185; border-width: 2px; }
+    .step-gate h4 { color: #FCA5A5; }
+    .step-gate .model { color: #FB7185; }
+    .step-build { border-color: #22D3EE; }
+    .step-build h4 { color: #67E8F9; }
+    .step-build .model { color: #22D3EE; }
+    .step-ship { border-color: #34D399; }
+    .step-ship h4 { color: #6EE7B7; }
+    .step-ship .model { color: #34D399; }
+
+    .flow-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #475569;
+      font-size: 1.1rem;
+      width: 20px;
+      flex-shrink: 0;
+    }
+
+    .gate-flag {
+      display: inline-block;
+      background: rgba(251,113,133,0.15);
+      color: #FB7185;
+      font-size: 0.6rem;
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: 3px;
+      margin-top: 0.25rem;
+    }
+
+    /* COLLABORATION ROW */
+    .collab-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1rem; align-items: center; margin-top: 1.5rem; }
+    .person-box {
+      background: rgba(8,51,68,0.3);
+      border: 1.5px solid rgba(34,211,238,0.3);
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+    }
+    .person-box h4 { font-size: 0.85rem; font-weight: 700; color: #67E8F9; }
+    .person-box p { font-size: 0.72rem; color: #94A3B8; margin-top: 0.2rem; }
+    .collab-connector { text-align: center; color: #FBBF24; font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; white-space: nowrap; }
+
+    /* REPEATABLE PATTERN */
+    .pattern-box {
+      background: linear-gradient(135deg, rgba(167,139,250,0.06), rgba(167,139,250,0.02));
+      border: 1.5px solid rgba(167,139,250,0.25);
+      border-radius: 16px;
+      padding: 1.75rem;
+    }
+    .pattern-title { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem; }
+    .pattern-title h2 { font-size: 1.1rem; font-weight: 700; color: #A78BFA; }
+    .pattern-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; margin: 1rem 0; }
+    .pattern-step {
+      background: rgba(15,23,42,0.6);
+      border: 1px solid rgba(167,139,250,0.2);
+      border-radius: 8px;
+      padding: 0.65rem 0.35rem;
+      text-align: center;
+    }
+    .pattern-step .num { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: #64748B; }
+    .pattern-step .name { font-size: 0.75rem; font-weight: 600; color: #C4B5FD; margin: 0.15rem 0; }
+    .pattern-step .example { font-size: 0.62rem; color: #64748B; }
+    .pattern-note { font-size: 0.8rem; color: #94A3B8; margin-top: 0.75rem; line-height: 1.5; }
+    .pattern-note strong { color: #A78BFA; }
+
+    /* SCHEDULING */
+    .sched-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .sched-card {
+      background: rgba(15,23,42,0.5);
+      border-radius: 12px;
+      padding: 1.1rem;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .sched-card h4 { font-size: 0.85rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .sched-card p { font-size: 0.76rem; color: #94A3B8; line-height: 1.45; }
+    .sched-card .cost { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 600; margin-top: 0.5rem; }
+    .sched-card.manual { border-left: 3px solid #22D3EE; }
+    .sched-card.manual h4 { color: #67E8F9; }
+    .sched-card.manual .cost { color: #22D3EE; }
+    .sched-card.cron { border-left: 3px solid #FB923C; }
+    .sched-card.cron h4 { color: #FDBA74; }
+    .sched-card.cron .cost { color: #FB923C; }
+    .sched-card.agent { border-left: 3px solid #34D399; }
+    .sched-card.agent h4 { color: #6EE7B7; }
+    .sched-card.agent .cost { color: #34D399; }
+
+    /* HITL DETAIL */
+    .hitl-box {
+      background: rgba(15,23,42,0.4);
+      border-radius: 16px;
+      border: 1px solid rgba(251,113,133,0.15);
+      padding: 1.75rem;
+    }
+    .hitl-steps { display: flex; flex-direction: column; gap: 0.75rem; }
+    .hitl-step { display: flex; align-items: flex-start; gap: 0.85rem; }
+    .hitl-num {
+      flex-shrink: 0;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .hitl-num.gate { background: rgba(251,113,133,0.15); color: #FB7185; border: 1.5px solid #FB7185; }
+    .hitl-num.auto { background: rgba(34,211,238,0.1); color: #22D3EE; border: 1.5px solid #22D3EE; }
+    .hitl-text h4 { font-size: 0.85rem; font-weight: 600; }
+    .hitl-text h4 .who { font-size: 0.65rem; font-weight: 600; padding: 1px 6px; border-radius: 3px; margin-left: 0.4rem; vertical-align: middle; }
+    .hitl-text h4 .human { background: rgba(251,113,133,0.15); color: #FB7185; }
+    .hitl-text h4 .ai { background: rgba(34,211,238,0.1); color: #22D3EE; }
+    .hitl-text p { font-size: 0.78rem; color: #94A3B8; margin-top: 0.15rem; line-height: 1.4; }
+
+    /* SIMPLICITY ANSWER */
+    .simplicity-box {
+      background: linear-gradient(135deg, rgba(52,211,153,0.06), rgba(52,211,153,0.02));
+      border: 1.5px solid rgba(52,211,153,0.25);
+      border-radius: 16px;
+      padding: 1.75rem;
+    }
+
+    /* INPUT LAYER */
+    .input-box {
+      background: linear-gradient(135deg, rgba(167,139,250,0.06), rgba(167,139,250,0.02));
+      border: 1.5px solid rgba(167,139,250,0.25);
+      border-radius: 16px;
+      padding: 1.75rem;
+    }
+    .input-title h2 { font-size: 1.1rem; font-weight: 700; color: #A78BFA; margin-bottom: 0.5rem; }
+    .input-flow { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1rem; align-items: center; }
+    .input-sources { display: flex; flex-direction: column; gap: 0.4rem; }
+    .input-item { font-size: 0.8rem; color: #CBD5E1; padding: 0.4rem 0.65rem; background: rgba(15,23,42,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.04); }
+    .input-item strong { color: #E2E8F0; }
+    .input-phase { font-size: 0.62rem; color: #64748B; font-family: 'JetBrains Mono', monospace; }
+    .input-arrow { text-align: center; }
+    .input-output { background: rgba(15,23,42,0.6); border: 1px solid rgba(167,139,250,0.3); border-radius: 12px; padding: 1rem; text-align: center; }
+    .input-note { font-size: 0.75rem; color: #64748B; margin-top: 1rem; line-height: 1.45; }
+
+    /* IMPROVEMENTS */
+    .improve-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .improve-card { background: rgba(15,23,42,0.5); border-radius: 12px; padding: 1.1rem; border: 1px solid rgba(255,255,255,0.06); border-left: 3px solid; }
+    .improve-card.do { border-left-color: #34D399; }
+    .improve-card.do h4 { color: #6EE7B7; }
+    .improve-card.dont { border-left-color: #FB7185; }
+    .improve-card.dont h4 { color: #FCA5A5; }
+    .improve-card h4 { font-size: 0.85rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .improve-card p { font-size: 0.76rem; color: #94A3B8; line-height: 1.45; }
+    .improve-card .impact { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 600; margin-top: 0.4rem; }
+    .improve-card.do .impact { color: #34D399; }
+    .improve-card.dont .impact { color: #FB7185; }
+    .simplicity-box h2 { font-size: 1.1rem; font-weight: 700; color: #34D399; margin-bottom: 0.75rem; }
+    .simplicity-box p { font-size: 0.85rem; color: #CBD5E1; line-height: 1.55; margin-bottom: 0.75rem; }
+    .simplicity-box strong { color: #6EE7B7; }
+    .simplicity-list { list-style: none; margin-top: 0.5rem; }
+    .simplicity-list li { font-size: 0.8rem; color: #94A3B8; padding: 0.3rem 0; padding-left: 1.25rem; position: relative; }
+    .simplicity-list li::before { content: "✓"; position: absolute; left: 0; color: #34D399; font-weight: 700; }
+    .simplicity-list li.avoid::before { content: "✗"; color: #FB7185; }
+
+    .footer { text-align: center; margin-top: 2rem; color: #334155; font-size: 0.75rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <h1>The Factory System</h1>
+      <p>GitHub is the source of everything. Simple, effective, repeatable.</p>
+    </div>
+
+    <!-- SECTION 0: Input Layer -->
+    <div class="section">
+      <div class="section-label">00 — Input Layer (Where Projects Start)</div>
+      <div class="input-box">
+        <div class="input-title">
+          <h2>Every Source → Same INTAKE.md</h2>
+        </div>
+        <p style="font-size:0.85rem; color:#94A3B8; margin-bottom:1.25rem; line-height:1.5;">
+          Regardless of where information comes from, it normalizes into the same structured file. Input quality determines output quality more than any model choice — the INTAKE template IS your quality control.
+        </p>
+        <div class="input-flow">
+          <div class="input-sources">
+            <div class="input-item">📝 <strong>Client Form</strong> <span class="input-phase">phase 2: Tally/Typeform → webhook</span></div>
+            <div class="input-item">🎙️ <strong>Interview Transcript</strong> <span class="input-phase">Fathom → text</span></div>
+            <div class="input-item">🎨 <strong>Brand Assets</strong> <span class="input-phase">logos, colors, fonts</span></div>
+            <div class="input-item">🌐 <strong>Existing Site</strong> <span class="input-phase">URL → harvest.js</span></div>
+            <div class="input-item">🔍 <strong>Competitor URLs</strong> <span class="input-phase">3-5 links</span></div>
+          </div>
+          <div class="input-arrow">
+            <span style="font-size:1.5rem; color:#A78BFA;">→</span><br>
+            <span class="mono" style="font-size:0.65rem; color:#64748B;">normalize</span>
+          </div>
+          <div class="input-output">
+            <div class="mono" style="font-size:0.85rem; color:#C4B5FD; margin-bottom:0.4rem;">INTAKE.md</div>
+            <div style="font-size:0.72rem; color:#94A3B8; line-height:1.45;">
+              Same template, every time:<br>
+              palette · fonts · ICP + pains<br>
+              client details · real assets<br>
+              visual world · proof inventory
+            </div>
+            <div class="gate-flag" style="margin-top:0.6rem;">✋ INTAKE REVIEW — Chris verifies before pipeline runs</div>
+          </div>
+        </div>
+        <div class="input-note">
+          <strong>Phase 1 (now):</strong> Normalize manually from any source. <strong>Phase 2 (later):</strong> Form auto-creates the folder + INTAKE.md + pushes to GitHub.
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 1: GitHub as Source -->
+    <div class="section">
+      <div class="section-label">01 — Source of Truth</div>
+      <div class="github-box">
+        <div class="github-title">
+          <span class="icon">📦</span>
+          <h2>GitHub = The Entire System</h2>
+          <span class="mono" style="font-size:0.7rem; color:#FBBF24; opacity:0.7;">caebaby/website-factory</span>
+        </div>
+        <p style="font-size:0.85rem; color:#94A3B8; margin-bottom:1rem; line-height:1.5;">
+          One repo. Two layers. The factory code never conflicts with client work — different branches touch different parts.
+        </p>
+        <div class="layer-grid">
+          <div class="layer-card">
+            <h3>Part 1: The Factory <span class="tag" style="background:rgba(251,191,36,0.15);color:#FBBF24;">static</span></h3>
+            <ul>
+              <li><span class="mono">factory.js</span> — the engine</li>
+              <li><span class="mono">agents/</span> — process definitions</li>
+              <li><span class="mono">templates/</span> — design system + packs</li>
+              <li><span class="mono">qa/</span> — quality gates + gauntlet</li>
+              <li><span class="mono">factory.config.json</span> — model routing</li>
+              <li><span class="mono">tools/</span> — cost tracking, pricing</li>
+            </ul>
+          </div>
+          <div class="layer-card">
+            <h3>Part 2: The Work <span class="tag" style="background:rgba(34,211,238,0.1);color:#22D3EE;">changes daily</span></h3>
+            <ul>
+              <li><span class="mono">projects/awp/</span> — client folder</li>
+              <li><span class="mono">projects/cpp/</span> — client folder</li>
+              <li><span class="mono">projects/new-client/</span></li>
+              <li>Each has: <span class="mono">INTAKE.md</span></li>
+              <li>+ <span class="mono">.factory-state.json</span></li>
+              <li>+ research, strategy, copy, build</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Collaboration -->
+        <div class="collab-row">
+          <div class="person-box">
+            <h4>Chris</h4>
+            <p>Hermes + GLM-5.2 / Kimi-K3</p>
+            <p style="margin-top:0.4rem;">Runs builds, reviews direction</p>
+          </div>
+          <div class="collab-connector">
+            ← push / PR →<br>
+            <span style="color:#64748B; font-size:0.65rem;">branch per client</span><br>
+            ← pull / review →
+          </div>
+          <div class="person-box">
+            <h4>Johnny</h4>
+            <p>Same Hermes config + skills</p>
+            <p style="margin-top:0.4rem;">Reviews gates, QA, deploys</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 2: The Pipeline -->
+    <div class="section">
+      <div class="section-label">02 — The Pipeline (Website Factory)</div>
+      <div class="flow-container">
+        <div class="flow-steps">
+          <div class="flow-step">
+            <div class="step-box step-llm">
+              <h4>Research</h4>
+              <div class="model">DeepSeek</div>
+              <div class="desc">ICP + VOC</div>
+            </div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="step-box step-llm">
+              <h4>Strategy</h4>
+              <div class="model">GLM-5.2</div>
+              <div class="desc">Copy spine</div>
+            </div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="step-box step-gate">
+              <h4>Director</h4>
+              <div class="model">Kimi-K3</div>
+              <div class="desc">Build brief</div>
+              <div class="gate-flag">✋ GATE 1</div>
+            </div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="step-box step-llm">
+              <h4>Copy</h4>
+              <div class="model">DeepSeek</div>
+              <div class="desc">COPY_ALL</div>
+            </div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="step-box step-build">
+              <h4>Build</h4>
+              <div class="model">Sonnet</div>
+              <div class="desc">index.html</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align:center; margin: 0.75rem 0; color:#334155; font-size:0.9rem;">↓</div>
+
+        <div class="flow-steps">
+          <div class="flow-step">
+            <div class="step-box step-build" style="border-color:#FB7185;">
+              <h4 style="color:#FCA5A5;">Gauntlet</h4>
+              <div class="model" style="color:#FB7185;">QA Loop</div>
+              <div class="desc">Repair × 3 max</div>
+            </div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="step-box step-gate">
+              <h4>Ship Gate</h4>
+              <div class="model">Human</div>
+              <div class="desc">Review link</div>
+              <div class="gate-flag">✋ GATE 2</div>
+            </div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="step-box step-ship">
+              <h4>Ship</h4>
+              <div class="model">Deploy</div>
+              <div class="desc">Pages/Vercel</div>
+            </div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="step-box step-ship" style="border-color:#FBBF24;">
+              <h4 style="color:#FCD34D;">Harvest</h4>
+              <div class="model" style="color:#FBBF24;">Feedback</div>
+              <div class="desc">Patterns → catalog</div>
+            </div>
+          </div>
+        </div>
+
+        <p style="text-align:center; font-size:0.75rem; color:#64748B; margin-top:1.25rem; font-family:'JetBrains Mono',monospace;">
+          Each stage = fresh model spawn. State persists in .factory-state.json. Resume from any stage.
+        </p>
+      </div>
+    </div>
+
+    <!-- SECTION 3: HITL Detail -->
+    <div class="section">
+      <div class="section-label">03 — Human in the Loop (How Gates Work)</div>
+      <div class="hitl-box">
+        <div class="hitl-steps">
+          <div class="hitl-step">
+            <div class="hitl-num auto">1</div>
+            <div class="hitl-text">
+              <h4>Pipeline runs automatically through stages <span class="who ai">AI</span></h4>
+              <p>Research → Strategy → Director all run back-to-back via <span class="mono">factory.js print &lt;client&gt;</span></p>
+            </div>
+          </div>
+          <div class="hitl-step">
+            <div class="hitl-num gate">2</div>
+            <div class="hitl-text">
+              <h4>PAUSE: Direction Gate <span class="who human">CHRIS</span></h4>
+              <p>Pipeline stops. Chris reviews <span class="mono">BUILD_BRIEF.md</span> + hero preview. Wrong direction here costs one section, not a site. This is the moment to redirect.</p>
+            </div>
+          </div>
+          <div class="hitl-step">
+            <div class="hitl-num auto">3</div>
+            <div class="hitl-text">
+              <h4>Chris approves: <span class="mono">node factory.js approve &lt;client&gt; direction</span> <span class="who ai">AUTO-CONTINUES</span></h4>
+              <p>Pipeline resumes: Copy → Copy Gate → Build → Gauntlet. All automatic from here.</p>
+            </div>
+          </div>
+          <div class="hitl-step">
+            <div class="hitl-num gate">4</div>
+            <div class="hitl-text">
+              <h4>PAUSE: Ship Gate <span class="who human">CHRIS or JOHNNY</span></h4>
+              <p>Pipeline stops again. Review the gauntlet-clean build on the review link. Every correction becomes a rule, check, or pattern in LEDGER.md — it compounds.</p>
+            </div>
+          </div>
+          <div class="hitl-step">
+            <div class="hitl-num auto">5</div>
+            <div class="hitl-text">
+              <h4>Approve → Ship + Harvest <span class="who ai">AI</span></h4>
+              <p>Deploy to Pages/Vercel. Register the build vector. Harvest patterns back into the catalog. The system just got smarter for the next client.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 4: Repeatable Pattern -->
+    <div class="section">
+      <div class="section-label">04 — This Is a Repeatable Model</div>
+      <div class="pattern-box">
+        <div class="pattern-title">
+          <h2>🔄 Same Engine Shape for Every Workflow</h2>
+        </div>
+        <p style="font-size:0.85rem; color:#94A3B8; line-height:1.5;">
+          The website factory is workflow #1. Content systems use the same pattern — just different stages.
+        </p>
+        <div class="pattern-grid">
+          <div class="pattern-step">
+            <div class="num">STEP 1</div>
+            <div class="name">Intake</div>
+            <div class="example">Website: INTAKE.md<br>Content: Brief</div>
+          </div>
+          <div class="pattern-step">
+            <div class="num">STEP 2</div>
+            <div class="name">Stages</div>
+            <div class="example">Model-routed<br>per stage</div>
+          </div>
+          <div class="pattern-step">
+            <div class="num">STEP 3</div>
+            <div class="name">HITL Gate</div>
+            <div class="example">Human review<br>at key point</div>
+          </div>
+          <div class="pattern-step">
+            <div class="num">STEP 4</div>
+            <div class="name">Output</div>
+            <div class="example">Ship +<br>cost tracked</div>
+          </div>
+          <div class="pattern-step">
+            <div class="num">STEP 5</div>
+            <div class="name">Harvest</div>
+            <div class="example">System gets<br>smarter</div>
+          </div>
+        </div>
+        <p class="pattern-note">
+          <strong>Website Factory:</strong> intake → research → strategy → direction → copy → build → gauntlet → ship<br>
+          <strong>Content Pipeline:</strong> brief → research → draft → review gate → edit → publish → harvest<br>
+          <strong>Future workflows:</strong> same shape, different stages, same GitHub + Hermes + cost tracking
+        </p>
+      </div>
+    </div>
+
+    <!-- SECTION 5: Scheduling -->
+    <div class="section">
+      <div class="section-label">05 — Scheduling (Right Tool for Each Job)</div>
+      <div class="sched-grid">
+        <div class="sched-card manual">
+          <h4>🔧 Manual</h4>
+          <p>Client builds. <span class="mono">factory.js print</span> run by Chris or Johnny. HITL gates make full automation counterproductive.</p>
+          <div class="cost">Cost: per-run</div>
+        </div>
+        <div class="sched-card cron">
+          <h4>⏰ Cron (script)</h4>
+          <p>Cost watchdogs, billing alerts, heartbeat checks. Script-only, zero tokens, zero LLM.</p>
+          <div class="cost">Cost: $0</div>
+        </div>
+        <div class="sched-card agent">
+          <h4>🤖 Agent Cron</h4>
+          <p>Daily ICP monitoring, blog drafts, competitor scans. Needs reasoning — LLM-driven.</p>
+          <div class="cost">Cost: per-tick</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 6.5: What Would Improve This -->
+    <div class="section">
+      <div class="section-label">06 — What Would Genuinely Improve Quality / Cost / Speed</div>
+      <div class="improve-grid">
+        <div class="improve-card do">
+          <h4>1. Parallel Stages in factory.js</h4>
+          <p>PROCESS.md says "01+02 together; 03 parallel with 02.5" but factory.js runs sequentially. Wire parallel spawns — same models, same outputs, ~40% faster wall-clock.</p>
+          <div class="impact">Impact: ⏱ -40% build time | Quality: same | Effort: 1 day code change</div>
+        </div>
+        <div class="improve-card do">
+          <h4>2. Budget Guardrail</h4>
+          <p>Add per-client cost cap to factory.js. If cumulative spend exceeds threshold, pause + alert. Prevents the $50 build that should cost $5.</p>
+          <div class="impact">Impact: 💰 prevents runaway spend | Quality: same | Effort: 2 hours</div>
+        </div>
+        <div class="improve-card do">
+          <h4>3. Screenshot Review Service</h4>
+          <p>Auto-generate mobile + desktop screenshots at breakpoints after gauntlet. Review gates get faster — see rendered result without opening browser. Johnny can review from phone.</p>
+          <div class="impact">Impact: ⏱ faster reviews | Quality: same | Effort: half day</div>
+        </div>
+        <div class="improve-card do">
+          <h4>4. Reveal Animation Pattern in Docs</h4>
+          <p>The Kimi-K3 defect that stalled the gauntlet? Every model hits it until the warm-premium transition pattern is a REQUIRED pattern in COMPONENTS.md. One doc update prevents a whole defect class.</p>
+          <div class="impact">Impact: ✅ fewer repair loops | Cost: fewer wasted tokens | Effort: 1 hour</div>
+        </div>
+        <div class="improve-card dont">
+          <h4>✗ Don't: GitHub Actions Auto-Build</h4>
+          <p>You'd review the output anyway. HITL gates mean you're involved regardless. Adds infrastructure complexity without payoff.</p>
+          <div class="impact">Impact: complexity without payoff</div>
+        </div>
+        <div class="improve-card dont">
+          <h4>✗ Don't: Build Intake Form Automation Yet</h4>
+          <p>Manual intake works at 2-5 clients. Build the form when intake becomes a bottleneck — not before. Premature automation locks in a process you're still refining.</p>
+          <div class="impact">Impact: premature lock-in</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 7: Simplicity Answer -->
+    <div class="section">
+      <div class="section-label">07 — Is This the Simplest Effective Process?</div>
+      <div class="simplicity-box">
+        <h2>Yes — If You Avoid Two Traps</h2>
+        <p>
+          The system is already simple: <strong>GitHub is the file system, factory.js is the engine, Hermes routes the models.</strong> Three moving parts. Everything else is files.
+        </p>
+        <ul class="simplicity-list">
+          <li>One repo, two layers (factory code + client work)</li>
+          <li>factory.js orchestrates — no LangChain, no workflow framework</li>
+          <li>HITL gates are PRs / approval commands, not infrastructure</li>
+          <li>Cost tracking reads from existing Hermes session data</li>
+          <li>State is a JSON file per client — resume from anywhere</li>
+        </ul>
+        <ul class="simplicity-list">
+          <li class="avoid">Don't add GitHub Actions to auto-trigger builds (you'd review anyway)</li>
+          <li class="avoid">Don't separate the factory from the projects into multiple repos</li>
+          <li class="avoid">Don't build an intake form automation until manual intake breaks</li>
+          <li class="avoid">Don't add LangChain, workflow engines, or orchestration frameworks</li>
+        </ul>
+        <p style="margin-top:1rem; font-size:0.8rem; color:#64748B; font-style:italic;">
+          Rule of thumb: if a new piece of infrastructure doesn't make the pipeline faster, cheaper, or higher quality — it's complexity without payoff. The current design has three ingredients. Keep it there until one of them breaks.
+        </p>
+      </div>
+    </div>
+
+    <p class="footer">
+      Website Factory System • Chris Evans &amp; Johnny Nel • 2026-08-05
+    </p>
+  </div>
+</body>
+</html>

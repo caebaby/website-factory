@@ -2,7 +2,7 @@
 **Template:** `editorial-luxury`  
 **Client:** Alex Miller / Anchor Wealth Planning  
 **Location:** Houston, TX  
-**Last updated:** 2026-06-25
+**Last updated:** 2026-08-03
 
 > This file overrides the template DESIGN.md with AWP-specific values.
 > Build agent reads the template DESIGN.md first, then applies these overrides.
@@ -84,7 +84,7 @@
 **Advisor:** Alex Miller  
 **Tagline:** "Charting the course towards your financial legacy."  
 **Location:** Houston, TX  
-**Background:** Merrill Lynch, 10+ years
+**Experience:** 19 years (client supplied; compliance review pending)
 
 **Logo system:**
 - Mark: Gold square (#b18f4d) + white anchor silhouette + pigeon wave at bottom
@@ -111,9 +111,9 @@
 ## ICP Reference
 
 **Primary ICPs (three):**
-1. Oil & Gas Executives — equity comp, deferred income, commodity exposure, Permian Basin context
-2. Business Owners — exit planning, closely-held business, liquidity event planning
-3. High-Net-Worth Families — multi-generational, estate/trust complexity, coordinated advisory team
+1. High-Net-Worth Families — multi-generational, estate/trust complexity, coordinated advisory team
+2. Oil & Gas Executives — equity comp, deferred income, commodity exposure, Permian Basin context
+3. Business Owners — exit planning, closely-held business, liquidity event planning
 
 **Pain points (real language for copy + ticker):**
 - Tax coordination: "My CPA and my advisor never talk"

@@ -6,7 +6,7 @@ brand
 
 ## Users
 
-Houston oil and gas executives, closely held business owners, and high-net-worth families whose financial lives span investments, taxes, estate planning, equity compensation, and business interests. They arrive skeptical of sales language and tired of coordinating advisors themselves. Their job is to decide whether Alex understands their situation and whether a first conversation is worth taking.
+High-net-worth families, Houston oil and gas executives, and closely held business owners whose financial lives span investments, taxes, estate planning, equity compensation, and business interests. They arrive skeptical of sales language and tired of coordinating advisors themselves. Their job is to decide whether Alex understands their situation and whether a first conversation is worth taking.
 
 ## Product Purpose
 
@@ -26,7 +26,7 @@ Grounded, assured, and human. Institutional discipline without wirehouse stiffne
 
 ## Design Principles
 
-1. Show the three client worlds immediately, then let visitors choose the one that feels like theirs.
+1. Show the three client worlds immediately, beginning with high-net-worth families, then let visitors choose the one that feels like theirs.
 2. Make coordination tangible: every section points back to one living plan shared across professionals.
 3. Use calm specificity as proof. Industry language, clear process, and honest `[VERIFY]` markers beat generic authority claims.
 4. Treat motion as narrative. Hero footage identifies who Anchor serves; interaction always moves toward the fit assessment or call.

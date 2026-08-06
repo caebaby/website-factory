@@ -179,6 +179,36 @@
       "io": "stdout",
       "parse": "claude-json",
       "timeoutMin": 25
+    },
+    "glm-5.2": {
+      "label": "GLM-5.2 via Hermes \u2192 ZAI \u2014 director audition candidate ($0.76/$2.42 per 1M)",
+      "cmd": "hermes",
+      "args": [
+        "chat",
+        "-Q",
+        "-q",
+        "{PROMPT}",
+        "-m",
+        "glm-5.2"
+      ],
+      "io": "stdout",
+      "parse": "raw",
+      "timeoutMin": 40
+    },
+    "kimi-k3": {
+      "label": "Kimi-K3 via Hermes \u2192 OpenRouter \u2014 director audition candidate ($3/$15 per 1M)",
+      "cmd": "hermes",
+      "args": [
+        "chat",
+        "-Q",
+        "-q",
+        "{PROMPT}",
+        "-m",
+        "moonshotai/kimi-k3"
+      ],
+      "io": "stdout",
+      "parse": "raw",
+      "timeoutMin": 40
     }
   },
   "projects": {

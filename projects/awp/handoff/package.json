@@ -1,0 +1,15 @@
+{
+  "name": "anchor-wealth-planning-replit-handoff",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static Anchor Wealth Planning client-review site prepared for Replit",
+  "scripts": {
+    "start": "python3 -m http.server 3000",
+    "check": "node scripts/check-site.mjs",
+    "check:external": "node scripts/check-external-links.mjs",
+    "preflight": "npm run check && npm run check:external"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

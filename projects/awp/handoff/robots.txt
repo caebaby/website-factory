@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /
+
+# Review package: remove this block only when the production domain,
+# compliance copy, absolute canonicals, and sitemap are approved.

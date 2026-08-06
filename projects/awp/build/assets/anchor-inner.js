@@ -8,7 +8,10 @@ menu?.addEventListener("click", () => {
 document
   .querySelectorAll(".nav-links a")
   .forEach((a) =>
-    a.addEventListener("click", () => nav.classList.remove("open")),
+    a.addEventListener("click", () => {
+      nav.classList.remove("open");
+      menu?.setAttribute("aria-expanded", "false");
+    }),
   );
 if ("IntersectionObserver" in window) {
   const observer = new IntersectionObserver(

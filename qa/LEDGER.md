@@ -461,3 +461,99 @@ Append-only. Each entry: what broke, why, how it was caught, and what permanent 
 - **Hardening (open, qa/ frozen this session):** run-pipeline's critic prompt should state that `data-verify` declared pending endpoints are client TODOs — reportable, never MAJOR/escalate. Mirrors the gate's own `cta-pending-endpoint` non-blocking rule.
 - **Status:** 🟡 page ships on its prior PASS + unchanged-content basis; critic-prompt hardening open.
 - **Second occurrence (2026-07-09, home v8):** critic raised the same declared CTA as MAJOR; the scoped repair "fixed" it by pointing the button at `#talk` — the section it sits inside — i.e. it manufactured an LED-014 self-anchor to satisfy the critic. The re-gate caught it and the run correctly ESCALATED; repair rejected, source kept. Escalates the hardening from nice-to-have to required: the critic prompt MUST whitelist `data-verify` pending endpoints, and the repair prompt MUST refuse to re-target them.
+
+### LED-047 — People-footage approval includes casting, light, crop, and scrim
+- **Build:** Anchor homepage hero-media refresh (2026-07-31).
+- **Symptom:** the approved young-family sunset scene preserved the correct people and mobile composition, but the footage plus the shared hero scrim rendered too dark. Several technically multigenerational replacements still felt dated, lost a generation at the hero crop, or read as generic stock before any code changed.
+- **Root cause:** media selection was evaluated as a filename/subject decision. It did not treat wardrobe and setting currency, visible generation count, scene brightness, negative space for copy, responsive crop, and page overlay as one release unit.
+- **Fix:** rejected dated and incomplete casts; selected a bright modern-kitchen scene with grandparent, parents, and children visible together; created optimized desktop/mobile derivatives; reduced only the family-specific scrim; and built a real-copy review page for business-owner alternatives so casting is judged at the production crop. Existing business footage stays active until an alternative is explicitly approved.
+- **Permanent lesson:** people footage is approved only after the playing frame passes four checks together: intended cast is visibly present, the setting feels current for the audience, the subject survives desktop/mobile crops, and the final CSS overlay preserves both faces and copy contrast. Alternatives belong in an in-context switcher, not a contact sheet alone.
+- **Status:** ✅ closed locally. Homepage gate 0 P0; comparison page gate 0 P0 / 0 P1; desktop/mobile Tier-B passed. Public mirror intentionally unchanged pending selection.
+
+### LED-048 — The strongest “CEO” scene may show leadership context, not a solo portrait
+- **Build:** Anchor preferred business-owner hero revision (2026-07-31).
+- **Symptom:** literal solo-at-desk candidates satisfied the casting brief but read as stock portraits. The client preferred a bright boardroom scene with mature leaders actively reviewing plans together.
+- **Root cause:** the selection pass over-weighted a single identifiable CEO and under-weighted the strategic story the page needs to communicate: ownership decisions happen with other people in the room.
+- **Fix:** installed the client-selected Vlada Karpovich meeting footage as the business-owner hero and related homepage preview, retained the prior solo clips as comparison/rollback options, and created a mobile blurred-fill derivative so the full leadership group remains visible.
+- **Permanent lesson:** translate casting labels into the persuasion job. “CEO” can mean visible authority, consequential documents, and calm collaboration; do not force a literal solo portrait when the in-context scene communicates the value proposition better.
+- **Status:** ✅ implemented locally. Homepage gate 0 P0; comparison page gate 0 P0 / 0 P1; desktop/mobile Tier-B passed. Public mirror pending final visual approval.
+
+### LED-049 — A full-screen video direction rules out blurred-fill preservation
+- **Build:** Anchor business-owner hero correction (2026-08-02).
+- **Symptom:** the selected landscape boardroom footage preserved the full meeting on narrow screens by placing it inside a vertical derivative with blurred bands. The full group remained visible, but the result looked letterboxed and failed the requested full-screen presentation.
+- **Root cause:** responsive composition prioritized preserving every participant over the stated visual requirement that the hero fill the viewport cleanly.
+- **Fix:** removed the business hero's mobile source override and now use the same 16:9 derivative at every breakpoint with `object-fit: cover`. Narrow screens crop the outer participants while the footage remains edge to edge.
+- **Permanent lesson:** when the direction is full-screen, blurred fill and letterboxing are not acceptable responsive fallbacks. Use a true cover crop, art-direct the focal point, and state the crop tradeoff explicitly.
+- **Status:** ✅ published for client review. Homepage and comparison page both pass with 0 P0; desktop and 390px Tier-B confirm edge-to-edge business video with no blurred bands. Curated public mirror commit `c4b1d3b` was verified live after deployment.
+
+### LED-050 — Client-supplied facts are not compliance-verified facts
+- **Build:** Anchor Alex copy-response revision (2026-08-03).
+- **Symptom:** the returned workbook replaced credential, title, biography, and team placeholders with specific facts, while one legal-status response used wording that could be interpreted as a verified regulatory disclosure. A direct message also changed audience priority beyond the workbook's original order.
+- **Root cause:** client response documents mix creative approvals, factual inputs, legal claims, and later direct instructions in the same visual format. Treating every filled response as publish-ready copy would collapse provenance and compliance state.
+- **Fix:** made Alex's direct audience-order instruction authoritative; mapped unambiguous creative and factual responses into the build; labeled credentials, experience, title, and team roles as client supplied pending compliance; retained the legal entity/RIA statement as `[VERIFY]`; and recorded unresolved or ambiguous items in a dated client-feedback changelog.
+- **Permanent lesson:** store client-returned documents as immutable evidence, maintain a separate applied/deferred/ambiguous implementation log, and preserve three distinct states for sensitive copy: placeholder, client supplied, and compliance approved. A later direct instruction wins over an earlier document only where the conflict is explicit.
+- **Status:** ✅ implemented and independently verified locally. Nine-route gate has 0 P0; the 18-page workbook has 0 accessibility findings; public review remains unchanged pending Chris's visual approval.
+
+### LED-051 — One hero frame is not a reusable portrait-card asset
+- **Build:** Anchor homepage audience-card correction (2026-08-03).
+- **Symptom:** the approved family hero image looked right at 16:9 but generic `object-fit: cover` cut adult faces at both edges inside the tall Who We Serve card. The same reuse left the other audience cards dependent on incidental browser cropping.
+- **Root cause:** source approval was treated as component approval even though the hero and card have materially different aspect ratios and focal-point requirements.
+- **Fix:** created dedicated 900×1125 assets for all three audience cards. The family version is an OpenAI-assisted portrait reframe of the approved Pexels 8479992 scene that preserves every generation; oil and business use deterministic centered crops from their approved sources. Recorded provenance and approval state in `assets/SOURCES.md`.
+- **Permanent lesson:** verify media per component aspect ratio. When a source must serve both landscape and portrait surfaces, provide art-directed assets for each instead of relying on generic cover cropping.
+- **Status:** ✅ fixed locally. Desktop and 390px Tier-B show complete family faces and centered oil/business subjects; homepage gate remains 0 P0.
+
+### LED-052 — Preserving the full group with blurred fill is still letterboxing
+- **Build:** Anchor family hero responsive-media correction (2026-08-03).
+- **Symptom:** the family hero switched to a 9:16 derivative on narrow screens, but the landscape clip was centered between blurred copies of itself. The family remained visible while the top and bottom read as obvious borders.
+- **Root cause:** responsive media treated subject preservation as the only requirement and reused the blurred-fill technique already rejected for the business-owner hero.
+- **Fix:** replaced the active mobile family source with a true 720×1280 cover derivative from the same Pexels 8479992 footage. A smooth reversible pan crosses the multigenerational group and returns to its opening frame, keeping motion loopable without blurred bands, stretching, or letterboxing.
+- **Permanent lesson:** a responsive video derivative must satisfy both casting and presentation. If edge-to-edge is required, use an art-directed crop or pan-and-scan; blurred duplication is not a full-screen treatment.
+- **Status:** ✅ fixed locally. The old blurred asset remains inactive for traceability; provenance and usage are explicit in `assets/SOURCES.md`.
+
+### LED-053 — Authentication transaction URLs are not durable client-portal links
+- **Build:** Anchor current-client login integration (2026-08-03).
+- **Symptom:** the supplied Investor360 destination contained `/u/login?state=...`; opening it independently returned an internal error and would strand future clients when the state token expired.
+- **Root cause:** a URL copied from the middle of an Auth0 authorization transaction was treated as a reusable login endpoint.
+- **Fix:** linked every header, mobile menu, and footer to the official stable entry point, `https://www.investor360.com/`, which redirects through `/login` and creates a fresh authentication transaction. Links open in a new tab with `noopener noreferrer` and an explicit accessible label.
+- **Permanent lesson:** never publish OAuth/Auth0 links containing `state`, `code`, `nonce`, or other transaction parameters. Use the provider's documented stable entry URL and verify its redirect behavior before release.
+- **Status:** ✅ implemented locally across all nine Anchor routes; public review remains unchanged pending approval.
+
+### LED-054 — A visually closed menu must also reset its announced state
+- **Build:** Anchor current-client login integration (2026-08-03).
+- **Symptom:** selecting any link in the inner-page mobile menu removed the visible `.open` state but left the toggle at `aria-expanded="true"`, so assistive technology heard an expanded menu that was no longer present.
+- **Root cause:** the link-click handler updated only the CSS class while the content-page and homepage shells correctly updated both visual and semantic state.
+- **Fix:** the shared `anchor-inner.js` close handler now resets the menu button to `aria-expanded="false"`; cache-busted script references ensure the corrected behavior ships with all five inner routes.
+- **Permanent lesson:** every disclosure/navigation close path must update the visual state, body state where used, focus/announcement state, and `aria-expanded` together. Verify both toggle-click and link-selection paths.
+- **Status:** ✅ fixed and visually verified locally. Open-menu checks at 390px and 820px show the Client Login row, zero horizontal overflow, and `aria-expanded="false"` after link selection. The same verification also closed the homepage's prior 721–900px menu-display breakpoint gap.
+
+### LED-055 — A structural copy gate cannot prove that every approved client decision landed
+- **Build:** Anchor Alex-copy client-review release (2026-08-03).
+- **Symptom:** the nine-route build had 0 P0 and looked complete, but a source-to-build verifier found four approved decisions missing or semantically weakened: the full Why Anchor promise, two Fit Check answers, the one-business-day/no-pitch response promise, and Fit Check-first CTA hierarchy.
+- **Root cause:** generic page checks verify structure, references, and risky language; they do not compare every response-bearing cell in a client-returned workbook against its intended destination in the build.
+- **Fix:** created a dated, itemized implementation audit; reconciled every response-bearing decision; repaired all four misses; and required a fresh independent verifier to re-audit the source document after the repairs.
+- **Permanent lesson:** client-feedback releases need two separate gates: the normal site gate and a source-to-build decision audit with explicit applied/deferred/ambiguous states. A green structural gate is necessary, not sufficient.
+- **Status:** ✅ closed. Twenty-one response-bearing decisions checked; no missed approved copy remains. Unresolved legal, compliance, team-media, Fit Check-band, scheduling, and podcast inputs remain explicitly separated as launch dependencies.
+
+### LED-056 — A Replit handoff is a release package, not a dump of the build directory
+- **Build:** Anchor Replit handoff (2026-08-03).
+- **Symptom:** the approved review site lived inside the Factory project with historical builds, inactive/restricted assets, source-only artifacts, and assumptions that do not belong in a client-owned Replit root.
+- **Root cause:** the design build and the deployment handoff serve different jobs. Copying the whole project would leak history, enlarge the app, and make the production contract ambiguous.
+- **Fix:** created a curated static-root package containing only the 10 supported routes, active self-hosted assets, `.replit`, `package.json`, a deterministic reference/content check, crawler-safe review defaults, an explicit sitemap, and a production launch checklist. Verified 390px/820px/1440px layouts, menus, media cover behavior, Fit Check auto-advance, image loading, and console output against the package itself.
+- **Permanent lesson:** every Replit handoff needs an allowlist, a runnable root contract, automated local-reference checks, review-vs-production crawler controls, explicit external-system owners, and browser QA at the actual handoff origin.
+- **Status:** ✅ closed. `projects/awp/handoff/` passes `npm run check`; every Factory route gate has 0 P0.
+
+### LED-057 — AI media handoffs need component-level destinations, not a generic asset TODO
+- **Build:** Anchor Johnny/Replit handoff (2026-08-04).
+- **Symptom:** the package identified that story, portrait, Insights, and podcast media were pending, but an AI taking over later would still have to infer which page, selector, aspect ratio, filename, fallback, and metadata field each delivered asset should replace.
+- **Root cause:** a human-readable launch checklist recorded dependencies but did not encode the placement contract required for deterministic AI implementation.
+- **Fix:** added `projects/awp/handoff/AI-HANDOFF-NOTES.md` with stable MEDIA-01 through MEDIA-09 IDs, exact routes/selectors/current assets, preferred filenames, responsive crops, alt-text/poster/schema/transcript duties, installed-review-media approval states, and an ambiguity rule requiring the AI to ask for the MEDIA ID.
+- **Permanent lesson:** every pending media dependency needs five fields: owner/input, destination selector, required derivatives, metadata/accessibility work, and approval state. “Replace video later” is not a handoff.
+- **Status:** ✅ closed. `npm run check` now fails if the manifest or its required media contracts disappear.
+
+### LED-058 — Compliance-oriented QA is not regulatory or firm approval
+- **Build:** Anchor Johnny/Replit prelaunch verification (2026-08-04).
+- **Symptom:** a deployment checklist could be read as proving the site had already passed FINRA, SEC, MML/MassMutual, or principal review when the repository contains no named reviewer, ticket, approval date, approved disclosure block, or evidence of the exact Alex/Anchor legal relationship.
+- **Root cause:** technical, content-risk, and regulatory approval states were collapsed into one word: “compliance.” That invites an AI or implementer to remove `[VERIFY]`, `noindex`, or review warnings after a rules-oriented lint pass.
+- **Fix:** added machine-readable prelaunch states that separate internal compliance-oriented screening from formal approval; required a reviewer/organization/date/ticket/artifact record before the approval state can change; and made the automated handoff check reject every formal-approval value except the package's single `NOT_RECEIVED` state. Any future approved state requires the authorized artifact plus an audited gate update. Production indexing remains explicitly blocked.
+- **Permanent lesson:** automated checks can prove references, disclosures are present as placeholders, and risky claims are flagged. Only the authorized firm/regulatory reviewer can approve the final entity wording, registrations, credentials, relationship disclosures, testimonials/quotes, filing links, and recordkeeping package.
+- **Status:** ✅ control shipped; 🟡 formal approval remains pending external evidence.
