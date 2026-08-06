@@ -395,10 +395,70 @@ function audition(name) {
   log('Then log the verdict in benchmarks/model-bench/README.md + BUILD_REGISTRY — the leaderboard is the hiring authority.');
 }
 
+/* ---------------- init: scaffold a new client project ---------------- */
+function initClient(client) {
+  if (!client || !/^[a-z0-9-]+$/.test(client))
+    die('client slug must be lowercase kebab-case (e.g. jesse-holman, anchor-wealth)');
+
+  const proj = path.join(REPO, 'projects', client);
+  if (fs.existsSync(proj))
+    die('project already exists: ' + proj + '\n  To restart, delete the folder first.');
+
+  // Create the folder structure
+  const dirs = ['', 'research', 'strategy', 'copy', 'build', 'qa', 'briefs', 'assets'];
+  dirs.forEach(d => fs.mkdirSync(path.join(proj, d), { recursive: true }));
+
+  // Copy INTAKE template
+  const intakeTpl = readIf(path.join(REPO, 'templates', '_base', 'INTAKE.md'));
+  const intakePath = path.join(proj, 'INTAKE.md');
+  if (intakeTpl) {
+    fs.writeFileSync(intakePath, intakeTpl.replace('# Client Intake — Website Brief',
+      '# Client Intake — ' + client));
+  } else {
+    fs.writeFileSync(intakePath, '# INTAKE — ' + client + '\n\n(Fill this out before running the pipeline)\n');
+  }
+
+  // Create a .gitkeep in assets so the folder is tracked
+  fs.writeFileSync(path.join(proj, 'assets', '.gitkeep'), '');
+
+  // Initialize empty factory state
+  saveState(proj, { done: [], gates: {}, log: [] });
+
+  // Add accent to factory.config.json if we can guess one (default gold)
+  if (CONFIG.projects && !CONFIG.projects[client]) {
+    CONFIG.projects[client] = { accent: '#C9A227' };
+    fs.writeFileSync(path.join(REPO, 'factory.config.json'), JSON.stringify(CONFIG, null, 2));
+  }
+
+  // Create a branch for this client
+  const branch = spawnSync('git', ['checkout', '-b', 'client/' + client],
+    { encoding: 'utf8', cwd: REPO });
+  const onBranch = branch.status === 0;
+
+  log('scaffolded ' + client + ' → projects/' + client + '/');
+  log('  folders: research/ strategy/ copy/ build/ qa/ briefs/ assets/');
+  log('  intake:  INTAKE.md (from template — fill this out)');
+  log('  state:   .factory-state.json (empty, ready)');
+  if (onBranch) {
+    log('  branch:  client/' + client + ' (created + checked out)');
+  } else {
+    log('  branch:  could not create client/' + client + ' (create manually: git checkout -b client/' + client + ')');
+  }
+  log('');
+  log('Next steps:');
+  log('  1. Fill in projects/' + client + '/INTAKE.md');
+  log('  2. Drop any raw transcripts → projects/' + client + '/research/INTERVIEW_TRANSCRIPT.md');
+  log('  3. Drop brand assets (logos, photos) → projects/' + client + '/assets/');
+  log('  4. Run: node factory.js print ' + client + ' --dry-run   (preview)');
+  log('  5. Run: node factory.js print ' + client + '              (build)');
+}
+
 /* ---------------- CLI ---------------- */
 const [, , cmd, client, arg3] = process.argv;
 const dryRun = process.argv.includes('--dry-run');
-if (cmd === 'print' && client) {
+if (cmd === 'init' && client) {
+  initClient(client);
+} else if (cmd === 'print' && client) {
   print(client, dryRun);
 } else if (cmd === 'audition' && client) {
   audition(client);
@@ -413,7 +473,28 @@ if (cmd === 'print' && client) {
 } else if (cmd === 'status' && client) {
   const st = loadState(path.join(REPO, 'projects', client));
   console.log(JSON.stringify(st, null, 2));
+} else if (cmd === 'list') {
+  const projDir = path.join(REPO, 'projects');
+  if (fs.existsSync(projDir)) {
+    const clients = fs.readdirSync(projDir).filter(d =>
+      fs.statSync(path.join(projDir, d)).isDirectory() &&
+      fs.existsSync(path.join(projDir, d, 'INTAKE.md')));
+    clients.forEach(c => {
+      const st = loadState(c);
+      const stages = st.done ? st.done.length : 0;
+      const gateInfo = st.gates && Object.keys(st.gates).length > 0
+        ? ' | gates: ' + Object.keys(st.gates).join(', ')
+        : '';
+      console.log('  ' + c + ' — ' + stages + ' stages done' + gateInfo);
+    });
+  }
 } else {
-  console.log('usage:\n  node factory.js print <client> [--dry-run]\n  node factory.js approve <client> <gate>\n  node factory.js status <client>\n  node factory.js audition <role-or-alternate>   run a candidate through the model-bench packet');
+  console.log('usage:\n' +
+    '  node factory.js init <client>                    scaffold a new project (folders + intake + branch)\n' +
+    '  node factory.js list                             show all clients + pipeline status\n' +
+    '  node factory.js print <client> [--dry-run]       run the pipeline (resumes from last stage)\n' +
+    '  node factory.js approve <client> <gate>          approve a human gate + auto-continue\n' +
+    '  node factory.js status <client>                  show detailed state for a client\n' +
+    '  node factory.js audition <role-or-alternate>     run a model through the bench packet');
   process.exit(1);
 }

@@ -181,7 +181,7 @@
       "timeoutMin": 25
     },
     "glm-5.2": {
-      "label": "GLM-5.2 via Hermes → ZAI — director audition candidate ($0.76/$2.42 per 1M)",
+      "label": "GLM-5.2 via Hermes \u2192 ZAI \u2014 director audition candidate ($0.76/$2.42 per 1M)",
       "cmd": "hermes",
       "args": [
         "chat",
@@ -196,7 +196,7 @@
       "timeoutMin": 40
     },
     "kimi-k3": {
-      "label": "Kimi-K3 via Hermes → OpenRouter — director audition candidate ($3/$15 per 1M)",
+      "label": "Kimi-K3 via Hermes \u2192 OpenRouter \u2014 director audition candidate ($3/$15 per 1M)",
       "cmd": "hermes",
       "args": [
         "chat",
